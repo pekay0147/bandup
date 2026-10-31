@@ -1,0 +1,696 @@
+{
+ "title": "리스닝 철자",
+ "note": "IELTS 리스닝은 철자가 틀리면 오답이에요. 영국식·미국식 철자는 둘 다 정답으로 인정돼요.",
+ "categories": [
+  {
+   "part": "Part 1",
+   "ko": "요일·월",
+   "name": "Days & months",
+   "words": [
+    [
+     "Wednesday",
+     "수요일",
+     "d가 소리 안 남: Wed-nes-day"
+    ],
+    [
+     "Tuesday",
+     "화요일",
+     "Tues-day, e 빠뜨리지 않기"
+    ],
+    [
+     "Thursday",
+     "목요일",
+     "Thurs-day, r 빠뜨리지 않기"
+    ],
+    [
+     "Saturday",
+     "토요일",
+     "Satur-day"
+    ],
+    [
+     "February",
+     "2월",
+     "r이 두 번: Feb-ru-ary"
+    ],
+    [
+     "January",
+     "1월",
+     "Janu-ary"
+    ],
+    [
+     "August",
+     "8월",
+     "대문자 A"
+    ],
+    [
+     "September",
+     "9월",
+     ""
+    ],
+    [
+     "October",
+     "10월",
+     "Octo-ber, ober 아님"
+    ],
+    [
+     "November",
+     "11월",
+     ""
+    ],
+    [
+     "December",
+     "12월",
+     ""
+    ]
+   ]
+  },
+  {
+   "part": "Part 1",
+   "ko": "숫자·시간",
+   "name": "Numbers & time",
+   "words": [
+    [
+     "forty",
+     "40",
+     "fourty 아님! u 없음"
+    ],
+    [
+     "ninety",
+     "90",
+     "nine + ty, e 남김"
+    ],
+    [
+     "eighth",
+     "8번째",
+     "eight + h"
+    ],
+    [
+     "twelfth",
+     "12번째",
+     "f 빠뜨리지 않기"
+    ],
+    [
+     "thousand",
+     "천",
+     ""
+    ],
+    [
+     "hundred",
+     "백",
+     "hundered 아님"
+    ],
+    [
+     "quarter",
+     "15분, 4분의 1",
+     "qu-ar-ter"
+    ],
+    [
+     "fortnight",
+     "2주",
+     "forty 아님, fort-night"
+    ],
+    [
+     "midday",
+     "정오",
+     "d 두 개"
+    ],
+    [
+     "thirteen",
+     "13",
+     "-teen: 뒤에 강세"
+    ],
+    [
+     "thirty",
+     "30",
+     "-ty: 앞에 강세"
+    ]
+   ]
+  },
+  {
+   "part": "Part 1",
+   "ko": "주소·장소",
+   "name": "Address & places",
+   "words": [
+    [
+     "street",
+     "거리",
+     "e 두 개"
+    ],
+    [
+     "avenue",
+     "대로",
+     "ave-nue"
+    ],
+    [
+     "crescent",
+     "초승달 모양 거리",
+     "sc 붙여 쓰기"
+    ],
+    [
+     "square",
+     "광장",
+     ""
+    ],
+    [
+     "apartment",
+     "아파트",
+     "p 하나, t 하나"
+    ],
+    [
+     "centre",
+     "중심가",
+     "centre(영) / center(미) 둘 다 정답"
+    ],
+    [
+     "theatre",
+     "극장",
+     "theatre(영) / theater(미) 둘 다 정답"
+    ],
+    [
+     "library",
+     "도서관",
+     "r 두 개: li-bra-ry"
+    ],
+    [
+     "museum",
+     "박물관",
+     "mu-se-um"
+    ],
+    [
+     "gallery",
+     "미술관",
+     "l 두 개"
+    ],
+    [
+     "station",
+     "역",
+     ""
+    ],
+    [
+     "hospital",
+     "병원",
+     ""
+    ],
+    [
+     "restaurant",
+     "식당",
+     "au 순서 주의: rest-au-rant"
+    ]
+   ]
+  },
+  {
+   "part": "Part 1",
+   "ko": "예약·숙박·여행",
+   "name": "Booking & travel",
+   "words": [
+    [
+     "accommodation",
+     "숙소",
+     "c 두 개, m 두 개!"
+    ],
+    [
+     "reservation",
+     "예약",
+     ""
+    ],
+    [
+     "receipt",
+     "영수증",
+     "p가 소리 안 남, ei 순서"
+    ],
+    [
+     "deposit",
+     "보증금",
+     ""
+    ],
+    [
+     "insurance",
+     "보험",
+     "-ance"
+    ],
+    [
+     "luggage",
+     "짐",
+     "g 두 개"
+    ],
+    [
+     "passport",
+     "여권",
+     ""
+    ],
+    [
+     "schedule",
+     "일정",
+     "sch로 시작"
+    ],
+    [
+     "itinerary",
+     "여행 일정표",
+     "i-tin-er-ar-y"
+    ],
+    [
+     "departure",
+     "출발",
+     "-ture"
+    ],
+    [
+     "arrival",
+     "도착",
+     "r 두 개"
+    ],
+    [
+     "discount",
+     "할인",
+     ""
+    ],
+    [
+     "guarantee",
+     "보증",
+     "gua-ran-tee, e 두 개"
+    ],
+    [
+     "brochure",
+     "안내 책자",
+     "-chure"
+    ],
+    [
+     "souvenir",
+     "기념품",
+     "sou-ve-nir"
+    ]
+   ]
+  },
+  {
+   "part": "Part 1",
+   "ko": "양식·개인정보",
+   "name": "Forms & personal details",
+   "words": [
+    [
+     "surname",
+     "성",
+     "sur-name"
+    ],
+    [
+     "address",
+     "주소",
+     "d 두 개, s 두 개"
+    ],
+    [
+     "postcode",
+     "우편번호",
+     "한 단어"
+    ],
+    [
+     "occupation",
+     "직업",
+     "c 두 개, p 하나"
+    ],
+    [
+     "nationality",
+     "국적",
+     ""
+    ],
+    [
+     "telephone",
+     "전화",
+     "ph"
+    ],
+    [
+     "appointment",
+     "약속, 예약",
+     "p 두 개"
+    ],
+    [
+     "signature",
+     "서명",
+     ""
+    ],
+    [
+     "membership",
+     "회원권",
+     ""
+    ],
+    [
+     "registration",
+     "등록",
+     ""
+    ],
+    [
+     "applicant",
+     "지원자",
+     "p 두 개"
+    ],
+    [
+     "licence",
+     "면허",
+     "licence(영 명사) / license(미)"
+    ]
+   ]
+  },
+  {
+   "part": "Part 1",
+   "ko": "자주 틀리는 단어",
+   "name": "Commonly misspelled",
+   "words": [
+    [
+     "necessary",
+     "필요한",
+     "c 하나, s 두 개"
+    ],
+    [
+     "separate",
+     "분리된",
+     "sep-A-rate"
+    ],
+    [
+     "definitely",
+     "분명히",
+     "de-fin-ite-ly"
+    ],
+    [
+     "recommend",
+     "추천하다",
+     "c 하나, m 두 개"
+    ],
+    [
+     "environment",
+     "환경",
+     "n 빠뜨리기 쉬움: enviro-n-ment"
+    ],
+    [
+     "government",
+     "정부",
+     "n 빠뜨리기 쉬움: gover-n-ment"
+    ],
+    [
+     "beginning",
+     "시작",
+     "n 두 개"
+    ],
+    [
+     "business",
+     "사업",
+     "busi-ness"
+    ],
+    [
+     "calendar",
+     "달력",
+     "-dar"
+    ],
+    [
+     "colleague",
+     "동료",
+     "l 두 개, -league"
+    ],
+    [
+     "equipment",
+     "장비",
+     "equip-ment"
+    ],
+    [
+     "available",
+     "이용 가능한",
+     "avail-able"
+    ],
+    [
+     "comfortable",
+     "편안한",
+     "comfort-able"
+    ],
+    [
+     "convenient",
+     "편리한",
+     "-ient"
+    ],
+    [
+     "temperature",
+     "온도",
+     "tem-per-a-ture"
+    ],
+    [
+     "vegetable",
+     "채소",
+     "veg-e-table"
+    ],
+    [
+     "questionnaire",
+     "설문지",
+     "n 두 개, -aire"
+    ],
+    [
+     "rhythm",
+     "리듬",
+     "모음 없음"
+    ]
+   ]
+  },
+  {
+   "part": "Part 4",
+   "ko": "연구·과학",
+   "name": "Research & science",
+   "words": [
+    [
+     "research",
+     "연구",
+     ""
+    ],
+    [
+     "analysis",
+     "분석",
+     "an-a-ly-sis"
+    ],
+    [
+     "hypothesis",
+     "가설",
+     "hy-po-the-sis"
+    ],
+    [
+     "phenomenon",
+     "현상",
+     "phe-nom-e-non"
+    ],
+    [
+     "experiment",
+     "실험",
+     ""
+    ],
+    [
+     "laboratory",
+     "실험실",
+     "lab-o-ra-to-ry"
+    ],
+    [
+     "evidence",
+     "증거",
+     ""
+    ],
+    [
+     "theory",
+     "이론",
+     ""
+    ],
+    [
+     "statistics",
+     "통계",
+     "sta-tis-tics"
+    ],
+    [
+     "survey",
+     "설문 조사",
+     ""
+    ],
+    [
+     "significant",
+     "중요한",
+     "sig-nif-i-cant"
+    ],
+    [
+     "conclusion",
+     "결론",
+     ""
+    ]
+   ]
+  },
+  {
+   "part": "Part 4",
+   "ko": "자연·환경",
+   "name": "Nature & environment",
+   "words": [
+    [
+     "atmosphere",
+     "대기",
+     "at-mos-phere"
+    ],
+    [
+     "pollution",
+     "오염",
+     "l 두 개"
+    ],
+    [
+     "species",
+     "종",
+     "s로 끝남, 단·복수 같음"
+    ],
+    [
+     "ecosystem",
+     "생태계",
+     "eco-system"
+    ],
+    [
+     "climate",
+     "기후",
+     ""
+    ],
+    [
+     "habitat",
+     "서식지",
+     ""
+    ],
+    [
+     "drought",
+     "가뭄",
+     "ough"
+    ],
+    [
+     "extinction",
+     "멸종",
+     ""
+    ],
+    [
+     "resources",
+     "자원",
+     ""
+    ],
+    [
+     "vegetation",
+     "초목",
+     ""
+    ],
+    [
+     "glacier",
+     "빙하",
+     "gla-cier"
+    ]
+   ]
+  },
+  {
+   "part": "Part 4",
+   "ko": "역사·사회",
+   "name": "History & society",
+   "words": [
+    [
+     "century",
+     "세기",
+     ""
+    ],
+    [
+     "ancient",
+     "고대의",
+     "-cient"
+    ],
+    [
+     "civilisation",
+     "문명",
+     "civilisation(영) / civilization(미)"
+    ],
+    [
+     "architecture",
+     "건축",
+     "arch-i-tec-ture"
+    ],
+    [
+     "agriculture",
+     "농업",
+     "agri-culture"
+    ],
+    [
+     "industry",
+     "산업",
+     ""
+    ],
+    [
+     "economy",
+     "경제",
+     "e-con-o-my"
+    ],
+    [
+     "tradition",
+     "전통",
+     ""
+    ],
+    [
+     "settlement",
+     "정착지",
+     "t 두 번 연속"
+    ],
+    [
+     "medieval",
+     "중세의",
+     "medi-eval"
+    ],
+    [
+     "archaeology",
+     "고고학",
+     "ae 주의"
+    ]
+   ]
+  },
+  {
+   "part": "Part 4",
+   "ko": "몸·심리",
+   "name": "Body & mind",
+   "words": [
+    [
+     "behaviour",
+     "행동",
+     "behaviour(영) / behavior(미)"
+    ],
+    [
+     "psychology",
+     "심리학",
+     "p가 소리 안 남"
+    ],
+    [
+     "nutrition",
+     "영양",
+     ""
+    ],
+    [
+     "muscle",
+     "근육",
+     "c가 소리 안 남"
+    ],
+    [
+     "disease",
+     "질병",
+     ""
+    ],
+    [
+     "immune",
+     "면역의",
+     "m 두 개"
+    ],
+    [
+     "physical",
+     "신체의",
+     "ph로 시작"
+    ],
+    [
+     "mental",
+     "정신의",
+     ""
+    ],
+    [
+     "anxiety",
+     "불안",
+     "anx-i-e-ty"
+    ],
+    [
+     "development",
+     "발달",
+     "-ment, e 없음"
+    ]
+   ]
+  }
+ ]
+}

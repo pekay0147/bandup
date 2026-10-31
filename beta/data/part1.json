@@ -1,0 +1,1125 @@
+{
+ "title": "주제별 어휘",
+ "topics": [
+  {
+   "ko": "집·고향",
+   "topic": "Home & Hometown",
+   "words": [
+    [
+     "cosy",
+     "아늑한",
+     "My bedroom is small but cosy."
+    ],
+    [
+     "spacious",
+     "넓은",
+     "Our living room is quite spacious."
+    ],
+    [
+     "neighbourhood",
+     "동네",
+     "It's a quiet residential neighbourhood."
+    ],
+    [
+     "high-rise apartment",
+     "고층 아파트",
+     "Most people in Seoul live in high-rise apartments."
+    ],
+    [
+     "convenient",
+     "편리한",
+     "It's convenient because the subway is nearby."
+    ],
+    [
+     "within walking distance",
+     "걸어갈 수 있는 거리에",
+     "There's a park within walking distance."
+    ],
+    [
+     "bustling",
+     "북적거리는",
+     "The city centre is always bustling."
+    ],
+    [
+     "bring up children",
+     "아이를 키우다",
+     "It's a great place to bring up children."
+    ],
+    [
+     "move out",
+     "이사 나가다",
+     "I moved out of my parents' place last year."
+    ],
+    [
+     "hometown",
+     "고향",
+     "My hometown is famous for its seafood."
+    ]
+   ]
+  },
+  {
+   "ko": "일·공부",
+   "topic": "Work & Study",
+   "words": [
+    [
+     "major in",
+     "~을 전공하다",
+     "I majored in business."
+    ],
+    [
+     "deadline",
+     "마감",
+     "I have a lot of deadlines this week."
+    ],
+    [
+     "colleague",
+     "동료",
+     "I get on well with my colleagues."
+    ],
+    [
+     "workload",
+     "업무량",
+     "My workload has increased recently."
+    ],
+    [
+     "work-life balance",
+     "일과 삶의 균형",
+     "Work-life balance is important to me."
+    ],
+    [
+     "commute",
+     "통근하다",
+     "I commute to work by subway."
+    ],
+    [
+     "hands-on",
+     "직접 해 보는",
+     "I prefer hands-on learning."
+    ],
+    [
+     "pull an all-nighter",
+     "밤새 공부하다",
+     "I pulled an all-nighter before the exam."
+    ],
+    [
+     "brush up on",
+     "다시 공부하다",
+     "I'm brushing up on my English."
+    ],
+    [
+     "rewarding",
+     "보람 있는",
+     "Teaching is a rewarding job."
+    ]
+   ]
+  },
+  {
+   "ko": "음식·요리",
+   "topic": "Food & Cooking",
+   "words": [
+    [
+     "home-cooked meal",
+     "집밥",
+     "Nothing beats a home-cooked meal."
+    ],
+    [
+     "eat out",
+     "외식하다",
+     "We eat out about once a week."
+    ],
+    [
+     "a picky eater",
+     "편식하는 사람",
+     "I was a picky eater as a child."
+    ],
+    [
+     "have a sweet tooth",
+     "단 걸 좋아하다",
+     "I have a sweet tooth."
+    ],
+    [
+     "savoury",
+     "짭짤한",
+     "I prefer savoury snacks to sweet ones."
+    ],
+    [
+     "mouth-watering",
+     "군침 도는",
+     "The street food looked mouth-watering."
+    ],
+    [
+     "a balanced diet",
+     "균형 잡힌 식단",
+     "I try to keep a balanced diet."
+    ],
+    [
+     "grab a bite",
+     "간단히 먹다",
+     "Let's grab a bite after class."
+    ],
+    [
+     "skip meals",
+     "끼니를 거르다",
+     "I sometimes skip breakfast."
+    ],
+    [
+     "comfort food",
+     "위로가 되는 음식",
+     "Ramyeon is my comfort food."
+    ]
+   ]
+  },
+  {
+   "ko": "운동·건강",
+   "topic": "Sport & Health",
+   "words": [
+    [
+     "work out",
+     "운동하다",
+     "I work out three times a week."
+    ],
+    [
+     "stay in shape",
+     "몸매·건강을 유지하다",
+     "I do yoga to stay in shape."
+    ],
+    [
+     "keep fit",
+     "건강을 유지하다",
+     "Swimming is a good way to keep fit."
+    ],
+    [
+     "sedentary lifestyle",
+     "앉아서 지내는 생활",
+     "Office workers often have a sedentary lifestyle."
+    ],
+    [
+     "break a sweat",
+     "땀을 흘리다",
+     "I like exercise that makes me break a sweat."
+    ],
+    [
+     "team sport",
+     "단체 운동",
+     "I'm not really into team sports."
+    ],
+    [
+     "cheer for",
+     "응원하다",
+     "I always cheer for the national team."
+    ],
+    [
+     "get enough sleep",
+     "충분히 자다",
+     "I try to get enough sleep."
+    ],
+    [
+     "under the weather",
+     "몸이 안 좋은",
+     "I'm a bit under the weather today."
+    ],
+    [
+     "cut down on",
+     "줄이다",
+     "I'm cutting down on sugar."
+    ]
+   ]
+  },
+  {
+   "ko": "날씨·계절",
+   "topic": "Weather & Seasons",
+   "words": [
+    [
+     "four distinct seasons",
+     "뚜렷한 사계절",
+     "Korea has four distinct seasons."
+    ],
+    [
+     "humid",
+     "습한",
+     "Summer is hot and humid."
+    ],
+    [
+     "chilly",
+     "쌀쌀한",
+     "It gets chilly in the evening."
+    ],
+    [
+     "freezing",
+     "몹시 추운",
+     "January is freezing."
+    ],
+    [
+     "scorching hot",
+     "찌는 듯이 더운",
+     "It was scorching hot last August."
+    ],
+    [
+     "pouring",
+     "비가 퍼붓는",
+     "It's pouring outside."
+    ],
+    [
+     "rainy season",
+     "장마",
+     "The rainy season starts in July."
+    ],
+    [
+     "heatwave",
+     "폭염",
+     "We had a long heatwave this year."
+    ],
+    [
+     "fine dust",
+     "미세먼지",
+     "Fine dust is a big problem in spring."
+    ],
+    [
+     "crisp",
+     "상쾌하고 서늘한",
+     "I love the crisp autumn air."
+    ]
+   ]
+  },
+  {
+   "ko": "여행·휴가",
+   "topic": "Travel & Holidays",
+   "words": [
+    [
+     "go on holiday",
+     "휴가 가다",
+     "I went on holiday to Jeju."
+    ],
+    [
+     "get away",
+     "잠시 떠나다",
+     "I need to get away for a few days."
+    ],
+    [
+     "destination",
+     "여행지",
+     "Bali is a popular destination."
+    ],
+    [
+     "tourist attraction",
+     "관광 명소",
+     "Gyeongbokgung is a famous tourist attraction."
+    ],
+    [
+     "touristy",
+     "관광객이 많은",
+     "Myeongdong is a bit touristy."
+    ],
+    [
+     "off the beaten track",
+     "잘 알려지지 않은 곳",
+     "I like places off the beaten track."
+    ],
+    [
+     "breathtaking view",
+     "숨 막히는 경치",
+     "The view from the top was breathtaking."
+    ],
+    [
+     "recharge my batteries",
+     "재충전하다",
+     "Holidays help me recharge my batteries."
+    ],
+    [
+     "broaden my horizons",
+     "시야를 넓히다",
+     "Travelling broadens my horizons."
+    ],
+    [
+     "bucket list",
+     "버킷리스트",
+     "Iceland is on my bucket list."
+    ]
+   ]
+  },
+  {
+   "ko": "교통",
+   "topic": "Transport",
+   "words": [
+    [
+     "public transport",
+     "대중교통",
+     "Public transport in Seoul is excellent."
+    ],
+    [
+     "rush hour",
+     "출퇴근 시간",
+     "The subway is packed during rush hour."
+    ],
+    [
+     "traffic jam",
+     "교통 체증",
+     "I got stuck in a traffic jam."
+    ],
+    [
+     "beat the traffic",
+     "교통 체증을 피하다",
+     "I leave early to beat the traffic."
+    ],
+    [
+     "it's a 10-minute walk",
+     "걸어서 10분이다",
+     "It's a 10-minute walk from my house."
+    ],
+    [
+     "take a bus",
+     "버스를 타다",
+     "I usually take a bus to work."
+    ],
+    [
+     "get around",
+     "돌아다니다",
+     "It's easy to get around by subway."
+    ],
+    [
+     "eco-friendly",
+     "친환경적인",
+     "Cycling is an eco-friendly option."
+    ],
+    [
+     "reliable",
+     "믿을 만한",
+     "The trains are fast and reliable."
+    ],
+    [
+     "window seat",
+     "창가 자리",
+     "I always book a window seat."
+    ]
+   ]
+  },
+  {
+   "ko": "쇼핑·돈",
+   "topic": "Shopping & Money",
+   "words": [
+    [
+     "window-shopping",
+     "아이쇼핑",
+     "I enjoy window-shopping at weekends."
+    ],
+    [
+     "a bargain",
+     "싸게 산 물건",
+     "These shoes were a real bargain."
+    ],
+    [
+     "on sale",
+     "할인 중인",
+     "I only buy clothes when they're on sale."
+    ],
+    [
+     "impulse buy",
+     "충동구매",
+     "That jacket was an impulse buy."
+    ],
+    [
+     "shop around",
+     "여러 곳을 비교하다",
+     "I shop around before buying electronics."
+    ],
+    [
+     "cost an arm and a leg",
+     "엄청 비싸다",
+     "Designer bags cost an arm and a leg."
+    ],
+    [
+     "value for money",
+     "가성비",
+     "This phone is good value for money."
+    ],
+    [
+     "second-hand",
+     "중고의",
+     "I often buy second-hand books."
+    ],
+    [
+     "save up for",
+     "~을 위해 돈을 모으다",
+     "I'm saving up for a trip."
+    ],
+    [
+     "splash out on",
+     "~에 돈을 펑펑 쓰다",
+     "I splashed out on a new laptop."
+    ]
+   ]
+  },
+  {
+   "ko": "패션·옷·신발",
+   "topic": "Clothes & Shoes",
+   "words": [
+    [
+     "casual",
+     "편한, 캐주얼한",
+     "I usually wear casual clothes."
+    ],
+    [
+     "dress up",
+     "차려입다",
+     "I only dress up for special occasions."
+    ],
+    [
+     "fashionable",
+     "유행하는",
+     "She always looks fashionable."
+    ],
+    [
+     "comfort over style",
+     "스타일보다 편안함",
+     "I choose comfort over style."
+    ],
+    [
+     "go out of fashion",
+     "유행이 지나다",
+     "Skinny jeans have gone out of fashion."
+    ],
+    [
+     "suit me",
+     "나에게 어울리다",
+     "Bright colours don't really suit me."
+    ],
+    [
+     "trainers",
+     "운동화",
+     "I wear trainers almost every day."
+    ],
+    [
+     "wear out",
+     "닳다",
+     "My shoes wear out quickly."
+    ],
+    [
+     "traditional clothes",
+     "전통 의상",
+     "We wear hanbok on Chuseok."
+    ],
+    [
+     "try on",
+     "입어 보다",
+     "I always try clothes on before I buy them."
+    ]
+   ]
+  },
+  {
+   "ko": "음악",
+   "topic": "Music",
+   "words": [
+    [
+     "be into",
+     "~을 좋아하다",
+     "I'm really into K-pop."
+    ],
+    [
+     "catchy",
+     "귀에 쏙 들어오는",
+     "The song is so catchy."
+    ],
+    [
+     "upbeat",
+     "신나는",
+     "I listen to upbeat music when I work out."
+    ],
+    [
+     "soothing",
+     "마음을 달래 주는",
+     "Classical music is soothing."
+    ],
+    [
+     "lyrics",
+     "가사",
+     "I love the lyrics of this song."
+    ],
+    [
+     "play an instrument",
+     "악기를 연주하다",
+     "I used to play the piano."
+    ],
+    [
+     "live music",
+     "라이브 음악",
+     "There's nothing like live music."
+    ],
+    [
+     "get stuck in my head",
+     "머릿속에 맴돌다",
+     "That song got stuck in my head."
+    ],
+    [
+     "on repeat",
+     "반복 재생",
+     "I have this song on repeat."
+    ],
+    [
+     "taste in music",
+     "음악 취향",
+     "We have a similar taste in music."
+    ]
+   ]
+  },
+  {
+   "ko": "영화·TV",
+   "topic": "Films & TV",
+   "words": [
+    [
+     "binge-watch",
+     "몰아서 보다",
+     "I binge-watched the whole series."
+    ],
+    [
+     "plot",
+     "줄거리",
+     "The plot was really gripping."
+    ],
+    [
+     "gripping",
+     "흥미진진한",
+     "It's a gripping thriller."
+    ],
+    [
+     "a tear-jerker",
+     "눈물 나는 영화",
+     "That film was a real tear-jerker."
+    ],
+    [
+     "the main character",
+     "주인공",
+     "The main character is very brave."
+    ],
+    [
+     "streaming service",
+     "OTT 서비스",
+     "I mostly watch films on streaming services."
+    ],
+    [
+     "spoiler",
+     "스포일러",
+     "Please, no spoilers!"
+    ],
+    [
+     "based on a true story",
+     "실화를 바탕으로 한",
+     "The film is based on a true story."
+    ],
+    [
+     "not my cup of tea",
+     "내 취향이 아닌",
+     "Horror films aren't my cup of tea."
+    ],
+    [
+     "documentary",
+     "다큐멘터리",
+     "I enjoy nature documentaries."
+    ]
+   ]
+  },
+  {
+   "ko": "책·독서",
+   "topic": "Books & Reading",
+   "words": [
+    [
+     "a bookworm",
+     "책벌레",
+     "I've been a bookworm since I was young."
+    ],
+    [
+     "page-turner",
+     "손에서 못 놓는 책",
+     "The novel was a real page-turner."
+    ],
+    [
+     "e-book",
+     "전자책",
+     "I read e-books on my commute."
+    ],
+    [
+     "fiction / non-fiction",
+     "소설 / 비소설",
+     "I prefer non-fiction."
+    ],
+    [
+     "food for thought",
+     "생각할 거리",
+     "The book gave me food for thought."
+    ],
+    [
+     "get into a book",
+     "책에 빠지다",
+     "It took me a while to get into the book."
+    ],
+    [
+     "best-seller",
+     "베스트셀러",
+     "It's a best-seller in Korea."
+    ],
+    [
+     "author",
+     "작가",
+     "She's my favourite author."
+    ],
+    [
+     "recommend",
+     "추천하다",
+     "I'd highly recommend it."
+    ],
+    [
+     "read before bed",
+     "자기 전에 읽다",
+     "I usually read before bed."
+    ]
+   ]
+  },
+  {
+   "ko": "기술·인터넷·앱",
+   "topic": "Technology & Apps",
+   "words": [
+    [
+     "user-friendly",
+     "사용하기 쉬운",
+     "The app is very user-friendly."
+    ],
+    [
+     "screen time",
+     "화면 사용 시간",
+     "I try to limit my screen time."
+    ],
+    [
+     "be glued to my phone",
+     "폰만 붙잡고 있다",
+     "I'm glued to my phone too much."
+    ],
+    [
+     "at my fingertips",
+     "손쉽게 이용할 수 있는",
+     "Information is at my fingertips."
+    ],
+    [
+     "download",
+     "내려받다",
+     "I downloaded a language app."
+    ],
+    [
+     "notification",
+     "알림",
+     "I turned off my notifications."
+    ],
+    [
+     "social media",
+     "SNS",
+     "I mostly use Instagram for social media."
+    ],
+    [
+     "cutting-edge",
+     "최첨단의",
+     "It uses cutting-edge technology."
+    ],
+    [
+     "go online",
+     "인터넷에 접속하다",
+     "I go online to check the news."
+    ],
+    [
+     "run out of battery",
+     "배터리가 다 되다",
+     "My phone ran out of battery."
+    ]
+   ]
+  },
+  {
+   "ko": "친구·가족",
+   "topic": "Friends & Family",
+   "words": [
+    [
+     "get on well with",
+     "~와 잘 지내다",
+     "I get on well with my sister."
+    ],
+    [
+     "close-knit",
+     "끈끈한",
+     "We're a close-knit family."
+    ],
+    [
+     "keep in touch",
+     "연락하고 지내다",
+     "I keep in touch with my school friends."
+    ],
+    [
+     "hang out",
+     "놀다, 어울리다",
+     "We hang out at weekends."
+    ],
+    [
+     "look up to",
+     "존경하다",
+     "I really look up to my mum."
+    ],
+    [
+     "spend quality time",
+     "의미 있는 시간을 보내다",
+     "I spend quality time with my family on Sundays."
+    ],
+    [
+     "take after",
+     "닮다",
+     "I take after my dad."
+    ],
+    [
+     "bring up",
+     "키우다",
+     "My grandparents brought me up."
+    ],
+    [
+     "an only child",
+     "외동",
+     "I'm an only child."
+    ],
+    [
+     "drift apart",
+     "멀어지다",
+     "We drifted apart after school."
+    ]
+   ]
+  },
+  {
+   "ko": "취미·여가",
+   "topic": "Hobbies & Free time",
+   "words": [
+    [
+     "take up",
+     "(취미를) 시작하다",
+     "I took up yoga last year."
+    ],
+    [
+     "in my element",
+     "물 만난 물고기",
+     "I'm in my element when I do yoga."
+    ],
+    [
+     "unwind",
+     "긴장을 풀다",
+     "Reading helps me unwind."
+    ],
+    [
+     "kill time",
+     "시간을 때우다",
+     "I play games to kill time."
+    ],
+    [
+     "a couch potato",
+     "집에서 뒹구는 사람",
+     "I'm a couch potato on rainy days."
+    ],
+    [
+     "pastime",
+     "취미, 오락",
+     "Hiking is a popular pastime in Korea."
+    ],
+    [
+     "relieve stress",
+     "스트레스를 풀다",
+     "Music helps me relieve stress."
+    ],
+    [
+     "spare time",
+     "여가 시간",
+     "I don't have much spare time."
+    ],
+    [
+     "give up",
+     "그만두다",
+     "I gave up the guitar after a month."
+    ],
+    [
+     "get the hang of",
+     "요령을 익히다",
+     "I'm getting the hang of it."
+    ]
+   ]
+  },
+  {
+   "ko": "자연·환경",
+   "topic": "Nature & Environment",
+   "words": [
+    [
+     "scenery",
+     "경치",
+     "The scenery in Gangwon-do is stunning."
+    ],
+    [
+     "fresh air",
+     "맑은 공기",
+     "I go hiking for some fresh air."
+    ],
+    [
+     "polluted",
+     "오염된",
+     "The river used to be very polluted."
+    ],
+    [
+     "recycle",
+     "재활용하다",
+     "We recycle plastic and paper."
+    ],
+    [
+     "single-use plastic",
+     "일회용 플라스틱",
+     "I try to avoid single-use plastic."
+    ],
+    [
+     "reduce carbon emissions",
+     "탄소 배출을 줄이다",
+     "We need to reduce carbon emissions."
+    ],
+    [
+     "endangered species",
+     "멸종 위기종",
+     "Pandas are an endangered species."
+    ],
+    [
+     "go green",
+     "친환경적으로 살다",
+     "Many companies are going green."
+    ],
+    [
+     "litter",
+     "쓰레기를 버리다",
+     "People shouldn't litter in parks."
+    ],
+    [
+     "climate change",
+     "기후 변화",
+     "Climate change affects everyone."
+    ]
+   ]
+  },
+  {
+   "ko": "일상·잠",
+   "topic": "Daily routine & Sleep",
+   "words": [
+    [
+     "stick to a routine",
+     "루틴을 지키다",
+     "I try to stick to a routine."
+    ],
+    [
+     "an early bird",
+     "아침형 인간",
+     "I'm an early bird."
+    ],
+    [
+     "a night owl",
+     "저녁형 인간",
+     "My brother is a night owl."
+    ],
+    [
+     "sleep in",
+     "늦잠 자다",
+     "I sleep in on Sundays."
+    ],
+    [
+     "take a nap",
+     "낮잠 자다",
+     "I sometimes take a nap after lunch."
+    ],
+    [
+     "worn out",
+     "지친",
+     "I'm worn out after work."
+    ],
+    [
+     "on the go",
+     "바쁘게 움직이는",
+     "I'm always on the go."
+    ],
+    [
+     "get ready",
+     "준비하다",
+     "It takes me 30 minutes to get ready."
+    ],
+    [
+     "ready to take on the day",
+     "하루를 시작할 준비가 된",
+     "After coffee, I'm ready to take on the day."
+    ],
+    [
+     "used to / be used to",
+     "~하곤 했다 / ~에 익숙하다",
+     "I'm used to getting up early."
+    ]
+   ]
+  },
+  {
+   "ko": "감정·성격",
+   "topic": "Feelings & Personality",
+   "words": [
+    [
+     "outgoing",
+     "외향적인",
+     "I'm quite outgoing."
+    ],
+    [
+     "introverted",
+     "내향적인",
+     "I'm a bit introverted."
+    ],
+    [
+     "easy-going",
+     "느긋한, 무던한",
+     "My friends say I'm easy-going."
+    ],
+    [
+     "patient",
+     "참을성 있는",
+     "Teachers need to be patient."
+    ],
+    [
+     "confident",
+     "자신 있는",
+     "I've become more confident."
+    ],
+    [
+     "stressed out",
+     "스트레스를 많이 받은",
+     "I get stressed out before exams."
+    ],
+    [
+     "over the moon",
+     "매우 기쁜",
+     "I was over the moon when I passed."
+    ],
+    [
+     "lose my temper",
+     "화를 내다",
+     "I rarely lose my temper."
+    ],
+    [
+     "cheer me up",
+     "기운 나게 하다",
+     "Chocolate always cheers me up."
+    ],
+    [
+     "down",
+     "우울한",
+     "I feel a bit down on gloomy days."
+    ]
+   ]
+  },
+  {
+   "ko": "기억·어린 시절",
+   "topic": "Memory & Childhood",
+   "words": [
+    [
+     "as far as I remember",
+     "내가 기억하는 한",
+     "As far as I remember, I was a shy child."
+    ],
+    [
+     "vivid memory",
+     "생생한 기억",
+     "I have vivid memories of that trip."
+    ],
+    [
+     "bring back memories",
+     "추억을 떠올리게 하다",
+     "This song brings back memories."
+    ],
+    [
+     "slip my mind",
+     "깜빡하다",
+     "It completely slipped my mind."
+    ],
+    [
+     "forgetful",
+     "잘 잊어버리는",
+     "I'm a bit forgetful."
+    ],
+    [
+     "jot down",
+     "적어 두다",
+     "I jot down important dates."
+    ],
+    [
+     "used to",
+     "~하곤 했다",
+     "I used to play in the park every day."
+    ],
+    [
+     "look back on",
+     "돌이켜 보다",
+     "I look back on my childhood fondly."
+    ],
+    [
+     "carefree",
+     "걱정 없는",
+     "My childhood was carefree."
+    ],
+    [
+     "keep a diary",
+     "일기를 쓰다",
+     "I kept a diary in middle school."
+    ]
+   ]
+  },
+  {
+   "ko": "예술·사진",
+   "topic": "Art & Photography",
+   "words": [
+    [
+     "artistic",
+     "예술적 재능이 있는",
+     "I'm not very artistic."
+    ],
+    [
+     "exhibition",
+     "전시회",
+     "I went to a photography exhibition."
+    ],
+    [
+     "gallery",
+     "미술관",
+     "The gallery was free to enter."
+    ],
+    [
+     "take photos",
+     "사진을 찍다",
+     "I love taking photos of landscapes."
+    ],
+    [
+     "selfie",
+     "셀카",
+     "I rarely take selfies."
+    ],
+    [
+     "capture the moment",
+     "순간을 담다",
+     "Photos help me capture the moment."
+    ],
+    [
+     "edit",
+     "편집하다",
+     "I edit my photos on my phone."
+    ],
+    [
+     "masterpiece",
+     "걸작",
+     "The painting is a masterpiece."
+    ],
+    [
+     "creative",
+     "창의적인",
+     "Drawing helps me be creative."
+    ],
+    [
+     "appreciate art",
+     "예술을 감상하다",
+     "I've learned to appreciate art."
+    ]
+   ]
+  }
+ ]
+}
