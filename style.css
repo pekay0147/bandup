@@ -180,3 +180,19 @@ h2{margin:0;font:19px var(--cute);font-weight:400}
 .pchips button small{font:11px var(--body);font-weight:700;color:var(--muted)}
 .pchips button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:var(--on-color)}
 .pchips button[aria-pressed="true"] small{color:var(--on-color);opacity:.8}
+
+/* card modes */
+.modeseg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.modeseg button{display:grid;gap:2px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:12px 14px;cursor:pointer;box-shadow:var(--shadow)}
+.modeseg button b{font:17px var(--cute);font-weight:400}
+.modeseg button span{font-size:12px;color:var(--muted)}
+.modeseg button[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:var(--on-color)}
+.modeseg button[aria-selected="true"] span{color:var(--on-color);opacity:.85}
+.sess-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.sess-head h2{font-size:22px}
+.sess-head > div{display:grid}
+.m .kk{font:600 15px var(--body);color:var(--muted)}
+.goodtag{font:12px var(--cute);background:var(--mint-soft);color:var(--mint);border-radius:999px;padding:2px 9px;white-space:nowrap}
+.randbox{display:grid;gap:14px}
+.randbox p{margin:0}
+.btn:disabled{opacity:.5;cursor:default}
