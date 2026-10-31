@@ -109,381 +109,412 @@
  "cards": [
   {
    "id": "m01",
-   "kind": "fix",
+   "kind": "ko",
    "type": "단·복수",
    "sessions": [
     1
    ],
-   "wrong": "There is many company.",
+   "ko": "회사가 많이 있어요.",
    "en": "There are many companies.",
-   "note": ""
+   "mine": "There is many company.",
+   "gram": "many, there are 뒤에는 복수형(-s). clothes는 항상 복수예요."
   },
   {
    "id": "m02",
-   "kind": "fix",
+   "kind": "ko",
    "type": "단·복수",
    "sessions": [
     1
    ],
-   "wrong": "There are many park near my house.",
+   "ko": "우리 집 근처에 공원이 많아요.",
    "en": "There are many parks near my house.",
-   "note": ""
+   "mine": "There are many park near my house.",
+   "gram": "many, there are 뒤에는 복수형(-s). clothes는 항상 복수예요."
   },
   {
    "id": "m03",
-   "kind": "fix",
+   "kind": "ko",
    "type": "단·복수",
    "sessions": [
     4
    ],
-   "wrong": "I bought a clothes.",
+   "ko": "옷을 좀 샀어요.",
    "en": "I bought some clothes.",
-   "note": "clothes는 a를 못 붙여요"
+   "mine": "I bought a clothes.",
+   "gram": "clothes는 a를 못 붙여요 many, there are 뒤에는 복수형(-s). clothes는 항상 복수예요."
   },
   {
    "id": "m04",
-   "kind": "fix",
+   "kind": "ko",
    "type": "주어-동사",
    "sessions": [
     2
    ],
-   "wrong": "The house have a garden.",
+   "ko": "그 집에는 정원이 있어요.",
    "en": "The house has a garden.",
-   "note": ""
+   "mine": "The house have a garden.",
+   "gram": "he/she/it/the city → has, is. people → are, love. 동사는 하나만!"
   },
   {
    "id": "m05",
-   "kind": "fix",
+   "kind": "ko",
    "type": "주어-동사",
    "sessions": [
     3
    ],
-   "wrong": "The city have a many school.",
+   "ko": "그 도시에는 학교가 많아요.",
    "en": "The city has many schools.",
-   "note": ""
+   "mine": "The city have a many school.",
+   "gram": "he/she/it/the city → has, is. people → are, love. 동사는 하나만!"
   },
   {
    "id": "m06",
-   "kind": "fix",
+   "kind": "ko",
    "type": "주어-동사",
    "sessions": [
     8
    ],
-   "wrong": "Here is many cafes.",
+   "ko": "여기에는 카페가 많아요.",
    "en": "There are many cafes here.",
-   "note": ""
+   "mine": "Here is many cafes.",
+   "gram": "he/she/it/the city → has, is. people → are, love. 동사는 하나만!"
   },
   {
    "id": "m07",
-   "kind": "fix",
+   "kind": "ko",
    "type": "주어-동사",
    "sessions": [
     8
    ],
-   "wrong": "It's have a many restaurants.",
+   "ko": "거기에는 식당이 많아요.",
    "en": "It has many restaurants.",
-   "note": ""
+   "mine": "It's have a many restaurants.",
+   "gram": "he/she/it/the city → has, is. people → are, love. 동사는 하나만!"
   },
   {
    "id": "m08",
-   "kind": "fix",
+   "kind": "ko",
    "type": "동사·시제",
    "sessions": [
     1,
     8
    ],
-   "wrong": "I living in Canada.",
+   "ko": "저는 캐나다에 살고 있어요.",
    "en": "I'm living in Canada.",
-   "note": "진행형은 be동사 + -ing"
+   "mine": "I living in Canada.",
+   "gram": "진행형은 be동사 + -ing 진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't."
   },
   {
    "id": "m09",
-   "kind": "fix",
+   "kind": "ko",
    "type": "동사·시제",
    "sessions": [
     4
    ],
-   "wrong": "I interested in sports.",
+   "ko": "저는 스포츠에 관심이 있어요.",
    "en": "I'm interested in sports.",
-   "note": "be interested in"
+   "mine": "I interested in sports.",
+   "gram": "be interested in 진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't."
   },
   {
    "id": "m10",
-   "kind": "fix",
+   "kind": "ko",
    "type": "동사·시제",
    "sessions": [
     5
    ],
-   "wrong": "I no work.",
+   "ko": "저는 일을 안 해요.",
    "en": "I don't work.",
-   "note": "부정문은 do not"
+   "mine": "I no work.",
+   "gram": "부정문은 do not 진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't."
   },
   {
    "id": "m11",
-   "kind": "fix",
+   "kind": "ko",
    "type": "동사·시제",
    "sessions": [
     5
    ],
-   "wrong": "I'm moving to the Canada last year.",
+   "ko": "작년에 캐나다로 이사했어요.",
    "en": "I moved to Canada last year.",
-   "note": "last year → 과거형"
+   "mine": "I'm moving to the Canada last year.",
+   "gram": "last year → 과거형 진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't."
   },
   {
    "id": "m12",
-   "kind": "fix",
+   "kind": "ko",
    "type": "동사·시제",
    "sessions": [
     7
    ],
-   "wrong": "When I waking up, I drink one water.",
+   "ko": "저는 일어나면 물을 한 잔 마셔요.",
    "en": "When I wake up, I drink a cup of water.",
-   "note": "물은 a cup of water"
+   "mine": "When I waking up, I drink one water.",
+   "gram": "물은 a cup of water 진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't."
   },
   {
    "id": "m13",
-   "kind": "fix",
+   "kind": "ko",
    "type": "동사·시제",
    "sessions": [
     8
    ],
-   "wrong": "I'm start yoga last month.",
+   "ko": "지난달에 요가를 시작했어요.",
    "en": "I started yoga last month.",
-   "note": ""
+   "mine": "I'm start yoga last month.",
+   "gram": "진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't."
   },
   {
    "id": "m14",
-   "kind": "fix",
+   "kind": "ko",
    "type": "문장 구조",
    "sessions": [
     1,
     2
    ],
-   "wrong": "I prefer to house.",
+   "ko": "저는 주택에 사는 걸 더 좋아해요.",
    "en": "I prefer living in a house.",
-   "note": "prefer + -ing"
+   "mine": "I prefer to house.",
+   "gram": "prefer + -ing 한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have."
   },
   {
    "id": "m15",
-   "kind": "fix",
+   "kind": "ko",
    "type": "문장 구조",
    "sessions": [
     2
    ],
-   "wrong": "I like wear the T-shirt.",
+   "ko": "저는 티셔츠 입는 걸 좋아해요.",
    "en": "I like to wear T-shirts.",
-   "note": "like + to 동사 / -ing"
+   "mine": "I like wear the T-shirt.",
+   "gram": "like + to 동사 / -ing 한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have."
   },
   {
    "id": "m16",
-   "kind": "fix",
+   "kind": "ko",
    "type": "문장 구조",
    "sessions": [
     4
    ],
-   "wrong": "My city needs to more parks.",
+   "ko": "우리 도시에는 공원이 더 필요해요.",
    "en": "My city needs more parks.",
-   "note": ""
+   "mine": "My city needs to more parks.",
+   "gram": "한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have."
   },
   {
    "id": "m17",
-   "kind": "fix",
+   "kind": "ko",
    "type": "문장 구조",
    "sessions": [
     4
    ],
-   "wrong": "I have to responsibility at work.",
+   "ko": "저는 회사에서 맡은 책임이 있어요.",
    "en": "I have responsibility at work.",
-   "note": ""
-  },
-  {
-   "id": "m18",
-   "kind": "fix",
-   "type": "문장 구조",
-   "sessions": [
-    7
-   ],
-   "wrong": "I'm used to play the recorder.",
-   "en": "I used to play the recorder.",
-   "note": "~하곤 했다 = used to + 동사원형"
+   "mine": "I have to responsibility at work.",
+   "gram": "한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have."
   },
   {
    "id": "m19",
-   "kind": "fix",
+   "kind": "ko",
    "type": "문장 구조",
    "sessions": [
     8
    ],
-   "wrong": "It is make me feel relaxed.",
+   "ko": "그건 저를 편안하게 해 줘요.",
    "en": "It makes me feel relaxed.",
-   "note": "동사 두 개 겹치지 않기"
+   "mine": "It is make me feel relaxed.",
+   "gram": "동사 두 개 겹치지 않기 한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have."
   },
   {
    "id": "m20",
-   "kind": "fix",
+   "kind": "ko",
    "type": "관사·전치사",
    "sessions": [
     1
    ],
-   "wrong": "I visited the Vietnam.",
+   "ko": "베트남을 방문했어요.",
    "en": "I visited Vietnam.",
-   "note": "나라 앞 the는 the US, the UK 정도만"
+   "mine": "I visited the Vietnam.",
+   "gram": "나라 앞 the는 the US, the UK 정도만 처음 말하는 집은 a house, 바다는 the beach. go on holiday, on a rainy day."
   },
   {
    "id": "m21",
-   "kind": "fix",
+   "kind": "ko",
    "type": "관사·전치사",
    "sessions": [
     3
    ],
-   "wrong": "I want to live in the house.",
+   "ko": "저는 주택에 살고 싶어요.",
    "en": "I want to live in a house.",
-   "note": "처음 말할 때는 a"
+   "mine": "I want to live in the house.",
+   "gram": "처음 말할 때는 a 처음 말하는 집은 a house, 바다는 the beach. go on holiday, on a rainy day."
   },
   {
    "id": "m22",
-   "kind": "fix",
+   "kind": "ko",
    "type": "관사·전치사",
    "sessions": [
     6,
     10
    ],
-   "wrong": "I stay home in a rainy day.",
+   "ko": "비 오는 날에는 집에 있어요.",
    "en": "I stay home on a rainy day.",
-   "note": "on a rainy day"
+   "mine": "I stay home in a rainy day.",
+   "gram": "on a rainy day 처음 말하는 집은 a house, 바다는 the beach. go on holiday, on a rainy day.",
+   "example": true
   },
   {
    "id": "m23",
-   "kind": "fix",
+   "kind": "ko",
    "type": "품사",
    "sessions": [
     4
    ],
-   "wrong": "I like activity sports.",
+   "ko": "저는 활동적인 스포츠를 좋아해요.",
    "en": "I like active sports.",
-   "note": "active 형용사 / activity 명사"
+   "mine": "I like activity sports.",
+   "gram": "active 형용사 / activity 명사 be 뒤에는 형용사: confident, dead, scary, active."
   },
   {
    "id": "m24",
-   "kind": "fix",
+   "kind": "ko",
    "type": "품사",
    "sessions": [
     6
    ],
-   "wrong": "My plant is die.",
+   "ko": "제 식물이 죽었어요.",
    "en": "My plant is dead.",
-   "note": "die 동사 / dead 형용사"
+   "mine": "My plant is die.",
+   "gram": "die 동사 / dead 형용사 be 뒤에는 형용사: confident, dead, scary, active.",
+   "example": true
   },
   {
    "id": "m25",
-   "kind": "fix",
+   "kind": "ko",
    "type": "품사",
    "sessions": [
     6
    ],
-   "wrong": "Korean is my country.",
+   "ko": "한국은 제 나라예요.",
    "en": "Korea is my country.",
-   "note": "Korea 나라 / Korean 사람·언어"
+   "mine": "Korean is my country.",
+   "gram": "Korea 나라 / Korean 사람·언어 be 뒤에는 형용사: confident, dead, scary, active.",
+   "example": true
   },
   {
    "id": "m26",
-   "kind": "fix",
+   "kind": "ko",
    "type": "품사",
    "sessions": [
     6
    ],
-   "wrong": "I made a reserve at the restaurant.",
+   "ko": "식당에 예약했어요.",
    "en": "I made a reservation at the restaurant.",
-   "note": "reserve 동사 / reservation 명사"
+   "mine": "I made a reserve at the restaurant.",
+   "gram": "reserve 동사 / reservation 명사 be 뒤에는 형용사: confident, dead, scary, active.",
+   "example": true
   },
   {
    "id": "m27",
-   "kind": "fix",
+   "kind": "ko",
    "type": "품사",
    "sessions": [
     7
    ],
-   "wrong": "I want to be more confidence.",
+   "ko": "더 자신감 있는 사람이 되고 싶어요.",
    "en": "I want to be more confident.",
-   "note": "confidence 명사 / confident 형용사"
+   "mine": "I want to be more confidence.",
+   "gram": "confidence 명사 / confident 형용사 be 뒤에는 형용사: confident, dead, scary, active.",
+   "example": true
   },
   {
    "id": "m28",
-   "kind": "fix",
+   "kind": "ko",
    "type": "품사",
    "sessions": [
     8
    ],
-   "wrong": "The movie was scared.",
+   "ko": "그 영화는 무서웠어요.",
    "en": "The movie was scary.",
-   "note": "scary 무서운 대상 / scared 무서운 감정"
+   "mine": "The movie was scared.",
+   "gram": "scary 무서운 대상 / scared 무서운 감정 be 뒤에는 형용사: confident, dead, scary, active.",
+   "example": true
   },
   {
    "id": "m29",
-   "kind": "fix",
+   "kind": "ko",
    "type": "단어 선택",
    "sessions": [
     2
    ],
-   "wrong": "We have to have each other.",
+   "ko": "우리는 서로 이해하고 도와야 해요.",
    "en": "We have to understand and support each other.",
-   "note": ""
+   "mine": "We have to have each other.",
+   "gram": "한국어를 그대로 옮기지 말고 영어에서 쓰는 짝꿍 표현으로."
   },
   {
    "id": "m30",
-   "kind": "fix",
+   "kind": "ko",
    "type": "단어 선택",
    "sessions": [
     6
    ],
-   "wrong": "I go to travel every summer.",
+   "ko": "저는 매년 여름 여행을 가요.",
    "en": "I go travelling every summer.",
-   "note": "go + -ing"
+   "mine": "I go to travel every summer.",
+   "gram": "go + -ing 한국어를 그대로 옮기지 말고 영어에서 쓰는 짝꿍 표현으로."
   },
   {
    "id": "m31",
-   "kind": "fix",
+   "kind": "ko",
    "type": "단어 선택",
    "sessions": [
     8
    ],
-   "wrong": "I use a bus to go to work.",
+   "ko": "저는 버스를 타고 출근해요.",
    "en": "I take a bus to go to work.",
-   "note": "take a bus"
+   "mine": "I use a bus to go to work.",
+   "gram": "take a bus 한국어를 그대로 옮기지 말고 영어에서 쓰는 짝꿍 표현으로.",
+   "example": true
   },
   {
    "id": "m32",
-   "kind": "fix",
+   "kind": "ko",
    "type": "단어 선택",
    "sessions": [
     9
    ],
-   "wrong": "I talked many people about it.",
+   "ko": "그것에 대해 많은 사람들과 이야기했어요.",
    "en": "I talked with many people about it.",
-   "note": "talk to / with + 사람"
+   "mine": "I talked many people about it.",
+   "gram": "talk to / with + 사람 한국어를 그대로 옮기지 말고 영어에서 쓰는 짝꿍 표현으로.",
+   "example": true
   },
   {
    "id": "m33",
-   "kind": "fix",
+   "kind": "ko",
    "type": "단어 선택",
    "sessions": [
     9
    ],
-   "wrong": "She said me the story.",
+   "ko": "그녀가 저에게 그 이야기를 해 줬어요.",
    "en": "She told me the story.",
-   "note": "tell + 사람 + 내용"
+   "mine": "She said me the story.",
+   "gram": "tell + 사람 + 내용 한국어를 그대로 옮기지 말고 영어에서 쓰는 짝꿍 표현으로.",
+   "example": true
   },
   {
    "id": "m34",
-   "kind": "fix",
+   "kind": "ko",
    "type": "발음·철자",
    "sessions": [
     6,
     7
    ],
-   "wrong": "walk / work",
+   "ko": "'걷다'와 '일하다'를 발음을 구분해서 말해 보세요.",
    "en": "walk (r 소리 없음) / work (r 소리)",
-   "note": "입 모양을 다르게"
+   "mine": "walk / work",
+   "gram": "입 모양을 다르게 walk(r 소리 없음) / work(r 소리). 철자는 소리 내어 한 번 더."
   },
   {
    "id": "e01",

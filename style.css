@@ -182,9 +182,12 @@ h2{margin:0;font:19px var(--cute);font-weight:400}
 .pchips button[aria-pressed="true"] small{color:var(--on-color);opacity:.8}
 
 /* card modes */
-.modeseg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.modeseg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.modeseg button{min-width:0}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap}
+.btnrow .btn{flex:1 1 140px}
 .modeseg button{display:grid;gap:2px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:12px 14px;cursor:pointer;box-shadow:var(--shadow)}
-.modeseg button b{font:17px var(--cute);font-weight:400}
+.modeseg button b{font:16px var(--cute);font-weight:400}
 .modeseg button span{font-size:12px;color:var(--muted)}
 .modeseg button[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:var(--on-color)}
 .modeseg button[aria-selected="true"] span{color:var(--on-color);opacity:.85}
