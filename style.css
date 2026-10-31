@@ -310,3 +310,6 @@ button.quote:active{transform:scale(.99)}
 
 .wtile .no{font:16px var(--fat);background:var(--sun-soft);color:#8a6400}
 .wsec{margin:10px 2px 0;font-size:18px}
+
+.wbox.empty{min-height:0;padding:6px 12px;background:transparent;border:1px dashed var(--line)}
+.wbox.empty .hint{font-size:12px}
