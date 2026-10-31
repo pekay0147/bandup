@@ -20,10 +20,14 @@ let deckState=null, reviewState=null, picked=null, flipped=false, noteFilter="�
 
 /* ---------- boot ---------- */
 async function boot(){
-  slug=(location.hash||"").replace(/^#/,"") || new URLSearchParams(location.search).get("s") || store.get("bandup-slug",null) || window.BANDUP_DEFAULT || null;
+  slug=window.BANDUP_SLUG || (location.hash||"").replace(/^#/,"") || new URLSearchParams(location.search).get("s") || store.get("bandup-slug",null) || window.BANDUP_DEFAULT || null;
+  // old links (…/bandup/#slug) move to the student's own page, so 'Add to Home Screen' keeps the student
+  if(!window.BANDUP_SLUG && !window.BANDUP_DEFAULT && slug && /^[a-z0-9-]{3,40}$/.test(slug) && /\/bandup\/(index\.html)?$/.test(location.pathname)){
+    location.replace(`u/${slug}/`); return;
+  }
   if(slug && !/^[a-z0-9-]{3,40}$/.test(slug)) slug=null;
   const app=$("#app");
-  if(!slug){ app.textContent=""; const e=el("div","empty"); e.append(el("h2",null,"선생님께 받은 링크로 열어 주세요"), el("p",null,"링크 끝에 학생 이름표(#…)가 붙어 있어야 내 카드가 보여요.")); app.append(e); return; }
+  if(!slug){ app.textContent=""; const e=el("div","empty"); e.append(el("h2",null,"내 카드를 찾지 못했어요"), el("p",null,"홈 화면에 예전 아이콘이 있다면 길게 눌러 삭제한 뒤, 선생님께 받은 새 링크를 Safari(또는 Chrome)로 열어 '홈 화면에 추가'를 다시 해 주세요. 한 번만 하면 다음부터는 아이콘만 누르면 바로 열려요.")); app.append(e); return; }
   try{
     const [s,g]=await Promise.all([fetch(`data/students/${slug}.json`,{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
                                    fetch("data/glossary.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({}))]);
@@ -424,7 +428,7 @@ document.addEventListener("keydown",e=>{
     if(e.key==="ArrowRight") move(1); if(e.key==="ArrowLeft") move(-1);
   }
 });
-window.addEventListener("hashchange",()=>{ const h=location.hash.replace(/^#/,""); if(h && h!==slug){ location.reload(); } });
+window.addEventListener("hashchange",()=>{ if(window.BANDUP_SLUG) return; const h=location.hash.replace(/^#/,""); if(h && h!==slug){ location.reload(); } });
 if("serviceWorker" in navigator && location.protocol==="https:" && !/claude|claudeusercontent/.test(location.hostname)){
   navigator.serviceWorker.register("sw.js").catch(()=>{});
 }
