@@ -492,7 +492,10 @@ function startVocab(topics, title, shuffle){
   deckState=null; go("cards",{deck:"vocab", ids, title});
 }
 function renderP3(app){
-  const t=el("div","focus"); t.append(el("b",null,"Part 3 답변 요령"), document.createTextNode("내 의견 → 이유 2가지 → 예시나 반대 의견으로 마무리. I'd say… / On the other hand…")); app.append(t);
+  const t=el("div","focus"); t.append(el("b",null,"Part 3 답변 요령"));
+  const ol=el("ol","steps4");
+  for(const [k,ex] of [["명확한 대답","Yes, I think… / I'd say…"],["근거","That's because… / The main reason is…"],["예시","For example, … / In my case, …"],["대답 다시 언급","So that's why I think… / Overall, …"]]){ const li=el("li"); li.append(el("b",null,k), el("span",null,ex)); ol.append(li); }
+  t.append(ol); app.append(t);
   for(const s of D.part3||[]){
     const ses=D.sessions.find(x=>x.no===s.session);
     const hd=el("div"); hd.append(el("span","from2",`${s.session}회차 수업${ses&&ses.date?" · "+mmdd(ses.date):""} · Part 2 이어서`), el("b",null,s.topic));
@@ -501,7 +504,6 @@ function renderP3(app){
 }
 function renderP2(app){
   if(!P2){ const e=el("div","empty"); e.append(el("p",null,"Part 2 자료를 불러오지 못했어요. 인터넷 연결을 확인해 주세요.")); app.append(e); return; }
-  const t=el("div","focus"); t.append(el("b",null,"Part 2 답변 순서"), document.createTextNode("1분 준비 → 2분 말하기. 무엇인지 한 줄 → 말할 거리 3가지 → 내 느낌으로 마무리.")); app.append(t);
   const tools=el("div","p2tools");
   const inp=el("input"); inp.id="p2search"; inp.type="search"; inp.placeholder="주제 검색 (예: friend, 옥스포드, technology)"; inp.value=p2Query; inp.setAttribute("aria-label","Part 2 주제 검색");
   // filter in place (no full re-render), so typing Korean on a phone keeps working

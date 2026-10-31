@@ -262,3 +262,9 @@ h2{margin:0;font:19px var(--cute);font-weight:400}
 
 .vstart{width:100%}
 .vpanel .vstart{margin:4px 0 6px}
+
+.steps4{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:6px;counter-reset:s}
+.steps4 li{display:grid;grid-template-columns:24px 1fr;gap:2px 8px;counter-increment:s;align-items:baseline}
+.steps4 li::before{content:counter(s);grid-row:1/3;width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--surface);font:12px/22px var(--body);font-weight:700;text-align:center}
+.steps4 b{font:15px var(--cute);font-weight:400}
+.steps4 span{font-size:13px;color:var(--muted);font-style:italic}
