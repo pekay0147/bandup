@@ -112,8 +112,7 @@ function renderHome(app){
     const f=D.focus&&D.focus[String(last.no)];
     if(f){ const x=el("div","focus"); x.append(el("b",null,`${last.no}회차 포인트`), document.createTextNode(f)); app.append(x); }
   }
-  const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
-  if(!standalone){
+  if(false){
     const ins=el("div","install"); ins.append(el("b",null,"앱처럼 쓰려면 홈 화면에 추가하세요"),
       el("span",null,"아이폰: Safari 아래 공유 버튼 → '홈 화면에 추가'"), el("span",null,"안드로이드: Chrome 오른쪽 위 ⋮ → '홈 화면에 추가'"));
     app.append(ins);
