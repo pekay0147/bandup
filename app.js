@@ -13,7 +13,7 @@ const mmdd=s=>s? s.slice(5).replace("-","/") : "";
 const store={ get(k,f){ try{ const v=localStorage.getItem(k); return v==null? f : JSON.parse(v);}catch(_){ return f; } },
               set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(_){} } };
 
-let D=null, G={}, P1=null, P2=null, slug=null;
+let D=null, G={}, P1=null, P2=null, LS=null, slug=null;
 let srs={}, marks={}, days=[];
 let view={tab:"home"};   // home | cards(deck?) | review | notes
 let deckState=null, reviewState=null, picked=null, flipped=false, noteFilter="전체", noteSession="all", cardMode="session", selSession=null, randCount=10, randKind="all";
@@ -32,7 +32,7 @@ async function boot(){
     const [s,g]=await Promise.all([fetch(`data/students/${slug}.json`,{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
                                    fetch("data/glossary.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({}))]);
     D=s; G=g||{};
-    [P1,P2]=await Promise.all(["data/part1.json","data/part2.json"].map(u=>fetch(u,{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
+    [P1,P2,LS]=await Promise.all(["data/part1.json","data/part2.json","data/listening.json"].map(u=>fetch(u,{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
   }catch(e){ app.textContent=""; const x=el("div","empty"); x.append(el("h2",null,"카드를 불러오지 못했어요"), el("p",null,"인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 되면 선생님께 링크를 다시 받아 주세요.")); app.append(x); return; }
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
@@ -66,19 +66,20 @@ const ICONS={
   home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/></svg>',
   cards:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 4h12a2 2 0 0 1 2 2v11"/></svg>',
   review:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>',
+  listen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="5" height="7" rx="2"/><rect x="16" y="14" width="5" height="7" rx="2"/></svg>',
   ideas:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg>',
   notes:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h5"/></svg>'
 };
 function buildTabs(){
   const nav=$("#tabs nav"); nav.textContent="";
-  for(const [k,label] of [["home","홈"],["cards","큐카드"],["review","복습"],["ideas","아이디어"]]){
+  for(const [k,label] of [["home","홈"],["cards","큐카드"],["review","복습"],["ideas","아이디어"],["listen","리스닝"]]){
     const b=el("button"); b.type="button"; b.dataset.tab=k; b.innerHTML=ICONS[k]; b.append(el("span",null,label));
     if(k==="review"){ const bd=el("span","badge"); bd.id="dueBadge"; b.append(bd); }
     b.onclick=()=>{ go(k); };
     nav.append(b);
   }
 }
-function go(tab, extra){ view={tab, ...(extra||{})}; flipped=false; picked=null; if(tab!=="cards") deckState=null; if(tab!=="review") reviewState=null; render(); window.scrollTo(0,0); }
+function go(tab, extra){ if(tab!=="listen" && typeof LD!=="undefined"){ LD=null; try{ speechSynthesis.cancel(); }catch(_){} } view={tab, ...(extra||{})}; flipped=false; picked=null; if(tab!=="cards") deckState=null; if(tab!=="review") reviewState=null; render(); window.scrollTo(0,0); }
 function updateTabs(){
   document.querySelectorAll("#tabs button").forEach(b=>{ if(b.dataset.tab===view.tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
   const n=dueCards().length, bd=$("#dueBadge"); if(bd){ bd.textContent=n>99?"99+":String(n); bd.hidden=!n; }
@@ -92,6 +93,7 @@ function render(){
   if(view.tab==="review") renderReview(app);
   if(view.tab==="notes") renderNotes(app);
   if(view.tab==="ideas") renderIdeas(app);
+  if(view.tab==="listen") renderListen(app);
   updateTabs();
 }
 
@@ -544,6 +546,112 @@ function renderP2(app){
   const e=el("div","empty"); e.id="p2empty"; e.append(el("p",null,"검색 결과가 없어요. 검색어를 지우면 다시 보여요.")); e.hidden = shown>0; app.append(e);
 }
 
+
+/* ---------- listening spelling ---------- */
+const ALT={centre:["center"],theatre:["theater"],licence:["license"],civilisation:["civilization"],behaviour:["behavior"]};
+let lsPart="Part 1", lsCat=null, LD=null;
+const SPEAK_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+const canSpeak = ()=> "speechSynthesis" in window && typeof SpeechSynthesisUtterance!=="undefined";
+let enVoice=null;
+function pickVoice(){ try{ const vs=speechSynthesis.getVoices(); enVoice = vs.find(v=>/en-GB/i.test(v.lang)) || vs.find(v=>/^en/i.test(v.lang)) || null; }catch(_){} }
+if(canSpeak()){ pickVoice(); try{ speechSynthesis.onvoiceschanged=pickVoice; }catch(_){} }
+function speak(word, slow){
+  if(!canSpeak()) return false;
+  try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(word); u.lang="en-GB"; if(enVoice) u.voice=enVoice; u.rate= slow? .55 : .85; speechSynthesis.speak(u); return true; }catch(_){ return false; }
+}
+function speakBtn(word, label){ const b=el("button","spk"); b.type="button"; b.innerHTML=SPEAK_ICON; b.setAttribute("aria-label",label||`${word} 듣기`); b.onclick=e=>{ e.stopPropagation(); speak(word); }; return b; }
+function renderListen(app){
+  if(LD) return renderDictation(app);
+  app.append(el("h1",null,"리스닝 철자"));
+  if(!LS){ const e=el("div","empty"); e.append(el("p",null,"자료를 불러오지 못했어요.")); app.append(e); return; }
+  const t=el("div","focus"); t.append(el("b",null,"철자 하나 틀려도 오답이에요"), document.createTextNode(LS.note)); app.append(t);
+  const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
+  for(const [k,sub] of [["Part 1","양식 채우기 · 이름, 주소, 예약"],["Part 4","강의 · 학술 단어"]]){
+    const n=LS.categories.filter(c=>c.part===k).reduce((a,c)=>a+c.words.length,0);
+    const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(lsPart===k));
+    b.append(el("b",null,`${k} · ${n}개`), el("span",null,sub)); b.onclick=()=>{ lsPart=k; lsCat=null; render(); }; seg.append(b);
+  }
+  app.append(seg);
+  const cats=LS.categories.filter(c=>c.part===lsPart);
+  const allWords=cats.flatMap(c=>c.words);
+  const start=el("button","btn primary vstart",`${lsPart} 받아쓰기 시작 · 20개`); start.type="button";
+  start.onclick=()=>startDictation([...allWords].sort(()=>Math.random()-.5).slice(0,20), `${lsPart} 받아쓰기`); app.append(start);
+  if(!canSpeak()) app.append(el("p","muted small","이 기기에서는 소리 재생이 안 돼요. 받아쓰기 대신 뜻을 보고 철자를 써 보세요."));
+  const grid=el("div","vgrid");
+  cats.forEach((c,i)=>{ const b=el("button","vchip"+(lsCat===i?" on":"")); b.type="button"; b.setAttribute("aria-pressed",String(lsCat===i));
+    b.append(el("b",null,c.ko), el("span",null,`${c.name} · ${c.words.length}`)); b.onclick=()=>{ lsCat= lsCat===i? null : i; render(); setTimeout(()=>{ const t=document.getElementById("lsopen"); if(t) t.scrollIntoView({behavior:"smooth",block:"start"}); },0); }; grid.append(b); });
+  app.append(grid);
+  const c=cats[lsCat];
+  if(c){
+    const p=el("div","panel vpanel"); p.id="lsopen";
+    const h=el("div","ghead"); h.append(el("b",null,`${c.ko} · ${c.name}`), el("span",null,`${c.words.length}개`)); p.append(h);
+    const go1=el("button","btn primary vstart",`이 주제 받아쓰기 ${c.words.length}개`); go1.type="button"; go1.onclick=()=>startDictation([...c.words].sort(()=>Math.random()-.5), c.ko); p.append(go1);
+    for(const [w,ko,tip] of c.words){
+      const r=el("div","lrow"); r.append(speakBtn(w));
+      const t2=el("div"); const top=el("div","vtop"); top.append(el("b",null,w), el("span",null,ko)); t2.append(top); if(tip) t2.append(el("p","ltip",tip));
+      r.append(t2); p.append(r);
+    }
+    app.append(p);
+  }
+}
+function startDictation(words, title){ LD={words, title, i:0, res:[], checked:false, typed:""}; go("listen"); setTimeout(()=>speak(words[0][0]),250); }
+function norm(x){ return String(x||"").trim().toLowerCase().replace(/\s+/g," "); }
+function isRight(word, typed){ const t=norm(typed); return t===word.toLowerCase() || (ALT[word.toLowerCase()]||[]).includes(t); }
+function diffSpans(correct, typed){
+  // align typed to correct (edit distance) and mark letters of the correct word that were missed or wrong
+  const a=correct.toLowerCase(), b=norm(typed); const n=a.length, m=b.length;
+  const d=Array.from({length:n+1},(_,i)=>Array.from({length:m+1},(_,j)=> i===0? j : j===0? i : 0));
+  for(let i=1;i<=n;i++) for(let j=1;j<=m;j++) d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
+  const bad=new Set(); let i=n, j=m;
+  while(i>0 && j>0){ if(a[i-1]===b[j-1] && d[i][j]===d[i-1][j-1]){ i--; j--; } else if(d[i][j]===d[i-1][j-1]+1){ bad.add(i-1); i--; j--; } else if(d[i][j]===d[i-1][j]+1){ bad.add(i-1); i--; } else { if(i<n) bad.add(i); else bad.add(i-1); j--; } }
+  while(i>0){ bad.add(i-1); i--; }
+  const w=el("span","dword"); [...correct].forEach((ch,k)=>{ const sp=el("span", bad.has(k)? "bad" : null, ch); w.append(sp); }); return w;
+}
+function renderDictation(app){
+  const L=LD;
+  const back=el("button","back","‹ 리스닝 철자"); back.type="button"; back.onclick=()=>{ LD=null; try{ speechSynthesis.cancel(); }catch(_){} render(); }; app.append(back);
+  app.append(el("h1",null,L.title));
+  if(L.i>=L.words.length){
+    const ok=L.res.filter(r=>r.ok).length; const wrong=L.res.filter(r=>!r.ok);
+    const e=el("div","empty"); e.append(el("div","big",`${ok}/${L.res.length}`), el("h2",null, ok===L.res.length? "전부 맞혔어요!" : "받아쓰기 끝!"));
+    if(wrong.length){ const ul=el("div","wronglist"); wrong.forEach(r=>{ const row=el("div"); row.append(speakBtn(r.w[0]), el("b",null,r.w[0]), el("s",null,r.typed||"(빈칸)")); ul.append(row); }); e.append(ul);
+      const again=el("button","btn primary","틀린 단어 다시 하기"); again.type="button"; again.onclick=()=>startDictation(wrong.map(r=>r.w), L.title+" (다시)"); e.append(again); }
+    const send=el("button","btn","선생님께 결과 보내기"); send.type="button";
+    send.onclick=()=>{ const d=new Date(); let t=`[${D.name} · 리스닝 철자 ${L.title} · ${d.getMonth()+1}/${d.getDate()}]\n맞힘 ${ok} / ${L.res.length}개`; if(wrong.length) t+=`\n틀린 철자:\n`+wrong.map(r=>`- ${r.w[0]} (쓴 답: ${r.typed||"빈칸"})`).join("\n"); reportSheet(`리스닝 철자 ${L.title}`, ok, L.res.length, t); };
+    e.append(send); app.append(e); return;
+  }
+  const [w,ko,tip]=L.words[L.i];
+  const pg=el("div","prog"); pg.append(el("span",null,`${L.i+1} / ${L.words.length}`), el("span",null,`맞힘 ${L.res.filter(r=>r.ok).length}`)); app.append(pg);
+  const bar=el("div","bar"); const bi=el("i"); bi.style.width=(L.i/L.words.length*100)+"%"; bar.append(bi); app.append(bar);
+  const card=el("div","dict");
+  if(canSpeak()){
+    const row=el("div","playrow");
+    const p1=el("button","btn primary play"); p1.type="button"; p1.innerHTML=SPEAK_ICON; p1.append(document.createTextNode(" 듣기")); p1.onclick=()=>speak(w);
+    const p2=el("button","btn play"); p2.type="button"; p2.textContent="천천히"; p2.onclick=()=>speak(w,true);
+    row.append(p1,p2); card.append(row);
+    card.append(el("p","muted small", L.checked? "" : "들리는 단어의 철자를 써 보세요"));
+  } else { card.append(el("p","dko",ko), el("p","muted small","뜻을 보고 영어 철자를 써 보세요")); }
+  const inp=el("input","dinput"); inp.id="dinput"; inp.type="text"; inp.value=L.typed; inp.placeholder="철자 입력";
+  ["autocomplete","autocorrect","autocapitalize"].forEach(k=>inp.setAttribute(k,"off")); inp.spellcheck=false; inp.setAttribute("aria-label","들은 단어 철자"); inp.readOnly=L.checked;
+  inp.oninput=()=>{ L.typed=inp.value; };
+  const check=()=>{ if(L.checked) return next(); L.checked=true; L.res.push({w:L.words[L.i], typed:L.typed, ok:isRight(w,L.typed)}); render(); };
+  const next=()=>{ L.i++; L.checked=false; L.typed=""; render(); if(L.i<L.words.length) setTimeout(()=>speak(L.words[L.i][0]),200); };
+  inp.onkeydown=e=>{ if(e.key==="Enter"){ e.preventDefault(); check(); } };
+  card.append(inp);
+  if(L.checked){
+    const r=L.res[L.res.length-1];
+    const res=el("div","dres "+(r.ok?"ok":"no"));
+    res.append(el("b",null, r.ok? "정답!" : "아쉬워요"));
+    const ans=el("div","dans"); ans.append(diffSpans(w, r.ok? w : L.typed), el("span",null,ko)); res.append(ans);
+    if(!r.ok && L.typed) res.append(el("p","mine2",`내 답: ${L.typed}`));
+    if(tip) res.append(el("p","ltip",tip));
+    card.append(res);
+  }
+  const btn=el("button","btn primary vstart", L.checked? (L.i+1<L.words.length? "다음 단어" : "결과 보기") : "확인"); btn.type="button"; btn.onclick=check; card.append(btn);
+  app.append(card);
+  if(!L.checked) setTimeout(()=>{ try{ document.getElementById("dinput").focus({preventScroll:true}); }catch(_){} },0);
+}
+
 /* ---------- report to teacher ---------- */
 function openReport(kind){
   let title, lines=[], okN=0, total=0, again=[];
@@ -561,7 +669,9 @@ function openReport(kind){
   let text=`[${D.name} · ${title} · ${md}]\n`+lines.join("\n");
   if(again.length) text+=`\n다시 볼 문장 ${again.length}개:\n`+again.map(c=>"- "+c.en).join("\n");
   text+=`\n연속 공부 ${streak()}일`;
-
+  reportSheet(title, okN, total, text);
+}
+function reportSheet(title, okN, total, text){
   const bg=el("div","sheet-bg"); const sh=el("div","sheet"); sh.setAttribute("role","dialog"); sh.setAttribute("aria-label","선생님께 결과 보내기");
   sh.append(el("div","big",`${okN}/${total}`), el("h2",null, `${title} 끝!`), el("p","muted small","아래 내용이 선생님께 전달돼요."));
   const ta=el("textarea"); ta.id="reportText"; ta.readOnly=true; ta.value=text; ta.setAttribute("aria-label","보낼 내용"); sh.append(ta);
