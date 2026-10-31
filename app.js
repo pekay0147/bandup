@@ -504,24 +504,34 @@ function renderP2(app){
   const t=el("div","focus"); t.append(el("b",null,"Part 2 답변 순서"), document.createTextNode("1분 준비 → 2분 말하기. 무엇인지 한 줄 → 말할 거리 3가지 → 내 느낌으로 마무리.")); app.append(t);
   const tools=el("div","p2tools");
   const inp=el("input"); inp.id="p2search"; inp.type="search"; inp.placeholder="주제 검색 (예: friend, 옥스포드, technology)"; inp.value=p2Query; inp.setAttribute("aria-label","Part 2 주제 검색");
-  inp.oninput=()=>{ p2Query=inp.value; const pos=inp.selectionStart; render(); const n=document.getElementById("p2search"); if(n){ n.focus(); try{ n.setSelectionRange(pos,pos); }catch(_){} } };
+  // filter in place (no full re-render), so typing Korean on a phone keeps working
+  const applyFilter=()=>{ p2Query=inp.value; const q=p2Query.trim().toLowerCase(); let n=0;
+    document.querySelectorAll(".idea[data-search]").forEach(c=>{ const ok=!q || c.dataset.search.includes(q); c.hidden=!ok; if(ok) n++; });
+    const cnt=document.getElementById("p2count"); if(cnt) cnt.textContent=`${n}개 주제 · 출처: ${P2.source}`;
+    const em=document.getElementById("p2empty"); if(em) em.hidden = n>0; };
+  inp.addEventListener("input",e=>{ if(e.isComposing) return; applyFilter(); });
+  inp.addEventListener("compositionend",applyFilter);
   const chip=el("button",null,"수업에서 다룬 주제만"); chip.type="button"; chip.className="lessonchip"; chip.setAttribute("aria-pressed",String(p2Lesson)); chip.onclick=()=>{ p2Lesson=!p2Lesson; render(); };
   tools.append(inp, chip); app.append(tools);
   const q=p2Query.trim().toLowerCase();
-  const list=P2.items.filter(it=>(!p2Lesson || it.lesson) && (!q || (it.topic+" "+it.answer+" "+it.points.join(" ")+" "+(it.alts||[]).join(" ")).toLowerCase().includes(q)));
-  app.append(el("p","muted small",`${list.length}개 주제 · 출처: ${P2.source}`));
+  const hay=it=>(it.topic+" "+it.answer+" "+it.points.join(" ")+" "+(it.alts||[]).join(" ")).toLowerCase();
+  const list=P2.items.filter(it=>(!p2Lesson || it.lesson));
+  const shown=list.filter(it=>!q || hay(it).includes(q)).length;
+  const cnt=el("p","muted small",`${shown}개 주제 · 출처: ${P2.source}`); cnt.id="p2count"; app.append(cnt);
   for(const it of list){
     const hd=el("div");
     const top=el("span","from2", `#${it.no}`+(it.lesson? ` · ${it.lesson}회차 수업에서 다룸`:""));
     hd.append(top, el("b",null,it.topic));
     if(it.answer) hd.append(el("span","ans-chip",`답변: ${it.answer}`));
-    app.append(fold("p2-"+it.no, hd, b=>{
+    const card=fold("p2-"+it.no, hd, b=>{
       if(it.intro) b.append(el("p","p2intro",it.intro));
       if(it.points.length){ b.append(el("span","idea-lab","말할 거리")); const ol=el("ol","pts"); it.points.forEach(x=>{ const li=el("li"); li.append(el("span","pe2",x)); ol.append(li); }); b.append(ol); }
       if(it.alts&&it.alts.length){ b.append(el("span","idea-lab","다른 답변 아이디어")); const ex=el("div","alts"); it.alts.forEach(x=>ex.append(el("span",null,x))); b.append(ex); }
-    }));
+    });
+    card.dataset.search=hay(it); card.hidden = !!q && !hay(it).includes(q);
+    app.append(card);
   }
-  if(!list.length){ const e=el("div","empty"); e.append(el("p",null,"검색 결과가 없어요.")); app.append(e); }
+  const e=el("div","empty"); e.id="p2empty"; e.append(el("p",null,"검색 결과가 없어요. 검색어를 지우면 다시 보여요.")); e.hidden = shown>0; app.append(e);
 }
 
 /* ---------- report to teacher ---------- */
