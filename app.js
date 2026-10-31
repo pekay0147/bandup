@@ -63,11 +63,12 @@ const ICONS={
   home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/></svg>',
   cards:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 4h12a2 2 0 0 1 2 2v11"/></svg>',
   review:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>',
+  ideas:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg>',
   notes:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h5"/></svg>'
 };
 function buildTabs(){
   const nav=$("#tabs nav"); nav.textContent="";
-  for(const [k,label] of [["home","홈"],["cards","큐카드"],["review","복습"],["notes","오답노트"]]){
+  for(const [k,label] of [["home","홈"],["cards","큐카드"],["review","복습"],["ideas","아이디어"]]){
     const b=el("button"); b.type="button"; b.dataset.tab=k; b.innerHTML=ICONS[k]; b.append(el("span",null,label));
     if(k==="review"){ const bd=el("span","badge"); bd.id="dueBadge"; b.append(bd); }
     b.onclick=()=>{ go(k); };
@@ -87,6 +88,7 @@ function render(){
   if(view.tab==="cards") (view.deck!=null? renderDeck(app) : renderDecks(app));
   if(view.tab==="review") renderReview(app);
   if(view.tab==="notes") renderNotes(app);
+  if(view.tab==="ideas") renderIdeas(app);
   updateTabs();
 }
 
@@ -384,6 +386,36 @@ function noteRow(c){
   const tp=c.note || (c.kind==="ko"? c.ko : ""); if(tp) r.append(el("span","tp",tp));
   const sd=el("div","sd"); sd.append(rep(c)? el("span","rep",`반복 ${c.sessions.join("·")}회`) : el("span","sess",sessLabel(c))); r.append(sd);
   return r;
+}
+
+/* ---------- ideas (Part 2 answer ideas) ---------- */
+let openIdea=null;
+function renderIdeas(app){
+  app.append(el("h1",null,"아이디어"));
+  app.append(el("p","muted small","수업에서 다룬 Part 2 주제별 말할 거리예요. 주제를 눌러서 펼쳐 보세요."));
+  if(D.ideaTip){ const t=el("div","focus"); t.append(el("b",null,"Part 2 답변 순서"), document.createTextNode(D.ideaTip)); app.append(t); }
+  const list=(D.ideas||[]).slice().sort((a,b)=>b.session-a.session);
+  if(!list.length){ const e=el("div","empty"); e.append(el("p",null,"아직 정리된 아이디어가 없어요.")); app.append(e); return; }
+  for(const it of list){
+    const s=D.sessions.find(x=>x.no===it.session);
+    const card=el("div","idea"+(openIdea===it.session?" open":""));
+    const head=el("button","idea-h"); head.type="button"; head.setAttribute("aria-expanded",String(openIdea===it.session));
+    const ht=el("div"); ht.append(el("span","from2",`${it.session}회차 수업${s&&s.date?" · "+mmdd(s.date):""} · Part 2`), el("b",null,it.topic));
+    head.append(ht, el("span","chev", openIdea===it.session?"−":"+"));
+    head.onclick=()=>{ openIdea = openIdea===it.session? null : it.session; render(); };
+    card.append(head);
+    if(openIdea===it.session){
+      const body=el("div","idea-b");
+      body.append(el("span","idea-lab","말할 거리"));
+      const ol=el("ol","pts");
+      for(const [ko,en] of it.points){ const li=el("li"); li.append(el("span","pk",ko), el("span","pe",en)); ol.append(li); }
+      body.append(ol);
+      if(it.expr&&it.expr.length){ body.append(el("span","idea-lab","써먹을 표현")); const ex=el("div","exprs"); it.expr.forEach(x=>ex.append(el("span",null,x))); body.append(ex); }
+      if(it.part3&&it.part3.length){ body.append(el("span","idea-lab","이어서 나올 Part 3 질문")); const ul=el("ul","p3"); it.part3.forEach(q=>ul.append(el("li",null,q))); body.append(ul); }
+      card.append(body);
+    }
+    app.append(card);
+  }
 }
 
 /* ---------- report to teacher ---------- */
