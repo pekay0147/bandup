@@ -354,3 +354,13 @@ h2{font-weight:700}
 .boxh b{font-size:18px;font-weight:700}
 .boxh span{font-size:15px;color:var(--muted)}
 .boxlist .m:first-child{border-top:0}
+/* compact sentence lists, no highlighter */
+.m .rt span{background:none;padding:0}
+.m{padding:8px 0}
+.m .rt{font-size:16px;line-height:1.4}
+.m .wr{font-size:14px}
+.m .kk,.m .tp{font-size:14px}
+.boxh b{font-size:16px}
+.boxh span{font-size:13px}
+.idea-h{padding:11px 14px}
+.idea-b{padding:0 14px 12px}
