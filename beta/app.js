@@ -536,7 +536,7 @@ function startQuiz(words, title, n=10, back){
   const pool=words.length>=4? words : allWords();
   const qs=shuffle(words).slice(0,n).map(w=>{
     const wc=x=>Math.min(3,x[0].trim().split(/\s+/).length);
-    const others=shuffle(pool.filter(o=>o[0].toLowerCase()!==w[0].toLowerCase() && o[1]!==w[1])).sort((a,b)=>Math.abs(wc(a)-wc(w))-Math.abs(wc(b)-wc(w)));
+    const lw=w[0].toLowerCase(); const others=shuffle(pool.filter(o=>{ const lo=o[0].toLowerCase(); return lo!==lw && o[1]!==w[1] && !lo.includes(lw) && !lw.includes(lo); })).sort((a,b)=>Math.abs(wc(a)-wc(w))-Math.abs(wc(b)-wc(w)));
     const seen=new Set([w[0].toLowerCase()]); const opts=[w];
     for(const o of others){ if(opts.length>=4) break; if(!seen.has(o[0].toLowerCase())){ seen.add(o[0].toLowerCase()); opts.push(o); } }
     return {w, opts:shuffle(opts)};
