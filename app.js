@@ -13,7 +13,7 @@ const mmdd=s=>s? s.slice(5).replace("-","/") : "";
 const store={ get(k,f){ try{ const v=localStorage.getItem(k); return v==null? f : JSON.parse(v);}catch(_){ return f; } },
               set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(_){} } };
 
-let D=null, G={}, P2=null, slug=null;
+let D=null, G={}, P1=null, P2=null, slug=null;
 let srs={}, marks={}, days=[];
 let view={tab:"home"};   // home | cards(deck?) | review | notes
 let deckState=null, reviewState=null, picked=null, flipped=false, noteFilter="전체", noteSession="all", cardMode="session", selSession=null, randCount=10, randKind="all";
@@ -32,7 +32,7 @@ async function boot(){
     const [s,g]=await Promise.all([fetch(`data/students/${slug}.json`,{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
                                    fetch("data/glossary.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({}))]);
     D=s; G=g||{};
-    P2=await fetch("data/part2.json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null);
+    [P1,P2]=await Promise.all(["data/part1.json","data/part2.json"].map(u=>fetch(u,{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
   }catch(e){ app.textContent=""; const x=el("div","empty"); x.append(el("h2",null,"카드를 불러오지 못했어요"), el("p",null,"인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 되면 선생님께 링크를 다시 받아 주세요.")); app.append(x); return; }
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
@@ -430,11 +430,11 @@ function noteRow(c){
 }
 
 /* ---------- ideas: Part 1 / Part 2 / Part 3 ---------- */
-let ideaPart="p2", openKey=null, p2Query="", p2Lesson=false;
+let ideaPart="p2", openKey=null, p2Query="", p2Lesson=false, p1Mode="season";
 function renderIdeas(app){
   app.append(el("h1",null,"아이디어"));
   const seg=el("div","modeseg"); seg.setAttribute("role","tablist");
-  const n1=(D.part1||[]).reduce((a,s)=>a+s.groups.reduce((b,g)=>b+g.qs.length,0),0);
+  const n1=(P1? P1.topics.reduce((a,t)=>a+t.qs.length,0):0) + (D.part1||[]).reduce((a,s)=>a+s.groups.reduce((b,g)=>b+g.qs.length,0),0);
   const n2=P2? P2.items.length : 0, n3=(D.part3||[]).reduce((a,s)=>a+s.qs.length,0);
   for(const [k,label,sub] of [["p1","Part 1",`질문 ${n1}개`],["p2","Part 2",`예상 기출 ${n2}개`],["p3","Part 3",`질문 ${n3}개`]]){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(ideaPart===k));
@@ -455,7 +455,27 @@ function fold(key, head, bodyFn){
   return card;
 }
 function renderP1(app){
-  const t=el("div","focus"); t.append(el("b",null,"Part 1 답변 요령"), document.createTextNode("2~3문장으로: 답 → 이유 → 예시. 과거 질문은 끝까지 과거형!")); app.append(t);
+  const tips=(P1&&P1.tips)||["2~3문장으로: 답 → 이유 → 예시. 과거 질문은 끝까지 과거형!"];
+  const t=el("div","focus"); t.append(el("b",null,"Part 1 답변 요령")); const ul=el("ul","tiplist"); tips.forEach(x=>ul.append(el("li",null,x))); t.append(ul); app.append(t);
+  const sub=el("div","pchips"); sub.setAttribute("role","group");
+  for(const [k,l] of [["season", P1? P1.season : "예상 기출"],["lesson","수업에서 다룬 질문"]]){ const b=el("button",null,l); b.type="button"; b.setAttribute("aria-pressed",String(p1Mode===k)); b.onclick=()=>{ p1Mode=k; openKey=null; render(); }; sub.append(b); }
+  app.append(sub);
+  if(p1Mode==="season"){
+    if(!P1){ const e=el("div","empty"); e.append(el("p",null,"자료를 불러오지 못했어요.")); app.append(e); return; }
+    app.append(el("p","muted small",`${P1.topics.length}개 주제 · ${P1.source}`));
+    for(const tp of P1.topics){
+      const hd=el("div"); hd.append(el("span","from2", `${tp.ko} · 질문 ${tp.qs.length}개`+(tp.lesson? ` · ${tp.lesson}회차 수업에서 다룸`:"")), el("b",null,tp.topic));
+      app.append(fold("p1s-"+tp.topic, hd, b=>{
+        for(const q of tp.qs){
+          const box=el("div","qbox"); box.append(el("p","qq",q.q));
+          if(q.idea){ const i=el("p","qi"); i.append(el("span","qtag","아이디어"), document.createTextNode(q.idea)); box.append(i); }
+          if(q.vocab&&q.vocab.length){ const v=el("div","alts"); q.vocab.forEach(x=>v.append(el("span",null,x))); box.append(v); }
+          b.append(box);
+        }
+      }));
+    }
+    return;
+  }
   for(const s of D.part1||[]){
     const ses=D.sessions.find(x=>x.no===s.session);
     const n=s.groups.reduce((a,g)=>a+g.qs.length,0);

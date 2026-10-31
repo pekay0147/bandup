@@ -237,3 +237,10 @@ h2{margin:0;font:19px var(--cute);font-weight:400}
 .pts .pe2{font:15px/1.55 var(--body)}
 .alts{display:flex;flex-wrap:wrap;gap:6px}
 .alts span{background:var(--sun-soft);border-radius:10px;padding:4px 10px;font-size:14px}
+
+.tiplist{margin:4px 0 0;padding-left:18px;display:grid;gap:3px}
+.qbox{display:grid;gap:6px;padding:12px 0;border-top:1px solid var(--line)}
+.qbox:first-child{border-top:0;padding-top:4px}
+.qq{margin:0;font:600 15px/1.45 var(--body)}
+.qi{margin:0;font-size:14px;color:var(--ink);line-height:1.55}
+.qtag{display:inline-block;font:12px var(--cute);background:var(--blue-soft);color:var(--blue);border-radius:6px;padding:0 6px;margin-right:6px}

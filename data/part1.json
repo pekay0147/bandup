@@ -1,0 +1,487 @@
+{
+ "source": "Score Factory IELTS Speaking Workbook 2026 Sep–Dec (질문) · 아이디어·표현은 수업용으로 새로 작성",
+ "season": "2026년 9–12월 예상 기출",
+ "tips": [
+  "질문에 바로 답하고, 이유나 예시 하나를 덧붙여 2~3문장으로 늘리기",
+  "해 본 적 없어도 'No, not really, but…'로 이어서 관련 이야기하기",
+  "과거 질문(Did you…, When was the last time…)은 과거형으로, 지금 학생이 아니면 I studied…처럼 시제 다양하게",
+  "주제마다 답을 외우기보다 질문 유형별 답하는 요령을 연습하기",
+  "시험관이 중간에 끊어도 정상이에요. 친근하게 대화하듯 말하기"
+ ],
+ "topics": [
+  {
+   "topic": "Computers and tablets",
+   "ko": "컴퓨터·태블릿",
+   "qs": [
+    {
+     "q": "Would you like to use a computer or tablet?",
+     "idea": "공부·일은 컴퓨터(키보드, 큰 화면), 영상·독서는 태블릿",
+     "vocab": [
+      "for work purposes",
+      "portable"
+     ]
+    },
+    {
+     "q": "In what conditions would you use a computer or tablet?",
+     "idea": "보고서 쓸 때는 노트북, 이동 중이나 침대에서 영상 볼 때는 태블릿",
+     "vocab": [
+      "on the go",
+      "multitask"
+     ]
+    },
+    {
+     "q": "When was the first time you used a computer or tablet?",
+     "idea": "초등학생 때 컴퓨터실 수업, 타자 연습 게임이 기억남 (과거형 유지!)",
+     "vocab": [
+      "computer lab",
+      "typing practice"
+     ]
+    },
+    {
+     "q": "What would your life be like without computers or tablets?",
+     "idea": "처음엔 불편하겠지만 책 읽고 산책할 시간이 늘어 오히려 좋을 수도",
+     "vocab": [
+      "be lost without",
+      "screen time"
+     ]
+    },
+    {
+     "q": "In what conditions would it be difficult for you to use a computer or tablet?",
+     "idea": "와이파이가 없을 때, 배터리가 없을 때, 캠핑처럼 밖에 있을 때",
+     "vocab": [
+      "run out of battery",
+      "poor connection"
+     ]
+    }
+   ]
+  },
+  {
+   "topic": "Collecting things",
+   "ko": "수집",
+   "lesson": 4,
+   "qs": [
+    {
+     "q": "Where do you usually keep things you need?",
+     "idea": "자주 쓰는 건 책상 서랍, 중요한 서류는 파일 박스에 정리",
+     "vocab": [
+      "keep things organised",
+      "within reach"
+     ]
+    },
+    {
+     "q": "Would you keep old things for a long time? Why?",
+     "idea": "추억이 담긴 건 오래 간직, 안 쓰는 건 과감히 정리",
+     "vocab": [
+      "sentimental value",
+      "declutter"
+     ]
+    },
+    {
+     "q": "Are there any things you have kept from your childhood?",
+     "idea": "어릴 때 쓴 일기장, 부모님께 받은 편지 (have kept → 현재완료)",
+     "vocab": [
+      "bring back memories",
+      "treasure"
+     ]
+    },
+    {
+     "q": "Do you collect things?",
+     "idea": "여행 갈 때마다 마그넷 모으기 / 아니면: 'Not really, but…'로 이어가기",
+     "vocab": [
+      "souvenir",
+      "a collection of"
+     ]
+    }
+   ]
+  },
+  {
+   "topic": "Lost and found",
+   "ko": "분실물",
+   "lesson": 4,
+   "qs": [
+    {
+     "q": "Have you ever lost your keys?",
+     "idea": "네, 바쁜 아침에 잃어버려서 지각할 뻔함 (과거형)",
+     "vocab": [
+      "misplace",
+      "in a rush"
+     ]
+    },
+    {
+     "q": "Will you post on social media if you lose your item?",
+     "idea": "비싼 물건이면 동네 커뮤니티에 올림, 사람들이 많이 도와줌",
+     "vocab": [
+      "post on a community page",
+      "get it back"
+     ]
+    },
+    {
+     "q": "Have you ever lost things?",
+     "idea": "지하철에서 우산을 자주 잃어버림, 분실물 센터에서 찾은 적 있음",
+     "vocab": [
+      "lost-and-found office",
+      "absent-minded"
+     ]
+    },
+    {
+     "q": "Do you report to the police when finding something lost by others? Why?",
+     "idea": "지갑처럼 귀중한 건 경찰에 맡김, 주인이 찾기 쉬우니까",
+     "vocab": [
+      "hand it in",
+      "the rightful owner"
+     ]
+    },
+    {
+     "q": "What will you do if you find something lost by others?",
+     "idea": "주변에 물어보고, 없으면 가게 직원이나 경찰에 맡김",
+     "vocab": [
+      "put myself in their shoes",
+      "hand it over"
+     ]
+    }
+   ]
+  },
+  {
+   "topic": "Street markets",
+   "ko": "길거리 시장",
+   "lesson": 4,
+   "qs": [
+    {
+     "q": "Are there many street markets in Korea?",
+     "idea": "네, 광장시장·남대문시장 같은 전통시장과 야시장이 많음",
+     "vocab": [
+      "traditional market",
+      "night market"
+     ]
+    },
+    {
+     "q": "When was the last time you went to a street market?",
+     "idea": "지난달 친구와 야시장에 가서 떡볶이와 호떡을 먹음 (과거형)",
+     "vocab": [
+      "street food",
+      "a lively atmosphere"
+     ]
+    },
+    {
+     "q": "Do you prefer to go shopping in the shopping mall or at the street market?",
+     "idea": "옷은 쇼핑몰(편하고 쾌적), 음식은 시장(싸고 정이 있음)",
+     "vocab": [
+      "haggle over prices",
+      "under one roof"
+     ]
+    },
+    {
+     "q": "What do people usually buy at the street market?",
+     "idea": "신선한 채소·과일, 길거리 음식, 저렴한 옷과 액세서리",
+     "vocab": [
+      "fresh produce",
+      "a bargain"
+     ]
+    }
+   ]
+  },
+  {
+   "topic": "Paper",
+   "ko": "종이",
+   "qs": [
+    {
+     "q": "Do you carry paper and pens with you when you go out?",
+     "idea": "보통 안 들고 다님, 휴대폰 메모 앱을 씀 / 수업 있는 날만 노트",
+     "vocab": [
+      "jot down",
+      "notes app"
+     ]
+    },
+    {
+     "q": "Do people still keep handwritten letters today?",
+     "idea": "요즘은 드물지만 생일 카드나 연애편지는 손편지가 여전히 특별함",
+     "vocab": [
+      "a personal touch",
+      "old-fashioned"
+     ]
+    },
+    {
+     "q": "Do you still write physical letters?",
+     "idea": "1년에 한두 번, 부모님 생신 때 카드를 씀",
+     "vocab": [
+      "once in a blue moon",
+      "heartfelt"
+     ]
+    },
+    {
+     "q": "Have you made any crafts with paper?",
+     "idea": "어릴 때 종이접기로 학, 비행기 만들기 (과거형)",
+     "vocab": [
+      "origami",
+      "fold paper"
+     ]
+    },
+    {
+     "q": "What did you like to do with paper as a child?",
+     "idea": "그림 그리기, 종이비행기 날리기 (did → 과거형 유지)",
+     "vocab": [
+      "doodle",
+      "paper plane"
+     ]
+    }
+   ]
+  },
+  {
+   "topic": "Fruit and vegetables",
+   "ko": "과일·채소",
+   "lesson": 4,
+   "qs": [
+    {
+     "q": "Were there any kinds of fruits and vegetables you disliked as a child?",
+     "idea": "당근과 가지를 싫어했음, 식감 때문에 (과거형)",
+     "vocab": [
+      "a picky eater",
+      "the texture"
+     ]
+    },
+    {
+     "q": "What kinds of fruits and vegetables do you dislike?",
+     "idea": "지금은 거의 다 먹지만 셀러리는 아직 별로",
+     "vocab": [
+      "not my cup of tea",
+      "an acquired taste"
+     ]
+    },
+    {
+     "q": "Where do you usually buy fruit and vegetables?",
+     "idea": "집 근처 마트, 가끔 신선한 걸 사러 시장에 감",
+     "vocab": [
+      "local supermarket",
+      "in season"
+     ]
+    },
+    {
+     "q": "How often do you eat fruit and vegetables?",
+     "idea": "매일, 아침에 과일, 점심에 샐러드",
+     "vocab": [
+      "a balanced diet",
+      "five a day"
+     ]
+    }
+   ]
+  },
+  {
+   "topic": "Being polite",
+   "ko": "예의",
+   "lesson": 4,
+   "qs": [
+    {
+     "q": "Do you think being polite is very important?",
+     "idea": "네, 첫인상과 인간관계에 중요, 한국은 존댓말 문화",
+     "vocab": [
+      "make a good impression",
+      "show respect"
+     ]
+    },
+    {
+     "q": "How did you learn to be polite as a child?",
+     "idea": "부모님이 인사·감사 표현을 늘 강조했고 학교에서도 배움 (과거형)",
+     "vocab": [
+      "bring me up to",
+      "set a good example"
+     ]
+    }
+   ]
+  },
+  {
+   "topic": "Tiredness",
+   "ko": "피곤함",
+   "lesson": 4,
+   "qs": [
+    {
+     "q": "What do you do when you feel tired?",
+     "idea": "낮잠 20분이나 산책, 커피 한 잔",
+     "vocab": [
+      "take a power nap",
+      "recharge my batteries"
+     ]
+    },
+    {
+     "q": "When do you usually feel tired?",
+     "idea": "오후 3시쯤, 점심 먹고 나서나 회의가 많은 날",
+     "vocab": [
+      "in the afternoon slump",
+      "worn out"
+     ]
+    },
+    {
+     "q": "Do you often feel tired?",
+     "idea": "요즘 일이 바빠서 자주 피곤함, 그래서 일찍 자려고 노력 중",
+     "vocab": [
+      "exhausted",
+      "get enough sleep"
+     ]
+    }
+   ]
+  },
+  {
+   "topic": "Rubbish and recycling",
+   "ko": "쓰레기·재활용",
+   "lesson": 4,
+   "qs": [
+    {
+     "q": "How do you recycle things like paper and plastic?",
+     "idea": "한국은 분리수거가 엄격함, 종이·플라스틱·캔을 나눠 버림",
+     "vocab": [
+      "separate the rubbish",
+      "recycling bin"
+     ]
+    },
+    {
+     "q": "What do you do when you see rubbish on the street?",
+     "idea": "작은 건 주워서 쓰레기통에 버림, 환경에 대한 책임감",
+     "vocab": [
+      "pick it up",
+      "litter"
+     ]
+    }
+   ]
+  },
+  {
+   "topic": "Travelling",
+   "ko": "여행",
+   "lesson": 4,
+   "qs": [
+    {
+     "q": "Do you prefer to sit by the window when travelling?",
+     "idea": "네, 창밖 풍경 보는 걸 좋아함 / 비행기는 통로석이 편함",
+     "vocab": [
+      "window seat",
+      "aisle seat"
+     ]
+    },
+    {
+     "q": "Did you have a long journey with your family as a child?",
+     "idea": "어릴 때 가족과 차로 부산까지 5시간, 휴게소 간식이 기억남 (과거형)",
+     "vocab": [
+      "a road trip",
+      "rest stop"
+     ]
+    },
+    {
+     "q": "What kind of transportation do you usually use when travelling?",
+     "idea": "국내는 KTX, 해외는 비행기, 현지에서는 대중교통",
+     "vocab": [
+      "public transport",
+      "get around"
+     ]
+    },
+    {
+     "q": "Do you think travelling is important for people?",
+     "idea": "네, 시야를 넓히고 스트레스를 풀 수 있음",
+     "vocab": [
+      "broaden my horizons",
+      "get away from it all"
+     ]
+    },
+    {
+     "q": "How has travelling changed compared to the past?",
+     "idea": "예전엔 패키지 여행, 요즘은 앱으로 혼자 계획하는 자유여행",
+     "vocab": [
+      "package tour",
+      "book online"
+     ]
+    },
+    {
+     "q": "What are the benefits of travelling with family?",
+     "idea": "함께 추억을 만들고, 평소 못 한 대화를 나눌 수 있음",
+     "vocab": [
+      "quality time",
+      "make memories"
+     ]
+    }
+   ]
+  },
+  {
+   "topic": "Advertisement",
+   "ko": "광고",
+   "lesson": 6,
+   "qs": [
+    {
+     "q": "Do you often see advertisements when you are on your phone or computer?",
+     "idea": "네, 유튜브·인스타그램에서 계속 나옴, 가끔 귀찮음",
+     "vocab": [
+      "pop up",
+      "skip the ad"
+     ]
+    },
+    {
+     "q": "What kind of advertising do you like?",
+     "idea": "재밌거나 감동적인 이야기가 있는 광고",
+     "vocab": [
+      "catchy",
+      "memorable"
+     ]
+    },
+    {
+     "q": "Do you like advertisements?",
+     "idea": "대체로 별로지만 새로운 제품 정보를 얻을 때는 유용",
+     "vocab": [
+      "to be honest",
+      "in moderation"
+     ]
+    },
+    {
+     "q": "Do you see a lot of advertising on trains or other transport?",
+     "idea": "지하철역과 버스에 광고가 많음, 특히 성형외과·학원 광고",
+     "vocab": [
+      "subway station",
+      "eye-catching"
+     ]
+    },
+    {
+     "q": "Is there an advertisement that made an impression on you when you were a child?",
+     "idea": "어릴 때 본 과자 광고 노래를 아직도 기억함 (과거형)",
+     "vocab": [
+      "jingle",
+      "stick in my head"
+     ]
+    }
+   ]
+  },
+  {
+   "topic": "Shoes",
+   "ko": "신발",
+   "lesson": 4,
+   "qs": [
+    {
+     "q": "Which do you prefer, fashionable shoes or comfortable shoes?",
+     "idea": "편한 신발, 많이 걸어서 / 특별한 날만 예쁜 신발",
+     "vocab": [
+      "comfort over style",
+      "wear them out"
+     ]
+    },
+    {
+     "q": "How much money do you usually spend on shoes?",
+     "idea": "보통 10만 원 정도, 오래 신을 거라 품질에 투자",
+     "vocab": [
+      "good value for money",
+      "invest in"
+     ]
+    },
+    {
+     "q": "Have you ever bought shoes online?",
+     "idea": "네, 하지만 사이즈가 안 맞아 반품한 적 있음 (현재완료/과거형)",
+     "vocab": [
+      "return them",
+      "try them on"
+     ]
+    },
+    {
+     "q": "Do you like buying shoes? How often?",
+     "idea": "1년에 두세 번, 낡았을 때만 삼",
+     "vocab": [
+      "worn out",
+      "every now and then"
+     ]
+    }
+   ]
+  }
+ ]
+}
