@@ -89,7 +89,7 @@ function render(){
 function renderHome(app){
   const due=dueCards().length;
   const h=el("div","hello"); const h1=el("h1"); h1.append(document.createTextNode(`${D.name}님, `), el("b",null,due? `오늘 ${Math.min(due,DAILY)}장`: "오늘 복습 끝!"));
-  h.append(el("span","muted small",`${D.course} · ${D.sessions.length}회차 수업`), h1); app.append(h);
+  h.append(h1); app.append(h);
   const st=el("div","stats");
   for(const [cls,n,l] of [["due",due,"복습할 카드"],["streak",streak(),"연속 공부일"],["mast",mastered(),`마스터 / ${D.cards.length}`]]){
     const s=el("div","stat "+cls); s.append(el("b",null,String(n)), el("span",null,l)); st.append(s);
@@ -143,6 +143,8 @@ function flipCard(c, onFlip){
   const f=el("div","face front"); f.setAttribute("aria-hidden",String(flipped));
   const fh=el("div","fhead"); fh.append(chipsFor(), el("span","sess",sessLabel(c))); f.append(fh);
   const fb=el("div","body");
+  { const ss=(c.sessions||[]); const first=D.sessions.find(x=>x.no===ss[0]);
+    fb.append(el("span","from", ss.length>1? `${ss.join("·")}회차 수업에서 반복` : `${ss[0]}회차 수업${first&&first.date? " · "+mmdd(first.date):""}`)); }
   if(c.kind==="fix"){ fb.append(el("span","lab","틀린 문장이에요. 고쳐서 소리 내어 말해 보세요"), el("p","wrong",c.wrong)); }
   else { fb.append(el("span","lab", c.good? "이 말을 영어로 · 수업 때 잘했던 문장" : "이 말을 영어로 소리 내어 말해 보세요"), el("p","ko",c.ko)); }
   fb.append(el("span","tap","터치해서 정답 보기")); f.append(fb);
