@@ -1,0 +1,888 @@
+{
+ "slug": "yeyoung-k7p2",
+ "name": "예영",
+ "course": "IELTS Speaking",
+ "form": {
+  "url": "https://docs.google.com/forms/d/e/1FAIpQLSfybbvIl48g133Mx3PdH7rfqGDRy9NCum3SdpUJ3RDpWkdPNA/viewform?usp=pp_url&entry.1747437353=NAME_X&entry.1189878643=SESSION_X&entry.1202580096=RESULT_X"
+ },
+ "sessions": [
+  {
+   "no": 1,
+   "date": "2026-09-25",
+   "title": "Home · Hometown · Study · Work"
+  },
+  {
+   "no": 2,
+   "date": "2026-09-29",
+   "title": "Successful business"
+  },
+  {
+   "no": 3,
+   "date": "2026-10-03",
+   "title": "Perfect job"
+  },
+  {
+   "no": 4,
+   "date": "2026-10-10",
+   "title": "Live sports event"
+  },
+  {
+   "no": 5,
+   "date": "2026-10-08",
+   "title": "Technology"
+  },
+  {
+   "no": 6,
+   "date": "2026-09-30",
+   "title": "Environmental law"
+  },
+  {
+   "no": 7,
+   "date": "2026-10-20",
+   "title": "Learning without a teacher"
+  },
+  {
+   "no": 8,
+   "date": "2026-10-24",
+   "title": "Daily routine · Apps · Clothes"
+  },
+  {
+   "no": 9,
+   "date": "2026-10-28",
+   "title": "Books · Confidence · Education"
+  },
+  {
+   "no": 10,
+   "date": "2026-10-30",
+   "title": "Holidays · Weather · Memory · Sugar"
+  }
+ ],
+ "types": [
+  "단·복수",
+  "주어-동사",
+  "동사·시제",
+  "문장 구조",
+  "관사·전치사",
+  "품사",
+  "단어 선택",
+  "발음·철자"
+ ],
+ "tips": {
+  "단·복수": "many, there are 뒤에는 복수형(-s). clothes는 항상 복수예요.",
+  "주어-동사": "he/she/it/the city → has, is. people → are, love. 동사는 하나만!",
+  "동사·시제": "진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't.",
+  "문장 구조": "한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have.",
+  "관사·전치사": "처음 말하는 집은 a house, 바다는 the beach. go on holiday, on a rainy day.",
+  "품사": "be 뒤에는 형용사: confident, dead, scary, active.",
+  "단어 선택": "한국어를 그대로 옮기지 말고 영어에서 쓰는 짝꿍 표현으로.",
+  "발음·철자": "walk(r 소리 없음) / work(r 소리). 철자는 소리 내어 한 번 더."
+ },
+ "focus": {
+  "10": "과거 질문엔 끝까지 과거형! 장소 앞 관사(the beach)와 전치사(on holiday) 챙기기."
+ },
+ "compare": [
+  [
+   "used to vs be used to",
+   "<em>I used to play the recorder.</em> ~하곤 했다 (+동사원형)<br><em>I'm used to getting up early.</em> ~에 익숙하다 (+ing)"
+  ],
+  [
+   "talk / say / tell / speak",
+   "<em>talk with</em> 사람 · <em>say</em> + 말한 내용 · <em>tell</em> + 사람 + 내용 · <em>speak</em> + 언어"
+  ],
+  [
+   "affect / effect",
+   "<em>affect</em> 동사 (영향을 주다) · <em>effect</em> 명사 (영향)"
+  ],
+  [
+   "scare / scared / scary",
+   "<em>scared</em> 무서운 감정 · <em>scary</em> 무서운 대상"
+  ],
+  [
+   "ago / for / in",
+   "<em>6 months ago</em> 전에 · <em>for 6 months</em> 동안 · <em>in 6 months</em> 후에"
+  ],
+  [
+   "confidence / confident",
+   "<em>confidence</em> 명사 · <em>confident</em> 형용사"
+  ]
+ ],
+ "cards": [
+  {
+   "id": "m01",
+   "kind": "fix",
+   "type": "단·복수",
+   "sessions": [
+    1
+   ],
+   "wrong": "There is many company.",
+   "en": "There are many companies.",
+   "note": ""
+  },
+  {
+   "id": "m02",
+   "kind": "fix",
+   "type": "단·복수",
+   "sessions": [
+    1
+   ],
+   "wrong": "There are many park near my house.",
+   "en": "There are many parks near my house.",
+   "note": ""
+  },
+  {
+   "id": "m03",
+   "kind": "fix",
+   "type": "단·복수",
+   "sessions": [
+    4
+   ],
+   "wrong": "I bought a clothes.",
+   "en": "I bought some clothes.",
+   "note": "clothes는 a를 못 붙여요"
+  },
+  {
+   "id": "m04",
+   "kind": "fix",
+   "type": "주어-동사",
+   "sessions": [
+    2
+   ],
+   "wrong": "The house have a garden.",
+   "en": "The house has a garden.",
+   "note": ""
+  },
+  {
+   "id": "m05",
+   "kind": "fix",
+   "type": "주어-동사",
+   "sessions": [
+    3
+   ],
+   "wrong": "The city have a many school.",
+   "en": "The city has many schools.",
+   "note": ""
+  },
+  {
+   "id": "m06",
+   "kind": "fix",
+   "type": "주어-동사",
+   "sessions": [
+    8
+   ],
+   "wrong": "Here is many cafes.",
+   "en": "There are many cafes here.",
+   "note": ""
+  },
+  {
+   "id": "m07",
+   "kind": "fix",
+   "type": "주어-동사",
+   "sessions": [
+    8
+   ],
+   "wrong": "It's have a many restaurants.",
+   "en": "It has many restaurants.",
+   "note": ""
+  },
+  {
+   "id": "m08",
+   "kind": "fix",
+   "type": "동사·시제",
+   "sessions": [
+    1,
+    8
+   ],
+   "wrong": "I living in Canada.",
+   "en": "I'm living in Canada.",
+   "note": "진행형은 be동사 + -ing"
+  },
+  {
+   "id": "m09",
+   "kind": "fix",
+   "type": "동사·시제",
+   "sessions": [
+    4
+   ],
+   "wrong": "I interested in sports.",
+   "en": "I'm interested in sports.",
+   "note": "be interested in"
+  },
+  {
+   "id": "m10",
+   "kind": "fix",
+   "type": "동사·시제",
+   "sessions": [
+    5
+   ],
+   "wrong": "I no work.",
+   "en": "I don't work.",
+   "note": "부정문은 do not"
+  },
+  {
+   "id": "m11",
+   "kind": "fix",
+   "type": "동사·시제",
+   "sessions": [
+    5
+   ],
+   "wrong": "I'm moving to the Canada last year.",
+   "en": "I moved to Canada last year.",
+   "note": "last year → 과거형"
+  },
+  {
+   "id": "m12",
+   "kind": "fix",
+   "type": "동사·시제",
+   "sessions": [
+    7
+   ],
+   "wrong": "When I waking up, I drink one water.",
+   "en": "When I wake up, I drink a cup of water.",
+   "note": "물은 a cup of water"
+  },
+  {
+   "id": "m13",
+   "kind": "fix",
+   "type": "동사·시제",
+   "sessions": [
+    8
+   ],
+   "wrong": "I'm start yoga last month.",
+   "en": "I started yoga last month.",
+   "note": ""
+  },
+  {
+   "id": "m14",
+   "kind": "fix",
+   "type": "문장 구조",
+   "sessions": [
+    1,
+    2
+   ],
+   "wrong": "I prefer to house.",
+   "en": "I prefer living in a house.",
+   "note": "prefer + -ing"
+  },
+  {
+   "id": "m15",
+   "kind": "fix",
+   "type": "문장 구조",
+   "sessions": [
+    2
+   ],
+   "wrong": "I like wear the T-shirt.",
+   "en": "I like to wear T-shirts.",
+   "note": "like + to 동사 / -ing"
+  },
+  {
+   "id": "m16",
+   "kind": "fix",
+   "type": "문장 구조",
+   "sessions": [
+    4
+   ],
+   "wrong": "My city needs to more parks.",
+   "en": "My city needs more parks.",
+   "note": ""
+  },
+  {
+   "id": "m17",
+   "kind": "fix",
+   "type": "문장 구조",
+   "sessions": [
+    4
+   ],
+   "wrong": "I have to responsibility at work.",
+   "en": "I have responsibility at work.",
+   "note": ""
+  },
+  {
+   "id": "m18",
+   "kind": "fix",
+   "type": "문장 구조",
+   "sessions": [
+    7
+   ],
+   "wrong": "I'm used to play the recorder.",
+   "en": "I used to play the recorder.",
+   "note": "~하곤 했다 = used to + 동사원형"
+  },
+  {
+   "id": "m19",
+   "kind": "fix",
+   "type": "문장 구조",
+   "sessions": [
+    8
+   ],
+   "wrong": "It is make me feel relaxed.",
+   "en": "It makes me feel relaxed.",
+   "note": "동사 두 개 겹치지 않기"
+  },
+  {
+   "id": "m20",
+   "kind": "fix",
+   "type": "관사·전치사",
+   "sessions": [
+    1
+   ],
+   "wrong": "I visited the Vietnam.",
+   "en": "I visited Vietnam.",
+   "note": "나라 앞 the는 the US, the UK 정도만"
+  },
+  {
+   "id": "m21",
+   "kind": "fix",
+   "type": "관사·전치사",
+   "sessions": [
+    3
+   ],
+   "wrong": "I want to live in the house.",
+   "en": "I want to live in a house.",
+   "note": "처음 말할 때는 a"
+  },
+  {
+   "id": "m22",
+   "kind": "fix",
+   "type": "관사·전치사",
+   "sessions": [
+    6,
+    10
+   ],
+   "wrong": "I stay home in a rainy day.",
+   "en": "I stay home on a rainy day.",
+   "note": "on a rainy day"
+  },
+  {
+   "id": "m23",
+   "kind": "fix",
+   "type": "품사",
+   "sessions": [
+    4
+   ],
+   "wrong": "I like activity sports.",
+   "en": "I like active sports.",
+   "note": "active 형용사 / activity 명사"
+  },
+  {
+   "id": "m24",
+   "kind": "fix",
+   "type": "품사",
+   "sessions": [
+    6
+   ],
+   "wrong": "My plant is die.",
+   "en": "My plant is dead.",
+   "note": "die 동사 / dead 형용사"
+  },
+  {
+   "id": "m25",
+   "kind": "fix",
+   "type": "품사",
+   "sessions": [
+    6
+   ],
+   "wrong": "Korean is my country.",
+   "en": "Korea is my country.",
+   "note": "Korea 나라 / Korean 사람·언어"
+  },
+  {
+   "id": "m26",
+   "kind": "fix",
+   "type": "품사",
+   "sessions": [
+    6
+   ],
+   "wrong": "I made a reserve at the restaurant.",
+   "en": "I made a reservation at the restaurant.",
+   "note": "reserve 동사 / reservation 명사"
+  },
+  {
+   "id": "m27",
+   "kind": "fix",
+   "type": "품사",
+   "sessions": [
+    7
+   ],
+   "wrong": "I want to be more confidence.",
+   "en": "I want to be more confident.",
+   "note": "confidence 명사 / confident 형용사"
+  },
+  {
+   "id": "m28",
+   "kind": "fix",
+   "type": "품사",
+   "sessions": [
+    8
+   ],
+   "wrong": "The movie was scared.",
+   "en": "The movie was scary.",
+   "note": "scary 무서운 대상 / scared 무서운 감정"
+  },
+  {
+   "id": "m29",
+   "kind": "fix",
+   "type": "단어 선택",
+   "sessions": [
+    2
+   ],
+   "wrong": "We have to have each other.",
+   "en": "We have to understand and support each other.",
+   "note": ""
+  },
+  {
+   "id": "m30",
+   "kind": "fix",
+   "type": "단어 선택",
+   "sessions": [
+    6
+   ],
+   "wrong": "I go to travel every summer.",
+   "en": "I go travelling every summer.",
+   "note": "go + -ing"
+  },
+  {
+   "id": "m31",
+   "kind": "fix",
+   "type": "단어 선택",
+   "sessions": [
+    8
+   ],
+   "wrong": "I use a bus to go to work.",
+   "en": "I take a bus to go to work.",
+   "note": "take a bus"
+  },
+  {
+   "id": "m32",
+   "kind": "fix",
+   "type": "단어 선택",
+   "sessions": [
+    9
+   ],
+   "wrong": "I talked many people about it.",
+   "en": "I talked with many people about it.",
+   "note": "talk to / with + 사람"
+  },
+  {
+   "id": "m33",
+   "kind": "fix",
+   "type": "단어 선택",
+   "sessions": [
+    9
+   ],
+   "wrong": "She said me the story.",
+   "en": "She told me the story.",
+   "note": "tell + 사람 + 내용"
+  },
+  {
+   "id": "m34",
+   "kind": "fix",
+   "type": "발음·철자",
+   "sessions": [
+    6,
+    7
+   ],
+   "wrong": "walk / work",
+   "en": "walk (r 소리 없음) / work (r 소리)",
+   "note": "입 모양을 다르게"
+  },
+  {
+   "id": "e01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "나는 편식하지 않아",
+   "en": "I'm not a picky eater."
+  },
+  {
+   "id": "e02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "나는 요가할 때 물 만난 물고기 같아",
+   "en": "I'm in my element when I do yoga."
+  },
+  {
+   "id": "e03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "그 책은 생각할 거리를 많이 줘",
+   "en": "The book gives me a lot of food for thought."
+  },
+  {
+   "id": "e04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "영어 실력을 다시 살리고 싶어",
+   "en": "I want to brush up on my English."
+  },
+  {
+   "id": "e05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "작년에 요가를 취미로 시작했어",
+   "en": "I took up yoga last year."
+  },
+  {
+   "id": "e06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "걸어서 10분 거리야",
+   "en": "It's a 10-minute walk."
+  },
+  {
+   "id": "e07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "교통체증을 피하려고 일찍 나가",
+   "en": "I leave early to beat the traffic."
+  },
+  {
+   "id": "e08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "술을 줄이려고 하고 있어",
+   "en": "I'm trying to cut down on alcohol."
+  },
+  {
+   "id": "e09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "탄소 배출을 줄여야 해",
+   "en": "We need to reduce carbon emissions."
+  },
+  {
+   "id": "e10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "재생에너지로 전환해야 해",
+   "en": "We should switch to renewable energy."
+  },
+  {
+   "id": "e11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "갑자기 머리가 하얘졌어",
+   "en": "All of a sudden, my mind went blank."
+  },
+  {
+   "id": "e12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "그 방법이 만능해결책은 아니야",
+   "en": "It's not a magic bullet."
+  },
+  {
+   "id": "e13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "그는 처음에 좀 깐깐한 인상을 줬어",
+   "en": "He came across as strict at first."
+  },
+  {
+   "id": "e14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "좋은 아이디어가 하나 떠올랐어",
+   "en": "I came up with a good idea."
+  },
+  {
+   "id": "e15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "여행이 계획대로 되지 않았어",
+   "en": "Things didn't go to plan."
+  },
+  {
+   "id": "e16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "알고 보니 그 식당은 문을 닫았더라",
+   "en": "It turned out that the restaurant was closed."
+  },
+  {
+   "id": "e17",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "나는 일찍 일어나는 게 익숙해",
+   "en": "I'm used to getting up early."
+  },
+  {
+   "id": "e18",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "나는 어릴 때 리코더를 불곤 했어",
+   "en": "I used to play the recorder."
+  },
+  {
+   "id": "e19",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "내일은 비가 올 것 같아",
+   "en": "It's likely to rain tomorrow."
+  },
+  {
+   "id": "e20",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "나는 파란색으로 할게",
+   "en": "I'll go with the blue one."
+  },
+  {
+   "id": "e21",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "최근에 가격이 조금 떨어졌어",
+   "en": "The price has dropped a bit recently."
+  },
+  {
+   "id": "e22",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "내가 말했던 것처럼, 나는 바다를 더 좋아해",
+   "en": "As I said, I prefer the beach."
+  },
+  {
+   "id": "e23",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "무슨 일이야? 왜 이렇게 시끄러워?",
+   "en": "What's going on? Why is it so noisy?"
+  },
+  {
+   "id": "e24",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "그곳은 내 안식처야",
+   "en": "It's my safe haven."
+  },
+  {
+   "id": "r10-01",
+   "kind": "ko",
+   "sessions": [
+    10
+   ],
+   "type": "동사·시제",
+   "ko": "며칠 전에 휴가를 다녀왔어요.",
+   "en": "I went on holiday a few days ago.",
+   "mine": "I went to hosiblday",
+   "gram": "휴가를 가다는 <em>go on holiday</em>로 통째로 외워요. 끝에 <em>a few days ago</em>(며칠 전)가 있으니 동사는 과거형 <em>went</em>예요."
+  },
+  {
+   "id": "r10-02",
+   "kind": "ko",
+   "sessions": [
+    10
+   ],
+   "type": "동사·시제",
+   "ko": "영화를 봤어요.",
+   "en": "I watched a movie.",
+   "mine": "I wathehd",
+   "gram": "규칙동사의 과거형은 <em>동사 + -ed</em>. watch → <em>watched</em>. 발음은 [와치트]처럼 끝을 t로 짧게."
+  },
+  {
+   "id": "r10-03",
+   "kind": "ko",
+   "sessions": [
+    10
+   ],
+   "type": "관사·전치사",
+   "ko": "해변에 갔어요.",
+   "en": "I went to the beach.",
+   "mine": "You went to beach",
+   "gram": "해변, 바다, 산처럼 모두가 아는 장소 앞에는 <em>the</em>: <em>the beach, the sea, the mountains</em>. 내 이야기니까 주어는 I."
+  },
+  {
+   "id": "r10-04",
+   "kind": "ko",
+   "sessions": [
+    10
+   ],
+   "type": "단어 선택",
+   "ko": "저는 단 걸 좋아해요.",
+   "en": "I have a sweet tooth.",
+   "mine": "I like sweet tooth",
+   "gram": "<em>have a sweet tooth</em>는 관용 표현이라 동사는 like가 아니라 <em>have</em>, 앞에 <em>a</em>도 꼭!"
+  },
+  {
+   "id": "r10-05",
+   "kind": "ko",
+   "sessions": [
+    10
+   ],
+   "type": "주어-동사",
+   "ko": "사람들은 단 걸 정말 좋아해요.",
+   "en": "People love sweets.",
+   "mine": "People is love sweets",
+   "gram": "한 문장에 동사는 하나만! is와 love를 같이 쓰면 안 돼요. <em>people</em>은 복수라 be동사라면 are."
+  },
+  {
+   "id": "r10-06",
+   "kind": "ko",
+   "sessions": [
+    10
+   ],
+   "type": "단어 선택",
+   "ko": "날씨는 제 기분에 영향을 줘요.",
+   "en": "The weather affects my mood.",
+   "mine": "Weather effects my mood",
+   "gram": "<em>affect</em>는 동사(영향을 주다), <em>effect</em>는 명사(영향). 주어가 3인칭 단수라 <em>affects</em>."
+  },
+  {
+   "id": "r10-07",
+   "kind": "ko",
+   "sessions": [
+    10
+   ],
+   "type": "동사·시제",
+   "ko": "저한테는 상관없어요.",
+   "en": "It doesn't matter to me.",
+   "mine": "it doest matter to you",
+   "gram": "<em>doesn't = does not</em>. 여기서 <em>matter</em>는 '중요하다'라는 동사. 내 입장이니까 <em>to me</em>."
+  },
+  {
+   "id": "r10-08",
+   "kind": "ko",
+   "sessions": [
+    10
+   ],
+   "type": "관사·전치사",
+   "ko": "6개월 전에 하와이에 갔어요.",
+   "en": "I went to Hawaii six months ago.",
+   "mine": "in 6 months · 하와이",
+   "gram": "<em>ago</em> 전에 · <em>for</em> 6 months 동안 · <em>in</em> 6 months 후에. 모르는 단어도 영어로: Hawaii."
+  },
+  {
+   "id": "r10-09",
+   "kind": "ko",
+   "sessions": [
+    10
+   ],
+   "type": "단어 선택",
+   "ko": "관광을 하고 싶어요.",
+   "en": "I want to go sightseeing.",
+   "mine": "seesight",
+   "gram": "<em>go + -ing</em> = ~하러 가다: go sightseeing, go shopping. <em>want to</em> 뒤에는 동사원형."
+  },
+  {
+   "id": "r10-10",
+   "kind": "ko",
+   "sessions": [
+    10
+   ],
+   "type": "발음·철자",
+   "ko": "그곳은 정말 시끄러웠어요.",
+   "en": "It was really noisy.",
+   "mine": "nosiy",
+   "gram": "<em>noise</em>(명사) → <em>noisy</em>(형용사). be동사 뒤에는 형용사! 과거 이야기라 <em>was</em>."
+  },
+  {
+   "id": "r10-11",
+   "kind": "ko",
+   "sessions": [
+    10
+   ],
+   "type": "단어 선택",
+   "ko": "병원에서 퇴원했어요.",
+   "en": "I was discharged from the hospital.",
+   "mine": "I was discharged",
+   "good": true,
+   "gram": "문장은 맞았어요! <em>be + 과거분사</em>는 '~되다'. 퇴원은 <em>from the hospital</em>, 전역은 <em>from the military</em>."
+  },
+  {
+   "id": "r10-12",
+   "kind": "ko",
+   "sessions": [
+    10
+   ],
+   "type": "잘한 표현",
+   "ko": "제가 기억하는 한, 그곳은 유명한 관광지였어요.",
+   "en": "As far as I remember, it was a famous tourist attraction.",
+   "mine": "as far as I remember · tourist attraction",
+   "good": true,
+   "gram": "<em>As far as I remember</em>는 문장 앞 덩어리 표현. 관광지는 <em>tourist attraction</em>, 여행지 전체는 <em>tourist destination</em>."
+  },
+  {
+   "id": "r10-13",
+   "kind": "ko",
+   "sessions": [
+    10
+   ],
+   "type": "잘한 표현",
+   "ko": "저는 바다에 가는 걸 더 좋아해요.",
+   "en": "I prefer going to the beach.",
+   "mine": "I prefer going to the beach",
+   "good": true,
+   "gram": "<em>prefer + -ing</em> 완벽해요! 1~2회차에 틀렸던 부분이에요. 비교는 <em>I prefer the beach to the mountains.</em>"
+  }
+ ]
+}
