@@ -279,7 +279,6 @@ function flipCard(c, onFlip){
   bb.append(wb);
   const gtext = c.gram || [c.note, (D.tips||{})[typeOf(c)]].filter(Boolean).join(" · ");
   if(gtext){ const g=el("div","gram"); g.append(el("b",null, c.vtopic? "예문" : "포인트")); const p=el("p"); if(c.gram) p.innerHTML=c.gram; else p.textContent=gtext; g.append(p); bb.append(g); }
-  if(c.mine){ const mi=el("div","mine"+(c.good?" good":"")); if(c.good){ mi.append(document.createTextNode("수업 때 이렇게 말했어요 ·"), el("b",null,c.mine)); } else { mi.append(document.createTextNode(c.example? "이렇게 틀리기 쉬워요" : "수업 때 한 말"), el("s",null,c.mine)); } bb.append(mi); }
   const fbk=el("button","flipback","↺ 앞면 다시 보기"); fbk.type="button"; fbk.tabIndex=flipped?0:-1; fbk.onclick=e=>{ e.stopPropagation(); setFlip(card,false,onFlip); };
   bb.append(fbk); b.append(bb);
   card.append(f,b);
