@@ -100,7 +100,7 @@ function renderHome(app){
   }
   app.append(st);
   const hero=el("div","hero");
-  hero.append(el("h2",null, due? "오늘의 복습을 시작해요" : "더 연습하고 싶다면"), el("p",null, due? "반복해서 틀린 문장부터 먼저 나와요. 소리 내어 말한 뒤 정답을 확인하세요." : "헷갈렸던 카드 10장을 다시 볼 수 있어요."));
+  hero.append(el("h2",null, due? "오늘의 복습을 시작해요" : "더 연습하고 싶다면"), el("p",null, due? "반복해서 틀린 문장부터 먼저 나와요." : "헷갈렸던 카드 10장을 다시 볼 수 있어요."));
   const b=el("button",null, due? `복습 시작 (${Math.min(due,DAILY)}장)` : "약한 카드 연습"); b.type="button"; b.onclick=()=>go("review",{extra:!due}); hero.append(b);
   app.append(hero);
   const last=D.sessions[D.sessions.length-1];
@@ -232,8 +232,8 @@ function flipCard(c, onFlip){
   const fb=el("div","body");
   { const ss=(c.sessions||[]); const first=D.sessions.find(x=>x.no===ss[0]);
     fb.append(el("span","from", ss.length>1? `${ss.join("·")}회차 수업에서 반복` : `${ss[0]}회차 수업${first&&first.date? " · "+mmdd(first.date):""}`)); }
-  if(c.kind==="fix"){ fb.append(el("span","lab","틀린 문장이에요. 고쳐서 소리 내어 말해 보세요"), el("p","wrong",c.wrong)); }
-  else { fb.append(el("span","lab", c.good? "이 말을 영어로 · 수업 때 잘했던 문장" : "이 말을 영어로 소리 내어 말해 보세요"), el("p","ko",c.ko)); }
+  if(c.kind==="fix"){ fb.append(el("span","lab","틀린 문장이에요. 바르게 고쳐 보세요"), el("p","wrong",c.wrong)); }
+  else { fb.append(el("span","lab", c.good? "이 말을 영어로 하면? · 수업 때 잘했던 문장" : "이 말을 영어로 하면?"), el("p","ko",c.ko)); }
   fb.append(el("span","tap","터치해서 정답 보기")); f.append(fb);
   // back
   const b=el("div","face back"); b.setAttribute("aria-hidden",String(!flipped));
@@ -341,7 +341,7 @@ function renderReview(app){
   const no=el("button","again","다시 볼래요"); no.type="button"; no.onclick=()=>answer(c,false);
   const ok=el("button","know","맞혔어요"); ok.type="button"; ok.onclick=()=>answer(c,true);
   acts.append(no,ok); acts.hidden=!flipped; app.append(acts);
-  const tip=el("p","hint2","소리 내어 말한 다음 카드를 눌러 정답을 확인하세요"); tip.hidden=flipped; app.append(tip);
+  const tip=el("p","hint2","카드를 눌러 정답을 확인하세요"); tip.hidden=flipped; app.append(tip);
 }
 function answer(c,ok){ grade(c,ok); reviewState.res.push({ok,c}); reviewState.i++; flipped=false; picked=null; render(); }
 
