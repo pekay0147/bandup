@@ -66,26 +66,28 @@ const ICONS={
   home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/></svg>',
   cards:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 4h12a2 2 0 0 1 2 2v11"/></svg>',
   review:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>',
+  words:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20a2 2 0 0 0 2 2h13v-4"/><path d="M8 7h7M8 11h5"/></svg>',
   listen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="5" height="7" rx="2"/><rect x="16" y="14" width="5" height="7" rx="2"/></svg>',
   ideas:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg>',
   notes:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h5"/></svg>'
 };
 function buildTabs(){
   const nav=$("#tabs nav"); nav.textContent="";
-  for(const [k,label] of [["home","홈"],["cards","큐카드"],["review","복습"],["ideas","아이디어"],["listen","철자"]]){
+  for(const [k,label] of [["home","홈"],["cards","큐카드"],["review","복습"],["ideas","아이디어"],["words","단어"]]){
     const b=el("button"); b.type="button"; b.dataset.tab=k; b.innerHTML=ICONS[k]; b.append(el("span",null,label));
     if(k==="review"){ const bd=el("span","badge"); bd.id="dueBadge"; b.append(bd); }
     b.onclick=()=>{ go(k); };
     nav.append(b);
   }
 }
-function go(tab, extra){ if(tab!=="listen" && typeof LD!=="undefined"){ LD=null; try{ speechSynthesis.cancel(); }catch(_){} } view={tab, ...(extra||{})}; flipped=false; picked=null; if(tab!=="cards") deckState=null; if(tab!=="review") reviewState=null; render(); window.scrollTo(0,0); }
+function go(tab, extra){ if(tab!=="words" && typeof LD!=="undefined"){ LD=null; try{ speechSynthesis.cancel(); }catch(_){} } view={tab, ...(extra||{})}; flipped=false; picked=null; if(tab!=="cards") deckState=null; if(tab!=="review") reviewState=null; render(); window.scrollTo(0,0); }
 function updateTabs(){
   document.querySelectorAll("#tabs button").forEach(b=>{ if(b.dataset.tab===view.tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
-  const n=dueCards().length, bd=$("#dueBadge"); if(bd){ bd.textContent=n>99?"99+":String(n); bd.hidden=!n; }
+  const n=Math.min(dueCards().length,DAILY), bd=$("#dueBadge"); if(bd){ bd.textContent=String(n); bd.hidden=!n; }
 }
 
 /* ---------- render ---------- */
+function pageHead(app, title, lead){ const h=el("div","phead"); h.append(el("h1",null,title)); if(lead) h.append(el("p","lead",lead)); app.append(h); }
 function render(){
   const app=$("#app"); app.textContent="";
   if(view.tab==="home") renderHome(app);
@@ -93,7 +95,6 @@ function render(){
   if(view.tab==="review") renderReview(app);
   if(view.tab==="notes") renderNotes(app);
   if(view.tab==="ideas") renderIdeas(app);
-  if(view.tab==="listen") renderListen(app);
   if(view.tab==="words") renderWords(app);
   updateTabs();
 }
@@ -103,7 +104,7 @@ function renderHome(app){
   const h=el("div","hello"); const h1=el("h1"); h1.append(document.createTextNode(`${D.name}님, `), el("b",null,due? `오늘 ${Math.min(due,DAILY)}장`: "오늘 복습 끝!"));
   h.append(h1); app.append(h);
   const st=el("div","stats");
-  for(const [cls,n,l] of [["due",due,"복습할 카드"],["streak",streak(),"연속 공부일"]]){
+  for(const [cls,n,l] of [["due",D.cards.length,"내 수업 카드"],["streak",streak(),"연속 공부일"]]){
     const s=el("div","stat "+cls); s.append(el("b",null,String(n)), el("span",null,l)); st.append(s);
   }
   app.append(st);
@@ -113,7 +114,7 @@ function renderHome(app){
   app.append(hero);
   const last=D.sessions[D.sessions.length-1];
   if(last){
-    app.append(wordsTile());
+    app.append(menuGuide());
     app.append(quoteBox());
   }
   if(false){
@@ -121,6 +122,22 @@ function renderHome(app){
       el("span",null,"아이폰: Safari 아래 공유 버튼 → '홈 화면에 추가'"), el("span",null,"안드로이드: Chrome 오른쪽 위 ⋮ → '홈 화면에 추가'"));
     app.append(ins);
   }
+}
+function menuGuide(){
+  const nWB = WB? WB.sections.reduce((a,s)=>a+s.groups.reduce((b,g)=>b+g.words.length,0),0) : 0;
+  const nLS = LS? LS.categories.reduce((a,c)=>a+c.words.length,0) : 0;
+  const nP2 = P2? P2.items.length : 0;
+  const w=el("div","menu"); w.append(el("h2","sec-t","무엇을 공부할까요?"));
+  for(const [k,name,desc] of [
+    ["cards","큐카드",`수업 문장 ${D.cards.length}장 · 회차별 / 틀린 문장 / 랜덤`],
+    ["ideas","아이디어",`Part 1 어휘 · Part 2 기출 ${nP2}개 · Part 3 질문`],
+    ["words","단어",`아이엘츠 단어 ${nWB}개 · 철자 받아쓰기 ${nLS}개`]]){
+    const b=el("button","mrow"); b.type="button";
+    const ic=el("span","mic"); ic.innerHTML=ICONS[k];
+    const t=el("div","t"); t.append(el("b",null,name), el("span",null,desc));
+    b.append(ic,t,el("span","go","›")); b.onclick=()=>go(k); w.append(b);
+  }
+  return w;
 }
 function deckTile(s){
   const n=D.cards.filter(c=>(c.sessions||[]).includes(s.no)).length;
@@ -132,9 +149,9 @@ function deckTile(s){
 }
 
 function renderDecks(app){
-  app.append(el("h1",null,"큐카드"));
+  pageHead(app,"큐카드","수업 시간에 나온 문장을 카드로 연습해요.");
   const seg=el("div","modeseg"); seg.setAttribute("role","tablist");
-  for(const [k,label,sub] of [["session","회차별 정리","회차마다 모아 보기"],["wrong","틀린 문장",`${D.cards.filter(isWrong).length}개 모아 보기`],["random","랜덤 퀴즈",`1~${D.sessions[D.sessions.length-1].no}회차 섞어서`]]){
+  for(const [k,label,sub] of [["session","회차별",`1~${D.sessions[D.sessions.length-1].no}회차`],["wrong","틀린 문장",`${D.cards.filter(isWrong).length}개`],["random","랜덤 퀴즈","섞어서 풀기"]]){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(cardMode===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; render(); }; seg.append(b);
   }
@@ -236,8 +253,6 @@ function flipCard(c, onFlip){
   const fh=el("div","fhead"); fh.append(chipsFor(), el("span","sess",sessLabel(c))); f.append(fh);
   const fb=el("div","body");
   if(c.vtopic){ fb.append(el("span","from",`${c.vlabel||"주제별 어휘"} · ${c.vtopic}`)); }
-  else { const ss=(c.sessions||[]); const first=D.sessions.find(x=>x.no===ss[0]);
-    fb.append(el("span","from", ss.length>1? `${ss.join("·")}회차 수업에서 반복` : `${ss[0]}회차 수업${first&&first.date? " · "+mmdd(first.date):""}`)); }
   if(c.kind==="fix"){ fb.append(el("span","lab","틀린 문장이에요. 바르게 고쳐 보세요"), el("p","wrong",c.wrong)); }
   else { fb.append(el("p","ko",c.ko));
     const hint = c.hint || (c.vtopic? (()=>{ const ws=c.en.split(/\s+/).filter(w=>w.replace(/[^A-Za-z]/g,"").length>2); const k=ws.sort((x,y)=>y.length-x.length)[0]||c.en.split(" ")[0]; return ws.length>1? k.replace(/[^A-Za-z'-]/g,"") : k.replace(/[A-Za-z]+/g,m=>m[0]+"_".repeat(m.length-1)); })() : "");
@@ -342,8 +357,7 @@ function renderDeck(app){
                : view.deck==="all" ? [...D.cards].sort(()=>Math.random()-.5) : D.cards.filter(c=>(c.sessions||[]).includes(view.deck));
     deckState={key:view.deck, ids:list.map(c=>c.id), i:0};
   }
-  const back=el("button","back", view.deck==="vocab"? (view.backTo==="words"? "‹ 아이엘츠 단어 공부" : "‹ 주제별 어휘") : view.deck==="rand"? "‹ 랜덤 퀴즈 설정" : view.deck==="wrong"? "‹ 틀린 문장 모음" : "‹ 회차별 정리"); back.type="button"; back.onclick=()=>{ if(view.deck==="vocab"){ if(view.backTo==="words"){ go("words"); return; } ideaPart="p1"; go("ideas"); return; } if(view.deck==="rand") cardMode="random"; else if(view.deck==="wrong") cardMode="wrong"; else { cardMode="session"; if(typeof view.deck==="number") selSession=view.deck; } go("cards"); }; app.append(back);
-  if(!["rand","wrong","vocab"].includes(view.deck)) app.append(sessionPicker(view.deck, v=>{ if(v!==view.deck){ if(typeof v==="number") selSession=v; go("cards",{deck:v}); } }, false));
+  const back=el("button","back", view.deck==="vocab"? (view.backTo==="words"? "‹ 단어 공부" : "‹ 아이디어 · Part 1") : view.deck==="rand"? "‹ 랜덤 퀴즈 설정" : view.deck==="wrong"? "‹ 틀린 문장 모음" : "‹ 회차별"); back.type="button"; back.onclick=()=>{ if(view.deck==="vocab"){ if(view.backTo==="words"){ go("words"); return; } ideaPart="p1"; go("ideas"); return; } if(view.deck==="rand") cardMode="random"; else if(view.deck==="wrong") cardMode="wrong"; else { cardMode="session"; if(typeof view.deck==="number") selSession=view.deck; } go("cards"); }; app.append(back);
   const s=D.sessions.find(x=>x.no===view.deck);
   app.append(el("h1",null, view.deck==="vocab"? `${view.title||"주제별 어휘"} 카드` : view.deck==="rand"? "랜덤 퀴즈" : view.deck==="wrong"? "틀린 문장 연습" : view.deck==="all"? "전체 큐카드" : `${view.deck}회차 큐카드`));
   if(s) app.append(el("p","muted small",`${mmdd(s.date)} · ${s.title}`));
@@ -377,7 +391,7 @@ function renderReview(app){
     pool.sort((a,b)=>(rep(b)-rep(a)) || (((srs[a.id]||{}).box||0)-((srs[b.id]||{}).box||0)) || (marks[b.id]==="again")-(marks[a.id]==="again") || Math.random()-.5);
     reviewState={ids:pool.slice(0, view.extra?10:DAILY).map(c=>c.id), i:0, res:[]};
   }
-  app.append(el("h1",null, view.extra? "약한 카드 연습" : "오늘의 복습"));
+  pageHead(app, view.extra? "약한 카드 연습" : "오늘의 복습", view.extra? "헷갈렸던 카드 10장을 다시 봐요." : `하루 ${DAILY}장씩, 다시 볼 때가 된 카드가 자동으로 나와요.`);
   const R=reviewState;
   const c=R.ids[R.i] && D.cards.find(x=>x.id===R.ids[R.i]);
   if(!c){
@@ -445,11 +459,11 @@ function noteRow(c){
 /* ---------- ideas: Part 1 / Part 2 / Part 3 ---------- */
 let ideaPart="p2", openKey=null, p2Query="", p2Lesson=false;
 function renderIdeas(app){
-  app.append(el("h1",null,"아이디어"));
+  pageHead(app,"아이디어","스피킹 답변에 쓸 재료를 Part별로 모았어요.");
   const seg=el("div","modeseg"); seg.setAttribute("role","tablist");
   const n1=P1? P1.topics.length : 0;
   const n2=P2? P2.items.length : 0, n3=(D.part3||[]).reduce((a,s)=>a+s.qs.length,0);
-  for(const [k,label,sub] of [["p1","Part 1",`주제별 어휘 ${n1}개`],["p2","Part 2",`예상 기출 ${n2}개`],["p3","Part 3",`질문 ${n3}개`]]){
+  for(const [k,label,sub] of [["p1","Part 1",`어휘 ${n1}주제`],["p2","Part 2",`기출 ${n2}개`],["p3","Part 3",`질문 ${n3}개`]]){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(ideaPart===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ ideaPart=k; openKey=null; render(); }; seg.append(b);
   }
@@ -549,7 +563,7 @@ function renderP2(app){
 
 
 /* ---------- IELTS word study ---------- */
-let wbSec="all";
+let wbSec="all", wordMode="vocab";
 function wordsTile(){
   const n = WB? WB.sections.reduce((a,s)=>a+s.groups.reduce((b,g)=>b+g.words.length,0),0) : 0;
   const t=el("button","tile wtile"); t.type="button";
@@ -559,8 +573,17 @@ function wordsTile(){
 }
 function wbTopics(secs){ return secs.flatMap(s=>s.groups.map(g=>({topic:`${s.key}-${g.name}`, ko:`${s.ko} · ${g.name}`, words:g.words}))); }
 function renderWords(app){
-  const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
-  app.append(el("h1",null,"아이엘츠 단어 공부"));
+  if(LD) return renderDictation(app);
+  pageHead(app,"단어","뜻 외우기와 리스닝 철자 받아쓰기를 여기서 해요.");
+  const nWB = WB? WB.sections.reduce((a,s)=>a+s.groups.reduce((b,g)=>b+g.words.length,0),0) : 0;
+  const nLS = LS? LS.categories.reduce((a,c)=>a+c.words.length,0) : 0;
+  const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
+  for(const [k,label,sub] of [["vocab","단어 공부",`${nWB}개 · 뜻·예문`],["spell","철자 받아쓰기",`${nLS}개 · 듣고 쓰기`]]){
+    const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(wordMode===k));
+    b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ wordMode=k; openKey=null; render(); }; seg.append(b);
+  }
+  app.append(seg);
+  if(wordMode==="spell") return renderListen(app);
   if(!WB){ const e=el("div","empty"); e.append(el("p",null,"단어를 불러오지 못했어요.")); app.append(e); return; }
   const chips=el("div","pchips"); chips.setAttribute("role","group");
   for(const [k,l] of [["all","전체"],...WB.sections.map(s=>[s.key,s.ko])]){ const b=el("button",null,l); b.type="button"; b.setAttribute("aria-pressed",String(wbSec===k)); b.onclick=()=>{ wbSec=k; openKey=null; render(); }; chips.append(b); }
@@ -597,8 +620,6 @@ function speak(word, slow){
 }
 function speakBtn(word, label){ const b=el("button","spk"); b.type="button"; b.innerHTML=SPEAK_ICON; b.setAttribute("aria-label",label||`${word} 듣기`); b.onclick=e=>{ e.stopPropagation(); speak(word); }; return b; }
 function renderListen(app){
-  if(LD) return renderDictation(app);
-  app.append(el("h1",null,"철자 연습"));
   if(!LS){ const e=el("div","empty"); e.append(el("p",null,"자료를 불러오지 못했어요.")); app.append(e); return; }
   const all=LS.categories.flatMap(c=>c.words);
   const t=el("div","focus"); t.append(el("b",null,"철자 하나 틀려도 오답이에요"), document.createTextNode("리스닝에서 철자 때문에 자주 틀리는 단어예요. 듣고 직접 써 보세요. 영국식·미국식 철자는 둘 다 정답이에요.")); app.append(t);
@@ -615,7 +636,7 @@ function renderListen(app){
   }
   app.append(p);
 }
-function startDictation(words, title){ LD={words, title, i:0, res:[], checked:false, typed:""}; go("listen"); setTimeout(()=>speak(words[0][0]),250); }
+function startDictation(words, title){ LD={words, title, i:0, res:[], checked:false, typed:""}; wordMode="spell"; go("words"); setTimeout(()=>speak(words[0][0]),250); }
 function norm(x){ return String(x||"").trim().toLowerCase().replace(/\s+/g," "); }
 function isRight(word, typed){ const t=norm(typed); return t===word.toLowerCase() || (ALT[word.toLowerCase()]||[]).includes(t); }
 function diffSpans(correct, typed){
@@ -630,7 +651,7 @@ function diffSpans(correct, typed){
 }
 function renderDictation(app){
   const L=LD;
-  const back=el("button","back","‹ 철자 연습"); back.type="button"; back.onclick=()=>{ LD=null; try{ speechSynthesis.cancel(); }catch(_){} render(); }; app.append(back);
+  const back=el("button","back","‹ 철자 받아쓰기"); back.type="button"; back.onclick=()=>{ LD=null; try{ speechSynthesis.cancel(); }catch(_){} render(); }; app.append(back);
   app.append(el("h1",null,L.title));
   if(L.i>=L.words.length){
     const ok=L.res.filter(r=>r.ok).length; const wrong=L.res.filter(r=>!r.ok);
