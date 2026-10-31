@@ -103,11 +103,11 @@ function renderHome(app){
   const due=dueCards().length;
   const h=el("div","hello"); const h1=el("h1"); h1.append(document.createTextNode(`${D.name}님, `), el("b",null,due? `오늘 ${Math.min(due,DAILY)}장`: "오늘 복습 끝!"));
   h.append(h1); app.append(h);
-  const st=el("div","stats");
+  if(false){ const st=el("div","stats");
   for(const [cls,n,l] of [["due",D.cards.length,"내 수업 카드"],["streak",streak(),"연속 공부일"]]){
     const s=el("div","stat "+cls); s.append(el("b",null,String(n)), el("span",null,l)); st.append(s);
   }
-  app.append(st);
+  app.append(st); }
   const hero=el("div","hero");
   hero.append(el("h2",null, due? "오늘의 복습을 시작해요" : "더 연습하고 싶다면"), el("p",null, due? "반복해서 틀린 문장부터 먼저 나와요." : "헷갈렸던 카드 10장을 다시 볼 수 있어요."));
   const b=el("button",null, due? `복습 시작 (${Math.min(due,DAILY)}장)` : "약한 카드 연습"); b.type="button"; b.onclick=()=>go("review",{extra:!due}); hero.append(b);
@@ -195,7 +195,7 @@ function renderWrongList(app){
   const order=()=>{ const first=[...new Set([...repeated,...weak])]; const rest=all.filter(c=>!first.includes(c)); return [...first,...rest]; };
   const b1=el("button","btn primary",`전부 연습 ${all.length}장`); b1.type="button"; b1.onclick=()=>{ deckState=null; go("cards",{deck:"wrong", ids:order().map(c=>c.id)}); };
   const b2=el("button","btn","섞어서 연습"); b2.type="button"; b2.onclick=()=>{ deckState=null; go("cards",{deck:"wrong", ids:[...all].sort(()=>Math.random()-.5).map(c=>c.id)}); };
-  row.append(b1,b2); p.append(row); app.append(p);
+  row.append(b1); p.append(row); app.append(p);
   const sec=(title,list,sub)=>{ if(!list.length) return; const q=el("div","panel"); const gh=el("div","ghead"); gh.append(el("b",null,title), el("span",null,sub||`${list.length}개`)); q.append(gh); list.forEach(c=>q.append(noteRow(c))); app.append(q); };
   sec("여러 번 반복한 실수", repeated, `${repeated.length}개 · 복습에 2배 자주 나와요`);
   sec("헷갈렸던 문장", weak.filter(c=>!rep(c)));
@@ -212,7 +212,6 @@ function renderRandomSetup(app){
     for(const [v,l] of opts){ const b=el("button",null,l); b.type="button"; b.setAttribute("aria-pressed",String(cur===v)); b.onclick=()=>{ set(v); render(); }; r.append(b); }
     w.append(r); return w; };
   p.append(grp("몇 장", [[10,"10장"],[20,"20장"],[0,"전체"]], randCount, v=>randCount=v));
-  p.append(grp("어떤 문장", [["all","전부"],["wrong","틀렸던 문장만"],["keep","외울 문장만"]], randKind, v=>randKind=v));
   const pool=randPool();
   const n = randCount? Math.min(randCount,pool.length) : pool.length;
   const b=el("button","btn primary",`랜덤 퀴즈 시작 · ${n}장`); b.type="button"; b.disabled=!n;
@@ -247,7 +246,7 @@ function flipCard(c, onFlip){
   const scene=el("div","scene");
   const card=el("div","card"+(flipped?" flipped":"")); card.style.setProperty("--c",col(c));
   card.tabIndex=0; card.setAttribute("role","button"); card.setAttribute("aria-label", flipped?"카드 앞면으로 뒤집기":"카드 뒤집기");
-  const chipsFor=()=>{ const w=el("div","chips"); const ch=el("span","chip",typeOf(c)); ch.style.setProperty("--c",col(c)); w.append(ch); if(rep(c)) w.append(el("span","rep",`반복 ×${c.sessions.length}`)); return w; };
+  const chipsFor=()=>{ const w=el("div","chips"); if(rep(c)) w.append(el("span","rep",`${c.sessions.length}번 반복`)); return w; };
   // front
   const f=el("div","face front"); f.setAttribute("aria-hidden",String(flipped));
   const fh=el("div","fhead"); fh.append(chipsFor(), el("span","sess",sessLabel(c))); f.append(fh);
@@ -538,7 +537,7 @@ function renderP2(app){
   inp.addEventListener("input",e=>{ if(e.isComposing) return; applyFilter(); });
   inp.addEventListener("compositionend",applyFilter);
   const chip=el("button",null,"수업에서 다룬 주제만"); chip.type="button"; chip.className="lessonchip"; chip.setAttribute("aria-pressed",String(p2Lesson)); chip.onclick=()=>{ p2Lesson=!p2Lesson; render(); };
-  tools.append(inp, chip); app.append(tools);
+  tools.append(inp); app.append(tools);
   const q=p2Query.trim().toLowerCase();
   const hay=it=>(it.topic+" "+it.answer+" "+it.points.join(" ")+" "+(it.alts||[]).join(" ")).toLowerCase();
   const list=P2.items.filter(it=>(!p2Lesson || it.lesson));
@@ -626,7 +625,7 @@ function renderListen(app){
   const row=el("div","btnrow");
   const s20=el("button","btn primary",`받아쓰기 20개`); s20.type="button"; s20.onclick=()=>startDictation([...all].sort(()=>Math.random()-.5).slice(0,20),"받아쓰기 20개");
   const sAll=el("button","btn",`전체 ${all.length}개`); sAll.type="button"; sAll.onclick=()=>startDictation([...all].sort(()=>Math.random()-.5),`전체 ${all.length}개`);
-  row.append(s20,sAll); app.append(row);
+  row.append(s20); app.append(row);
   if(!canSpeak()) app.append(el("p","muted small","이 기기에서는 소리 재생이 안 돼요. 뜻을 보고 철자를 써 보세요."));
   const p=el("div","panel"); const h=el("div","ghead"); h.append(el("b",null,"단어 목록"), el("span",null,`${all.length}개 · 🔊 눌러서 듣기`)); p.append(h);
   for(const [w,ko,tip] of all){
