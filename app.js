@@ -72,7 +72,7 @@ const ICONS={
 };
 function buildTabs(){
   const nav=$("#tabs nav"); nav.textContent="";
-  for(const [k,label] of [["home","홈"],["cards","큐카드"],["review","복습"],["ideas","아이디어"],["listen","리스닝"]]){
+  for(const [k,label] of [["home","홈"],["cards","큐카드"],["review","복습"],["ideas","아이디어"],["listen","철자"]]){
     const b=el("button"); b.type="button"; b.dataset.tab=k; b.innerHTML=ICONS[k]; b.append(el("span",null,label));
     if(k==="review"){ const bd=el("span","badge"); bd.id="dueBadge"; b.append(bd); }
     b.onclick=()=>{ go(k); };
@@ -562,37 +562,22 @@ function speak(word, slow){
 function speakBtn(word, label){ const b=el("button","spk"); b.type="button"; b.innerHTML=SPEAK_ICON; b.setAttribute("aria-label",label||`${word} 듣기`); b.onclick=e=>{ e.stopPropagation(); speak(word); }; return b; }
 function renderListen(app){
   if(LD) return renderDictation(app);
-  app.append(el("h1",null,"리스닝 철자"));
+  app.append(el("h1",null,"철자 연습"));
   if(!LS){ const e=el("div","empty"); e.append(el("p",null,"자료를 불러오지 못했어요.")); app.append(e); return; }
-  const t=el("div","focus"); t.append(el("b",null,"철자 하나 틀려도 오답이에요"), document.createTextNode(LS.note)); app.append(t);
-  const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
-  for(const [k,sub] of [["Part 1","양식 채우기 · 이름, 주소, 예약"],["Part 4","강의 · 학술 단어"]]){
-    const n=LS.categories.filter(c=>c.part===k).reduce((a,c)=>a+c.words.length,0);
-    const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(lsPart===k));
-    b.append(el("b",null,`${k} · ${n}개`), el("span",null,sub)); b.onclick=()=>{ lsPart=k; lsCat=null; render(); }; seg.append(b);
+  const all=LS.categories.flatMap(c=>c.words);
+  const t=el("div","focus"); t.append(el("b",null,"철자 하나 틀려도 오답이에요"), document.createTextNode("리스닝에서 철자 때문에 자주 틀리는 단어예요. 듣고 직접 써 보세요. 영국식·미국식 철자는 둘 다 정답이에요.")); app.append(t);
+  const row=el("div","btnrow");
+  const s20=el("button","btn primary",`받아쓰기 20개`); s20.type="button"; s20.onclick=()=>startDictation([...all].sort(()=>Math.random()-.5).slice(0,20),"받아쓰기 20개");
+  const sAll=el("button","btn",`전체 ${all.length}개`); sAll.type="button"; sAll.onclick=()=>startDictation([...all].sort(()=>Math.random()-.5),`전체 ${all.length}개`);
+  row.append(s20,sAll); app.append(row);
+  if(!canSpeak()) app.append(el("p","muted small","이 기기에서는 소리 재생이 안 돼요. 뜻을 보고 철자를 써 보세요."));
+  const p=el("div","panel"); const h=el("div","ghead"); h.append(el("b",null,"단어 목록"), el("span",null,`${all.length}개 · 🔊 눌러서 듣기`)); p.append(h);
+  for(const [w,ko,tip] of all){
+    const r=el("div","lrow"); r.append(speakBtn(w));
+    const t2=el("div"); const top=el("div","vtop"); top.append(el("b",null,w), el("span",null,ko)); t2.append(top); if(tip) t2.append(el("p","ltip",tip));
+    r.append(t2); p.append(r);
   }
-  app.append(seg);
-  const cats=LS.categories.filter(c=>c.part===lsPart);
-  const allWords=cats.flatMap(c=>c.words);
-  const start=el("button","btn primary vstart",`${lsPart} 받아쓰기 시작 · 20개`); start.type="button";
-  start.onclick=()=>startDictation([...allWords].sort(()=>Math.random()-.5).slice(0,20), `${lsPart} 받아쓰기`); app.append(start);
-  if(!canSpeak()) app.append(el("p","muted small","이 기기에서는 소리 재생이 안 돼요. 받아쓰기 대신 뜻을 보고 철자를 써 보세요."));
-  const grid=el("div","vgrid");
-  cats.forEach((c,i)=>{ const b=el("button","vchip"+(lsCat===i?" on":"")); b.type="button"; b.setAttribute("aria-pressed",String(lsCat===i));
-    b.append(el("b",null,c.ko), el("span",null,`${c.name} · ${c.words.length}`)); b.onclick=()=>{ lsCat= lsCat===i? null : i; render(); setTimeout(()=>{ const t=document.getElementById("lsopen"); if(t) t.scrollIntoView({behavior:"smooth",block:"start"}); },0); }; grid.append(b); });
-  app.append(grid);
-  const c=cats[lsCat];
-  if(c){
-    const p=el("div","panel vpanel"); p.id="lsopen";
-    const h=el("div","ghead"); h.append(el("b",null,`${c.ko} · ${c.name}`), el("span",null,`${c.words.length}개`)); p.append(h);
-    const go1=el("button","btn primary vstart",`이 주제 받아쓰기 ${c.words.length}개`); go1.type="button"; go1.onclick=()=>startDictation([...c.words].sort(()=>Math.random()-.5), c.ko); p.append(go1);
-    for(const [w,ko,tip] of c.words){
-      const r=el("div","lrow"); r.append(speakBtn(w));
-      const t2=el("div"); const top=el("div","vtop"); top.append(el("b",null,w), el("span",null,ko)); t2.append(top); if(tip) t2.append(el("p","ltip",tip));
-      r.append(t2); p.append(r);
-    }
-    app.append(p);
-  }
+  app.append(p);
 }
 function startDictation(words, title){ LD={words, title, i:0, res:[], checked:false, typed:""}; go("listen"); setTimeout(()=>speak(words[0][0]),250); }
 function norm(x){ return String(x||"").trim().toLowerCase().replace(/\s+/g," "); }
@@ -609,7 +594,7 @@ function diffSpans(correct, typed){
 }
 function renderDictation(app){
   const L=LD;
-  const back=el("button","back","‹ 리스닝 철자"); back.type="button"; back.onclick=()=>{ LD=null; try{ speechSynthesis.cancel(); }catch(_){} render(); }; app.append(back);
+  const back=el("button","back","‹ 철자 연습"); back.type="button"; back.onclick=()=>{ LD=null; try{ speechSynthesis.cancel(); }catch(_){} render(); }; app.append(back);
   app.append(el("h1",null,L.title));
   if(L.i>=L.words.length){
     const ok=L.res.filter(r=>r.ok).length; const wrong=L.res.filter(r=>!r.ok);
@@ -617,7 +602,7 @@ function renderDictation(app){
     if(wrong.length){ const ul=el("div","wronglist"); wrong.forEach(r=>{ const row=el("div"); row.append(speakBtn(r.w[0]), el("b",null,r.w[0]), el("s",null,r.typed||"(빈칸)")); ul.append(row); }); e.append(ul);
       const again=el("button","btn primary","틀린 단어 다시 하기"); again.type="button"; again.onclick=()=>startDictation(wrong.map(r=>r.w), L.title+" (다시)"); e.append(again); }
     const send=el("button","btn","선생님께 결과 보내기"); send.type="button";
-    send.onclick=()=>{ const d=new Date(); let t=`[${D.name} · 리스닝 철자 ${L.title} · ${d.getMonth()+1}/${d.getDate()}]\n맞힘 ${ok} / ${L.res.length}개`; if(wrong.length) t+=`\n틀린 철자:\n`+wrong.map(r=>`- ${r.w[0]} (쓴 답: ${r.typed||"빈칸"})`).join("\n"); reportSheet(`리스닝 철자 ${L.title}`, ok, L.res.length, t); };
+    send.onclick=()=>{ const d=new Date(); let t=`[${D.name} · 철자 연습 ${L.title} · ${d.getMonth()+1}/${d.getDate()}]\n맞힘 ${ok} / ${L.res.length}개`; if(wrong.length) t+=`\n틀린 철자:\n`+wrong.map(r=>`- ${r.w[0]} (쓴 답: ${r.typed||"빈칸"})`).join("\n"); reportSheet(`철자 연습 ${L.title}`, ok, L.res.length, t); };
     e.append(send); app.append(e); return;
   }
   const [w,ko,tip]=L.words[L.i];
