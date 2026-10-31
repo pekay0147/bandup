@@ -87,6 +87,11 @@ function updateTabs(){
 }
 
 /* ---------- render ---------- */
+function lessonBar(onClose, i, n){
+  const w=el("div","lbar"); const x=el("button","lx","✕"); x.type="button"; x.setAttribute("aria-label","그만하고 나가기"); x.onclick=onClose;
+  const bar=el("div","bar"); const bi=el("i"); bi.style.width=(n? i/n*100 : 0)+"%"; bar.append(bi);
+  w.append(x, bar, el("span","lcount",`${Math.min(i+1,n)}/${n}`)); return w;
+}
 function pageHead(app, title, lead){ const h=el("div","phead"); h.append(el("h1",null,title)); if(lead) h.append(el("p","lead",lead)); app.append(h); }
 function render(){
   const app=$("#app"); app.textContent="";
@@ -97,6 +102,7 @@ function render(){
   if(view.tab==="ideas") renderIdeas(app);
   if(view.tab==="words") renderWords(app);
   updateTabs();
+  document.body.classList.toggle("lesson", !!app.querySelector(".lbar"));
 }
 
 function renderHome(app){
@@ -109,7 +115,10 @@ function renderHome(app){
   }
   app.append(st); }
   const hero=el("div","hero");
-  hero.append(el("h2",null, due? "오늘의 복습을 시작해요" : "더 연습하고 싶다면"), el("p",null, due? "반복해서 틀린 문장부터 먼저 나와요." : "헷갈렸던 카드 10장을 다시 볼 수 있어요."));
+  const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length, goal=Math.max(DAILY, doneToday);
+  hero.append(el("h2",null, due? "오늘의 복습을 시작해요" : "오늘 복습 끝!"));
+  const gl=el("div","goal"); const gb=el("div","gbar"); const gi=el("i"); gi.style.width=Math.min(100,doneToday/DAILY*100)+"%"; gb.append(gi);
+  gl.append(gb, el("span",null,`${Math.min(doneToday,DAILY)} / ${DAILY}장`)); hero.append(gl);
   const b=el("button",null, due? `복습 시작 (${Math.min(due,DAILY)}장)` : "약한 카드 연습"); b.type="button"; b.onclick=()=>go("review",{extra:!due}); hero.append(b);
   app.append(hero);
   const last=D.sessions[D.sessions.length-1];
@@ -354,13 +363,11 @@ function renderDeck(app){
                : view.deck==="all" ? [...D.cards].sort(()=>Math.random()-.5) : D.cards.filter(c=>(c.sessions||[]).includes(view.deck));
     deckState={key:view.deck, ids:list.map(c=>c.id), i:0};
   }
-  const back=el("button","back", view.deck==="vocab"? (view.backTo==="words"? "‹ 단어 공부" : "‹ 아이디어 · Part 1") : view.deck==="rand"? "‹ 랜덤 퀴즈 설정" : view.deck==="wrong"? "‹ 틀린 문장 모음" : "‹ 회차별"); back.type="button"; back.onclick=()=>{ if(view.deck==="vocab"){ if(view.backTo==="words"){ go("words"); return; } ideaPart="p1"; go("ideas"); return; } if(view.deck==="rand") cardMode="random"; else if(view.deck==="wrong") cardMode="wrong"; else { cardMode="session"; if(typeof view.deck==="number") selSession=view.deck; } go("cards"); }; app.append(back);
+  const back=el("button","back", view.deck==="vocab"? (view.backTo==="words"? "‹ 단어 공부" : "‹ 아이디어 · Part 1") : view.deck==="rand"? "‹ 랜덤 퀴즈 설정" : view.deck==="wrong"? "‹ 틀린 문장 모음" : "‹ 회차별"); back.type="button"; back.onclick=()=>{ if(view.deck==="vocab"){ if(view.backTo==="words"){ go("words"); return; } ideaPart="p1"; go("ideas"); return; } if(view.deck==="rand") cardMode="random"; else if(view.deck==="wrong") cardMode="wrong"; else { cardMode="session"; if(typeof view.deck==="number") selSession=view.deck; } go("cards"); };
   const s=D.sessions.find(x=>x.no===view.deck);
-  app.append(el("h1",null, view.deck==="vocab"? `${view.title||"주제별 어휘"} 카드` : view.deck==="rand"? "랜덤 퀴즈" : view.deck==="wrong"? "틀린 문장 연습" : view.deck==="all"? "전체 큐카드" : `${view.deck}회차 큐카드`));
-  const ids=deckState.ids; if(!ids.length){ const e=el("div","empty"); e.append(el("p",null,"카드가 없어요.")); app.append(e); return; }
+  const ids=deckState.ids; if(!ids.length){ app.append(back); const e=el("div","empty"); e.append(el("p",null,"카드가 없어요.")); app.append(e); return; }
   const c=getCard(ids[deckState.i]);
-  const pg=el("div","prog"); pg.append(el("span",null,`${deckState.i+1} / ${ids.length}`), el("span",null,`알았어요 ${ids.filter(id=>marks[id]==="know").length}`)); app.append(pg);
-  const bar=el("div","bar"); const bi=el("i"); bi.style.width=((deckState.i+1)/ids.length*100)+"%"; bar.append(bi); app.append(bar);
+  app.append(lessonBar(back.onclick, deckState.i+1, ids.length));
   const sc=flipCard(c); sc.onswipe=d=>move(d); app.append(sc);
   const acts=el("div","acts");
   const prev=el("button","nav","‹"); prev.type="button"; prev.setAttribute("aria-label","이전 카드"); prev.disabled=deckState.i===0; prev.onclick=()=>move(-1);
@@ -387,10 +394,10 @@ function renderReview(app){
     pool.sort((a,b)=>(rep(b)-rep(a)) || (((srs[a.id]||{}).box||0)-((srs[b.id]||{}).box||0)) || (marks[b.id]==="again")-(marks[a.id]==="again") || Math.random()-.5);
     reviewState={ids:pool.slice(0, view.extra?10:DAILY).map(c=>c.id), i:0, res:[]};
   }
-  pageHead(app, view.extra? "약한 카드 연습" : "오늘의 복습", view.extra? "헷갈렸던 카드 10장을 다시 봐요." : `하루 ${DAILY}장씩, 다시 볼 때가 된 카드가 자동으로 나와요.`);
   const R=reviewState;
   const c=R.ids[R.i] && D.cards.find(x=>x.id===R.ids[R.i]);
   if(!c){
+  pageHead(app, view.extra? "약한 카드 연습" : "오늘의 복습", view.extra? "헷갈렸던 카드 10장을 다시 봐요." : `하루 ${DAILY}장씩, 다시 볼 때가 된 카드가 자동으로 나와요.`);
     const e=el("div","empty");
     if(R.res.length){ const ok=R.res.filter(r=>r.ok).length; e.append(el("div","big",`${ok}/${R.res.length}`), el("h2",null, ok===R.res.length?"전부 맞혔어요!":"오늘 복습 끝!"), el("p",null,"틀린 카드는 내일, 맞힌 카드는 며칠 뒤에 다시 나와요."));
       const send=el("button","btn primary","선생님께 결과 보내기"); send.type="button"; send.onclick=()=>openReport("review"); e.append(send); }
@@ -399,8 +406,7 @@ function renderReview(app){
     more.onclick=()=>{ reviewState=null; view.extra=!dueCards().length; render(); };
     e.append(more); app.append(e); return;
   }
-  const pg=el("div","prog"); pg.append(el("span",null,`${R.i+1} / ${R.ids.length}`), el("span",null,`맞힘 ${R.res.filter(r=>r.ok).length}`)); app.append(pg);
-  const bar=el("div","bar"); const bi=el("i"); bi.style.width=(R.i/R.ids.length*100)+"%"; bar.append(bi); app.append(bar);
+  app.append(lessonBar(()=>go("home"), R.i, R.ids.length));
   const acts=el("div","acts review");
   const sc=flipCard(c, v=>{ acts.hidden=!v; tip.hidden=v; });
   app.append(sc);
@@ -409,7 +415,8 @@ function renderReview(app){
   acts.append(no,ok); acts.hidden=!flipped; app.append(acts);
   const tip=el("p","hint2","카드를 눌러 정답을 확인하세요"); tip.hidden=flipped; app.append(tip);
 }
-function answer(c,ok){ grade(c,ok); reviewState.res.push({ok,c}); reviewState.i++; flipped=false; picked=null; render(); }
+function toast(msg,ok){ const t=el("div","toast "+(ok?"ok":"no"),msg); document.body.append(t); setTimeout(()=>t.remove(),1300); }
+function answer(c,ok){ toast(ok? "좋아요! 며칠 뒤에 다시 나와요" : "괜찮아요, 내일 다시 나와요", ok); grade(c,ok); reviewState.res.push({ok,c}); reviewState.i++; flipped=false; picked=null; render(); }
 
 /* ---------- notes ---------- */
 function renderNotes(app){
@@ -647,9 +654,9 @@ function diffSpans(correct, typed){
 }
 function renderDictation(app){
   const L=LD;
-  const back=el("button","back","‹ 철자 받아쓰기"); back.type="button"; back.onclick=()=>{ LD=null; try{ speechSynthesis.cancel(); }catch(_){} render(); }; app.append(back);
-  app.append(el("h1",null,L.title));
+  const back=el("button","back","‹ 철자 받아쓰기"); back.type="button"; back.onclick=()=>{ LD=null; try{ speechSynthesis.cancel(); }catch(_){} render(); };
   if(L.i>=L.words.length){
+    app.append(back, el("h1",null,L.title));
     const ok=L.res.filter(r=>r.ok).length; const wrong=L.res.filter(r=>!r.ok);
     const e=el("div","empty"); e.append(el("div","big",`${ok}/${L.res.length}`), el("h2",null, ok===L.res.length? "전부 맞혔어요!" : "받아쓰기 끝!"));
     if(wrong.length){ const ul=el("div","wronglist"); wrong.forEach(r=>{ const row=el("div"); row.append(speakBtn(r.w[0]), el("b",null,r.w[0]), el("s",null,r.typed||"(빈칸)")); ul.append(row); }); e.append(ul);
@@ -659,8 +666,7 @@ function renderDictation(app){
     e.append(send); app.append(e); return;
   }
   const [w,ko,tip]=L.words[L.i];
-  const pg=el("div","prog"); pg.append(el("span",null,`${L.i+1} / ${L.words.length}`), el("span",null,`맞힘 ${L.res.filter(r=>r.ok).length}`)); app.append(pg);
-  const bar=el("div","bar"); const bi=el("i"); bi.style.width=(L.i/L.words.length*100)+"%"; bar.append(bi); app.append(bar);
+  app.append(lessonBar(back.onclick, L.i, L.words.length));
   const card=el("div","dict");
   if(canSpeak()){
     const row=el("div","playrow");

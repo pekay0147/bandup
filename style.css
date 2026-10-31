@@ -364,3 +364,16 @@ h2{font-weight:700}
 .boxh span{font-size:13px}
 .idea-h{padding:11px 14px}
 .idea-b{padding:0 14px 12px}
+/* lesson mode (like Duolingo): hide menus, show ✕ + progress */
+body.lesson .tabs, body.lesson .top{display:none}
+body.lesson{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
+.lbar{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}
+.lx{width:44px;height:44px;border:0;background:transparent;font-size:22px;color:var(--muted);cursor:pointer;border-radius:12px}
+.lbar .bar{height:12px}
+.lcount{font-size:15px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.goal{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;font-size:15px;font-weight:600}
+.gbar{height:10px;border-radius:999px;background:rgba(255,255,255,.3);overflow:hidden}
+.gbar i{display:block;height:100%;background:var(--on-color);border-radius:999px}
+.toast{position:fixed;left:16px;right:16px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:40;padding:14px 16px;border-radius:16px;font-weight:700;font-size:16px;text-align:center;box-shadow:var(--shadow-lg)}
+.toast.ok{background:var(--mint-soft);color:var(--mint)}
+.toast.no{background:var(--pink-soft);color:var(--bad)}
