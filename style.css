@@ -244,3 +244,18 @@ h2{margin:0;font:19px var(--cute);font-weight:400}
 .qq{margin:0;font:600 15px/1.45 var(--body)}
 .qi{margin:0;font-size:14px;color:var(--ink);line-height:1.55}
 .qtag{display:inline-block;font:12px var(--cute);background:var(--blue-soft);color:var(--blue);border-radius:6px;padding:0 6px;margin-right:6px}
+
+/* part 1 vocab */
+.vgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.vchip{display:grid;gap:1px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:10px 12px;cursor:pointer;box-shadow:var(--shadow)}
+.vchip b{font:16px var(--cute);font-weight:400}
+.vchip span{font-size:12px;color:var(--muted)}
+.vchip.on{background:var(--blue);border-color:var(--blue);color:var(--on-color)}
+.vchip.on span{color:var(--on-color);opacity:.85}
+.vpanel{scroll-margin-top:calc(16px + env(safe-area-inset-top,0px))}
+.vrow{padding:10px 0;border-top:1px solid var(--line);display:grid;gap:2px}
+.vrow:first-of-type{border-top:0}
+.vtop{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.vtop b{font:700 16px var(--body)}
+.vtop span{font-size:14px;color:var(--muted)}
+.vex{margin:0;font-size:14px;font-style:italic;color:var(--ink);opacity:.85}

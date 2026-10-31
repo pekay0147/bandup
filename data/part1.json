@@ -1,486 +1,1124 @@
 {
- "source": "Score Factory IELTS Speaking Workbook 2026 Sep–Dec (질문) · 아이디어·표현은 수업용으로 새로 작성",
- "season": "2026년 9–12월 예상 기출",
- "tips": [
-  "질문에 바로 답하고, 이유나 예시 하나를 덧붙여 2~3문장으로 늘리기",
-  "해 본 적 없어도 'No, not really, but…'로 이어서 관련 이야기하기",
-  "과거 질문(Did you…, When was the last time…)은 과거형으로, 지금 학생이 아니면 I studied…처럼 시제 다양하게",
-  "주제마다 답을 외우기보다 질문 유형별 답하는 요령을 연습하기",
-  "시험관이 중간에 끊어도 정상이에요. 친근하게 대화하듯 말하기"
- ],
+ "title": "주제별 어휘",
  "topics": [
   {
-   "topic": "Computers and tablets",
-   "ko": "컴퓨터·태블릿",
-   "qs": [
-    {
-     "q": "Would you like to use a computer or tablet?",
-     "idea": "공부·일은 컴퓨터(키보드, 큰 화면), 영상·독서는 태블릿",
-     "vocab": [
-      "for work purposes",
-      "portable"
-     ]
-    },
-    {
-     "q": "In what conditions would you use a computer or tablet?",
-     "idea": "보고서 쓸 때는 노트북, 이동 중이나 침대에서 영상 볼 때는 태블릿",
-     "vocab": [
-      "on the go",
-      "multitask"
-     ]
-    },
-    {
-     "q": "When was the first time you used a computer or tablet?",
-     "idea": "초등학생 때 컴퓨터실 수업, 타자 연습 게임이 기억남 (과거형 유지!)",
-     "vocab": [
-      "computer lab",
-      "typing practice"
-     ]
-    },
-    {
-     "q": "What would your life be like without computers or tablets?",
-     "idea": "처음엔 불편하겠지만 책 읽고 산책할 시간이 늘어 오히려 좋을 수도",
-     "vocab": [
-      "be lost without",
-      "screen time"
-     ]
-    },
-    {
-     "q": "In what conditions would it be difficult for you to use a computer or tablet?",
-     "idea": "와이파이가 없을 때, 배터리가 없을 때, 캠핑처럼 밖에 있을 때",
-     "vocab": [
-      "run out of battery",
-      "poor connection"
-     ]
-    }
+   "ko": "집·고향",
+   "topic": "Home & Hometown",
+   "words": [
+    [
+     "cosy",
+     "아늑한",
+     "My bedroom is small but cosy."
+    ],
+    [
+     "spacious",
+     "넓은",
+     "Our living room is quite spacious."
+    ],
+    [
+     "neighbourhood",
+     "동네",
+     "It's a quiet residential neighbourhood."
+    ],
+    [
+     "high-rise apartment",
+     "고층 아파트",
+     "Most people in Seoul live in high-rise apartments."
+    ],
+    [
+     "convenient",
+     "편리한",
+     "It's convenient because the subway is nearby."
+    ],
+    [
+     "within walking distance",
+     "걸어갈 수 있는 거리에",
+     "There's a park within walking distance."
+    ],
+    [
+     "bustling",
+     "북적거리는",
+     "The city centre is always bustling."
+    ],
+    [
+     "bring up children",
+     "아이를 키우다",
+     "It's a great place to bring up children."
+    ],
+    [
+     "move out",
+     "이사 나가다",
+     "I moved out of my parents' place last year."
+    ],
+    [
+     "hometown",
+     "고향",
+     "My hometown is famous for its seafood."
+    ]
    ]
   },
   {
-   "topic": "Collecting things",
-   "ko": "수집",
-   "lesson": 4,
-   "qs": [
-    {
-     "q": "Where do you usually keep things you need?",
-     "idea": "자주 쓰는 건 책상 서랍, 중요한 서류는 파일 박스에 정리",
-     "vocab": [
-      "keep things organised",
-      "within reach"
-     ]
-    },
-    {
-     "q": "Would you keep old things for a long time? Why?",
-     "idea": "추억이 담긴 건 오래 간직, 안 쓰는 건 과감히 정리",
-     "vocab": [
-      "sentimental value",
-      "declutter"
-     ]
-    },
-    {
-     "q": "Are there any things you have kept from your childhood?",
-     "idea": "어릴 때 쓴 일기장, 부모님께 받은 편지 (have kept → 현재완료)",
-     "vocab": [
-      "bring back memories",
-      "treasure"
-     ]
-    },
-    {
-     "q": "Do you collect things?",
-     "idea": "여행 갈 때마다 마그넷 모으기 / 아니면: 'Not really, but…'로 이어가기",
-     "vocab": [
-      "souvenir",
-      "a collection of"
-     ]
-    }
+   "ko": "일·공부",
+   "topic": "Work & Study",
+   "words": [
+    [
+     "major in",
+     "~을 전공하다",
+     "I majored in business."
+    ],
+    [
+     "deadline",
+     "마감",
+     "I have a lot of deadlines this week."
+    ],
+    [
+     "colleague",
+     "동료",
+     "I get on well with my colleagues."
+    ],
+    [
+     "workload",
+     "업무량",
+     "My workload has increased recently."
+    ],
+    [
+     "work-life balance",
+     "일과 삶의 균형",
+     "Work-life balance is important to me."
+    ],
+    [
+     "commute",
+     "통근하다",
+     "I commute to work by subway."
+    ],
+    [
+     "hands-on",
+     "직접 해 보는",
+     "I prefer hands-on learning."
+    ],
+    [
+     "pull an all-nighter",
+     "밤새 공부하다",
+     "I pulled an all-nighter before the exam."
+    ],
+    [
+     "brush up on",
+     "다시 공부하다",
+     "I'm brushing up on my English."
+    ],
+    [
+     "rewarding",
+     "보람 있는",
+     "Teaching is a rewarding job."
+    ]
    ]
   },
   {
-   "topic": "Lost and found",
-   "ko": "분실물",
-   "lesson": 4,
-   "qs": [
-    {
-     "q": "Have you ever lost your keys?",
-     "idea": "네, 바쁜 아침에 잃어버려서 지각할 뻔함 (과거형)",
-     "vocab": [
-      "misplace",
-      "in a rush"
-     ]
-    },
-    {
-     "q": "Will you post on social media if you lose your item?",
-     "idea": "비싼 물건이면 동네 커뮤니티에 올림, 사람들이 많이 도와줌",
-     "vocab": [
-      "post on a community page",
-      "get it back"
-     ]
-    },
-    {
-     "q": "Have you ever lost things?",
-     "idea": "지하철에서 우산을 자주 잃어버림, 분실물 센터에서 찾은 적 있음",
-     "vocab": [
-      "lost-and-found office",
-      "absent-minded"
-     ]
-    },
-    {
-     "q": "Do you report to the police when finding something lost by others? Why?",
-     "idea": "지갑처럼 귀중한 건 경찰에 맡김, 주인이 찾기 쉬우니까",
-     "vocab": [
-      "hand it in",
-      "the rightful owner"
-     ]
-    },
-    {
-     "q": "What will you do if you find something lost by others?",
-     "idea": "주변에 물어보고, 없으면 가게 직원이나 경찰에 맡김",
-     "vocab": [
-      "put myself in their shoes",
-      "hand it over"
-     ]
-    }
+   "ko": "음식·요리",
+   "topic": "Food & Cooking",
+   "words": [
+    [
+     "home-cooked meal",
+     "집밥",
+     "Nothing beats a home-cooked meal."
+    ],
+    [
+     "eat out",
+     "외식하다",
+     "We eat out about once a week."
+    ],
+    [
+     "a picky eater",
+     "편식하는 사람",
+     "I was a picky eater as a child."
+    ],
+    [
+     "have a sweet tooth",
+     "단 걸 좋아하다",
+     "I have a sweet tooth."
+    ],
+    [
+     "savoury",
+     "짭짤한",
+     "I prefer savoury snacks to sweet ones."
+    ],
+    [
+     "mouth-watering",
+     "군침 도는",
+     "The street food looked mouth-watering."
+    ],
+    [
+     "a balanced diet",
+     "균형 잡힌 식단",
+     "I try to keep a balanced diet."
+    ],
+    [
+     "grab a bite",
+     "간단히 먹다",
+     "Let's grab a bite after class."
+    ],
+    [
+     "skip meals",
+     "끼니를 거르다",
+     "I sometimes skip breakfast."
+    ],
+    [
+     "comfort food",
+     "위로가 되는 음식",
+     "Ramyeon is my comfort food."
+    ]
    ]
   },
   {
-   "topic": "Street markets",
-   "ko": "길거리 시장",
-   "lesson": 4,
-   "qs": [
-    {
-     "q": "Are there many street markets in Korea?",
-     "idea": "네, 광장시장·남대문시장 같은 전통시장과 야시장이 많음",
-     "vocab": [
-      "traditional market",
-      "night market"
-     ]
-    },
-    {
-     "q": "When was the last time you went to a street market?",
-     "idea": "지난달 친구와 야시장에 가서 떡볶이와 호떡을 먹음 (과거형)",
-     "vocab": [
-      "street food",
-      "a lively atmosphere"
-     ]
-    },
-    {
-     "q": "Do you prefer to go shopping in the shopping mall or at the street market?",
-     "idea": "옷은 쇼핑몰(편하고 쾌적), 음식은 시장(싸고 정이 있음)",
-     "vocab": [
-      "haggle over prices",
-      "under one roof"
-     ]
-    },
-    {
-     "q": "What do people usually buy at the street market?",
-     "idea": "신선한 채소·과일, 길거리 음식, 저렴한 옷과 액세서리",
-     "vocab": [
-      "fresh produce",
-      "a bargain"
-     ]
-    }
+   "ko": "운동·건강",
+   "topic": "Sport & Health",
+   "words": [
+    [
+     "work out",
+     "운동하다",
+     "I work out three times a week."
+    ],
+    [
+     "stay in shape",
+     "몸매·건강을 유지하다",
+     "I do yoga to stay in shape."
+    ],
+    [
+     "keep fit",
+     "건강을 유지하다",
+     "Swimming is a good way to keep fit."
+    ],
+    [
+     "sedentary lifestyle",
+     "앉아서 지내는 생활",
+     "Office workers often have a sedentary lifestyle."
+    ],
+    [
+     "break a sweat",
+     "땀을 흘리다",
+     "I like exercise that makes me break a sweat."
+    ],
+    [
+     "team sport",
+     "단체 운동",
+     "I'm not really into team sports."
+    ],
+    [
+     "cheer for",
+     "응원하다",
+     "I always cheer for the national team."
+    ],
+    [
+     "get enough sleep",
+     "충분히 자다",
+     "I try to get enough sleep."
+    ],
+    [
+     "under the weather",
+     "몸이 안 좋은",
+     "I'm a bit under the weather today."
+    ],
+    [
+     "cut down on",
+     "줄이다",
+     "I'm cutting down on sugar."
+    ]
    ]
   },
   {
-   "topic": "Paper",
-   "ko": "종이",
-   "qs": [
-    {
-     "q": "Do you carry paper and pens with you when you go out?",
-     "idea": "보통 안 들고 다님, 휴대폰 메모 앱을 씀 / 수업 있는 날만 노트",
-     "vocab": [
-      "jot down",
-      "notes app"
-     ]
-    },
-    {
-     "q": "Do people still keep handwritten letters today?",
-     "idea": "요즘은 드물지만 생일 카드나 연애편지는 손편지가 여전히 특별함",
-     "vocab": [
-      "a personal touch",
-      "old-fashioned"
-     ]
-    },
-    {
-     "q": "Do you still write physical letters?",
-     "idea": "1년에 한두 번, 부모님 생신 때 카드를 씀",
-     "vocab": [
-      "once in a blue moon",
-      "heartfelt"
-     ]
-    },
-    {
-     "q": "Have you made any crafts with paper?",
-     "idea": "어릴 때 종이접기로 학, 비행기 만들기 (과거형)",
-     "vocab": [
-      "origami",
-      "fold paper"
-     ]
-    },
-    {
-     "q": "What did you like to do with paper as a child?",
-     "idea": "그림 그리기, 종이비행기 날리기 (did → 과거형 유지)",
-     "vocab": [
-      "doodle",
-      "paper plane"
-     ]
-    }
+   "ko": "날씨·계절",
+   "topic": "Weather & Seasons",
+   "words": [
+    [
+     "four distinct seasons",
+     "뚜렷한 사계절",
+     "Korea has four distinct seasons."
+    ],
+    [
+     "humid",
+     "습한",
+     "Summer is hot and humid."
+    ],
+    [
+     "chilly",
+     "쌀쌀한",
+     "It gets chilly in the evening."
+    ],
+    [
+     "freezing",
+     "몹시 추운",
+     "January is freezing."
+    ],
+    [
+     "scorching hot",
+     "찌는 듯이 더운",
+     "It was scorching hot last August."
+    ],
+    [
+     "pouring",
+     "비가 퍼붓는",
+     "It's pouring outside."
+    ],
+    [
+     "rainy season",
+     "장마",
+     "The rainy season starts in July."
+    ],
+    [
+     "heatwave",
+     "폭염",
+     "We had a long heatwave this year."
+    ],
+    [
+     "fine dust",
+     "미세먼지",
+     "Fine dust is a big problem in spring."
+    ],
+    [
+     "crisp",
+     "상쾌하고 서늘한",
+     "I love the crisp autumn air."
+    ]
    ]
   },
   {
-   "topic": "Fruit and vegetables",
-   "ko": "과일·채소",
-   "lesson": 4,
-   "qs": [
-    {
-     "q": "Were there any kinds of fruits and vegetables you disliked as a child?",
-     "idea": "당근과 가지를 싫어했음, 식감 때문에 (과거형)",
-     "vocab": [
-      "a picky eater",
-      "the texture"
-     ]
-    },
-    {
-     "q": "What kinds of fruits and vegetables do you dislike?",
-     "idea": "지금은 거의 다 먹지만 셀러리는 아직 별로",
-     "vocab": [
-      "not my cup of tea",
-      "an acquired taste"
-     ]
-    },
-    {
-     "q": "Where do you usually buy fruit and vegetables?",
-     "idea": "집 근처 마트, 가끔 신선한 걸 사러 시장에 감",
-     "vocab": [
-      "local supermarket",
-      "in season"
-     ]
-    },
-    {
-     "q": "How often do you eat fruit and vegetables?",
-     "idea": "매일, 아침에 과일, 점심에 샐러드",
-     "vocab": [
-      "a balanced diet",
-      "five a day"
-     ]
-    }
+   "ko": "여행·휴가",
+   "topic": "Travel & Holidays",
+   "words": [
+    [
+     "go on holiday",
+     "휴가 가다",
+     "I went on holiday to Jeju."
+    ],
+    [
+     "get away",
+     "잠시 떠나다",
+     "I need to get away for a few days."
+    ],
+    [
+     "destination",
+     "여행지",
+     "Bali is a popular destination."
+    ],
+    [
+     "tourist attraction",
+     "관광 명소",
+     "Gyeongbokgung is a famous tourist attraction."
+    ],
+    [
+     "touristy",
+     "관광객이 많은",
+     "Myeongdong is a bit touristy."
+    ],
+    [
+     "off the beaten track",
+     "잘 알려지지 않은 곳",
+     "I like places off the beaten track."
+    ],
+    [
+     "breathtaking view",
+     "숨 막히는 경치",
+     "The view from the top was breathtaking."
+    ],
+    [
+     "recharge my batteries",
+     "재충전하다",
+     "Holidays help me recharge my batteries."
+    ],
+    [
+     "broaden my horizons",
+     "시야를 넓히다",
+     "Travelling broadens my horizons."
+    ],
+    [
+     "bucket list",
+     "버킷리스트",
+     "Iceland is on my bucket list."
+    ]
    ]
   },
   {
-   "topic": "Being polite",
-   "ko": "예의",
-   "lesson": 4,
-   "qs": [
-    {
-     "q": "Do you think being polite is very important?",
-     "idea": "네, 첫인상과 인간관계에 중요, 한국은 존댓말 문화",
-     "vocab": [
-      "make a good impression",
-      "show respect"
-     ]
-    },
-    {
-     "q": "How did you learn to be polite as a child?",
-     "idea": "부모님이 인사·감사 표현을 늘 강조했고 학교에서도 배움 (과거형)",
-     "vocab": [
-      "bring me up to",
-      "set a good example"
-     ]
-    }
+   "ko": "교통",
+   "topic": "Transport",
+   "words": [
+    [
+     "public transport",
+     "대중교통",
+     "Public transport in Seoul is excellent."
+    ],
+    [
+     "rush hour",
+     "출퇴근 시간",
+     "The subway is packed during rush hour."
+    ],
+    [
+     "traffic jam",
+     "교통 체증",
+     "I got stuck in a traffic jam."
+    ],
+    [
+     "beat the traffic",
+     "교통 체증을 피하다",
+     "I leave early to beat the traffic."
+    ],
+    [
+     "it's a 10-minute walk",
+     "걸어서 10분이다",
+     "It's a 10-minute walk from my house."
+    ],
+    [
+     "take a bus",
+     "버스를 타다",
+     "I usually take a bus to work."
+    ],
+    [
+     "get around",
+     "돌아다니다",
+     "It's easy to get around by subway."
+    ],
+    [
+     "eco-friendly",
+     "친환경적인",
+     "Cycling is an eco-friendly option."
+    ],
+    [
+     "reliable",
+     "믿을 만한",
+     "The trains are fast and reliable."
+    ],
+    [
+     "window seat",
+     "창가 자리",
+     "I always book a window seat."
+    ]
    ]
   },
   {
-   "topic": "Tiredness",
-   "ko": "피곤함",
-   "lesson": 4,
-   "qs": [
-    {
-     "q": "What do you do when you feel tired?",
-     "idea": "낮잠 20분이나 산책, 커피 한 잔",
-     "vocab": [
-      "take a power nap",
-      "recharge my batteries"
-     ]
-    },
-    {
-     "q": "When do you usually feel tired?",
-     "idea": "오후 3시쯤, 점심 먹고 나서나 회의가 많은 날",
-     "vocab": [
-      "in the afternoon slump",
-      "worn out"
-     ]
-    },
-    {
-     "q": "Do you often feel tired?",
-     "idea": "요즘 일이 바빠서 자주 피곤함, 그래서 일찍 자려고 노력 중",
-     "vocab": [
-      "exhausted",
-      "get enough sleep"
-     ]
-    }
+   "ko": "쇼핑·돈",
+   "topic": "Shopping & Money",
+   "words": [
+    [
+     "window-shopping",
+     "아이쇼핑",
+     "I enjoy window-shopping at weekends."
+    ],
+    [
+     "a bargain",
+     "싸게 산 물건",
+     "These shoes were a real bargain."
+    ],
+    [
+     "on sale",
+     "할인 중인",
+     "I only buy clothes when they're on sale."
+    ],
+    [
+     "impulse buy",
+     "충동구매",
+     "That jacket was an impulse buy."
+    ],
+    [
+     "shop around",
+     "여러 곳을 비교하다",
+     "I shop around before buying electronics."
+    ],
+    [
+     "cost an arm and a leg",
+     "엄청 비싸다",
+     "Designer bags cost an arm and a leg."
+    ],
+    [
+     "value for money",
+     "가성비",
+     "This phone is good value for money."
+    ],
+    [
+     "second-hand",
+     "중고의",
+     "I often buy second-hand books."
+    ],
+    [
+     "save up for",
+     "~을 위해 돈을 모으다",
+     "I'm saving up for a trip."
+    ],
+    [
+     "splash out on",
+     "~에 돈을 펑펑 쓰다",
+     "I splashed out on a new laptop."
+    ]
    ]
   },
   {
-   "topic": "Rubbish and recycling",
-   "ko": "쓰레기·재활용",
-   "lesson": 4,
-   "qs": [
-    {
-     "q": "How do you recycle things like paper and plastic?",
-     "idea": "한국은 분리수거가 엄격함, 종이·플라스틱·캔을 나눠 버림",
-     "vocab": [
-      "separate the rubbish",
-      "recycling bin"
-     ]
-    },
-    {
-     "q": "What do you do when you see rubbish on the street?",
-     "idea": "작은 건 주워서 쓰레기통에 버림, 환경에 대한 책임감",
-     "vocab": [
-      "pick it up",
-      "litter"
-     ]
-    }
+   "ko": "패션·옷·신발",
+   "topic": "Clothes & Shoes",
+   "words": [
+    [
+     "casual",
+     "편한, 캐주얼한",
+     "I usually wear casual clothes."
+    ],
+    [
+     "dress up",
+     "차려입다",
+     "I only dress up for special occasions."
+    ],
+    [
+     "fashionable",
+     "유행하는",
+     "She always looks fashionable."
+    ],
+    [
+     "comfort over style",
+     "스타일보다 편안함",
+     "I choose comfort over style."
+    ],
+    [
+     "go out of fashion",
+     "유행이 지나다",
+     "Skinny jeans have gone out of fashion."
+    ],
+    [
+     "suit me",
+     "나에게 어울리다",
+     "Bright colours don't really suit me."
+    ],
+    [
+     "trainers",
+     "운동화",
+     "I wear trainers almost every day."
+    ],
+    [
+     "wear out",
+     "닳다",
+     "My shoes wear out quickly."
+    ],
+    [
+     "traditional clothes",
+     "전통 의상",
+     "We wear hanbok on Chuseok."
+    ],
+    [
+     "try on",
+     "입어 보다",
+     "I always try clothes on before I buy them."
+    ]
    ]
   },
   {
-   "topic": "Travelling",
-   "ko": "여행",
-   "lesson": 4,
-   "qs": [
-    {
-     "q": "Do you prefer to sit by the window when travelling?",
-     "idea": "네, 창밖 풍경 보는 걸 좋아함 / 비행기는 통로석이 편함",
-     "vocab": [
-      "window seat",
-      "aisle seat"
-     ]
-    },
-    {
-     "q": "Did you have a long journey with your family as a child?",
-     "idea": "어릴 때 가족과 차로 부산까지 5시간, 휴게소 간식이 기억남 (과거형)",
-     "vocab": [
-      "a road trip",
-      "rest stop"
-     ]
-    },
-    {
-     "q": "What kind of transportation do you usually use when travelling?",
-     "idea": "국내는 KTX, 해외는 비행기, 현지에서는 대중교통",
-     "vocab": [
-      "public transport",
-      "get around"
-     ]
-    },
-    {
-     "q": "Do you think travelling is important for people?",
-     "idea": "네, 시야를 넓히고 스트레스를 풀 수 있음",
-     "vocab": [
-      "broaden my horizons",
-      "get away from it all"
-     ]
-    },
-    {
-     "q": "How has travelling changed compared to the past?",
-     "idea": "예전엔 패키지 여행, 요즘은 앱으로 혼자 계획하는 자유여행",
-     "vocab": [
-      "package tour",
-      "book online"
-     ]
-    },
-    {
-     "q": "What are the benefits of travelling with family?",
-     "idea": "함께 추억을 만들고, 평소 못 한 대화를 나눌 수 있음",
-     "vocab": [
-      "quality time",
-      "make memories"
-     ]
-    }
+   "ko": "음악",
+   "topic": "Music",
+   "words": [
+    [
+     "be into",
+     "~을 좋아하다",
+     "I'm really into K-pop."
+    ],
+    [
+     "catchy",
+     "귀에 쏙 들어오는",
+     "The song is so catchy."
+    ],
+    [
+     "upbeat",
+     "신나는",
+     "I listen to upbeat music when I work out."
+    ],
+    [
+     "soothing",
+     "마음을 달래 주는",
+     "Classical music is soothing."
+    ],
+    [
+     "lyrics",
+     "가사",
+     "I love the lyrics of this song."
+    ],
+    [
+     "play an instrument",
+     "악기를 연주하다",
+     "I used to play the piano."
+    ],
+    [
+     "live music",
+     "라이브 음악",
+     "There's nothing like live music."
+    ],
+    [
+     "get stuck in my head",
+     "머릿속에 맴돌다",
+     "That song got stuck in my head."
+    ],
+    [
+     "on repeat",
+     "반복 재생",
+     "I have this song on repeat."
+    ],
+    [
+     "taste in music",
+     "음악 취향",
+     "We have a similar taste in music."
+    ]
    ]
   },
   {
-   "topic": "Advertisement",
-   "ko": "광고",
-   "lesson": 6,
-   "qs": [
-    {
-     "q": "Do you often see advertisements when you are on your phone or computer?",
-     "idea": "네, 유튜브·인스타그램에서 계속 나옴, 가끔 귀찮음",
-     "vocab": [
-      "pop up",
-      "skip the ad"
-     ]
-    },
-    {
-     "q": "What kind of advertising do you like?",
-     "idea": "재밌거나 감동적인 이야기가 있는 광고",
-     "vocab": [
-      "catchy",
-      "memorable"
-     ]
-    },
-    {
-     "q": "Do you like advertisements?",
-     "idea": "대체로 별로지만 새로운 제품 정보를 얻을 때는 유용",
-     "vocab": [
-      "to be honest",
-      "in moderation"
-     ]
-    },
-    {
-     "q": "Do you see a lot of advertising on trains or other transport?",
-     "idea": "지하철역과 버스에 광고가 많음, 특히 성형외과·학원 광고",
-     "vocab": [
-      "subway station",
-      "eye-catching"
-     ]
-    },
-    {
-     "q": "Is there an advertisement that made an impression on you when you were a child?",
-     "idea": "어릴 때 본 과자 광고 노래를 아직도 기억함 (과거형)",
-     "vocab": [
-      "jingle",
-      "stick in my head"
-     ]
-    }
+   "ko": "영화·TV",
+   "topic": "Films & TV",
+   "words": [
+    [
+     "binge-watch",
+     "몰아서 보다",
+     "I binge-watched the whole series."
+    ],
+    [
+     "plot",
+     "줄거리",
+     "The plot was really gripping."
+    ],
+    [
+     "gripping",
+     "흥미진진한",
+     "It's a gripping thriller."
+    ],
+    [
+     "a tear-jerker",
+     "눈물 나는 영화",
+     "That film was a real tear-jerker."
+    ],
+    [
+     "the main character",
+     "주인공",
+     "The main character is very brave."
+    ],
+    [
+     "streaming service",
+     "OTT 서비스",
+     "I mostly watch films on streaming services."
+    ],
+    [
+     "spoiler",
+     "스포일러",
+     "Please, no spoilers!"
+    ],
+    [
+     "based on a true story",
+     "실화를 바탕으로 한",
+     "The film is based on a true story."
+    ],
+    [
+     "not my cup of tea",
+     "내 취향이 아닌",
+     "Horror films aren't my cup of tea."
+    ],
+    [
+     "documentary",
+     "다큐멘터리",
+     "I enjoy nature documentaries."
+    ]
    ]
   },
   {
-   "topic": "Shoes",
-   "ko": "신발",
-   "lesson": 4,
-   "qs": [
-    {
-     "q": "Which do you prefer, fashionable shoes or comfortable shoes?",
-     "idea": "편한 신발, 많이 걸어서 / 특별한 날만 예쁜 신발",
-     "vocab": [
-      "comfort over style",
-      "wear them out"
-     ]
-    },
-    {
-     "q": "How much money do you usually spend on shoes?",
-     "idea": "보통 10만 원 정도, 오래 신을 거라 품질에 투자",
-     "vocab": [
-      "good value for money",
-      "invest in"
-     ]
-    },
-    {
-     "q": "Have you ever bought shoes online?",
-     "idea": "네, 하지만 사이즈가 안 맞아 반품한 적 있음 (현재완료/과거형)",
-     "vocab": [
-      "return them",
-      "try them on"
-     ]
-    },
-    {
-     "q": "Do you like buying shoes? How often?",
-     "idea": "1년에 두세 번, 낡았을 때만 삼",
-     "vocab": [
-      "worn out",
-      "every now and then"
-     ]
-    }
+   "ko": "책·독서",
+   "topic": "Books & Reading",
+   "words": [
+    [
+     "a bookworm",
+     "책벌레",
+     "I've been a bookworm since I was young."
+    ],
+    [
+     "page-turner",
+     "손에서 못 놓는 책",
+     "The novel was a real page-turner."
+    ],
+    [
+     "e-book",
+     "전자책",
+     "I read e-books on my commute."
+    ],
+    [
+     "fiction / non-fiction",
+     "소설 / 비소설",
+     "I prefer non-fiction."
+    ],
+    [
+     "food for thought",
+     "생각할 거리",
+     "The book gave me food for thought."
+    ],
+    [
+     "get into a book",
+     "책에 빠지다",
+     "It took me a while to get into the book."
+    ],
+    [
+     "best-seller",
+     "베스트셀러",
+     "It's a best-seller in Korea."
+    ],
+    [
+     "author",
+     "작가",
+     "She's my favourite author."
+    ],
+    [
+     "recommend",
+     "추천하다",
+     "I'd highly recommend it."
+    ],
+    [
+     "read before bed",
+     "자기 전에 읽다",
+     "I usually read before bed."
+    ]
+   ]
+  },
+  {
+   "ko": "기술·인터넷·앱",
+   "topic": "Technology & Apps",
+   "words": [
+    [
+     "user-friendly",
+     "사용하기 쉬운",
+     "The app is very user-friendly."
+    ],
+    [
+     "screen time",
+     "화면 사용 시간",
+     "I try to limit my screen time."
+    ],
+    [
+     "be glued to my phone",
+     "폰만 붙잡고 있다",
+     "I'm glued to my phone too much."
+    ],
+    [
+     "at my fingertips",
+     "손쉽게 이용할 수 있는",
+     "Information is at my fingertips."
+    ],
+    [
+     "download",
+     "내려받다",
+     "I downloaded a language app."
+    ],
+    [
+     "notification",
+     "알림",
+     "I turned off my notifications."
+    ],
+    [
+     "social media",
+     "SNS",
+     "I mostly use Instagram for social media."
+    ],
+    [
+     "cutting-edge",
+     "최첨단의",
+     "It uses cutting-edge technology."
+    ],
+    [
+     "go online",
+     "인터넷에 접속하다",
+     "I go online to check the news."
+    ],
+    [
+     "run out of battery",
+     "배터리가 다 되다",
+     "My phone ran out of battery."
+    ]
+   ]
+  },
+  {
+   "ko": "친구·가족",
+   "topic": "Friends & Family",
+   "words": [
+    [
+     "get on well with",
+     "~와 잘 지내다",
+     "I get on well with my sister."
+    ],
+    [
+     "close-knit",
+     "끈끈한",
+     "We're a close-knit family."
+    ],
+    [
+     "keep in touch",
+     "연락하고 지내다",
+     "I keep in touch with my school friends."
+    ],
+    [
+     "hang out",
+     "놀다, 어울리다",
+     "We hang out at weekends."
+    ],
+    [
+     "look up to",
+     "존경하다",
+     "I really look up to my mum."
+    ],
+    [
+     "spend quality time",
+     "의미 있는 시간을 보내다",
+     "I spend quality time with my family on Sundays."
+    ],
+    [
+     "take after",
+     "닮다",
+     "I take after my dad."
+    ],
+    [
+     "bring up",
+     "키우다",
+     "My grandparents brought me up."
+    ],
+    [
+     "an only child",
+     "외동",
+     "I'm an only child."
+    ],
+    [
+     "drift apart",
+     "멀어지다",
+     "We drifted apart after school."
+    ]
+   ]
+  },
+  {
+   "ko": "취미·여가",
+   "topic": "Hobbies & Free time",
+   "words": [
+    [
+     "take up",
+     "(취미를) 시작하다",
+     "I took up yoga last year."
+    ],
+    [
+     "in my element",
+     "물 만난 물고기",
+     "I'm in my element when I do yoga."
+    ],
+    [
+     "unwind",
+     "긴장을 풀다",
+     "Reading helps me unwind."
+    ],
+    [
+     "kill time",
+     "시간을 때우다",
+     "I play games to kill time."
+    ],
+    [
+     "a couch potato",
+     "집에서 뒹구는 사람",
+     "I'm a couch potato on rainy days."
+    ],
+    [
+     "pastime",
+     "취미, 오락",
+     "Hiking is a popular pastime in Korea."
+    ],
+    [
+     "relieve stress",
+     "스트레스를 풀다",
+     "Music helps me relieve stress."
+    ],
+    [
+     "spare time",
+     "여가 시간",
+     "I don't have much spare time."
+    ],
+    [
+     "give up",
+     "그만두다",
+     "I gave up the guitar after a month."
+    ],
+    [
+     "get the hang of",
+     "요령을 익히다",
+     "I'm getting the hang of it."
+    ]
+   ]
+  },
+  {
+   "ko": "자연·환경",
+   "topic": "Nature & Environment",
+   "words": [
+    [
+     "scenery",
+     "경치",
+     "The scenery in Gangwon-do is stunning."
+    ],
+    [
+     "fresh air",
+     "맑은 공기",
+     "I go hiking for some fresh air."
+    ],
+    [
+     "polluted",
+     "오염된",
+     "The river used to be very polluted."
+    ],
+    [
+     "recycle",
+     "재활용하다",
+     "We recycle plastic and paper."
+    ],
+    [
+     "single-use plastic",
+     "일회용 플라스틱",
+     "I try to avoid single-use plastic."
+    ],
+    [
+     "reduce carbon emissions",
+     "탄소 배출을 줄이다",
+     "We need to reduce carbon emissions."
+    ],
+    [
+     "endangered species",
+     "멸종 위기종",
+     "Pandas are an endangered species."
+    ],
+    [
+     "go green",
+     "친환경적으로 살다",
+     "Many companies are going green."
+    ],
+    [
+     "litter",
+     "쓰레기를 버리다",
+     "People shouldn't litter in parks."
+    ],
+    [
+     "climate change",
+     "기후 변화",
+     "Climate change affects everyone."
+    ]
+   ]
+  },
+  {
+   "ko": "일상·잠",
+   "topic": "Daily routine & Sleep",
+   "words": [
+    [
+     "stick to a routine",
+     "루틴을 지키다",
+     "I try to stick to a routine."
+    ],
+    [
+     "an early bird",
+     "아침형 인간",
+     "I'm an early bird."
+    ],
+    [
+     "a night owl",
+     "저녁형 인간",
+     "My brother is a night owl."
+    ],
+    [
+     "sleep in",
+     "늦잠 자다",
+     "I sleep in on Sundays."
+    ],
+    [
+     "take a nap",
+     "낮잠 자다",
+     "I sometimes take a nap after lunch."
+    ],
+    [
+     "worn out",
+     "지친",
+     "I'm worn out after work."
+    ],
+    [
+     "on the go",
+     "바쁘게 움직이는",
+     "I'm always on the go."
+    ],
+    [
+     "get ready",
+     "준비하다",
+     "It takes me 30 minutes to get ready."
+    ],
+    [
+     "ready to take on the day",
+     "하루를 시작할 준비가 된",
+     "After coffee, I'm ready to take on the day."
+    ],
+    [
+     "used to / be used to",
+     "~하곤 했다 / ~에 익숙하다",
+     "I'm used to getting up early."
+    ]
+   ]
+  },
+  {
+   "ko": "감정·성격",
+   "topic": "Feelings & Personality",
+   "words": [
+    [
+     "outgoing",
+     "외향적인",
+     "I'm quite outgoing."
+    ],
+    [
+     "introverted",
+     "내향적인",
+     "I'm a bit introverted."
+    ],
+    [
+     "easy-going",
+     "느긋한, 무던한",
+     "My friends say I'm easy-going."
+    ],
+    [
+     "patient",
+     "참을성 있는",
+     "Teachers need to be patient."
+    ],
+    [
+     "confident",
+     "자신 있는",
+     "I've become more confident."
+    ],
+    [
+     "stressed out",
+     "스트레스를 많이 받은",
+     "I get stressed out before exams."
+    ],
+    [
+     "over the moon",
+     "매우 기쁜",
+     "I was over the moon when I passed."
+    ],
+    [
+     "lose my temper",
+     "화를 내다",
+     "I rarely lose my temper."
+    ],
+    [
+     "cheer me up",
+     "기운 나게 하다",
+     "Chocolate always cheers me up."
+    ],
+    [
+     "down",
+     "우울한",
+     "I feel a bit down on gloomy days."
+    ]
+   ]
+  },
+  {
+   "ko": "기억·어린 시절",
+   "topic": "Memory & Childhood",
+   "words": [
+    [
+     "as far as I remember",
+     "내가 기억하는 한",
+     "As far as I remember, I was a shy child."
+    ],
+    [
+     "vivid memory",
+     "생생한 기억",
+     "I have vivid memories of that trip."
+    ],
+    [
+     "bring back memories",
+     "추억을 떠올리게 하다",
+     "This song brings back memories."
+    ],
+    [
+     "slip my mind",
+     "깜빡하다",
+     "It completely slipped my mind."
+    ],
+    [
+     "forgetful",
+     "잘 잊어버리는",
+     "I'm a bit forgetful."
+    ],
+    [
+     "jot down",
+     "적어 두다",
+     "I jot down important dates."
+    ],
+    [
+     "used to",
+     "~하곤 했다",
+     "I used to play in the park every day."
+    ],
+    [
+     "look back on",
+     "돌이켜 보다",
+     "I look back on my childhood fondly."
+    ],
+    [
+     "carefree",
+     "걱정 없는",
+     "My childhood was carefree."
+    ],
+    [
+     "keep a diary",
+     "일기를 쓰다",
+     "I kept a diary in middle school."
+    ]
+   ]
+  },
+  {
+   "ko": "예술·사진",
+   "topic": "Art & Photography",
+   "words": [
+    [
+     "artistic",
+     "예술적 재능이 있는",
+     "I'm not very artistic."
+    ],
+    [
+     "exhibition",
+     "전시회",
+     "I went to a photography exhibition."
+    ],
+    [
+     "gallery",
+     "미술관",
+     "The gallery was free to enter."
+    ],
+    [
+     "take photos",
+     "사진을 찍다",
+     "I love taking photos of landscapes."
+    ],
+    [
+     "selfie",
+     "셀카",
+     "I rarely take selfies."
+    ],
+    [
+     "capture the moment",
+     "순간을 담다",
+     "Photos help me capture the moment."
+    ],
+    [
+     "edit",
+     "편집하다",
+     "I edit my photos on my phone."
+    ],
+    [
+     "masterpiece",
+     "걸작",
+     "The painting is a masterpiece."
+    ],
+    [
+     "creative",
+     "창의적인",
+     "Drawing helps me be creative."
+    ],
+    [
+     "appreciate art",
+     "예술을 감상하다",
+     "I've learned to appreciate art."
+    ]
    ]
   }
  ]
