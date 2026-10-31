@@ -738,18 +738,6 @@
    "gram": "휴가를 가다는 <em>go on holiday</em>로 통째로 외워요. 끝에 <em>a few days ago</em>(며칠 전)가 있으니 동사는 과거형 <em>went</em>예요."
   },
   {
-   "id": "r10-02",
-   "kind": "ko",
-   "sessions": [
-    10
-   ],
-   "type": "동사·시제",
-   "ko": "영화를 봤어요.",
-   "en": "I watched a movie.",
-   "mine": "I wathehd",
-   "gram": "규칙동사의 과거형은 <em>동사 + -ed</em>. watch → <em>watched</em>. 발음은 [와치트]처럼 끝을 t로 짧게."
-  },
-  {
    "id": "r10-03",
    "kind": "ko",
    "sessions": [
