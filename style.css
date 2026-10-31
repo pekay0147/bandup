@@ -43,7 +43,7 @@ main{max-width:520px;margin:0 auto;display:grid;gap:14px}
 .who{font:15px var(--cute);color:var(--muted)}
 h1{margin:0;font:26px/1.2 var(--cute);font-weight:400}
 h2{margin:0;font:19px var(--cute);font-weight:400}
-.back{border:0;background:none;font:15px var(--cute);color:var(--blue);padding:4px 0;cursor:pointer;justify-self:start}
+button.back{border:0;background:none;font:15px var(--cute);color:var(--blue);padding:4px 0;cursor:pointer;justify-self:start}
 
 /* home */
 .hello{display:grid;gap:4px}
@@ -334,7 +334,7 @@ h1{font-size:27px;font-weight:700}
 h2{font-weight:700}
 .brand,.brand b,.hello h1 b,.stat b,.tile .t b,.mrow .t b,.focus b,.ghead b,.modeseg button b,.gram b,.cmp b,.empty .big,.sheet .big,.sec-t,.idea-h b,.wbox .wt b{font-weight:700}
 .w,.p,.m .rt,.front .wrong,.m .wr,.mine s{font-weight:600}
-.btn,.hero button,.acts button,.pchips button,.back,.tabs button,.front .tap,.flipback{font-weight:600}
+.btn,.hero button,.acts button,.pchips button,button.back,.tabs button,.front .tap,.flipback{font-weight:600}
 .btn,.hero button,.acts button{min-height:54px;font-size:18px}
 .phead .lead,.mrow .t span,.tile .t span,.ghead span,.gtip,.empty p,.muted.small,.hint2,.sess,.prog{font-size:15px}
 .modeseg button b{font-size:17px}

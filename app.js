@@ -129,9 +129,9 @@ function menuGuide(){
   const nP2 = P2? P2.items.length : 0;
   const w=el("div","menu"); w.append(el("h2","sec-t","무엇을 공부할까요?"));
   for(const [k,name,desc] of [
-    ["cards","큐카드",`수업 문장 ${D.cards.length}장 · 회차별 / 틀린 문장 / 랜덤`],
-    ["ideas","아이디어",`Part 1 어휘 · Part 2 기출 ${nP2}개 · Part 3 질문`],
-    ["words","단어",`아이엘츠 단어 ${nWB}개 · 철자 받아쓰기 ${nLS}개`]]){
+    ["cards","큐카드","수업 문장 연습하기"],
+    ["ideas","아이디어","Part 1·2·3 답변 재료"],
+    ["words","단어","단어 외우기 · 받아쓰기"]]){
     const b=el("button","mrow"); b.type="button";
     const ic=el("span","mic"); ic.innerHTML=ICONS[k];
     const t=el("div","t"); t.append(el("b",null,name), el("span",null,desc));
