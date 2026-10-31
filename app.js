@@ -2,7 +2,7 @@
    Data: data/students/<slug>.json + data/glossary.json. Progress lives in this phone's localStorage. */
 (function(){
 "use strict";
-const TCOL = {"단·복수":"#8b5cf6","주어-동사":"#3d5afe","동사·시제":"#0f9e8f","문장 구조":"#e07a2e","관사·전치사":"#d6437f",
+const TCOL = {"어휘":"#4457e8","단·복수":"#8b5cf6","주어-동사":"#3d5afe","동사·시제":"#0f9e8f","문장 구조":"#e07a2e","관사·전치사":"#d6437f",
   "품사":"#b88a00","단어 선택":"#2a9a55","발음·철자":"#7c7f99","표현":"#d99a00","잘한 표현":"#1d9a68"};
 const INTERVALS=[0,1,3,7,14,30], MASTER=5, DAILY=15;
 const $=s=>document.querySelector(s);
@@ -48,7 +48,9 @@ function streak(){ let n=0, d=today(); const set=new Set(days); if(!set.has(d)) 
 const typeOf=c=> c.kind==="ko" && !c.type ? "표현" : c.type;
 const col=c=>TCOL[typeOf(c)]||"#4457e8";
 const rep=c=>(c.sessions||[]).length>1;
-const sessLabel=c=>(c.sessions||[]).join("·")+"회차";
+const sessLabel=c=>c.vtopic? c.vtopic : (c.sessions||[]).join("·")+"회차";
+const VCARDS={};
+const getCard=id=>D.cards.find(c=>c.id===id) || VCARDS[id];
 function dueCards(){ const t=today(); return D.cards.filter(c=>{ const s=srs[c.id]||{}; return (s.box||0)<MASTER && (s.due||t)<=t; }); }
 function mastered(){ return D.cards.filter(c=>((srs[c.id]||{}).box||0)>=MASTER).length; }
 function grade(c,ok){
@@ -231,7 +233,8 @@ function flipCard(c, onFlip){
   const f=el("div","face front"); f.setAttribute("aria-hidden",String(flipped));
   const fh=el("div","fhead"); fh.append(chipsFor(), el("span","sess",sessLabel(c))); f.append(fh);
   const fb=el("div","body");
-  { const ss=(c.sessions||[]); const first=D.sessions.find(x=>x.no===ss[0]);
+  if(c.vtopic){ fb.append(el("span","from",`주제별 어휘 · ${c.vtopic}`)); }
+  else { const ss=(c.sessions||[]); const first=D.sessions.find(x=>x.no===ss[0]);
     fb.append(el("span","from", ss.length>1? `${ss.join("·")}회차 수업에서 반복` : `${ss[0]}회차 수업${first&&first.date? " · "+mmdd(first.date):""}`)); }
   if(c.kind==="fix"){ fb.append(el("span","lab","틀린 문장이에요. 바르게 고쳐 보세요"), el("p","wrong",c.wrong)); }
   else { fb.append(el("span","lab", c.good? "이 말을 영어로 하면? · 수업 때 잘했던 문장" : "이 말을 영어로 하면?"), el("p","ko",c.ko)); }
@@ -255,7 +258,7 @@ function flipCard(c, onFlip){
   else wb.append(el("span","hint","밑줄 친 단어를 누르면 뜻이 나와요"));
   bb.append(wb);
   const gtext = c.gram || [c.note, (D.tips||{})[typeOf(c)]].filter(Boolean).join(" · ");
-  if(gtext){ const g=el("div","gram"); g.append(el("b",null,"문법 포인트")); const p=el("p"); if(c.gram) p.innerHTML=c.gram; else p.textContent=gtext; g.append(p); bb.append(g); }
+  if(gtext){ const g=el("div","gram"); g.append(el("b",null, c.vtopic? "예문" : "문법 포인트")); const p=el("p"); if(c.gram) p.innerHTML=c.gram; else p.textContent=gtext; g.append(p); bb.append(g); }
   if(c.mine){ const mi=el("div","mine"+(c.good?" good":"")); if(c.good){ mi.append(document.createTextNode("수업 때 이렇게 말했어요 ·"), el("b",null,c.mine)); } else { mi.append(document.createTextNode(c.example? "이렇게 틀리기 쉬워요" : "수업 때 한 말"), el("s",null,c.mine)); } bb.append(mi); }
   const fbk=el("button","flipback","↺ 앞면 다시 보기"); fbk.type="button"; fbk.tabIndex=flipped?0:-1; fbk.onclick=e=>{ e.stopPropagation(); setFlip(card,false,onFlip); };
   bb.append(fbk); b.append(bb);
@@ -325,17 +328,17 @@ function quoteBox(){
 /* ---------- deck (browse by session) ---------- */
 function renderDeck(app){
   if(!deckState || deckState.key!==view.deck){
-    const list = (view.deck==="rand"||view.deck==="wrong") ? (view.ids||[]).map(id=>D.cards.find(c=>c.id===id)).filter(Boolean)
+    const list = (view.deck==="rand"||view.deck==="wrong"||view.deck==="vocab") ? (view.ids||[]).map(getCard).filter(Boolean)
                : view.deck==="all" ? [...D.cards].sort(()=>Math.random()-.5) : D.cards.filter(c=>(c.sessions||[]).includes(view.deck));
     deckState={key:view.deck, ids:list.map(c=>c.id), i:0};
   }
-  const back=el("button","back", view.deck==="rand"? "‹ 랜덤 퀴즈 설정" : view.deck==="wrong"? "‹ 틀린 문장 모음" : "‹ 회차별 정리"); back.type="button"; back.onclick=()=>{ if(view.deck==="rand") cardMode="random"; else if(view.deck==="wrong") cardMode="wrong"; else { cardMode="session"; if(typeof view.deck==="number") selSession=view.deck; } go("cards"); }; app.append(back);
-  if(view.deck!=="rand" && view.deck!=="wrong") app.append(sessionPicker(view.deck, v=>{ if(v!==view.deck){ if(typeof v==="number") selSession=v; go("cards",{deck:v}); } }, false));
+  const back=el("button","back", view.deck==="vocab"? "‹ 주제별 어휘" : view.deck==="rand"? "‹ 랜덤 퀴즈 설정" : view.deck==="wrong"? "‹ 틀린 문장 모음" : "‹ 회차별 정리"); back.type="button"; back.onclick=()=>{ if(view.deck==="vocab"){ ideaPart="p1"; go("ideas"); return; } if(view.deck==="rand") cardMode="random"; else if(view.deck==="wrong") cardMode="wrong"; else { cardMode="session"; if(typeof view.deck==="number") selSession=view.deck; } go("cards"); }; app.append(back);
+  if(!["rand","wrong","vocab"].includes(view.deck)) app.append(sessionPicker(view.deck, v=>{ if(v!==view.deck){ if(typeof v==="number") selSession=v; go("cards",{deck:v}); } }, false));
   const s=D.sessions.find(x=>x.no===view.deck);
-  app.append(el("h1",null, view.deck==="rand"? "랜덤 퀴즈" : view.deck==="wrong"? "틀린 문장 연습" : view.deck==="all"? "전체 큐카드" : `${view.deck}회차 큐카드`));
+  app.append(el("h1",null, view.deck==="vocab"? `${view.title||"주제별 어휘"} 카드` : view.deck==="rand"? "랜덤 퀴즈" : view.deck==="wrong"? "틀린 문장 연습" : view.deck==="all"? "전체 큐카드" : `${view.deck}회차 큐카드`));
   if(s) app.append(el("p","muted small",`${mmdd(s.date)} · ${s.title}`));
   const ids=deckState.ids; if(!ids.length){ const e=el("div","empty"); e.append(el("p",null,"카드가 없어요.")); app.append(e); return; }
-  const c=D.cards.find(x=>x.id===ids[deckState.i]);
+  const c=getCard(ids[deckState.i]);
   const pg=el("div","prog"); pg.append(el("span",null,`${deckState.i+1} / ${ids.length}`), el("span",null,`알았어요 ${ids.filter(id=>marks[id]==="know").length}`)); app.append(pg);
   const bar=el("div","bar"); const bi=el("i"); bi.style.width=((deckState.i+1)/ids.length*100)+"%"; bar.append(bi); app.append(bar);
   const sc=flipCard(c); sc.onswipe=d=>move(d); app.append(sc);
@@ -345,7 +348,7 @@ function renderDeck(app){
   const know=el("button","know","알았어요"); know.type="button"; know.setAttribute("aria-pressed",String(marks[c.id]==="know")); know.onclick=()=>markDeck(c,"know");
   const next=el("button","nav","›"); next.type="button"; next.setAttribute("aria-label","다음 카드"); next.disabled=deckState.i>=ids.length-1; next.onclick=()=>move(1);
   acts.append(prev,again,know,next); app.append(acts);
-  const fin=el("button","btn primary",(view.deck==="all"||view.deck==="rand"||view.deck==="wrong")?"다 했어요! 선생님께 결과 보내기":`${view.deck}회차 끝! 선생님께 결과 보내기`); fin.type="button"; fin.onclick=()=>openReport("deck"); app.append(fin);
+  const fin=el("button","btn primary",(["all","rand","wrong","vocab"].includes(view.deck))?"다 했어요! 선생님께 결과 보내기":`${view.deck}회차 끝! 선생님께 결과 보내기`); fin.type="button"; fin.onclick=()=>openReport("deck"); app.append(fin);
   app.append(el("p","hint2","카드를 누르면 뒤집혀요 · 옆으로 밀어서 넘기기"));
 }
 function move(d){ const n=deckState.i+d; if(n<0||n>=deckState.ids.length) return; deckState.i=n; flipped=false; picked=null; render(); }
@@ -458,6 +461,7 @@ function renderP1(app){
   if(!P1){ const e=el("div","empty"); e.append(el("p",null,"어휘 자료를 불러오지 못했어요.")); app.append(e); return; }
   const total=P1.topics.reduce((a,t)=>a+t.words.length,0);
   app.append(el("p","muted small",`Part 1 단골 주제 ${P1.topics.length}개, 표현 ${total}개예요. 주제를 눌러서 펼쳐 보세요.`));
+  const allB=el("button","btn vstart",`전체 섞어서 외우기 ${total}장 중 20장`); allB.type="button"; allB.onclick=()=>startVocab(P1.topics,"전체 주제",true); app.append(allB);
   const grid=el("div","vgrid");
   for(const tp of P1.topics){
     const b=el("button","vchip"+(openKey==="v-"+tp.topic?" on":"")); b.type="button";
@@ -471,12 +475,21 @@ function renderP1(app){
   if(tp){
     const p=el("div","panel vpanel"); p.id="vopen";
     const h=el("div","ghead"); h.append(el("b",null,`${tp.ko} · ${tp.topic}`), el("span",null,`${tp.words.length}개`)); p.append(h);
+    const go1=el("button","btn primary vstart",`카드로 외우기 ${tp.words.length}장`); go1.type="button";
+    go1.onclick=()=>startVocab([tp], tp.ko, false); p.append(go1);
     for(const [en,ko,ex] of tp.words){
       const r=el("div","vrow"); const top=el("div","vtop"); top.append(el("b",null,en), el("span",null,ko)); r.append(top);
       if(ex) r.append(el("p","vex",ex)); p.append(r);
     }
     app.append(p);
   }
+}
+function startVocab(topics, title, shuffle){
+  let ids=[];
+  for(const tp of topics){ tp.words.forEach(([en,ko,ex],i)=>{ const id=`v-${tp.topic}-${i}`.replace(/[^\w-]/g,"_");
+    VCARDS[id]={id,kind:"ko",type:"어휘",vtopic:tp.ko,ko,en,gram:ex? ex.replace(/[<>&]/g,""):"",sessions:[]}; ids.push(id); }); }
+  if(shuffle) ids=ids.sort(()=>Math.random()-.5).slice(0,20);
+  deckState=null; go("cards",{deck:"vocab", ids, title});
 }
 function renderP3(app){
   const t=el("div","focus"); t.append(el("b",null,"Part 3 답변 요령"), document.createTextNode("내 의견 → 이유 2가지 → 예시나 반대 의견으로 마무리. I'd say… / On the other hand…")); app.append(t);
@@ -520,8 +533,8 @@ function openReport(kind){
     title=`오늘의 복습`; lines.push(`맞힘 ${okN} / ${total}장`);
   } else {
     const ids=deckState? deckState.ids : []; total=ids.length;
-    okN=ids.filter(id=>marks[id]==="know").length; again=ids.filter(id=>marks[id]==="again").map(id=>D.cards.find(c=>c.id===id));
-    title = !deckState ? "큐카드" : deckState.key==="rand" ? "랜덤 퀴즈" : deckState.key==="wrong" ? "틀린 문장 연습" : deckState.key==="all" ? "전체 큐카드" : `${deckState.key}회차 큐카드`;
+    okN=ids.filter(id=>marks[id]==="know").length; again=ids.filter(id=>marks[id]==="again").map(getCard);
+    title = !deckState ? "큐카드" : deckState.key==="vocab" ? `${view.title||"주제별 어휘"} 어휘 카드` : deckState.key==="rand" ? "랜덤 퀴즈" : deckState.key==="wrong" ? "틀린 문장 연습" : deckState.key==="all" ? "전체 큐카드" : `${deckState.key}회차 큐카드`;
     lines.push(`알았어요 ${okN} / ${total}장`);
     const rest=total-okN-again.length; if(rest>0) lines.push(`아직 표시 안 한 카드 ${rest}장`);
   }

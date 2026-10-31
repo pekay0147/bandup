@@ -259,3 +259,6 @@ h2{margin:0;font:19px var(--cute);font-weight:400}
 .vtop b{font:700 16px var(--body)}
 .vtop span{font-size:14px;color:var(--muted)}
 .vex{margin:0;font-size:14px;font-style:italic;color:var(--ink);opacity:.85}
+
+.vstart{width:100%}
+.vpanel .vstart{margin:4px 0 6px}
