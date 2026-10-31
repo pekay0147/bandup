@@ -351,3 +351,6 @@ h2{font-weight:700}
 .q-lab,.q-next{font-size:14px}
 .q-ex,.vex{font-size:16px}
 .steps4 span{font-size:15px}
+.boxh b{font-size:18px;font-weight:700}
+.boxh span{font-size:15px;color:var(--muted)}
+.boxlist .m:first-child{border-top:0}

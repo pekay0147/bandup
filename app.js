@@ -153,7 +153,7 @@ function renderDecks(app){
   const seg=el("div","modeseg"); seg.setAttribute("role","tablist");
   for(const [k,label,sub] of [["session","회차별",`1~${D.sessions[D.sessions.length-1].no}회차`],["wrong","틀린 문장",`${D.cards.filter(isWrong).length}개`],["random","랜덤 퀴즈","섞어서 풀기"]]){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(cardMode===k));
-    b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; render(); }; seg.append(b);
+    b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; openKey=null; render(); }; seg.append(b);
   }
   app.append(seg);
   if(cardMode==="random") return renderRandomSetup(app);
@@ -170,12 +170,10 @@ function renderDecks(app){
   head.append(ht,startB); app.append(head);
   const f=D.focus&&D.focus[String(selSession)];
   if(f){ const x=el("div","focus"); x.append(el("b",null,"이 회차 포인트"), document.createTextNode(f)); app.append(x); }
-  const p1=el("div","panel"); { const gh=el("div","ghead"); gh.append(el("b",null,"틀렸던 문장"), el("span",null,`${wrong.length}개`)); p1.append(gh); }
-  if(!wrong.length) p1.append(el("p","gtip","이 회차에는 고친 문장이 없어요."));
-  wrong.forEach(c=>p1.append(noteRow(c))); app.append(p1);
-  const p2=el("div","panel"); { const gh=el("div","ghead"); gh.append(el("b",null,"외워 둘 문장"), el("span",null,`${keep.length}개`)); p2.append(gh); }
-  if(!keep.length) p2.append(el("p","gtip","이 회차에는 따로 외울 문장이 없어요."));
-  keep.forEach(c=>p2.append(keepRow(c))); app.append(p2);
+  const box=(key,title,list,row)=>{ if(!list.length) return; const hd=el("div","boxh"); hd.append(el("b",null,title), el("span",null,`${list.length}개 · 눌러서 보기`));
+    app.append(fold(key, hd, b=>{ const w=el("div","boxlist"); list.forEach(c=>w.append(row(c))); b.append(w); })); };
+  box(`s${selSession}-w`,"틀렸던 문장",wrong,noteRow);
+  box(`s${selSession}-k`,"외워 둘 문장",keep,keepRow);
 }
 function keepRow(c){
   const r=el("div","m");
@@ -196,8 +194,9 @@ function renderWrongList(app){
   const b1=el("button","btn primary",`전부 연습 ${all.length}장`); b1.type="button"; b1.onclick=()=>{ deckState=null; go("cards",{deck:"wrong", ids:order().map(c=>c.id)}); };
   const b2=el("button","btn","섞어서 연습"); b2.type="button"; b2.onclick=()=>{ deckState=null; go("cards",{deck:"wrong", ids:[...all].sort(()=>Math.random()-.5).map(c=>c.id)}); };
   row.append(b1); p.append(row); app.append(p);
-  const sec=(title,list,sub)=>{ if(!list.length) return; const q=el("div","panel"); const gh=el("div","ghead"); gh.append(el("b",null,title), el("span",null,sub||`${list.length}개`)); q.append(gh); list.forEach(c=>q.append(noteRow(c))); app.append(q); };
-  sec("여러 번 반복한 실수", repeated, `${repeated.length}개 · 복습에 2배 자주 나와요`);
+  const sec=(title,list,sub)=>{ if(!list.length) return; const hd=el("div","boxh"); hd.append(el("b",null,title), el("span",null,(sub||`${list.length}개`)+" · 눌러서 보기"));
+    app.append(fold("w-"+title, hd, b=>{ const w=el("div","boxlist"); list.forEach(c=>w.append(noteRow(c))); b.append(w); })); };
+  sec("여러 번 반복한 실수", repeated);
   sec("헷갈렸던 문장", weak.filter(c=>!rep(c)));
   for(const s of [...D.sessions].reverse()){
     const list=all.filter(c=>c.sessions[0]===s.no && !rep(c));
