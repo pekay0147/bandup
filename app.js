@@ -280,34 +280,44 @@ function setFlip(card,v,cb){
 }
 
 
-/* ---------- a quote a day ---------- */
-const QUOTES=[
- ["The limits of my language mean the limits of my world.","내 언어의 한계가 곧 내 세계의 한계다.","Ludwig Wittgenstein"],
- ["It does not matter how slowly you go as long as you do not stop.","멈추지만 않는다면 얼마나 천천히 가는지는 중요하지 않다.","Confucius"],
- ["The beautiful thing about learning is that nobody can take it away from you.","배움의 멋진 점은 누구도 그것을 빼앗아 갈 수 없다는 것이다.","B.B. King"],
- ["The expert in anything was once a beginner.","어떤 분야의 전문가도 한때는 초보자였다.","Helen Hayes"],
- ["Success is the sum of small efforts, repeated day in and day out.","성공은 매일 반복한 작은 노력들의 합이다.","Robert Collier"],
- ["Don't watch the clock; do what it does. Keep going.","시계를 보지 말고 시계처럼 하라. 계속 나아가라.","Sam Levenson"],
- ["Believe you can and you're halfway there.","할 수 있다고 믿으면 이미 반은 온 것이다.","Theodore Roosevelt"],
- ["Education is the most powerful weapon which you can use to change the world.","교육은 세상을 바꿀 수 있는 가장 강력한 무기다.","Nelson Mandela"],
- ["An investment in knowledge pays the best interest.","지식에 대한 투자가 가장 높은 이자를 낳는다.","Benjamin Franklin"],
- ["Learning never exhausts the mind.","배움은 결코 정신을 지치게 하지 않는다.","Leonardo da Vinci"],
- ["Fall seven times, stand up eight.","일곱 번 넘어지면 여덟 번 일어나라.","Japanese proverb"],
- ["You don't have to be great to start, but you have to start to be great.","시작하려고 대단할 필요는 없지만, 대단해지려면 시작해야 한다.","Zig Ziglar"],
- ["Great things are done by a series of small things brought together.","위대한 일은 작은 일들이 모여 이루어진다.","Vincent van Gogh"],
- ["Start where you are. Use what you have. Do what you can.","지금 있는 곳에서, 가진 것으로, 할 수 있는 것을 하라.","Arthur Ashe"],
- ["It always seems impossible until it's done.","끝내기 전까지는 늘 불가능해 보인다.","Nelson Mandela"],
- ["A different language is a different vision of life.","다른 언어는 삶을 보는 다른 시선이다.","Federico Fellini"],
- ["Mistakes are proof that you are trying.","실수는 당신이 노력하고 있다는 증거다.","Unknown"],
- ["Practice makes perfect.","연습이 완벽을 만든다.","Proverb"],
- ["Little by little, one travels far.","조금씩 가다 보면 멀리 간다.","Proverb"],
- ["The secret of getting ahead is getting started.","앞서가는 비결은 일단 시작하는 것이다.","Mark Twain"]
+/* ---------- an IELTS idiom a day ---------- */
+const IDIOMS=[
+ ["once in a blue moon","아주 가끔","I eat fast food once in a blue moon."],
+ ["a piece of cake","식은 죽 먹기, 아주 쉬운 일","Making pasta is a piece of cake for me."],
+ ["hit the books","열심히 공부하다","I have to hit the books before my IELTS test."],
+ ["under the weather","몸이 좀 안 좋은","I was a bit under the weather last week."],
+ ["in my element","물 만난 물고기 같은","I'm in my element when I do yoga."],
+ ["food for thought","생각할 거리","That documentary gave me a lot of food for thought."],
+ ["cost an arm and a leg","엄청 비싸다","Flights to Hawaii cost an arm and a leg in summer."],
+ ["go the extra mile","한 발 더 노력하다","My favourite teacher always went the extra mile for us."],
+ ["a breath of fresh air","신선한 변화, 기분 전환","Moving to a new city was a breath of fresh air."],
+ ["make ends meet","빠듯하게 생활비를 맞추다","Many students work part-time to make ends meet."],
+ ["the best of both worlds","두 가지 장점을 다 누리는 것","Living near the city gives me the best of both worlds."],
+ ["get the hang of","요령을 터득하다","It took me a while to get the hang of driving."],
+ ["on the go","바쁘게 돌아다니는","I'm always on the go, so I often eat quick meals."],
+ ["a couch potato","집에서 TV만 보는 사람","On rainy weekends I turn into a couch potato."],
+ ["out of the blue","갑자기, 난데없이","Out of the blue, an old friend called me."],
+ ["break the ice","어색함을 깨다","Talking about the weather is a good way to break the ice."],
+ ["call it a day","오늘은 그만하다","After three hours of studying, I called it a day."],
+ ["a blessing in disguise","전화위복","Missing that bus was a blessing in disguise."],
+ ["sleep on it","하룻밤 더 생각해 보다","When I have a big decision to make, I usually sleep on it."],
+ ["ring a bell","어디서 들어 본 것 같다","That name rings a bell, but I can't remember where I heard it."],
+ ["learn the ropes","일의 요령을 배우다","It took me a month to learn the ropes at my new job."],
+ ["take it easy","쉬엄쉬엄하다, 푹 쉬다","On Sundays I just take it easy at home."],
+ ["not my cup of tea","내 취향이 아니다","Horror movies aren't really my cup of tea."],
+ ["broaden my horizons","시야를 넓히다","Travelling abroad really broadened my horizons."],
+ ["keep in touch","연락하고 지내다","I still keep in touch with my friends from school."],
+ ["bite off more than I can chew","감당 못 할 만큼 일을 벌이다","I bit off more than I could chew this semester."],
+ ["from scratch","처음부터, 맨손으로","My aunt started her bakery from scratch."],
+ ["beat the traffic","차 막히는 걸 피하다","I leave home early to beat the traffic."],
+ ["have a sweet tooth","단 걸 좋아하다","I have a sweet tooth, so I can't resist chocolate."],
+ ["all of a sudden","갑자기","All of a sudden, my mind went blank."]
 ];
 function quoteBox(){
-  const d=new Date(); const dayNo=Math.floor((Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()))/86400000);
-  const [en,ko,who]=QUOTES[dayNo % QUOTES.length];
+  const d=new Date(); const dayNo=Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000);
+  const [idiom,ko,ex]=IDIOMS[dayNo % IDIOMS.length];
   const x=el("figure","quote");
-  x.append(el("span","q-lab","오늘의 영어 한 줄"), el("blockquote",null,en), el("figcaption",null,`— ${who}`), el("p","q-ko",ko));
+  x.append(el("span","q-lab","오늘의 아이엘츠 idiom"), el("blockquote",null,idiom), el("p","q-mean",ko), el("figcaption",null,ex));
   return x;
 }
 
