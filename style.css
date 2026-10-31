@@ -47,7 +47,7 @@ h2{margin:0;font:19px var(--cute);font-weight:400}
 /* home */
 .hello{display:grid;gap:4px}
 .hello h1 b{color:var(--blue);font-weight:400}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .stat{background:var(--surface);border-radius:16px;box-shadow:var(--shadow);padding:12px 14px}
 .stat b{display:block;font:26px/1.1 var(--fat);font-weight:400;font-variant-numeric:tabular-nums}
 .stat span{font:13px var(--cute);color:var(--muted)}

@@ -95,7 +95,7 @@ function renderHome(app){
   const h=el("div","hello"); const h1=el("h1"); h1.append(document.createTextNode(`${D.name}님, `), el("b",null,due? `오늘 ${Math.min(due,DAILY)}장`: "오늘 복습 끝!"));
   h.append(h1); app.append(h);
   const st=el("div","stats");
-  for(const [cls,n,l] of [["due",due,"복습할 카드"],["streak",streak(),"연속 공부일"],["mast",mastered(),`마스터 / ${D.cards.length}`]]){
+  for(const [cls,n,l] of [["due",due,"복습할 카드"],["streak",streak(),"연속 공부일"]]){
     const s=el("div","stat "+cls); s.append(el("b",null,String(n)), el("span",null,l)); st.append(s);
   }
   app.append(st);
