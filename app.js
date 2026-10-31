@@ -13,7 +13,7 @@ const mmdd=s=>s? s.slice(5).replace("-","/") : "";
 const store={ get(k,f){ try{ const v=localStorage.getItem(k); return v==null? f : JSON.parse(v);}catch(_){ return f; } },
               set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(_){} } };
 
-let D=null, G={}, slug=null;
+let D=null, G={}, P2=null, slug=null;
 let srs={}, marks={}, days=[];
 let view={tab:"home"};   // home | cards(deck?) | review | notes
 let deckState=null, reviewState=null, picked=null, flipped=false, noteFilter="전체", noteSession="all", cardMode="session", selSession=null, randCount=10, randKind="all";
@@ -32,6 +32,7 @@ async function boot(){
     const [s,g]=await Promise.all([fetch(`data/students/${slug}.json`,{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
                                    fetch("data/glossary.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({}))]);
     D=s; G=g||{};
+    P2=await fetch("data/part2.json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null);
   }catch(e){ app.textContent=""; const x=el("div","empty"); x.append(el("h2",null,"카드를 불러오지 못했어요"), el("p",null,"인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 되면 선생님께 링크를 다시 받아 주세요.")); app.append(x); return; }
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
@@ -428,34 +429,73 @@ function noteRow(c){
   return r;
 }
 
-/* ---------- ideas (Part 2 answer ideas) ---------- */
-let openIdea=null;
+/* ---------- ideas: Part 1 / Part 2 / Part 3 ---------- */
+let ideaPart="p2", openKey=null, p2Query="", p2Lesson=false;
 function renderIdeas(app){
   app.append(el("h1",null,"아이디어"));
-  app.append(el("p","muted small","수업에서 다룬 Part 2 주제별 말할 거리예요. 주제를 눌러서 펼쳐 보세요."));
-  if(D.ideaTip){ const t=el("div","focus"); t.append(el("b",null,"Part 2 답변 순서"), document.createTextNode(D.ideaTip)); app.append(t); }
-  const list=(D.ideas||[]).slice().sort((a,b)=>b.session-a.session);
-  if(!list.length){ const e=el("div","empty"); e.append(el("p",null,"아직 정리된 아이디어가 없어요.")); app.append(e); return; }
-  for(const it of list){
-    const s=D.sessions.find(x=>x.no===it.session);
-    const card=el("div","idea"+(openIdea===it.session?" open":""));
-    const head=el("button","idea-h"); head.type="button"; head.setAttribute("aria-expanded",String(openIdea===it.session));
-    const ht=el("div"); ht.append(el("span","from2",`${it.session}회차 수업${s&&s.date?" · "+mmdd(s.date):""} · Part 2`), el("b",null,it.topic));
-    head.append(ht, el("span","chev", openIdea===it.session?"−":"+"));
-    head.onclick=()=>{ openIdea = openIdea===it.session? null : it.session; render(); };
-    card.append(head);
-    if(openIdea===it.session){
-      const body=el("div","idea-b");
-      body.append(el("span","idea-lab","말할 거리"));
-      const ol=el("ol","pts");
-      for(const [ko,en] of it.points){ const li=el("li"); li.append(el("span","pk",ko), el("span","pe",en)); ol.append(li); }
-      body.append(ol);
-      if(it.expr&&it.expr.length){ body.append(el("span","idea-lab","써먹을 표현")); const ex=el("div","exprs"); it.expr.forEach(x=>ex.append(el("span",null,x))); body.append(ex); }
-      if(it.part3&&it.part3.length){ body.append(el("span","idea-lab","이어서 나올 Part 3 질문")); const ul=el("ul","p3"); it.part3.forEach(q=>ul.append(el("li",null,q))); body.append(ul); }
-      card.append(body);
-    }
-    app.append(card);
+  const seg=el("div","modeseg"); seg.setAttribute("role","tablist");
+  const n1=(D.part1||[]).reduce((a,s)=>a+s.groups.reduce((b,g)=>b+g.qs.length,0),0);
+  const n2=P2? P2.items.length : 0, n3=(D.part3||[]).reduce((a,s)=>a+s.qs.length,0);
+  for(const [k,label,sub] of [["p1","Part 1",`질문 ${n1}개`],["p2","Part 2",`예상 기출 ${n2}개`],["p3","Part 3",`질문 ${n3}개`]]){
+    const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(ideaPart===k));
+    b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ ideaPart=k; openKey=null; render(); }; seg.append(b);
   }
+  app.append(seg);
+  if(ideaPart==="p1") return renderP1(app);
+  if(ideaPart==="p3") return renderP3(app);
+  renderP2(app);
+}
+function fold(key, head, bodyFn){
+  const open=openKey===key;
+  const card=el("div","idea"+(open?" open":""));
+  const h=el("button","idea-h"); h.type="button"; h.setAttribute("aria-expanded",String(open));
+  h.append(head, el("span","chev",open?"−":"+"));
+  h.onclick=()=>{ openKey= open? null : key; render(); };
+  card.append(h); if(open){ const b=el("div","idea-b"); bodyFn(b); card.append(b); }
+  return card;
+}
+function renderP1(app){
+  const t=el("div","focus"); t.append(el("b",null,"Part 1 답변 요령"), document.createTextNode("2~3문장으로: 답 → 이유 → 예시. 과거 질문은 끝까지 과거형!")); app.append(t);
+  for(const s of D.part1||[]){
+    const ses=D.sessions.find(x=>x.no===s.session);
+    const n=s.groups.reduce((a,g)=>a+g.qs.length,0);
+    const hd=el("div"); hd.append(el("span","from2",`${s.session}회차 수업${ses&&ses.date?" · "+mmdd(ses.date):""}`), el("b",null, s.groups.map(g=>g.title).filter(x=>x!=="Mixed").join(" · ") || `Part 1 질문 ${n}개`));
+    app.append(fold("p1-"+s.session, hd, b=>{
+      for(const g of s.groups){ if(g.title!=="Mixed") b.append(el("span","idea-lab",g.title)); const ul=el("ul","p3"); g.qs.forEach(q=>ul.append(el("li",null,q))); b.append(ul); }
+    }));
+  }
+}
+function renderP3(app){
+  const t=el("div","focus"); t.append(el("b",null,"Part 3 답변 요령"), document.createTextNode("내 의견 → 이유 2가지 → 예시나 반대 의견으로 마무리. I'd say… / On the other hand…")); app.append(t);
+  for(const s of D.part3||[]){
+    const ses=D.sessions.find(x=>x.no===s.session);
+    const hd=el("div"); hd.append(el("span","from2",`${s.session}회차 수업${ses&&ses.date?" · "+mmdd(ses.date):""} · Part 2 이어서`), el("b",null,s.topic));
+    app.append(fold("p3-"+s.session, hd, b=>{ const ul=el("ul","p3"); s.qs.forEach(q=>ul.append(el("li",null,q))); b.append(ul); }));
+  }
+}
+function renderP2(app){
+  if(!P2){ const e=el("div","empty"); e.append(el("p",null,"Part 2 자료를 불러오지 못했어요. 인터넷 연결을 확인해 주세요.")); app.append(e); return; }
+  const t=el("div","focus"); t.append(el("b",null,"Part 2 답변 순서"), document.createTextNode("1분 준비 → 2분 말하기. 무엇인지 한 줄 → 말할 거리 3가지 → 내 느낌으로 마무리.")); app.append(t);
+  const tools=el("div","p2tools");
+  const inp=el("input"); inp.id="p2search"; inp.type="search"; inp.placeholder="주제 검색 (예: friend, 옥스포드, technology)"; inp.value=p2Query; inp.setAttribute("aria-label","Part 2 주제 검색");
+  inp.oninput=()=>{ p2Query=inp.value; const pos=inp.selectionStart; render(); const n=document.getElementById("p2search"); if(n){ n.focus(); try{ n.setSelectionRange(pos,pos); }catch(_){} } };
+  const chip=el("button",null,"수업에서 다룬 주제만"); chip.type="button"; chip.className="lessonchip"; chip.setAttribute("aria-pressed",String(p2Lesson)); chip.onclick=()=>{ p2Lesson=!p2Lesson; render(); };
+  tools.append(inp, chip); app.append(tools);
+  const q=p2Query.trim().toLowerCase();
+  const list=P2.items.filter(it=>(!p2Lesson || it.lesson) && (!q || (it.topic+" "+it.answer+" "+it.points.join(" ")+" "+(it.alts||[]).join(" ")).toLowerCase().includes(q)));
+  app.append(el("p","muted small",`${list.length}개 주제 · 출처: ${P2.source}`));
+  for(const it of list){
+    const hd=el("div");
+    const top=el("span","from2", `#${it.no}`+(it.lesson? ` · ${it.lesson}회차 수업에서 다룸`:""));
+    hd.append(top, el("b",null,it.topic));
+    if(it.answer) hd.append(el("span","ans-chip",`답변: ${it.answer}`));
+    app.append(fold("p2-"+it.no, hd, b=>{
+      if(it.intro) b.append(el("p","p2intro",it.intro));
+      if(it.points.length){ b.append(el("span","idea-lab","말할 거리")); const ol=el("ol","pts"); it.points.forEach(x=>{ const li=el("li"); li.append(el("span","pe2",x)); ol.append(li); }); b.append(ol); }
+      if(it.alts&&it.alts.length){ b.append(el("span","idea-lab","다른 답변 아이디어")); const ex=el("div","alts"); it.alts.forEach(x=>ex.append(el("span",null,x))); b.append(ex); }
+    }));
+  }
+  if(!list.length){ const e=el("div","empty"); e.append(el("p",null,"검색 결과가 없어요.")); app.append(e); }
 }
 
 /* ---------- report to teacher ---------- */

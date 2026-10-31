@@ -224,3 +224,16 @@ h2{margin:0;font:19px var(--cute);font-weight:400}
 .quote blockquote{margin:0;font:700 21px/1.3 var(--body);letter-spacing:-.01em;text-wrap:balance}
 .quote .q-mean{margin:0;font:600 15px var(--body)}
 .quote figcaption{margin-top:4px;font:italic 15px/1.5 var(--body);color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}
+
+/* ideas v2 */
+.idea-h > div{display:grid;gap:4px;min-width:0}
+.ans-chip{justify-self:start;font:13px var(--cute);background:var(--mint-soft);color:var(--mint);border-radius:999px;padding:2px 10px}
+.p2tools{display:flex;gap:8px;flex-wrap:wrap}
+.p2tools input{flex:1 1 200px;min-width:0;font:15px var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.p2tools input:focus{outline:none;border-color:var(--blue)}
+.lessonchip{flex:none;font:14px var(--cute);border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:8px 14px;cursor:pointer}
+.lessonchip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:var(--on-color)}
+.p2intro{margin:0;font-size:14px;color:var(--muted)}
+.pts .pe2{font:15px/1.55 var(--body)}
+.alts{display:flex;flex-wrap:wrap;gap:6px}
+.alts span{background:var(--sun-soft);border-radius:10px;padding:4px 10px;font-size:14px}
