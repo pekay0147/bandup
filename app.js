@@ -317,11 +317,15 @@ const IDIOMS=[
  ["have a sweet tooth","단 걸 좋아하다","I have a sweet tooth, so I can't resist chocolate."],
  ["all of a sudden","갑자기","All of a sudden, my mind went blank."]
 ];
+let idiomShift=0;
 function quoteBox(){
   const d=new Date(); const dayNo=Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000);
-  const [idiom,ko,ex]=IDIOMS[dayNo % IDIOMS.length];
-  const x=el("figure","quote");
-  x.append(el("span","q-lab","오늘의 아이엘츠 idiom"), el("blockquote",null,idiom), el("p","q-mean",ko), el("figcaption",null,ex));
+  const i=((dayNo+idiomShift)%IDIOMS.length+IDIOMS.length)%IDIOMS.length;
+  const [idiom,ko,ex]=IDIOMS[i];
+  const x=el("button","quote"); x.type="button"; x.setAttribute("aria-label",`오늘의 아이엘츠 idiom: ${idiom}. 누르면 다음 idiom`);
+  const top=el("span","q-top"); top.append(el("span","q-lab",idiomShift? "아이엘츠 idiom" : "오늘의 아이엘츠 idiom"), el("span","q-next","터치하면 다음 ›"));
+  x.append(top, el("span","q-idiom",idiom), el("span","q-mean",ko), el("span","q-ex",ex));
+  x.onclick=()=>{ idiomShift++; const n=quoteBox(); x.replaceWith(n); n.focus({preventScroll:true}); };
   return x;
 }
 
