@@ -1,0 +1,800 @@
+{
+ "title": "아이엘츠 단어 공부",
+ "sources": [
+  "IDP IELTS (ielts.idp.com) 어휘 아티클",
+  "British Council Take IELTS (takeielts.britishcouncil.org) 블로그"
+ ],
+ "sections": [
+  {
+   "key": "listening",
+   "ko": "리스닝",
+   "en": "Listening",
+   "groups": [
+    {
+     "name": "Part 1 · 일상 정보",
+     "words": [
+      [
+       "pedestrian",
+       "보행자",
+       "Pedestrians must use the crossing."
+      ],
+      [
+       "commuter",
+       "통근자",
+       "The train was full of commuters."
+      ],
+      [
+       "passenger",
+       "승객",
+       "Passengers should keep their tickets."
+      ],
+      [
+       "tram",
+       "노면 전차",
+       "You can take the tram to the city centre."
+      ],
+      [
+       "rectangle",
+       "직사각형",
+       "The table is a rectangle."
+      ],
+      [
+       "cylinder",
+       "원통",
+       "The container is shaped like a cylinder."
+      ],
+      [
+       "borrow",
+       "빌리다",
+       "You can borrow up to five books."
+      ],
+      [
+       "persuade",
+       "설득하다",
+       "She persuaded me to join the club."
+      ],
+      [
+       "concentrate",
+       "집중하다",
+       "I can't concentrate when it's noisy."
+      ],
+      [
+       "temporary",
+       "임시의",
+       "It's only a temporary job."
+      ],
+      [
+       "permanent",
+       "영구적인",
+       "Is this a permanent position?"
+      ],
+      [
+       "knowledgeable",
+       "지식이 많은",
+       "The guide was very knowledgeable."
+      ]
+     ]
+    },
+    {
+     "name": "Part 2 · 장소·길 안내",
+     "words": [
+      [
+       "reception",
+       "접수처",
+       "Please sign in at reception."
+      ],
+      [
+       "lounge",
+       "라운지, 휴게실",
+       "Wait in the lounge until your name is called."
+      ],
+      [
+       "storage room",
+       "창고",
+       "The chairs are in the storage room."
+      ],
+      [
+       "courtyard",
+       "안뜰",
+       "There's a fountain in the courtyard."
+      ],
+      [
+       "opposite",
+       "맞은편에",
+       "The café is opposite the bank."
+      ],
+      [
+       "adjacent to",
+       "~에 인접한",
+       "The car park is adjacent to the station."
+      ],
+      [
+       "diagonal",
+       "대각선의",
+       "Walk diagonally across the square."
+      ],
+      [
+       "beside",
+       "옆에",
+       "The toilets are beside the lift."
+      ],
+      [
+       "lane",
+       "좁은 길",
+       "Turn left into Mill Lane."
+      ],
+      [
+       "terrace",
+       "테라스식 주택가",
+       "She lives at 12 Park Terrace."
+      ],
+      [
+       "running track",
+       "육상 트랙",
+       "The running track is behind the gym."
+      ],
+      [
+       "go straight ahead",
+       "쭉 직진하다",
+       "Go straight ahead until the traffic lights."
+      ]
+     ]
+    },
+    {
+     "name": "Part 3 · 학교·과제",
+     "words": [
+      [
+       "presentation",
+       "발표",
+       "We have to give a presentation next week."
+      ],
+      [
+       "proofreading",
+       "교정 보기",
+       "Leave time for proofreading."
+      ],
+      [
+       "reference",
+       "참고 문헌",
+       "Include at least ten references."
+      ],
+      [
+       "attendance",
+       "출석",
+       "Attendance is compulsory."
+      ],
+      [
+       "faculty",
+       "학부, 교수진",
+       "She works in the Faculty of Law."
+      ],
+      [
+       "bachelor's degree",
+       "학사 학위",
+       "I have a bachelor's degree in business."
+      ],
+      [
+       "master's degree",
+       "석사 학위",
+       "He's doing a master's in engineering."
+      ],
+      [
+       "questionnaire",
+       "설문지",
+       "We sent out a questionnaire."
+      ],
+      [
+       "assessment",
+       "평가",
+       "The final assessment is an essay."
+      ],
+      [
+       "revision",
+       "시험 공부, 복습",
+       "I started my revision early."
+      ],
+      [
+       "supervisor",
+       "지도 교수",
+       "My supervisor gave me feedback."
+      ],
+      [
+       "deadline",
+       "마감일",
+       "The deadline is Friday."
+      ]
+     ]
+    },
+    {
+     "name": "Part 4 · 강의 주제",
+     "words": [
+      [
+       "carbohydrates",
+       "탄수화물",
+       "Rice is high in carbohydrates."
+      ],
+      [
+       "obese",
+       "비만인",
+       "Obese children face health risks."
+      ],
+      [
+       "vaccination",
+       "예방 접종",
+       "Vaccination prevents many diseases."
+      ],
+      [
+       "mammal",
+       "포유류",
+       "Whales are mammals."
+      ],
+      [
+       "reptile",
+       "파충류",
+       "Snakes are reptiles."
+      ],
+      [
+       "predator",
+       "포식자",
+       "Lions are top predators."
+      ],
+      [
+       "prey",
+       "먹이, 사냥감",
+       "Rabbits are prey for foxes."
+      ],
+      [
+       "blizzard",
+       "눈보라",
+       "The blizzard closed the roads."
+      ],
+      [
+       "desertification",
+       "사막화",
+       "Desertification is spreading in Africa."
+      ],
+      [
+       "renewable",
+       "재생 가능한",
+       "Wind is a renewable source of energy."
+      ],
+      [
+       "wind turbine",
+       "풍력 발전기",
+       "They built wind turbines on the hill."
+      ],
+      [
+       "millennium",
+       "천 년",
+       "The building is a millennium old."
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "key": "speaking",
+   "ko": "스피킹",
+   "en": "Speaking",
+   "groups": [
+    {
+     "name": "밴드 7+ 단어",
+     "words": [
+      [
+       "adept",
+       "능숙한",
+       "She's adept at solving problems."
+      ],
+      [
+       "bolster",
+       "강화하다",
+       "Travel bolstered my confidence."
+      ],
+      [
+       "breakthrough",
+       "돌파구, 큰 발전",
+       "It was a breakthrough in medicine."
+      ],
+      [
+       "coherent",
+       "논리 정연한",
+       "Give a coherent answer."
+      ],
+      [
+       "diverse",
+       "다양한",
+       "Seoul has a diverse food scene."
+      ],
+      [
+       "eloquent",
+       "말을 잘하는",
+       "He's an eloquent speaker."
+      ],
+      [
+       "facilitate",
+       "쉽게 하다",
+       "Apps facilitate language learning."
+      ],
+      [
+       "inevitable",
+       "피할 수 없는",
+       "Change is inevitable."
+      ],
+      [
+       "lucrative",
+       "돈벌이가 되는",
+       "It's a lucrative business."
+      ],
+      [
+       "negligible",
+       "무시해도 될 만한",
+       "The difference is negligible."
+      ],
+      [
+       "resilient",
+       "회복력 있는",
+       "Children are very resilient."
+      ],
+      [
+       "versatile",
+       "다재다능한",
+       "She's a versatile musician."
+      ],
+      [
+       "widespread",
+       "널리 퍼진",
+       "Smartphone use is widespread."
+      ],
+      [
+       "keen on",
+       "~을 좋아하는",
+       "I'm keen on hiking."
+      ],
+      [
+       "perspective",
+       "관점",
+       "From my perspective, it's worth it."
+      ]
+     ]
+    },
+    {
+     "name": "성격 표현",
+     "words": [
+      [
+       "amiable",
+       "상냥한",
+       "My neighbour is very amiable."
+      ],
+      [
+       "assertive",
+       "자기주장이 강한",
+       "Good leaders are assertive."
+      ],
+      [
+       "conscientious",
+       "성실한",
+       "She's a conscientious student."
+      ],
+      [
+       "gregarious",
+       "사교적인",
+       "My brother is gregarious."
+      ],
+      [
+       "impulsive",
+       "충동적인",
+       "I'm a bit impulsive with shopping."
+      ],
+      [
+       "meticulous",
+       "꼼꼼한",
+       "My dad is meticulous about planning."
+      ],
+      [
+       "reserved",
+       "내성적인, 조용한",
+       "I was reserved as a child."
+      ],
+      [
+       "tenacious",
+       "끈질긴",
+       "You need to be tenacious to succeed."
+      ],
+      [
+       "altruistic",
+       "이타적인",
+       "Volunteers are altruistic."
+      ],
+      [
+       "candid",
+       "솔직한",
+       "Thanks for your candid opinion."
+      ],
+      [
+       "diligent",
+       "부지런한",
+       "She's diligent at work."
+      ],
+      [
+       "empathetic",
+       "공감 능력이 있는",
+       "Nurses must be empathetic."
+      ],
+      [
+       "humble",
+       "겸손한",
+       "He stayed humble after his success."
+      ],
+      [
+       "pragmatic",
+       "실용적인",
+       "I take a pragmatic approach."
+      ],
+      [
+       "witty",
+       "재치 있는",
+       "My friend is really witty."
+      ]
+     ]
+    },
+    {
+     "name": "교육·학업",
+     "words": [
+      [
+       "pursue",
+       "추구하다, 계속하다",
+       "I want to pursue a career in design."
+      ],
+      [
+       "overseas",
+       "해외에서",
+       "I'd like to study overseas."
+      ],
+      [
+       "curriculum",
+       "교육 과정",
+       "The curriculum is very practical."
+      ],
+      [
+       "institution",
+       "교육 기관",
+       "It's a well-known institution."
+      ],
+      [
+       "assignment",
+       "과제",
+       "I have three assignments due."
+      ],
+      [
+       "tuition fees",
+       "등록금",
+       "Tuition fees are very high."
+      ],
+      [
+       "semester",
+       "학기",
+       "The semester starts in March."
+      ],
+      [
+       "enrol",
+       "등록하다",
+       "I enrolled in an English course."
+      ],
+      [
+       "cram",
+       "벼락치기 하다",
+       "I crammed for the test all night."
+      ],
+      [
+       "aspirations",
+       "포부",
+       "My aspirations changed after university."
+      ]
+     ]
+    },
+    {
+     "name": "스포츠",
+     "words": [
+      [
+       "spectator",
+       "관중",
+       "Thousands of spectators came."
+      ],
+      [
+       "opponent",
+       "상대",
+       "He beat his opponent easily."
+      ],
+      [
+       "umpire",
+       "심판",
+       "The umpire made a bad call."
+      ],
+      [
+       "team spirit",
+       "팀 정신",
+       "Sport promotes team spirit."
+      ],
+      [
+       "fierce competition",
+       "치열한 경쟁",
+       "There was fierce competition for the title."
+      ],
+      [
+       "overcome setbacks",
+       "좌절을 극복하다",
+       "Athletes learn to overcome setbacks."
+      ],
+      [
+       "break the world record",
+       "세계 기록을 깨다",
+       "She broke the world record."
+      ],
+      [
+       "thunderous applause",
+       "우레와 같은 박수",
+       "He received thunderous applause."
+      ]
+     ]
+    },
+    {
+     "name": "환경",
+     "words": [
+      [
+       "fossil fuels",
+       "화석 연료",
+       "We rely too much on fossil fuels."
+      ],
+      [
+       "biodiversity",
+       "생물 다양성",
+       "Forests protect biodiversity."
+      ],
+      [
+       "sustainable",
+       "지속 가능한",
+       "We need sustainable living."
+      ],
+      [
+       "biodegradable",
+       "생분해되는",
+       "Use biodegradable bags."
+      ],
+      [
+       "carbon footprint",
+       "탄소 발자국",
+       "Flying increases your carbon footprint."
+      ],
+      [
+       "deplete natural resources",
+       "천연자원을 고갈시키다",
+       "We are depleting natural resources."
+      ],
+      [
+       "raise awareness",
+       "인식을 높이다",
+       "Campaigns raise awareness."
+      ],
+      [
+       "deforestation",
+       "삼림 벌채",
+       "Deforestation destroys habitats."
+      ]
+     ]
+    },
+    {
+     "name": "말 잇는 표현",
+     "words": [
+      [
+       "From my perspective",
+       "내 관점에서는",
+       "From my perspective, it's a good idea."
+      ],
+      [
+       "It is worth noting that",
+       "~라는 점은 주목할 만하다",
+       "It is worth noting that prices are rising."
+      ],
+      [
+       "On the one hand",
+       "한편으로는",
+       "On the one hand, it's convenient."
+      ],
+      [
+       "Nevertheless",
+       "그럼에도 불구하고",
+       "It was hard. Nevertheless, I enjoyed it."
+      ],
+      [
+       "Consequently",
+       "그 결과",
+       "I overslept. Consequently, I missed the bus."
+      ],
+      [
+       "It is widely believed that",
+       "~라고 널리 여겨진다",
+       "It is widely believed that exercise reduces stress."
+      ],
+      [
+       "To sum up",
+       "요약하자면",
+       "To sum up, I'd choose the city."
+      ]
+     ]
+    },
+    {
+     "name": "자주 쓰는 idiom",
+     "words": [
+      [
+       "on top of the world",
+       "아주 행복한",
+       "I felt on top of the world after the test."
+      ],
+      [
+       "bend over backwards",
+       "최선을 다해 돕다",
+       "My teacher bent over backwards to help me."
+      ],
+      [
+       "in the blink of an eye",
+       "눈 깜짝할 사이에",
+       "The holiday was over in the blink of an eye."
+      ],
+      [
+       "keep my fingers crossed",
+       "행운을 빌다",
+       "I'm keeping my fingers crossed for my results."
+      ],
+      [
+       "see eye to eye",
+       "의견이 같다",
+       "My sister and I don't always see eye to eye."
+      ],
+      [
+       "kill two birds with one stone",
+       "일석이조",
+       "Cycling to work kills two birds with one stone."
+      ],
+      [
+       "bite the bullet",
+       "꾹 참고 하다",
+       "I bit the bullet and booked the test."
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "key": "academic",
+   "ko": "리딩·라이팅",
+   "en": "Reading & Writing",
+   "groups": [
+    {
+     "name": "고급 어휘",
+     "words": [
+      [
+       "ubiquitous",
+       "어디에나 있는",
+       "Smartphones are ubiquitous."
+      ],
+      [
+       "alleviate",
+       "완화하다",
+       "New roads may alleviate traffic."
+      ],
+      [
+       "pervasive",
+       "만연한",
+       "Stress is pervasive in modern life."
+      ],
+      [
+       "discrepancy",
+       "차이, 불일치",
+       "There's a discrepancy in the data."
+      ],
+      [
+       "futile",
+       "헛된",
+       "It's futile to argue."
+      ],
+      [
+       "exacerbate",
+       "악화시키다",
+       "Cars exacerbate air pollution."
+      ],
+      [
+       "mitigate",
+       "완화하다",
+       "Trees mitigate heat in cities."
+      ],
+      [
+       "volatile",
+       "불안정한",
+       "Prices are volatile."
+      ],
+      [
+       "indulge",
+       "마음껏 즐기다",
+       "I indulge in dessert at weekends."
+      ],
+      [
+       "substantiate",
+       "입증하다",
+       "The claim is not substantiated."
+      ],
+      [
+       "undermine",
+       "약화시키다",
+       "Lack of sleep undermines health."
+      ],
+      [
+       "viable",
+       "실행 가능한",
+       "It's a viable solution."
+      ],
+      [
+       "necessitate",
+       "필요로 하다",
+       "Growth necessitates new housing."
+      ],
+      [
+       "exponential",
+       "기하급수적인",
+       "There's been exponential growth."
+      ],
+      [
+       "juxtapose",
+       "나란히 놓다",
+       "The museum juxtaposes old and new art."
+      ],
+      [
+       "quandary",
+       "곤경, 진퇴양난",
+       "I was in a quandary about which course to take."
+      ]
+     ]
+    },
+    {
+     "name": "헷갈리는 짝꿍 표현",
+     "words": [
+      [
+       "make a mistake",
+       "실수하다 (do 아님)",
+       "Everyone makes mistakes."
+      ],
+      [
+       "commute",
+       "통근하다 (매일 오가기)",
+       "I commute to work by bus."
+      ],
+      [
+       "travel",
+       "여행하다, 이동하다",
+       "I love to travel abroad."
+      ],
+      [
+       "drop sharply",
+       "급격히 떨어지다",
+       "Sales dropped sharply in 2020."
+      ],
+      [
+       "a sharp drop",
+       "급격한 하락",
+       "There was a sharp drop in prices."
+      ],
+      [
+       "do research",
+       "연구하다",
+       "Scientists did research on sleep."
+      ],
+      [
+       "pay attention to",
+       "~에 주의를 기울이다",
+       "Pay attention to word forms."
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

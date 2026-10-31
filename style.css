@@ -307,3 +307,6 @@ button.quote:active{transform:scale(.99)}
 .wronglist > div{display:grid;grid-template-columns:40px auto 1fr;gap:10px;align-items:center}
 .wronglist b{font:700 17px var(--body)}
 .wronglist s{color:var(--bad);font-size:14px}
+
+.wtile .no{font:16px var(--fat);background:var(--sun-soft);color:#8a6400}
+.wsec{margin:10px 2px 0;font-size:18px}

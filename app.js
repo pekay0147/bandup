@@ -13,7 +13,7 @@ const mmdd=s=>s? s.slice(5).replace("-","/") : "";
 const store={ get(k,f){ try{ const v=localStorage.getItem(k); return v==null? f : JSON.parse(v);}catch(_){ return f; } },
               set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(_){} } };
 
-let D=null, G={}, P1=null, P2=null, LS=null, slug=null;
+let D=null, G={}, P1=null, P2=null, LS=null, WB=null, slug=null;
 let srs={}, marks={}, days=[];
 let view={tab:"home"};   // home | cards(deck?) | review | notes
 let deckState=null, reviewState=null, picked=null, flipped=false, noteFilter="전체", noteSession="all", cardMode="session", selSession=null, randCount=10, randKind="all";
@@ -32,7 +32,7 @@ async function boot(){
     const [s,g]=await Promise.all([fetch(`data/students/${slug}.json`,{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
                                    fetch("data/glossary.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({}))]);
     D=s; G=g||{};
-    [P1,P2,LS]=await Promise.all(["data/part1.json","data/part2.json","data/listening.json"].map(u=>fetch(u,{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
+    [P1,P2,LS,WB]=await Promise.all(["data/part1.json","data/part2.json","data/listening.json","data/words.json"].map(u=>fetch(u,{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
   }catch(e){ app.textContent=""; const x=el("div","empty"); x.append(el("h2",null,"카드를 불러오지 못했어요"), el("p",null,"인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 되면 선생님께 링크를 다시 받아 주세요.")); app.append(x); return; }
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
@@ -94,6 +94,7 @@ function render(){
   if(view.tab==="notes") renderNotes(app);
   if(view.tab==="ideas") renderIdeas(app);
   if(view.tab==="listen") renderListen(app);
+  if(view.tab==="words") renderWords(app);
   updateTabs();
 }
 
@@ -112,8 +113,7 @@ function renderHome(app){
   app.append(hero);
   const last=D.sessions[D.sessions.length-1];
   if(last){
-    { const sh=el("div","sec-h"); sh.append(el("h2",null,"최근 수업")); app.append(sh); }
-    app.append(deckTile(last));
+    app.append(wordsTile());
     app.append(quoteBox());
   }
   if(false){
@@ -235,7 +235,7 @@ function flipCard(c, onFlip){
   const f=el("div","face front"); f.setAttribute("aria-hidden",String(flipped));
   const fh=el("div","fhead"); fh.append(chipsFor(), el("span","sess",sessLabel(c))); f.append(fh);
   const fb=el("div","body");
-  if(c.vtopic){ fb.append(el("span","from",`주제별 어휘 · ${c.vtopic}`)); }
+  if(c.vtopic){ fb.append(el("span","from",`${c.vlabel||"주제별 어휘"} · ${c.vtopic}`)); }
   else { const ss=(c.sessions||[]); const first=D.sessions.find(x=>x.no===ss[0]);
     fb.append(el("span","from", ss.length>1? `${ss.join("·")}회차 수업에서 반복` : `${ss[0]}회차 수업${first&&first.date? " · "+mmdd(first.date):""}`)); }
   if(c.kind==="fix"){ fb.append(el("span","lab","틀린 문장이에요. 바르게 고쳐 보세요"), el("p","wrong",c.wrong)); }
@@ -342,7 +342,7 @@ function renderDeck(app){
                : view.deck==="all" ? [...D.cards].sort(()=>Math.random()-.5) : D.cards.filter(c=>(c.sessions||[]).includes(view.deck));
     deckState={key:view.deck, ids:list.map(c=>c.id), i:0};
   }
-  const back=el("button","back", view.deck==="vocab"? "‹ 주제별 어휘" : view.deck==="rand"? "‹ 랜덤 퀴즈 설정" : view.deck==="wrong"? "‹ 틀린 문장 모음" : "‹ 회차별 정리"); back.type="button"; back.onclick=()=>{ if(view.deck==="vocab"){ ideaPart="p1"; go("ideas"); return; } if(view.deck==="rand") cardMode="random"; else if(view.deck==="wrong") cardMode="wrong"; else { cardMode="session"; if(typeof view.deck==="number") selSession=view.deck; } go("cards"); }; app.append(back);
+  const back=el("button","back", view.deck==="vocab"? (view.backTo==="words"? "‹ 아이엘츠 단어 공부" : "‹ 주제별 어휘") : view.deck==="rand"? "‹ 랜덤 퀴즈 설정" : view.deck==="wrong"? "‹ 틀린 문장 모음" : "‹ 회차별 정리"); back.type="button"; back.onclick=()=>{ if(view.deck==="vocab"){ if(view.backTo==="words"){ go("words"); return; } ideaPart="p1"; go("ideas"); return; } if(view.deck==="rand") cardMode="random"; else if(view.deck==="wrong") cardMode="wrong"; else { cardMode="session"; if(typeof view.deck==="number") selSession=view.deck; } go("cards"); }; app.append(back);
   if(!["rand","wrong","vocab"].includes(view.deck)) app.append(sessionPicker(view.deck, v=>{ if(v!==view.deck){ if(typeof v==="number") selSession=v; go("cards",{deck:v}); } }, false));
   const s=D.sessions.find(x=>x.no===view.deck);
   app.append(el("h1",null, view.deck==="vocab"? `${view.title||"주제별 어휘"} 카드` : view.deck==="rand"? "랜덤 퀴즈" : view.deck==="wrong"? "틀린 문장 연습" : view.deck==="all"? "전체 큐카드" : `${view.deck}회차 큐카드`));
@@ -494,12 +494,12 @@ function renderP1(app){
     app.append(p);
   }
 }
-function startVocab(topics, title, shuffle){
+function startVocab(topics, title, shuffle, backTo, limit=20){
   let ids=[];
   for(const tp of topics){ tp.words.forEach(([en,ko,ex],i)=>{ const id=`v-${tp.topic}-${i}`.replace(/[^\w-]/g,"_");
-    VCARDS[id]={id,kind:"ko",type:"어휘",vtopic:tp.ko,ko,en,gram:ex? ex.replace(/[<>&]/g,""):"",sessions:[]}; ids.push(id); }); }
-  if(shuffle) ids=ids.sort(()=>Math.random()-.5).slice(0,20);
-  deckState=null; go("cards",{deck:"vocab", ids, title});
+    VCARDS[id]={id,kind:"ko",type:"어휘",vlabel: backTo==="words"? "아이엘츠 단어" : "주제별 어휘",vtopic:tp.ko,ko,en,gram:ex? ex.replace(/[<>&]/g,""):"",sessions:[]}; ids.push(id); }); }
+  if(shuffle) ids=ids.sort(()=>Math.random()-.5).slice(0,limit);
+  deckState=null; go("cards",{deck:"vocab", ids, title, backTo});
 }
 function renderP3(app){
   const t=el("div","focus"); t.append(el("b",null,"Part 3 답변 요령"));
@@ -546,6 +546,42 @@ function renderP2(app){
   const e=el("div","empty"); e.id="p2empty"; e.append(el("p",null,"검색 결과가 없어요. 검색어를 지우면 다시 보여요.")); e.hidden = shown>0; app.append(e);
 }
 
+
+
+/* ---------- IELTS word study ---------- */
+let wbSec="all";
+function wordsTile(){
+  const n = WB? WB.sections.reduce((a,s)=>a+s.groups.reduce((b,g)=>b+g.words.length,0),0) : 0;
+  const t=el("button","tile wtile"); t.type="button";
+  const tt=el("div","t"); tt.append(el("b",null,"아이엘츠 단어 공부하기"), el("span",null, n? `리스닝 · 스피킹 · 리딩·라이팅 단어 ${n}개` : "단어를 불러오는 중…"));
+  t.append(el("span","no","Aa"), tt, el("span","go","›")); t.onclick=()=>go("words");
+  return t;
+}
+function wbTopics(secs){ return secs.flatMap(s=>s.groups.map(g=>({topic:`${s.key}-${g.name}`, ko:`${s.ko} · ${g.name}`, words:g.words}))); }
+function renderWords(app){
+  const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
+  app.append(el("h1",null,"아이엘츠 단어 공부"));
+  if(!WB){ const e=el("div","empty"); e.append(el("p",null,"단어를 불러오지 못했어요.")); app.append(e); return; }
+  const chips=el("div","pchips"); chips.setAttribute("role","group");
+  for(const [k,l] of [["all","전체"],...WB.sections.map(s=>[s.key,s.ko])]){ const b=el("button",null,l); b.type="button"; b.setAttribute("aria-pressed",String(wbSec===k)); b.onclick=()=>{ wbSec=k; openKey=null; render(); }; chips.append(b); }
+  app.append(chips);
+  const secs = wbSec==="all"? WB.sections : WB.sections.filter(s=>s.key===wbSec);
+  const total=secs.reduce((a,s)=>a+s.groups.reduce((b,g)=>b+g.words.length,0),0);
+  const start=el("button","btn primary vstart",`랜덤 단어 카드 20장 (${total}개 중)`); start.type="button";
+  start.onclick=()=>startVocab(wbTopics(secs), wbSec==="all"? "아이엘츠 단어" : secs[0].ko+" 단어", true, "words", 20); app.append(start);
+  for(const s of secs){
+    if(wbSec==="all") app.append(el("h2","wsec",`${s.ko} · ${s.en}`));
+    for(const g of s.groups){
+      const hd=el("div"); hd.append(el("span","from2",`${s.ko} · ${g.words.length}개`), el("b",null,g.name));
+      app.append(fold(`wb-${s.key}-${g.name}`, hd, b=>{
+        const go1=el("button","btn vstart",`이 묶음 카드로 외우기 ${g.words.length}장`); go1.type="button";
+        go1.onclick=()=>startVocab([{topic:`${s.key}-${g.name}`, ko:`${s.ko} · ${g.name}`, words:g.words}], g.name, false, "words"); b.append(go1);
+        for(const [en,ko,ex] of g.words){ const r=el("div","vrow"); const top=el("div","vtop"); top.append(el("b",null,en), el("span",null,ko)); r.append(top); if(ex) r.append(el("p","vex",ex)); b.append(r); }
+      }));
+    }
+  }
+  app.append(el("p","muted small","참고: "+WB.sources.join(" · ")+". 뜻과 예문은 수업용으로 새로 썼어요."));
+}
 
 /* ---------- listening spelling ---------- */
 const ALT={centre:["center"],theatre:["theater"],licence:["license"],civilisation:["civilization"],behaviour:["behavior"]};
