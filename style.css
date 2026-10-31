@@ -1,3 +1,4 @@
+[hidden]{display:none!important}
 /* Layout: a phone app — slim top bar, one screen of content, fixed bottom tab bar; cards flip in place. */
 :root{
   --bg:#f5f4fa; --surface:#ffffff; --sunk:#f6f5fb; --ink:#1f1b3a; --muted:#6d6889; --line:#e6e3f0;
