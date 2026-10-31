@@ -117,7 +117,8 @@
    "ko": "회사가 많이 있어요.",
    "en": "There are many companies.",
    "mine": "There is many company.",
-   "gram": "many, there are 뒤에는 복수형(-s). clothes는 항상 복수예요."
+   "gram": "many, there are 뒤에는 복수형(-s). clothes는 항상 복수예요.",
+   "hint": "there are · company(복수로!)"
   },
   {
    "id": "m02",
@@ -129,7 +130,8 @@
    "ko": "우리 집 근처에 공원이 많아요.",
    "en": "There are many parks near my house.",
    "mine": "There are many park near my house.",
-   "gram": "many, there are 뒤에는 복수형(-s). clothes는 항상 복수예요."
+   "gram": "many, there are 뒤에는 복수형(-s). clothes는 항상 복수예요.",
+   "hint": "there are · park(복수로!) · near"
   },
   {
    "id": "m03",
@@ -141,7 +143,8 @@
    "ko": "옷을 좀 샀어요.",
    "en": "I bought some clothes.",
    "mine": "I bought a clothes.",
-   "gram": "clothes는 a를 못 붙여요 many, there are 뒤에는 복수형(-s). clothes는 항상 복수예요."
+   "gram": "clothes는 a를 못 붙여요 many, there are 뒤에는 복수형(-s). clothes는 항상 복수예요.",
+   "hint": "buy(과거형) · clothes"
   },
   {
    "id": "m04",
@@ -153,7 +156,8 @@
    "ko": "그 집에는 정원이 있어요.",
    "en": "The house has a garden.",
    "mine": "The house have a garden.",
-   "gram": "he/she/it/the city → has, is. people → are, love. 동사는 하나만!"
+   "gram": "he/she/it/the city → has, is. people → are, love. 동사는 하나만!",
+   "hint": "house · have(3인칭은?) · garden"
   },
   {
    "id": "m05",
@@ -165,7 +169,8 @@
    "ko": "그 도시에는 학교가 많아요.",
    "en": "The city has many schools.",
    "mine": "The city have a many school.",
-   "gram": "he/she/it/the city → has, is. people → are, love. 동사는 하나만!"
+   "gram": "he/she/it/the city → has, is. people → are, love. 동사는 하나만!",
+   "hint": "city · have(3인칭은?) · school(복수로!)"
   },
   {
    "id": "m06",
@@ -177,7 +182,8 @@
    "ko": "여기에는 카페가 많아요.",
    "en": "There are many cafes here.",
    "mine": "Here is many cafes.",
-   "gram": "he/she/it/the city → has, is. people → are, love. 동사는 하나만!"
+   "gram": "he/she/it/the city → has, is. people → are, love. 동사는 하나만!",
+   "hint": "there are · cafe(복수로!) · here"
   },
   {
    "id": "m07",
@@ -189,7 +195,8 @@
    "ko": "거기에는 식당이 많아요.",
    "en": "It has many restaurants.",
    "mine": "It's have a many restaurants.",
-   "gram": "he/she/it/the city → has, is. people → are, love. 동사는 하나만!"
+   "gram": "he/she/it/the city → has, is. people → are, love. 동사는 하나만!",
+   "hint": "it · have(3인칭은?) · restaurant"
   },
   {
    "id": "m08",
@@ -202,7 +209,8 @@
    "ko": "저는 캐나다에 살고 있어요.",
    "en": "I'm living in Canada.",
    "mine": "I living in Canada.",
-   "gram": "진행형은 be동사 + -ing 진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't."
+   "gram": "진행형은 be동사 + -ing 진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't.",
+   "hint": "be동사 + live(-ing) · Canada"
   },
   {
    "id": "m09",
@@ -214,7 +222,8 @@
    "ko": "저는 스포츠에 관심이 있어요.",
    "en": "I'm interested in sports.",
    "mine": "I interested in sports.",
-   "gram": "be interested in 진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't."
+   "gram": "be interested in 진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't.",
+   "hint": "be동사 + interested in"
   },
   {
    "id": "m10",
@@ -226,7 +235,8 @@
    "ko": "저는 일을 안 해요.",
    "en": "I don't work.",
    "mine": "I no work.",
-   "gram": "부정문은 do not 진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't."
+   "gram": "부정문은 do not 진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't.",
+   "hint": "do not · work"
   },
   {
    "id": "m11",
@@ -238,7 +248,8 @@
    "ko": "작년에 캐나다로 이사했어요.",
    "en": "I moved to Canada last year.",
    "mine": "I'm moving to the Canada last year.",
-   "gram": "last year → 과거형 진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't."
+   "gram": "last year → 과거형 진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't.",
+   "hint": "move(과거형) · Canada · last year"
   },
   {
    "id": "m12",
@@ -250,7 +261,8 @@
    "ko": "저는 일어나면 물을 한 잔 마셔요.",
    "en": "When I wake up, I drink a cup of water.",
    "mine": "When I waking up, I drink one water.",
-   "gram": "물은 a cup of water 진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't."
+   "gram": "물은 a cup of water 진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't.",
+   "hint": "when · wake up · a cup of"
   },
   {
    "id": "m13",
@@ -262,7 +274,8 @@
    "ko": "지난달에 요가를 시작했어요.",
    "en": "I started yoga last month.",
    "mine": "I'm start yoga last month.",
-   "gram": "진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't."
+   "gram": "진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't.",
+   "hint": "start(과거형) · yoga · last month"
   },
   {
    "id": "m14",
@@ -275,7 +288,8 @@
    "ko": "저는 주택에 사는 걸 더 좋아해요.",
    "en": "I prefer living in a house.",
    "mine": "I prefer to house.",
-   "gram": "prefer + -ing 한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have."
+   "gram": "prefer + -ing 한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have.",
+   "hint": "prefer + -ing · house"
   },
   {
    "id": "m15",
@@ -287,7 +301,8 @@
    "ko": "저는 티셔츠 입는 걸 좋아해요.",
    "en": "I like to wear T-shirts.",
    "mine": "I like wear the T-shirt.",
-   "gram": "like + to 동사 / -ing 한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have."
+   "gram": "like + to 동사 / -ing 한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have.",
+   "hint": "like to · wear · T-shirt"
   },
   {
    "id": "m16",
@@ -299,7 +314,8 @@
    "ko": "우리 도시에는 공원이 더 필요해요.",
    "en": "My city needs more parks.",
    "mine": "My city needs to more parks.",
-   "gram": "한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have."
+   "gram": "한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have.",
+   "hint": "city · need(3인칭) · more parks"
   },
   {
    "id": "m17",
@@ -311,7 +327,8 @@
    "ko": "저는 회사에서 맡은 책임이 있어요.",
    "en": "I have responsibility at work.",
    "mine": "I have to responsibility at work.",
-   "gram": "한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have."
+   "gram": "한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have.",
+   "hint": "have · responsibility · at work"
   },
   {
    "id": "m19",
@@ -323,7 +340,8 @@
    "ko": "그건 저를 편안하게 해 줘요.",
    "en": "It makes me feel relaxed.",
    "mine": "It is make me feel relaxed.",
-   "gram": "동사 두 개 겹치지 않기 한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have."
+   "gram": "동사 두 개 겹치지 않기 한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have.",
+   "hint": "it · make(3인칭) · feel relaxed"
   },
   {
    "id": "m20",
@@ -335,7 +353,8 @@
    "ko": "베트남을 방문했어요.",
    "en": "I visited Vietnam.",
    "mine": "I visited the Vietnam.",
-   "gram": "나라 앞 the는 the US, the UK 정도만 처음 말하는 집은 a house, 바다는 the beach. go on holiday, on a rainy day."
+   "gram": "나라 앞 the는 the US, the UK 정도만 처음 말하는 집은 a house, 바다는 the beach. go on holiday, on a rainy day.",
+   "hint": "visit(과거형) · Vietnam(the 없이)"
   },
   {
    "id": "m21",
@@ -347,7 +366,8 @@
    "ko": "저는 주택에 살고 싶어요.",
    "en": "I want to live in a house.",
    "mine": "I want to live in the house.",
-   "gram": "처음 말할 때는 a 처음 말하는 집은 a house, 바다는 the beach. go on holiday, on a rainy day."
+   "gram": "처음 말할 때는 a 처음 말하는 집은 a house, 바다는 the beach. go on holiday, on a rainy day.",
+   "hint": "want to · live in · a house"
   },
   {
    "id": "m22",
@@ -361,7 +381,8 @@
    "en": "I stay home on a rainy day.",
    "mine": "I stay home in a rainy day.",
    "gram": "on a rainy day 처음 말하는 집은 a house, 바다는 the beach. go on holiday, on a rainy day.",
-   "example": true
+   "example": true,
+   "hint": "stay home · on a rainy day"
   },
   {
    "id": "m23",
@@ -373,7 +394,8 @@
    "ko": "저는 활동적인 스포츠를 좋아해요.",
    "en": "I like active sports.",
    "mine": "I like activity sports.",
-   "gram": "active 형용사 / activity 명사 be 뒤에는 형용사: confident, dead, scary, active."
+   "gram": "active 형용사 / activity 명사 be 뒤에는 형용사: confident, dead, scary, active.",
+   "hint": "active(형용사) · sports"
   },
   {
    "id": "m24",
@@ -386,7 +408,8 @@
    "en": "My plant is dead.",
    "mine": "My plant is die.",
    "gram": "die 동사 / dead 형용사 be 뒤에는 형용사: confident, dead, scary, active.",
-   "example": true
+   "example": true,
+   "hint": "plant · dead(형용사)"
   },
   {
    "id": "m25",
@@ -399,7 +422,8 @@
    "en": "Korea is my country.",
    "mine": "Korean is my country.",
    "gram": "Korea 나라 / Korean 사람·언어 be 뒤에는 형용사: confident, dead, scary, active.",
-   "example": true
+   "example": true,
+   "hint": "Korea(나라) · country"
   },
   {
    "id": "m26",
@@ -412,7 +436,8 @@
    "en": "I made a reservation at the restaurant.",
    "mine": "I made a reserve at the restaurant.",
    "gram": "reserve 동사 / reservation 명사 be 뒤에는 형용사: confident, dead, scary, active.",
-   "example": true
+   "example": true,
+   "hint": "make a reservation · restaurant"
   },
   {
    "id": "m27",
@@ -425,7 +450,8 @@
    "en": "I want to be more confident.",
    "mine": "I want to be more confidence.",
    "gram": "confidence 명사 / confident 형용사 be 뒤에는 형용사: confident, dead, scary, active.",
-   "example": true
+   "example": true,
+   "hint": "want to be · confident(형용사)"
   },
   {
    "id": "m28",
@@ -438,7 +464,8 @@
    "en": "The movie was scary.",
    "mine": "The movie was scared.",
    "gram": "scary 무서운 대상 / scared 무서운 감정 be 뒤에는 형용사: confident, dead, scary, active.",
-   "example": true
+   "example": true,
+   "hint": "movie · scary(무서운 대상)"
   },
   {
    "id": "m29",
@@ -450,7 +477,8 @@
    "ko": "우리는 서로 이해하고 도와야 해요.",
    "en": "We have to understand and support each other.",
    "mine": "We have to have each other.",
-   "gram": "한국어를 그대로 옮기지 말고 영어에서 쓰는 짝꿍 표현으로."
+   "gram": "한국어를 그대로 옮기지 말고 영어에서 쓰는 짝꿍 표현으로.",
+   "hint": "have to · understand · support · each other"
   },
   {
    "id": "m30",
@@ -462,7 +490,8 @@
    "ko": "저는 매년 여름 여행을 가요.",
    "en": "I go travelling every summer.",
    "mine": "I go to travel every summer.",
-   "gram": "go + -ing 한국어를 그대로 옮기지 말고 영어에서 쓰는 짝꿍 표현으로."
+   "gram": "go + -ing 한국어를 그대로 옮기지 말고 영어에서 쓰는 짝꿍 표현으로.",
+   "hint": "go + travel(-ing) · every summer"
   },
   {
    "id": "m31",
@@ -475,7 +504,8 @@
    "en": "I take a bus to go to work.",
    "mine": "I use a bus to go to work.",
    "gram": "take a bus 한국어를 그대로 옮기지 말고 영어에서 쓰는 짝꿍 표현으로.",
-   "example": true
+   "example": true,
+   "hint": "take a bus · go to work"
   },
   {
    "id": "m32",
@@ -488,7 +518,8 @@
    "en": "I talked with many people about it.",
    "mine": "I talked many people about it.",
    "gram": "talk to / with + 사람 한국어를 그대로 옮기지 말고 영어에서 쓰는 짝꿍 표현으로.",
-   "example": true
+   "example": true,
+   "hint": "talk with · many people · about"
   },
   {
    "id": "m33",
@@ -501,7 +532,8 @@
    "en": "She told me the story.",
    "mine": "She said me the story.",
    "gram": "tell + 사람 + 내용 한국어를 그대로 옮기지 말고 영어에서 쓰는 짝꿍 표현으로.",
-   "example": true
+   "example": true,
+   "hint": "tell(과거형) + 사람 · story"
   },
   {
    "id": "m34",
@@ -514,7 +546,8 @@
    "ko": "'걷다'와 '일하다'를 발음을 구분해서 말해 보세요.",
    "en": "walk (r 소리 없음) / work (r 소리)",
    "mine": "walk / work",
-   "gram": "입 모양을 다르게 walk(r 소리 없음) / work(r 소리). 철자는 소리 내어 한 번 더."
+   "gram": "입 모양을 다르게 walk(r 소리 없음) / work(r 소리). 철자는 소리 내어 한 번 더.",
+   "hint": "walk · work 발음 구분"
   },
   {
    "id": "e01",
@@ -524,7 +557,8 @@
     2
    ],
    "ko": "나는 편식하지 않아",
-   "en": "I'm not a picky eater."
+   "en": "I'm not a picky eater.",
+   "hint": "picky eater"
   },
   {
    "id": "e02",
@@ -534,7 +568,8 @@
     3
    ],
    "ko": "나는 요가할 때 물 만난 물고기 같아",
-   "en": "I'm in my element when I do yoga."
+   "en": "I'm in my element when I do yoga.",
+   "hint": "in my element · do yoga"
   },
   {
    "id": "e03",
@@ -544,7 +579,8 @@
     3
    ],
    "ko": "그 책은 생각할 거리를 많이 줘",
-   "en": "The book gives me a lot of food for thought."
+   "en": "The book gives me a lot of food for thought.",
+   "hint": "food for thought"
   },
   {
    "id": "e04",
@@ -554,7 +590,8 @@
     3
    ],
    "ko": "영어 실력을 다시 살리고 싶어",
-   "en": "I want to brush up on my English."
+   "en": "I want to brush up on my English.",
+   "hint": "brush up on"
   },
   {
    "id": "e05",
@@ -564,7 +601,8 @@
     3
    ],
    "ko": "작년에 요가를 취미로 시작했어",
-   "en": "I took up yoga last year."
+   "en": "I took up yoga last year.",
+   "hint": "take up(과거형) · yoga"
   },
   {
    "id": "e06",
@@ -574,7 +612,8 @@
     4
    ],
    "ko": "걸어서 10분 거리야",
-   "en": "It's a 10-minute walk."
+   "en": "It's a 10-minute walk.",
+   "hint": "10-minute walk"
   },
   {
    "id": "e07",
@@ -584,7 +623,8 @@
     4
    ],
    "ko": "교통체증을 피하려고 일찍 나가",
-   "en": "I leave early to beat the traffic."
+   "en": "I leave early to beat the traffic.",
+   "hint": "leave early · beat the traffic"
   },
   {
    "id": "e08",
@@ -594,7 +634,8 @@
     6
    ],
    "ko": "술을 줄이려고 하고 있어",
-   "en": "I'm trying to cut down on alcohol."
+   "en": "I'm trying to cut down on alcohol.",
+   "hint": "try to · cut down on · alcohol"
   },
   {
    "id": "e09",
@@ -604,7 +645,8 @@
     7
    ],
    "ko": "탄소 배출을 줄여야 해",
-   "en": "We need to reduce carbon emissions."
+   "en": "We need to reduce carbon emissions.",
+   "hint": "reduce · carbon emissions"
   },
   {
    "id": "e10",
@@ -614,7 +656,8 @@
     7
    ],
    "ko": "재생에너지로 전환해야 해",
-   "en": "We should switch to renewable energy."
+   "en": "We should switch to renewable energy.",
+   "hint": "switch to · renewable energy"
   },
   {
    "id": "e11",
@@ -624,7 +667,8 @@
     8
    ],
    "ko": "갑자기 머리가 하얘졌어",
-   "en": "All of a sudden, my mind went blank."
+   "en": "All of a sudden, my mind went blank.",
+   "hint": "all of a sudden · mind · blank"
   },
   {
    "id": "e12",
@@ -634,7 +678,8 @@
     9
    ],
    "ko": "그 방법이 만능해결책은 아니야",
-   "en": "It's not a magic bullet."
+   "en": "It's not a magic bullet.",
+   "hint": "magic bullet"
   },
   {
    "id": "e13",
@@ -644,7 +689,8 @@
     9
    ],
    "ko": "그는 처음에 좀 깐깐한 인상을 줬어",
-   "en": "He came across as strict at first."
+   "en": "He came across as strict at first.",
+   "hint": "come across as · strict · at first"
   },
   {
    "id": "e14",
@@ -654,7 +700,8 @@
     9
    ],
    "ko": "좋은 아이디어가 하나 떠올랐어",
-   "en": "I came up with a good idea."
+   "en": "I came up with a good idea.",
+   "hint": "come up with · idea"
   },
   {
    "id": "e15",
@@ -664,7 +711,8 @@
     9
    ],
    "ko": "여행이 계획대로 되지 않았어",
-   "en": "Things didn't go to plan."
+   "en": "Things didn't go to plan.",
+   "hint": "things · go to plan"
   },
   {
    "id": "e16",
@@ -674,7 +722,8 @@
     9
    ],
    "ko": "알고 보니 그 식당은 문을 닫았더라",
-   "en": "It turned out that the restaurant was closed."
+   "en": "It turned out that the restaurant was closed.",
+   "hint": "it turned out that · closed"
   },
   {
    "id": "e17",
@@ -684,7 +733,8 @@
     7
    ],
    "ko": "나는 일찍 일어나는 게 익숙해",
-   "en": "I'm used to getting up early."
+   "en": "I'm used to getting up early.",
+   "hint": "be used to + -ing · get up early"
   },
   {
    "id": "e18",
@@ -694,7 +744,8 @@
     7
    ],
    "ko": "나는 어릴 때 리코더를 불곤 했어",
-   "en": "I used to play the recorder."
+   "en": "I used to play the recorder.",
+   "hint": "used to + 동사원형 · recorder"
   },
   {
    "id": "e19",
@@ -704,7 +755,8 @@
     10
    ],
    "ko": "내일은 비가 올 것 같아",
-   "en": "It's likely to rain tomorrow."
+   "en": "It's likely to rain tomorrow.",
+   "hint": "likely to · rain"
   },
   {
    "id": "e20",
@@ -714,7 +766,8 @@
     10
    ],
    "ko": "나는 파란색으로 할게",
-   "en": "I'll go with the blue one."
+   "en": "I'll go with the blue one.",
+   "hint": "go with · blue one"
   },
   {
    "id": "e21",
@@ -724,7 +777,8 @@
     10
    ],
    "ko": "최근에 가격이 조금 떨어졌어",
-   "en": "The price has dropped a bit recently."
+   "en": "The price has dropped a bit recently.",
+   "hint": "price · has dropped · a bit"
   },
   {
    "id": "e22",
@@ -734,7 +788,8 @@
     10
    ],
    "ko": "내가 말했던 것처럼, 나는 바다를 더 좋아해",
-   "en": "As I said, I prefer the beach."
+   "en": "As I said, I prefer the beach.",
+   "hint": "As I said · prefer · beach"
   },
   {
    "id": "e23",
@@ -744,7 +799,8 @@
     10
    ],
    "ko": "무슨 일이야? 왜 이렇게 시끄러워?",
-   "en": "What's going on? Why is it so noisy?"
+   "en": "What's going on? Why is it so noisy?",
+   "hint": "What's going on · noisy"
   },
   {
    "id": "e24",
@@ -754,7 +810,8 @@
     10
    ],
    "ko": "그곳은 내 안식처야",
-   "en": "It's my safe haven."
+   "en": "It's my safe haven.",
+   "hint": "safe haven"
   },
   {
    "id": "r10-01",
@@ -766,7 +823,8 @@
    "ko": "며칠 전에 휴가를 다녀왔어요.",
    "en": "I went on holiday a few days ago.",
    "mine": "I went to hosiblday",
-   "gram": "휴가를 가다는 <em>go on holiday</em>로 통째로 외워요. 끝에 <em>a few days ago</em>(며칠 전)가 있으니 동사는 과거형 <em>went</em>예요."
+   "gram": "휴가를 가다는 <em>go on holiday</em>로 통째로 외워요. 끝에 <em>a few days ago</em>(며칠 전)가 있으니 동사는 과거형 <em>went</em>예요.",
+   "hint": "go on holiday · a few days ago"
   },
   {
    "id": "r10-03",
@@ -778,7 +836,8 @@
    "ko": "해변에 갔어요.",
    "en": "I went to the beach.",
    "mine": "You went to beach",
-   "gram": "해변, 바다, 산처럼 모두가 아는 장소 앞에는 <em>the</em>: <em>the beach, the sea, the mountains</em>. 내 이야기니까 주어는 I."
+   "gram": "해변, 바다, 산처럼 모두가 아는 장소 앞에는 <em>the</em>: <em>the beach, the sea, the mountains</em>. 내 이야기니까 주어는 I.",
+   "hint": "go to · the · beach"
   },
   {
    "id": "r10-04",
@@ -790,7 +849,8 @@
    "ko": "저는 단 걸 좋아해요.",
    "en": "I have a sweet tooth.",
    "mine": "I like sweet tooth",
-   "gram": "<em>have a sweet tooth</em>는 관용 표현이라 동사는 like가 아니라 <em>have</em>, 앞에 <em>a</em>도 꼭!"
+   "gram": "<em>have a sweet tooth</em>는 관용 표현이라 동사는 like가 아니라 <em>have</em>, 앞에 <em>a</em>도 꼭!",
+   "hint": "have a sweet tooth"
   },
   {
    "id": "r10-05",
@@ -802,7 +862,8 @@
    "ko": "사람들은 단 걸 정말 좋아해요.",
    "en": "People love sweets.",
    "mine": "People is love sweets",
-   "gram": "한 문장에 동사는 하나만! is와 love를 같이 쓰면 안 돼요. <em>people</em>은 복수라 be동사라면 are."
+   "gram": "한 문장에 동사는 하나만! is와 love를 같이 쓰면 안 돼요. <em>people</em>은 복수라 be동사라면 are.",
+   "hint": "people · love · sweets"
   },
   {
    "id": "r10-06",
@@ -814,7 +875,8 @@
    "ko": "날씨는 제 기분에 영향을 줘요.",
    "en": "The weather affects my mood.",
    "mine": "Weather effects my mood",
-   "gram": "<em>affect</em>는 동사(영향을 주다), <em>effect</em>는 명사(영향). 주어가 3인칭 단수라 <em>affects</em>."
+   "gram": "<em>affect</em>는 동사(영향을 주다), <em>effect</em>는 명사(영향). 주어가 3인칭 단수라 <em>affects</em>.",
+   "hint": "the weather · affect(동사)"
   },
   {
    "id": "r10-07",
@@ -826,7 +888,8 @@
    "ko": "저한테는 상관없어요.",
    "en": "It doesn't matter to me.",
    "mine": "it doest matter to you",
-   "gram": "<em>doesn't = does not</em>. 여기서 <em>matter</em>는 '중요하다'라는 동사. 내 입장이니까 <em>to me</em>."
+   "gram": "<em>doesn't = does not</em>. 여기서 <em>matter</em>는 '중요하다'라는 동사. 내 입장이니까 <em>to me</em>.",
+   "hint": "it · doesn't · matter · to me"
   },
   {
    "id": "r10-08",
@@ -838,7 +901,8 @@
    "ko": "6개월 전에 하와이에 갔어요.",
    "en": "I went to Hawaii six months ago.",
    "mine": "in 6 months · 하와이",
-   "gram": "<em>ago</em> 전에 · <em>for</em> 6 months 동안 · <em>in</em> 6 months 후에. 모르는 단어도 영어로: Hawaii."
+   "gram": "<em>ago</em> 전에 · <em>for</em> 6 months 동안 · <em>in</em> 6 months 후에. 모르는 단어도 영어로: Hawaii.",
+   "hint": "go to · Hawaii · six months ago"
   },
   {
    "id": "r10-09",
@@ -850,7 +914,8 @@
    "ko": "관광을 하고 싶어요.",
    "en": "I want to go sightseeing.",
    "mine": "seesight",
-   "gram": "<em>go + -ing</em> = ~하러 가다: go sightseeing, go shopping. <em>want to</em> 뒤에는 동사원형."
+   "gram": "<em>go + -ing</em> = ~하러 가다: go sightseeing, go shopping. <em>want to</em> 뒤에는 동사원형.",
+   "hint": "want to · go sightseeing"
   },
   {
    "id": "r10-10",
@@ -862,7 +927,8 @@
    "ko": "그곳은 정말 시끄러웠어요.",
    "en": "It was really noisy.",
    "mine": "nosiy",
-   "gram": "<em>noise</em>(명사) → <em>noisy</em>(형용사). be동사 뒤에는 형용사! 과거 이야기라 <em>was</em>."
+   "gram": "<em>noise</em>(명사) → <em>noisy</em>(형용사). be동사 뒤에는 형용사! 과거 이야기라 <em>was</em>.",
+   "hint": "really · noisy"
   },
   {
    "id": "r10-11",
@@ -875,7 +941,8 @@
    "en": "I was discharged from the hospital.",
    "mine": "I was discharged",
    "good": true,
-   "gram": "문장은 맞았어요! <em>be + 과거분사</em>는 '~되다'. 퇴원은 <em>from the hospital</em>, 전역은 <em>from the military</em>."
+   "gram": "문장은 맞았어요! <em>be + 과거분사</em>는 '~되다'. 퇴원은 <em>from the hospital</em>, 전역은 <em>from the military</em>.",
+   "hint": "discharged · from the hospital"
   },
   {
    "id": "r10-12",
@@ -888,7 +955,8 @@
    "en": "As far as I remember, it was a famous tourist attraction.",
    "mine": "as far as I remember · tourist attraction",
    "good": true,
-   "gram": "<em>As far as I remember</em>는 문장 앞 덩어리 표현. 관광지는 <em>tourist attraction</em>, 여행지 전체는 <em>tourist destination</em>."
+   "gram": "<em>As far as I remember</em>는 문장 앞 덩어리 표현. 관광지는 <em>tourist attraction</em>, 여행지 전체는 <em>tourist destination</em>.",
+   "hint": "As far as I remember · tourist attraction"
   },
   {
    "id": "r10-13",
@@ -901,7 +969,8 @@
    "en": "I prefer going to the beach.",
    "mine": "I prefer going to the beach",
    "good": true,
-   "gram": "<em>prefer + -ing</em> 완벽해요! 1~2회차에 틀렸던 부분이에요. 비교는 <em>I prefer the beach to the mountains.</em>"
+   "gram": "<em>prefer + -ing</em> 완벽해요! 1~2회차에 틀렸던 부분이에요. 비교는 <em>I prefer the beach to the mountains.</em>",
+   "hint": "prefer + -ing · beach"
   }
  ],
  "part1": [

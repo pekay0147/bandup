@@ -237,7 +237,11 @@ function flipCard(c, onFlip){
   else { const ss=(c.sessions||[]); const first=D.sessions.find(x=>x.no===ss[0]);
     fb.append(el("span","from", ss.length>1? `${ss.join("·")}회차 수업에서 반복` : `${ss[0]}회차 수업${first&&first.date? " · "+mmdd(first.date):""}`)); }
   if(c.kind==="fix"){ fb.append(el("span","lab","틀린 문장이에요. 바르게 고쳐 보세요"), el("p","wrong",c.wrong)); }
-  else { fb.append(el("span","lab", c.good? "이 말을 영어로 하면? · 수업 때 잘했던 문장" : "이 말을 영어로 하면?"), el("p","ko",c.ko)); }
+  else { fb.append(el("p","ko",c.ko));
+    const hint = c.hint || (c.vtopic? c.en.replace(/[A-Za-z]+/g, m=> m.length<=2? m : m[0]+"_".repeat(m.length-1)) : "");
+    if(hint){ const hb=el("p","hint"); hb.append(el("span","hint-tag","힌트"), document.createTextNode(hint)); fb.append(hb); }
+    if(c.good) fb.append(el("span","lab","수업 때 잘했던 문장"));
+  }
   fb.append(el("span","tap","터치해서 정답 보기")); f.append(fb);
   // back
   const b=el("div","face back"); b.setAttribute("aria-hidden",String(!flipped));

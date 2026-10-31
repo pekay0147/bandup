@@ -278,3 +278,6 @@ button.quote:active{transform:scale(.99)}
 .quote .q-mean{display:block;margin:0;font:600 15px var(--body)}
 .q-ex{display:block;margin-top:4px;font:italic 15px/1.5 var(--body);color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}
 @media (prefers-reduced-motion:no-preference){button.quote .q-idiom{animation:fade .25s ease both}}
+
+.front .hint{margin:0;justify-self:center;display:inline-flex;align-items:baseline;gap:8px;flex-wrap:wrap;justify-content:center;background:var(--sun-soft);border-radius:12px;padding:8px 12px;font:600 15px/1.4 var(--body);color:var(--ink);max-width:100%}
+.front .hint-tag{font:12px var(--cute);font-weight:400;background:var(--sun);color:#1f1b3a;border-radius:6px;padding:1px 7px}
