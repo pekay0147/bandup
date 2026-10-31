@@ -170,3 +170,13 @@ h2{margin:0;font:19px var(--cute);font-weight:400}
 .tabs .badge{position:absolute;top:2px;left:calc(50% + 6px);min-width:18px;height:18px;border-radius:9px;background:var(--pink);color:#fff;font:11px/18px var(--body);font-weight:700;padding:0 5px}
 .loading{text-align:center;padding:60px 0;font:17px var(--cute);color:var(--muted)}
 @media (prefers-reduced-motion:reduce){.card,.bar i{transition:none}}
+
+/* session picker */
+.picker{display:grid;gap:6px}
+.picker-lab{font:14px var(--cute);color:var(--muted)}
+.pchips{display:flex;gap:6px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:none}
+.pchips::-webkit-scrollbar{display:none}
+.pchips button{flex:none;display:inline-flex;align-items:baseline;gap:5px;font:15px var(--cute);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;cursor:pointer;min-height:40px}
+.pchips button small{font:11px var(--body);font-weight:700;color:var(--muted)}
+.pchips button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:var(--on-color)}
+.pchips button[aria-pressed="true"] small{color:var(--on-color);opacity:.8}

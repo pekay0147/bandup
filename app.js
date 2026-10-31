@@ -16,7 +16,7 @@ const store={ get(k,f){ try{ const v=localStorage.getItem(k); return v==null? f 
 let D=null, G={}, slug=null;
 let srs={}, marks={}, days=[];
 let view={tab:"home"};   // home | cards(deck?) | review | notes
-let deckState=null, reviewState=null, picked=null, flipped=false, noteFilter="전체";
+let deckState=null, reviewState=null, picked=null, flipped=false, noteFilter="전체", noteSession="all";
 
 /* ---------- boot ---------- */
 async function boot(){
@@ -125,12 +125,31 @@ function deckTile(s){
 function renderDecks(app){
   app.append(el("h1",null,"큐카드"));
   app.append(el("p","muted small",`수업마다 나온 실수와 표현이에요. 회차를 골라 넘겨 보세요.`));
+  app.append(sessionPicker(null, v=>go("cards",{deck:v})));
   const l=el("div","list");
   const all=el("button","tile"); all.type="button";
   const at=el("div","t"); at.append(el("b",null,"전체 섞어서 보기"), el("span",null,`카드 ${D.cards.length}장`));
   all.append(el("span","no","∞"), at, el("span","go","›")); all.onclick=()=>go("cards",{deck:"all"}); l.append(all);
   for(const s of [...D.sessions].reverse()) l.append(deckTile(s));
   app.append(l);
+}
+
+
+/* ---------- session picker ---------- */
+function sessionPicker(current, onPick){
+  const wrap=el("div","picker");
+  wrap.append(el("span","picker-lab","회차 선택"));
+  const row=el("div","pchips"); row.setAttribute("role","group"); row.setAttribute("aria-label","회차 선택");
+  const opts=[["all","전체"], ...D.sessions.map(x=>[x.no, `${x.no}회`])];
+  for(const [v,label] of opts){
+    const n = v==="all"? D.cards.length : D.cards.filter(c=>(c.sessions||[]).includes(v)).length;
+    const b=el("button",null,label); b.type="button"; b.setAttribute("aria-pressed",String(current===v));
+    b.append(el("small",null,String(n)));
+    b.onclick=()=>onPick(v); row.append(b);
+  }
+  wrap.append(row);
+  setTimeout(()=>{ const on=row.querySelector('[aria-pressed="true"]'); if(on) on.scrollIntoView({block:"nearest",inline:"center"}); },0);
+  return wrap;
 }
 
 /* ---------- flip card ---------- */
@@ -199,6 +218,7 @@ function renderDeck(app){
     deckState={key:view.deck, ids:list.map(c=>c.id), i:0};
   }
   const back=el("button","back","‹ 큐카드 목록"); back.type="button"; back.onclick=()=>go("cards"); app.append(back);
+  app.append(sessionPicker(view.deck, v=>{ if(v!==view.deck) go("cards",{deck:v}); }));
   const s=D.sessions.find(x=>x.no===view.deck);
   app.append(el("h1",null, view.deck==="all"? "전체 큐카드" : `${view.deck}회차 큐카드`));
   if(s) app.append(el("p","muted small",`${mmdd(s.date)} · ${s.title}`));
@@ -259,14 +279,16 @@ function answer(c,ok){ grade(c,ok); reviewState.res.push({ok,c}); reviewState.i+
 /* ---------- notes ---------- */
 function renderNotes(app){
   app.append(el("h1",null,"오답노트"));
-  const fixes=D.cards.filter(c=>c.kind==="fix" || c.mine && !c.good);
+  app.append(sessionPicker(noteSession, v=>{ noteSession=v; render(); }));
+  const inSess=c=> noteSession==="all" || (c.sessions||[]).includes(noteSession);
+  const fixes=D.cards.filter(c=>(c.kind==="fix" || c.mine && !c.good) && inSess(c));
   const types=[...new Set(fixes.map(typeOf))];
   const f=el("div","filters");
   for(const t of ["전체","헷갈려요",...types]){ const b=el("button",null,t); b.type="button"; b.setAttribute("aria-pressed",String(noteFilter===t)); b.onclick=()=>{ noteFilter=t; render(); }; f.append(b); }
   app.append(f);
   const pick = noteFilter==="전체"? types : noteFilter==="헷갈려요"? null : [noteFilter];
   if(pick===null){
-    const list=D.cards.filter(c=>marks[c.id]==="again" || ((srs[c.id]||{}).reviews && (srs[c.id].correct||0)<(srs[c.id].reviews||0)));
+    const list=D.cards.filter(c=>inSess(c)).filter(c=>marks[c.id]==="again" || ((srs[c.id]||{}).reviews && (srs[c.id].correct||0)<(srs[c.id].reviews||0)));
     const p=el("div","panel"); { const gh=el("div","ghead"); gh.append(el("b",null,`헷갈리는 카드 ${list.length}장`)); p.append(gh); }
     if(!list.length) p.append(el("p","gtip","큐카드에서 '헷갈려요'를 누르거나 복습에서 틀린 카드가 여기 모여요."));
     list.forEach(c=>p.append(noteRow(c))); app.append(p);
@@ -279,7 +301,8 @@ function renderNotes(app){
       items.forEach(c=>p.append(noteRow(c))); app.append(p);
     }
   }
-  if(D.compare && noteFilter==="전체"){
+  if(!fixes.length && pick!==null){ const e=el("div","empty"); e.append(el("p",null,"이 회차에는 고친 문장이 없어요. 표현 카드는 큐카드 탭에서 볼 수 있어요.")); app.append(e); }
+  if(D.compare && noteFilter==="전체" && noteSession==="all"){
     const p=el("div","panel"); { const gh=el("div","ghead"); gh.append(el("b",null,"헷갈리는 단어 정리")); p.append(gh); }
     const cm=el("div","cmp"); for(const [t,h] of D.compare){ const d=el("div"); d.append(el("b",null,t)); const s=el("span"); s.innerHTML=h; d.append(s); cm.append(d); }
     p.append(cm); app.append(p);
