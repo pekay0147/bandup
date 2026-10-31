@@ -118,7 +118,7 @@
    "en": "There are many companies.",
    "mine": "There is many company.",
    "gram": "수가 여러 개면 <em>there are</em> + 복수명사. many 뒤에는 꼭 -s를 붙여요: companies.",
-   "hint": "companies"
+   "hint": "many"
   },
   {
    "id": "m02",
@@ -131,7 +131,7 @@
    "en": "There are many parks near my house.",
    "mine": "There are many park near my house.",
    "gram": "<em>many</em> 뒤에는 복수형이 와요. park → <em>parks</em>. 복수니까 there <em>are</em>.",
-   "hint": "parks"
+   "hint": "near"
   },
   {
    "id": "m03",
@@ -157,7 +157,7 @@
    "en": "The house has a garden.",
    "mine": "The house have a garden.",
    "gram": "주어가 the house(하나)라서 have가 아니라 <em>has</em>. he/she/it에는 has!",
-   "hint": "has"
+   "hint": "garden"
   },
   {
    "id": "m05",
@@ -170,7 +170,7 @@
    "en": "The city has many schools.",
    "mine": "The city have a many school.",
    "gram": "the city는 하나라서 <em>has</em>. many 뒤 명사는 복수: <em>schools</em>. a many는 안 돼요.",
-   "hint": "has"
+   "hint": "schools"
   },
   {
    "id": "m06",
@@ -183,7 +183,7 @@
    "en": "There are many cafes here.",
    "mine": "Here is many cafes.",
    "gram": "here is로 시작하지 말고 <em>There are</em> + 복수명사 + here. cafes가 여러 개니까 are.",
-   "hint": "there"
+   "hint": "many"
   },
   {
    "id": "m07",
@@ -196,7 +196,7 @@
    "en": "It has many restaurants.",
    "mine": "It's have a many restaurants.",
    "gram": "동사는 하나만! It's(It is) + have를 같이 쓰면 안 돼요. <em>It has</em> many restaurants.",
-   "hint": "has"
+   "hint": "restaurants"
   },
   {
    "id": "m08",
@@ -210,7 +210,7 @@
    "en": "I'm living in Canada.",
    "mine": "I living in Canada.",
    "gram": "지금 살고 있는 중이면 진행형 <em>be + -ing</em>. be동사를 빼먹지 않기: I'<em>m</em> living.",
-   "hint": "living"
+   "hint": "Canada"
   },
   {
    "id": "m09",
@@ -236,7 +236,7 @@
    "en": "I don't work.",
    "mine": "I no work.",
    "gram": "일반동사 부정은 <em>don't</em> + 동사. I no work는 틀린 형태예요.",
-   "hint": "don't"
+   "hint": "work"
   },
   {
    "id": "m11",
@@ -249,7 +249,7 @@
    "en": "I moved to Canada last year.",
    "mine": "I'm moving to the Canada last year.",
    "gram": "last year가 있으면 과거형 <em>moved</em>. 나라 이름 Canada 앞에는 the를 안 붙여요.",
-   "hint": "moved"
+   "hint": "year"
   },
   {
    "id": "m12",
@@ -262,7 +262,7 @@
    "en": "When I wake up, I drink a cup of water.",
    "mine": "When I waking up, I drink one water.",
    "gram": "when 뒤에도 주어 + 동사가 제대로 와야 해요: When I <em>wake up</em>. 물은 셀 수 없어서 <em>a cup of water</em>.",
-   "hint": "wake"
+   "hint": "cup"
   },
   {
    "id": "m13",
@@ -275,7 +275,7 @@
    "en": "I started yoga last month.",
    "mine": "I'm start yoga last month.",
    "gram": "last month(지난달)이니까 과거형 <em>started</em>. I'm start처럼 be동사를 붙이지 않아요.",
-   "hint": "started"
+   "hint": "yoga"
   },
   {
    "id": "m14",
@@ -302,7 +302,7 @@
    "en": "I like to wear T-shirts.",
    "mine": "I like wear the T-shirt.",
    "gram": "like 뒤에 동사가 오면 <em>like to wear</em> 또는 like wearing. 티셔츠 일반을 말할 땐 복수 T-shirts.",
-   "hint": "wear"
+   "hint": "T-shirts"
   },
   {
    "id": "m16",
@@ -315,7 +315,7 @@
    "en": "My city needs more parks.",
    "mine": "My city needs to more parks.",
    "gram": "need to 뒤에는 동사가 와요. 명사가 필요할 땐 to 없이 <em>needs more parks</em>. city가 단수라 needs.",
-   "hint": "needs"
+   "hint": "city"
   },
   {
    "id": "m17",
@@ -341,7 +341,7 @@
    "en": "It makes me feel relaxed.",
    "mine": "It is make me feel relaxed.",
    "gram": "동사 두 개 겹치지 않기. is + make가 아니라 <em>It makes me feel</em> relaxed.",
-   "hint": "makes"
+   "hint": "relaxed"
   },
   {
    "id": "m20",
@@ -367,7 +367,7 @@
    "en": "I want to live in a house.",
    "mine": "I want to live in the house.",
    "gram": "처음 말하는 집은 특정한 집이 아니니까 <em>a house</em>.",
-   "hint": "house"
+   "hint": "live"
   },
   {
    "id": "m22",
@@ -395,7 +395,7 @@
    "en": "I like active sports.",
    "mine": "I like activity sports.",
    "gram": "sports를 꾸미는 건 형용사 <em>active</em>. activity는 명사라 앞에서 꾸밀 수 없어요.",
-   "hint": "active"
+   "hint": "sports"
   },
   {
    "id": "m24",
@@ -409,7 +409,7 @@
    "mine": "My plant is die.",
    "gram": "die는 동사(죽다), <em>dead</em>는 형용사(죽은 상태). be동사 뒤에는 형용사!",
    "example": true,
-   "hint": "dead"
+   "hint": "plant"
   },
   {
    "id": "m25",
@@ -423,7 +423,7 @@
    "mine": "Korean is my country.",
    "gram": "<em>Korea</em>는 나라, Korean은 한국 사람·한국어·한국의.",
    "example": true,
-   "hint": "Korea"
+   "hint": "country"
   },
   {
    "id": "m26",
@@ -437,7 +437,7 @@
    "mine": "I made a reserve at the restaurant.",
    "gram": "reserve는 동사, <em>reservation</em>은 명사. make a reservation이 짝꿍 표현.",
    "example": true,
-   "hint": "reservation"
+   "hint": "restaurant"
   },
   {
    "id": "m27",
@@ -451,7 +451,7 @@
    "mine": "I want to be more confidence.",
    "gram": "be 뒤에는 형용사 <em>confident</em>. confidence는 명사(자신감).",
    "example": true,
-   "hint": "confident"
+   "hint": "more"
   },
   {
    "id": "m28",
@@ -465,7 +465,7 @@
    "mine": "The movie was scared.",
    "gram": "<em>scary</em>는 무서운 대상(영화가 무섭다), scared는 무서워하는 감정(내가 무섭다).",
    "example": true,
-   "hint": "scary"
+   "hint": "movie"
   },
   {
    "id": "m29",
@@ -478,7 +478,7 @@
    "en": "We have to understand and support each other.",
    "mine": "We have to have each other.",
    "gram": "have each other는 어색해요. 서로 돕는다는 뜻은 <em>understand and support each other</em>.",
-   "hint": "support"
+   "hint": "other"
   },
   {
    "id": "m30",
@@ -491,7 +491,7 @@
    "en": "I go travelling every summer.",
    "mine": "I go to travel every summer.",
    "gram": "go + -ing = ~하러 가다: <em>go travelling</em>, go shopping. go to travel은 어색해요.",
-   "hint": "travelling"
+   "hint": "summer"
   },
   {
    "id": "m31",
@@ -505,7 +505,7 @@
    "mine": "I use a bus to go to work.",
    "gram": "교통수단은 use가 아니라 <em>take</em>: take a bus, take the subway.",
    "example": true,
-   "hint": "take"
+   "hint": "bus"
   },
   {
    "id": "m32",
@@ -533,7 +533,7 @@
    "mine": "She said me the story.",
    "gram": "say는 사람이 바로 못 와요. 사람에게 말해 줄 땐 <em>tell + 사람</em> + 내용.",
    "example": true,
-   "hint": "told"
+   "hint": "story"
   },
   {
    "id": "m34",
@@ -547,7 +547,7 @@
    "en": "walk (r 소리 없음) / work (r 소리)",
    "mine": "walk / work",
    "gram": "walk는 l이 소리 나지 않고 '워-크', work는 혀를 굴려 r 소리를 내요.",
-   "hint": "walk"
+   "hint": ""
   },
   {
    "id": "e01",
@@ -874,7 +874,7 @@
    "en": "I have a sweet tooth.",
    "mine": "I like sweet tooth",
    "gram": "<em>have a sweet tooth</em>는 관용 표현이라 동사는 like가 아니라 <em>have</em>, 앞에 <em>a</em>도 꼭!",
-   "hint": "tooth"
+   "hint": "sweet"
   },
   {
    "id": "r10-05",
@@ -887,7 +887,7 @@
    "en": "People love sweets.",
    "mine": "People is love sweets",
    "gram": "한 문장에 동사는 하나만! is와 love를 같이 쓰면 안 돼요. <em>people</em>은 복수라 be동사라면 are.",
-   "hint": "love"
+   "hint": "sweets"
   },
   {
    "id": "r10-06",
@@ -900,7 +900,7 @@
    "en": "The weather affects my mood.",
    "mine": "Weather effects my mood",
    "gram": "<em>affect</em>는 동사(영향을 주다), <em>effect</em>는 명사(영향). 주어가 3인칭 단수라 <em>affects</em>.",
-   "hint": "affects"
+   "hint": "mood"
   },
   {
    "id": "r10-07",
@@ -926,7 +926,7 @@
    "en": "I went to Hawaii six months ago.",
    "mine": "in 6 months · 하와이",
    "gram": "<em>ago</em> 전에 · <em>for</em> 6 months 동안 · <em>in</em> 6 months 후에. 모르는 단어도 영어로: Hawaii.",
-   "hint": "ago"
+   "hint": "Hawaii"
   },
   {
    "id": "r10-09",
@@ -939,7 +939,7 @@
    "en": "I want to go sightseeing.",
    "mine": "seesight",
    "gram": "<em>go + -ing</em> = ~하러 가다: go sightseeing, go shopping. <em>want to</em> 뒤에는 동사원형.",
-   "hint": "sightseeing"
+   "hint": "want"
   },
   {
    "id": "r10-10",
@@ -952,7 +952,7 @@
    "en": "It was really noisy.",
    "mine": "nosiy",
    "gram": "<em>noise</em>(명사) → <em>noisy</em>(형용사). be동사 뒤에는 형용사! 과거 이야기라 <em>was</em>.",
-   "hint": "noisy"
+   "hint": "really"
   },
   {
    "id": "r10-11",
@@ -966,7 +966,7 @@
    "mine": "I was discharged",
    "good": true,
    "gram": "문장은 맞았어요! <em>be + 과거분사</em>는 '~되다'. 퇴원은 <em>from the hospital</em>, 전역은 <em>from the military</em>.",
-   "hint": "discharged"
+   "hint": "hospital"
   },
   {
    "id": "r10-12",
@@ -980,7 +980,7 @@
    "mine": "as far as I remember · tourist attraction",
    "good": true,
    "gram": "<em>As far as I remember</em>는 문장 앞 덩어리 표현. 관광지는 <em>tourist attraction</em>, 여행지 전체는 <em>tourist destination</em>.",
-   "hint": "remember"
+   "hint": "tourist"
   },
   {
    "id": "r10-13",
