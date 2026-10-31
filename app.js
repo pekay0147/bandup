@@ -109,8 +109,7 @@ function renderHome(app){
   if(last){
     { const sh=el("div","sec-h"); sh.append(el("h2",null,"최근 수업")); app.append(sh); }
     app.append(deckTile(last));
-    const f=D.focus&&D.focus[String(last.no)];
-    if(f){ const x=el("div","focus"); x.append(el("b",null,`${last.no}회차 포인트`), document.createTextNode(f)); app.append(x); }
+    app.append(quoteBox());
   }
   if(false){
     const ins=el("div","install"); ins.append(el("b",null,"앱처럼 쓰려면 홈 화면에 추가하세요"),
@@ -278,6 +277,38 @@ function setFlip(card,v,cb){
   card.querySelectorAll(".back button").forEach(b=>b.tabIndex=v?0:-1);
   if(!v){ picked=null; setTimeout(()=>{ if(!flipped) render(); },560); }
   if(cb) cb(v);
+}
+
+
+/* ---------- a quote a day ---------- */
+const QUOTES=[
+ ["The limits of my language mean the limits of my world.","내 언어의 한계가 곧 내 세계의 한계다.","Ludwig Wittgenstein"],
+ ["It does not matter how slowly you go as long as you do not stop.","멈추지만 않는다면 얼마나 천천히 가는지는 중요하지 않다.","Confucius"],
+ ["The beautiful thing about learning is that nobody can take it away from you.","배움의 멋진 점은 누구도 그것을 빼앗아 갈 수 없다는 것이다.","B.B. King"],
+ ["The expert in anything was once a beginner.","어떤 분야의 전문가도 한때는 초보자였다.","Helen Hayes"],
+ ["Success is the sum of small efforts, repeated day in and day out.","성공은 매일 반복한 작은 노력들의 합이다.","Robert Collier"],
+ ["Don't watch the clock; do what it does. Keep going.","시계를 보지 말고 시계처럼 하라. 계속 나아가라.","Sam Levenson"],
+ ["Believe you can and you're halfway there.","할 수 있다고 믿으면 이미 반은 온 것이다.","Theodore Roosevelt"],
+ ["Education is the most powerful weapon which you can use to change the world.","교육은 세상을 바꿀 수 있는 가장 강력한 무기다.","Nelson Mandela"],
+ ["An investment in knowledge pays the best interest.","지식에 대한 투자가 가장 높은 이자를 낳는다.","Benjamin Franklin"],
+ ["Learning never exhausts the mind.","배움은 결코 정신을 지치게 하지 않는다.","Leonardo da Vinci"],
+ ["Fall seven times, stand up eight.","일곱 번 넘어지면 여덟 번 일어나라.","Japanese proverb"],
+ ["You don't have to be great to start, but you have to start to be great.","시작하려고 대단할 필요는 없지만, 대단해지려면 시작해야 한다.","Zig Ziglar"],
+ ["Great things are done by a series of small things brought together.","위대한 일은 작은 일들이 모여 이루어진다.","Vincent van Gogh"],
+ ["Start where you are. Use what you have. Do what you can.","지금 있는 곳에서, 가진 것으로, 할 수 있는 것을 하라.","Arthur Ashe"],
+ ["It always seems impossible until it's done.","끝내기 전까지는 늘 불가능해 보인다.","Nelson Mandela"],
+ ["A different language is a different vision of life.","다른 언어는 삶을 보는 다른 시선이다.","Federico Fellini"],
+ ["Mistakes are proof that you are trying.","실수는 당신이 노력하고 있다는 증거다.","Unknown"],
+ ["Practice makes perfect.","연습이 완벽을 만든다.","Proverb"],
+ ["Little by little, one travels far.","조금씩 가다 보면 멀리 간다.","Proverb"],
+ ["The secret of getting ahead is getting started.","앞서가는 비결은 일단 시작하는 것이다.","Mark Twain"]
+];
+function quoteBox(){
+  const d=new Date(); const dayNo=Math.floor((Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()))/86400000);
+  const [en,ko,who]=QUOTES[dayNo % QUOTES.length];
+  const x=el("figure","quote");
+  x.append(el("span","q-lab","오늘의 영어 한 줄"), el("blockquote",null,en), el("figcaption",null,`— ${who}`), el("p","q-ko",ko));
+  return x;
 }
 
 /* ---------- deck (browse by session) ---------- */
