@@ -271,7 +271,7 @@ function renderDecks(app){
   const startB=el("button","btn primary",`카드로 연습 ${inS.length}장`); startB.type="button"; startB.onclick=()=>go("cards",{deck:selSession});
   head.append(ht,startB); app.append(head);
   const f=D.focus&&D.focus[String(selSession)];
-  if(f){ const x=el("div","focus"); x.append(el("b",null,"이 회차 포인트"), document.createTextNode(f)); app.append(x); }
+
   const box=(key,title,list,row)=>{ if(!list.length) return; const hd=el("div","boxh"); hd.append(el("b",null,title), el("span",null,`${list.length}개 · 눌러서 보기`));
     app.append(fold(key, hd, b=>{ const w=el("div","boxlist"); list.forEach(c=>w.append(row(c))); b.append(w); })); };
   box(`s${selSession}-w`,"틀렸던 문장",wrong,noteRow);
