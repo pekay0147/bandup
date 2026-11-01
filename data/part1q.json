@@ -172,6 +172,141 @@
      "e-commerce",
      "전자상거래",
      ""
+    ],
+    [
+     "merger",
+     "합병",
+     ""
+    ],
+    [
+     "profit margin",
+     "이윤 폭",
+     ""
+    ],
+    [
+     "stakeholder",
+     "이해관계자",
+     ""
+    ],
+    [
+     "bankruptcy",
+     "파산",
+     ""
+    ],
+    [
+     "asset",
+     "자산",
+     ""
+    ],
+    [
+     "liability",
+     "부채, 법적 책임",
+     ""
+    ],
+    [
+     "equity",
+     "자기 자본, 지분",
+     ""
+    ],
+    [
+     "dividend",
+     "배당금",
+     ""
+    ],
+    [
+     "market share",
+     "시장 점유율",
+     ""
+    ],
+    [
+     "inflation",
+     "물가 상승",
+     ""
+    ],
+    [
+     "recession",
+     "경기 침체",
+     ""
+    ],
+    [
+     "supply chain",
+     "공급망",
+     ""
+    ],
+    [
+     "entrepreneurship",
+     "창업, 기업가 정신",
+     ""
+    ],
+    [
+     "investment",
+     "투자",
+     ""
+    ],
+    [
+     "outsourcing",
+     "외주",
+     ""
+    ],
+    [
+     "monopoly",
+     "독점",
+     ""
+    ],
+    [
+     "fiscal policy",
+     "재정 정책",
+     ""
+    ],
+    [
+     "CEO",
+     "최고경영자",
+     ""
+    ],
+    [
+     "business model",
+     "사업 모델",
+     ""
+    ],
+    [
+     "cash flow",
+     "현금 흐름",
+     ""
+    ],
+    [
+     "market segmentation",
+     "시장 세분화",
+     ""
+    ],
+    [
+     "competitive advantage",
+     "경쟁 우위",
+     ""
+    ],
+    [
+     "SWOT analysis",
+     "SWOT 분석(강점·약점·기회·위협)",
+     ""
+    ],
+    [
+     "balance sheet",
+     "대차대조표",
+     ""
+    ],
+    [
+     "customer retention",
+     "고객 유지",
+     ""
+    ],
+    [
+     "supply and demand",
+     "수요와 공급",
+     ""
+    ],
+    [
+     "salary work",
+     "고정 월급제 일",
+     ""
     ]
    ]
   },
@@ -359,6 +494,61 @@
     [
      "aspirations",
      "포부",
+     ""
+    ],
+    [
+     "lifeblood",
+     "생명줄, 가장 중요한 것",
+     ""
+    ],
+    [
+     "command",
+     "(언어) 구사 능력",
+     ""
+    ],
+    [
+     "organised",
+     "체계적인",
+     ""
+    ],
+    [
+     "intangible",
+     "무형의",
+     ""
+    ],
+    [
+     "expression",
+     "표현",
+     ""
+    ],
+    [
+     "socialise",
+     "사람들과 어울리다",
+     ""
+    ],
+    [
+     "confidence",
+     "자신감",
+     ""
+    ],
+    [
+     "cultures",
+     "문화",
+     ""
+    ],
+    [
+     "classroom",
+     "교실",
+     ""
+    ],
+    [
+     "enroll",
+     "등록하다",
+     ""
+    ],
+    [
+     "pedagogy",
+     "교육학, 교수법",
      ""
     ]
    ]
@@ -907,6 +1097,51 @@
     [
      "brushstroke",
      "붓 터치",
+     ""
+    ],
+    [
+     "hue",
+     "색조",
+     ""
+    ],
+    [
+     "motif",
+     "모티프, 주제",
+     ""
+    ],
+    [
+     "symmetrical",
+     "대칭적인",
+     ""
+    ],
+    [
+     "contrast",
+     "대비",
+     ""
+    ],
+    [
+     "shading",
+     "음영 표현",
+     ""
+    ],
+    [
+     "silhouette",
+     "실루엣",
+     ""
+    ],
+    [
+     "symmetry",
+     "대칭",
+     ""
+    ],
+    [
+     "palette knife",
+     "팔레트 나이프",
+     ""
+    ],
+    [
+     "stillness",
+     "고요함",
      ""
     ]
    ]
@@ -1535,6 +1770,91 @@
     [
      "aesthetic",
      "미적 감각, 스타일",
+     ""
+    ],
+    [
+     "haute couture",
+     "고급 맞춤 패션",
+     ""
+    ],
+    [
+     "couture",
+     "맞춤 의상",
+     ""
+    ],
+    [
+     "avant-garde",
+     "전위적인, 파격적인",
+     ""
+    ],
+    [
+     "silhouette",
+     "옷의 실루엣",
+     ""
+    ],
+    [
+     "ensemble",
+     "한 벌 코디",
+     ""
+    ],
+    [
+     "embellishment",
+     "장식",
+     ""
+    ],
+    [
+     "bohemian",
+     "보헤미안 스타일의",
+     ""
+    ],
+    [
+     "bespoke",
+     "맞춤 제작한",
+     ""
+    ],
+    [
+     "drape",
+     "늘어지게 걸치다",
+     ""
+    ],
+    [
+     "fashion-forward",
+     "유행을 앞서가는",
+     ""
+    ],
+    [
+     "haute",
+     "고급의",
+     ""
+    ],
+    [
+     "prêt-à-porter",
+     "기성복",
+     ""
+    ],
+    [
+     "seamstress",
+     "재봉사",
+     ""
+    ],
+    [
+     "textile",
+     "직물",
+     ""
+    ],
+    [
+     "vogue",
+     "유행",
+     ""
+    ],
+    [
+     "garment district",
+     "의류 상가 지역",
+     ""
+    ],
+    [
+     "style icon",
+     "스타일 아이콘",
      ""
     ]
    ]
@@ -2710,6 +3030,126 @@
      "witty",
      "재치 있는",
      ""
+    ],
+    [
+     "conscientious",
+     "성실한",
+     ""
+    ],
+    [
+     "impulsive",
+     "충동적인",
+     ""
+    ],
+    [
+     "meticulous",
+     "꼼꼼한",
+     ""
+    ],
+    [
+     "tenacious",
+     "끈질긴",
+     ""
+    ],
+    [
+     "altruistic",
+     "이타적인",
+     ""
+    ],
+    [
+     "boisterous",
+     "활기차고 시끌벅적한",
+     ""
+    ],
+    [
+     "diligent",
+     "부지런한",
+     ""
+    ],
+    [
+     "fickle",
+     "변덕스러운",
+     ""
+    ],
+    [
+     "intuitive",
+     "직관적인",
+     ""
+    ],
+    [
+     "jovial",
+     "쾌활한",
+     ""
+    ],
+    [
+     "kind-hearted",
+     "마음씨 고운",
+     ""
+    ],
+    [
+     "naïve",
+     "순진한",
+     ""
+    ],
+    [
+     "pragmatic",
+     "실용적인",
+     ""
+    ],
+    [
+     "quirky",
+     "독특한",
+     ""
+    ],
+    [
+     "resilient",
+     "회복력 있는",
+     ""
+    ],
+    [
+     "unassuming",
+     "겸손한, 수수한",
+     ""
+    ],
+    [
+     "vivacious",
+     "명랑하고 활발한",
+     ""
+    ],
+    [
+     "zealous",
+     "열성적인",
+     ""
+    ],
+    [
+     "foster family",
+     "위탁 가정",
+     ""
+    ],
+    [
+     "parentage",
+     "혈통, 부모",
+     ""
+    ],
+    [
+     "lineage",
+     "혈통, 가계",
+     ""
+    ],
+    [
+     "matriarch",
+     "여자 가장",
+     ""
+    ],
+    [
+     "patriarch",
+     "남자 가장",
+     ""
+    ],
+    [
+     "godparent",
+     "대부·대모",
+     ""
     ]
    ]
   },
@@ -3048,6 +3488,81 @@
     [
      "seafood",
      "해산물",
+     ""
+    ],
+    [
+     "scant",
+     "부족한",
+     ""
+    ],
+    [
+     "meagre",
+     "빈약한",
+     ""
+    ],
+    [
+     "plentiful",
+     "풍부한",
+     ""
+    ],
+    [
+     "quench",
+     "(갈증을) 풀다",
+     ""
+    ],
+    [
+     "swallow",
+     "삼키다",
+     ""
+    ],
+    [
+     "spoilage",
+     "부패",
+     ""
+    ],
+    [
+     "mouldy",
+     "곰팡이 핀",
+     ""
+    ],
+    [
+     "freezer burn",
+     "냉동실 냉해(성에로 상한 것)",
+     ""
+    ],
+    [
+     "soured",
+     "상해서 신맛이 나는",
+     ""
+    ],
+    [
+     "savor",
+     "음미하다",
+     ""
+    ],
+    [
+     "melt",
+     "녹다",
+     ""
+    ],
+    [
+     "stir",
+     "젓다",
+     ""
+    ],
+    [
+     "astringent",
+     "떫은",
+     ""
+    ],
+    [
+     "legumes",
+     "콩류",
+     ""
+    ],
+    [
+     "grains",
+     "곡물",
      ""
     ]
    ]
@@ -3978,6 +4493,111 @@
      "keyboard",
      "건반",
      ""
+    ],
+    [
+     "accordion",
+     "아코디언",
+     ""
+    ],
+    [
+     "bagpipes",
+     "백파이프",
+     ""
+    ],
+    [
+     "banjo",
+     "밴조",
+     ""
+    ],
+    [
+     "bassoon",
+     "바순",
+     ""
+    ],
+    [
+     "clarinet",
+     "클라리넷",
+     ""
+    ],
+    [
+     "clavichord",
+     "클라비코드",
+     ""
+    ],
+    [
+     "cymbals",
+     "심벌즈",
+     ""
+    ],
+    [
+     "didgeridoo",
+     "디저리두(호주 관악기)",
+     ""
+    ],
+    [
+     "dulcimer",
+     "덜시머(현악기)",
+     ""
+    ],
+    [
+     "French horn",
+     "호른",
+     ""
+    ],
+    [
+     "glockenspiel",
+     "글로켄슈필(철금)",
+     ""
+    ],
+    [
+     "harp",
+     "하프",
+     ""
+    ],
+    [
+     "harpsichord",
+     "하프시코드",
+     ""
+    ],
+    [
+     "kazoo",
+     "카주",
+     ""
+    ],
+    [
+     "lute",
+     "류트",
+     ""
+    ],
+    [
+     "mandolin",
+     "만돌린",
+     ""
+    ],
+    [
+     "maracas",
+     "마라카스",
+     ""
+    ],
+    [
+     "oboe",
+     "오보에",
+     ""
+    ],
+    [
+     "organ",
+     "오르간",
+     ""
+    ],
+    [
+     "tambourine",
+     "탬버린",
+     ""
+    ],
+    [
+     "trombone",
+     "트롬본",
+     ""
     ]
    ]
   },
@@ -4311,6 +4931,386 @@
     [
      "investigative journalism",
      "탐사 보도",
+     ""
+    ],
+    [
+     "byline",
+     "기자 이름 표기",
+     ""
+    ],
+    [
+     "circulation",
+     "발행 부수",
+     ""
+    ],
+    [
+     "editorial",
+     "사설",
+     ""
+    ],
+    [
+     "broadsheet",
+     "대판 신문(정론지)",
+     ""
+    ],
+    [
+     "feature",
+     "특집 기사",
+     ""
+    ],
+    [
+     "journal",
+     "학술지, 잡지",
+     ""
+    ],
+    [
+     "obituary",
+     "부고",
+     ""
+    ],
+    [
+     "layout",
+     "지면 배치",
+     ""
+    ],
+    [
+     "columnist",
+     "칼럼니스트",
+     ""
+    ],
+    [
+     "masthead",
+     "제호",
+     ""
+    ],
+    [
+     "caption",
+     "사진 설명",
+     ""
+    ],
+    [
+     "investigative",
+     "탐사의, 조사의",
+     ""
+    ],
+    [
+     "source",
+     "취재원, 출처",
+     ""
+    ],
+    [
+     "libel",
+     "명예훼손",
+     ""
+    ],
+    [
+     "lead",
+     "기사 첫 문단",
+     ""
+    ],
+    [
+     "advertisement",
+     "광고",
+     ""
+    ],
+    [
+     "freelancer",
+     "프리랜서",
+     ""
+    ],
+    [
+     "dateline",
+     "기사 작성지·날짜 표기",
+     ""
+    ],
+    [
+     "banner",
+     "큰 헤드라인",
+     ""
+    ],
+    [
+     "abduction",
+     "납치",
+     ""
+    ],
+    [
+     "accomplice",
+     "공범",
+     ""
+    ],
+    [
+     "accusation",
+     "고발, 비난",
+     ""
+    ],
+    [
+     "alibi",
+     "알리바이",
+     ""
+    ],
+    [
+     "assault",
+     "폭행",
+     ""
+    ],
+    [
+     "blackmail",
+     "협박",
+     ""
+    ],
+    [
+     "conviction",
+     "유죄 판결",
+     ""
+    ],
+    [
+     "corruption",
+     "부패",
+     ""
+    ],
+    [
+     "custody",
+     "구금, 양육권",
+     ""
+    ],
+    [
+     "defendant",
+     "피고",
+     ""
+    ],
+    [
+     "embezzlement",
+     "횡령",
+     ""
+    ],
+    [
+     "felony",
+     "중범죄",
+     ""
+    ],
+    [
+     "fraud",
+     "사기",
+     ""
+    ],
+    [
+     "homicide",
+     "살인",
+     ""
+    ],
+    [
+     "imprisonment",
+     "징역",
+     ""
+    ],
+    [
+     "indictment",
+     "기소",
+     ""
+    ],
+    [
+     "juvenile",
+     "청소년의",
+     ""
+    ],
+    [
+     "kidnapping",
+     "유괴",
+     ""
+    ],
+    [
+     "larceny",
+     "절도죄",
+     ""
+    ],
+    [
+     "manslaughter",
+     "과실치사",
+     ""
+    ],
+    [
+     "mugging",
+     "노상강도",
+     ""
+    ],
+    [
+     "parole",
+     "가석방",
+     ""
+    ],
+    [
+     "perjury",
+     "위증",
+     ""
+    ],
+    [
+     "probation",
+     "보호관찰",
+     ""
+    ],
+    [
+     "prosecution",
+     "기소, 검찰",
+     ""
+    ],
+    [
+     "sentence",
+     "형벌, 선고",
+     ""
+    ],
+    [
+     "vandalism",
+     "기물 파손",
+     ""
+    ],
+    [
+     "legislation",
+     "법률 제정",
+     ""
+    ],
+    [
+     "parliament",
+     "의회",
+     ""
+    ],
+    [
+     "constitution",
+     "헌법",
+     ""
+    ],
+    [
+     "democracy",
+     "민주주의",
+     ""
+    ],
+    [
+     "bureaucracy",
+     "관료제",
+     ""
+    ],
+    [
+     "sovereignty",
+     "주권",
+     ""
+    ],
+    [
+     "federal",
+     "연방의",
+     ""
+    ],
+    [
+     "republic",
+     "공화국",
+     ""
+    ],
+    [
+     "monarchy",
+     "군주제",
+     ""
+    ],
+    [
+     "executive",
+     "행정부",
+     ""
+    ],
+    [
+     "legislature",
+     "입법부",
+     ""
+    ],
+    [
+     "judiciary",
+     "사법부",
+     ""
+    ],
+    [
+     "constituency",
+     "선거구",
+     ""
+    ],
+    [
+     "amendment",
+     "개정",
+     ""
+    ],
+    [
+     "referendum",
+     "국민투표",
+     ""
+    ],
+    [
+     "cabinet",
+     "내각",
+     ""
+    ],
+    [
+     "policy",
+     "정책",
+     ""
+    ],
+    [
+     "diplomat",
+     "외교관",
+     ""
+    ],
+    [
+     "embassy",
+     "대사관",
+     ""
+    ],
+    [
+     "autocracy",
+     "독재 정치",
+     ""
+    ],
+    [
+     "coalition",
+     "연합",
+     ""
+    ],
+    [
+     "impeachment",
+     "탄핵",
+     ""
+    ],
+    [
+     "incumbent",
+     "현직의",
+     ""
+    ],
+    [
+     "legitimacy",
+     "정당성",
+     ""
+    ],
+    [
+     "mandate",
+     "권한, 위임",
+     ""
+    ],
+    [
+     "sanction",
+     "제재",
+     ""
+    ],
+    [
+     "treaty",
+     "조약",
+     ""
+    ],
+    [
+     "devolution",
+     "권력 이양",
+     ""
+    ],
+    [
+     "plutocracy",
+     "금권 정치",
+     ""
+    ],
+    [
+     "suffrage",
+     "투표권",
      ""
     ]
    ]
@@ -5023,6 +6023,118 @@
    ]
   },
   {
+   "en": "Health",
+   "ko": "건강",
+   "qs": [
+    "Do you do anything to stay healthy?",
+    "Have you changed your eating habits recently?",
+    "Do you think people in your country are healthier than before?",
+    "What do you do when you feel ill?"
+   ],
+   "vocab": [
+    [
+     "wellness",
+     "건강",
+     ""
+    ],
+    [
+     "ailment",
+     "가벼운 병",
+     ""
+    ],
+    [
+     "symptom",
+     "증상",
+     ""
+    ],
+    [
+     "vitality",
+     "활력",
+     ""
+    ],
+    [
+     "immunity",
+     "면역력",
+     ""
+    ],
+    [
+     "nutrition",
+     "영양",
+     ""
+    ],
+    [
+     "hygiene",
+     "위생",
+     ""
+    ],
+    [
+     "allergen",
+     "알레르기 유발 물질",
+     ""
+    ],
+    [
+     "chronic",
+     "만성의",
+     ""
+    ],
+    [
+     "well-being",
+     "몸과 마음의 건강",
+     ""
+    ],
+    [
+     "dietary",
+     "식단의",
+     ""
+    ],
+    [
+     "resilience",
+     "회복력",
+     ""
+    ],
+    [
+     "rehabilitation",
+     "재활",
+     ""
+    ],
+    [
+     "holistic",
+     "몸과 마음 전체를 보는",
+     ""
+    ],
+    [
+     "pandemic",
+     "세계적 유행병",
+     ""
+    ],
+    [
+     "vaccination",
+     "예방접종",
+     ""
+    ],
+    [
+     "inflammation",
+     "염증",
+     ""
+    ],
+    [
+     "cardiovascular",
+     "심혈관의",
+     ""
+    ],
+    [
+     "epidemic",
+     "유행병",
+     ""
+    ],
+    [
+     "hypertension",
+     "고혈압",
+     ""
+    ]
+   ]
+  },
+  {
    "en": "TV",
    "ko": "TV",
    "qs": [
@@ -5185,6 +6297,41 @@
     [
      "critical acclaim",
      "평단의 호평",
+     ""
+    ],
+    [
+     "character development",
+     "인물의 성장·변화",
+     ""
+    ],
+    [
+     "editing",
+     "편집",
+     ""
+    ],
+    [
+     "performance",
+     "연기",
+     ""
+    ],
+    [
+     "narrative",
+     "서사, 이야기",
+     ""
+    ],
+    [
+     "dialogue",
+     "대사",
+     ""
+    ],
+    [
+     "theme",
+     "주제",
+     ""
+    ],
+    [
+     "cinematic techniques",
+     "영화 기법",
      ""
     ]
    ]
@@ -6207,6 +7354,116 @@
      "cross arms",
      "팔짱을 끼다",
      ""
+    ],
+    [
+     "stance",
+     "서 있는 자세, 입장",
+     ""
+    ],
+    [
+     "gait",
+     "걸음걸이",
+     ""
+    ],
+    [
+     "gesticulate",
+     "손짓하며 말하다",
+     ""
+    ],
+    [
+     "slouch",
+     "구부정하게 앉다",
+     ""
+    ],
+    [
+     "fidget",
+     "꼼지락거리다",
+     ""
+    ],
+    [
+     "grimace",
+     "얼굴을 찡그리다",
+     ""
+    ],
+    [
+     "wink",
+     "윙크하다",
+     ""
+    ],
+    [
+     "hug",
+     "포옹하다",
+     ""
+    ],
+    [
+     "handshake",
+     "악수",
+     ""
+    ],
+    [
+     "nod off",
+     "꾸벅꾸벅 졸다",
+     ""
+    ],
+    [
+     "point",
+     "가리키다",
+     ""
+    ],
+    [
+     "clap",
+     "박수 치다",
+     ""
+    ],
+    [
+     "thumbs up",
+     "엄지척",
+     ""
+    ],
+    [
+     "shrug",
+     "어깨를 으쓱하다",
+     ""
+    ],
+    [
+     "facepalm",
+     "이마를 짚다(어이없을 때)",
+     ""
+    ],
+    [
+     "nod in agreement",
+     "동의하며 고개를 끄덕이다",
+     ""
+    ],
+    [
+     "lean in",
+     "몸을 기울이다(관심 표현)",
+     ""
+    ],
+    [
+     "bite lip",
+     "입술을 깨물다",
+     ""
+    ],
+    [
+     "clench fist",
+     "주먹을 쥐다",
+     ""
+    ],
+    [
+     "rub hands together",
+     "손을 비비다",
+     ""
+    ],
+    [
+     "tap fingers",
+     "손가락으로 톡톡 두드리다",
+     ""
+    ],
+    [
+     "fold hands",
+     "손을 모으다",
+     ""
     ]
    ]
   },
@@ -6468,6 +7725,76 @@
      "natural resources",
      "천연자원",
      ""
+    ],
+    [
+     "deforestation",
+     "삼림 벌채",
+     ""
+    ],
+    [
+     "emission",
+     "배출",
+     ""
+    ],
+    [
+     "endangered",
+     "멸종 위기의",
+     ""
+    ],
+    [
+     "extinction",
+     "멸종",
+     ""
+    ],
+    [
+     "fossil fuels",
+     "화석 연료",
+     ""
+    ],
+    [
+     "recycling",
+     "재활용",
+     ""
+    ],
+    [
+     "renewable",
+     "재생 가능한",
+     ""
+    ],
+    [
+     "erosion",
+     "침식",
+     ""
+    ],
+    [
+     "overfishing",
+     "남획",
+     ""
+    ],
+    [
+     "ozone layer",
+     "오존층",
+     ""
+    ],
+    [
+     "solar power",
+     "태양열 에너지",
+     ""
+    ],
+    [
+     "urbanisation",
+     "도시화",
+     ""
+    ],
+    [
+     "wildlife",
+     "야생 동물",
+     ""
+    ],
+    [
+     "afforestation",
+     "조림, 숲 가꾸기",
+     ""
     ]
    ]
   },
@@ -6606,6 +7933,11 @@
     [
      "attractions",
      "관광 명소",
+     ""
+    ],
+    [
+     "transport",
+     "교통수단",
      ""
     ]
    ]
@@ -6799,6 +8131,71 @@
     [
      "brand image",
      "브랜드 이미지",
+     ""
+    ],
+    [
+     "advertisement",
+     "광고",
+     ""
+    ],
+    [
+     "advertisement placement",
+     "광고 배치",
+     ""
+    ],
+    [
+     "advertiser",
+     "광고주",
+     ""
+    ],
+    [
+     "ad campaign",
+     "광고 캠페인",
+     ""
+    ],
+    [
+     "call to action",
+     "행동 유도 문구(지금 구매하세요 등)",
+     ""
+    ],
+    [
+     "advertisement budget",
+     "광고 예산",
+     ""
+    ],
+    [
+     "ad copy",
+     "광고 문구",
+     ""
+    ],
+    [
+     "advertiser's objective",
+     "광고주의 목적",
+     ""
+    ],
+    [
+     "ad slot",
+     "광고 시간대·자리",
+     ""
+    ],
+    [
+     "advertisement medium",
+     "광고 매체",
+     ""
+    ],
+    [
+     "advertising strategy",
+     "광고 전략",
+     ""
+    ],
+    [
+     "advertiser's message",
+     "광고 메시지",
+     ""
+    ],
+    [
+     "ad placement",
+     "광고 위치",
      ""
     ]
    ]
