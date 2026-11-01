@@ -116,10 +116,13 @@ function renderHome(app){
   app.append(st); }
   const hero=el("div","hero");
   const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length, goal=Math.max(DAILY, doneToday);
+  const queue=reviewQueue(!due);
+  const qs=sessRange(queue.flatMap(id=>{ const c=D.cards.find(x=>x.id===id); return c? (c.sessions||[]) : []; }));
   hero.append(el("h2",null, due? "오늘의 복습" : "오늘 복습 끝!"));
+  if(qs) hero.append(el("p","hsess",`${qs}회차 문장`));
   const gl=el("div","goal"); const gb=el("div","gbar"); const gi=el("i"); gi.style.width=Math.min(100,doneToday/DAILY*100)+"%"; gb.append(gi);
   gl.append(gb, el("span",null,`${Math.min(doneToday,DAILY)} / ${DAILY}장`)); hero.append(gl);
-  const b=el("button",null, due? `복습 시작 (${Math.min(due,DAILY)}장)` : "약한 카드 연습"); b.type="button"; b.onclick=()=>go("review",{extra:!due}); hero.append(b);
+  const b=el("button",null, due? `복습 시작 (${Math.min(due,DAILY)}장)` : "약한 카드 연습"); b.type="button"; b.onclick=()=>go("review",{extra:!due, ids:queue}); hero.append(b);
   app.append(hero);
   const last=D.sessions[D.sessions.length-1];
   if(last){
@@ -401,11 +404,20 @@ function markDeck(c,kind){
 }
 
 /* ---------- spaced review ---------- */
+function reviewQueue(extra){
+  let pool = extra ? D.cards.filter(c=>((srs[c.id]||{}).box||0)<MASTER) : dueCards();
+  pool.sort((a,b)=>(rep(b)-rep(a)) || (((srs[a.id]||{}).box||0)-((srs[b.id]||{}).box||0)) || (marks[b.id]==="again")-(marks[a.id]==="again") || Math.random()-.5);
+  return pool.slice(0, extra?10:DAILY).map(c=>c.id);
+}
+function sessRange(nums){
+  const n=[...new Set(nums)].filter(x=>x!=null).sort((a,b)=>a-b); const out=[];
+  for(let i=0;i<n.length;){ let j=i; while(j+1<n.length && n[j+1]===n[j]+1) j++; out.push(j-i>=2? `${n[i]}~${n[j]}` : n.slice(i,j+1).join("·")); i=j+1; }
+  return out.join("·");
+}
 function renderReview(app){
   if(!reviewState){
-    let pool = view.extra ? D.cards.filter(c=>((srs[c.id]||{}).box||0)<MASTER) : dueCards();
-    pool.sort((a,b)=>(rep(b)-rep(a)) || (((srs[a.id]||{}).box||0)-((srs[b.id]||{}).box||0)) || (marks[b.id]==="again")-(marks[a.id]==="again") || Math.random()-.5);
-    reviewState={ids:pool.slice(0, view.extra?10:DAILY).map(c=>c.id), i:0, res:[]};
+    const ids = (view.ids && view.ids.length) ? view.ids : reviewQueue(view.extra);
+    reviewState={ids, i:0, res:[]};
   }
   const R=reviewState;
   const c=R.ids[R.i] && D.cards.find(x=>x.id===R.ids[R.i]);
