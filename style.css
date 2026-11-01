@@ -520,3 +520,4 @@ body.lesson .cat-walk{display:none}
 @keyframes tail{from{transform:rotate(-8deg)}to{transform:rotate(10deg)}}
 @keyframes cblink{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.15)}}
 @keyframes tilt2{0%,100%{transform:rotate(0)}50%{transform:rotate(-5deg)}}
+.cat-walk{width:96px;height:72px} .cat-bub{bottom:74px}
