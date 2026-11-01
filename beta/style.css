@@ -528,3 +528,25 @@ main{zoom:.88}
 @keyframes earr{0%,100%{transform:rotate(0)}60%{transform:rotate(-8deg)}}
 @keyframes hop{0%,100%{transform:translateY(0)}40%{transform:translateY(-12px)}}
 @keyframes pop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
+/* wandering cat */
+.cat-walk{position:fixed;left:0;bottom:calc(var(--tabh) + 14px + env(safe-area-inset-bottom,0px));width:86px;height:62px;border:0;background:none;padding:0;z-index:15;cursor:pointer;will-change:transform}
+.cat-walk svg{width:100%;height:100%;display:block;overflow:visible}
+.cat-walk.left svg{transform:scaleX(-1)}
+.cat-bub{position:absolute;left:50%;bottom:66px;transform:translateX(-50%);white-space:nowrap;background:var(--surface);color:var(--ink);font-size:13px;font-weight:700;padding:6px 10px;border-radius:12px;box-shadow:var(--shadow-lg)}
+.cat-bub::after{content:"";position:absolute;left:50%;bottom:-10px;margin-left:-6px;border:6px solid transparent;border-top-color:var(--surface)}
+body.lesson .cat-walk{display:none}
+@media (prefers-reduced-motion:no-preference){
+  .cat-walk.walking .c-lf,.cat-walk.walking .c-lb2{transform-box:fill-box;transform-origin:50% 0;animation:legA .45s ease-in-out infinite alternate}
+  .cat-walk.walking .c-lb,.cat-walk.walking .c-lf2{transform-box:fill-box;transform-origin:50% 0;animation:legB .45s ease-in-out infinite alternate}
+  .cat-walk.walking .c-head{animation:bob .45s ease-in-out infinite alternate}
+  .c-tail{transform-box:fill-box;transform-origin:100% 100%;animation:tail 1.6s ease-in-out infinite alternate}
+  .c-eyes{transform-box:fill-box;transform-origin:50% 50%;animation:cblink 5s infinite}
+  .cat-walk.sit .c-head{animation:tilt2 2s ease-in-out infinite}
+  .cat-bub:not([hidden]){animation:pop .25s ease both}
+}
+@keyframes legA{from{transform:rotate(18deg)}to{transform:rotate(-18deg)}}
+@keyframes legB{from{transform:rotate(-18deg)}to{transform:rotate(18deg)}}
+@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-2px)}}
+@keyframes tail{from{transform:rotate(-8deg)}to{transform:rotate(10deg)}}
+@keyframes cblink{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.15)}}
+@keyframes tilt2{0%,100%{transform:rotate(0)}50%{transform:rotate(-5deg)}}

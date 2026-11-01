@@ -111,7 +111,7 @@ function render(){
 function renderHome(app){
   const due=dueCards().length;
   const h=el("div","hello"); const h1=el("h1"); h1.append(document.createTextNode(`${D.name}님, `), el("b",null,due? `오늘 ${Math.min(due,DAILY)}장`: "오늘 복습 끝!"));
-  h.append(h1, puppy()); app.append(h);
+  h.append(h1); app.append(h); setTimeout(homeCat,0);
   app.append(quoteBox()); startIdiomTimer();
   if(false){ const st=el("div","stats");
   for(const [cls,n,l] of [["due",D.cards.length,"내 수업 카드"],["streak",streak(),"연속 공부일"]]){
@@ -179,6 +179,48 @@ function puppy(){
   w.onclick=()=>{ bub.textContent=PUP_LINES[Math.floor(Math.random()*PUP_LINES.length)].replace("예영님",D.name+"님"); bub.hidden=false; w.classList.remove("hop"); void w.offsetWidth; w.classList.add("hop"); clearTimeout(t); t=setTimeout(()=>{ bub.hidden=true; },2500); };
   setTimeout(()=>{ if(document.body.contains(w)) w.click(); },700);
   return w;
+}
+/* ---------- home cat (orange tabby, white chest & paws) that wanders ---------- */
+const CAT_SVG='<svg viewBox="0 0 140 100" aria-hidden="true">'
+ +'<g class="c-tail"><path d="M30 52C14 48 8 30 16 16c3-5 9-6 11-1" fill="none" stroke="#e39a52" stroke-width="9" stroke-linecap="round"/><path d="M16 16c3-5 9-6 11-1" fill="none" stroke="#f3c48f" stroke-width="9" stroke-linecap="round"/></g>'
+ +'<g class="c-leg c-lb"><rect x="34" y="62" width="10" height="26" rx="5" fill="#e39a52"/><ellipse cx="39" cy="88" rx="7" ry="4.5" fill="#fff"/></g>'
+ +'<g class="c-leg c-lf"><rect x="84" y="62" width="10" height="26" rx="5" fill="#e39a52"/><ellipse cx="89" cy="88" rx="7" ry="4.5" fill="#fff"/></g>'
+ +'<ellipse cx="64" cy="56" rx="40" ry="20" fill="#e8a25c"/>'
+ +'<path d="M44 40c2 8 2 14 0 22M56 37c2 9 2 16 0 25M68 37c2 9 2 16 0 25M80 39c2 8 2 13 0 20" stroke="#cf8240" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".7"/>'
+ +'<path d="M78 60c8 10 22 10 26-2-6-4-18-4-26 2z" fill="#fff"/>'
+ +'<g class="c-leg c-lb2"><rect x="44" y="62" width="10" height="26" rx="5" fill="#d98d47"/><ellipse cx="49" cy="88" rx="7" ry="4.5" fill="#fff"/></g>'
+ +'<g class="c-leg c-lf2"><rect x="94" y="62" width="10" height="26" rx="5" fill="#d98d47"/><ellipse cx="99" cy="88" rx="7" ry="4.5" fill="#fff"/></g>'
+ +'<g class="c-head"><path d="M92 22l4-18 14 12z" fill="#e8a25c"/><path d="M96 18l2-8 6 6z" fill="#f2b7a0"/><path d="M118 16l12-12 2 18z" fill="#e8a25c"/><path d="M121 15l7-6 1 9z" fill="#f2b7a0"/>'
+ +'<ellipse cx="112" cy="36" rx="22" ry="19" fill="#e8a25c"/><path d="M104 20c1 6 1 9 0 12M112 18c1 6 1 10 0 13M120 20c1 6 1 9 0 12" stroke="#cf8240" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/>'
+ +'<path d="M100 44c4 9 20 9 24 0-4 3-20 3-24 0z" fill="#fff"/>'
+ +'<g class="c-eyes"><path d="M100 36q5 3 10 0" stroke="#4a2e1a" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M116 36q5 3 10 0" stroke="#4a2e1a" stroke-width="2.6" fill="none" stroke-linecap="round"/></g>'
+ +'<path d="M110 42l3 3 3-3z" fill="#e58f8f"/><path d="M113 45v2M113 47q-3 2-5 0M113 47q3 2 5 0" stroke="#4a2e1a" stroke-width="1.4" fill="none" stroke-linecap="round"/>'
+ +'<path d="M96 44l-14-2M96 47l-14 2M130 44l12-2M130 47l12 2" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".9"/></g>'
+ +'</svg>';
+const CAT_LINES=["냥! 오늘도 왔네","한 문장만 말해 봐도 충분해냥","천천히 해도 괜찮아냥 🐾","Practice makes progress!","{name} 최고다냥","오늘 복습 같이 하자냥","졸리지만 응원 중… 냥","틀려도 괜찮아냥, 그게 연습이야"];
+let catRAF=null;
+function homeCat(){
+  if(catRAF){ cancelAnimationFrame(catRAF); catRAF=null; }
+  const old=document.querySelector(".cat-walk"); if(old) old.remove();
+  const w=el("button","cat-walk walking"); w.type="button"; w.setAttribute("aria-label","고양이 쓰다듬기"); w.innerHTML=CAT_SVG;
+  const bub=el("span","cat-bub"); bub.hidden=true; w.append(bub); document.body.append(w);
+  const reduce=window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let x=20, dir=1, speed=0.55, pauseUntil=0, last=performance.now(), bt=null;
+  const say=()=>{ bub.textContent=CAT_LINES[Math.floor(Math.random()*CAT_LINES.length)].replace("{name}",D.name+"님"); bub.hidden=false; clearTimeout(bt); bt=setTimeout(()=>{ bub.hidden=true; },2600); };
+  w.onclick=()=>{ say(); pauseUntil=performance.now()+2600; w.classList.remove("walking"); w.classList.add("sit"); };
+  const place=()=>{ w.style.transform=`translateX(${x}px)`; w.classList.toggle("left",dir<0); };
+  const step=t=>{
+    if(!document.body.contains(w) || view.tab!=="home"){ w.remove(); catRAF=null; return; }
+    const dt=Math.min(50,t-last); last=t;
+    const maxX=Math.max(0,window.innerWidth-w.offsetWidth-8);
+    if(t<pauseUntil){ catRAF=requestAnimationFrame(step); return; }
+    if(w.classList.contains("sit")){ w.classList.remove("sit"); w.classList.add("walking"); if(Math.random()<.5) dir*=-1; }
+    x+=dir*speed*dt/16; if(x<=8){ x=8; dir=1; } if(x>=maxX){ x=maxX; dir=-1; }
+    if(Math.random()<0.003){ pauseUntil=t+2000+Math.random()*2500; w.classList.remove("walking"); w.classList.add("sit"); }
+    place(); catRAF=requestAnimationFrame(step);
+  };
+  place(); setTimeout(say,600);
+  if(!reduce) catRAF=requestAnimationFrame(step); else w.classList.remove("walking");
 }
 function mockCard(){
   const w=el("div","mockcard");
