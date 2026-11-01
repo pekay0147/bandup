@@ -464,3 +464,4 @@ main{zoom:.88}
 .p3tips .steps4 li::before{width:16px;height:16px;font-size:10px;line-height:16px}
 .p3tips .steps4 b{font-size:13px;font-weight:700}
 .p3tips .steps4 span{font-size:11px;line-height:1.35}
+.playrow{grid-template-columns:1fr}
