@@ -67,6 +67,7 @@ function grade(c,ok){
 const ICONS={
   home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/></svg>',
   cards:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 4h12a2 2 0 0 1 2 2v11"/></svg>',
+  bm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>',
   review:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>',
   wordsOld:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20a2 2 0 0 0 2 2h13v-4"/><path d="M8 7h7M8 11h5"/></svg>',
   words:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="5" height="7" rx="2"/><rect x="16" y="14" width="5" height="7" rx="2"/></svg>',
@@ -76,7 +77,7 @@ const ICONS={
 };
 function buildTabs(){
   const nav=$("#tabs nav"); nav.textContent="";
-  for(const [k,label] of [["home","홈"],["cards","큐카드"],["review","복습"],["ideas","아이디어"],["words","철자"]]){
+  for(const [k,label] of [["home","홈"],["cards","큐카드"],["bm","북마크"],["ideas","아이디어"],["words","철자"]]){
     const b=el("button"); b.type="button"; b.dataset.tab=k; b.innerHTML=ICONS[k]; b.append(el("span",null,label));
     if(k==="review"){ const bd=el("span","badge"); bd.id="dueBadge"; b.append(bd); }
     b.onclick=()=>{ go(k); };
@@ -106,6 +107,7 @@ function render(){
   if(view.tab==="ideas") renderIdeas(app);
   if(view.tab==="words") renderWords(app);
   if(view.tab==="mock") renderMock(app);
+  if(view.tab==="bm") renderBmTab(app);
   updateTabs();
   document.body.classList.toggle("lesson", !!app.querySelector(".lbar"));
 }
@@ -335,6 +337,17 @@ function renderDecks(app){
     key="bm"; list=cbmList().map(getCard).filter(Boolean); empty="카드 아래 ☆ 북마크에 추가를 누르면 여기에 모여요.";
   }
   inlineDeck(app,key,list,empty);
+}
+function renderBmTab(app){
+  pageHead(app,"북마크","큐카드와 모의고사에서 ☆를 누른 것들이 모여요.");
+  const cards=cbmList().map(getCard).filter(Boolean);
+  const h=el("h2","sec-t",`큐카드 ${cards.length}장`); app.append(h);
+  inlineDeck(app,"bm",cards,"큐카드에서 ☆ 북마크에 추가를 누르면 여기에 모여요.");
+  const qs=qbmList(); const bp=el("div","panel"); const bh=el("div","ghead"); bh.append(el("b",null,"모의고사 질문"), el("span",null,`${qs.length}개`)); bp.append(bh);
+  if(!qs.length) bp.append(el("p","gtip","모의고사에서 ☆ 북마크를 누른 질문이 여기 모여요."));
+  for(const part of [1,2,3]){ const list=qs.filter(x=>x.part===part); if(!list.length) continue; bp.append(el("span","idea-lab",`Part ${part}`));
+    for(const it of list){ const r=el("div","qbmrow"); const t=el("div"); t.append(el("span","from2",it.topic), el("p",null,it.q)); r.append(t, qbmBtn(it,()=>render())); bp.append(r); } }
+  app.append(bp);
 }
 function inlineDeck(app,key,list,empty){
   if(!deckState || deckState.key!==key || (key==="bm" && deckState.ids.length!==list.length)) deckState={key, ids:list.map(c=>c.id), i:0};
