@@ -749,6 +749,275 @@
     "Can competition cause stress?",
     "Should schools reduce competition between students?"
    ]
+  },
+  {
+   "no": 70,
+   "topic": "Describe a course that impressed you a lot",
+   "qs": [
+    "What can we learn from history?",
+    "What do people need to remember in their daily lives?",
+    "Can technology help people remember things better? How?",
+    "Which can help people remember things better, words or photos?",
+    "Do people like things of memorial significance?",
+    "Why do some people have a better memory than others?"
+   ]
+  },
+  {
+   "no": 71,
+   "topic": "Describe a time when someone talked about something you were not interested in but you kept listening",
+   "qs": [
+    "How can we tell if a listener is listening carefully?",
+    "What would happen if the listener didn’t listen carefully?",
+    "What kind of topics do young people like to talk about today?",
+    "Is it rude to stop someone who is talking about something boring?",
+    "Why are some people better listeners than others?"
+   ]
+  },
+  {
+   "no": 72,
+   "topic": "Describe a person you know who really likes taking photos",
+   "qs": [
+    "Some people don't mind others walking into their shot when they're taking photos. What do you think?",
+    "Why do tourists like taking photos while they are travelling?",
+    "Do you think it’s ok to take photos everywhere?",
+    "What kind of photos do people often take?",
+    "Why are some people keen on taking photos?"
+   ]
+  },
+  {
+   "no": 73,
+   "topic": "Describe a new skill you learned when you were a child",
+   "qs": [
+    "Is it important for everyone to have a specialized skill?",
+    "Can a child learn skills from another child?",
+    "Do you think it is easier for children to learn new skills than for adults?",
+    "What are the differences between the way adults learn and the way children learn?",
+    "What are the differences between learning in a group and learning by yourself?",
+    "What skills should children learn before they go to school?"
+   ]
+  },
+  {
+   "no": 74,
+   "topic": "Describe a time when you saved money to buy something you wanted",
+   "qs": [
+    "What kind of things do people usually save money for?",
+    "Is it easier to spend money or save money? Do you think it is easier to teach teenagers how to manage money when they are around 16 or 17 years",
+    "old?",
+    "Should parents teach their children to spend money freely or to save money?",
+    "Should schools teach children how to manage money from a young age?"
+   ]
+  },
+  {
+   "no": 75,
+   "topic": "Describe a natural place in your city that you enjoy visiting",
+   "qs": [
+    "Do you think staying in a natural place would help change people’s mood?",
+    "Do you think there should be many natural places in cities?",
+    "Why do people like to spend time in nature?",
+    "Should children spend more time outdoors?",
+    "How can cities protect natural areas?"
+   ]
+  },
+  {
+   "no": 76,
+   "topic": "Describe a person you know who is very organized",
+   "qs": [
+    "Do you think it is important for managers to be well organized?",
+    "Should parents teach their children to be organized?",
+    "What can people do to become more organized?",
+    "Are organized people more likely to be successful at work or in their studies?",
+    "Do you think children should learn to be organized from a young age?",
+    "Why is it important for people to be organized?"
+   ]
+  },
+  {
+   "no": 77,
+   "topic": "Describe a time when you interviewed a famous person",
+   "qs": [
+    "What should people do to prepare for a job interview?",
+    "Why do some people think interviews are a waste of time?",
+    "Why do some people dislike being interviewed?",
+    "What kinds of people are usually interviewed?",
+    "Why are people interested in the lives of famous people?"
+   ]
+  },
+  {
+   "no": 78,
+   "topic": "Describe a happy person you know",
+   "qs": [
+    "When do you think people are happiest?",
+    "How can the arts spread positive emotions in society?",
+    "Do you think teachers are able to spot unhappy children?",
+    "Should teachers know what children are doing all the time?",
+    "What makes people happy?"
+   ]
+  },
+  {
+   "no": 79,
+   "topic": "Describe a time when you received good service in a shop/store",
+   "qs": [
+    "Can consumption drive economic growth?",
+    "What are the advantages and disadvantages of shopping online?",
+    "What are the differences between online shopping and in-store shopping?",
+    "Why do some people not like shopping in small shops?",
+    "What are the advantages and disadvantages of shopping in small shops?",
+    "Why are shopping malls so popular in Korea?"
+   ]
+  },
+  {
+   "no": 80,
+   "topic": "Describe someone who is older than you that you admire",
+   "qs": [
+    "What do old people usually do in their daily life?",
+    "Why is there a generation gap between the young and the old?",
+    "Has old people's life quality improved when compared to the past?",
+    "What can young and old people learn from each other?",
+    "What can young people learn from older people?"
+   ]
+  },
+  {
+   "no": 81,
+   "topic": "Describe a noisy place you have been to",
+   "qs": [
+    "How can people consider others' feelings when chatting in public?",
+    "How would people usually respond to noises in your country?",
+    "Which area is exposed to noise more, the city or the countryside?",
+    "What kinds of noises are there in our life?",
+    "Should children not be allowed to make noise under any circumstances?",
+    "Do you think it is good for children to make noise?"
+   ]
+  },
+  {
+   "no": 82,
+   "topic": "Describe a person you know who often has strong opinions",
+   "qs": [
+    "Why do some people not trust experts?",
+    "At what age do children start to have their own opinions?",
+    "Is it better to share a lot of opinions or to keep them short?",
+    "Should people always say what they think?",
+    "How can people disagree politely?"
+   ]
+  },
+  {
+   "no": 83,
+   "topic": "Describe a time when you had some free time",
+   "qs": [
+    "Do you like spending free time in nature? Why?",
+    "Why does nature help people relieve stress?",
+    "Should public parks be free?",
+    "Do people have less free time than before?",
+    "How do people in Korea usually spend their free time?"
+   ]
+  },
+  {
+   "no": 84,
+   "topic": "Describe a person who is good at making things by hand",
+   "qs": [
+    "Should children be taught to make things by hand?",
+    "Why do some people prefer handmade products?",
+    "Are handmade things better than machine-made ones?",
+    "Do people make things less often than before?",
+    "What skills can children learn from making things?"
+   ]
+  },
+  {
+   "no": 85,
+   "topic": "Describe something kind someone did for you that you would like to do for others",
+   "qs": [
+    "Why do people do kind things for others?",
+    "Do people help strangers less than before?",
+    "How can parents teach children to be kind?",
+    "Is kindness more important than intelligence?",
+    "Should schools reward students for helping others?"
+   ]
+  },
+  {
+   "no": 86,
+   "topic": "Describe a change that you made recently",
+   "qs": [
+    "Why do some people find it hard to change?",
+    "Is change always a good thing?",
+    "Do young people change more easily than older people?",
+    "What changes have happened in Korea recently?",
+    "How can people get used to changes?"
+   ]
+  },
+  {
+   "no": 87,
+   "topic": "Describe a time when you and some other people made a plan to do an activity",
+   "qs": [
+    "Is it better to plan alone or with others?",
+    "Why do some group plans fail?",
+    "Do young people make plans more often than older people?",
+    "Is it important to stick to a plan?",
+    "What makes a good group leader?"
+   ]
+  },
+  {
+   "no": 88,
+   "topic": "Describe a big city you would like to visit",
+   "qs": [
+    "Why do people like visiting big cities?",
+    "What are the disadvantages of living in a big city?",
+    "Will more people live in cities in the future?",
+    "How can big cities be made better places to live?",
+    "Is it better to travel to cities or the countryside?"
+   ]
+  },
+  {
+   "no": 89,
+   "topic": "Describe something you do to keep fit and healthy",
+   "qs": [
+    "Do people in Korea care about their health?",
+    "Is it the government's job to make people healthier?",
+    "Why do some people find it hard to exercise regularly?",
+    "Are young people healthier than older people?",
+    "How has technology affected people's health?"
+   ]
+  },
+  {
+   "no": 90,
+   "topic": "Describe an occasion when you lost something in public",
+   "qs": [
+    "Why do people lose things?",
+    "What should you do if you find something someone has lost?",
+    "Are people honest about returning lost items?",
+    "How can technology help people find lost things?",
+    "Do people care less about their things nowadays?"
+   ]
+  },
+  {
+   "no": 91,
+   "topic": "Describe a sport you watched and would like to try",
+   "qs": [
+    "Why do people like watching sports?",
+    "Should children be encouraged to try different sports?",
+    "Are dangerous sports worth the risk?",
+    "Why are some sports more popular than others?",
+    "Do famous athletes influence young people?"
+   ]
+  },
+  {
+   "no": 92,
+   "topic": "Describe an online site you like to shop on",
+   "qs": [
+    "What are the advantages of online shopping?",
+    "Will online shopping replace physical stores?",
+    "Do people buy more than they need online?",
+    "Is it safe to shop online?",
+    "How has online shopping changed people's habits?"
+   ]
+  },
+  {
+   "no": 93,
+   "topic": "Describe a skill that schools don't teach but that is important in life",
+   "qs": [
+    "What skills should schools teach?",
+    "Who should teach life skills, parents or teachers?",
+    "Are practical skills more important than academic knowledge?",
+    "Do young people today lack life skills?",
+    "How can adults learn new skills?"
+   ]
   }
  ]
 }
