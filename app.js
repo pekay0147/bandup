@@ -320,25 +320,37 @@ function renderDecks(app){
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; openKey=null; render(); }; seg.append(b);
   }
   app.append(seg);
-  if(cardMode==="random") return renderRandomSetup(app);
-  if(cardMode==="bm") return renderBmCards(app);
-  if(cardMode==="wrong") return renderWrongList(app);
-  if(selSession==null) selSession=D.sessions[D.sessions.length-1].no;
-  app.append(sessionPicker(selSession, v=>{ selSession=v; render(); }, false));
-  const s=D.sessions.find(x=>x.no===selSession);
-  const inS=D.cards.filter(c=>(c.sessions||[]).includes(selSession));
-  const wrong=inS.filter(c=>c.kind==="fix" || (c.mine && !c.good));
-  const keep=inS.filter(c=>!(c.kind==="fix" || (c.mine && !c.good)));
-  const head=el("div","sess-head");
-  const ht=el("div"); ht.append(el("h2",null,`${selSession}회차`));
-  const startB=el("button","btn primary",`카드로 연습 ${inS.length}장`); startB.type="button"; startB.onclick=()=>go("cards",{deck:selSession});
-  head.append(ht,startB); app.append(head);
-  const f=D.focus&&D.focus[String(selSession)];
-
-  const box=(key,title,list,row)=>{ if(!list.length) return; const hd=el("div","boxh"); hd.append(el("b",null,title), el("span",null,`${list.length}개 · 눌러서 보기`));
-    app.append(fold(key, hd, b=>{ const w=el("div","boxlist"); list.forEach(c=>w.append(row(c))); b.append(w); })); };
-  box(`s${selSession}-w`,"틀렸던 문장",wrong,noteRow);
-  box(`s${selSession}-k`,"외워 둘 문장",keep,keepRow);
+  let key, list, empty="카드가 없어요.";
+  if(cardMode==="session"){
+    if(selSession==null) selSession=D.sessions[D.sessions.length-1].no;
+    app.append(sessionPicker(selSession, v=>{ selSession=v; render(); }, false));
+    key="s"+selSession; list=D.cards.filter(c=>(c.sessions||[]).includes(selSession));
+  } else if(cardMode==="wrong"){
+    const all=D.cards.filter(isWrong); key="wrong"; list=[...all.filter(rep),...all.filter(c=>!rep(c))];
+  } else if(cardMode==="random"){
+    key="rand"; list=(deckState&&deckState.key==="rand")? deckState.ids.map(getCard) : [...D.cards].sort(()=>Math.random()-.5);
+  } else {
+    key="bm"; list=cbmList().map(getCard).filter(Boolean); empty="카드 아래 ☆ 북마크에 추가를 누르면 여기에 모여요.";
+  }
+  inlineDeck(app,key,list,empty);
+}
+function inlineDeck(app,key,list,empty){
+  if(!deckState || deckState.key!==key || (key==="bm" && deckState.ids.length!==list.length)) deckState={key, ids:list.map(c=>c.id), i:0};
+  const ids=deckState.ids;
+  if(!ids.length){ const e=el("div","empty"); e.append(el("p",null,empty)); app.append(e); return; }
+  if(deckState.i>=ids.length) deckState.i=ids.length-1;
+  const c=getCard(ids[deckState.i]);
+  const pg=el("div","prog"); pg.append(el("span",null,`${deckState.i+1} / ${ids.length}`));
+  if(key==="rand"){ const sh=el("button","linkbtn","다시 섞기"); sh.type="button"; sh.onclick=()=>{ deckState=null; render(); }; pg.append(sh); }
+  app.append(pg);
+  const bar=el("div","bar"); const bi=el("i"); bi.style.width=((deckState.i+1)/ids.length*100)+"%"; bar.append(bi); app.append(bar);
+  const sc=flipCard(c); sc.onswipe=d=>move(d); app.append(sc);
+  const acts=el("div","acts arrows");
+  const prev=el("button","nav","‹ 이전"); prev.type="button"; prev.disabled=deckState.i===0; prev.onclick=()=>move(-1);
+  const next=el("button","nav","다음 ›"); next.type="button"; next.disabled=deckState.i>=ids.length-1; next.onclick=()=>move(1);
+  acts.append(prev,next); app.append(acts);
+  const bmb=el("button","btn cbm"); bmb.type="button"; const setB=()=>{ const on=isCbm(c.id); bmb.textContent= on? "★ 북마크됨" : "☆ 북마크에 추가"; bmb.setAttribute("aria-pressed",String(on)); }; setB();
+  bmb.onclick=()=>{ toggleCbm(c.id); setB(); if(key==="bm"){ deckState=null; render(); } }; app.append(bmb);
 }
 function keepRow(c){
   const r=el("div","m");
