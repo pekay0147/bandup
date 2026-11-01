@@ -425,3 +425,4 @@ main{zoom:.88}
 .p3search{height:48px;border:1px solid var(--line);border-radius:14px;padding:0 14px;font:16px var(--body);background:var(--surface);color:var(--ink);width:100%} .p3sec{display:grid;gap:4px} .p3t{font-size:16px;font-weight:700;line-height:1.35}
 .say{margin:2px 0 0;padding-left:20px;display:grid;gap:4px} .say li{font-size:15px;color:var(--muted)}
 .srcbox{display:grid;gap:6px} .srcbox b{font-size:15px} .srcbox li{color:var(--ink)} .srcbox li b{font-size:14px} .srcbox a{color:var(--blue);font-weight:600;text-decoration:none}
+.p1vbtn{justify-self:stretch;width:100%;margin-top:10px;border:1px solid var(--line);background:var(--blue-soft);color:var(--blue);font-weight:700;font-size:15px;border-radius:12px;min-height:44px;cursor:pointer} .p1vbtn[aria-expanded="true"]{background:var(--surface)} .p1vocab{margin-top:6px}

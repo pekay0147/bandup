@@ -522,6 +522,13 @@ function renderP1(app){
     const p=el("div","panel p1sec"); p.id="p1t"+i;
     const h=el("div","p1h"); const ht=el("div"); ht.append(el("b",null,tp.ko), el("span",null,tp.en)); h.append(ht, el("span","p1n",`${tp.qs.length}개`)); p.append(h);
     const ol=el("ol","p1q"); tp.qs.forEach(q=>ol.append(el("li",null,q))); p.append(ol);
+    if(tp.vocab && tp.vocab.length){
+      const vb=el("button","p1vbtn",`관련 어휘 ${tp.vocab.length}개 보기 ▾`); vb.type="button"; vb.setAttribute("aria-expanded","false");
+      const vl=el("div","p1vocab"); vl.hidden=true;
+      for(const [en,ko,ex] of tp.vocab){ const r=el("div","vrow"); const top=el("div","vtop"); top.append(el("b",null,en), el("span",null,ko)); r.append(top); if(ex) r.append(el("p","vex",ex)); vl.append(r); }
+      vb.onclick=()=>{ const open=vl.hidden; vl.hidden=!open; vb.setAttribute("aria-expanded",String(open)); vb.textContent= open? `관련 어휘 접기 ▴` : `관련 어휘 ${tp.vocab.length}개 보기 ▾`; };
+      p.append(vb, vl);
+    }
     app.append(p);
   });
   app.append(el("p","muted small","참고: "+P1Q.source));
