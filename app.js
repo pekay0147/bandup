@@ -111,7 +111,7 @@ function render(){
 function renderHome(app){
   const due=dueCards().length;
   const h=el("div","hello"); const h1=el("h1"); h1.append(document.createTextNode(`${D.name}님, `), el("b",null,due? `오늘 ${Math.min(due,DAILY)}장`: "오늘 복습 끝!"));
-  h.append(h1); app.append(h);
+  h.append(h1, puppy()); app.append(h);
   app.append(quoteBox()); startIdiomTimer();
   if(false){ const st=el("div","stats");
   for(const [cls,n,l] of [["due",D.cards.length,"내 수업 카드"],["streak",streak(),"연속 공부일"]]){
@@ -168,6 +168,17 @@ function bmHomeCard(){
   const a=el("button","btn primary",`카드로 연습`); a.type="button"; a.onclick=()=>{ deckState=null; go("cards",{deck:"bm", ids:list.map(c=>c.id)}); };
   const b=el("button","btn","전체 보기"); b.type="button"; b.onclick=()=>{ cardMode="bm"; go("cards"); };
   row.append(a,b); w.append(row); return w;
+}
+/* ---------- home puppy ---------- */
+const PUP_SVG='<svg viewBox="0 0 120 110" aria-hidden="true"><g class="pup-tail"><path d="M92 74c10-2 16-10 15-20" fill="none" stroke="#c98a4b" stroke-width="7" stroke-linecap="round"/></g><ellipse cx="62" cy="84" rx="32" ry="22" fill="#e7b37a"/><ellipse cx="62" cy="90" rx="18" ry="13" fill="#f6dcb8"/><ellipse cx="44" cy="102" rx="9" ry="6" fill="#e7b37a"/><ellipse cx="78" cy="102" rx="9" ry="6" fill="#e7b37a"/><g class="pup-head"><g class="pup-ear-l"><path d="M28 30c-10 4-14 22-6 32 6-2 10-10 12-20z" fill="#b97a3f"/></g><g class="pup-ear-r"><path d="M92 30c10 4 14 22 6 32-6-2-10-10-12-20z" fill="#b97a3f"/></g><ellipse cx="60" cy="44" rx="32" ry="28" fill="#e7b37a"/><ellipse cx="60" cy="56" rx="16" ry="12" fill="#f6dcb8"/><g class="pup-eyes"><ellipse cx="47" cy="40" rx="4" ry="5" fill="#2a1f1a"/><ellipse cx="73" cy="40" rx="4" ry="5" fill="#2a1f1a"/><circle cx="48.5" cy="38" r="1.4" fill="#fff"/><circle cx="74.5" cy="38" r="1.4" fill="#fff"/></g><ellipse cx="60" cy="51" rx="5" ry="3.6" fill="#2a1f1a"/><path d="M60 54.5v3.5M60 58c-2.5 2.5-6 2.5-7.5 0M60 58c2.5 2.5 6 2.5 7.5 0" fill="none" stroke="#2a1f1a" stroke-width="1.8" stroke-linecap="round"/><path class="pup-tongue" d="M57 61c0 5 6 5 6 0z" fill="#f08a9c"/><ellipse cx="40" cy="52" rx="5" ry="3" fill="#f3a3a3" opacity=".5"/><ellipse cx="80" cy="52" rx="5" ry="3" fill="#f3a3a3" opacity=".5"/></g></svg>';
+const PUP_LINES=["오늘도 와 줬네요! 멍!","한 문장만 말해 봐도 충분해요","천천히 해도 괜찮아요 🐾","Practice makes progress!","예영님 최고! 멍멍","오늘 복습 같이 해요","You can do it!","틀려도 괜찮아요, 그게 연습이에요"];
+function puppy(){
+  const w=el("button","pup"); w.type="button"; w.setAttribute("aria-label","강아지 쓰다듬기"); w.innerHTML=PUP_SVG;
+  const bub=el("span","pup-bub"); bub.hidden=true; w.append(bub);
+  let t=null;
+  w.onclick=()=>{ bub.textContent=PUP_LINES[Math.floor(Math.random()*PUP_LINES.length)].replace("예영님",D.name+"님"); bub.hidden=false; w.classList.remove("hop"); void w.offsetWidth; w.classList.add("hop"); clearTimeout(t); t=setTimeout(()=>{ bub.hidden=true; },2500); };
+  setTimeout(()=>{ if(document.body.contains(w)) w.click(); },700);
+  return w;
 }
 function mockCard(){
   const w=el("div","mockcard");

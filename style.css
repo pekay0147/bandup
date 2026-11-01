@@ -476,3 +476,25 @@ main{zoom:.88}
 @media (prefers-reduced-motion:no-preference){.quote.notice.slidein .n-line{animation:nslide .4s ease both}} @keyframes nslide{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
 .acts.arrows .nav{font-size:17px;font-weight:600}
 .n-more{grid-column:1/-1;display:grid;gap:2px;padding-top:6px;border-top:1px dashed color-mix(in srgb,var(--sun) 60%,transparent)} .n-more .n-mean{font-size:14px;font-weight:600;color:var(--ink)} .n-ex{font-size:13px;color:var(--muted)}
+/* home puppy */
+.hello{grid-template-columns:1fr auto;align-items:end;position:relative}
+.pup{position:relative;width:72px;height:66px;border:0;background:none;padding:0;cursor:pointer;margin-bottom:-6px}
+.pup svg{width:100%;height:100%;display:block;overflow:visible}
+.pup-bub{position:absolute;right:58px;bottom:44px;white-space:nowrap;background:var(--surface);color:var(--ink);font-size:13px;font-weight:700;padding:6px 10px;border-radius:12px;box-shadow:var(--shadow);z-index:3}
+.pup-bub::after{content:"";position:absolute;right:-5px;bottom:8px;border:6px solid transparent;border-left-color:var(--surface)}
+@media (prefers-reduced-motion:no-preference){
+  .pup-tail{transform-origin:92px 74px;animation:wag .5s ease-in-out infinite alternate}
+  .pup-head{transform-origin:60px 70px;animation:tilt 3.2s ease-in-out infinite}
+  .pup-eyes{transform-origin:60px 40px;animation:blink 4s infinite}
+  .pup-ear-l{transform-origin:30px 32px;animation:earl 3.2s ease-in-out infinite}
+  .pup-ear-r{transform-origin:90px 32px;animation:earr 3.2s ease-in-out infinite}
+  .pup.hop{animation:hop .5s ease}
+  .pup-bub:not([hidden]){animation:pop .25s ease both}
+}
+@keyframes wag{from{transform:rotate(-14deg)}to{transform:rotate(16deg)}}
+@keyframes tilt{0%,100%{transform:rotate(0)}30%{transform:rotate(-6deg)}60%{transform:rotate(4deg)}}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes earl{0%,100%{transform:rotate(0)}30%{transform:rotate(8deg)}}
+@keyframes earr{0%,100%{transform:rotate(0)}60%{transform:rotate(-8deg)}}
+@keyframes hop{0%,100%{transform:translateY(0)}40%{transform:translateY(-12px)}}
+@keyframes pop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
