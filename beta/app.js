@@ -13,7 +13,7 @@ const mmdd=s=>s? s.slice(5).replace("-","/") : "";
 const store={ get(k,f){ try{ const v=localStorage.getItem(k); return v==null? f : JSON.parse(v);}catch(_){ return f; } },
               set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(_){} } };
 
-let D=null, G={}, P1=null, P2=null, LS=null, WB=null, slug=null;
+let D=null, G={}, P1=null, P1Q=null, P2=null, LS=null, WB=null, slug=null;
 let srs={}, marks={}, days=[];
 let view={tab:"home"};   // home | cards(deck?) | review | notes
 let deckState=null, reviewState=null, picked=null, flipped=false, noteFilter="전체", noteSession="all", cardMode="session", selSession=null, randCount=10, randKind="all";
@@ -33,7 +33,7 @@ async function boot(){
     const [s,g]=await Promise.all([fetch(`${DATA}students/${slug}.json`,{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
                                    fetch(DATA+"glossary.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({}))]);
     D=s; G=g||{};
-    [P1,P2,LS,WB]=await Promise.all(["part1.json","part2.json","listening.json","words.json"].map(u=>fetch(DATA+u,{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
+    [P1,P2,LS,WB,P1Q]=await Promise.all(["part1.json","part2.json","listening.json","words.json","part1q.json"].map(u=>fetch(DATA+u,{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
   }catch(e){ app.textContent=""; const x=el("div","empty"); x.append(el("h2",null,"카드를 불러오지 못했어요"), el("p",null,"인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 되면 선생님께 링크를 다시 받아 주세요.")); app.append(x); return; }
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
@@ -493,9 +493,9 @@ let ideaPart="p2", openKey=null, p2Query="", p2Lesson=false;
 function renderIdeas(app){
   pageHead(app,"아이디어","스피킹 답변에 쓸 재료를 Part별로 모았어요.");
   const seg=el("div","modeseg"); seg.setAttribute("role","tablist");
-  const n1=P1? P1.topics.length : 0;
+  const n1=P1Q? P1Q.sets.reduce((a,x)=>a+x.topics.reduce((b,t)=>b+t.qs.length,0),0) : 0;
   const n2=P2? P2.items.length : 0, n3=(D.part3||[]).reduce((a,s)=>a+s.qs.length,0);
-  for(const [k,label,sub] of [["p1","Part 1",`어휘 ${n1}주제`],["p2","Part 2",`기출 ${n2}개`],["p3","Part 3",`질문 ${n3}개`]]){
+  for(const [k,label,sub] of [["p1","Part 1",`질문 ${n1}개`],["p2","Part 2",`기출 ${n2}개`],["p3","Part 3",`질문 ${n3}개`]]){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(ideaPart===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ ideaPart=k; openKey=null; render(); }; seg.append(b);
   }
@@ -513,29 +513,23 @@ function fold(key, head, bodyFn){
   card.append(h); if(open){ const b=el("div","idea-b"); bodyFn(b); card.append(b); }
   return card;
 }
+let p1Set="wb";
 function renderP1(app){
-  if(!P1){ const e=el("div","empty"); e.append(el("p",null,"어휘 자료를 불러오지 못했어요.")); app.append(e); return; }
-  const total=P1.topics.reduce((a,t)=>a+t.words.length,0);
-  const hasQuiz=typeof startQuiz==="function";
-  const row0=el("div","btnrow two");
-  if(hasQuiz){ const qB=el("button","btn primary","퀴즈 10문제"); qB.type="button"; qB.onclick=()=>startQuiz(P1.topics.flatMap(t=>t.words),"Part 1 전체",10); row0.append(qB); }
-  const allB=el("button","btn"+(hasQuiz?"":" primary"),`전체 섞어서 카드 20장`); allB.type="button"; allB.onclick=()=>startVocab(P1.topics,"전체 주제",true); row0.append(allB);
-  app.append(row0);
-  // quick jump: tap a topic name to scroll to it
+  if(!P1Q){ const e=el("div","empty"); e.append(el("p",null,"질문을 불러오지 못했어요.")); app.append(e); return; }
+  const sw=el("div","pchips");
+  for(const s of P1Q.sets){ const n=s.topics.reduce((a,t)=>a+t.qs.length,0); const b=el("button",null,s.title); b.type="button"; b.append(el("small",null,String(n))); b.setAttribute("aria-pressed",String(p1Set===s.key)); b.onclick=()=>{ p1Set=s.key; render(); }; sw.append(b); }
+  app.append(sw);
+  const set=P1Q.sets.find(s=>s.key===p1Set)||P1Q.sets[0];
   const jump=el("div","pchips p1jump");
-  P1.topics.forEach((tp,i)=>{ const b=el("button",null,tp.ko); b.type="button"; b.onclick=()=>{ const t=document.getElementById("p1t"+i); if(t) t.scrollIntoView({behavior:"smooth",block:"start"}); }; jump.append(b); });
+  set.topics.forEach((tp,i)=>{ const b=el("button",null,tp.ko); b.type="button"; b.onclick=()=>{ const t=document.getElementById("p1t"+i); if(t) t.scrollIntoView({behavior:"smooth",block:"start"}); }; jump.append(b); });
   app.append(jump);
-  P1.topics.forEach((tp,i)=>{
+  set.topics.forEach((tp,i)=>{
     const p=el("div","panel p1sec"); p.id="p1t"+i;
-    const h=el("div","p1h"); const ht=el("div"); ht.append(el("b",null,tp.ko), el("span",null,tp.topic));
-    const go1=el("button","p1go","카드 ›"); go1.type="button"; go1.onclick=()=>startVocab([tp], tp.ko, false);
-    h.append(ht, go1); p.append(h);
-    for(const [en,ko,ex] of tp.words){
-      const r=el("div","vrow"); const top=el("div","vtop"); top.append(el("b",null,en), el("span",null,ko)); r.append(top);
-      if(ex) r.append(el("p","vex",ex)); p.append(r);
-    }
+    const h=el("div","p1h"); const ht=el("div"); ht.append(el("b",null,tp.ko), el("span",null,tp.en)); h.append(ht, el("span","p1n",`${tp.qs.length}개`)); p.append(h);
+    const ol=el("ol","p1q"); tp.qs.forEach(q=>ol.append(el("li",null,q))); p.append(ol);
     app.append(p);
   });
+  app.append(el("p","muted small","출처: "+set.source));
 }
 function startVocab(topics, title, shuffle, backTo, limit=20){
   let ids=[];
