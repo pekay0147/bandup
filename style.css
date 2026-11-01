@@ -466,3 +466,10 @@ main{zoom:.88}
 .duo .pod-top b,.duo .mockcard b{font-size:15px}
 .duo .pod-top span,.duo .mockcard span{font-size:12px;line-height:1.35}
 .duo .btn{min-height:40px;font-size:14px;padding:0 8px;width:100%}
+/* idiom as a slim notice bar */
+.quote.notice{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;padding:10px 14px;border-radius:14px;background:var(--sun-soft);box-shadow:none;border:1px solid color-mix(in srgb,var(--sun) 50%,transparent)}
+.n-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;min-width:0}
+.n-tag{font-size:11px;font-weight:700;color:#8a6400;background:color-mix(in srgb,var(--sun) 35%,transparent);border-radius:6px;padding:1px 6px}
+.n-idiom{font-size:15px;font-weight:700}
+.n-mean{font-size:13px;color:var(--muted)}
+.n-next{font-size:18px;color:var(--muted)}

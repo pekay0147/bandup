@@ -113,6 +113,7 @@ function renderHome(app){
   const due=dueCards().length;
   const h=el("div","hello"); const h1=el("h1"); h1.append(document.createTextNode(`${D.name}님, `), el("b",null,due? `오늘 ${Math.min(due,DAILY)}장`: "오늘 복습 끝!"));
   h.append(h1); app.append(h);
+  app.append(quoteBox());
   if(false){ const st=el("div","stats");
   for(const [cls,n,l] of [["due",D.cards.length,"내 수업 카드"],["streak",streak(),"연속 공부일"]]){
     const s=el("div","stat "+cls); s.append(el("b",null,String(n)), el("span",null,l)); st.append(s);
@@ -132,7 +133,6 @@ function renderHome(app){
   if(last){
     const duo=el("div","duo"); duo.append(podcastBox(), mockCard()); app.append(duo);
     app.append(bmHomeCard());
-    app.append(quoteBox());
   }
   if(false){
     const ins=el("div","install"); ins.append(el("b",null,"앱처럼 쓰려면 홈 화면에 추가하세요"),
@@ -470,9 +470,10 @@ function quoteBox(){
   const d=new Date(); const dayNo=Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000);
   const i=((dayNo+idiomShift)%IDIOMS.length+IDIOMS.length)%IDIOMS.length;
   const [idiom,ko,ex]=IDIOMS[i];
-  const x=el("button","quote"); x.type="button"; x.setAttribute("aria-label",`오늘의 아이엘츠 idiom: ${idiom}. 누르면 다음 idiom`);
+  const x=el("button","quote notice"); x.type="button"; x.setAttribute("aria-label",`오늘의 아이엘츠 idiom: ${idiom}. 누르면 다음 idiom`);
   const top=el("span","q-top"); top.append(el("span","q-lab",idiomShift? "아이엘츠 idiom" : "오늘의 아이엘츠 idiom"), el("span","q-next","터치하면 다음 ›"));
-  x.append(top, el("span","q-idiom",idiom), el("span","q-mean",ko), el("span","q-ex",ex));
+  const line=el("span","n-line"); line.append(el("span","n-tag","오늘의 idiom"), el("b","n-idiom",idiom), el("span","n-mean",ko));
+  x.append(line, el("span","n-next","›"));
   x.onclick=()=>{ idiomShift++; const n=quoteBox(); x.replaceWith(n); n.focus({preventScroll:true}); };
   return x;
 }
