@@ -458,3 +458,11 @@ main{zoom:.88}
 .modeseg.four button{padding:10px 8px} .modeseg.four button b{font-size:15px;white-space:nowrap} .modeseg.four button span{font-size:12px;white-space:nowrap}
 .acts.arrows{grid-template-columns:1fr 1fr}
 .bmhome{background:var(--surface);border-radius:18px;box-shadow:var(--shadow);padding:16px;display:grid;gap:10px;border:2px solid var(--sun)} .bmh{display:flex;align-items:baseline;gap:8px} .bmh b{font-size:18px;font-weight:700} .bmh span{font-size:14px;color:var(--muted)} .bmprev{display:grid;gap:8px} .bmprev > div{display:grid;gap:1px;padding-bottom:8px;border-bottom:1px solid var(--line)} .bmprev b{font-size:15px;font-weight:600} .bmprev span{font-size:13px;color:var(--muted)}
+/* podcast + mock side by side */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo > div{min-width:0;padding:12px;gap:8px;border-radius:16px;align-content:space-between}
+.duo .pod-top{grid-template-columns:1fr;gap:4px}
+.duo .pod-ic{display:none}
+.duo .pod-top b,.duo .mockcard b{font-size:15px}
+.duo .pod-top span,.duo .mockcard span{font-size:12px;line-height:1.35}
+.duo .btn{min-height:40px;font-size:14px;padding:0 8px;width:100%}

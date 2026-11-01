@@ -128,8 +128,7 @@ function renderHome(app){
   app.append(hero);
   const last=D.sessions[D.sessions.length-1];
   if(last){
-    app.append(podcastBox());
-    app.append(mockCard());
+    const duo=el("div","duo"); duo.append(podcastBox(), mockCard()); app.append(duo);
     app.append(bmHomeCard());
     app.append(quoteBox());
   }
@@ -145,9 +144,9 @@ const POD_URL="https://podcasts.apple.com/nz/podcast/6-minute-english/id26202694
 function podcastBox(){
   const key=`bandup-pod-${slug}`; const listened=store.get(key,[]); const done=listened.includes(today());
   const w=el("div","pod"+(done?" done":""));
-  const top=el("div","pod-top"); const ic=el("span","pod-ic"); ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="2.2"/><path d="M12 13.5v7"/><path d="M8.2 14a5 5 0 1 1 7.6 0"/><path d="M5.6 16.6a8.5 8.5 0 1 1 12.8 0"/></svg>'; top.append(ic, (()=>{ const t=el("div"); t.append(el("b",null, "오늘의 팟캐스트"), el("span",null,"BBC 6 Minute English · 하루 6분")); return t; })());
+  const top=el("div","pod-top"); const ic=el("span","pod-ic"); ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="2.2"/><path d="M12 13.5v7"/><path d="M8.2 14a5 5 0 1 1 7.6 0"/><path d="M5.6 16.6a8.5 8.5 0 1 1 12.8 0"/></svg>'; top.append(ic, (()=>{ const t=el("div"); t.append(el("b",null, "오늘의 팟캐스트"), el("span",null,"BBC 6 Minute English")); return t; })());
   w.append(top);
-  const a=el("a","btn primary","팟캐스트 듣기"); a.href=POD_URL; a.target="_blank"; a.rel="noopener";
+  const a=el("a","btn primary","듣기"); a.href=POD_URL; a.target="_blank"; a.rel="noopener";
   w.append(a);
   return w;
 }
@@ -171,8 +170,8 @@ function bmHomeCard(){
 }
 function mockCard(){
   const w=el("div","mockcard");
-  const t=el("div"); t.append(el("b",null,"아이엘츠 모의고사"), el("span",null,"Part 1·2·3를 랜덤으로 · 약 12분"));
-  const b=el("button","btn primary","모의고사 보기"); b.type="button"; b.onclick=()=>{ MT=null; go("mock"); };
+  const t=el("div"); t.append(el("b",null,"아이엘츠 모의고사"), el("span",null,"Part 1·2·3 랜덤"));
+  const b=el("button","btn primary","시작하기"); b.type="button"; b.onclick=()=>{ MT=null; go("mock"); };
   w.append(t,b); return w;
 }
 function buildMock(){
