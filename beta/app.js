@@ -125,6 +125,7 @@ function renderHome(app){
   app.append(hero);
   const last=D.sessions[D.sessions.length-1];
   if(last){
+    app.append(podcastBox());
     app.append(menuGuide());
     app.append(quoteBox());
   }
@@ -133,6 +134,22 @@ function renderHome(app){
       el("span",null,"아이폰: Safari 아래 공유 버튼 → '홈 화면에 추가'"), el("span",null,"안드로이드: Chrome 오른쪽 위 ⋮ → '홈 화면에 추가'"));
     app.append(ins);
   }
+}
+
+/* ---------- daily podcast reminder ---------- */
+const POD_URL="https://podcasts.apple.com/nz/podcast/6-minute-english/id262026947";
+function podcastBox(){
+  const key=`bandup-pod-${slug}`; const listened=store.get(key,[]); const done=listened.includes(today());
+  const w=el("div","pod"+(done?" done":""));
+  const top=el("div","pod-top"); top.append(el("span","pod-ic","🎧"), (()=>{ const t=el("div"); t.append(el("b",null, done? "오늘 팟캐스트 들었어요!" : "오늘 팟캐스트 들으셨나요?"), el("span",null,"BBC 6 Minute English · 하루 6분")); return t; })());
+  w.append(top);
+  const row=el("div","btnrow two");
+  const a=el("a","btn primary","팟캐스트 듣기"); a.href=POD_URL; a.target="_blank"; a.rel="noopener";
+  const b=el("button","btn", done? "✓ 들었어요" : "다 들었어요"); b.type="button"; b.setAttribute("aria-pressed",String(done));
+  b.onclick=()=>{ let l=store.get(key,[]); if(l.includes(today())) l=l.filter(d=>d!==today()); else { l.push(today()); touchDay(); } store.set(key,l.slice(-120)); render();
+    if(!done){ const d=new Date(); reportSheet("오늘의 팟캐스트",1,1,`[${D.name} · 팟캐스트 · ${d.getMonth()+1}/${d.getDate()}]\nBBC 6 Minute English 들었어요\n연속 공부 ${streak()}일`); } };
+  row.append(a,b); w.append(row);
+  return w;
 }
 function menuGuide(){
   const nWB = WB? WB.sections.reduce((a,s)=>a+s.groups.reduce((b,g)=>b+g.words.length,0),0) : 0;

@@ -409,3 +409,13 @@ body.lesson{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
   .btn,.hero button{font-size:16px}
   .playrow .btn{white-space:nowrap;padding:0 8px}
 }
+/* podcast reminder */
+.pod{background:var(--surface);border-radius:18px;box-shadow:var(--shadow);padding:16px;display:grid;gap:12px;border:2px solid var(--sun)}
+.pod.done{border-color:var(--mint)}
+.pod-top{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center}
+.pod-ic{width:44px;height:44px;border-radius:12px;background:var(--sun-soft);display:grid;place-items:center;font-size:22px}
+.pod.done .pod-ic{background:var(--mint-soft)}
+.pod-top b{display:block;font-size:18px;font-weight:700}
+.pod-top span{font-size:14px;color:var(--muted)}
+.pod .btn[aria-pressed="true"]{background:var(--mint-soft);border-color:var(--mint);color:var(--mint)}
+.btnrow.two .btn{flex:1 1 0;min-width:0;padding:0 10px}
