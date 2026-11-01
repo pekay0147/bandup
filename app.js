@@ -171,11 +171,10 @@ function weekCard(){
     const c=el("div","wk-day"+(set.has(iso)?" done":"")+(d.getTime()===t0.getTime()?" today":"")); c.append(el("span",null,names[k]), el("i",null,set.has(iso)?"✓":"")); row.append(c); }
   w.append(row);
   if(P1Q){ const all=P1Q.topics.flatMap(t=>t.qs.map(q=>[t.ko,q])); const dayNo=Math.floor(t0.getTime()/86400000); const [tk,q]=all[((dayNo*7+todayQShift)%all.length+all.length)%all.length];
-    const qb=el("div","wk-q"); qb.append(el("span","wk-qlab",`오늘의 질문 · ${tk}`), el("p",null,q));
+    const qb=el("div","wk-q"); qb.append(el("p",null,q));
     const tools=el("div","wk-tools");
-    if(canSpeak()){ const sp=el("button","linkbtn","🔊 질문 듣기"); sp.type="button"; sp.onclick=()=>speak(q); tools.append(sp); }
     const nx=el("button","linkbtn","다른 질문 ›"); nx.type="button"; nx.onclick=()=>{ todayQShift++; const n=weekCard(); w.replaceWith(n); }; tools.append(nx);
-    qb.append(el("span","wk-hint","30초 동안 소리 내서 답해 보세요"), tools); w.append(qb); }
+    qb.append(tools); w.append(qb); }
   return w;
 }
 let bmHomeOpen=false;
