@@ -130,6 +130,7 @@ function renderHome(app){
   if(last){
     app.append(podcastBox());
     app.append(mockCard());
+    app.append(bmHomeCard());
     app.append(quoteBox());
   }
   if(false){
@@ -157,6 +158,17 @@ const qbmList=()=>store.get(qbmKey(),[]);
 const isQbm=q=>qbmList().some(x=>x.q===q);
 function toggleQbm(item){ let l=qbmList(); if(l.some(x=>x.q===item.q)) l=l.filter(x=>x.q!==item.q); else l=[...l,{part:item.part,topic:item.topic,q:item.q}]; store.set(qbmKey(),l); }
 function qbmBtn(item, onChange){ const b=el("button","qbm"); b.type="button"; const set=()=>{ const on=isQbm(item.q); b.textContent=on? "★ 북마크됨" : "☆ 북마크"; b.setAttribute("aria-pressed",String(on)); }; set(); b.onclick=e=>{ e.stopPropagation(); toggleQbm(item); set(); if(onChange) onChange(); }; return b; }
+function bmHomeCard(){
+  const list=cbmList().map(getCard).filter(Boolean);
+  const w=el("div","bmhome");
+  const h=el("div","bmh"); h.append(el("b",null,"★ 북마크"), el("span",null,`${list.length}장`)); w.append(h);
+  if(!list.length){ w.append(el("p","muted small","큐카드에서 ☆ 북마크에 추가를 누른 카드가 여기 모여요.")); return w; }
+  const ul=el("div","bmprev"); list.slice(0,3).forEach(c=>{ const r=el("div"); r.append(el("b",null,c.en), el("span",null,c.ko||"")); ul.append(r); }); w.append(ul);
+  const row=el("div","btnrow two");
+  const a=el("button","btn primary",`카드로 연습`); a.type="button"; a.onclick=()=>{ deckState=null; go("cards",{deck:"bm", ids:list.map(c=>c.id)}); };
+  const b=el("button","btn","전체 보기"); b.type="button"; b.onclick=()=>{ cardMode="bm"; go("cards"); };
+  row.append(a,b); w.append(row); return w;
+}
 function mockCard(){
   const w=el("div","mockcard");
   const t=el("div"); t.append(el("b",null,"아이엘츠 모의고사"), el("span",null,"Part 1·2·3를 랜덤으로 · 약 12분"));
