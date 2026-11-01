@@ -111,7 +111,7 @@ function renderHome(app){
   const due=dueCards().length;
   const h=el("div","hello"); const h1=el("h1"); h1.append(document.createTextNode(`${D.name}님, `), el("b",null,due? `오늘 ${Math.min(due,DAILY)}장`: "오늘 복습 끝!"));
   h.append(h1); app.append(h);
-  app.append(quoteBox());
+  app.append(quoteBox()); startIdiomTimer();
   if(false){ const st=el("div","stats");
   for(const [cls,n,l] of [["due",D.cards.length,"내 수업 카드"],["streak",streak(),"연속 공부일"]]){
     const s=el("div","stat "+cls); s.append(el("b",null,String(n)), el("span",null,l)); st.append(s);
@@ -463,7 +463,9 @@ const IDIOMS=[
  ["have a sweet tooth","단 걸 좋아하다","I have a sweet tooth, so I can't resist chocolate."],
  ["all of a sudden","갑자기","All of a sudden, my mind went blank."]
 ];
-let idiomShift=0;
+let idiomShift=0, idiomTimer=null;
+function nextIdiom(x){ idiomShift++; const n=quoteBox(); n.classList.add("slidein"); x.replaceWith(n); return n; }
+function startIdiomTimer(){ if(idiomTimer) clearInterval(idiomTimer); idiomTimer=setInterval(()=>{ const x=document.querySelector(".quote.notice"); if(!x){ clearInterval(idiomTimer); idiomTimer=null; return; } if(document.hidden) return; nextIdiom(x); },5000); }
 function quoteBox(){
   const d=new Date(); const dayNo=Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000);
   const i=((dayNo+idiomShift)%IDIOMS.length+IDIOMS.length)%IDIOMS.length;
@@ -472,7 +474,7 @@ function quoteBox(){
   const top=el("span","q-top"); top.append(el("span","q-lab",idiomShift? "아이엘츠 idiom" : "오늘의 아이엘츠 idiom"), el("span","q-next","터치하면 다음 ›"));
   const line=el("span","n-line"); line.append(el("span","n-tag","오늘의 idiom"), el("b","n-idiom",idiom), el("span","n-mean",ko));
   x.append(line, el("span","n-next","›"));
-  x.onclick=()=>{ idiomShift++; const n=quoteBox(); x.replaceWith(n); n.focus({preventScroll:true}); };
+  x.onclick=()=>{ nextIdiom(x); startIdiomTimer(); };
   return x;
 }
 

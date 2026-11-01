@@ -503,3 +503,4 @@ main{zoom:.88}
 .n-idiom{font-size:15px;font-weight:700}
 .n-mean{font-size:13px;color:var(--muted)}
 .n-next{font-size:18px;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.quote.notice.slidein .n-line{animation:nslide .4s ease both}} @keyframes nslide{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
