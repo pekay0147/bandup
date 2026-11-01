@@ -139,7 +139,7 @@ const POD_URL="https://podcasts.apple.com/nz/podcast/6-minute-english/id26202694
 function podcastBox(){
   const key=`bandup-pod-${slug}`; const listened=store.get(key,[]); const done=listened.includes(today());
   const w=el("div","pod"+(done?" done":""));
-  const top=el("div","pod-top"); top.append(el("span","pod-ic","🎧"), (()=>{ const t=el("div"); t.append(el("b",null, done? "오늘 팟캐스트 들었어요!" : "오늘 팟캐스트 들으셨나요?"), el("span",null,"BBC 6 Minute English · 하루 6분")); return t; })());
+  const top=el("div","pod-top"); const ic=el("span","pod-ic"); ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="2.2"/><path d="M12 13.5v7"/><path d="M8.2 14a5 5 0 1 1 7.6 0"/><path d="M5.6 16.6a8.5 8.5 0 1 1 12.8 0"/></svg>'; top.append(ic, (()=>{ const t=el("div"); t.append(el("b",null, done? "오늘 팟캐스트 들었어요!" : "오늘 팟캐스트 들으셨나요?"), el("span",null,"BBC 6 Minute English · 하루 6분")); return t; })());
   w.append(top);
   const row=el("div","btnrow two");
   const a=el("a","btn primary","팟캐스트 듣기"); a.href=POD_URL; a.target="_blank"; a.rel="noopener";

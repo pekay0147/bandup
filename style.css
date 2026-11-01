@@ -387,3 +387,4 @@ body.lesson{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 .pod-top span{font-size:14px;color:var(--muted)}
 .pod .btn[aria-pressed="true"]{background:var(--mint-soft);border-color:var(--mint);color:var(--mint)}
 .btnrow.two .btn{flex:1 1 0;min-width:0;padding:0 10px}
+.pod-ic{color:#8a3ffc;background:color-mix(in srgb,#8a3ffc 14%,var(--surface))} .pod-ic svg{width:26px;height:26px} .pod.done .pod-ic{color:var(--mint);background:var(--mint-soft)}
