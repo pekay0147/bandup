@@ -51,7 +51,8 @@ const rep=c=>(c.sessions||[]).length>1;
 const sessLabel=c=>c.vtopic? c.vtopic : (c.sessions||[]).join("·")+"회차";
 const VCARDS={};
 const getCard=id=>D.cards.find(c=>c.id===id) || VCARDS[id];
-function dueCards(){ const t=today(); return D.cards.filter(c=>{ const s=srs[c.id]||{}; return (s.box||0)<MASTER && (s.due||t)<=t; }); }
+const isWriting=c=>!(c.type==="발음·철자" && /발음/.test(c.ko||""));
+function dueCards(){ const t=today(); return D.cards.filter(c=>{ if(!isWriting(c)) return false; const s=srs[c.id]||{}; return (s.box||0)<MASTER && (s.due||t)<=t; }); }
 function mastered(){ return D.cards.filter(c=>((srs[c.id]||{}).box||0)>=MASTER).length; }
 function grade(c,ok){
   const t=today(), s=srs[c.id]||{box:0,reviews:0,correct:0};
@@ -512,7 +513,7 @@ function markDeck(c,kind){
 
 /* ---------- spaced review ---------- */
 function reviewQueue(extra){
-  let pool = extra ? D.cards.filter(c=>((srs[c.id]||{}).box||0)<MASTER) : dueCards();
+  let pool = extra ? D.cards.filter(c=>isWriting(c) && ((srs[c.id]||{}).box||0)<MASTER) : dueCards();
   pool.sort((a,b)=>(rep(b)-rep(a)) || (((srs[a.id]||{}).box||0)-((srs[b.id]||{}).box||0)) || (marks[b.id]==="again")-(marks[a.id]==="again") || Math.random()-.5);
   return pool.slice(0, extra?10:DAILY).map(c=>c.id);
 }
@@ -531,23 +532,24 @@ function renderReview(app){
   if(!c){
   pageHead(app, view.extra? "약한 카드 연습" : "오늘의 복습", view.extra? "헷갈렸던 카드 10장을 다시 봐요." : `하루 ${DAILY}장씩, 다시 볼 때가 된 카드가 자동으로 나와요.`);
     const e=el("div","empty");
-    if(R.res.length){ const ok=R.res.filter(r=>r.ok).length; e.append(el("div","big",`${ok}/${R.res.length}`), el("h2",null, ok===R.res.length?"전부 맞혔어요!":"오늘 복습 끝!"), el("p",null,"틀린 카드는 내일, 맞힌 카드는 며칠 뒤에 다시 나와요."));
-      const send=el("button","btn primary","선생님께 결과 보내기"); send.type="button"; send.onclick=()=>openReport("review"); e.append(send); }
+    if(R.res.length){ e.append(el("div","big","✓"), el("h2",null,"오늘 복습 끝!"), el("p",null,`${R.res.length}장을 복습했어요. 다음 복습 때 다시 나와요.`)); }
     else { e.append(el("div","big","✓"), el("h2",null,"오늘 복습할 카드가 없어요"), el("p",null,"내일 다시 열어 보세요.")); }
     const more=el("button","btn", dueCards().length? `남은 카드 이어서 하기 (${dueCards().length}장)` : "약한 카드 10장 더 하기"); more.type="button";
     more.onclick=()=>{ reviewState=null; view.extra=!dueCards().length; render(); };
     e.append(more); app.append(e); return;
   }
   app.append(lessonBar(()=>go("home"), R.i, R.ids.length));
-  const acts=el("div","acts review");
-  const sc=flipCard(c, v=>{ acts.hidden=!v; tip.hidden=v; });
-  app.append(sc);
-  const no=el("button","again","다시 볼래요"); no.type="button"; no.onclick=()=>answer(c,false);
-  const ok=el("button","know","맞혔어요"); ok.type="button"; ok.onclick=()=>answer(c,true);
-  acts.append(no,ok); acts.hidden=!flipped; app.append(acts);
-  const tip=el("p","hint2","카드를 눌러 정답을 확인하세요"); tip.hidden=flipped; app.append(tip);
+  const sc=flipCard(c); sc.onswipe=d=>reviewMove(d); app.append(sc);
+  const acts=el("div","acts arrows");
+  const prev=el("button","nav","‹ 이전"); prev.type="button"; prev.disabled=R.i===0; prev.onclick=()=>reviewMove(-1);
+  const next=el("button","nav", R.i+1<R.ids.length? "다음 ›" : "복습 끝내기"); next.type="button"; next.onclick=()=>reviewMove(1);
+  acts.append(prev,next); app.append(acts);
+  app.append(el("p","hint2","카드를 누르면 정답이 보여요 · 옆으로 밀어서 넘기기"));
 }
 function toast(msg,ok){ const t=el("div","toast "+(ok?"ok":"no"),msg); document.body.append(t); setTimeout(()=>t.remove(),1300); }
+function reviewMove(d){ const R=reviewState; if(d<0){ if(R.i>0){ R.i--; flipped=false; picked=null; render(); } return; }
+  const c=D.cards.find(x=>x.id===R.ids[R.i]); if(c && !R.res.some(r=>r.c.id===c.id)){ grade(c,true); R.res.push({ok:true,c}); }
+  R.i++; flipped=false; picked=null; render(); window.scrollTo(0,0); }
 function answer(c,ok){ toast(ok? "좋아요! 며칠 뒤에 다시 나와요" : "괜찮아요, 내일 다시 나와요", ok); grade(c,ok); reviewState.res.push({ok,c}); reviewState.i++; flipped=false; picked=null; render(); }
 
 /* ---------- notes ---------- */
