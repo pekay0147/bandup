@@ -608,3 +608,27 @@ body.lesson .cat-grass{display:none}
 button.bmh{border:0;background:none;padding:0;width:100%;text-align:left;cursor:pointer;color:inherit;min-height:32px} .bmchev{margin-left:auto;color:var(--muted);font-size:14px} .bmbody{display:grid;gap:10px}
 .tabs nav{grid-template-columns:repeat(4,1fr)}
 .bmprev > .bmrow2{grid-template-columns:1fr auto;align-items:center} .bmrow2 > div{display:grid;gap:1px}
+/* polish: shorter card, consistent spacing */
+.face{min-height:340px}
+.front .body{padding:22px 20px;gap:12px}
+.phead{gap:2px;margin-bottom:2px}
+.phead h1{font-size:26px}
+.panel,.idea,.mockq,.weekcard,.bmhome,.duo > div{border-radius:16px}
+.mtools .cstar{border:1px solid var(--line);border-radius:999px;min-width:44px;min-height:44px}
+/* home: this week + today's question */
+.weekcard{background:var(--surface);border-radius:16px;box-shadow:var(--shadow);padding:14px;display:grid;gap:12px}
+.wk-top{display:flex;justify-content:space-between;align-items:baseline}
+.wk-top b{font-size:16px;font-weight:700}
+.wk-streak{font-size:14px;font-weight:700;color:var(--pink)}
+.wk-row{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.wk-day{display:grid;justify-items:center;gap:4px;font-size:12px;color:var(--muted)}
+.wk-day i{width:28px;height:28px;border-radius:50%;background:var(--sunk);border:1px solid var(--line);display:grid;place-items:center;font-style:normal;font-size:13px;font-weight:700;color:var(--on-color)}
+.wk-day.done i{background:var(--mint);border-color:var(--mint)}
+.wk-day.today span{color:var(--blue);font-weight:700}
+.wk-day.today i{border:2px solid var(--blue)}
+.wk-q{display:grid;gap:4px;padding-top:12px;border-top:1px solid var(--line)}
+.wk-qlab{font-size:12px;font-weight:700;color:var(--blue)}
+.wk-q p{margin:0;font-size:17px;font-weight:700;line-height:1.35}
+.wk-hint{font-size:13px;color:var(--muted)}
+.wk-tools{display:flex;justify-content:space-between;margin-top:4px}
+@media (max-height:780px){.face{min-height:290px}.front .body{gap:10px;padding:18px}}

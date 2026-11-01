@@ -103,7 +103,6 @@ function render(){
   if(view.tab==="home") renderHome(app);
   if(view.tab==="cards") (view.deck!=null? renderDeck(app) : renderDecks(app));
   if(view.tab==="review") renderReview(app);
-  if(view.tab==="notes") renderNotes(app);
   if(view.tab==="ideas") renderIdeas(app);
   if(view.tab==="words") renderWords(app);
   if(view.tab==="mock") renderMock(app);
@@ -135,6 +134,7 @@ function renderHome(app){
   const last=D.sessions[D.sessions.length-1];
   if(last){
     const duo=el("div","duo"); duo.append(podcastBox(), mockCard()); app.append(duo);
+    app.append(weekCard());
     app.append(bmHomeCard());
   }
   if(false){
@@ -161,7 +161,25 @@ const qbmKey=()=>`bandup-qbm-${slug}`;
 const qbmList=()=>store.get(qbmKey(),[]);
 const isQbm=q=>qbmList().some(x=>x.q===q);
 function toggleQbm(item){ let l=qbmList(); if(l.some(x=>x.q===item.q)) l=l.filter(x=>x.q!==item.q); else l=[...l,{part:item.part,topic:item.topic,q:item.q}]; store.set(qbmKey(),l); }
-function qbmBtn(item, onChange){ const b=el("button","qbm"); b.type="button"; const set=()=>{ const on=isQbm(item.q); b.textContent=on? "★ 북마크됨" : "☆ 북마크"; b.setAttribute("aria-pressed",String(on)); }; set(); b.onclick=e=>{ e.stopPropagation(); toggleQbm(item); set(); if(onChange) onChange(); }; return b; }
+function qbmBtn(item, onChange){ const b=el("button","cstar"); b.type="button"; const set=()=>{ const on=isQbm(item.q); b.textContent=on? "★" : "☆"; b.setAttribute("aria-pressed",String(on)); b.setAttribute("aria-label", on? "북마크 해제" : "북마크에 추가"); }; set(); b.onclick=e=>{ e.stopPropagation(); toggleQbm(item); set(); if(onChange) onChange(); }; return b; }
+let todayQShift=0;
+function weekCard(){
+  const w=el("div","weekcard");
+  const top=el("div","wk-top"); const st=streak(); top.append(el("b",null,"이번 주 공부"), el("span","wk-streak", st? `🔥 ${st}일째` : "오늘 시작해 봐요"));
+  w.append(top);
+  const row=el("div","wk-row"); const names=["일","월","화","수","목","금","토"]; const set=new Set(days);
+  const now=new Date(); const t0=new Date(now.getFullYear(),now.getMonth(),now.getDate()); const start=new Date(t0); start.setDate(t0.getDate()-t0.getDay());
+  for(let k=0;k<7;k++){ const d=new Date(start); d.setDate(start.getDate()+k); const iso=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+    const c=el("div","wk-day"+(set.has(iso)?" done":"")+(d.getTime()===t0.getTime()?" today":"")); c.append(el("span",null,names[k]), el("i",null,set.has(iso)?"✓":"")); row.append(c); }
+  w.append(row);
+  if(P1Q){ const all=P1Q.topics.flatMap(t=>t.qs.map(q=>[t.ko,q])); const dayNo=Math.floor(t0.getTime()/86400000); const [tk,q]=all[((dayNo*7+todayQShift)%all.length+all.length)%all.length];
+    const qb=el("div","wk-q"); qb.append(el("span","wk-qlab",`오늘의 질문 · ${tk}`), el("p",null,q));
+    const tools=el("div","wk-tools");
+    if(canSpeak()){ const sp=el("button","linkbtn","🔊 질문 듣기"); sp.type="button"; sp.onclick=()=>speak(q); tools.append(sp); }
+    const nx=el("button","linkbtn","다른 질문 ›"); nx.type="button"; nx.onclick=()=>{ todayQShift++; const n=weekCard(); w.replaceWith(n); }; tools.append(nx);
+    qb.append(el("span","wk-hint","30초 동안 소리 내서 답해 보세요"), tools); w.append(qb); }
+  return w;
+}
 let bmHomeOpen=false;
 function bmHomeCard(){
   const list=cbmList().map(getCard).filter(Boolean);
@@ -176,17 +194,6 @@ function bmHomeCard(){
   }
   w.append(body);
   h.onclick=()=>{ bmHomeOpen=!bmHomeOpen; body.hidden=!bmHomeOpen; h.setAttribute("aria-expanded",String(bmHomeOpen)); h.querySelector(".bmchev").textContent=bmHomeOpen?"▴":"▾"; };
-  return w;
-}
-/* ---------- home puppy ---------- */
-const PUP_SVG='<svg viewBox="0 0 120 110" aria-hidden="true"><g class="pup-tail"><path d="M92 74c10-2 16-10 15-20" fill="none" stroke="#c98a4b" stroke-width="7" stroke-linecap="round"/></g><ellipse cx="62" cy="84" rx="32" ry="22" fill="#e7b37a"/><ellipse cx="62" cy="90" rx="18" ry="13" fill="#f6dcb8"/><ellipse cx="44" cy="102" rx="9" ry="6" fill="#e7b37a"/><ellipse cx="78" cy="102" rx="9" ry="6" fill="#e7b37a"/><g class="pup-head"><g class="pup-ear-l"><path d="M28 30c-10 4-14 22-6 32 6-2 10-10 12-20z" fill="#b97a3f"/></g><g class="pup-ear-r"><path d="M92 30c10 4 14 22 6 32-6-2-10-10-12-20z" fill="#b97a3f"/></g><ellipse cx="60" cy="44" rx="32" ry="28" fill="#e7b37a"/><ellipse cx="60" cy="56" rx="16" ry="12" fill="#f6dcb8"/><g class="pup-eyes"><ellipse cx="47" cy="40" rx="4" ry="5" fill="#2a1f1a"/><ellipse cx="73" cy="40" rx="4" ry="5" fill="#2a1f1a"/><circle cx="48.5" cy="38" r="1.4" fill="#fff"/><circle cx="74.5" cy="38" r="1.4" fill="#fff"/></g><ellipse cx="60" cy="51" rx="5" ry="3.6" fill="#2a1f1a"/><path d="M60 54.5v3.5M60 58c-2.5 2.5-6 2.5-7.5 0M60 58c2.5 2.5 6 2.5 7.5 0" fill="none" stroke="#2a1f1a" stroke-width="1.8" stroke-linecap="round"/><path class="pup-tongue" d="M57 61c0 5 6 5 6 0z" fill="#f08a9c"/><ellipse cx="40" cy="52" rx="5" ry="3" fill="#f3a3a3" opacity=".5"/><ellipse cx="80" cy="52" rx="5" ry="3" fill="#f3a3a3" opacity=".5"/></g></svg>';
-const PUP_LINES=["오늘도 와 줬네요! 멍!","한 문장만 말해 봐도 충분해요","천천히 해도 괜찮아요 🐾","Practice makes progress!","예영님 최고! 멍멍","오늘 복습 같이 해요","You can do it!","틀려도 괜찮아요, 그게 연습이에요"];
-function puppy(){
-  const w=el("button","pup"); w.type="button"; w.setAttribute("aria-label","강아지 쓰다듬기"); w.innerHTML=PUP_SVG;
-  const bub=el("span","pup-bub"); bub.hidden=true; w.append(bub);
-  let t=null;
-  w.onclick=()=>{ bub.textContent=PUP_LINES[Math.floor(Math.random()*PUP_LINES.length)].replace("예영님",D.name+"님"); bub.hidden=false; w.classList.remove("hop"); void w.offsetWidth; w.classList.add("hop"); clearTimeout(t); t=setTimeout(()=>{ bub.hidden=true; },2500); };
-  setTimeout(()=>{ if(document.body.contains(w)) w.click(); },700);
   return w;
 }
 /* ---------- home cat (orange tabby, white chest & paws) that wanders ---------- */
@@ -639,37 +646,6 @@ function reviewMove(d){ const R=reviewState; if(d<0){ if(R.i>0){ R.i--; flipped=
 function answer(c,ok){ toast(ok? "좋아요! 며칠 뒤에 다시 나와요" : "괜찮아요, 내일 다시 나와요", ok); grade(c,ok); reviewState.res.push({ok,c}); reviewState.i++; flipped=false; picked=null; render(); }
 
 /* ---------- notes ---------- */
-function renderNotes(app){
-  app.append(el("h1",null,"오답노트"));
-  app.append(sessionPicker(noteSession, v=>{ noteSession=v; render(); }));
-  const inSess=c=> noteSession==="all" || (c.sessions||[]).includes(noteSession);
-  const fixes=D.cards.filter(c=>(c.kind==="fix" || c.mine && !c.good) && inSess(c));
-  const types=[...new Set(fixes.map(typeOf))];
-  const f=el("div","filters");
-  for(const t of ["전체","헷갈려요",...types]){ const b=el("button",null,t); b.type="button"; b.setAttribute("aria-pressed",String(noteFilter===t)); b.onclick=()=>{ noteFilter=t; render(); }; f.append(b); }
-  app.append(f);
-  const pick = noteFilter==="전체"? types : noteFilter==="헷갈려요"? null : [noteFilter];
-  if(pick===null){
-    const list=D.cards.filter(c=>inSess(c)).filter(c=>marks[c.id]==="again" || ((srs[c.id]||{}).reviews && (srs[c.id].correct||0)<(srs[c.id].reviews||0)));
-    const p=el("div","panel"); { const gh=el("div","ghead"); gh.append(el("b",null,`헷갈리는 카드 ${list.length}장`)); p.append(gh); }
-    if(!list.length) p.append(el("p","gtip","큐카드에서 '헷갈려요'를 누르거나 복습에서 틀린 카드가 여기 모여요."));
-    list.forEach(c=>p.append(noteRow(c))); app.append(p);
-  } else {
-    for(const t of pick){
-      const items=fixes.filter(c=>typeOf(c)===t); if(!items.length) continue;
-      const p=el("div","panel"); p.style.setProperty("--c",TCOL[t]||"#4457e8");
-      const h=el("div","ghead"); h.append(el("i","dot"), el("b",null,t), el("span",null,`${items.length}개`)); p.append(h);
-      if(D.tips && D.tips[t]) p.append(el("p","gtip",D.tips[t]));
-      items.forEach(c=>p.append(noteRow(c))); app.append(p);
-    }
-  }
-  if(!fixes.length && pick!==null){ const e=el("div","empty"); e.append(el("p",null,"이 회차에는 고친 문장이 없어요. 표현 카드는 큐카드 탭에서 볼 수 있어요.")); app.append(e); }
-  if(D.compare && noteFilter==="전체" && noteSession==="all"){
-    const p=el("div","panel"); { const gh=el("div","ghead"); gh.append(el("b",null,"헷갈리는 단어 정리")); p.append(gh); }
-    const cm=el("div","cmp"); for(const [t,h] of D.compare){ const d=el("div"); d.append(el("b",null,t)); const s=el("span"); s.innerHTML=h; d.append(s); cm.append(d); }
-    p.append(cm); app.append(p);
-  }
-}
 function noteRow(c){
   const r=el("div","m");
   r.append(el("span","wr", c.wrong || c.mine || c.ko));
@@ -825,7 +801,7 @@ function renderP2(app){
   // filter in place (no full re-render), so typing Korean on a phone keeps working
   const applyFilter=()=>{ p2Query=inp.value; const q=p2Query.trim().toLowerCase(); let n=0;
     document.querySelectorAll(".idea[data-search]").forEach(c=>{ const ok=!q || c.dataset.search.includes(q); c.hidden=!ok; if(ok) n++; });
-    const cnt=document.getElementById("p2count"); if(cnt) cnt.textContent=`${n}개 주제 · 출처: ${P2.source}`;
+    const cnt=document.getElementById("p2count"); if(cnt) cnt.textContent=`${n}개 주제`;
     const em=document.getElementById("p2empty"); if(em) em.hidden = n>0; };
   inp.addEventListener("input",e=>{ if(e.isComposing) return; applyFilter(); });
   inp.addEventListener("compositionend",applyFilter);
@@ -835,7 +811,7 @@ function renderP2(app){
   const hay=it=>(it.topic+" "+it.answer+" "+it.points.join(" ")+" "+(it.alts||[]).join(" ")).toLowerCase();
   const list=P2.items.filter(it=>(!p2Lesson || it.lesson));
   const shown=list.filter(it=>!q || hay(it).includes(q)).length;
-  const cnt=el("p","muted small",`${shown}개 주제 · 출처: ${P2.source}`); cnt.id="p2count"; app.append(cnt);
+  const cnt=el("p","muted small",`기출 ${shown}개 주제`); cnt.id="p2count"; app.append(cnt);
   for(const it of list){
     const hd=el("div");
     const top=el("span","from2", `#${it.no}`+(it.lesson? ` · ${it.lesson}회차 수업에서 다룸`:""));
