@@ -468,6 +468,7 @@ const IDIOMS=[
 ];
 let idiomShift=0, idiomTimer=null;
 function nextIdiom(x){ idiomShift++; const n=quoteBox(); n.classList.add("slidein"); x.replaceWith(n); return n; }
+function stopIdiomTimer(){ if(idiomTimer){ clearInterval(idiomTimer); idiomTimer=null; } }
 function startIdiomTimer(){ if(idiomTimer) clearInterval(idiomTimer); idiomTimer=setInterval(()=>{ const x=document.querySelector(".quote.notice"); if(!x){ clearInterval(idiomTimer); idiomTimer=null; return; } if(document.hidden) return; nextIdiom(x); },5000); }
 function quoteBox(){
   const d=new Date(); const dayNo=Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000);
@@ -475,9 +476,10 @@ function quoteBox(){
   const [idiom,ko,ex]=IDIOMS[i];
   const x=el("button","quote notice"); x.type="button"; x.setAttribute("aria-label",`오늘의 아이엘츠 idiom: ${idiom}. 누르면 다음 idiom`);
   const top=el("span","q-top"); top.append(el("span","q-lab",idiomShift? "아이엘츠 idiom" : "오늘의 아이엘츠 idiom"), el("span","q-next","터치하면 다음 ›"));
-  const line=el("span","n-line"); line.append(el("span","n-tag","오늘의 idiom"), el("b","n-idiom",idiom), el("span","n-mean",ko));
-  x.append(line, el("span","n-next","›"));
-  x.onclick=()=>{ nextIdiom(x); startIdiomTimer(); };
+  const line=el("span","n-line"); line.append(el("span","n-tag","오늘의 idiom"), el("b","n-idiom",idiom));
+  const more=el("span","n-more"); more.append(el("span","n-mean",ko), el("span","n-ex",ex)); more.hidden=true;
+  x.append(line, el("span","n-next","▾"), more); x.setAttribute("aria-expanded","false");
+  x.onclick=()=>{ const open=more.hidden; more.hidden=!open; x.setAttribute("aria-expanded",String(open)); x.querySelector(".n-next").textContent= open? "▴" : "▾"; if(open) stopIdiomTimer(); else startIdiomTimer(); };
   return x;
 }
 

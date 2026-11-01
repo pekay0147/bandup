@@ -505,3 +505,4 @@ main{zoom:.88}
 .n-next{font-size:18px;color:var(--muted)}
 @media (prefers-reduced-motion:no-preference){.quote.notice.slidein .n-line{animation:nslide .4s ease both}} @keyframes nslide{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
 .acts.arrows .nav{font-size:17px;font-weight:600}
+.n-more{grid-column:1/-1;display:grid;gap:2px;padding-top:6px;border-top:1px dashed color-mix(in srgb,var(--sun) 60%,transparent)} .n-more .n-mean{font-size:14px;font-weight:600;color:var(--ink)} .n-ex{font-size:13px;color:var(--muted)}
