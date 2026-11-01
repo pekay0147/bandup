@@ -430,3 +430,9 @@ body.lesson{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 .pod-ic{width:36px;height:36px;border-radius:10px}
 .pod-ic svg{width:20px;height:20px}
 .lx{font-size:18px}
+.mrow .mic{width:28px;height:28px;border-radius:8px}
+.mrow .mic svg{width:16px;height:16px}
+.mrow{gap:10px}
+.pod-ic{width:28px;height:28px;border-radius:8px}
+.pod-ic svg{width:16px;height:16px}
+.pod-top{gap:10px}
