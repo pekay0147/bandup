@@ -661,6 +661,11 @@ function speak(word, slow){
   try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(word); u.lang="en-GB"; if(enVoice) u.voice=enVoice; u.rate= slow? .55 : .85; speechSynthesis.speak(u); return true; }catch(_){ return false; }
 }
 function speakBtn(word, label){ const b=el("button","spk"); b.type="button"; b.innerHTML=SPEAK_ICON; b.setAttribute("aria-label",label||`${word} 듣기`); b.onclick=e=>{ e.stopPropagation(); speak(word); }; return b; }
+const bmKey=()=>`bandup-bm-${slug}`;
+const bmList=()=>store.get(bmKey(),[]);
+const isBm=w=>bmList().includes(w);
+function toggleBm(w){ let l=bmList(); l= l.includes(w)? l.filter(x=>x!==w) : [...l,w]; store.set(bmKey(),l); return l.includes(w); }
+function bmBtn(w){ const b=el("button","bmbtn"); b.type="button"; const set=()=>{ const on=isBm(w); b.textContent= on? "★" : "☆"; b.setAttribute("aria-pressed",String(on)); b.setAttribute("aria-label", on? `${w} 북마크 해제` : `${w} 북마크에 추가`); }; set(); b.onclick=e=>{ e.stopPropagation(); toggleBm(w); set(); const c=document.getElementById("bmcount"); if(c) render(); }; return b; }
 function renderListen(app){
   if(!LS){ const e=el("div","empty"); e.append(el("p",null,"자료를 불러오지 못했어요.")); app.append(e); return; }
   const all=LS.categories.flatMap(c=>c.words);
@@ -669,12 +674,18 @@ function renderListen(app){
   const s20=el("button","btn primary",`받아쓰기 20개`); s20.type="button"; s20.onclick=()=>startDictation([...all].sort(()=>Math.random()-.5).slice(0,20),"받아쓰기 20개");
   const sAll=el("button","btn",`전체 ${all.length}개`); sAll.type="button"; sAll.onclick=()=>startDictation([...all].sort(()=>Math.random()-.5),`전체 ${all.length}개`);
   row.append(s20); app.append(row);
+  const bms=all.filter(x=>isBm(x[0]));
+  const bp=el("div","panel"); bp.id="bmcount"; const bh=el("div","ghead"); bh.append(el("b",null,"★ 북마크"), el("span",null,`${bms.length}개`)); bp.append(bh);
+  if(!bms.length) bp.append(el("p","gtip","단어 옆 ☆를 누르거나 받아쓰기에서 틀린 단어를 북마크하면 여기 모여요."));
+  else { const sb=el("button","btn primary vstart",`북마크 받아쓰기 ${bms.length}개`); sb.type="button"; sb.onclick=()=>startDictation([...bms].sort(()=>Math.random()-.5),"북마크 받아쓰기"); bp.append(sb);
+    for(const [w,ko,tip] of bms){ const r=el("div","lrow"); r.append(speakBtn(w)); const t2=el("div"); const top=el("div","vtop"); top.append(el("b",null,w), el("span",null,ko)); t2.append(top); if(tip) t2.append(el("p","ltip",tip)); r.append(t2, bmBtn(w)); bp.append(r); } }
+  app.append(bp);
   if(!canSpeak()) app.append(el("p","muted small","이 기기에서는 소리 재생이 안 돼요. 뜻을 보고 철자를 써 보세요."));
   const p=el("div","panel"); const h=el("div","ghead"); h.append(el("b",null,"단어 목록"), el("span",null,`${all.length}개 · 🔊 눌러서 듣기`)); p.append(h);
   for(const [w,ko,tip] of all){
     const r=el("div","lrow"); r.append(speakBtn(w));
     const t2=el("div"); const top=el("div","vtop"); top.append(el("b",null,w), el("span",null,ko)); t2.append(top); if(tip) t2.append(el("p","ltip",tip));
-    r.append(t2); p.append(r);
+    r.append(t2, bmBtn(w)); p.append(r);
   }
   app.append(p);
 }
@@ -700,9 +711,10 @@ function renderDictation(app){
     const e=el("div","empty"); e.append(el("div","big",`${ok}/${L.res.length}`), el("h2",null, ok===L.res.length? "전부 맞혔어요!" : "받아쓰기 끝!"));
     if(wrong.length){ const ul=el("div","wronglist"); wrong.forEach(r=>{ const row=el("div"); row.append(speakBtn(r.w[0]), el("b",null,r.w[0]), el("s",null,r.typed||"(빈칸)")); ul.append(row); }); e.append(ul);
       const again=el("button","btn primary","틀린 단어 다시 하기"); again.type="button"; again.onclick=()=>startDictation(wrong.map(r=>r.w), L.title+" (다시)"); e.append(again); }
-    const send=el("button","btn","선생님께 결과 보내기"); send.type="button";
-    send.onclick=()=>{ const d=new Date(); let t=`[${D.name} · 철자 연습 ${L.title} · ${d.getMonth()+1}/${d.getDate()}]\n맞힘 ${ok} / ${L.res.length}개`; if(wrong.length) t+=`\n틀린 철자:\n`+wrong.map(r=>`- ${r.w[0]} (쓴 답: ${r.typed||"빈칸"})`).join("\n"); reportSheet(`철자 연습 ${L.title}`, ok, L.res.length, t); };
-    e.append(send); app.append(e); return;
+    if(wrong.length){ const bm=el("button","btn","틀린 단어 북마크에 추가"); bm.type="button";
+      const all=wrong.every(r=>isBm(r.w[0])); if(all){ bm.textContent="★ 북마크에 추가했어요"; bm.disabled=true; }
+      bm.onclick=()=>{ wrong.forEach(r=>{ if(!isBm(r.w[0])) toggleBm(r.w[0]); }); bm.textContent="★ 북마크에 추가했어요"; bm.disabled=true; }; e.append(bm); }
+    app.append(e); return;
   }
   const [w,ko,tip]=L.words[L.i];
   app.append(lessonBar(back.onclick, L.i, L.words.length));
@@ -727,6 +739,7 @@ function renderDictation(app){
     const ans=el("div","dans"); ans.append(diffSpans(w, r.ok? w : L.typed), el("span",null,ko)); res.append(ans);
     if(!r.ok && L.typed) res.append(el("p","mine2",`내 답: ${L.typed}`));
     if(tip) res.append(el("p","ltip",tip));
+    const bmrow=el("div","bmrow"); bmrow.append(bmBtn(w), el("span",null,"북마크")); res.append(bmrow);
     card.append(res);
   }
   const btn=el("button","btn primary vstart", L.checked? (L.i+1<L.words.length? "다음 단어" : "결과 보기") : "확인"); btn.type="button"; btn.onclick=check; card.append(btn);

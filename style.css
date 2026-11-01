@@ -435,3 +435,4 @@ main{zoom:.88}
 .p3tips .steps4 b{font-size:13px;font-weight:700}
 .p3tips .steps4 span{font-size:11px;line-height:1.35}
 .playrow{grid-template-columns:1fr}
+.bmbtn{border:0;background:none;font-size:22px;color:var(--sun);cursor:pointer;min-width:40px;min-height:40px;line-height:1} .bmbtn[aria-pressed="false"]{color:var(--muted)} .lrow{grid-template-columns:auto 1fr auto} .bmrow{display:flex;align-items:center;gap:2px;font-size:14px;color:var(--muted)}
