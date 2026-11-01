@@ -42,6 +42,96 @@
      "rewarding",
      "보람 있는",
      "Teaching is a rewarding job."
+    ],
+    [
+     "full-time",
+     "정규직의",
+     ""
+    ],
+    [
+     "part-time",
+     "시간제의, 파트타임의",
+     ""
+    ],
+    [
+     "nine-to-five job",
+     "평범한 사무직(9시 출근 6시 퇴근)",
+     ""
+    ],
+    [
+     "work overtime",
+     "야근하다",
+     ""
+    ],
+    [
+     "day off",
+     "쉬는 날",
+     ""
+    ],
+    [
+     "job satisfaction",
+     "직업 만족도",
+     ""
+    ],
+    [
+     "career path",
+     "진로, 경력 경로",
+     ""
+    ],
+    [
+     "promotion",
+     "승진",
+     ""
+    ],
+    [
+     "salary",
+     "월급, 급여",
+     ""
+    ],
+    [
+     "boss / manager",
+     "상사",
+     ""
+    ],
+    [
+     "team player",
+     "협력을 잘하는 사람",
+     ""
+    ],
+    [
+     "meet a deadline",
+     "마감을 맞추다",
+     ""
+    ],
+    [
+     "burnout",
+     "번아웃, 극도의 피로",
+     ""
+    ],
+    [
+     "flexible hours",
+     "유연 근무",
+     ""
+    ],
+    [
+     "work from home",
+     "재택근무하다",
+     ""
+    ],
+    [
+     "in charge of",
+     "~을 담당하는",
+     ""
+    ],
+    [
+     "hectic",
+     "정신없이 바쁜",
+     ""
+    ],
+    [
+     "office job",
+     "사무직",
+     ""
     ]
    ]
   },
@@ -80,6 +170,91 @@
      "brush up on",
      "다시 공부하다",
      "I'm brushing up on my English."
+    ],
+    [
+     "major",
+     "전공",
+     ""
+    ],
+    [
+     "degree",
+     "학위",
+     ""
+    ],
+    [
+     "assignment",
+     "과제",
+     ""
+    ],
+    [
+     "cram for an exam",
+     "시험 벼락치기를 하다",
+     ""
+    ],
+    [
+     "revise / review",
+     "복습하다",
+     ""
+    ],
+    [
+     "lecture",
+     "강의",
+     ""
+    ],
+    [
+     "tutor",
+     "개인 교사",
+     ""
+    ],
+    [
+     "scholarship",
+     "장학금",
+     ""
+    ],
+    [
+     "grades",
+     "성적",
+     ""
+    ],
+    [
+     "semester",
+     "학기",
+     ""
+    ],
+    [
+     "graduate",
+     "졸업하다",
+     ""
+    ],
+    [
+     "study abroad",
+     "유학하다",
+     ""
+    ],
+    [
+     "self-study",
+     "독학",
+     ""
+    ],
+    [
+     "concentrate",
+     "집중하다",
+     ""
+    ],
+    [
+     "challenging",
+     "어렵지만 해볼 만한",
+     ""
+    ],
+    [
+     "hit the books",
+     "열심히 공부하다",
+     ""
+    ],
+    [
+     "fall behind",
+     "뒤처지다",
+     ""
     ]
    ]
   },
@@ -94,6 +269,81 @@
     "Would you like to live there in the future?"
    ],
    "vocab": [
+    [
+     "cozy",
+     "아늑한",
+     ""
+    ],
+    [
+     "cramped",
+     "비좁은",
+     ""
+    ],
+    [
+     "move in / move out",
+     "이사오다, 가다",
+     ""
+    ],
+    [
+     "area",
+     "지역",
+     ""
+    ],
+    [
+     "neighborhood",
+     "동네",
+     ""
+    ],
+    [
+     "bustling",
+     "붐비는",
+     ""
+    ],
+    [
+     "lively",
+     "활기찬",
+     ""
+    ],
+    [
+     "suburban",
+     "교외의",
+     ""
+    ],
+    [
+     "well-furnished",
+     "잘 구축된",
+     ""
+    ],
+    [
+     "amenities",
+     "편의시설",
+     ""
+    ],
+    [
+     "be known for",
+     "~로 알려진",
+     ""
+    ],
+    [
+     "have easy access to",
+     "접근이 쉬운",
+     ""
+    ],
+    [
+     "live on my own",
+     "혼자 살다",
+     ""
+    ],
+    [
+     "in the heart of",
+     "~의 중심에",
+     ""
+    ],
+    [
+     "on the coast",
+     "해안 지역에",
+     ""
+    ],
     [
      "neighbourhood",
      "동네",
@@ -110,11 +360,6 @@
      "There's a park within walking distance."
     ],
     [
-     "bustling",
-     "북적거리는",
-     "The city centre is always bustling."
-    ],
-    [
      "move out",
      "이사 나가다",
      "I moved out of my parents' place last year."
@@ -123,6 +368,81 @@
      "hometown",
      "고향",
      "My hometown is famous for its seafood."
+    ],
+    [
+     "grow up",
+     "자라다",
+     ""
+    ],
+    [
+     "rural",
+     "시골의",
+     ""
+    ],
+    [
+     "urban",
+     "도시의",
+     ""
+    ],
+    [
+     "suburb",
+     "교외",
+     ""
+    ],
+    [
+     "coastal city",
+     "해안 도시",
+     ""
+    ],
+    [
+     "famous for",
+     "~로 유명한",
+     ""
+    ],
+    [
+     "population",
+     "인구",
+     ""
+    ],
+    [
+     "landmark",
+     "랜드마크, 명소",
+     ""
+    ],
+    [
+     "high-rise",
+     "고층 건물",
+     ""
+    ],
+    [
+     "traffic",
+     "교통량",
+     ""
+    ],
+    [
+     "peaceful",
+     "평화로운",
+     ""
+    ],
+    [
+     "crowded",
+     "붐비는",
+     ""
+    ],
+    [
+     "local food",
+     "지역 음식",
+     ""
+    ],
+    [
+     "develop rapidly",
+     "빠르게 발전하다",
+     ""
+    ],
+    [
+     "nostalgic",
+     "향수를 불러일으키는",
+     ""
     ]
    ]
   },
@@ -137,6 +457,81 @@
     "Would you like to move to a different home in the future?"
    ],
    "vocab": [
+    [
+     "cozy",
+     "아늑한",
+     ""
+    ],
+    [
+     "cramped",
+     "비좁은",
+     ""
+    ],
+    [
+     "move in / move out",
+     "이사오다, 가다",
+     ""
+    ],
+    [
+     "area",
+     "지역",
+     ""
+    ],
+    [
+     "neighborhood",
+     "동네",
+     ""
+    ],
+    [
+     "bustling",
+     "붐비는",
+     ""
+    ],
+    [
+     "lively",
+     "활기찬",
+     ""
+    ],
+    [
+     "suburban",
+     "교외의",
+     ""
+    ],
+    [
+     "well-furnished",
+     "잘 구축된",
+     ""
+    ],
+    [
+     "amenities",
+     "편의시설",
+     ""
+    ],
+    [
+     "be known for",
+     "~로 알려진",
+     ""
+    ],
+    [
+     "have easy access to",
+     "접근이 쉬운",
+     ""
+    ],
+    [
+     "live on my own",
+     "혼자 살다",
+     ""
+    ],
+    [
+     "in the heart of",
+     "~의 중심에",
+     ""
+    ],
+    [
+     "on the coast",
+     "해안 지역에",
+     ""
+    ],
     [
      "cosy",
      "아늑한",
@@ -161,6 +556,71 @@
      "move out",
      "이사 나가다",
      "I moved out of my parents' place last year."
+    ],
+    [
+     "apartment / flat",
+     "아파트",
+     ""
+    ],
+    [
+     "detached house",
+     "단독주택",
+     ""
+    ],
+    [
+     "studio",
+     "원룸",
+     ""
+    ],
+    [
+     "neat and tidy",
+     "깔끔한",
+     ""
+    ],
+    [
+     "balcony",
+     "발코니",
+     ""
+    ],
+    [
+     "landlord",
+     "집주인",
+     ""
+    ],
+    [
+     "rent",
+     "월세, 집세",
+     ""
+    ],
+    [
+     "housemate / flatmate",
+     "같이 사는 사람",
+     ""
+    ],
+    [
+     "decorate",
+     "꾸미다",
+     ""
+    ],
+    [
+     "furniture",
+     "가구",
+     ""
+    ],
+    [
+     "natural light",
+     "자연광",
+     ""
+    ],
+    [
+     "renovate",
+     "리모델링하다",
+     ""
+    ],
+    [
+     "feel at home",
+     "편안하게 느끼다",
+     ""
     ]
    ]
   },
@@ -223,6 +683,61 @@
      "appreciate art",
      "예술을 감상하다",
      "I've learned to appreciate art."
+    ],
+    [
+     "painting",
+     "그림",
+     ""
+    ],
+    [
+     "sculpture",
+     "조각",
+     ""
+    ],
+    [
+     "artist",
+     "예술가",
+     ""
+    ],
+    [
+     "abstract",
+     "추상적인",
+     ""
+    ],
+    [
+     "realistic",
+     "사실적인",
+     ""
+    ],
+    [
+     "talented",
+     "재능 있는",
+     ""
+    ],
+    [
+     "appreciate",
+     "감상하다, 진가를 알다",
+     ""
+    ],
+    [
+     "art supplies",
+     "미술 용품",
+     ""
+    ],
+    [
+     "draw",
+     "그리다",
+     ""
+    ],
+    [
+     "paint",
+     "칠하다, 그리다",
+     ""
+    ],
+    [
+     "portrait",
+     "초상화",
+     ""
     ]
    ]
   },
@@ -236,6 +751,71 @@
     "Do you think cycling is a good way to stay healthy?"
    ],
    "vocab": [
+    [
+     "commute",
+     "통근하다",
+     ""
+    ],
+    [
+     "transfer",
+     "환승하다",
+     ""
+    ],
+    [
+     "rush hour",
+     "출퇴근 시간대",
+     ""
+    ],
+    [
+     "traffic jam",
+     "교통 체증",
+     ""
+    ],
+    [
+     "heavy traffic",
+     "교통량이 많음",
+     ""
+    ],
+    [
+     "beat the traffic",
+     "교통체증을 피하다",
+     ""
+    ],
+    [
+     "within walking distance",
+     "도보거리에 있는",
+     ""
+    ],
+    [
+     "accessible",
+     "접근성이 용이한",
+     ""
+    ],
+    [
+     "affordable",
+     "가격이 싼",
+     ""
+    ],
+    [
+     "on foot",
+     "걸어서",
+     ""
+    ],
+    [
+     "pull over",
+     "차를 길에 세우다",
+     ""
+    ],
+    [
+     "run every 10 minutes",
+     "10 분 간격으로",
+     ""
+    ],
+    [
+     "get stuck in traffic",
+     "교통체증에 갇히다",
+     ""
+    ],
     [
      "ride a bike",
      "자전거를 타다",
@@ -265,6 +845,76 @@
      "get some exercise",
      "운동을 좀 하다",
      "Cycling helps me get some exercise."
+    ],
+    [
+     "cyclist",
+     "자전거 타는 사람",
+     ""
+    ],
+    [
+     "pedal",
+     "페달을 밟다",
+     ""
+    ],
+    [
+     "brakes",
+     "브레이크",
+     ""
+    ],
+    [
+     "flat tyre",
+     "펑크 난 타이어",
+     ""
+    ],
+    [
+     "balance",
+     "균형",
+     ""
+    ],
+    [
+     "safe",
+     "안전한",
+     ""
+    ],
+    [
+     "cycle path",
+     "자전거 길",
+     ""
+    ],
+    [
+     "eco-friendly",
+     "친환경적인",
+     ""
+    ],
+    [
+     "traffic",
+     "교통",
+     ""
+    ],
+    [
+     "uphill / downhill",
+     "오르막 / 내리막",
+     ""
+    ],
+    [
+     "take a ride",
+     "한 바퀴 타다",
+     ""
+    ],
+    [
+     "outdoor activity",
+     "야외 활동",
+     ""
+    ],
+    [
+     "fresh air",
+     "맑은 공기",
+     ""
+    ],
+    [
+     "stay fit",
+     "건강을 유지하다",
+     ""
     ]
    ]
   },
@@ -307,6 +957,76 @@
      "low-key",
      "조용히, 소박하게",
      "I prefer a low-key birthday."
+    ],
+    [
+     "birthday cake",
+     "생일 케이크",
+     ""
+    ],
+    [
+     "surprise party",
+     "깜짝 파티",
+     ""
+    ],
+    [
+     "present / gift",
+     "선물",
+     ""
+    ],
+    [
+     "wrap a gift",
+     "선물을 포장하다",
+     ""
+    ],
+    [
+     "milestone birthday",
+     "의미 있는 생일(20, 30살 등)",
+     ""
+    ],
+    [
+     "come of age",
+     "성인이 되다",
+     ""
+    ],
+    [
+     "celebrate with",
+     "~와 축하하다",
+     ""
+    ],
+    [
+     "memorable",
+     "기억에 남는",
+     ""
+    ],
+    [
+     "get together",
+     "모이다",
+     ""
+    ],
+    [
+     "make a wish",
+     "소원을 빌다",
+     ""
+    ],
+    [
+     "greeting card",
+     "축하 카드",
+     ""
+    ],
+    [
+     "treat someone to dinner",
+     "저녁을 대접하다",
+     ""
+    ],
+    [
+     "special occasion",
+     "특별한 날",
+     ""
+    ],
+    [
+     "turn 30",
+     "서른 살이 되다",
+     ""
     ]
    ]
   },
@@ -369,6 +1089,56 @@
      "keep a diary",
      "일기를 쓰다",
      "I kept a diary in middle school."
+    ],
+    [
+     "innocent",
+     "순진한",
+     ""
+    ],
+    [
+     "playground",
+     "놀이터",
+     ""
+    ],
+    [
+     "hide-and-seek",
+     "숨바꼭질",
+     ""
+    ],
+    [
+     "naughty",
+     "장난꾸러기의",
+     ""
+    ],
+    [
+     "grow up",
+     "자라다",
+     ""
+    ],
+    [
+     "childhood friend",
+     "어릴 적 친구",
+     ""
+    ],
+    [
+     "fond memories",
+     "좋은 추억",
+     ""
+    ],
+    [
+     "upbringing",
+     "양육, 성장 과정",
+     ""
+    ],
+    [
+     "strict parents",
+     "엄격한 부모님",
+     ""
+    ],
+    [
+     "spoiled",
+     "버릇없는",
+     ""
     ]
    ]
   },
@@ -384,8 +1154,78 @@
    "vocab": [
     [
      "casual",
-     "편한, 캐주얼한",
-     "I usually wear casual clothes."
+     "캐주얼한",
+     ""
+    ],
+    [
+     "formal",
+     "격식 있는",
+     ""
+    ],
+    [
+     "colorful",
+     "색이 다채로운",
+     ""
+    ],
+    [
+     "outdated",
+     "구식의",
+     ""
+    ],
+    [
+     "breathable",
+     "통기성이 좋은",
+     ""
+    ],
+    [
+     "durable",
+     "내구성이 좋은",
+     ""
+    ],
+    [
+     "splash out on",
+     "탕진하다",
+     ""
+    ],
+    [
+     "try on",
+     "입어보다",
+     ""
+    ],
+    [
+     "keep up with fashion trends",
+     "트랜드를 따라가다",
+     ""
+    ],
+    [
+     "go well with",
+     "~와 잘 매치되다",
+     ""
+    ],
+    [
+     "suit/fit someone",
+     "잘 어울리다",
+     ""
+    ],
+    [
+     "high quality",
+     "좋은 품질",
+     ""
+    ],
+    [
+     "poor quality",
+     "나쁜 품질",
+     ""
+    ],
+    [
+     "long-lasting",
+     "오래가는",
+     ""
+    ],
+    [
+     "reasonably priced",
+     "합리적으로 가격이 매겨진",
+     ""
     ],
     [
      "dress up",
@@ -428,9 +1268,44 @@
      "We wear hanbok on Chuseok."
     ],
     [
-     "try on",
-     "입어 보다",
-     "I always try clothes on before I buy them."
+     "outfit",
+     "옷차림",
+     ""
+    ],
+    [
+     "dress code",
+     "복장 규정",
+     ""
+    ],
+    [
+     "fashion-conscious",
+     "패션에 신경 쓰는",
+     ""
+    ],
+    [
+     "comfortable",
+     "편한",
+     ""
+    ],
+    [
+     "second-hand",
+     "중고의",
+     ""
+    ],
+    [
+     "brand-name",
+     "유명 브랜드의",
+     ""
+    ],
+    [
+     "wardrobe",
+     "옷장, 가진 옷 전체",
+     ""
+    ],
+    [
+     "in fashion",
+     "유행하는",
+     ""
     ]
    ]
   },
@@ -450,24 +1325,84 @@
    ],
    "vocab": [
     [
+     "accessible",
+     "접근성이 좋은",
+     ""
+    ],
+    [
+     "time-saving",
+     "시간을 절약하는",
+     ""
+    ],
+    [
+     "portable",
+     "휴대가능한",
+     ""
+    ],
+    [
+     "cutting-edge",
+     "최첨단 기술",
+     ""
+    ],
+    [
+     "handy",
+     "편리한",
+     ""
+    ],
+    [
      "user-friendly",
      "사용하기 쉬운",
-     "The app is very user-friendly."
+     ""
+    ],
+    [
+     "distracting",
+     "집중을 방해하는",
+     ""
+    ],
+    [
+     "addictive",
+     "중독성이 있는",
+     ""
+    ],
+    [
+     "browse the internet",
+     "인터넷을 브라우징하다",
+     ""
+    ],
+    [
+     "scroll through the internet",
+     "인터넷을 스크롤하다",
+     ""
+    ],
+    [
+     "keep in touch with",
+     "~와 연락을 하다",
+     ""
     ],
     [
      "screen time",
-     "화면 사용 시간",
-     "I try to limit my screen time."
+     "스크린 타임",
+     ""
+    ],
+    [
+     "versatile",
+     "다채로운",
+     ""
+    ],
+    [
+     "at my fingertips",
+     "간편하게",
+     ""
+    ],
+    [
+     "double-edged sword",
+     "양날의 검",
+     ""
     ],
     [
      "be glued to my phone",
      "폰만 붙잡고 있다",
      "I'm glued to my phone too much."
-    ],
-    [
-     "at my fingertips",
-     "손쉽게 이용할 수 있는",
-     "Information is at my fingertips."
     ],
     [
      "download",
@@ -485,11 +1420,6 @@
      "I mostly use Instagram for social media."
     ],
     [
-     "cutting-edge",
-     "최첨단의",
-     "It uses cutting-edge technology."
-    ],
-    [
      "go online",
      "인터넷에 접속하다",
      "I go online to check the news."
@@ -498,6 +1428,56 @@
      "run out of battery",
      "배터리가 다 되다",
      "My phone ran out of battery."
+    ],
+    [
+     "laptop",
+     "노트북",
+     ""
+    ],
+    [
+     "tablet",
+     "태블릿",
+     ""
+    ],
+    [
+     "device",
+     "기기",
+     ""
+    ],
+    [
+     "software",
+     "소프트웨어",
+     ""
+    ],
+    [
+     "update",
+     "업데이트하다",
+     ""
+    ],
+    [
+     "online",
+     "온라인으로",
+     ""
+    ],
+    [
+     "search for",
+     "검색하다",
+     ""
+    ],
+    [
+     "log in",
+     "로그인하다",
+     ""
+    ],
+    [
+     "type",
+     "타이핑하다",
+     ""
+    ],
+    [
+     "digital",
+     "디지털의",
+     ""
     ]
    ]
   },
@@ -512,6 +1492,71 @@
    ],
    "vocab": [
     [
+     "morning person",
+     "아침형 인간",
+     ""
+    ],
+    [
+     "night owl",
+     "밤형 인간",
+     ""
+    ],
+    [
+     "stick to",
+     "고수하다",
+     ""
+    ],
+    [
+     "sleep in",
+     "늦잠자다",
+     ""
+    ],
+    [
+     "wind down",
+     "긴장을 풀다",
+     ""
+    ],
+    [
+     "run errands",
+     "볼일을 보다",
+     ""
+    ],
+    [
+     "a hectic schedule",
+     "바쁜 일정",
+     ""
+    ],
+    [
+     "spontaneous",
+     "즉흥적인",
+     ""
+    ],
+    [
+     "repetitive",
+     "반복되는",
+     ""
+    ],
+    [
+     "procrastinate",
+     "미루는",
+     ""
+    ],
+    [
+     "the daily grind",
+     "반복되는 일상",
+     ""
+    ],
+    [
+     "geek",
+     "광팬",
+     ""
+    ],
+    [
+     "call it a day",
+     "하루를 끝내다",
+     ""
+    ],
+    [
      "stick to a routine",
      "루틴을 지키다",
      "I try to stick to a routine."
@@ -525,11 +1570,6 @@
      "a night owl",
      "저녁형 인간",
      "My brother is a night owl."
-    ],
-    [
-     "sleep in",
-     "늦잠 자다",
-     "I sleep in on Sundays."
     ],
     [
      "take a nap",
@@ -560,6 +1600,61 @@
      "used to / be used to",
      "~하곤 했다 / ~에 익숙하다",
      "I'm used to getting up early."
+    ],
+    [
+     "wake up",
+     "일어나다",
+     ""
+    ],
+    [
+     "get up early",
+     "일찍 일어나다",
+     ""
+    ],
+    [
+     "alarm",
+     "알람",
+     ""
+    ],
+    [
+     "commute",
+     "통근하다",
+     ""
+    ],
+    [
+     "have breakfast",
+     "아침을 먹다",
+     ""
+    ],
+    [
+     "work out",
+     "운동하다",
+     ""
+    ],
+    [
+     "busy",
+     "바쁜",
+     ""
+    ],
+    [
+     "free time",
+     "자유 시간",
+     ""
+    ],
+    [
+     "go to bed",
+     "잠자리에 들다",
+     ""
+    ],
+    [
+     "predictable",
+     "예측 가능한",
+     ""
+    ],
+    [
+     "productive",
+     "생산적인",
+     ""
     ]
    ]
   },
@@ -602,6 +1697,76 @@
      "vocabulary",
      "어휘",
      "I want to expand my vocabulary."
+    ],
+    [
+     "translate",
+     "번역하다",
+     ""
+    ],
+    [
+     "translator app",
+     "번역 앱",
+     ""
+    ],
+    [
+     "paper dictionary",
+     "종이 사전",
+     ""
+    ],
+    [
+     "synonym",
+     "동의어",
+     ""
+    ],
+    [
+     "antonym",
+     "반의어",
+     ""
+    ],
+    [
+     "meaning",
+     "의미",
+     ""
+    ],
+    [
+     "spelling",
+     "철자",
+     ""
+    ],
+    [
+     "look something up",
+     "~을 찾아보다",
+     ""
+    ],
+    [
+     "reliable",
+     "믿을 만한",
+     ""
+    ],
+    [
+     "convenient",
+     "편리한",
+     ""
+    ],
+    [
+     "time-consuming",
+     "시간이 걸리는",
+     ""
+    ],
+    [
+     "dictionary app",
+     "사전 앱",
+     ""
+    ],
+    [
+     "phrase",
+     "구, 표현",
+     ""
+    ],
+    [
+     "word list",
+     "단어장",
+     ""
     ]
    ]
   },
@@ -644,6 +1809,76 @@
      "make sense",
      "말이 되다",
      "Dreams don't always make sense."
+    ],
+    [
+     "daydream",
+     "공상하다",
+     ""
+    ],
+    [
+     "dream come true",
+     "꿈이 이루어지는 것",
+     ""
+    ],
+    [
+     "sweet dreams",
+     "좋은 꿈 꿔",
+     ""
+    ],
+    [
+     "dream about",
+     "~에 대한 꿈을 꾸다",
+     ""
+    ],
+    [
+     "scary",
+     "무서운",
+     ""
+    ],
+    [
+     "strange",
+     "이상한",
+     ""
+    ],
+    [
+     "remember",
+     "기억하다",
+     ""
+    ],
+    [
+     "forget",
+     "잊다",
+     ""
+    ],
+    [
+     "interpret",
+     "해석하다",
+     ""
+    ],
+    [
+     "meaning",
+     "의미",
+     ""
+    ],
+    [
+     "deep sleep",
+     "깊은 잠",
+     ""
+    ],
+    [
+     "light sleeper",
+     "잠귀가 밝은 사람",
+     ""
+    ],
+    [
+     "stress",
+     "스트레스",
+     ""
+    ],
+    [
+     "fall asleep",
+     "잠들다",
+     ""
     ]
    ]
   },
@@ -686,6 +1921,76 @@
      "sugary",
      "설탕이 많은",
      "Sugary drinks are bad for your teeth."
+    ],
+    [
+     "beverage",
+     "음료",
+     ""
+    ],
+    [
+     "coffee lover",
+     "커피 애호가",
+     ""
+    ],
+    [
+     "decaf",
+     "디카페인",
+     ""
+    ],
+    [
+     "green tea",
+     "녹차",
+     ""
+    ],
+    [
+     "smoothie",
+     "스무디",
+     ""
+    ],
+    [
+     "soft drink",
+     "청량음료",
+     ""
+    ],
+    [
+     "bubble tea",
+     "버블티",
+     ""
+    ],
+    [
+     "alcohol",
+     "술",
+     ""
+    ],
+    [
+     "cut down on",
+     "~을 줄이다",
+     ""
+    ],
+    [
+     "thirsty",
+     "목마른",
+     ""
+    ],
+    [
+     "refreshing",
+     "상쾌한",
+     ""
+    ],
+    [
+     "energy drink",
+     "에너지 음료",
+     ""
+    ],
+    [
+     "cafe culture",
+     "카페 문화",
+     ""
+    ],
+    [
+     "sip",
+     "홀짝이다",
+     ""
     ]
    ]
   },
@@ -699,6 +2004,71 @@
     "Is the evening a good time to study?"
    ],
    "vocab": [
+    [
+     "morning person",
+     "아침형 인간",
+     ""
+    ],
+    [
+     "night owl",
+     "밤형 인간",
+     ""
+    ],
+    [
+     "stick to",
+     "고수하다",
+     ""
+    ],
+    [
+     "sleep in",
+     "늦잠자다",
+     ""
+    ],
+    [
+     "wind down",
+     "긴장을 풀다",
+     ""
+    ],
+    [
+     "run errands",
+     "볼일을 보다",
+     ""
+    ],
+    [
+     "a hectic schedule",
+     "바쁜 일정",
+     ""
+    ],
+    [
+     "spontaneous",
+     "즉흥적인",
+     ""
+    ],
+    [
+     "repetitive",
+     "반복되는",
+     ""
+    ],
+    [
+     "procrastinate",
+     "미루는",
+     ""
+    ],
+    [
+     "the daily grind",
+     "반복되는 일상",
+     ""
+    ],
+    [
+     "geek",
+     "광팬",
+     ""
+    ],
+    [
+     "call it a day",
+     "하루를 끝내다",
+     ""
+    ],
     [
      "unwind",
      "긴장을 풀다",
@@ -720,14 +2090,74 @@
      "After work, I go to the gym."
     ],
     [
-     "wind down",
-     "하루를 마무리하며 쉬다",
-     "I read a book to wind down."
-    ],
-    [
      "a night owl",
      "저녁형 인간",
      "I'm a night owl, so I'm busy in the evening."
+    ],
+    [
+     "relax",
+     "쉬다",
+     ""
+    ],
+    [
+     "chill out",
+     "편히 쉬다",
+     ""
+    ],
+    [
+     "watch Netflix",
+     "넷플릭스를 보다",
+     ""
+    ],
+    [
+     "cook dinner",
+     "저녁을 하다",
+     ""
+    ],
+    [
+     "take a walk",
+     "산책하다",
+     ""
+    ],
+    [
+     "evening class",
+     "저녁 수업",
+     ""
+    ],
+    [
+     "catch up on",
+     "밀린 것을 하다",
+     ""
+    ],
+    [
+     "tired",
+     "피곤한",
+     ""
+    ],
+    [
+     "quiet",
+     "조용한",
+     ""
+    ],
+    [
+     "social life",
+     "사회생활, 친구 관계",
+     ""
+    ],
+    [
+     "night out",
+     "밤 외출",
+     ""
+    ],
+    [
+     "early night",
+     "일찍 자는 날",
+     ""
+    ],
+    [
+     "routine",
+     "일과",
+     ""
     ]
    ]
   },
@@ -742,14 +2172,134 @@
    ],
    "vocab": [
     [
-     "get on well with",
-     "~와 잘 지내다",
-     "I get on well with my sister."
+     "supportive",
+     "힘이 되어주는",
+     ""
+    ],
+    [
+     "reliable",
+     "믿음직한",
+     ""
+    ],
+    [
+     "generous",
+     "관대한",
+     ""
+    ],
+    [
+     "down to earth",
+     "겸손한",
+     ""
+    ],
+    [
+     "outgoing",
+     "사교적인",
+     ""
+    ],
+    [
+     "sociable",
+     "사교적인",
+     ""
+    ],
+    [
+     "considerate",
+     "배려심이 있는",
+     ""
     ],
     [
      "close-knit",
-     "끈끈한",
-     "We're a close-knit family."
+     "유대가 강한",
+     ""
+    ],
+    [
+     "get along with",
+     "~와 잘 어울리다",
+     ""
+    ],
+    [
+     "catch up with",
+     "~와 밀린 이야기를 하다",
+     ""
+    ],
+    [
+     "hang out with",
+     "~와 어울려 놀다",
+     ""
+    ],
+    [
+     "take after someone",
+     "성격/외모 등을 닮다",
+     ""
+    ],
+    [
+     "look up to",
+     "존경하다",
+     ""
+    ],
+    [
+     "mature",
+     "성숙한",
+     ""
+    ],
+    [
+     "immature",
+     "미성숙한",
+     ""
+    ],
+    [
+     "friendly",
+     "친절한",
+     ""
+    ],
+    [
+     "warm-hearted",
+     "마음씨가 따뜻한",
+     ""
+    ],
+    [
+     "introverted",
+     "내향적인",
+     ""
+    ],
+    [
+     "laid-back",
+     "느긋한, 여유로운",
+     ""
+    ],
+    [
+     "short-tempered",
+     "성질이 급한",
+     ""
+    ],
+    [
+     "moody",
+     "기분파인",
+     ""
+    ],
+    [
+     "bossy",
+     "권위적으로 구는",
+     ""
+    ],
+    [
+     "self-centered",
+     "자기 중심적인",
+     ""
+    ],
+    [
+     "stubborn",
+     "고집이 쌘",
+     ""
+    ],
+    [
+     "punctual",
+     "시간엄수를 잘하는",
+     ""
+    ],
+    [
+     "get on well with",
+     "~와 잘 지내다",
+     "I get on well with my sister."
     ],
     [
      "keep in touch",
@@ -760,11 +2310,6 @@
      "hang out",
      "놀다, 어울리다",
      "We hang out at weekends."
-    ],
-    [
-     "look up to",
-     "존경하다",
-     "I really look up to my mum."
     ],
     [
      "spend quality time",
@@ -790,6 +2335,46 @@
      "drift apart",
      "멀어지다",
      "We drifted apart after school."
+    ],
+    [
+     "siblings",
+     "형제자매",
+     ""
+    ],
+    [
+     "relatives",
+     "친척",
+     ""
+    ],
+    [
+     "extended family",
+     "대가족",
+     ""
+    ],
+    [
+     "only child",
+     "외동",
+     ""
+    ],
+    [
+     "best friend",
+     "가장 친한 친구",
+     ""
+    ],
+    [
+     "childhood friend",
+     "어릴 적 친구",
+     ""
+    ],
+    [
+     "make friends",
+     "친구를 사귀다",
+     ""
+    ],
+    [
+     "lose touch",
+     "연락이 끊기다",
+     ""
     ]
    ]
   },
@@ -817,6 +2402,91 @@
      "recycle",
      "재활용하다",
      "We recycle plastic and paper."
+    ],
+    [
+     "bouquet",
+     "꽃다발",
+     ""
+    ],
+    [
+     "bloom / blossom",
+     "꽃이 피다",
+     ""
+    ],
+    [
+     "cherry blossom",
+     "벚꽃",
+     ""
+    ],
+    [
+     "fragrant",
+     "향기로운",
+     ""
+    ],
+    [
+     "florist",
+     "꽃집 주인, 꽃집",
+     ""
+    ],
+    [
+     "houseplant",
+     "실내 화분",
+     ""
+    ],
+    [
+     "water the plants",
+     "식물에 물을 주다",
+     ""
+    ],
+    [
+     "wither",
+     "시들다",
+     ""
+    ],
+    [
+     "colourful",
+     "화려한",
+     ""
+    ],
+    [
+     "symbolize",
+     "상징하다",
+     ""
+    ],
+    [
+     "anniversary",
+     "기념일",
+     ""
+    ],
+    [
+     "spring",
+     "봄",
+     ""
+    ],
+    [
+     "garden",
+     "정원",
+     ""
+    ],
+    [
+     "gardening",
+     "정원 가꾸기",
+     ""
+    ],
+    [
+     "sunflower",
+     "해바라기",
+     ""
+    ],
+    [
+     "rose",
+     "장미",
+     ""
+    ],
+    [
+     "wildflowers",
+     "들꽃",
+     ""
     ]
    ]
   },
@@ -830,6 +2500,66 @@
     "Have your eating habits changed since you were a child?"
    ],
    "vocab": [
+    [
+     "flavorful",
+     "맛이 풍부한",
+     ""
+    ],
+    [
+     "bland",
+     "싱거운, 밍밍한",
+     ""
+    ],
+    [
+     "sour",
+     "신",
+     ""
+    ],
+    [
+     "bitter",
+     "쓴",
+     ""
+    ],
+    [
+     "savoury",
+     "감칠맛 나는",
+     ""
+    ],
+    [
+     "rich",
+     "풍부한",
+     ""
+    ],
+    [
+     "mild",
+     "순한",
+     ""
+    ],
+    [
+     "greasy",
+     "기름진",
+     ""
+    ],
+    [
+     "oily",
+     "기름진",
+     ""
+    ],
+    [
+     "soggy",
+     "눅눅한",
+     ""
+    ],
+    [
+     "filling",
+     "든든한",
+     ""
+    ],
+    [
+     "mouth-watering",
+     "군침 도는",
+     ""
+    ],
     [
      "home-cooked meal",
      "집밥",
@@ -851,16 +2581,6 @@
      "I have a sweet tooth."
     ],
     [
-     "savoury",
-     "짭짤한",
-     "I prefer savoury snacks to sweet ones."
-    ],
-    [
-     "mouth-watering",
-     "군침 도는",
-     "The street food looked mouth-watering."
-    ],
-    [
      "a balanced diet",
      "균형 잡힌 식단",
      "I try to keep a balanced diet."
@@ -879,6 +2599,41 @@
      "comfort food",
      "위로가 되는 음식",
      "Ramyeon is my comfort food."
+    ],
+    [
+     "spicy",
+     "매운",
+     ""
+    ],
+    [
+     "sweet",
+     "단",
+     ""
+    ],
+    [
+     "salty",
+     "짠",
+     ""
+    ],
+    [
+     "healthy",
+     "건강한",
+     ""
+    ],
+    [
+     "junk food",
+     "정크 푸드",
+     ""
+    ],
+    [
+     "delivery food",
+     "배달 음식",
+     ""
+    ],
+    [
+     "cuisine",
+     "요리, 음식",
+     ""
     ]
    ]
   },
@@ -921,6 +2676,76 @@
      "night out",
      "저녁 외출",
      "We had a great night out."
+    ],
+    [
+     "go clubbing",
+     "클럽에 가다",
+     ""
+    ],
+    [
+     "karaoke / noraebang",
+     "노래방",
+     ""
+    ],
+    [
+     "café hopping",
+     "카페 투어",
+     ""
+    ],
+    [
+     "nightlife",
+     "밤 문화",
+     ""
+    ],
+    [
+     "reserve a table",
+     "자리를 예약하다",
+     ""
+    ],
+    [
+     "weekend plans",
+     "주말 계획",
+     ""
+    ],
+    [
+     "crowded",
+     "붐비는",
+     ""
+    ],
+    [
+     "socialize",
+     "어울리다",
+     ""
+    ],
+    [
+     "on a budget",
+     "적은 예산으로",
+     ""
+    ],
+    [
+     "spontaneous",
+     "즉흥적인",
+     ""
+    ],
+    [
+     "stay home",
+     "집에 있다",
+     ""
+    ],
+    [
+     "meet up with",
+     "~와 만나다",
+     ""
+    ],
+    [
+     "expensive",
+     "비싼",
+     ""
+    ],
+    [
+     "go for a drink",
+     "한잔하러 가다",
+     ""
     ]
    ]
   },
@@ -958,6 +2783,81 @@
      "down",
      "우울한",
      "I feel a bit down on gloomy days."
+    ],
+    [
+     "content",
+     "만족한",
+     ""
+    ],
+    [
+     "cheerful",
+     "쾌활한",
+     ""
+    ],
+    [
+     "on cloud nine",
+     "기분이 날아갈 듯한",
+     ""
+    ],
+    [
+     "grateful",
+     "감사하는",
+     ""
+    ],
+    [
+     "positive",
+     "긍정적인",
+     ""
+    ],
+    [
+     "satisfied",
+     "만족하는",
+     ""
+    ],
+    [
+     "joy",
+     "기쁨",
+     ""
+    ],
+    [
+     "little things",
+     "작은 것들",
+     ""
+    ],
+    [
+     "peace of mind",
+     "마음의 평화",
+     ""
+    ],
+    [
+     "fulfilling",
+     "성취감을 주는",
+     ""
+    ],
+    [
+     "make someone smile",
+     "웃게 하다",
+     ""
+    ],
+    [
+     "in a good mood",
+     "기분이 좋은",
+     ""
+    ],
+    [
+     "lift my mood",
+     "기분을 좋게 하다",
+     ""
+    ],
+    [
+     "well-being",
+     "행복, 안녕",
+     ""
+    ],
+    [
+     "stress-free",
+     "스트레스 없는",
+     ""
     ]
    ]
   },
@@ -973,8 +2873,68 @@
    "vocab": [
     [
      "take up",
-     "(취미를) 시작하다",
-     "I took up yoga last year."
+     "취미로 삼다",
+     ""
+    ],
+    [
+     "brush up on",
+     "다시 갈고 닦다",
+     ""
+    ],
+    [
+     "be into",
+     "좋아하다",
+     ""
+    ],
+    [
+     "crazy about",
+     "좋아하다",
+     ""
+    ],
+    [
+     "be fond of",
+     "좋아하다",
+     ""
+    ],
+    [
+     "enjoyable",
+     "즐거운",
+     ""
+    ],
+    [
+     "fulfilling",
+     "성취감을 주는",
+     ""
+    ],
+    [
+     "time-consuming",
+     "시간이 소모되는",
+     ""
+    ],
+    [
+     "rewarding",
+     "보람찬",
+     ""
+    ],
+    [
+     "quality time",
+     "좋은 시간",
+     ""
+    ],
+    [
+     "costly",
+     "비싼",
+     ""
+    ],
+    [
+     "fast-paced",
+     "빠르게 돌아가는",
+     ""
+    ],
+    [
+     "enriching",
+     "유익한",
+     ""
     ],
     [
      "in my element",
@@ -1020,6 +2980,11 @@
      "get the hang of",
      "요령을 익히다",
      "I'm getting the hang of it."
+    ],
+    [
+     "hobby",
+     "취미",
+     ""
     ]
    ]
   },
@@ -1034,19 +2999,84 @@
    ],
    "vocab": [
     [
+     "accessible",
+     "접근성이 좋은",
+     ""
+    ],
+    [
+     "time-saving",
+     "시간을 절약하는",
+     ""
+    ],
+    [
+     "portable",
+     "휴대가능한",
+     ""
+    ],
+    [
+     "cutting-edge",
+     "최첨단 기술",
+     ""
+    ],
+    [
+     "handy",
+     "편리한",
+     ""
+    ],
+    [
+     "user-friendly",
+     "사용하기 쉬운",
+     ""
+    ],
+    [
+     "distracting",
+     "집중을 방해하는",
+     ""
+    ],
+    [
+     "addictive",
+     "중독성이 있는",
+     ""
+    ],
+    [
+     "browse the internet",
+     "인터넷을 브라우징하다",
+     ""
+    ],
+    [
+     "scroll through the internet",
+     "인터넷을 스크롤하다",
+     ""
+    ],
+    [
+     "keep in touch with",
+     "~와 연락을 하다",
+     ""
+    ],
+    [
      "screen time",
-     "화면 사용 시간",
-     "I try to limit my screen time."
+     "스크린 타임",
+     ""
+    ],
+    [
+     "versatile",
+     "다채로운",
+     ""
+    ],
+    [
+     "at my fingertips",
+     "간편하게",
+     ""
+    ],
+    [
+     "double-edged sword",
+     "양날의 검",
+     ""
     ],
     [
      "be glued to my phone",
      "폰만 붙잡고 있다",
      "I'm glued to my phone too much."
-    ],
-    [
-     "at my fingertips",
-     "손쉽게 이용할 수 있는",
-     "Information is at my fingertips."
     ],
     [
      "social media",
@@ -1057,6 +3087,51 @@
      "go online",
      "인터넷에 접속하다",
      "I go online to check the news."
+    ],
+    [
+     "Wi-Fi",
+     "와이파이",
+     ""
+    ],
+    [
+     "streaming",
+     "스트리밍",
+     ""
+    ],
+    [
+     "online shopping",
+     "온라인 쇼핑",
+     ""
+    ],
+    [
+     "search engine",
+     "검색 엔진",
+     ""
+    ],
+    [
+     "post",
+     "게시물을 올리다",
+     ""
+    ],
+    [
+     "go viral",
+     "입소문이 나다",
+     ""
+    ],
+    [
+     "fake news",
+     "가짜 뉴스",
+     ""
+    ],
+    [
+     "privacy",
+     "사생활",
+     ""
+    ],
+    [
+     "connected",
+     "연결된",
+     ""
     ]
    ]
   },
@@ -1099,6 +3174,76 @@
      "bilingual",
      "2개 국어를 하는",
      "My cousin is bilingual."
+    ],
+    [
+     "mother tongue",
+     "모국어",
+     ""
+    ],
+    [
+     "foreign language",
+     "외국어",
+     ""
+    ],
+    [
+     "grammar",
+     "문법",
+     ""
+    ],
+    [
+     "vocabulary",
+     "어휘",
+     ""
+    ],
+    [
+     "practise speaking",
+     "말하기 연습을 하다",
+     ""
+    ],
+    [
+     "language exchange",
+     "언어 교환",
+     ""
+    ],
+    [
+     "make mistakes",
+     "실수하다",
+     ""
+    ],
+    [
+     "confident",
+     "자신 있는",
+     ""
+    ],
+    [
+     "improve",
+     "향상시키다",
+     ""
+    ],
+    [
+     "communicate",
+     "의사소통하다",
+     ""
+    ],
+    [
+     "study abroad",
+     "유학하다",
+     ""
+    ],
+    [
+     "second language",
+     "제2외국어",
+     ""
+    ],
+    [
+     "by heart",
+     "외워서",
+     ""
+    ],
+    [
+     "native speaker",
+     "원어민",
+     ""
     ]
    ]
   },
@@ -1112,6 +3257,71 @@
     "How do people in your country usually spend their weekends?"
    ],
    "vocab": [
+    [
+     "take up",
+     "취미로 삼다",
+     ""
+    ],
+    [
+     "brush up on",
+     "다시 갈고 닦다",
+     ""
+    ],
+    [
+     "be into",
+     "좋아하다",
+     ""
+    ],
+    [
+     "crazy about",
+     "좋아하다",
+     ""
+    ],
+    [
+     "be fond of",
+     "좋아하다",
+     ""
+    ],
+    [
+     "enjoyable",
+     "즐거운",
+     ""
+    ],
+    [
+     "fulfilling",
+     "성취감을 주는",
+     ""
+    ],
+    [
+     "time-consuming",
+     "시간이 소모되는",
+     ""
+    ],
+    [
+     "rewarding",
+     "보람찬",
+     ""
+    ],
+    [
+     "quality time",
+     "좋은 시간",
+     ""
+    ],
+    [
+     "costly",
+     "비싼",
+     ""
+    ],
+    [
+     "fast-paced",
+     "빠르게 돌아가는",
+     ""
+    ],
+    [
+     "enriching",
+     "유익한",
+     ""
+    ],
     [
      "unwind",
      "긴장을 풀다",
@@ -1136,6 +3346,66 @@
      "spare time",
      "여가 시간",
      "I don't have much spare time."
+    ],
+    [
+     "free time",
+     "자유 시간",
+     ""
+    ],
+    [
+     "relaxing",
+     "편안한",
+     ""
+    ],
+    [
+     "outdoor",
+     "야외의",
+     ""
+    ],
+    [
+     "indoor",
+     "실내의",
+     ""
+    ],
+    [
+     "weekend",
+     "주말",
+     ""
+    ],
+    [
+     "recharge",
+     "재충전하다",
+     ""
+    ],
+    [
+     "binge-watch",
+     "몰아서 보다",
+     ""
+    ],
+    [
+     "go hiking",
+     "등산하다",
+     ""
+    ],
+    [
+     "hang out",
+     "놀다",
+     ""
+    ],
+    [
+     "lazy day",
+     "게으른 날",
+     ""
+    ],
+    [
+     "staycation",
+     "집 근처에서 보내는 휴가",
+     ""
+    ],
+    [
+     "leisurely",
+     "느긋한",
+     ""
     ]
    ]
   },
@@ -1198,6 +3468,56 @@
      "taste in music",
      "음악 취향",
      "We have a similar taste in music."
+    ],
+    [
+     "genre",
+     "장르",
+     ""
+    ],
+    [
+     "melody",
+     "멜로디",
+     ""
+    ],
+    [
+     "beat",
+     "비트",
+     ""
+    ],
+    [
+     "band",
+     "밴드",
+     ""
+    ],
+    [
+     "concert",
+     "콘서트",
+     ""
+    ],
+    [
+     "headphones",
+     "헤드폰",
+     ""
+    ],
+    [
+     "playlist",
+     "플레이리스트",
+     ""
+    ],
+    [
+     "K-pop",
+     "케이팝",
+     ""
+    ],
+    [
+     "classical music",
+     "클래식 음악",
+     ""
+    ],
+    [
+     "relaxing",
+     "편안한",
+     ""
     ]
    ]
   },
@@ -1212,14 +3532,84 @@
    ],
    "vocab": [
     [
-     "neighbourhood",
+     "cozy",
+     "아늑한",
+     ""
+    ],
+    [
+     "cramped",
+     "비좁은",
+     ""
+    ],
+    [
+     "move in / move out",
+     "이사오다, 가다",
+     ""
+    ],
+    [
+     "area",
+     "지역",
+     ""
+    ],
+    [
+     "neighborhood",
      "동네",
-     "It's a quiet residential neighbourhood."
+     ""
     ],
     [
      "bustling",
-     "북적거리는",
-     "The city centre is always bustling."
+     "붐비는",
+     ""
+    ],
+    [
+     "lively",
+     "활기찬",
+     ""
+    ],
+    [
+     "suburban",
+     "교외의",
+     ""
+    ],
+    [
+     "well-furnished",
+     "잘 구축된",
+     ""
+    ],
+    [
+     "amenities",
+     "편의시설",
+     ""
+    ],
+    [
+     "be known for",
+     "~로 알려진",
+     ""
+    ],
+    [
+     "have easy access to",
+     "접근이 쉬운",
+     ""
+    ],
+    [
+     "live on my own",
+     "혼자 살다",
+     ""
+    ],
+    [
+     "in the heart of",
+     "~의 중심에",
+     ""
+    ],
+    [
+     "on the coast",
+     "해안 지역에",
+     ""
+    ],
+    [
+     "neighbourhood",
+     "동네",
+     "It's a quiet residential neighbourhood."
     ],
     [
      "get on well with",
@@ -1230,6 +3620,76 @@
      "hang out",
      "놀다, 어울리다",
      "We hang out at weekends."
+    ],
+    [
+     "neighbour",
+     "이웃",
+     ""
+    ],
+    [
+     "next door",
+     "옆집",
+     ""
+    ],
+    [
+     "friendly",
+     "친절한",
+     ""
+    ],
+    [
+     "noisy",
+     "시끄러운",
+     ""
+    ],
+    [
+     "get along with",
+     "~와 잘 지내다",
+     ""
+    ],
+    [
+     "community",
+     "공동체",
+     ""
+    ],
+    [
+     "say hello",
+     "인사하다",
+     ""
+    ],
+    [
+     "help each other",
+     "서로 돕다",
+     ""
+    ],
+    [
+     "keep to themselves",
+     "남과 어울리지 않다",
+     ""
+    ],
+    [
+     "apartment complex",
+     "아파트 단지",
+     ""
+    ],
+    [
+     "privacy",
+     "사생활",
+     ""
+    ],
+    [
+     "considerate",
+     "배려심 있는",
+     ""
+    ],
+    [
+     "annoying",
+     "짜증나는",
+     ""
+    ],
+    [
+     "borrow",
+     "빌리다",
+     ""
     ]
    ]
   },
@@ -1272,6 +3732,76 @@
      "breaking news",
      "속보",
      "I saw the breaking news this morning."
+    ],
+    [
+     "journalist",
+     "기자",
+     ""
+    ],
+    [
+     "article",
+     "기사",
+     ""
+    ],
+    [
+     "online news",
+     "온라인 뉴스",
+     ""
+    ],
+    [
+     "news app",
+     "뉴스 앱",
+     ""
+    ],
+    [
+     "print newspaper",
+     "종이 신문",
+     ""
+    ],
+    [
+     "local news",
+     "지역 뉴스",
+     ""
+    ],
+    [
+     "international news",
+     "국제 뉴스",
+     ""
+    ],
+    [
+     "politics",
+     "정치",
+     ""
+    ],
+    [
+     "entertainment news",
+     "연예 뉴스",
+     ""
+    ],
+    [
+     "reliable",
+     "믿을 만한",
+     ""
+    ],
+    [
+     "biased",
+     "편향된",
+     ""
+    ],
+    [
+     "read the news",
+     "뉴스를 보다",
+     ""
+    ],
+    [
+     "stay informed",
+     "소식을 알고 있다",
+     ""
+    ],
+    [
+     "front page",
+     "1면",
+     ""
     ]
    ]
   },
@@ -1314,6 +3844,76 @@
      "get used to",
      "~에 익숙해지다",
      "I got used to the noise."
+    ],
+    [
+     "quiet",
+     "조용한",
+     ""
+    ],
+    [
+     "loud",
+     "시끄러운",
+     ""
+    ],
+    [
+     "traffic noise",
+     "차 소리",
+     ""
+    ],
+    [
+     "neighbours",
+     "이웃",
+     ""
+    ],
+    [
+     "soundproof",
+     "방음이 되는",
+     ""
+    ],
+    [
+     "earplugs",
+     "귀마개",
+     ""
+    ],
+    [
+     "distracting",
+     "집중을 방해하는",
+     ""
+    ],
+    [
+     "background noise",
+     "주변 소음",
+     ""
+    ],
+    [
+     "concentrate",
+     "집중하다",
+     ""
+    ],
+    [
+     "can't stand",
+     "참을 수 없다",
+     ""
+    ],
+    [
+     "peaceful",
+     "평화로운",
+     ""
+    ],
+    [
+     "noise complaint",
+     "소음 민원",
+     ""
+    ],
+    [
+     "deafening",
+     "귀가 먹을 정도로 시끄러운",
+     ""
+    ],
+    [
+     "noise pollution",
+     "소음 공해",
+     ""
     ]
    ]
   },
@@ -1346,6 +3946,86 @@
      "lose my temper",
      "화를 내다",
      "I rarely lose my temper."
+    ],
+    [
+     "impatient",
+     "참을성 없는",
+     ""
+    ],
+    [
+     "wait in line",
+     "줄을 서다",
+     ""
+    ],
+    [
+     "lose my patience",
+     "인내심을 잃다",
+     ""
+    ],
+    [
+     "calm",
+     "침착한",
+     ""
+    ],
+    [
+     "frustrated",
+     "답답한",
+     ""
+    ],
+    [
+     "stay calm",
+     "침착함을 유지하다",
+     ""
+    ],
+    [
+     "in a hurry",
+     "서두르는",
+     ""
+    ],
+    [
+     "take your time",
+     "천천히 하다",
+     ""
+    ],
+    [
+     "tolerant",
+     "관대한",
+     ""
+    ],
+    [
+     "easily annoyed",
+     "쉽게 짜증 내는",
+     ""
+    ],
+    [
+     "practice makes perfect",
+     "연습이 완벽을 만든다",
+     ""
+    ],
+    [
+     "pay off",
+     "결실을 맺다",
+     ""
+    ],
+    [
+     "stressful",
+     "스트레스가 많은",
+     ""
+    ],
+    [
+     "patience",
+     "인내심",
+     ""
+    ],
+    [
+     "keep my cool",
+     "침착함을 유지하다",
+     ""
+    ],
+    [
+     "put up with",
+     "참다",
+     ""
     ]
    ]
   },
@@ -1388,6 +4068,76 @@
      "responsibility",
      "책임",
      "Having a pet is a big responsibility."
+    ],
+    [
+     "dog person",
+     "개를 좋아하는 사람",
+     ""
+    ],
+    [
+     "cat person",
+     "고양이를 좋아하는 사람",
+     ""
+    ],
+    [
+     "puppy",
+     "강아지",
+     ""
+    ],
+    [
+     "kitten",
+     "새끼 고양이",
+     ""
+    ],
+    [
+     "loyal",
+     "충성스러운",
+     ""
+    ],
+    [
+     "cute / adorable",
+     "귀여운",
+     ""
+    ],
+    [
+     "feed",
+     "먹이를 주다",
+     ""
+    ],
+    [
+     "vet",
+     "수의사",
+     ""
+    ],
+    [
+     "furry friend",
+     "털 있는 친구(반려동물)",
+     ""
+    ],
+    [
+     "animal shelter",
+     "유기동물 보호소",
+     ""
+    ],
+    [
+     "allergy",
+     "알레르기",
+     ""
+    ],
+    [
+     "look after",
+     "돌보다",
+     ""
+    ],
+    [
+     "part of the family",
+     "가족의 일부",
+     ""
+    ],
+    [
+     "pet-friendly",
+     "반려동물 동반 가능한",
+     ""
     ]
    ]
   },
@@ -1450,6 +4200,56 @@
      "read before bed",
      "자기 전에 읽다",
      "I usually read before bed."
+    ],
+    [
+     "novel",
+     "소설",
+     ""
+    ],
+    [
+     "genre",
+     "장르",
+     ""
+    ],
+    [
+     "bookworm",
+     "책벌레",
+     ""
+    ],
+    [
+     "paperback",
+     "종이책(문고판)",
+     ""
+    ],
+    [
+     "e-reader",
+     "전자책 단말기",
+     ""
+    ],
+    [
+     "library",
+     "도서관",
+     ""
+    ],
+    [
+     "bestseller",
+     "베스트셀러",
+     ""
+    ],
+    [
+     "plot",
+     "줄거리",
+     ""
+    ],
+    [
+     "character",
+     "등장인물",
+     ""
+    ],
+    [
+     "read for pleasure",
+     "재미로 읽다",
+     ""
     ]
    ]
   },
@@ -1512,6 +4312,56 @@
      "splash out on",
      "~에 돈을 펑펑 쓰다",
      "I splashed out on a new laptop."
+    ],
+    [
+     "shopaholic",
+     "쇼핑 중독자",
+     ""
+    ],
+    [
+     "discount",
+     "할인",
+     ""
+    ],
+    [
+     "receipt",
+     "영수증",
+     ""
+    ],
+    [
+     "refund",
+     "환불",
+     ""
+    ],
+    [
+     "online shopping",
+     "온라인 쇼핑",
+     ""
+    ],
+    [
+     "department store",
+     "백화점",
+     ""
+    ],
+    [
+     "shopping mall",
+     "쇼핑몰",
+     ""
+    ],
+    [
+     "on a budget",
+     "예산이 빠듯한",
+     ""
+    ],
+    [
+     "bargain hunter",
+     "알뜰 쇼핑하는 사람",
+     ""
+    ],
+    [
+     "window-shop",
+     "구경만 하다",
+     ""
     ]
    ]
   },
@@ -1574,6 +4424,56 @@
      "cut down on",
      "줄이다",
      "I'm cutting down on sugar."
+    ],
+    [
+     "athlete",
+     "운동선수",
+     ""
+    ],
+    [
+     "team",
+     "팀",
+     ""
+    ],
+    [
+     "match / game",
+     "경기",
+     ""
+    ],
+    [
+     "fitness",
+     "체력",
+     ""
+    ],
+    [
+     "gym",
+     "헬스장",
+     ""
+    ],
+    [
+     "competitive",
+     "경쟁적인",
+     ""
+    ],
+    [
+     "energetic",
+     "활동적인",
+     ""
+    ],
+    [
+     "injury",
+     "부상",
+     ""
+    ],
+    [
+     "sports fan",
+     "스포츠 팬",
+     ""
+    ],
+    [
+     "team spirit",
+     "팀 정신",
+     ""
     ]
    ]
   },
@@ -1636,6 +4536,56 @@
      "documentary",
      "다큐멘터리",
      "I enjoy nature documentaries."
+    ],
+    [
+     "reality show",
+     "리얼리티 쇼",
+     ""
+    ],
+    [
+     "drama series",
+     "드라마",
+     ""
+    ],
+    [
+     "episode",
+     "회차",
+     ""
+    ],
+    [
+     "channel",
+     "채널",
+     ""
+    ],
+    [
+     "remote control",
+     "리모컨",
+     ""
+    ],
+    [
+     "commercial",
+     "광고",
+     ""
+    ],
+    [
+     "prime time",
+     "황금 시간대",
+     ""
+    ],
+    [
+     "couch potato",
+     "소파에 붙어 TV 보는 사람",
+     ""
+    ],
+    [
+     "educational",
+     "교육적인",
+     ""
+    ],
+    [
+     "sitcom",
+     "시트콤",
+     ""
     ]
    ]
   },
@@ -1650,24 +4600,74 @@
    ],
    "vocab": [
     [
-     "public transport",
-     "대중교통",
-     "Public transport in Seoul is excellent."
+     "commute",
+     "통근하다",
+     ""
+    ],
+    [
+     "transfer",
+     "환승하다",
+     ""
     ],
     [
      "rush hour",
-     "출퇴근 시간",
-     "The subway is packed during rush hour."
+     "출퇴근 시간대",
+     ""
     ],
     [
      "traffic jam",
      "교통 체증",
-     "I got stuck in a traffic jam."
+     ""
+    ],
+    [
+     "heavy traffic",
+     "교통량이 많음",
+     ""
     ],
     [
      "beat the traffic",
-     "교통 체증을 피하다",
-     "I leave early to beat the traffic."
+     "교통체증을 피하다",
+     ""
+    ],
+    [
+     "within walking distance",
+     "도보거리에 있는",
+     ""
+    ],
+    [
+     "accessible",
+     "접근성이 용이한",
+     ""
+    ],
+    [
+     "affordable",
+     "가격이 싼",
+     ""
+    ],
+    [
+     "on foot",
+     "걸어서",
+     ""
+    ],
+    [
+     "pull over",
+     "차를 길에 세우다",
+     ""
+    ],
+    [
+     "run every 10 minutes",
+     "10 분 간격으로",
+     ""
+    ],
+    [
+     "get stuck in traffic",
+     "교통체증에 갇히다",
+     ""
+    ],
+    [
+     "public transport",
+     "대중교통",
+     "Public transport in Seoul is excellent."
     ],
     [
      "it's a 10-minute walk",
@@ -1698,6 +4698,11 @@
      "window seat",
      "창가 자리",
      "I always book a window seat."
+    ],
+    [
+     "subway",
+     "지하철",
+     ""
     ]
    ]
   },
@@ -1760,6 +4765,56 @@
      "crisp",
      "상쾌하고 서늘한",
      "I love the crisp autumn air."
+    ],
+    [
+     "sunny",
+     "맑은",
+     ""
+    ],
+    [
+     "cloudy",
+     "흐린",
+     ""
+    ],
+    [
+     "windy",
+     "바람 부는",
+     ""
+    ],
+    [
+     "foggy",
+     "안개 낀",
+     ""
+    ],
+    [
+     "mild",
+     "온화한",
+     ""
+    ],
+    [
+     "pleasant",
+     "쾌적한",
+     ""
+    ],
+    [
+     "weather forecast",
+     "일기예보",
+     ""
+    ],
+    [
+     "umbrella",
+     "우산",
+     ""
+    ],
+    [
+     "heavy rain",
+     "폭우",
+     ""
+    ],
+    [
+     "drizzle",
+     "이슬비",
+     ""
     ]
    ]
   },
@@ -1802,6 +4857,76 @@
      "keepsake",
      "기념품, 간직하는 물건",
      "This ring is a keepsake from my grandma."
+    ],
+    [
+     "collection",
+     "수집품",
+     ""
+    ],
+    [
+     "collector",
+     "수집가",
+     ""
+    ],
+    [
+     "stamps",
+     "우표",
+     ""
+    ],
+    [
+     "figures",
+     "피규어",
+     ""
+    ],
+    [
+     "souvenirs",
+     "기념품",
+     ""
+    ],
+    [
+     "rare",
+     "희귀한",
+     ""
+    ],
+    [
+     "valuable",
+     "가치 있는",
+     ""
+    ],
+    [
+     "hobby",
+     "취미",
+     ""
+    ],
+    [
+     "display",
+     "진열하다",
+     ""
+    ],
+    [
+     "storage box",
+     "보관 상자",
+     ""
+    ],
+    [
+     "clutter",
+     "잡동사니",
+     ""
+    ],
+    [
+     "hold on to",
+     "간직하다",
+     ""
+    ],
+    [
+     "memories",
+     "추억",
+     ""
+    ],
+    [
+     "childhood",
+     "어린 시절",
+     ""
     ]
    ]
   },
@@ -1845,6 +4970,76 @@
      "owner",
      "주인",
      "I tried to find the owner."
+    ],
+    [
+     "lose",
+     "잃어버리다",
+     ""
+    ],
+    [
+     "wallet",
+     "지갑",
+     ""
+    ],
+    [
+     "keys",
+     "열쇠",
+     ""
+    ],
+    [
+     "phone",
+     "휴대폰",
+     ""
+    ],
+    [
+     "panic",
+     "당황하다",
+     ""
+    ],
+    [
+     "retrace my steps",
+     "왔던 길을 되짚다",
+     ""
+    ],
+    [
+     "search for",
+     "찾다",
+     ""
+    ],
+    [
+     "honest",
+     "정직한",
+     ""
+    ],
+    [
+     "return",
+     "돌려주다",
+     ""
+    ],
+    [
+     "police station",
+     "경찰서",
+     ""
+    ],
+    [
+     "post on social media",
+     "SNS에 올리다",
+     ""
+    ],
+    [
+     "relieved",
+     "안도한",
+     ""
+    ],
+    [
+     "careless",
+     "부주의한",
+     ""
+    ],
+    [
+     "forgetful",
+     "잘 잊는",
+     ""
     ]
    ]
   },
@@ -1887,6 +5082,76 @@
      "second-hand",
      "중고의",
      "I often buy second-hand books."
+    ],
+    [
+     "traditional market",
+     "전통 시장",
+     ""
+    ],
+    [
+     "street food",
+     "길거리 음식",
+     ""
+    ],
+    [
+     "stall",
+     "노점",
+     ""
+    ],
+    [
+     "vendor",
+     "상인",
+     ""
+    ],
+    [
+     "haggle / bargain",
+     "흥정하다",
+     ""
+    ],
+    [
+     "cheap",
+     "싼",
+     ""
+    ],
+    [
+     "fresh",
+     "신선한",
+     ""
+    ],
+    [
+     "local",
+     "지역의",
+     ""
+    ],
+    [
+     "atmosphere",
+     "분위기",
+     ""
+    ],
+    [
+     "crowded",
+     "붐비는",
+     ""
+    ],
+    [
+     "cash only",
+     "현금만",
+     ""
+    ],
+    [
+     "night market",
+     "야시장",
+     ""
+    ],
+    [
+     "handmade",
+     "수제의",
+     ""
+    ],
+    [
+     "souvenir",
+     "기념품",
+     ""
     ]
    ]
   },
@@ -1930,6 +5195,76 @@
      "recycled paper",
      "재생지",
      "This notebook is made of recycled paper."
+    ],
+    [
+     "notebook",
+     "공책",
+     ""
+    ],
+    [
+     "diary",
+     "일기장",
+     ""
+    ],
+    [
+     "letter",
+     "편지",
+     ""
+    ],
+    [
+     "pen and paper",
+     "펜과 종이",
+     ""
+    ],
+    [
+     "write by hand",
+     "손으로 쓰다",
+     ""
+    ],
+    [
+     "eco-friendly",
+     "친환경적인",
+     ""
+    ],
+    [
+     "waste paper",
+     "폐지",
+     ""
+    ],
+    [
+     "printout",
+     "출력물",
+     ""
+    ],
+    [
+     "digital",
+     "디지털의",
+     ""
+    ],
+    [
+     "sticky note",
+     "포스트잇",
+     ""
+    ],
+    [
+     "crafts",
+     "공예",
+     ""
+    ],
+    [
+     "wrapping paper",
+     "포장지",
+     ""
+    ],
+    [
+     "paper cup",
+     "종이컵",
+     ""
+    ],
+    [
+     "paper-based",
+     "종이로 된",
+     ""
     ]
    ]
   },
@@ -1943,6 +5278,66 @@
     "How often do you eat fruit and vegetables?"
    ],
    "vocab": [
+    [
+     "flavorful",
+     "맛이 풍부한",
+     ""
+    ],
+    [
+     "bland",
+     "싱거운, 밍밍한",
+     ""
+    ],
+    [
+     "sour",
+     "신",
+     ""
+    ],
+    [
+     "bitter",
+     "쓴",
+     ""
+    ],
+    [
+     "savoury",
+     "감칠맛 나는",
+     ""
+    ],
+    [
+     "rich",
+     "풍부한",
+     ""
+    ],
+    [
+     "mild",
+     "순한",
+     ""
+    ],
+    [
+     "greasy",
+     "기름진",
+     ""
+    ],
+    [
+     "oily",
+     "기름진",
+     ""
+    ],
+    [
+     "soggy",
+     "눅눅한",
+     ""
+    ],
+    [
+     "filling",
+     "든든한",
+     ""
+    ],
+    [
+     "mouth-watering",
+     "군침 도는",
+     ""
+    ],
     [
      "home-cooked meal",
      "집밥",
@@ -1972,6 +5367,66 @@
      "fussy about food",
      "입맛이 까다로운",
      "I was fussy about food as a child."
+    ],
+    [
+     "fruit",
+     "과일",
+     ""
+    ],
+    [
+     "vegetables",
+     "채소",
+     ""
+    ],
+    [
+     "healthy",
+     "건강한",
+     ""
+    ],
+    [
+     "vitamins",
+     "비타민",
+     ""
+    ],
+    [
+     "organic",
+     "유기농의",
+     ""
+    ],
+    [
+     "ripe",
+     "잘 익은",
+     ""
+    ],
+    [
+     "juicy",
+     "즙이 많은",
+     ""
+    ],
+    [
+     "crunchy",
+     "아삭한",
+     ""
+    ],
+    [
+     "local market",
+     "동네 시장",
+     ""
+    ],
+    [
+     "supermarket",
+     "마트",
+     ""
+    ],
+    [
+     "picky eater",
+     "편식하는 사람",
+     ""
+    ],
+    [
+     "balanced diet",
+     "균형 잡힌 식단",
+     ""
     ]
    ]
   },
@@ -2012,6 +5467,76 @@
      "honorifics",
      "존댓말",
      "We use honorifics with older people."
+    ],
+    [
+     "courteous",
+     "정중한",
+     ""
+    ],
+    [
+     "bow",
+     "절하다, 고개 숙여 인사하다",
+     ""
+    ],
+    [
+     "apologise",
+     "사과하다",
+     ""
+    ],
+    [
+     "excuse me",
+     "실례합니다",
+     ""
+    ],
+    [
+     "manners",
+     "예의",
+     ""
+    ],
+    [
+     "formal",
+     "격식 있는",
+     ""
+    ],
+    [
+     "casual",
+     "편한",
+     ""
+    ],
+    [
+     "elders",
+     "어른들",
+     ""
+    ],
+    [
+     "upbringing",
+     "가정교육",
+     ""
+    ],
+    [
+     "be raised",
+     "자라다, 길러지다",
+     ""
+    ],
+    [
+     "considerate",
+     "배려심 있는",
+     ""
+    ],
+    [
+     "kind",
+     "친절한",
+     ""
+    ],
+    [
+     "behave",
+     "행동하다",
+     ""
+    ],
+    [
+     "first impression",
+     "첫인상",
+     ""
     ]
    ]
   },
@@ -2053,6 +5578,76 @@
      "sleep-deprived",
      "잠이 부족한",
      "Students are often sleep-deprived."
+    ],
+    [
+     "tired",
+     "피곤한",
+     ""
+    ],
+    [
+     "drained",
+     "기진맥진한",
+     ""
+    ],
+    [
+     "burnt out",
+     "번아웃된",
+     ""
+    ],
+    [
+     "lack of sleep",
+     "수면 부족",
+     ""
+    ],
+    [
+     "stay up late",
+     "늦게까지 깨어 있다",
+     ""
+    ],
+    [
+     "energy",
+     "에너지",
+     ""
+    ],
+    [
+     "coffee",
+     "커피",
+     ""
+    ],
+    [
+     "feel sleepy",
+     "졸리다",
+     ""
+    ],
+    [
+     "long day",
+     "힘든 하루",
+     ""
+    ],
+    [
+     "overwork",
+     "과로하다",
+     ""
+    ],
+    [
+     "rest",
+     "쉬다",
+     ""
+    ],
+    [
+     "get some rest",
+     "좀 쉬다",
+     ""
+    ],
+    [
+     "yawn",
+     "하품하다",
+     ""
+    ],
+    [
+     "exhausting",
+     "몹시 지치게 하는",
+     ""
     ]
    ]
   },
@@ -2083,6 +5678,86 @@
      "litter",
      "쓰레기를 버리다",
      "People shouldn't litter in parks."
+    ],
+    [
+     "rubbish / trash",
+     "쓰레기",
+     ""
+    ],
+    [
+     "separate",
+     "분리하다",
+     ""
+    ],
+    [
+     "plastic",
+     "플라스틱",
+     ""
+    ],
+    [
+     "food waste",
+     "음식물 쓰레기",
+     ""
+    ],
+    [
+     "bin",
+     "쓰레기통",
+     ""
+    ],
+    [
+     "environment",
+     "환경",
+     ""
+    ],
+    [
+     "pollution",
+     "오염",
+     ""
+    ],
+    [
+     "reusable",
+     "재사용 가능한",
+     ""
+    ],
+    [
+     "reduce waste",
+     "쓰레기를 줄이다",
+     ""
+    ],
+    [
+     "single-use",
+     "일회용의",
+     ""
+    ],
+    [
+     "eco-friendly",
+     "친환경적인",
+     ""
+    ],
+    [
+     "fine",
+     "벌금",
+     ""
+    ],
+    [
+     "littering",
+     "쓰레기 무단 투기",
+     ""
+    ],
+    [
+     "compost",
+     "퇴비로 만들다",
+     ""
+    ],
+    [
+     "landfill",
+     "쓰레기 매립지",
+     ""
+    ],
+    [
+     "packaging",
+     "포장재",
+     ""
     ]
    ]
   },
@@ -2147,6 +5822,61 @@
      "bucket list",
      "버킷리스트",
      "Iceland is on my bucket list."
+    ],
+    [
+     "travel abroad",
+     "해외여행 하다",
+     ""
+    ],
+    [
+     "road trip",
+     "자동차 여행",
+     ""
+    ],
+    [
+     "window seat",
+     "창가 자리",
+     ""
+    ],
+    [
+     "long journey",
+     "긴 여정",
+     ""
+    ],
+    [
+     "jet lag",
+     "시차증",
+     ""
+    ],
+    [
+     "backpacking",
+     "배낭여행",
+     ""
+    ],
+    [
+     "itinerary",
+     "여행 일정",
+     ""
+    ],
+    [
+     "souvenir",
+     "기념품",
+     ""
+    ],
+    [
+     "sightseeing",
+     "관광",
+     ""
+    ],
+    [
+     "book in advance",
+     "미리 예약하다",
+     ""
+    ],
+    [
+     "explore",
+     "탐험하다",
+     ""
     ]
    ]
   },
@@ -2190,6 +5920,76 @@
      "influencer",
      "인플루언서",
      "Influencers advertise products online."
+    ],
+    [
+     "commercial",
+     "광고(TV)",
+     ""
+    ],
+    [
+     "billboard",
+     "광고판",
+     ""
+    ],
+    [
+     "pop-up ad",
+     "팝업 광고",
+     ""
+    ],
+    [
+     "brand",
+     "브랜드",
+     ""
+    ],
+    [
+     "product",
+     "제품",
+     ""
+    ],
+    [
+     "celebrity",
+     "유명인",
+     ""
+    ],
+    [
+     "misleading",
+     "오해를 일으키는",
+     ""
+    ],
+    [
+     "memorable",
+     "기억에 남는",
+     ""
+    ],
+    [
+     "annoying",
+     "짜증나는",
+     ""
+    ],
+    [
+     "creative",
+     "창의적인",
+     ""
+    ],
+    [
+     "social media",
+     "SNS",
+     ""
+    ],
+    [
+     "consumer",
+     "소비자",
+     ""
+    ],
+    [
+     "buy",
+     "사다",
+     ""
+    ],
+    [
+     "advertise",
+     "광고하다",
+     ""
     ]
    ]
   },
@@ -2203,6 +6003,81 @@
     "Do you like buying shoes? How often?"
    ],
    "vocab": [
+    [
+     "casual",
+     "캐주얼한",
+     ""
+    ],
+    [
+     "formal",
+     "격식 있는",
+     ""
+    ],
+    [
+     "colorful",
+     "색이 다채로운",
+     ""
+    ],
+    [
+     "outdated",
+     "구식의",
+     ""
+    ],
+    [
+     "breathable",
+     "통기성이 좋은",
+     ""
+    ],
+    [
+     "durable",
+     "내구성이 좋은",
+     ""
+    ],
+    [
+     "splash out on",
+     "탕진하다",
+     ""
+    ],
+    [
+     "try on",
+     "입어보다",
+     ""
+    ],
+    [
+     "keep up with fashion trends",
+     "트랜드를 따라가다",
+     ""
+    ],
+    [
+     "go well with",
+     "~와 잘 매치되다",
+     ""
+    ],
+    [
+     "suit/fit someone",
+     "잘 어울리다",
+     ""
+    ],
+    [
+     "high quality",
+     "좋은 품질",
+     ""
+    ],
+    [
+     "poor quality",
+     "나쁜 품질",
+     ""
+    ],
+    [
+     "long-lasting",
+     "오래가는",
+     ""
+    ],
+    [
+     "reasonably priced",
+     "합리적으로 가격이 매겨진",
+     ""
+    ],
     [
      "go out of fashion",
      "유행이 지나다",
@@ -2224,9 +6099,64 @@
      "My shoes wear out quickly."
     ],
     [
-     "try on",
-     "입어 보다",
-     "I always try clothes on before I buy them."
+     "trainers / sneakers",
+     "운동화",
+     ""
+    ],
+    [
+     "heels",
+     "하이힐",
+     ""
+    ],
+    [
+     "boots",
+     "부츠",
+     ""
+    ],
+    [
+     "sandals",
+     "샌들",
+     ""
+    ],
+    [
+     "comfortable",
+     "편한",
+     ""
+    ],
+    [
+     "fashionable",
+     "유행하는",
+     ""
+    ],
+    [
+     "size",
+     "사이즈",
+     ""
+    ],
+    [
+     "fit",
+     "맞다",
+     ""
+    ],
+    [
+     "online",
+     "온라인으로",
+     ""
+    ],
+    [
+     "expensive",
+     "비싼",
+     ""
+    ],
+    [
+     "pair of shoes",
+     "신발 한 켤레",
+     ""
+    ],
+    [
+     "style",
+     "스타일",
+     ""
     ]
    ]
   }
