@@ -120,10 +120,11 @@ function renderHome(app){
   const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length, goal=Math.max(DAILY, doneToday);
   const queue=reviewQueue(!due);
   const qs=sessRange(queue.flatMap(id=>{ const c=D.cards.find(x=>x.id===id); return c? (c.sessions||[]) : []; }));
-  hero.append(el("h2",null, due? "오늘의 복습" : "오늘 복습 끝!"));
+  const goalDone = doneToday>=DAILY;
+  hero.append(el("h2",null, (due && !goalDone)? "오늘의 복습" : "오늘 복습 끝! 🎉"));
   const gl=el("div","goal"); const gb=el("div","gbar"); const gi=el("i"); gi.style.width=Math.min(100,doneToday/DAILY*100)+"%"; gb.append(gi);
   gl.append(gb, el("span",null,`${Math.min(doneToday,DAILY)} / ${DAILY}장`)); hero.append(gl);
-  const b=el("button",null, due? `복습 시작 (${Math.min(due,DAILY)}장)` : "약한 카드 연습"); b.type="button"; b.onclick=()=>go("review",{extra:!due, ids:queue}); hero.append(b);
+  const b=el("button",null, !due? "약한 카드 연습" : goalDone? `더 복습하기 (${Math.min(due,DAILY)}장)` : `복습 시작 (${Math.min(due,DAILY)}장)`); b.type="button"; b.onclick=()=>go("review",{extra:!due, ids:queue}); hero.append(b);
   app.append(hero);
   const last=D.sessions[D.sessions.length-1];
   if(last){

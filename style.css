@@ -404,3 +404,9 @@ body.lesson{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 .pod-ic{width:28px;height:28px;border-radius:8px}
 .pod-ic svg{width:16px;height:16px}
 .pod-top{gap:10px}
+/* home icons: plain small glyph, no box */
+.mrow .mic,.pod-ic,.pod.done .pod-ic{width:auto;height:auto;background:none;border-radius:0}
+.mrow .mic svg,.pod-ic svg{width:18px;height:18px}
+.mrow{grid-template-columns:18px 1fr auto;gap:12px}
+.pod-top{grid-template-columns:18px 1fr;gap:12px}
+.tabs svg,.tabs button svg{width:20px;height:20px}
