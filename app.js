@@ -116,7 +116,7 @@ function renderHome(app){
   app.append(st); }
   const hero=el("div","hero");
   const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length, goal=Math.max(DAILY, doneToday);
-  hero.append(el("h2",null, due? "오늘의 복습을 시작해요" : "오늘 복습 끝!"));
+  hero.append(el("h2",null, due? "오늘의 복습" : "오늘 복습 끝!"));
   const gl=el("div","goal"); const gb=el("div","gbar"); const gi=el("i"); gi.style.width=Math.min(100,doneToday/DAILY*100)+"%"; gb.append(gi);
   gl.append(gb, el("span",null,`${Math.min(doneToday,DAILY)} / ${DAILY}장`)); hero.append(gl);
   const b=el("button",null, due? `복습 시작 (${Math.min(due,DAILY)}장)` : "약한 카드 연습"); b.type="button"; b.onclick=()=>go("review",{extra:!due}); hero.append(b);
@@ -139,7 +139,7 @@ const POD_URL="https://podcasts.apple.com/nz/podcast/6-minute-english/id26202694
 function podcastBox(){
   const key=`bandup-pod-${slug}`; const listened=store.get(key,[]); const done=listened.includes(today());
   const w=el("div","pod"+(done?" done":""));
-  const top=el("div","pod-top"); const ic=el("span","pod-ic"); ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="2.2"/><path d="M12 13.5v7"/><path d="M8.2 14a5 5 0 1 1 7.6 0"/><path d="M5.6 16.6a8.5 8.5 0 1 1 12.8 0"/></svg>'; top.append(ic, (()=>{ const t=el("div"); t.append(el("b",null, done? "오늘 팟캐스트 들었어요!" : "오늘 팟캐스트 들으셨나요?"), el("span",null,"BBC 6 Minute English · 하루 6분")); return t; })());
+  const top=el("div","pod-top"); const ic=el("span","pod-ic"); ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="2.2"/><path d="M12 13.5v7"/><path d="M8.2 14a5 5 0 1 1 7.6 0"/><path d="M5.6 16.6a8.5 8.5 0 1 1 12.8 0"/></svg>'; top.append(ic, (()=>{ const t=el("div"); t.append(el("b",null, "오늘의 팟캐스트"), el("span",null,"BBC 6 Minute English · 하루 6분")); return t; })());
   w.append(top);
   const a=el("a","btn primary","팟캐스트 듣기"); a.href=POD_URL; a.target="_blank"; a.rel="noopener";
   w.append(a);
