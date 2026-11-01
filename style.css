@@ -391,3 +391,10 @@ body.lesson{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 .pfield{display:grid;gap:6px;font-size:15px;font-weight:600} .pfield input{height:50px;border:1px solid var(--line);border-radius:14px;padding:0 14px;font:16px var(--body);background:var(--sunk);color:var(--ink)}
 .who{display:none}
 .hero .hsess{margin:-6px 0 0;font-size:14px;opacity:.85}
+/* smaller icons */
+.tabs svg,.tabs button svg{width:22px;height:22px}
+.mrow .mic{width:34px;height:34px;border-radius:10px}
+.mrow .mic svg{width:18px;height:18px}
+.pod-ic{width:36px;height:36px;border-radius:10px}
+.pod-ic svg{width:20px;height:20px}
+.lx{font-size:18px}
