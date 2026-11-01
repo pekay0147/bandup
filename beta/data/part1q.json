@@ -1,503 +1,484 @@
 {
- "sets": [
+ "source": "IELTS Speaking Workbook 2026 (ScoreFactory) · ieltsliz.com 주제 참고",
+ "topics": [
   {
-   "key": "wb",
-   "title": "2026 9~12월 예상 질문",
-   "source": "IELTS Speaking Workbook 2026 Sep–Dec (ScoreFactory)",
-   "topics": [
-    {
-     "en": "Computers and tablets",
-     "ko": "컴퓨터·태블릿",
-     "qs": [
-      "Would you like to use a computer or tablet?",
-      "In what conditions would you use a computer or tablet?",
-      "When was the first time you used a computer or tablet?",
-      "What would your life be like without computers or tablets?",
-      "In what conditions would it be difficult for you to use a computer or tablet?"
-     ]
-    },
-    {
-     "en": "Collecting things",
-     "ko": "물건 모으기",
-     "qs": [
-      "Where do you usually keep things you need?",
-      "Would you keep old things for a long time? Why?",
-      "Are there any things you have kept from your childhood?",
-      "Do you collect things?"
-     ]
-    },
-    {
-     "en": "Lost and found",
-     "ko": "분실물",
-     "qs": [
-      "Have you ever lost your keys?",
-      "Will you post on social media if you lose your item?",
-      "Have you ever lost things?",
-      "Do you report to the police when finding something lost by others? Why?",
-      "What will you do if you find something lost by others?"
-     ]
-    },
-    {
-     "en": "Street markets",
-     "ko": "길거리 시장",
-     "qs": [
-      "Are there many street markets in Korea?",
-      "When was the last time you went to a street market?",
-      "Do you prefer to go shopping in the shopping mall or at the street market?",
-      "What do people usually buy at the street market?"
-     ]
-    },
-    {
-     "en": "Paper",
-     "ko": "종이",
-     "qs": [
-      "Do you carry paper and pens with you when you go out?",
-      "Do people still keep handwritten letters today?",
-      "Do you still write physical letters?",
-      "Have you made any crafts with paper?",
-      "What did you like to do with paper as a child?"
-     ]
-    },
-    {
-     "en": "Fruit and vegetables",
-     "ko": "과일·채소",
-     "qs": [
-      "Were there any kinds of fruits and vegetables you disliked as a child?",
-      "What kinds of fruits and vegetables do you dislike?",
-      "Where do you usually buy fruit and vegetables?",
-      "How often do you eat fruit and vegetables?"
-     ]
-    },
-    {
-     "en": "Being polite",
-     "ko": "예의",
-     "qs": [
-      "Do you think being polite is very important?",
-      "How did you learn to be polite as a child?"
-     ]
-    },
-    {
-     "en": "Tiredness",
-     "ko": "피곤함",
-     "qs": [
-      "What do you do when you feel tired?",
-      "When do you usually feel tired?",
-      "Do you often feel tired?"
-     ]
-    },
-    {
-     "en": "Rubbish and recycling",
-     "ko": "쓰레기·재활용",
-     "qs": [
-      "How do you recycle things like paper and plastic?",
-      "What do you do when you see rubbish on the street?"
-     ]
-    },
-    {
-     "en": "Travelling",
-     "ko": "여행",
-     "qs": [
-      "Do you prefer to sit by the window when travelling?",
-      "Did you have a long journey with your family as a child?",
-      "What kind of transportation do you usually use when travelling?",
-      "Do you think travelling is important for people?",
-      "How has travelling changed compared to the past?",
-      "What are the benefits of travelling with family?"
-     ]
-    },
-    {
-     "en": "Advertisement",
-     "ko": "광고",
-     "qs": [
-      "Do you often see advertisements when you are on your phone or computer?",
-      "What kind of advertising do you like?",
-      "Do you like advertisements?",
-      "Do you see a lot of advertising on trains or other transport?",
-      "Is there an advertisement that made an impression on you when you were a child?"
-     ]
-    },
-    {
-     "en": "Shoes",
-     "ko": "신발",
-     "qs": [
-      "Which do you prefer, fashionable shoes or comfortable shoes?",
-      "How much money do you usually spend on shoes?",
-      "Have you ever bought shoes online?",
-      "Do you like buying shoes? How often?"
-     ]
-    }
+   "en": "Work",
+   "ko": "일",
+   "qs": [
+    "What do you do?",
+    "Why did you choose that job?",
+    "What do you like most about your job?",
+    "Is there anything you'd like to change about your work?",
+    "Do you get along with the people you work with?",
+    "Would you like to do a different job in the future?"
    ]
   },
   {
-   "key": "common",
-   "title": "자주 나오는 주제",
-   "source": "ieltsliz.com Part 1 주제 목록 참고, 질문은 수업용으로 새로 씀",
-   "topics": [
-    {
-     "en": "Work",
-     "ko": "일",
-     "qs": [
-      "What do you do?",
-      "Why did you choose that job?",
-      "What do you like most about your job?",
-      "Is there anything you'd like to change about your work?",
-      "Do you get along with the people you work with?",
-      "Would you like to do a different job in the future?"
-     ]
-    },
-    {
-     "en": "Study",
-     "ko": "공부",
-     "qs": [
-      "What are you studying?",
-      "Why did you choose that subject?",
-      "What's the most difficult part of your studies?",
-      "Do you prefer studying alone or with others?",
-      "What would you like to do after you finish studying?"
-     ]
-    },
-    {
-     "en": "Hometown",
-     "ko": "고향",
-     "qs": [
-      "Where is your hometown?",
-      "What do you like about your hometown?",
-      "Is there anything you don't like about it?",
-      "Has your hometown changed much since you were a child?",
-      "Would you like to live there in the future?"
-     ]
-    },
-    {
-     "en": "Home",
-     "ko": "집",
-     "qs": [
-      "Do you live in a house or an apartment?",
-      "Who do you live with?",
-      "Which room do you spend the most time in?",
-      "What would you like to change about your home?",
-      "Would you like to move to a different home in the future?"
-     ]
-    },
-    {
-     "en": "Art",
-     "ko": "미술",
-     "qs": [
-      "Do you like art?",
-      "Did you draw or paint when you were a child?",
-      "Have you ever been to an art gallery?",
-      "Is art taught in schools in your country?"
-     ]
-    },
-    {
-     "en": "Bicycles",
-     "ko": "자전거",
-     "qs": [
-      "Do you ride a bicycle?",
-      "When did you learn to ride a bike?",
-      "Is cycling popular in your city?",
-      "Do you think cycling is a good way to stay healthy?"
-     ]
-    },
-    {
-     "en": "Birthdays",
-     "ko": "생일",
-     "qs": [
-      "How do you usually celebrate your birthday?",
-      "Which birthday do you remember the most?",
-      "Do you think birthdays are important?",
-      "How do people in your country celebrate birthdays?"
-     ]
-    },
-    {
-     "en": "Childhood",
-     "ko": "어린 시절",
-     "qs": [
-      "Where did you grow up?",
-      "What did you enjoy doing as a child?",
-      "Did you have a happy childhood?",
-      "Who was your best friend when you were a child?"
-     ]
-    },
-    {
-     "en": "Clothes",
-     "ko": "옷",
-     "qs": [
-      "What kind of clothes do you usually wear?",
-      "Do you wear different clothes at work and at home?",
-      "Where do you usually buy clothes?",
-      "Do you care about fashion?"
-     ]
-    },
-    {
-     "en": "Computers",
-     "ko": "컴퓨터",
-     "qs": [
-      "How often do you use a computer?",
-      "What do you usually use it for?",
-      "When did you first start using a computer?",
-      "Do you think computers make life easier?"
-     ]
-    },
-    {
-     "en": "Daily Routine",
-     "ko": "일과",
-     "qs": [
-      "What's your daily routine like?",
-      "Are you a morning person or a night person?",
-      "Has your routine changed recently?",
-      "Which part of the day do you like best?"
-     ]
-    },
-    {
-     "en": "Dictionaries",
-     "ko": "사전",
-     "qs": [
-      "Do you use a dictionary?",
-      "Do you prefer paper dictionaries or online ones?",
-      "How often do you look up words?",
-      "Do you think dictionaries are useful for learning a language?"
-     ]
-    },
-    {
-     "en": "Dreams",
-     "ko": "꿈",
-     "qs": [
-      "Do you often remember your dreams?",
-      "Do you ever have the same dream more than once?",
-      "Do you think dreams have meanings?",
-      "Do you tell other people about your dreams?"
-     ]
-    },
-    {
-     "en": "Drinks",
-     "ko": "음료",
-     "qs": [
-      "What do you usually drink every day?",
-      "Do you prefer tea or coffee?",
-      "Do you drink enough water?",
-      "What drinks are popular in your country?"
-     ]
-    },
-    {
-     "en": "Evenings",
-     "ko": "저녁 시간",
-     "qs": [
-      "What do you usually do in the evening?",
-      "Do you prefer to stay in or go out in the evening?",
-      "Did you do the same things in the evening when you were younger?",
-      "Is the evening a good time to study?"
-     ]
-    },
-    {
-     "en": "Family & Friends",
-     "ko": "가족·친구",
-     "qs": [
-      "Do you have a big family?",
-      "Who are you closest to in your family?",
-      "How often do you see your friends?",
-      "What do you usually do with your friends?"
-     ]
-    },
-    {
-     "en": "Flowers",
-     "ko": "꽃",
-     "qs": [
-      "Do you like flowers?",
-      "Have you ever given someone flowers?",
-      "Are flowers popular as gifts in your country?",
-      "Do you have any plants or flowers at home?"
-     ]
-    },
-    {
-     "en": "Food",
-     "ko": "음식",
-     "qs": [
-      "What's your favourite food?",
-      "Do you like cooking?",
-      "Do you prefer eating at home or eating out?",
-      "Have your eating habits changed since you were a child?"
-     ]
-    },
-    {
-     "en": "Going Out",
-     "ko": "외출",
-     "qs": [
-      "How often do you go out?",
-      "Where do you like to go with your friends?",
-      "Do you prefer going out alone or with others?",
-      "Do young people go out more than older people in your country?"
-     ]
-    },
-    {
-     "en": "Happiness",
-     "ko": "행복",
-     "qs": [
-      "What makes you happy?",
-      "Are you usually a happy person?",
-      "Do you think money can make people happy?",
-      "What do you do when you feel down?"
-     ]
-    },
-    {
-     "en": "Hobbies",
-     "ko": "취미",
-     "qs": [
-      "Do you have any hobbies?",
-      "How did you get into your hobby?",
-      "How much time do you spend on it?",
-      "Did you have different hobbies when you were younger?"
-     ]
-    },
-    {
-     "en": "Internet",
-     "ko": "인터넷",
-     "qs": [
-      "How often do you use the internet?",
-      "What do you mainly use it for?",
-      "Do you think you spend too much time online?",
-      "How did people get information before the internet?"
-     ]
-    },
-    {
-     "en": "Languages",
-     "ko": "언어",
-     "qs": [
-      "What languages can you speak?",
-      "Why are you learning English?",
-      "What's difficult about learning English?",
-      "Would you like to learn another language?"
-     ]
-    },
-    {
-     "en": "Leisure Time",
-     "ko": "여가 시간",
-     "qs": [
-      "What do you do in your free time?",
-      "Do you have enough free time?",
-      "Do you prefer relaxing at home or doing activities outside?",
-      "How do people in your country usually spend their weekends?"
-     ]
-    },
-    {
-     "en": "Music",
-     "ko": "음악",
-     "qs": [
-      "What kind of music do you like?",
-      "When do you usually listen to music?",
-      "Can you play any musical instruments?",
-      "Have your music tastes changed over the years?"
-     ]
-    },
-    {
-     "en": "Neighbours",
-     "ko": "이웃",
-     "qs": [
-      "Do you know your neighbours?",
-      "Do you get along with them?",
-      "What makes a good neighbour?",
-      "Do people in your country talk to their neighbours often?"
-     ]
-    },
-    {
-     "en": "Newspapers",
-     "ko": "신문",
-     "qs": [
-      "Do you read the newspaper?",
-      "How do you usually get the news?",
-      "What kind of news are you interested in?",
-      "Do you think newspapers will disappear in the future?"
-     ]
-    },
-    {
-     "en": "Noise",
-     "ko": "소음",
-     "qs": [
-      "Do you mind noise?",
-      "Is your neighbourhood quiet or noisy?",
-      "What kinds of noise do you find annoying?",
-      "Do you prefer studying in a quiet place?"
-     ]
-    },
-    {
-     "en": "Patience",
-     "ko": "인내심",
-     "qs": [
-      "Are you a patient person?",
-      "When do you find it hard to be patient?",
-      "Do you think people are less patient than before?",
-      "Is patience important at work?"
-     ]
-    },
-    {
-     "en": "Pets",
-     "ko": "반려동물",
-     "qs": [
-      "Do you have a pet?",
-      "What pet would you like to have?",
-      "Did you have a pet as a child?",
-      "Why do people keep pets?"
-     ]
-    },
-    {
-     "en": "Reading",
-     "ko": "독서",
-     "qs": [
-      "Do you like reading?",
-      "What kinds of books do you read?",
-      "Do you prefer paper books or e-books?",
-      "Did you read a lot when you were a child?"
-     ]
-    },
-    {
-     "en": "Shopping",
-     "ko": "쇼핑",
-     "qs": [
-      "Do you like shopping?",
-      "Do you prefer shopping online or in stores?",
-      "What was the last thing you bought?",
-      "Do you usually shop alone or with others?"
-     ]
-    },
-    {
-     "en": "Sport",
-     "ko": "스포츠",
-     "qs": [
-      "Do you play any sports?",
-      "What sports are popular in your country?",
-      "Did you play sports at school?",
-      "Do you prefer watching sports or playing them?"
-     ]
-    },
-    {
-     "en": "TV",
-     "ko": "TV",
-     "qs": [
-      "Do you watch TV?",
-      "What kinds of programmes do you like?",
-      "Do you watch TV more or less than before?",
-      "Do you think TV is good for children?"
-     ]
-    },
-    {
-     "en": "Transport",
-     "ko": "교통",
-     "qs": [
-      "How do you usually get around?",
-      "Is public transport good in your city?",
-      "Do you prefer driving or taking the bus?",
-      "How could transport be improved where you live?"
-     ]
-    },
-    {
-     "en": "Weather",
-     "ko": "날씨",
-     "qs": [
-      "What's the weather like in your country?",
-      "What's your favourite season?",
-      "Does the weather affect your mood?",
-      "Do you check the weather forecast?"
-     ]
-    }
+   "en": "Study",
+   "ko": "공부",
+   "qs": [
+    "What are you studying?",
+    "Why did you choose that subject?",
+    "What's the most difficult part of your studies?",
+    "Do you prefer studying alone or with others?",
+    "What would you like to do after you finish studying?"
+   ]
+  },
+  {
+   "en": "Hometown",
+   "ko": "고향",
+   "qs": [
+    "Where is your hometown?",
+    "What do you like about your hometown?",
+    "Is there anything you don't like about it?",
+    "Has your hometown changed much since you were a child?",
+    "Would you like to live there in the future?"
+   ]
+  },
+  {
+   "en": "Home",
+   "ko": "집",
+   "qs": [
+    "Do you live in a house or an apartment?",
+    "Who do you live with?",
+    "Which room do you spend the most time in?",
+    "What would you like to change about your home?",
+    "Would you like to move to a different home in the future?"
+   ]
+  },
+  {
+   "en": "Art",
+   "ko": "미술",
+   "qs": [
+    "Do you like art?",
+    "Did you draw or paint when you were a child?",
+    "Have you ever been to an art gallery?",
+    "Is art taught in schools in your country?"
+   ]
+  },
+  {
+   "en": "Bicycles",
+   "ko": "자전거",
+   "qs": [
+    "Do you ride a bicycle?",
+    "When did you learn to ride a bike?",
+    "Is cycling popular in your city?",
+    "Do you think cycling is a good way to stay healthy?"
+   ]
+  },
+  {
+   "en": "Birthdays",
+   "ko": "생일",
+   "qs": [
+    "How do you usually celebrate your birthday?",
+    "Which birthday do you remember the most?",
+    "Do you think birthdays are important?",
+    "How do people in your country celebrate birthdays?"
+   ]
+  },
+  {
+   "en": "Childhood",
+   "ko": "어린 시절",
+   "qs": [
+    "Where did you grow up?",
+    "What did you enjoy doing as a child?",
+    "Did you have a happy childhood?",
+    "Who was your best friend when you were a child?"
+   ]
+  },
+  {
+   "en": "Clothes",
+   "ko": "옷",
+   "qs": [
+    "What kind of clothes do you usually wear?",
+    "Do you wear different clothes at work and at home?",
+    "Where do you usually buy clothes?",
+    "Do you care about fashion?"
+   ]
+  },
+  {
+   "en": "Computers",
+   "ko": "컴퓨터",
+   "qs": [
+    "Would you like to use a computer or tablet?",
+    "In what conditions would you use a computer or tablet?",
+    "When was the first time you used a computer or tablet?",
+    "What would your life be like without computers or tablets?",
+    "In what conditions would it be difficult for you to use a computer or tablet?",
+    "How often do you use a computer?",
+    "What do you usually use it for?",
+    "When did you first start using a computer?",
+    "Do you think computers make life easier?"
+   ]
+  },
+  {
+   "en": "Daily Routine",
+   "ko": "일과",
+   "qs": [
+    "What's your daily routine like?",
+    "Are you a morning person or a night person?",
+    "Has your routine changed recently?",
+    "Which part of the day do you like best?"
+   ]
+  },
+  {
+   "en": "Dictionaries",
+   "ko": "사전",
+   "qs": [
+    "Do you use a dictionary?",
+    "Do you prefer paper dictionaries or online ones?",
+    "How often do you look up words?",
+    "Do you think dictionaries are useful for learning a language?"
+   ]
+  },
+  {
+   "en": "Dreams",
+   "ko": "꿈",
+   "qs": [
+    "Do you often remember your dreams?",
+    "Do you ever have the same dream more than once?",
+    "Do you think dreams have meanings?",
+    "Do you tell other people about your dreams?"
+   ]
+  },
+  {
+   "en": "Drinks",
+   "ko": "음료",
+   "qs": [
+    "What do you usually drink every day?",
+    "Do you prefer tea or coffee?",
+    "Do you drink enough water?",
+    "What drinks are popular in your country?"
+   ]
+  },
+  {
+   "en": "Evenings",
+   "ko": "저녁 시간",
+   "qs": [
+    "What do you usually do in the evening?",
+    "Do you prefer to stay in or go out in the evening?",
+    "Did you do the same things in the evening when you were younger?",
+    "Is the evening a good time to study?"
+   ]
+  },
+  {
+   "en": "Family & Friends",
+   "ko": "가족·친구",
+   "qs": [
+    "Do you have a big family?",
+    "Who are you closest to in your family?",
+    "How often do you see your friends?",
+    "What do you usually do with your friends?"
+   ]
+  },
+  {
+   "en": "Flowers",
+   "ko": "꽃",
+   "qs": [
+    "Do you like flowers?",
+    "Have you ever given someone flowers?",
+    "Are flowers popular as gifts in your country?",
+    "Do you have any plants or flowers at home?"
+   ]
+  },
+  {
+   "en": "Food",
+   "ko": "음식",
+   "qs": [
+    "What's your favourite food?",
+    "Do you like cooking?",
+    "Do you prefer eating at home or eating out?",
+    "Have your eating habits changed since you were a child?"
+   ]
+  },
+  {
+   "en": "Going Out",
+   "ko": "외출",
+   "qs": [
+    "How often do you go out?",
+    "Where do you like to go with your friends?",
+    "Do you prefer going out alone or with others?",
+    "Do young people go out more than older people in your country?"
+   ]
+  },
+  {
+   "en": "Happiness",
+   "ko": "행복",
+   "qs": [
+    "What makes you happy?",
+    "Are you usually a happy person?",
+    "Do you think money can make people happy?",
+    "What do you do when you feel down?"
+   ]
+  },
+  {
+   "en": "Hobbies",
+   "ko": "취미",
+   "qs": [
+    "Do you have any hobbies?",
+    "How did you get into your hobby?",
+    "How much time do you spend on it?",
+    "Did you have different hobbies when you were younger?"
+   ]
+  },
+  {
+   "en": "Internet",
+   "ko": "인터넷",
+   "qs": [
+    "How often do you use the internet?",
+    "What do you mainly use it for?",
+    "Do you think you spend too much time online?",
+    "How did people get information before the internet?"
+   ]
+  },
+  {
+   "en": "Languages",
+   "ko": "언어",
+   "qs": [
+    "What languages can you speak?",
+    "Why are you learning English?",
+    "What's difficult about learning English?",
+    "Would you like to learn another language?"
+   ]
+  },
+  {
+   "en": "Leisure Time",
+   "ko": "여가 시간",
+   "qs": [
+    "What do you do in your free time?",
+    "Do you have enough free time?",
+    "Do you prefer relaxing at home or doing activities outside?",
+    "How do people in your country usually spend their weekends?"
+   ]
+  },
+  {
+   "en": "Music",
+   "ko": "음악",
+   "qs": [
+    "What kind of music do you like?",
+    "When do you usually listen to music?",
+    "Can you play any musical instruments?",
+    "Have your music tastes changed over the years?"
+   ]
+  },
+  {
+   "en": "Neighbours",
+   "ko": "이웃",
+   "qs": [
+    "Do you know your neighbours?",
+    "Do you get along with them?",
+    "What makes a good neighbour?",
+    "Do people in your country talk to their neighbours often?"
+   ]
+  },
+  {
+   "en": "Newspapers",
+   "ko": "신문",
+   "qs": [
+    "Do you read the newspaper?",
+    "How do you usually get the news?",
+    "What kind of news are you interested in?",
+    "Do you think newspapers will disappear in the future?"
+   ]
+  },
+  {
+   "en": "Noise",
+   "ko": "소음",
+   "qs": [
+    "Do you mind noise?",
+    "Is your neighbourhood quiet or noisy?",
+    "What kinds of noise do you find annoying?",
+    "Do you prefer studying in a quiet place?"
+   ]
+  },
+  {
+   "en": "Patience",
+   "ko": "인내심",
+   "qs": [
+    "Are you a patient person?",
+    "When do you find it hard to be patient?",
+    "Do you think people are less patient than before?",
+    "Is patience important at work?"
+   ]
+  },
+  {
+   "en": "Pets",
+   "ko": "반려동물",
+   "qs": [
+    "Do you have a pet?",
+    "What pet would you like to have?",
+    "Did you have a pet as a child?",
+    "Why do people keep pets?"
+   ]
+  },
+  {
+   "en": "Reading",
+   "ko": "독서",
+   "qs": [
+    "Do you like reading?",
+    "What kinds of books do you read?",
+    "Do you prefer paper books or e-books?",
+    "Did you read a lot when you were a child?"
+   ]
+  },
+  {
+   "en": "Shopping",
+   "ko": "쇼핑",
+   "qs": [
+    "Do you like shopping?",
+    "Do you prefer shopping online or in stores?",
+    "What was the last thing you bought?",
+    "Do you usually shop alone or with others?"
+   ]
+  },
+  {
+   "en": "Sport",
+   "ko": "스포츠",
+   "qs": [
+    "Do you play any sports?",
+    "What sports are popular in your country?",
+    "Did you play sports at school?",
+    "Do you prefer watching sports or playing them?"
+   ]
+  },
+  {
+   "en": "TV",
+   "ko": "TV",
+   "qs": [
+    "Do you watch TV?",
+    "What kinds of programmes do you like?",
+    "Do you watch TV more or less than before?",
+    "Do you think TV is good for children?"
+   ]
+  },
+  {
+   "en": "Transport",
+   "ko": "교통",
+   "qs": [
+    "How do you usually get around?",
+    "Is public transport good in your city?",
+    "Do you prefer driving or taking the bus?",
+    "How could transport be improved where you live?"
+   ]
+  },
+  {
+   "en": "Weather",
+   "ko": "날씨",
+   "qs": [
+    "What's the weather like in your country?",
+    "What's your favourite season?",
+    "Does the weather affect your mood?",
+    "Do you check the weather forecast?"
+   ]
+  },
+  {
+   "en": "Collecting things",
+   "ko": "물건 모으기",
+   "qs": [
+    "Where do you usually keep things you need?",
+    "Would you keep old things for a long time? Why?",
+    "Are there any things you have kept from your childhood?",
+    "Do you collect things?"
+   ]
+  },
+  {
+   "en": "Lost and found",
+   "ko": "분실물",
+   "qs": [
+    "Have you ever lost your keys?",
+    "Will you post on social media if you lose your item?",
+    "Have you ever lost things?",
+    "Do you report to the police when finding something lost by others? Why?",
+    "What will you do if you find something lost by others?"
+   ]
+  },
+  {
+   "en": "Street markets",
+   "ko": "길거리 시장",
+   "qs": [
+    "Are there many street markets in Korea?",
+    "When was the last time you went to a street market?",
+    "Do you prefer to go shopping in the shopping mall or at the street market?",
+    "What do people usually buy at the street market?"
+   ]
+  },
+  {
+   "en": "Paper",
+   "ko": "종이",
+   "qs": [
+    "Do you carry paper and pens with you when you go out?",
+    "Do people still keep handwritten letters today?",
+    "Do you still write physical letters?",
+    "Have you made any crafts with paper?",
+    "What did you like to do with paper as a child?"
+   ]
+  },
+  {
+   "en": "Fruit and vegetables",
+   "ko": "과일·채소",
+   "qs": [
+    "Were there any kinds of fruits and vegetables you disliked as a child?",
+    "What kinds of fruits and vegetables do you dislike?",
+    "Where do you usually buy fruit and vegetables?",
+    "How often do you eat fruit and vegetables?"
+   ]
+  },
+  {
+   "en": "Being polite",
+   "ko": "예의",
+   "qs": [
+    "Do you think being polite is very important?",
+    "How did you learn to be polite as a child?"
+   ]
+  },
+  {
+   "en": "Tiredness",
+   "ko": "피곤함",
+   "qs": [
+    "What do you do when you feel tired?",
+    "When do you usually feel tired?",
+    "Do you often feel tired?"
+   ]
+  },
+  {
+   "en": "Rubbish and recycling",
+   "ko": "쓰레기·재활용",
+   "qs": [
+    "How do you recycle things like paper and plastic?",
+    "What do you do when you see rubbish on the street?"
+   ]
+  },
+  {
+   "en": "Travelling",
+   "ko": "여행",
+   "qs": [
+    "Do you prefer to sit by the window when travelling?",
+    "Did you have a long journey with your family as a child?",
+    "What kind of transportation do you usually use when travelling?",
+    "Do you think travelling is important for people?",
+    "How has travelling changed compared to the past?",
+    "What are the benefits of travelling with family?"
+   ]
+  },
+  {
+   "en": "Advertisement",
+   "ko": "광고",
+   "qs": [
+    "Do you often see advertisements when you are on your phone or computer?",
+    "What kind of advertising do you like?",
+    "Do you like advertisements?",
+    "Do you see a lot of advertising on trains or other transport?",
+    "Is there an advertisement that made an impression on you when you were a child?"
+   ]
+  },
+  {
+   "en": "Shoes",
+   "ko": "신발",
+   "qs": [
+    "Which do you prefer, fashionable shoes or comfortable shoes?",
+    "How much money do you usually spend on shoes?",
+    "Have you ever bought shoes online?",
+    "Do you like buying shoes? How often?"
    ]
   }
  ]

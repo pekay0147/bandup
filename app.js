@@ -491,7 +491,7 @@ let ideaPart="p2", openKey=null, p2Query="", p2Lesson=false;
 function renderIdeas(app){
   pageHead(app,"아이디어","스피킹 답변에 쓸 재료를 Part별로 모았어요.");
   const seg=el("div","modeseg"); seg.setAttribute("role","tablist");
-  const n1=P1Q? P1Q.sets.reduce((a,x)=>a+x.topics.reduce((b,t)=>b+t.qs.length,0),0) : 0;
+  const n1=P1Q? P1Q.topics.reduce((b,t)=>b+t.qs.length,0) : 0;
   const n2=P2? P2.items.length : 0, n3=(D.part3||[]).reduce((a,s)=>a+s.qs.length,0);
   for(const [k,label,sub] of [["p1","Part 1",`질문 ${n1}개`],["p2","Part 2",`기출 ${n2}개`],["p3","Part 3",`질문 ${n3}개`]]){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(ideaPart===k));
@@ -511,23 +511,18 @@ function fold(key, head, bodyFn){
   card.append(h); if(open){ const b=el("div","idea-b"); bodyFn(b); card.append(b); }
   return card;
 }
-let p1Set="wb";
 function renderP1(app){
   if(!P1Q){ const e=el("div","empty"); e.append(el("p",null,"질문을 불러오지 못했어요.")); app.append(e); return; }
-  const sw=el("div","pchips");
-  for(const s of P1Q.sets){ const n=s.topics.reduce((a,t)=>a+t.qs.length,0); const b=el("button",null,s.title); b.type="button"; b.append(el("small",null,String(n))); b.setAttribute("aria-pressed",String(p1Set===s.key)); b.onclick=()=>{ p1Set=s.key; render(); }; sw.append(b); }
-  app.append(sw);
-  const set=P1Q.sets.find(s=>s.key===p1Set)||P1Q.sets[0];
   const jump=el("div","pchips p1jump");
-  set.topics.forEach((tp,i)=>{ const b=el("button",null,tp.ko); b.type="button"; b.onclick=()=>{ const t=document.getElementById("p1t"+i); if(t) t.scrollIntoView({behavior:"smooth",block:"start"}); }; jump.append(b); });
+  P1Q.topics.forEach((tp,i)=>{ const b=el("button",null,tp.ko); b.type="button"; b.onclick=()=>{ const t=document.getElementById("p1t"+i); if(t) t.scrollIntoView({behavior:"smooth",block:"start"}); }; jump.append(b); });
   app.append(jump);
-  set.topics.forEach((tp,i)=>{
+  P1Q.topics.forEach((tp,i)=>{
     const p=el("div","panel p1sec"); p.id="p1t"+i;
     const h=el("div","p1h"); const ht=el("div"); ht.append(el("b",null,tp.ko), el("span",null,tp.en)); h.append(ht, el("span","p1n",`${tp.qs.length}개`)); p.append(h);
     const ol=el("ol","p1q"); tp.qs.forEach(q=>ol.append(el("li",null,q))); p.append(ol);
     app.append(p);
   });
-  app.append(el("p","muted small","출처: "+set.source));
+  app.append(el("p","muted small","참고: "+P1Q.source));
 }
 function startVocab(topics, title, shuffle, backTo, limit=20){
   let ids=[];
