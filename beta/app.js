@@ -113,7 +113,7 @@ function render(){
 function renderHome(app){
   const due=dueCards().length;
   const h=el("div","hello"); const h1=el("h1"); h1.append(document.createTextNode(`${D.name}님, `), el("b",null,due? `오늘 ${Math.min(due,DAILY)}장`: "오늘 복습 끝!"));
-  h.append(h1); app.append(h); setTimeout(homeCat,0);
+  h.append(h1); app.append(h);
   app.append(quoteBox()); startIdiomTimer();
   if(false){ const st=el("div","stats");
   for(const [cls,n,l] of [["due",D.cards.length,"내 수업 카드"],["streak",streak(),"연속 공부일"]]){
