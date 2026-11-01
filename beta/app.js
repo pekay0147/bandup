@@ -170,7 +170,7 @@ function bmHomeCard(){
   const ul=el("div","bmprev"); list.slice(0,3).forEach(c=>{ const r=el("div"); r.append(el("b",null,c.en), el("span",null,c.ko||"")); ul.append(r); }); w.append(ul);
   const row=el("div","btnrow two");
   const a=el("button","btn primary",`카드로 연습`); a.type="button"; a.onclick=()=>{ deckState=null; go("cards",{deck:"bm", ids:list.map(c=>c.id)}); };
-  const b=el("button","btn","전체 보기"); b.type="button"; b.onclick=()=>{ cardMode="bm"; go("cards"); };
+  const b=el("button","btn","전체 보기"); b.type="button"; b.onclick=()=>go("bm");
   row.append(a,b); w.append(row); return w;
 }
 /* ---------- home puppy ---------- */
@@ -318,8 +318,9 @@ function deckTile(s){
 
 function renderDecks(app){
   pageHead(app,"큐카드","수업 시간에 나온 문장을 카드로 연습해요.");
-  const seg=el("div","modeseg four"); seg.setAttribute("role","tablist");
-  for(const [k,label,sub] of [["session","회차별",`1~${D.sessions[D.sessions.length-1].no}회차`],["wrong","틀린 문장",`${D.cards.filter(isWrong).length}개`],["random","랜덤 퀴즈","섞어서 풀기"],["bm","북마크",`${cbmList().filter(id=>getCard(id)).length}개`]]){
+  const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
+  if(cardMode!=="session" && cardMode!=="random") cardMode="session";
+  for(const [k,label,sub] of [["session","회차별",`1~${D.sessions[D.sessions.length-1].no}회차`],["random","랜덤 퀴즈","섞어서 풀기"]]){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(cardMode===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; openKey=null; render(); }; seg.append(b);
   }
