@@ -171,7 +171,7 @@ function bmHomeCard(){
   const body=el("div","bmbody"); body.hidden=!bmHomeOpen;
   if(!list.length) body.append(el("p","muted small","큐카드에서 카드의 ☆를 누르면 여기 모여요."));
   else {
-    const ul=el("div","bmprev"); list.forEach(c=>{ const r=el("div"); r.append(el("b",null,c.en), el("span",null,c.ko||"")); ul.append(r); }); body.append(ul);
+    const ul=el("div","bmprev"); list.forEach(c=>{ const r=el("div","bmrow2"); const t=el("div"); t.append(el("b",null,c.en), el("span",null,c.ko||"")); const x=el("button","cstar","★"); x.type="button"; x.setAttribute("aria-pressed","true"); x.setAttribute("aria-label","북마크 해제"); x.onclick=()=>{ toggleCbm(c.id); render(); }; r.append(t,x); ul.append(r); }); body.append(ul);
     const a=el("button","btn primary vstart","카드로 연습"); a.type="button"; a.onclick=()=>{ deckState=null; go("cards",{deck:"bm", ids:list.map(c=>c.id)}); }; body.append(a);
   }
   w.append(body);

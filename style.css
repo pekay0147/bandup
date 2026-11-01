@@ -577,3 +577,4 @@ body.lesson .cat-grass{display:none}
 .fside{display:flex;align-items:center;gap:6px} .cstar{border:0;background:none;font-size:22px;line-height:1;color:var(--muted);cursor:pointer;min-width:36px;min-height:36px;padding:0} .cstar[aria-pressed="true"]{color:var(--sun)}
 button.bmh{border:0;background:none;padding:0;width:100%;text-align:left;cursor:pointer;color:inherit;min-height:32px} .bmchev{margin-left:auto;color:var(--muted);font-size:14px} .bmbody{display:grid;gap:10px}
 .tabs nav{grid-template-columns:repeat(4,1fr)}
+.bmprev > .bmrow2{grid-template-columns:1fr auto;align-items:center} .bmrow2 > div{display:grid;gap:1px}
