@@ -67,14 +67,15 @@ const ICONS={
   home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/></svg>',
   cards:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 4h12a2 2 0 0 1 2 2v11"/></svg>',
   review:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>',
-  words:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20a2 2 0 0 0 2 2h13v-4"/><path d="M8 7h7M8 11h5"/></svg>',
+  wordsOld:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20a2 2 0 0 0 2 2h13v-4"/><path d="M8 7h7M8 11h5"/></svg>',
+  words:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="5" height="7" rx="2"/><rect x="16" y="14" width="5" height="7" rx="2"/></svg>',
   listen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="5" height="7" rx="2"/><rect x="16" y="14" width="5" height="7" rx="2"/></svg>',
   ideas:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg>',
   notes:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h5"/></svg>'
 };
 function buildTabs(){
   const nav=$("#tabs nav"); nav.textContent="";
-  for(const [k,label] of [["home","홈"],["cards","큐카드"],["review","복습"],["ideas","아이디어"],["words","단어"]]){
+  for(const [k,label] of [["home","홈"],["cards","큐카드"],["review","복습"],["ideas","아이디어"],["words","철자"]]){
     const b=el("button"); b.type="button"; b.dataset.tab=k; b.innerHTML=ICONS[k]; b.append(el("span",null,label));
     if(k==="review"){ const bd=el("span","badge"); bd.id="dueBadge"; b.append(bd); }
     b.onclick=()=>{ go(k); };
@@ -158,7 +159,7 @@ function menuGuide(){
   for(const [k,name,desc] of [
     ["cards","큐카드","수업 문장 연습하기"],
     ["ideas","아이디어","Part 1·2·3 답변 재료"],
-    ["words","단어","단어 외우기 · 받아쓰기"]]){
+    ["words","철자","리스닝 철자 받아쓰기"]]){
     const b=el("button","mrow"); b.type="button";
     const ic=el("span","mic"); ic.innerHTML=ICONS[k];
     const t=el("div","t"); t.append(el("b",null,name), el("span",null,desc));
@@ -675,15 +676,10 @@ function wordsTile(){
 function wbTopics(secs){ return secs.flatMap(s=>s.groups.map(g=>({topic:`${s.key}-${g.name}`, ko:`${s.ko} · ${g.name}`, words:g.words}))); }
 function renderWords(app){
   if(LD) return renderDictation(app);
-  pageHead(app,"단어","뜻 외우기와 리스닝 철자 받아쓰기를 여기서 해요.");
-  const nWB = WB? WB.sections.reduce((a,s)=>a+s.groups.reduce((b,g)=>b+g.words.length,0),0) : 0;
-  const nLS = LS? LS.categories.reduce((a,c)=>a+c.words.length,0) : 0;
-  const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
-  for(const [k,label,sub] of [["vocab","단어 공부",`${nWB}개 · 뜻·예문`],["spell","철자 받아쓰기",`${nLS}개 · 듣고 쓰기`]]){
-    const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(wordMode===k));
-    b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ wordMode=k; openKey=null; render(); }; seg.append(b);
-  }
-  app.append(seg);
+  pageHead(app,"철자","리스닝에서 자주 틀리는 단어를 듣고 써 봐요.");
+  return renderListen(app);
+}
+function renderWordsOld(app){
   if(wordMode==="spell") return renderListen(app);
   if(!WB){ const e=el("div","empty"); e.append(el("p",null,"단어를 불러오지 못했어요.")); app.append(e); return; }
   const chips=el("div","pchips"); chips.setAttribute("role","group");
