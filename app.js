@@ -562,7 +562,7 @@ function renderP2(app){
   inp.addEventListener("input",e=>{ if(e.isComposing) return; applyFilter(); });
   inp.addEventListener("compositionend",applyFilter);
   const chip=el("button",null,"수업에서 다룬 주제만"); chip.type="button"; chip.className="lessonchip"; chip.setAttribute("aria-pressed",String(p2Lesson)); chip.onclick=()=>{ p2Lesson=!p2Lesson; render(); };
-  tools.append(inp); app.append(tools);
+  p2Query="";
   const q=p2Query.trim().toLowerCase();
   const hay=it=>(it.topic+" "+it.answer+" "+it.points.join(" ")+" "+(it.alts||[]).join(" ")).toLowerCase();
   const list=P2.items.filter(it=>(!p2Lesson || it.lesson));
