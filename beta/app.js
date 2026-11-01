@@ -77,7 +77,7 @@ const ICONS={
 };
 function buildTabs(){
   const nav=$("#tabs nav"); nav.textContent="";
-  for(const [k,label] of [["home","홈"],["cards","큐카드"],["bm","북마크"],["ideas","아이디어"],["words","철자"]]){
+  for(const [k,label] of [["home","홈"],["cards","큐카드"],["ideas","아이디어"],["words","철자"]]){
     const b=el("button"); b.type="button"; b.dataset.tab=k; b.innerHTML=ICONS[k]; b.append(el("span",null,label));
     if(k==="review"){ const bd=el("span","badge"); bd.id="dueBadge"; b.append(bd); }
     b.onclick=()=>{ go(k); };
