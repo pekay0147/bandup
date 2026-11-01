@@ -162,16 +162,21 @@ const qbmList=()=>store.get(qbmKey(),[]);
 const isQbm=q=>qbmList().some(x=>x.q===q);
 function toggleQbm(item){ let l=qbmList(); if(l.some(x=>x.q===item.q)) l=l.filter(x=>x.q!==item.q); else l=[...l,{part:item.part,topic:item.topic,q:item.q}]; store.set(qbmKey(),l); }
 function qbmBtn(item, onChange){ const b=el("button","qbm"); b.type="button"; const set=()=>{ const on=isQbm(item.q); b.textContent=on? "★ 북마크됨" : "☆ 북마크"; b.setAttribute("aria-pressed",String(on)); }; set(); b.onclick=e=>{ e.stopPropagation(); toggleQbm(item); set(); if(onChange) onChange(); }; return b; }
+let bmHomeOpen=false;
 function bmHomeCard(){
   const list=cbmList().map(getCard).filter(Boolean);
   const w=el("div","bmhome");
-  const h=el("div","bmh"); h.append(el("b",null,"★ 북마크"), el("span",null,`${list.length}장`)); w.append(h);
-  if(!list.length){ w.append(el("p","muted small","큐카드에서 ☆ 북마크에 추가를 누른 카드가 여기 모여요.")); return w; }
-  const ul=el("div","bmprev"); list.slice(0,3).forEach(c=>{ const r=el("div"); r.append(el("b",null,c.en), el("span",null,c.ko||"")); ul.append(r); }); w.append(ul);
-  const row=el("div","btnrow two");
-  const a=el("button","btn primary",`카드로 연습`); a.type="button"; a.onclick=()=>{ deckState=null; go("cards",{deck:"bm", ids:list.map(c=>c.id)}); };
-  const b=el("button","btn","전체 보기"); b.type="button"; b.onclick=()=>go("bm");
-  row.append(a,b); w.append(row); return w;
+  const h=el("button","bmh"); h.type="button"; h.setAttribute("aria-expanded",String(bmHomeOpen));
+  h.append(el("b",null,"★ 북마크"), el("span",null,`${list.length}장`), el("span","bmchev",bmHomeOpen?"▴":"▾")); w.append(h);
+  const body=el("div","bmbody"); body.hidden=!bmHomeOpen;
+  if(!list.length) body.append(el("p","muted small","큐카드에서 카드의 ☆를 누르면 여기 모여요."));
+  else {
+    const ul=el("div","bmprev"); list.forEach(c=>{ const r=el("div"); r.append(el("b",null,c.en), el("span",null,c.ko||"")); ul.append(r); }); body.append(ul);
+    const a=el("button","btn primary vstart","카드로 연습"); a.type="button"; a.onclick=()=>{ deckState=null; go("cards",{deck:"bm", ids:list.map(c=>c.id)}); }; body.append(a);
+  }
+  w.append(body);
+  h.onclick=()=>{ bmHomeOpen=!bmHomeOpen; body.hidden=!bmHomeOpen; h.setAttribute("aria-expanded",String(bmHomeOpen)); h.querySelector(".bmchev").textContent=bmHomeOpen?"▴":"▾"; };
+  return w;
 }
 /* ---------- home puppy ---------- */
 const PUP_SVG='<svg viewBox="0 0 120 110" aria-hidden="true"><g class="pup-tail"><path d="M92 74c10-2 16-10 15-20" fill="none" stroke="#c98a4b" stroke-width="7" stroke-linecap="round"/></g><ellipse cx="62" cy="84" rx="32" ry="22" fill="#e7b37a"/><ellipse cx="62" cy="90" rx="18" ry="13" fill="#f6dcb8"/><ellipse cx="44" cy="102" rx="9" ry="6" fill="#e7b37a"/><ellipse cx="78" cy="102" rx="9" ry="6" fill="#e7b37a"/><g class="pup-head"><g class="pup-ear-l"><path d="M28 30c-10 4-14 22-6 32 6-2 10-10 12-20z" fill="#b97a3f"/></g><g class="pup-ear-r"><path d="M92 30c10 4 14 22 6 32-6-2-10-10-12-20z" fill="#b97a3f"/></g><ellipse cx="60" cy="44" rx="32" ry="28" fill="#e7b37a"/><ellipse cx="60" cy="56" rx="16" ry="12" fill="#f6dcb8"/><g class="pup-eyes"><ellipse cx="47" cy="40" rx="4" ry="5" fill="#2a1f1a"/><ellipse cx="73" cy="40" rx="4" ry="5" fill="#2a1f1a"/><circle cx="48.5" cy="38" r="1.4" fill="#fff"/><circle cx="74.5" cy="38" r="1.4" fill="#fff"/></g><ellipse cx="60" cy="51" rx="5" ry="3.6" fill="#2a1f1a"/><path d="M60 54.5v3.5M60 58c-2.5 2.5-6 2.5-7.5 0M60 58c2.5 2.5 6 2.5 7.5 0" fill="none" stroke="#2a1f1a" stroke-width="1.8" stroke-linecap="round"/><path class="pup-tongue" d="M57 61c0 5 6 5 6 0z" fill="#f08a9c"/><ellipse cx="40" cy="52" rx="5" ry="3" fill="#f3a3a3" opacity=".5"/><ellipse cx="80" cy="52" rx="5" ry="3" fill="#f3a3a3" opacity=".5"/></g></svg>';
