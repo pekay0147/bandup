@@ -604,3 +604,4 @@ body.lesson .cat-grass{display:none}
 .p3tips .steps4 b{font:700 13px/1.3 var(--body);color:var(--blue)}
 .p3tips .steps4 span{font:400 12px/1.4 var(--body);font-style:normal;color:var(--muted)}
 .linkbtn{border:0;background:none;color:var(--blue);font-weight:700;font-size:14px;cursor:pointer;padding:0}
+.fside{display:flex;align-items:center;gap:6px} .cstar{border:0;background:none;font-size:22px;line-height:1;color:var(--muted);cursor:pointer;min-width:36px;min-height:36px;padding:0} .cstar[aria-pressed="true"]{color:var(--sun)}

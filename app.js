@@ -363,8 +363,6 @@ function inlineDeck(app,key,list,empty){
   const prev=el("button","nav","‹ 이전"); prev.type="button"; prev.disabled=deckState.i===0; prev.onclick=()=>move(-1);
   const next=el("button","nav","다음 ›"); next.type="button"; next.disabled=deckState.i>=ids.length-1; next.onclick=()=>move(1);
   acts.append(prev,next); app.append(acts);
-  const bmb=el("button","btn cbm"); bmb.type="button"; const setB=()=>{ const on=isCbm(c.id); bmb.textContent= on? "★ 북마크됨" : "☆ 북마크에 추가"; bmb.setAttribute("aria-pressed",String(on)); }; setB();
-  bmb.onclick=()=>{ toggleCbm(c.id); setB(); if(key==="bm"){ deckState=null; render(); } }; app.append(bmb);
 }
 function keepRow(c){
   const r=el("div","m");
@@ -454,7 +452,9 @@ function flipCard(c, onFlip){
   const chipsFor=()=>{ const w=el("div","chips"); if(rep(c)) w.append(el("span","rep",`${c.sessions.length}번 반복`)); return w; };
   // front
   const f=el("div","face front"); f.setAttribute("aria-hidden",String(flipped));
-  const fh=el("div","fhead"); fh.append(chipsFor(), el("span","sess",sessLabel(c))); f.append(fh);
+  const starBtn=()=>{ const b=el("button","cstar"); b.type="button"; const set=()=>{ const on=isCbm(c.id); b.textContent= on? "★" : "☆"; b.setAttribute("aria-pressed",String(on)); b.setAttribute("aria-label", on? "북마크 해제" : "북마크에 추가"); }; set(); b.onclick=e=>{ e.stopPropagation(); toggleCbm(c.id); document.querySelectorAll(".cstar").forEach(x=>{ const on=isCbm(c.id); x.textContent=on?"★":"☆"; x.setAttribute("aria-pressed",String(on)); }); }; return b; };
+  const sideFor=()=>{ const w=el("div","fside"); w.append(el("span","sess",sessLabel(c)), starBtn()); return w; };
+  const fh=el("div","fhead"); fh.append(chipsFor(), sideFor()); f.append(fh);
   const fb=el("div","body");
   if(c.vtopic){ fb.append(el("span","from",`${c.vlabel||"주제별 어휘"} · ${c.vtopic}`)); }
   if(c.kind==="fix"){ fb.append(el("span","lab","틀린 문장이에요. 바르게 고쳐 보세요"), el("p","wrong",c.wrong)); }
@@ -466,7 +466,7 @@ function flipCard(c, onFlip){
   fb.append(el("span","tap","터치해서 정답 보기")); f.append(fb);
   // back
   const b=el("div","face back"); b.setAttribute("aria-hidden",String(!flipped));
-  const bh=el("div","fhead"); bh.append(chipsFor(), el("span","sess",sessLabel(c))); b.append(bh);
+  const bh=el("div","fhead"); bh.append(chipsFor(), sideFor()); b.append(bh);
   const bb=el("div","body");
   bb.append(el("span","lab", c.kind==="fix"? "이렇게 고쳐요" : "영어로는"));
   const sent=el("div","sent");
@@ -579,8 +579,6 @@ function renderDeck(app){
   const know=el("button","know","알았어요"); know.type="button"; know.setAttribute("aria-pressed",String(marks[c.id]==="know")); know.onclick=()=>markDeck(c,"know");
   const next=el("button","nav","›"); next.type="button"; next.setAttribute("aria-label","다음 카드"); next.disabled=deckState.i>=ids.length-1; next.onclick=()=>move(1);
   acts.classList.add("arrows"); acts.append(prev,next); app.append(acts);
-  const bmb=el("button","btn cbm"); bmb.type="button"; const setB=()=>{ const on=isCbm(c.id); bmb.textContent= on? "★ 북마크됨" : "☆ 북마크에 추가"; bmb.setAttribute("aria-pressed",String(on)); }; setB();
-  bmb.onclick=()=>{ toggleCbm(c.id); setB(); }; app.append(bmb);
   app.append(el("p","hint2","카드를 누르면 뒤집혀요 · 옆으로 밀어서 넘기기"));
 }
 function move(d){ const n=deckState.i+d; if(n<0||n>=deckState.ids.length) return; deckState.i=n; flipped=false; picked=null; render(); }
