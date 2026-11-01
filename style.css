@@ -389,3 +389,4 @@ body.lesson{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 .btnrow.two .btn{flex:1 1 0;min-width:0;padding:0 10px}
 .pod-ic{color:#8a3ffc;background:color-mix(in srgb,#8a3ffc 14%,var(--surface))} .pod-ic svg{width:26px;height:26px} .pod.done .pod-ic{color:var(--mint);background:var(--mint-soft)}
 .pfield{display:grid;gap:6px;font-size:15px;font-weight:600} .pfield input{height:50px;border:1px solid var(--line);border-radius:14px;padding:0 14px;font:16px var(--body);background:var(--sunk);color:var(--ink)}
+.who{display:none}
