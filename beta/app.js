@@ -82,7 +82,7 @@ function buildTabs(){
     nav.append(b);
   }
 }
-function go(tab, extra){ QZ=null; if(tab!=="words" && typeof LD!=="undefined"){ LD=null; try{ speechSynthesis.cancel(); }catch(_){} } view={tab, ...(extra||{})}; flipped=false; picked=null; if(tab!=="cards") deckState=null; if(tab!=="review") reviewState=null; render(); window.scrollTo(0,0); }
+function go(tab, extra){ if(typeof stopMockTimer==="function") stopMockTimer(); QZ=null; if(tab!=="words" && typeof LD!=="undefined"){ LD=null; try{ speechSynthesis.cancel(); }catch(_){} } view={tab, ...(extra||{})}; flipped=false; picked=null; if(tab!=="cards") deckState=null; if(tab!=="review") reviewState=null; render(); window.scrollTo(0,0); }
 function updateTabs(){
   document.querySelectorAll("#tabs button").forEach(b=>{ if(b.dataset.tab===view.tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
   const n=Math.min(dueCards().length,DAILY), bd=$("#dueBadge"); if(bd){ bd.textContent=String(n); bd.hidden=!n; }
@@ -104,6 +104,7 @@ function render(){
   if(view.tab==="notes") renderNotes(app);
   if(view.tab==="ideas") renderIdeas(app);
   if(view.tab==="words") renderWords(app);
+  if(view.tab==="mock") renderMock(app);
   updateTabs();
   document.body.classList.toggle("lesson", !!app.querySelector(".lbar"));
 }
@@ -130,7 +131,7 @@ function renderHome(app){
   const last=D.sessions[D.sessions.length-1];
   if(last){
     app.append(podcastBox());
-    app.append(menuGuide());
+    app.append(mockCard());
     app.append(quoteBox());
   }
   if(false){
@@ -150,6 +151,78 @@ function podcastBox(){
   const a=el("a","btn primary","팟캐스트 듣기"); a.href=POD_URL; a.target="_blank"; a.rel="noopener";
   w.append(a);
   return w;
+}
+/* ---------- IELTS mock test (Part 1 → 2 → 3, random) ---------- */
+let MT=null, mtTimer=null;
+const qbmKey=()=>`bandup-qbm-${slug}`;
+const qbmList=()=>store.get(qbmKey(),[]);
+const isQbm=q=>qbmList().some(x=>x.q===q);
+function toggleQbm(item){ let l=qbmList(); if(l.some(x=>x.q===item.q)) l=l.filter(x=>x.q!==item.q); else l=[...l,{part:item.part,topic:item.topic,q:item.q}]; store.set(qbmKey(),l); }
+function qbmBtn(item, onChange){ const b=el("button","qbm"); b.type="button"; const set=()=>{ const on=isQbm(item.q); b.textContent=on? "★ 북마크됨" : "☆ 북마크"; b.setAttribute("aria-pressed",String(on)); }; set(); b.onclick=e=>{ e.stopPropagation(); toggleQbm(item); set(); if(onChange) onChange(); }; return b; }
+function mockCard(){
+  const w=el("div","mockcard");
+  const t=el("div"); t.append(el("b",null,"아이엘츠 모의고사"), el("span",null,"Part 1·2·3를 랜덤으로 · 약 12분"));
+  const b=el("button","btn primary","모의고사 보기"); b.type="button"; b.onclick=()=>{ MT=null; go("mock"); };
+  w.append(t,b); return w;
+}
+function buildMock(){
+  const pick=(a,n)=>[...a].sort(()=>Math.random()-.5).slice(0,n);
+  const steps=[];
+  if(P1Q){ const core=P1Q.topics.filter(t=>["Work","Study","Hometown","Home"].includes(t.en)); const rest=P1Q.topics.filter(t=>!core.includes(t));
+    for(const tp of [...pick(core,1),...pick(rest,2)]) tp.qs.slice(0,4).forEach(q=>steps.push({part:1,topic:tp.ko,q})); }
+  const p2=[...(P2?P2.items:[]),...(P2X?P2X.items:[])]; const c=p2[Math.floor(Math.random()*p2.length)];
+  if(c){ steps.push({part:2,topic:"Part 2",q:c.topic,say:c.say||[],no:c.no});
+    const p3=P3&&P3.items.find(x=>x.no===c.no); if(p3) p3.qs.slice(0,5).forEach(q=>steps.push({part:3,topic:c.topic,q})); }
+  return {steps,i:0,phase:null,left:0};
+}
+function stopMockTimer(){ if(mtTimer){ clearInterval(mtTimer); mtTimer=null; } }
+function renderMock(app){
+  stopMockTimer();
+  if(!MT){
+    const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
+    pageHead(app,"아이엘츠 모의고사","실제 시험처럼 Part 1 → 2 → 3 순서로 랜덤 질문이 나와요.");
+    const info=el("div","panel mockinfo");
+    for(const [k,v] of [["Part 1","주제 3개 · 질문 12개 (4~5분)"],["Part 2","큐카드 1장 · 준비 1분 + 말하기 2분"],["Part 3","Part 2 주제 심화 질문 5개 (4~5분)"]]){ const r=el("div","mrow2"); r.append(el("b",null,k), el("span",null,v)); info.append(r); }
+    app.append(info);
+    const st=el("button","btn primary vstart","모의고사 시작"); st.type="button"; st.onclick=()=>{ MT=buildMock(); render(); window.scrollTo(0,0); }; app.append(st);
+    const bms=qbmList(); const bp=el("div","panel"); const bh=el("div","ghead"); bh.append(el("b",null,"★ 북마크한 질문"), el("span",null,`${bms.length}개`)); bp.append(bh);
+    if(!bms.length) bp.append(el("p","gtip","모의고사를 보다가 다시 연습하고 싶은 질문에 ☆를 누르면 여기 모여요."));
+    for(const part of [1,2,3]){ const list=bms.filter(x=>x.part===part); if(!list.length) continue; bp.append(el("span","idea-lab",`Part ${part}`));
+      for(const it of list){ const r=el("div","qbmrow"); const t=el("div"); t.append(el("span","from2",it.topic), el("p",null,it.q)); r.append(t, qbmBtn(it,()=>render())); bp.append(r); } }
+    app.append(bp); return;
+  }
+  const S=MT.steps, st=S[MT.i];
+  if(!st){
+    const e=el("div","empty"); e.append(el("div","big","✓"), el("h2",null,"모의고사 끝!"), el("p",null,`Part 1 ${S.filter(x=>x.part===1).length}문제 · Part 2 1문제 · Part 3 ${S.filter(x=>x.part===3).length}문제를 풀었어요.`));
+    const again=el("button","btn primary","새 모의고사 보기"); again.type="button"; again.onclick=()=>{ MT=buildMock(); render(); window.scrollTo(0,0); };
+    const bm=el("button","btn",`북마크한 질문 보기 (${qbmList().length}개)`); bm.type="button"; bm.onclick=()=>{ MT=null; render(); };
+    const home=el("button","btn","홈으로"); home.type="button"; home.onclick=()=>{ MT=null; go("home"); };
+    e.append(again,bm,home); app.append(e); return;
+  }
+  app.append(lessonBar(()=>{ MT=null; stopMockTimer(); try{ speechSynthesis.cancel(); }catch(_){} render(); }, MT.i, S.length));
+  const box=el("div","mockq");
+  box.append(el("span","mpart",`Part ${st.part}`+(st.part===1? ` · ${st.topic}` : "")));
+  box.append(el("p","mq",st.q));
+  if(st.part===2 && st.say.length){ box.append(el("span","idea-lab","You should say")); const ul=el("ul","say"); st.say.forEach(x=>ul.append(el("li",null,x))); box.append(ul); }
+  const tools=el("div","mtools");
+  if(canSpeak()){ const sp=el("button","btn"); sp.type="button"; sp.innerHTML=SPEAK_ICON; sp.append(document.createTextNode(" 질문 듣기")); sp.onclick=()=>speak(st.q); tools.append(sp); }
+  tools.append(qbmBtn(st)); box.append(tools);
+  if(st.part===2){
+    const tm=el("div","mtimer"); const lab=el("b",null,""); const btn=el("button","btn"); btn.type="button"; tm.append(lab,btn);
+    const show=()=>{ const m=Math.floor(MT.left/60), s2=String(MT.left%60).padStart(2,"0");
+      if(MT.phase===null){ lab.textContent="준비 1분 → 말하기 2분"; btn.textContent="1분 준비 시작"; }
+      else if(MT.phase==="prep"){ lab.textContent=`준비 중 ${m}:${s2}`; btn.textContent="바로 말하기 시작"; }
+      else if(MT.phase==="talk"){ lab.textContent=`말하는 중 ${m}:${s2}`; btn.textContent="말하기 끝"; }
+      else { lab.textContent="시간 끝! 다음으로 넘어가세요"; btn.hidden=true; } };
+    const run=(phase,sec)=>{ stopMockTimer(); MT.phase=phase; MT.left=sec; show(); mtTimer=setInterval(()=>{ MT.left--; if(MT.left<=0){ if(MT.phase==="prep") run("talk",120); else { stopMockTimer(); MT.phase="done"; show(); } } else show(); },1000); };
+    btn.onclick=()=>{ if(MT.phase===null) run("prep",60); else if(MT.phase==="prep") run("talk",120); else { stopMockTimer(); MT.phase="done"; show(); } };
+    show(); if(MT.phase==="prep"||MT.phase==="talk") run(MT.phase,MT.left);
+    box.append(tm);
+  }
+  app.append(box);
+  const nx=el("button","btn primary vstart", MT.i+1<S.length? (S[MT.i+1].part!==st.part? `Part ${S[MT.i+1].part}로 넘어가기` : "다음 질문") : "모의고사 끝내기"); nx.type="button";
+  nx.onclick=()=>{ stopMockTimer(); MT.i++; MT.phase=null; MT.left=0; render(); window.scrollTo(0,0); const n=MT.steps[MT.i]; if(n && canSpeak()) setTimeout(()=>speak(n.q),250); };
+  app.append(nx);
 }
 function menuGuide(){
   const nWB = WB? WB.sections.reduce((a,s)=>a+s.groups.reduce((b,g)=>b+g.words.length,0),0) : 0;
