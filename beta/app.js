@@ -189,25 +189,40 @@ let catRAF=null;
 function homeCat(){
   if(catRAF){ cancelAnimationFrame(catRAF); catRAF=null; }
   const old=document.querySelector(".cat-walk"); if(old) old.remove();
-  const w=el("button","cat-walk walking"); w.type="button"; w.setAttribute("aria-label","고양이 쓰다듬기"); w.innerHTML=CAT_SVG;
-  const bub=el("span","cat-bub"); bub.hidden=true; w.append(bub); document.body.append(w);
+  const svg=CAT_SVG.replace('</g></svg>','<g class="c-sleepeyes"><path d="M107 41 q7 4 14 0 M127 41 q7 4 14 0" stroke="#3b2414" stroke-width="2.6" fill="none" stroke-linecap="round"/></g><ellipse class="c-mouth" cx="124" cy="57" rx="4" ry="4.5" fill="#7a2e2e"/></g></svg>');
+  const w=el("button","cat-walk"); w.type="button"; w.setAttribute("aria-label","고양이 쓰다듬기"); w.innerHTML=svg;
+  const bub=el("span","cat-bub"); bub.hidden=true;
+  const bowl=el("span","cat-prop cat-bowl"); bowl.innerHTML='<svg viewBox="0 0 40 20"><path d="M2 6h36c-2 9-8 13-18 13S4 15 2 6z" fill="#5a7be8"/><ellipse cx="20" cy="6" rx="18" ry="4" fill="#8a5a33"/><circle cx="14" cy="5" r="2" fill="#a8703f"/><circle cx="22" cy="4" r="2" fill="#a8703f"/><circle cx="27" cy="6" r="1.8" fill="#a8703f"/></svg>';
+  const zz=el("span","cat-prop cat-zz","Zz");
+  const sweat=el("span","cat-prop cat-sweat","💦");
+  w.append(bub,bowl,zz,sweat);
+  const og=document.querySelector(".cat-grass"); if(og) og.remove();
+  const grass=el("div","cat-grass"); grass.setAttribute("aria-hidden","true"); document.body.append(grass, w);
   const reduce=window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let x=20, dir=1, speed=0.55, pauseUntil=0, last=performance.now(), bt=null;
-  const say=()=>{ bub.textContent=CAT_LINES[Math.floor(Math.random()*CAT_LINES.length)].replace("{name}",D.name+"님"); bub.hidden=false; clearTimeout(bt); bt=setTimeout(()=>{ bub.hidden=true; },2600); };
-  w.onclick=()=>{ say(); pauseUntil=performance.now()+2600; w.classList.remove("walking"); w.classList.add("sit"); };
+  let x=20, dir=1, last=performance.now(), bt=null, state="walk", until=0;
+  const STATES=["walk","walk","walk","sit","meow","stretch","eat","exercise","sleep","groom"];
+  const LINES={meow:["야옹~","냐아앙","냥냥!"],eat:["냠냠","츄르 최고","밥 먹는 중이다냥"],exercise:["운동 중! 하나 둘","점프 점프!","다이어트 중이다냥"],sleep:["쿨쿨…","5분만 더…"],stretch:["으아아 기지개~","쭉쭉"],groom:["단장 중","털 고르는 중"]};
+  const say=(txt)=>{ bub.textContent=txt; bub.hidden=false; clearTimeout(bt); bt=setTimeout(()=>{ bub.hidden=true; },2400); };
+  const sayCheer=()=>say(CAT_LINES[Math.floor(Math.random()*CAT_LINES.length)].replace("{name}",D.name+"님"));
+  const setState=(s,t)=>{
+    state=s; w.className="cat-walk st-"+s+(dir<0?" left":"");
+    const dur={walk:3000+Math.random()*4000,sit:2000+Math.random()*2000,meow:2200,stretch:2600,eat:4200,exercise:3200,sleep:5000+Math.random()*3000,groom:3200}[s];
+    until=t+dur;
+    if(LINES[s] && Math.random()<.85) say(LINES[s][Math.floor(Math.random()*LINES[s].length)]);
+    if(s==="walk" && Math.random()<.4) dir*=-1;
+  };
+  w.onclick=()=>{ const t=performance.now(); if(state==="sleep"){ say("앗 깼다냥!"); setState("sit",t); return; } setState(Math.random()<.5? "meow":"sit",t); sayCheer(); };
   const place=()=>{ w.style.transform=`translateX(${x}px)`; w.classList.toggle("left",dir<0); };
   const step=t=>{
-    if(!document.body.contains(w) || view.tab!=="home"){ w.remove(); catRAF=null; return; }
+    if(!document.body.contains(w) || view.tab!=="home"){ w.remove(); grass.remove(); catRAF=null; return; }
     const dt=Math.min(50,t-last); last=t;
     const maxX=Math.max(0,window.innerWidth-w.offsetWidth-8);
-    if(t<pauseUntil){ catRAF=requestAnimationFrame(step); return; }
-    if(w.classList.contains("sit")){ w.classList.remove("sit"); w.classList.add("walking"); if(Math.random()<.5) dir*=-1; }
-    x+=dir*speed*dt/16; if(x<=8){ x=8; dir=1; } if(x>=maxX){ x=maxX; dir=-1; }
-    if(Math.random()<0.003){ pauseUntil=t+2000+Math.random()*2500; w.classList.remove("walking"); w.classList.add("sit"); }
+    if(state==="walk"){ x+=dir*0.55*dt/16; if(x<=8){ x=8; dir=1; } if(x>=maxX){ x=maxX; dir=-1; } }
+    if(t>=until){ let n; do{ n=STATES[Math.floor(Math.random()*STATES.length)]; }while(n===state && n!=="walk"); setState(n,t); }
     place(); catRAF=requestAnimationFrame(step);
   };
-  place(); setTimeout(say,600);
-  if(!reduce) catRAF=requestAnimationFrame(step); else w.classList.remove("walking");
+  place(); setState("walk",performance.now()); setTimeout(sayCheer,600);
+  if(!reduce) catRAF=requestAnimationFrame(step); else w.className="cat-walk st-sit";
 }
 function mockCard(){
   const w=el("div","mockcard");

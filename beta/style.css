@@ -536,12 +536,12 @@ main{zoom:.88}
 .cat-bub::after{content:"";position:absolute;left:50%;bottom:-10px;margin-left:-6px;border:6px solid transparent;border-top-color:var(--surface)}
 body.lesson .cat-walk{display:none}
 @media (prefers-reduced-motion:no-preference){
-  .cat-walk.walking .c-lf,.cat-walk.walking .c-lb2{transform-box:fill-box;transform-origin:50% 0;animation:legA .45s ease-in-out infinite alternate}
-  .cat-walk.walking .c-lb,.cat-walk.walking .c-lf2{transform-box:fill-box;transform-origin:50% 0;animation:legB .45s ease-in-out infinite alternate}
-  .cat-walk.walking .c-head{animation:bob .45s ease-in-out infinite alternate}
+  .cat-walk.st-walk .c-lf,.cat-walk.st-walk .c-lb2{transform-box:fill-box;transform-origin:50% 0;animation:legA .45s ease-in-out infinite alternate}
+  .cat-walk.st-walk .c-lb,.cat-walk.st-walk .c-lf2{transform-box:fill-box;transform-origin:50% 0;animation:legB .45s ease-in-out infinite alternate}
+  .cat-walk.st-walk .c-head{animation:bob .45s ease-in-out infinite alternate}
   .c-tail{transform-box:fill-box;transform-origin:100% 100%;animation:tail 1.6s ease-in-out infinite alternate}
   .c-eyes{transform-box:fill-box;transform-origin:50% 50%;animation:cblink 5s infinite}
-  .cat-walk.sit .c-head{animation:tilt2 2s ease-in-out infinite}
+  .cat-walk.st-sit .c-head{animation:tilt2 2s ease-in-out infinite}
   .cat-bub:not([hidden]){animation:pop .25s ease both}
 }
 @keyframes legA{from{transform:rotate(18deg)}to{transform:rotate(-18deg)}}
@@ -551,3 +551,47 @@ body.lesson .cat-walk{display:none}
 @keyframes cblink{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.15)}}
 @keyframes tilt2{0%,100%{transform:rotate(0)}50%{transform:rotate(-5deg)}}
 .cat-walk{width:96px;height:72px} .cat-bub{bottom:74px}
+
+/* cat states + grass */
+.cat-grass{position:fixed;left:0;right:0;bottom:calc(var(--tabh) + env(safe-area-inset-bottom,0px));height:30px;z-index:14;pointer-events:none;background:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30' viewBox='0 0 60 30'%3E%3Cpath d='M0 30 L0 22 Q4 14 6 22 Q9 10 12 22 Q15 16 18 22 Q21 8 24 22 Q27 14 30 22 Q33 12 36 22 Q39 16 42 22 Q45 9 48 22 Q51 15 54 22 Q57 11 60 22 L60 30Z' fill='%2378c46a'/%3E%3Cpath d='M0 30 L0 25 Q5 19 8 25 Q13 17 17 25 Q22 20 26 25 Q31 16 35 25 Q40 20 44 25 Q49 18 53 25 Q57 21 60 25 L60 30Z' fill='%235aa64f'/%3E%3C/svg%3E") repeat-x bottom/60px 30px}
+.cat-walk{bottom:calc(var(--tabh) + 8px + env(safe-area-inset-bottom,0px))}
+body.lesson .cat-grass{display:none}
+.c-mouth,.c-sleepeyes{opacity:0}
+.cat-prop{position:absolute;opacity:0;pointer-events:none;transition:opacity .3s}
+.cat-bowl{width:34px;height:18px;right:-26px;bottom:2px}
+.cat-walk.left .cat-bowl{right:auto;left:-26px}
+.cat-zz{right:4px;top:-6px;font-size:14px;font-weight:800;color:#5a7be8}
+.cat-walk.left .cat-zz{right:auto;left:4px}
+.cat-sweat{right:6px;top:0;font-size:14px}
+.cat-walk.left .cat-sweat{right:auto;left:6px}
+.st-eat .cat-bowl,.st-sleep .cat-zz,.st-exercise .cat-sweat{opacity:1}
+.st-meow .c-mouth{opacity:1}
+.st-sleep .c-eyes{opacity:0}.st-sleep .c-sleepeyes{opacity:1}
+.cat-walk svg g{transition:transform .35s ease}
+.st-sleep svg{transform:translateY(14px)}.cat-walk.left.st-sleep svg{transform:scaleX(-1) translateY(14px)}
+.st-sleep .c-leg{opacity:0}
+.st-stretch .c-head{transform:translate(6px,14px) rotate(8deg)}
+.st-stretch .c-lf,.st-stretch .c-lf2{transform-box:fill-box;transform-origin:50% 0;transform:rotate(-45deg)}
+.st-stretch .c-tail{transform:rotate(14deg)}
+.st-eat .c-head{transform:translate(8px,18px) rotate(14deg)}
+.st-groom .c-head{transform:translate(-4px,10px) rotate(18deg)}
+.st-groom .c-lf2{transform-box:fill-box;transform-origin:50% 0;transform:rotate(-120deg)}
+.st-meow .c-head{transform:rotate(-8deg)}
+@media (prefers-reduced-motion:no-preference){
+  .st-eat .c-head{animation:nib .35s ease-in-out infinite alternate}
+  .st-groom .c-head{animation:lick .4s ease-in-out infinite alternate}
+  .st-exercise svg{animation:hop2 .5s ease-in-out infinite}
+  .cat-walk.left.st-exercise svg{animation:hop2l .5s ease-in-out infinite}
+  .st-sleep .cat-zz{animation:zz 1.6s ease-in-out infinite}
+  .st-sleep svg g.c-head{animation:breathe 2.4s ease-in-out infinite}
+  .st-meow .c-mouth{animation:meow .5s ease-in-out 2 alternate}
+}
+@keyframes nib{from{transform:translate(6px,16px) rotate(12deg)}to{transform:translate(6px,19px) rotate(16deg)}}
+@keyframes lick{from{transform:translate(-4px,10px) rotate(18deg)}to{transform:translate(-2px,12px) rotate(24deg)}}
+@keyframes hop2{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+@keyframes hop2l{0%,100%{transform:scaleX(-1) translateY(0)}50%{transform:scaleX(-1) translateY(-18px)}}
+@keyframes zz{0%{transform:translateY(0);opacity:.3}50%{opacity:1}100%{transform:translateY(-10px);opacity:.2}}
+@keyframes breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(1.5px)}}
+@keyframes meow{from{transform:scaleY(.4)}to{transform:scaleY(1)}}
+.c-mouth{transform-box:fill-box;transform-origin:50% 0}
+.cat-walk .c-head{transform-box:fill-box;transform-origin:35% 95%} .cat-walk .c-tail{transform-box:fill-box;transform-origin:100% 100%} .st-meow .c-head{transform:rotate(-10deg) translateY(-2px)} .st-stretch .c-head{transform:translate(4px,12px) rotate(6deg)} .st-eat .c-head{transform:translate(6px,16px) rotate(12deg)}
