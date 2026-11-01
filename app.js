@@ -143,11 +143,35 @@ function podcastBox(){
   w.append(top);
   const row=el("div","btnrow two");
   const a=el("a","btn primary","팟캐스트 듣기"); a.href=POD_URL; a.target="_blank"; a.rel="noopener";
-  const b=el("button","btn", done? "✓ 들었어요" : "다 들었어요"); b.type="button"; b.setAttribute("aria-pressed",String(done));
-  b.onclick=()=>{ let l=store.get(key,[]); if(l.includes(today())) l=l.filter(d=>d!==today()); else { l.push(today()); touchDay(); } store.set(key,l.slice(-120)); render();
-    if(!done){ const d=new Date(); reportSheet("오늘의 팟캐스트",1,1,`[${D.name} · 팟캐스트 · ${d.getMonth()+1}/${d.getDate()}]\nBBC 6 Minute English 들었어요\n연속 공부 ${streak()}일`); } };
+  const b=el("button","btn", done? "✓ 들었어요" : "들은 거 알리기"); b.type="button"; b.setAttribute("aria-pressed",String(done));
+  b.onclick=()=>podSheet(key);
   row.append(a,b); w.append(row);
   return w;
+}
+function podSheet(key){
+  const bg=el("div","sheet-bg"); const sh=el("div","sheet"); sh.setAttribute("role","dialog"); sh.setAttribute("aria-label","들은 팟캐스트 알리기");
+  sh.append(el("h2",null,"어떤 걸 들었나요?"), el("p","muted small","선생님께 들은 내용이 전달돼요."));
+  const f1=el("label","pfield"); f1.append(el("span",null,"에피소드 제목"));
+  const i1=el("input"); i1.type="text"; i1.placeholder="예: Is coffee good for you?"; i1.setAttribute("autocapitalize","off"); f1.append(i1);
+  const f2=el("label","pfield"); f2.append(el("span",null,"기억나는 표현 하나 (선택)"));
+  const i2=el("input"); i2.type="text"; i2.placeholder="예: a cup of joe"; i2.setAttribute("autocapitalize","off"); f2.append(i2);
+  sh.append(f1,f2);
+  const text=()=>{ const d=new Date(); let t=`[${D.name} · 팟캐스트 · ${d.getMonth()+1}/${d.getDate()}]\nBBC 6 Minute English\n들은 에피소드: ${i1.value.trim()||"(제목 안 적음)"}`; if(i2.value.trim()) t+=`\n기억나는 표현: ${i2.value.trim()}`; return t+`\n연속 공부 ${streak()}일`; };
+  const mark=()=>{ const l=store.get(key,[]); if(!l.includes(today())){ l.push(today()); store.set(key,l.slice(-120)); touchDay(); } };
+  const row=el("div","row"); const note=el("p","note");
+  if(D.form && D.form.url){
+    const a=el("a","btn primary","선생님께 보내기"); a.target="_blank"; a.rel="noopener";
+    const upd=()=>{ a.href=D.form.url.replace("NAME_X",encodeURIComponent(D.name)).replace("SESSION_X",encodeURIComponent("팟캐스트")).replace("RESULT_X",encodeURIComponent(text())); };
+    upd(); i1.oninput=upd; i2.oninput=upd; a.onclick=()=>{ upd(); mark(); setTimeout(()=>{ bg.remove(); render(); },300); };
+    row.append(a);
+  }
+  const cp=el("button","btn kakao","복사해서 카톡으로 보내기"); cp.type="button";
+  cp.onclick=()=>{ mark(); const t=text(); const fb=()=>{ note.textContent="복사가 안 되면 위 내용을 직접 적어 보내 주세요."; };
+    try{ navigator.clipboard.writeText(t).then(()=>{ note.textContent="복사했어요! 카톡 선생님 채팅방에 붙여 넣어 주세요."; }, fb); }catch(_){ fb(); } };
+  const close=el("button","btn","닫기"); close.type="button"; close.onclick=()=>{ bg.remove(); render(); };
+  row.append(cp, close); sh.append(row, note);
+  bg.append(sh); bg.onclick=e=>{ if(e.target===bg){ bg.remove(); render(); } };
+  document.body.append(bg); setTimeout(()=>{ try{ i1.focus({preventScroll:true}); }catch(_){} },50);
 }
 function menuGuide(){
   const nWB = WB? WB.sections.reduce((a,s)=>a+s.groups.reduce((b,g)=>b+g.words.length,0),0) : 0;
