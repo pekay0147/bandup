@@ -533,6 +533,19 @@ function startVocab(topics, title, shuffle, backTo, limit=20){
 }
 function renderP2X(app){
   app.append(el("p","muted small",`기출 68개 외에 최근 시험 후기와 워크북에서 모은 주제 ${P2X.items.length}개예요. Part 3 탭에 심화 질문도 있어요.`));
+  const srcBox=el("div","panel srcbox"); srcBox.append(el("b",null,"출처"));
+  const srcList=el("ul","say");
+  for(const [label,desc,url] of [
+    ["2026년 10~11월 시험 후기","speaking9.com · 수험생들이 시험 후 올린 질문 모음","https://speaking9.com/ielts-speaking-questions"],
+    ["2026년 9월·10월 시험 후기","ieltsactualtests.com · 월별 시험 후기 주제","https://ieltsactualtests.com/speaking"],
+    ["워크북 2026 9~12월","ScoreFactory IELTS Speaking Workbook (선생님 자료)",""],
+    ["고우해커스","정보게시판·스피킹게시판 시험 후기와 연습 질문 (2025~2026)","https://www.gohackers.com/ielts/ielts_info2/ielts_speaking"]]){
+    const li=el("li"); li.append(el("b",null,label+" "), document.createTextNode(desc));
+    if(url){ const a2=el("a",null," 바로가기 ›"); a2.href=url; a2.target="_blank"; a2.rel="noopener"; li.append(a2); }
+    srcList.append(li);
+  }
+  srcBox.append(srcList, el("p","muted small","'You should say'와 Part 3 질문은 워크북 주제만 원문이고, 나머지는 수업용으로 새로 썼어요."));
+  app.append(srcBox);
   for(const it of P2X.items){
     const sec=el("div","panel p3sec");
     sec.append(el("span","from2",`#${it.no} · ${it.src}`), el("b","p3t",it.topic), el("span","idea-lab","You should say"));
