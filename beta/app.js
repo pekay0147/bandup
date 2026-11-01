@@ -603,7 +603,7 @@ function renderP2X(app){
   }
 }
 function renderP3(app){
-  const t=el("div","focus"); t.append(el("b",null,"Part 3 답변 요령"));
+  const t=el("div","focus p3tips"); t.append(el("b",null,"Part 3 답변 요령"));
   const ol=el("ol","steps4");
   for(const [k,ex] of [["명확한 대답","Yes, I think… / I'd say…"],["근거","That's because… / The main reason is…"],["예시","For example, … / In my case, …"],["대답 다시 언급","So that's why I think… / Overall, …"]]){ const li=el("li"); li.append(el("b",null,k), el("span",null,ex)); ol.append(li); }
   t.append(ol); app.append(t);

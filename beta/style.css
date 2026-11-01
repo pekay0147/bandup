@@ -456,3 +456,11 @@ main{zoom:.88}
 .say{margin:2px 0 0;padding-left:20px;display:grid;gap:4px} .say li{font-size:15px;color:var(--muted)}
 .srcbox{display:grid;gap:6px} .srcbox b{font-size:15px} .srcbox li{color:var(--ink)} .srcbox li b{font-size:14px} .srcbox a{color:var(--blue);font-weight:600;text-decoration:none}
 .p1vbtn{justify-self:stretch;width:100%;margin-top:10px;border:1px solid var(--line);background:var(--blue-soft);color:var(--blue);font-weight:700;font-size:15px;border-radius:12px;min-height:44px;cursor:pointer} .p1vbtn[aria-expanded="true"]{background:var(--surface)} .p1vocab{margin-top:6px}
+/* compact Part 3 tips */
+.p3tips{padding:10px 12px;font-size:13px}
+.p3tips > b{font-size:14px;margin-bottom:0}
+.p3tips .steps4{grid-template-columns:1fr 1fr;gap:6px 10px;margin-top:4px}
+.p3tips .steps4 li{grid-template-columns:18px 1fr;gap:0 6px}
+.p3tips .steps4 li::before{width:16px;height:16px;font-size:10px;line-height:16px}
+.p3tips .steps4 b{font-size:13px;font-weight:700}
+.p3tips .steps4 span{font-size:11px;line-height:1.35}
