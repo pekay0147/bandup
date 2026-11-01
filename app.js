@@ -514,29 +514,26 @@ function fold(key, head, bodyFn){
 function renderP1(app){
   if(!P1){ const e=el("div","empty"); e.append(el("p",null,"어휘 자료를 불러오지 못했어요.")); app.append(e); return; }
   const total=P1.topics.reduce((a,t)=>a+t.words.length,0);
-  app.append(el("p","muted small",`Part 1 단골 주제 ${P1.topics.length}개, 표현 ${total}개예요. 주제를 눌러서 펼쳐 보세요.`));
-  const allB=el("button","btn vstart",`전체 섞어서 외우기 ${total}장 중 20장`); allB.type="button"; allB.onclick=()=>startVocab(P1.topics,"전체 주제",true); app.append(allB);
-  const grid=el("div","vgrid");
-  for(const tp of P1.topics){
-    const b=el("button","vchip"+(openKey==="v-"+tp.topic?" on":"")); b.type="button";
-    b.append(el("b",null,tp.ko), el("span",null,tp.topic));
-    b.setAttribute("aria-pressed",String(openKey==="v-"+tp.topic));
-    b.onclick=()=>{ openKey = openKey==="v-"+tp.topic? null : "v-"+tp.topic; render(); setTimeout(()=>{ const t=document.getElementById("vopen"); if(t) t.scrollIntoView({behavior:"smooth",block:"start"}); },0); };
-    grid.append(b);
-  }
-  app.append(grid);
-  const tp=P1.topics.find(t=>openKey==="v-"+t.topic);
-  if(tp){
-    const p=el("div","panel vpanel"); p.id="vopen";
-    const h=el("div","ghead"); h.append(el("b",null,`${tp.ko} · ${tp.topic}`), el("span",null,`${tp.words.length}개`)); p.append(h);
-    const go1=el("button","btn primary vstart",`카드로 외우기 ${tp.words.length}장`); go1.type="button";
-    go1.onclick=()=>startVocab([tp], tp.ko, false); p.append(go1);
+  const hasQuiz=typeof startQuiz==="function";
+  const row0=el("div","btnrow two");
+  if(hasQuiz){ const qB=el("button","btn primary","퀴즈 10문제"); qB.type="button"; qB.onclick=()=>startQuiz(P1.topics.flatMap(t=>t.words),"Part 1 전체",10); row0.append(qB); }
+  const allB=el("button","btn"+(hasQuiz?"":" primary"),`전체 섞어서 카드 20장`); allB.type="button"; allB.onclick=()=>startVocab(P1.topics,"전체 주제",true); row0.append(allB);
+  app.append(row0);
+  // quick jump: tap a topic name to scroll to it
+  const jump=el("div","pchips p1jump");
+  P1.topics.forEach((tp,i)=>{ const b=el("button",null,tp.ko); b.type="button"; b.onclick=()=>{ const t=document.getElementById("p1t"+i); if(t) t.scrollIntoView({behavior:"smooth",block:"start"}); }; jump.append(b); });
+  app.append(jump);
+  P1.topics.forEach((tp,i)=>{
+    const p=el("div","panel p1sec"); p.id="p1t"+i;
+    const h=el("div","p1h"); const ht=el("div"); ht.append(el("b",null,tp.ko), el("span",null,tp.topic));
+    const go1=el("button","p1go","카드 ›"); go1.type="button"; go1.onclick=()=>startVocab([tp], tp.ko, false);
+    h.append(ht, go1); p.append(h);
     for(const [en,ko,ex] of tp.words){
       const r=el("div","vrow"); const top=el("div","vtop"); top.append(el("b",null,en), el("span",null,ko)); r.append(top);
       if(ex) r.append(el("p","vex",ex)); p.append(r);
     }
     app.append(p);
-  }
+  });
 }
 function startVocab(topics, title, shuffle, backTo, limit=20){
   let ids=[];

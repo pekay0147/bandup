@@ -444,3 +444,10 @@ body.lesson{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 .tabs svg,.tabs button svg{width:20px;height:20px}
 /* overall a bit smaller (bottom menu unchanged) */
 main{zoom:.88}
+/* Part 1: everything visible, jump chips */
+.p1jump{position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0}
+.p1sec{scroll-margin-top:60px}
+.p1h{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.p1h b{display:block;font-size:17px;font-weight:700}
+.p1h span{font-size:13px;color:var(--muted)}
+.p1go{border:1px solid var(--line);background:var(--surface);color:var(--blue);font-weight:700;font-size:14px;border-radius:999px;padding:8px 14px;cursor:pointer;min-height:38px}
