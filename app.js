@@ -291,10 +291,12 @@ function flipCard(c, onFlip){
   const sent=el("div","sent");
   for(const tok of c.en.split(" ")){
     const m=tok.match(/^([A-Za-z'-]+)([.,!?…]*)$/); const word=m?m[1]:tok, punct=m?m[2]:""; const key=word.toLowerCase();
+    const tk=el("span","tok");
     if(G[key]){ const w=el("button","w"+(picked===key?" on":""),word); w.type="button"; w.tabIndex=flipped?0:-1;
-      w.onclick=e=>{ e.stopPropagation(); picked=key; render(); }; sent.append(w); }
-    else sent.append(el("span","p",word));
-    if(punct) sent.append(el("span","p",punct));
+      w.onclick=e=>{ e.stopPropagation(); picked=key; render(); }; tk.append(w); }
+    else tk.append(el("span","p",word));
+    if(punct) tk.append(el("span","p",punct));
+    sent.append(tk);
   }
   bb.append(sent);
   const wb=el("div","wbox"); const inSent=picked && c.en.toLowerCase().split(/[^a-z'-]+/).includes(picked);
