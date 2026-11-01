@@ -767,7 +767,7 @@ function renderP2X(app){
 function renderP3(app){
   const t=el("div","focus p3tips"); t.append(el("b",null,"Part 3 답변 요령"));
   const ol=el("ol","steps4");
-  for(const [k,ex] of [["명확한 대답","Yes, I think… / I'd say…"],["근거","That's because… / The main reason is…"],["예시","For example, … / In my case, …"],["대답 다시 언급","So that's why I think… / Overall, …"]]){ const li=el("li"); li.append(el("b",null,k), el("span",null,ex)); ol.append(li); }
+  for(const [n,k,ex] of [["1","명확한 대답","Yes, I think…"],["2","근거","That's because…"],["3","예시","For example, …"],["4","다시 한 번 정리","So that's why…"]]){ const li=el("li"); li.append(el("b",null,`${n}. ${k}`), el("span",null,ex)); ol.append(li); }
   t.append(ol); app.append(t);
   if(!P3) return;
   const inp=el("input"); inp.type="search"; inp.placeholder="주제 검색 (예: friend, 옥스포드, technology)"; inp.setAttribute("aria-label","Part 3 주제 검색"); inp.className="p3search";
