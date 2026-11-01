@@ -484,7 +484,7 @@ function renderDeck(app){
   const again=el("button","again","헷갈려요"); again.type="button"; again.setAttribute("aria-pressed",String(marks[c.id]==="again")); again.onclick=()=>markDeck(c,"again");
   const know=el("button","know","알았어요"); know.type="button"; know.setAttribute("aria-pressed",String(marks[c.id]==="know")); know.onclick=()=>markDeck(c,"know");
   const next=el("button","nav","›"); next.type="button"; next.setAttribute("aria-label","다음 카드"); next.disabled=deckState.i>=ids.length-1; next.onclick=()=>move(1);
-  acts.append(prev,again,know,next); app.append(acts);
+  acts.classList.add("arrows"); acts.append(prev,next); app.append(acts);
   const bmb=el("button","btn cbm"); bmb.type="button"; const setB=()=>{ const on=isCbm(c.id); bmb.textContent= on? "★ 북마크됨" : "☆ 북마크에 추가"; bmb.setAttribute("aria-pressed",String(on)); }; setB();
   bmb.onclick=()=>{ toggleCbm(c.id); setB(); }; app.append(bmb);
   app.append(el("p","hint2","카드를 누르면 뒤집혀요 · 옆으로 밀어서 넘기기"));

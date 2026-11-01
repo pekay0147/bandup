@@ -486,3 +486,4 @@ main{zoom:.88}
 .mtools .btn{white-space:nowrap;padding:0 14px;gap:6px}
 .btn.cbm{width:100%} .btn.cbm[aria-pressed="true"]{background:var(--sun-soft);border-color:var(--sun);color:#8a6400} .cbmx{border:0;background:none;color:var(--sun);font-size:20px;cursor:pointer;min-width:36px;min-height:36px} .modeseg.four{grid-template-columns:repeat(4,1fr)}
 .modeseg.four button{padding:10px 8px} .modeseg.four button b{font-size:15px;white-space:nowrap} .modeseg.four button span{font-size:12px;white-space:nowrap}
+.acts.arrows{grid-template-columns:1fr 1fr}
