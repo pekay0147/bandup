@@ -13,7 +13,7 @@ const mmdd=s=>s? s.slice(5).replace("-","/") : "";
 const store={ get(k,f){ try{ const v=localStorage.getItem(k); return v==null? f : JSON.parse(v);}catch(_){ return f; } },
               set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(_){} } };
 
-let D=null, G={}, P1=null, P1Q=null, P2=null, LS=null, WB=null, slug=null;
+let D=null, G={}, P1=null, P1Q=null, P3=null, P2=null, LS=null, WB=null, slug=null;
 let srs={}, marks={}, days=[];
 let view={tab:"home"};   // home | cards(deck?) | review | notes
 let deckState=null, reviewState=null, picked=null, flipped=false, noteFilter="전체", noteSession="all", cardMode="session", selSession=null, randCount=10, randKind="all";
@@ -33,7 +33,7 @@ async function boot(){
     const [s,g]=await Promise.all([fetch(`${DATA}students/${slug}.json`,{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
                                    fetch(DATA+"glossary.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({}))]);
     D=s; G=g||{};
-    [P1,P2,LS,WB,P1Q]=await Promise.all(["part1.json","part2.json","listening.json","words.json","part1q.json"].map(u=>fetch(DATA+u,{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
+    [P1,P2,LS,WB,P1Q,P3]=await Promise.all(["part1.json","part2.json","listening.json","words.json","part1q.json","part3.json"].map(u=>fetch(DATA+u,{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
   }catch(e){ app.textContent=""; const x=el("div","empty"); x.append(el("h2",null,"카드를 불러오지 못했어요"), el("p",null,"인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 되면 선생님께 링크를 다시 받아 주세요.")); app.append(x); return; }
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
@@ -494,7 +494,7 @@ function renderIdeas(app){
   pageHead(app,"아이디어","스피킹 답변에 쓸 재료를 Part별로 모았어요.");
   const seg=el("div","modeseg"); seg.setAttribute("role","tablist");
   const n1=P1Q? P1Q.topics.reduce((b,t)=>b+t.qs.length,0) : 0;
-  const n2=P2? P2.items.length : 0, n3=(D.part3||[]).reduce((a,s)=>a+s.qs.length,0);
+  const n2=P2? P2.items.length : 0, n3=P3? P3.items.reduce((a,s)=>a+s.qs.length,0) : 0;
   for(const [k,label,sub] of [["p1","Part 1",`질문 ${n1}개`],["p2","Part 2",`기출 ${n2}개`],["p3","Part 3",`질문 ${n3}개`]]){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(ideaPart===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ ideaPart=k; openKey=null; render(); }; seg.append(b);
@@ -591,10 +591,18 @@ function renderP3(app){
   const ol=el("ol","steps4");
   for(const [k,ex] of [["명확한 대답","Yes, I think… / I'd say…"],["근거","That's because… / The main reason is…"],["예시","For example, … / In my case, …"],["대답 다시 언급","So that's why I think… / Overall, …"]]){ const li=el("li"); li.append(el("b",null,k), el("span",null,ex)); ol.append(li); }
   t.append(ol); app.append(t);
-  for(const s of D.part3||[]){
-    const ses=D.sessions.find(x=>x.no===s.session);
-    const hd=el("div"); hd.append(el("span","from2",`${s.session}회차 수업`), el("b",null,s.topic));
-    app.append(fold("p3-"+s.session, hd, b=>{ const ul=el("ul","p3"); s.qs.forEach(q=>ul.append(el("li",null,q))); b.append(ul); }));
+  if(!P3) return;
+  const inp=el("input"); inp.type="search"; inp.placeholder="주제 검색 (예: friend, 옥스포드, technology)"; inp.setAttribute("aria-label","Part 3 주제 검색"); inp.className="p3search";
+  const cnt=el("p","muted small",`Part 2 주제 ${P3.items.length}개 · 주제마다 심화 질문`);
+  const apply=()=>{ const q=inp.value.trim().toLowerCase(); let n=0; document.querySelectorAll(".p3sec").forEach(c=>{ const ok=!q||c.dataset.search.includes(q); c.hidden=!ok; if(ok) n++; }); cnt.textContent=`${n}개 주제`; };
+  inp.addEventListener("input",e=>{ if(e.isComposing) return; apply(); }); inp.addEventListener("compositionend",apply);
+  app.append(inp,cnt);
+  for(const it of P3.items){
+    const p2=P2&&P2.items.find(x=>x.no===it.no);
+    const sec=el("div","panel p3sec"); sec.dataset.search=(it.topic+" "+(p2? p2.answer+" "+p2.points.join(" "):"")+" "+it.qs.join(" ")).toLowerCase();
+    sec.append(el("span","from2",`Part 2 #${it.no}`+(it.lesson? ` · ${it.lesson}회차 수업 질문`:"")), el("b","p3t",it.topic));
+    const ol=el("ol","p1q"); it.qs.forEach(q=>ol.append(el("li",null,q))); sec.append(ol);
+    app.append(sec);
   }
 }
 function renderP2(app){

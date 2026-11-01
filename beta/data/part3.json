@@ -1,0 +1,754 @@
+{
+ "items": [
+  {
+   "no": 1,
+   "topic": "Describe a gift you would like to buy for your friend",
+   "qs": [
+    "Why do people give gifts to each other?",
+    "Is it better to give money or a present as a gift?",
+    "Do people spend too much money on gifts nowadays?",
+    "How have gift-giving habits changed in Korea?",
+    "Are expensive gifts always better than cheap ones?"
+   ]
+  },
+  {
+   "no": 2,
+   "topic": "Describe a time when you felt proud of a family member",
+   "qs": [
+    "Why do parents feel proud of their children?",
+    "Is it important for children to make their parents proud?",
+    "Do families spend less time together than before?",
+    "What can family members learn from each other?",
+    "How do older and younger generations show support for each other?"
+   ]
+  },
+  {
+   "no": 3,
+   "topic": "Describe an important river/lake in your country",
+   "qs": [
+    "Why are rivers and lakes important to cities?",
+    "What problems do rivers face today?",
+    "Should governments spend more money on cleaning rivers?",
+    "Do people enjoy outdoor activities near water more than before?",
+    "How can tourism near rivers be both good and bad?"
+   ]
+  },
+  {
+   "no": 4,
+   "topic": "Describe a time you needed to use your imagination",
+   "qs": [
+    "Is imagination more important than knowledge?",
+    "How can schools encourage children to be imaginative?",
+    "Do children have more imagination than adults?",
+    "Which jobs need a lot of imagination?",
+    "Does technology help or hurt our imagination?"
+   ]
+  },
+  {
+   "no": 5,
+   "topic": "Describe a home that you like to visit but do not want to live in",
+   "qs": [
+    "Why do people like visiting places they wouldn't want to live in?",
+    "What makes a place a good place to live?",
+    "Is it better to live in a city or in the countryside?",
+    "Why do some people move abroad?",
+    "How does housing differ between generations in Korea?"
+   ]
+  },
+  {
+   "no": 6,
+   "topic": "Describe something important that has been kept in your family for a long time",
+   "qs": [
+    "Why do families keep old things for a long time?",
+    "Are old photos more meaningful than digital ones?",
+    "Do young people care about family history?",
+    "What kinds of things do people pass down to the next generation?",
+    "Should museums collect everyday objects from ordinary families?"
+   ]
+  },
+  {
+   "no": 7,
+   "topic": "Describe a time when you encouraged someone to do something that he/she didn’t want to do",
+   "qs": [
+    "How can you encourage someone who doesn't want to do something?",
+    "Is it right to push people to do things they don't want to do?",
+    "Who has more influence on children, parents or teachers?",
+    "Why do some students lose motivation?",
+    "Is encouragement more effective than punishment?"
+   ]
+  },
+  {
+   "no": 8,
+   "topic": "Describe an occasion when you were not allowed to use your mobile phone",
+   "qs": [
+    "Should mobile phones be banned in schools?",
+    "In what situations should people not use their phones?",
+    "Are people too dependent on their phones?",
+    "How have phones changed the way people communicate?",
+    "Should companies limit phone use at work?"
+   ]
+  },
+  {
+   "no": 9,
+   "topic": "Describe an environmental law you would like your country to introduce",
+   "qs": [
+    "What is the biggest environmental problem in your country?",
+    "What should individuals be doing to protect the natural environment?",
+    "How could government help prevent pollution?",
+    "Do you think young people today are more aware of environmental problems?",
+    "Do you think it's important to protect trees?"
+   ],
+   "lesson": 6
+  },
+  {
+   "no": 10,
+   "topic": "Describe a piece of local news that people are interested in",
+   "qs": [
+    "What kind of local news do people care about most?",
+    "Do young people read the news less than before?",
+    "Is local news more important than international news?",
+    "How has social media changed the way we get news?",
+    "Can we trust the news we read online?"
+   ]
+  },
+  {
+   "no": 11,
+   "topic": "Describe a time when you got up early",
+   "qs": [
+    "Is it better to get up early or stay up late?",
+    "Why do some people find it hard to get up early?",
+    "Do people sleep less than they used to?",
+    "How can people build good morning habits?",
+    "Should schools start later in the morning?"
+   ]
+  },
+  {
+   "no": 12,
+   "topic": "Describe a person who solved a problem in a smart way",
+   "qs": [
+    "What makes someone good at solving problems?",
+    "Should schools teach problem-solving skills?",
+    "Is it better to solve problems alone or in a team?",
+    "Do older people solve problems better than younger people?",
+    "How has technology changed the way we solve problems?"
+   ]
+  },
+  {
+   "no": 13,
+   "topic": "Describe a bicycle/motorcycle/car trip you would like to go",
+   "qs": [
+    "Why do people enjoy road trips?",
+    "Is it better to travel by car or by train?",
+    "Are cycling holidays becoming more popular?",
+    "What are the dangers of long-distance driving?",
+    "How could cities encourage more people to cycle?"
+   ]
+  },
+  {
+   "no": 14,
+   "topic": "Describe an item on which you spent more than expected",
+   "qs": [
+    "Why do people sometimes spend more than they planned?",
+    "Is it important to make a budget?",
+    "Do people buy too many things they don't need?",
+    "How has online shopping changed spending habits?",
+    "Should children learn how to manage money at school?"
+   ]
+  },
+  {
+   "no": 15,
+   "topic": "Describe a thing you did to learn another language",
+   "qs": [
+    "What is the best way to learn a foreign language?",
+    "Is it necessary to live abroad to learn a language well?",
+    "Should children start learning languages at a young age?",
+    "Will translation apps make language learning unnecessary?",
+    "Why is English so important around the world?"
+   ]
+  },
+  {
+   "no": 16,
+   "topic": "Describe a special cake you received from others",
+   "qs": [
+    "Why do people celebrate special occasions with cake?",
+    "Are traditional celebrations still important?",
+    "Do people spend too much on celebrations?",
+    "Is it better to celebrate with family or friends?",
+    "How have birthday celebrations changed in Korea?"
+   ]
+  },
+  {
+   "no": 17,
+   "topic": "Describe a person you only met once recently and want to know more about",
+   "qs": [
+    "Is it easy to make new friends as an adult?",
+    "What makes a good first impression?",
+    "Do people judge others too quickly?",
+    "How do people usually meet new friends nowadays?",
+    "Is it possible to make real friends online?"
+   ]
+  },
+  {
+   "no": 18,
+   "topic": "Describe a time when you organized a happy event successfully",
+   "qs": [
+    "What makes an event successful?",
+    "Why do people enjoy surprise parties?",
+    "Is planning an event a useful skill?",
+    "Do people celebrate together less than before?",
+    "What are the challenges of organising a big event?"
+   ]
+  },
+  {
+   "no": 19,
+   "topic": "Describe a quiet place you like to go",
+   "qs": [
+    "Why do people need quiet places?",
+    "Is it harder to find quiet places in cities now?",
+    "Should cities create more quiet spaces like parks?",
+    "Do young people like quiet places as much as older people?",
+    "How does noise affect people's health?"
+   ]
+  },
+  {
+   "no": 20,
+   "topic": "Describe a special day out that cost you little money/didn’t cost you much",
+   "qs": [
+    "Can people have fun without spending much money?",
+    "Do people spend too much on entertainment?",
+    "Should museums and parks be free?",
+    "How do young people in Korea usually spend their free time?",
+    "Is it more fun to go out with friends or stay at home?"
+   ]
+  },
+  {
+   "no": 21,
+   "topic": "Describe a time when you were stuck in a traffic jam for a very long time",
+   "qs": [
+    "Why is traffic such a problem in big cities?",
+    "How can governments reduce traffic jams?",
+    "Is public transport the answer to traffic problems?",
+    "How do traffic jams affect people's daily lives?",
+    "Will self-driving cars solve traffic problems?"
+   ]
+  },
+  {
+   "no": 22,
+   "topic": "Describe a TV or online program you like to watch",
+   "qs": [
+    "What kinds of TV programmes are popular in Korea?",
+    "Do people watch more online videos than TV now?",
+    "Are sports programmes good for society?",
+    "Should TV programmes be educational?",
+    "How has streaming changed the way people watch TV?"
+   ]
+  },
+  {
+   "no": 23,
+   "topic": "Describe a friend from your childhood",
+   "qs": [
+    "Are childhood friendships different from adult friendships?",
+    "Why do people lose touch with old friends?",
+    "What makes a friendship last a long time?",
+    "Is it important for children to have many friends?",
+    "How do children usually make friends?"
+   ]
+  },
+  {
+   "no": 24,
+   "topic": "Describe an important decision that you made",
+   "qs": [
+    "How do people make important decisions?",
+    "Should young people make decisions alone or ask their parents?",
+    "Is it better to decide quickly or take time?",
+    "What decisions are hardest for young people?",
+    "Do people regret their decisions often?"
+   ]
+  },
+  {
+   "no": 26,
+   "topic": "Describe a movie you watched and enjoyed recently",
+   "qs": [
+    "Why are superhero movies so popular?",
+    "Do people prefer watching films at home or at the cinema?",
+    "Should films always teach a lesson?",
+    "How have movies changed over the years?",
+    "Are actors paid too much?"
+   ]
+  },
+  {
+   "no": 27,
+   "topic": "Describe a plan that you had to change recently",
+   "qs": [
+    "Why do plans sometimes need to change?",
+    "Is it important to have a backup plan?",
+    "Are young people more flexible than older people?",
+    "How do people feel when their plans fail?",
+    "Is it better to plan everything or be spontaneous?"
+   ]
+  },
+  {
+   "no": 28,
+   "topic": "Describe a famous person you would like to meet",
+   "qs": [
+    "Why do people admire famous people?",
+    "Are celebrities good role models for young people?",
+    "What questions would people like to ask celebrities?",
+    "Do famous people have a responsibility to society?",
+    "How has social media changed fame?"
+   ]
+  },
+  {
+   "no": 29,
+   "topic": "Describe a shop/store you enjoy visiting",
+   "qs": [
+    "Why do people prefer some shops to others?",
+    "Will online shopping replace physical stores?",
+    "Are second-hand shops becoming more popular?",
+    "How important is customer service in a shop?",
+    "Do small shops have a future?"
+   ]
+  },
+  {
+   "no": 30,
+   "topic": "Describe a city that you have been to and would like to visit again",
+   "qs": [
+    "What makes a city worth visiting again?",
+    "Is tourism good for local people?",
+    "Do people prefer visiting new places or familiar ones?",
+    "How can a city attract more tourists?",
+    "What problems do popular tourist cities face?"
+   ]
+  },
+  {
+   "no": 31,
+   "topic": "Describe a person who makes plans a lot and is good at planning",
+   "qs": [
+    "Is it important to make plans?",
+    "Are some people naturally better at planning?",
+    "Do young people plan their future enough?",
+    "What are the benefits of making daily plans?",
+    "Can too much planning be a bad thing?"
+   ]
+  },
+  {
+   "no": 32,
+   "topic": "Describe a program or app on your computer or phone",
+   "qs": [
+    "What kinds of apps are most popular in Korea?",
+    "Are learning apps as effective as classes?",
+    "Do people spend too much time on their phones?",
+    "Should children be allowed to use apps freely?",
+    "How will apps change in the future?"
+   ]
+  },
+  {
+   "no": 33,
+   "topic": "Describe a child who loves drawing/painting",
+   "qs": [
+    "Why do children love drawing?",
+    "Should art be a compulsory subject at school?",
+    "How can parents encourage children's creativity?",
+    "Is art less important than science?",
+    "Can creativity be taught?"
+   ]
+  },
+  {
+   "no": 34,
+   "topic": "Describe a perfect job you would like to have in the future",
+   "qs": [
+    "What factors do people usually consider when choosing a career?",
+    "Do you think young people today change jobs more often than in the past?",
+    "Is it more important to earn a high salary or to enjoy your job?",
+    "How do you think technology will change the workplace in the future?"
+   ],
+   "lesson": 3
+  },
+  {
+   "no": 35,
+   "topic": "Describe a piece of technology that you would like to own",
+   "qs": [
+    "How has technology changed people's daily lives?",
+    "How has technology changed the way people communicate with each other?",
+    "Should schools encourage students to use more technology in the classroom?",
+    "Why do some people always want to buy the latest technology?"
+   ],
+   "lesson": 5
+  },
+  {
+   "no": 36,
+   "topic": "Describe one of your friends who learned something without a teacher",
+   "qs": [
+    "Why do some people prefer to learn things by themselves rather than from a teacher?",
+    "Do you think self-learning is more difficult than learning with a teacher? Why?",
+    "Are there any disadvantages to learning without professional guidance?",
+    "Is self-learning more common among young people today than in the past?",
+    "Do you think schools should teach students how to learn independently?"
+   ],
+   "lesson": 7
+  },
+  {
+   "no": 37,
+   "topic": "Describe an event you attended in which you didn’t enjoy the music played",
+   "qs": [
+    "Why do people go to concerts?",
+    "Is live music better than recorded music?",
+    "Are concert tickets too expensive?",
+    "What kinds of music do young people in Korea like?",
+    "Can music bring people together?"
+   ]
+  },
+  {
+   "no": 38,
+   "topic": "Describe a person who often helps others",
+   "qs": [
+    "Why do people help others?",
+    "Should schools teach children to volunteer?",
+    "Is volunteering more popular than before?",
+    "Should rich people help society more?",
+    "How can people help others in their daily lives?"
+   ]
+  },
+  {
+   "no": 39,
+   "topic": "Describe a time when you gave advice to others",
+   "qs": [
+    "Is it a good idea to give advice to others?",
+    "Who do young people usually ask for advice?",
+    "Is advice from older people still useful?",
+    "Can advice from the internet be trusted?",
+    "Why do some people not follow advice?"
+   ]
+  },
+  {
+   "no": 40,
+   "topic": "Describe a short-term job you want to have in a foreign country",
+   "qs": [
+    "Why do young people want to work abroad?",
+    "What are the benefits of short-term jobs?",
+    "Is it hard to work in a foreign country?",
+    "Should students work part-time while studying?",
+    "What skills can people learn from part-time jobs?"
+   ]
+  },
+  {
+   "no": 41,
+   "topic": "Describe a person who likes to look after the natural world",
+   "qs": [
+    "Why should people protect nature?",
+    "Are young people more interested in nature than before?",
+    "What can individuals do to protect the environment?",
+    "Should schools teach children about nature?",
+    "Is it the government's job to protect the environment?"
+   ]
+  },
+  {
+   "no": 42,
+   "topic": "Describe a city you enjoyed visiting",
+   "qs": [
+    "What makes a city enjoyable to visit?",
+    "Is it better to visit cities or the countryside?",
+    "How does tourism change a city?",
+    "Should famous buildings be open to tourists?",
+    "What problems do crowded cities have?"
+   ]
+  },
+  {
+   "no": 43,
+   "topic": "Describe a boring place",
+   "qs": [
+    "Why do some places seem boring?",
+    "Can a boring place become interesting?",
+    "Do young people get bored more easily than before?",
+    "Is being bored sometimes good for us?",
+    "What can small towns do to attract young people?"
+   ]
+  },
+  {
+   "no": 44,
+   "topic": "Describe a tall building you like or dislike",
+   "qs": [
+    "Why do cities build tall buildings?",
+    "Are tall buildings good for a city?",
+    "Should old buildings be protected?",
+    "What makes a building beautiful?",
+    "Are tall buildings safe to live in?"
+   ]
+  },
+  {
+   "no": 45,
+   "topic": "Describe an interesting video",
+   "qs": [
+    "Why do people enjoy watching videos online?",
+    "Are online videos a good way to learn?",
+    "Do people believe everything they see in videos?",
+    "Should children watch videos about animals and nature?",
+    "How has YouTube changed entertainment?"
+   ]
+  },
+  {
+   "no": 46,
+   "topic": "Describe a person who loves to grow plants",
+   "qs": [
+    "Why do people enjoy growing plants?",
+    "Is gardening popular in Korea?",
+    "Should cities have more green spaces?",
+    "Can growing plants help people relax?",
+    "Should children learn how to grow plants at school?"
+   ]
+  },
+  {
+   "no": 47,
+   "topic": "Describe a person you know who has a successful business",
+   "qs": [
+    "Do you think small businesses are important for the economy?",
+    "Why do some businesses become successful while others fail?",
+    "Should young people be encouraged to start their own businesses?",
+    "Is customer service important for a successful business?"
+   ],
+   "lesson": 2
+  },
+  {
+   "no": 48,
+   "topic": "Describe a time when you worked in a group",
+   "qs": [
+    "Is it better to work alone or in a group?",
+    "What makes a good team member?",
+    "What problems can happen in group work?",
+    "Should schools give students more group projects?",
+    "How can a team leader solve conflicts?"
+   ]
+  },
+  {
+   "no": 49,
+   "topic": "Describe a person you know who would like to choose a career in the medical field",
+   "qs": [
+    "Why do people want to work in medicine?",
+    "Should doctors be paid more?",
+    "Is it a good idea for children to follow their parents' careers?",
+    "What qualities does a good doctor need?",
+    "How will technology change healthcare?"
+   ]
+  },
+  {
+   "no": 50,
+   "topic": "Describe a live sports event you watched and liked",
+   "qs": [
+    "What qualities do successful athletes usually have?",
+    "Do you think children should be encouraged to play sports from a young age?",
+    "Do you think hosting major sporting events is beneficial for a country?",
+    "Do you think watching sports can bring people together?"
+   ],
+   "lesson": 4
+  },
+  {
+   "no": 51,
+   "topic": "Describe a food that people eat on special occasions/events",
+   "qs": [
+    "Why do people eat special food on special days?",
+    "Are traditional foods still important?",
+    "Has Korean food culture changed?",
+    "Do young people cook traditional food?",
+    "Why is food an important part of celebrations?"
+   ]
+  },
+  {
+   "no": 52,
+   "topic": "Describe a place you would like to visit in your free time",
+   "qs": [
+    "How do people in Korea spend their free time?",
+    "Is it important to have hobbies?",
+    "Do people have less free time than before?",
+    "Should people travel in their free time?",
+    "Is it better to spend free time alone or with others?"
+   ]
+  },
+  {
+   "no": 53,
+   "topic": "Describe a person who is good at learning and speaking new languages",
+   "qs": [
+    "Why are some people better at learning languages?",
+    "Is it easier for children to learn languages?",
+    "Should everyone learn a second language?",
+    "How has technology changed language learning?",
+    "Will English always be the world language?"
+   ]
+  },
+  {
+   "no": 54,
+   "topic": "Describe a challenging technological problem you faced",
+   "qs": [
+    "Why do people find new technology difficult?",
+    "Should older people learn new technology?",
+    "Who should help people with technology problems?",
+    "Is technology changing too fast?",
+    "Do we depend too much on technology?"
+   ]
+  },
+  {
+   "no": 55,
+   "topic": "Describe a place you have travelled to that you would like to recommend to others",
+   "qs": [
+    "Do you think people travel more nowadays than in the past?",
+    "What kinds of places do people in your country like to visit?",
+    "What are the main reasons people choose to travel abroad?",
+    "Is it better to travel alone or with other people?"
+   ],
+   "lesson": 1
+  },
+  {
+   "no": 56,
+   "topic": "Describe an advertisement with a famous person in it",
+   "qs": [
+    "Why do companies use famous people in adverts?",
+    "Do adverts make people buy things they don't need?",
+    "Should advertising to children be controlled?",
+    "Are online adverts more effective than TV adverts?",
+    "Do people trust adverts?"
+   ]
+  },
+  {
+   "no": 57,
+   "topic": "Describe a story/book with animals in it",
+   "qs": [
+    "Why do children's stories often have animals?",
+    "Is reading stories good for children?",
+    "Do children read less than before?",
+    "What lessons can children learn from stories?",
+    "Should parents read to their children every day?"
+   ]
+  },
+  {
+   "no": 58,
+   "topic": "Describe a time when you sent a message or an email to someone but received no reply for a long time",
+   "qs": [
+    "Is it rude not to reply to messages?",
+    "Do people expect quick replies nowadays?",
+    "Is it better to talk in person or send messages?",
+    "How do people solve arguments with friends?",
+    "Has technology made relationships easier or harder?"
+   ]
+  },
+  {
+   "no": 59,
+   "topic": "Describe a long-term goal/ambition you would like to achieve",
+   "qs": [
+    "Why is it important to have goals?",
+    "Should people have long-term or short-term goals?",
+    "What can people do when they fail to reach a goal?",
+    "Do young people today have clear goals?",
+    "Who helps people achieve their goals?"
+   ]
+  },
+  {
+   "no": 60,
+   "topic": "Describe a law on environmental protection",
+   "qs": [
+    "What environmental problems does Korea have?",
+    "Should people be fined for littering?",
+    "Do laws really change people's behaviour?",
+    "What else can governments do to protect the environment?",
+    "Are individuals or companies more responsible for pollution?"
+   ]
+  },
+  {
+   "no": 61,
+   "topic": "Describe a time when you changed an important opinion of yours",
+   "qs": [
+    "Why do people change their opinions?",
+    "Is it good to change your mind?",
+    "Who influences people's opinions the most?",
+    "Does social media change people's opinions?",
+    "Is it hard to change older people's opinions?"
+   ]
+  },
+  {
+   "no": 62,
+   "topic": "Describe a person you know who did something difficult and was successful",
+   "qs": [
+    "What makes someone successful?",
+    "Is hard work more important than talent?",
+    "Why do some people give up on difficult goals?",
+    "Should success be measured by money?",
+    "Can failure lead to success?"
+   ]
+  },
+  {
+   "no": 63,
+   "topic": "Describe a time you made an important decision and were happy with the result",
+   "qs": [
+    "How do people make good decisions?",
+    "Should people follow their heart or their head?",
+    "Do people regret big decisions?",
+    "Who should young people ask before making big decisions?",
+    "Is it better to make decisions quickly?"
+   ]
+  },
+  {
+   "no": 64,
+   "topic": "Describe a famous person in your local area",
+   "qs": [
+    "Why do some people become famous in their local area?",
+    "Are local businesses important for a community?",
+    "Do people prefer local cafés or big chains?",
+    "How can someone become famous today?",
+    "Is fame always a good thing?"
+   ]
+  },
+  {
+   "no": 65,
+   "topic": "Describe a time when you changed an important decision of yours",
+   "qs": [
+    "Why do people change their decisions?",
+    "Is it a sign of weakness to change your mind?",
+    "Should young people change careers if they're unhappy?",
+    "How do people feel after changing an important decision?",
+    "Can changing a decision lead to better results?"
+   ]
+  },
+  {
+   "no": 66,
+   "topic": "Describe a time when you used information for tourists, for example from a guidebook or online",
+   "qs": [
+    "Where do tourists usually get information?",
+    "Are guidebooks still useful?",
+    "Can online reviews be trusted?",
+    "Should museums provide information in many languages?",
+    "How has technology changed travelling?"
+   ]
+  },
+  {
+   "no": 67,
+   "topic": "Describe an interesting garden or park you have seen",
+   "qs": [
+    "Why are parks important in cities?",
+    "Should cities build more parks?",
+    "What do people usually do in parks?",
+    "Are gardens good for people's health?",
+    "Should parks be free for everyone?"
+   ]
+  },
+  {
+   "no": 68,
+   "topic": "Describe a time when you read or heard something that you thought was not true.",
+   "qs": [
+    "Why do people believe false information?",
+    "How can people check if news is true?",
+    "Should social media companies stop fake news?",
+    "Are young people better at spotting fake news?",
+    "Who is responsible for false information online?"
+   ]
+  },
+  {
+   "no": 69,
+   "topic": "Describe a person you know who is very competitive.",
+   "qs": [
+    "Is competition good for children?",
+    "Are people more competitive than before?",
+    "Is it better to compete or cooperate?",
+    "Can competition cause stress?",
+    "Should schools reduce competition between students?"
+   ]
+  }
+ ]
+}
