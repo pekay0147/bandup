@@ -864,3 +864,4 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 /* KAKAO ASK BUTTON */
 .kakao{display:inline-flex;align-items:center;gap:5px;padding:6px 11px;border-radius:999px;background:#fee500;color:#191600;font-size:13px;font-weight:700;text-decoration:none;line-height:1}
 .kakao svg{width:16px;height:16px}
+.guidelink{display:block;text-align:center;font-size:13px;color:var(--muted);text-decoration:none;padding:6px 0 2px}
