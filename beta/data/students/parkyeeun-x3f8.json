@@ -303,10 +303,10 @@
     1,
     5
    ],
-   "ko": "주말에 쿠키를 한 번에 잔뜩 구웠어",
-   "en": "I baked a batch of cookies at the weekend.",
+   "ko": "우리는 같은 기수였어. 그녀는 내 입사 동기야.",
+   "en": "We were in the same batch. She is my batchmate.",
    "hint": "batch",
-   "gram": "<em>a batch of</em> = 한 번에 만든 한 묶음. 음식이나 일을 한꺼번에 할 때 써요."
+   "gram": "<em>batch</em> = 동기, 기수. <em>in the same batch</em> = 같은 기수(동기)인, <em>batchmate</em> = 동기 한 명.<br><b>batch vs classmate</b> · 학교 같은 반은 <em>classmate</em>, 입학·입사 같은 기수는 <em>batchmate</em>."
   },
   {
    "id": "e02",
