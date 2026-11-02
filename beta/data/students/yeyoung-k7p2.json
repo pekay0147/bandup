@@ -965,7 +965,7 @@
    "en": "I was discharged from the hospital.",
    "mine": "I was discharged",
    "good": true,
-   "gram": "문장은 맞았어요! <em>be + 과거분사</em>는 '~되다'. 퇴원은 <em>from the hospital</em>, 전역은 <em>from the military</em>.",
+   "gram": "<em>be + 과거분사</em>는 '~되다'. 퇴원은 <em>from the hospital</em>, 전역은 <em>from the military</em>.",
    "hint": "hospital"
   },
   {
@@ -993,7 +993,7 @@
    "en": "I prefer going to the beach.",
    "mine": "I prefer going to the beach",
    "good": true,
-   "gram": "<em>prefer + -ing</em> 완벽해요! 1~2회차에 틀렸던 부분이에요. 비교는 <em>I prefer the beach to the mountains.</em>",
+   "gram": "<em>prefer + -ing</em> = ~하는 걸 더 좋아하다. 비교는 <em>I prefer the beach to the mountains.</em>",
    "hint": "prefer"
   }
  ],

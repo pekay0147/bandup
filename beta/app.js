@@ -406,7 +406,7 @@ function keepRow(c){
   const r=el("div","m");
   r.append(el("span","kk", c.ko || ""));
   const rt=el("div","rt"); rt.append(el("span",null,c.en)); r.append(rt);
-  const sd=el("div","sd"); if(c.good) sd.append(el("span","goodtag","잘했어요")); else sd.append(el("span","sess",sessLabel(c))); r.append(sd);
+  const sd=el("div","sd"); sd.append(el("span","sess",sessLabel(c))); r.append(sd);
   return r;
 }
 const isWrong=c=>c.kind==="fix" || (c.mine && !c.good);
@@ -499,7 +499,6 @@ function flipCard(c, onFlip){
   else { fb.append(el("p","ko",c.ko));
     const hint = c.hint || (c.vtopic? (()=>{ const ws=c.en.split(/\s+/).filter(w=>w.replace(/[^A-Za-z]/g,"").length>2); const k=ws.sort((x,y)=>y.length-x.length)[0]||c.en.split(" ")[0]; return ws.length>1? k.replace(/[^A-Za-z'-]/g,"") : k.replace(/[A-Za-z]+/g,m=>m[0]+"_".repeat(m.length-1)); })() : "");
     if(hint){ const hb=el("p","hint"); hb.append(el("span","hint-tag","힌트"), document.createTextNode(hint)); fb.append(hb); }
-    if(c.good) fb.append(el("span","lab","수업 때 잘했던 문장"));
   }
   fb.append(el("span","tap","터치해서 정답 보기")); f.append(fb);
   // back
