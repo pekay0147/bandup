@@ -164,7 +164,6 @@ function renderHome(app){
   if(!D.cards.length || (due && !goalDone)){ h1.append(document.createTextNode("오늘도 화이팅!")); }
   else h1.append(document.createTextNode("꾸준함이 실력이 돼요. 오늘도 완료! 👏"));
   app.append(h1);
-  { const pl=profileLine(); if(pl) app.append(pl); }
   app.append(quoteBox()); startIdiomTimer();
   // 오늘의 복습
   const s1=el("section","sec"); s1.append(secHead("오늘의 복습"));
@@ -186,6 +185,7 @@ function renderHome(app){
   s2.append(list); app.append(s2);
   // 이번 주
   const st=streak(); const s3=el("section","sec"); const h3=secHead("이번 달"); if(st){ const fl=el("span","streak"); fl.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path class="f-out" d="M12 2c.5 3.2 3 4.6 4.4 7 1.3 2.2 1.6 4.6.8 6.8A6 6 0 0 1 6 14.6c0-2.2 1-3.6 2.3-4.8.2 1.5.9 2.6 2 3.1-.6-3.5.4-7.6 1.7-10.9z" fill="#ff7a1a"/><path class="f-in" d="M12.2 11.5c1.3 1.4 2.3 2.7 2.3 4.4a2.5 2.5 0 0 1-5 0c0-1.3.7-2.3 1.6-3 .1.8.5 1.3 1.1 1.5-.3-1-.3-1.9 0-2.9z" fill="#ffc94a"/></svg>'; fl.append(document.createTextNode(`${st}일 연속`)); h3.append(fl); } s3.append(h3); s3.append(weekCard()); app.append(s3);
+  if(D.common && PROFILE){ const pe=el("button","guidelink","내 정보 (이름·시험 날짜·목표) 고치기 ›"); pe.type="button"; pe.style.cssText="border:0;background:none;width:100%;cursor:pointer;font:inherit;font-size:13px"; pe.onclick=()=>go("profile"); app.append(pe); }
   if(!(window.matchMedia&&matchMedia("(display-mode: standalone)").matches) && !navigator.standalone){ const g=el("a","guidelink","홈 화면에 앱으로 추가하는 법 ›"); g.href="guide/"; app.append(g); }
 }
 
@@ -212,10 +212,13 @@ function weekCard(){
   const set=new Set(days); const now=new Date(); const y=now.getFullYear(), m=now.getMonth(), td=now.getDate(); const t0=new Date(y,m,td);
   const isoOf=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
   const hd=el("div","cal-hd"); hd.append(el("b",null,`${y}년 ${m+1}월`)); const cnt=[...set].filter(s=>s.startsWith(`${y}-${String(m+1).padStart(2,"0")}-`)).length;
-  const rt=el("span",null,`이번 달 ${cnt}일 공부`); rt.append(el("i","cal-chev",calOpen?"▴":"▾")); hd.append(rt); w.append(hd);
+  const EX=(D.common&&PROFILE&&PROFILE.exam)||""; const exN=dday(EX);
+  const rt=el("span",null,`이번 달 ${cnt}일 공부`); rt.append(el("i","cal-chev",calOpen?"▴":"▾"));
+  if(exN!=null && exN>=0){ const hl=el("div","cal-hl"); hl.append(el("b",null,`${y}년 ${m+1}월`), el("em","cal-dday", exN? `시험 D-${exN}` : "오늘 시험!")); hd.textContent=""; hd.append(hl, rt); } else hd.append(rt);
+  w.append(hd);
   const g=el("div","cal-grid");
   ["일","월","화","수","목","금","토"].forEach(n=>g.append(el("span","cal-wd",n)));
-  const cell=d=>{ const iso=isoOf(d); return el("span","cal-d"+(set.has(iso)?" done":"")+(d.getTime()===t0.getTime()?" today":"")+(d>t0?" future":"")+(d.getMonth()!==m?" other":""),String(d.getDate())); };
+  const cell=d=>{ const iso=isoOf(d); const c=el("span","cal-d"+(set.has(iso)?" done":"")+(d.getTime()===t0.getTime()?" today":"")+(d>t0?" future":"")+(d.getMonth()!==m?" other":"")+(iso===EX?" exam":""),String(d.getDate())); if(iso===EX) c.title="시험"; return c; };
   if(calOpen){ const first=new Date(y,m,1).getDay(), last=new Date(y,m+1,0).getDate();
     for(let i=0;i<first;i++) g.append(el("span","cal-d empty"));
     for(let d=1;d<=last;d++) g.append(cell(new Date(y,m,d))); }
