@@ -163,7 +163,7 @@ function renderHome(app){
   list.append(listRow(LIC.bm,"북마크",`${cbmList().filter(id=>getCard(id)).length+qbmList().length}개`,()=>go("bm")));
   s2.append(list); app.append(s2);
   // 이번 주
-  const st=streak(); const s3=el("section","sec"); const h3=secHead("이번 주"); if(st){ const fl=el("span","streak"); fl.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c.5 3.2 3 4.6 4.4 7 1.3 2.2 1.6 4.6.8 6.8A6 6 0 0 1 6 14.6c0-2.2 1-3.6 2.3-4.8.2 1.5.9 2.6 2 3.1-.6-3.5.4-7.6 1.7-10.9z" fill="#ff7a1a"/><path d="M12.2 11.5c1.3 1.4 2.3 2.7 2.3 4.4a2.5 2.5 0 0 1-5 0c0-1.3.7-2.3 1.6-3 .1.8.5 1.3 1.1 1.5-.3-1-.3-1.9 0-2.9z" fill="#ffc94a"/></svg>'; fl.append(document.createTextNode(`${st}일 연속`)); h3.append(fl); } s3.append(h3); s3.append(weekCard()); app.append(s3);
+  const st=streak(); const s3=el("section","sec"); const h3=secHead("이번 주"); if(st){ const fl=el("span","streak"); fl.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path class="f-out" d="M12 2c.5 3.2 3 4.6 4.4 7 1.3 2.2 1.6 4.6.8 6.8A6 6 0 0 1 6 14.6c0-2.2 1-3.6 2.3-4.8.2 1.5.9 2.6 2 3.1-.6-3.5.4-7.6 1.7-10.9z" fill="#ff7a1a"/><path class="f-in" d="M12.2 11.5c1.3 1.4 2.3 2.7 2.3 4.4a2.5 2.5 0 0 1-5 0c0-1.3.7-2.3 1.6-3 .1.8.5 1.3 1.1 1.5-.3-1-.3-1.9 0-2.9z" fill="#ffc94a"/></svg>'; fl.append(document.createTextNode(`${st}일 연속`)); h3.append(fl); } s3.append(h3); s3.append(weekCard()); app.append(s3);
 }
 
 function podcastBox(){
