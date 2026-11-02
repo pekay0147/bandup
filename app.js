@@ -36,7 +36,6 @@ async function boot(){
   }catch(e){ app.textContent=""; const x=el("div","empty"); x.append(el("h2",null,"카드를 불러오지 못했어요"), el("p",null,"인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 되면 선생님께 링크를 다시 받아 주세요.")); app.append(x); return; }
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
-  if(D.common) loadMine();
   document.title= D.demo? "밴드업 체험하기" : D.common? "밴드업 아이엘츠" : `${D.name}님 · 밴드업 아이엘츠`;
   $("#who").textContent=new Date().toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"long"}); const br=document.querySelector(".brand"); if(br) br.innerHTML="Band<span>up</span>";
 
@@ -58,7 +57,7 @@ function streak(){ let n=0, d=today(); const set=new Set(days); if(!set.has(d)) 
 const typeOf=c=> c.kind==="ko" && !c.type ? "표현" : c.type;
 const col=c=>TCOL[typeOf(c)]||"#4457e8";
 const rep=c=>(c.sessions||[]).length>1;
-const sessLabel=c=>c.type==="내 문장"? "내 문장" : c.vtopic? c.vtopic : (c.sessions||[]).join("·")+"회차";
+const sessLabel=c=>c.type==="내 문장"? "내 문장" : D.common? ((D.sessions.find(x=>x.no===(c.sessions||[])[0])||{}).title||"") : c.vtopic? c.vtopic : (c.sessions||[]).join("·")+"회차";
 const VCARDS={};
 const getCard=id=>D.cards.find(c=>c.id===id) || VCARDS[id];
 const isWriting=c=>!(c.type==="발음·철자" && /발음/.test(c.ko||""));
@@ -474,19 +473,18 @@ function renderMyCards(app){
 }
 
 function renderDecks(app){
-  if(D.common){ renderMyCards(app); return; }
-  pageHead(app,"큐카드","수업 시간에 나온 문장을 카드로 연습해요.");
+  pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
   if(!D.sessions.length || !D.cards.length){ const e=el("div","empty"); e.append(el("p",null, D.common? "수업을 들으면 수업에서 내가 틀린 문장이 여기에 큐카드로 생겨요." : "아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
   const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
   if(cardMode!=="session" && cardMode!=="random") cardMode="session";
-  for(const [k,label,sub] of [["session","회차별",`1~${D.sessions[D.sessions.length-1].no}회차`],["random","랜덤 퀴즈","섞어서 풀기"]]){
+  for(const [k,label,sub] of [["session",D.common?"주제별":"회차별",`1~${D.sessions[D.sessions.length-1].no}회차`],["random","랜덤 퀴즈","섞어서 풀기"]]){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(cardMode===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; openKey=null; render(); }; seg.append(b);
   }
   app.append(seg);
   let key, list, empty="카드가 없어요.";
   if(cardMode==="session"){
-    if(selSession==null) selSession=D.sessions[D.sessions.length-1].no;
+    if(selSession==null || !D.sessions.some(x=>x.no===selSession)) selSession= D.common? D.sessions[0].no : D.sessions[D.sessions.length-1].no;
     app.append(sessionPicker(selSession, v=>{ selSession=v; render(); }, false));
     key="s"+selSession; list=D.cards.filter(c=>(c.sessions||[]).includes(selSession));
   } else if(cardMode==="wrong"){
@@ -591,9 +589,9 @@ function randPool(){
 /* ---------- session picker ---------- */
 function sessionPicker(current, onPick, withAll=true){
   const wrap=el("div","picker");
-  wrap.append(el("span","picker-lab","회차 선택"));
+  wrap.append(el("span","picker-lab", D.common? "주제 선택" : "회차 선택"));
   const row=el("div","pchips"); row.setAttribute("role","group"); row.setAttribute("aria-label","회차 선택");
-  const opts=[...(withAll?[["all","전체"]]:[]), ...D.sessions.map(x=>[x.no, `${x.no}회`])];
+  const opts=[...(withAll?[["all","전체"]]:[]), ...D.sessions.map(x=>[x.no, D.common? x.title : `${x.no}회`])];
   for(const [v,label] of opts){
     const n = v==="all"? D.cards.length : D.cards.filter(c=>(c.sessions||[]).includes(v)).length;
     const b=el("button",null,label); b.type="button"; b.setAttribute("aria-pressed",String(current===v));
