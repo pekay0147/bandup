@@ -576,7 +576,21 @@ const IDIOMS=[
  ["from scratch","처음부터, 맨손으로","My aunt started her bakery from scratch."],
  ["beat the traffic","차 막히는 걸 피하다","I leave home early to beat the traffic."],
  ["have a sweet tooth","단 걸 좋아하다","I have a sweet tooth, so I can't resist chocolate."],
- ["all of a sudden","갑자기","All of a sudden, my mind went blank."]
+ ["all of a sudden","갑자기","All of a sudden, my mind went blank."],
+ ["add insult to injury","엎친 데 덮친 격","I missed the bus, and to add insult to injury, it started to rain."],
+ ["at the drop of a hat","망설임 없이 바로","My best friend would help me at the drop of a hat."],
+ ["bark up the wrong tree","헛다리 짚다","If you think I broke it, you're barking up the wrong tree."],
+ ["by the skin of my teeth","간신히, 아슬아슬하게","I caught the last train by the skin of my teeth."],
+ ["cut corners","대충 하다, 날림으로 하다","Good restaurants never cut corners with their ingredients."],
+ ["get my act together","정신 차리고 제대로 하다","I need to get my act together before my IELTS test."],
+ ["hit the nail on the head","정확히 핵심을 찌르다","My teacher hit the nail on the head about my grammar mistakes."],
+ ["jump on the bandwagon","유행에 편승하다","Lots of people jumped on the bandwagon and started running."],
+ ["kill two birds with one stone","일석이조","I walk to work, so I kill two birds with one stone: I save money and exercise."],
+ ["let the cat out of the bag","비밀을 무심코 말해 버리다","My sister let the cat out of the bag about the surprise party."],
+ ["let it slide","(잘못을) 그냥 넘어가다","My manager let it slide when I was late once."],
+ ["like two peas in a pod","붕어빵처럼 똑 닮은","My cousin and I are like two peas in a pod."],
+ ["sit on the fence","어느 편도 들지 않다, 결정을 미루다","I usually sit on the fence when my friends argue."],
+ ["take it with a pinch of salt","걸러서 듣다","I take online reviews with a pinch of salt."],
 ];
 let idiomShift=0, idiomTimer=null;
 function nextIdiom(x){ idiomShift++; const n=quoteBox(); n.classList.add("slidein"); x.replaceWith(n); return n; }
