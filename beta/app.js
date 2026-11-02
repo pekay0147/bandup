@@ -278,7 +278,34 @@ function buildMock(){
     const p3=P3&&P3.items.find(x=>x.no===c.no); if(p3) p3.qs.slice(0,5).forEach(q=>steps.push({part:3,topic:c.topic,q})); }
   return {steps,i:0,phase:null,left:0};
 }
-function stopMockTimer(){ if(mtTimer){ clearInterval(mtTimer); mtTimer=null; } }
+function stopMockTimer(){ if(mtTimer){ clearInterval(mtTimer); mtTimer=null; } if(typeof stopRec==="function") stopRec(); }
+/* ---------- answer recorder (mock test) ---------- */
+let REC=null; // {mr, stream, chunks, t0, timer, key}
+const canRecord=()=>!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
+function stopRec(){ if(REC){ try{ if(REC.mr.state!=="inactive") REC.mr.stop(); }catch(_){} } }
+function recBox(key){
+  MT.rec=MT.rec||{};
+  const w=el("div","recbox");
+  const draw=()=>{ w.textContent="";
+    const url=MT.rec[key];
+    if(REC && REC.key===key){
+      const b=el("button","btn rec on"); b.type="button"; const sec=Math.floor((Date.now()-REC.t0)/1000);
+      b.append(el("i","recdot"), document.createTextNode(` 녹음 중 ${Math.floor(sec/60)}:${String(sec%60).padStart(2,"0")} · 멈추기`)); b.onclick=stopRec; w.append(b); return; }
+    const r=el("button","btn rec"); r.type="button"; r.append(el("i","recdot"), document.createTextNode(url? " 다시 녹음" : " 질문 녹음")); r.onclick=start; w.append(r);
+    if(url){ const a=el("audio"); a.controls=true; a.src=url; a.className="recaudio"; w.append(a); }
+  };
+  const start=async()=>{
+    try{ speechSynthesis.cancel(); }catch(_){}
+    let stream; try{ stream=await navigator.mediaDevices.getUserMedia({audio:true}); }catch(_){ w.textContent=""; w.append(el("p","muted small","마이크를 쓸 수 없어요. 브라우저 설정에서 마이크를 허용해 주세요.")); return; }
+    const mr=new MediaRecorder(stream); const chunks=[];
+    REC={mr,stream,chunks,t0:Date.now(),key,timer:setInterval(()=>{ if(document.body.contains(w)) draw(); },1000)};
+    mr.ondataavailable=e=>{ if(e.data.size) chunks.push(e.data); };
+    mr.onstop=()=>{ clearInterval(REC&&REC.timer); stream.getTracks().forEach(t=>t.stop()); if(MT){ if(MT.rec[key]) URL.revokeObjectURL(MT.rec[key]); MT.rec[key]=URL.createObjectURL(new Blob(chunks,{type:mr.mimeType||"audio/webm"})); } REC=null; if(document.body.contains(w)) draw(); };
+    mr.start(); draw();
+  };
+  draw(); return w;
+}
+
 function renderMock(app){
   stopMockTimer();
   if(!MT){
@@ -308,7 +335,7 @@ function renderMock(app){
   box.append(el("p","mq",st.q));
   if(st.part===2 && st.say.length){ box.append(el("span","idea-lab","You should say")); const ul=el("ul","say"); st.say.forEach(x=>ul.append(el("li",null,x))); box.append(ul); }
   const tools=el("div","mtools");
-  if(canSpeak()){ const sp=el("button","btn"); sp.type="button"; sp.innerHTML=SPEAK_ICON; sp.append(document.createTextNode(" 질문 듣기")); sp.onclick=()=>speak(st.q); tools.append(sp); }
+  if(canRecord()) tools.append(recBox(MT.i));
   tools.append(qbmBtn(st)); box.append(tools);
   if(st.part===2){
     const tm=el("div","mtimer"); const lab=el("b",null,""); const btn=el("button","btn"); btn.type="button"; tm.append(lab,btn);

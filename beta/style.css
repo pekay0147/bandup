@@ -840,3 +840,13 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .scene .face{min-height:0!important;height:100%}
 .scene .face .body{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
 @media (max-height:780px){.scene .card{height:400px}}
+
+/* RECORDER */
+.mtools{align-items:flex-start}
+.recbox{flex:1;display:grid;gap:8px;min-width:0}
+.btn.rec{display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.recdot{width:10px;height:10px;border-radius:50%;background:#e5484d;display:inline-block}
+.btn.rec.on{border-color:#e5484d;color:#e5484d}
+.btn.rec.on .recdot{animation:recblink 1s infinite}
+@keyframes recblink{50%{opacity:.25}}
+.recaudio{width:100%;height:40px}
