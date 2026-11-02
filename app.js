@@ -114,7 +114,7 @@ const POD_URL="https://podcasts.apple.com/nz/podcast/6-minute-english/id26202694
 const LIC={
   pod:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="2.2"/><path d="M12 13.5v7"/><path d="M8.2 14a5 5 0 1 1 7.6 0"/><path d="M5.6 16.6a8.5 8.5 0 1 1 12.8 0"/></svg>',
   mock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>',
-  bm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>'
+  bm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8l-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/></svg>'
 };
 function secHead(title, right){ const h=el("div","sec-h"); h.append(el("b",null,title)); if(right) h.append(el("span",null,right)); return h; }
 function listRow(icon, title, sub, onClick, href){
