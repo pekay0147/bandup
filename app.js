@@ -464,7 +464,7 @@ function flipCard(c, onFlip){
   const scene=el("div","scene");
   const card=el("div","card"+(flipped?" flipped":"")); card.style.setProperty("--c",col(c));
   card.tabIndex=0; card.setAttribute("role","button"); card.setAttribute("aria-label", flipped?"카드 앞면으로 뒤집기":"카드 뒤집기");
-  const chipsFor=()=>{ const w=el("div","chips"); if(rep(c)) w.append(el("span","rep",`${c.sessions.length}번 반복`)); return w; };
+  const chipsFor=()=>el("div","chips");
   // front
   const f=el("div","face front"); f.setAttribute("aria-hidden",String(flipped));
   const starBtn=()=>{ const b=el("button","cstar"); b.type="button"; const set=()=>{ const on=isCbm(c.id); b.textContent= on? "★" : "☆"; b.setAttribute("aria-pressed",String(on)); b.setAttribute("aria-label", on? "북마크 해제" : "북마크에 추가"); }; set(); b.onclick=e=>{ e.stopPropagation(); toggleCbm(c.id); document.querySelectorAll(".cstar").forEach(x=>{ const on=isCbm(c.id); x.textContent=on?"★":"☆"; x.setAttribute("aria-pressed",String(on)); }); }; return b; };
