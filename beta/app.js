@@ -37,7 +37,7 @@ async function boot(){
   }catch(e){ app.textContent=""; const x=el("div","empty"); x.append(el("h2",null,"카드를 불러오지 못했어요"), el("p",null,"인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 되면 선생님께 링크를 다시 받아 주세요.")); app.append(x); return; }
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
-  document.title= D.demo? "밴드업 체험하기" : `${D.name}님 · 밴드업 아이엘츠`;
+  document.title= D.demo? "밴드업 체험하기" : D.common? "밴드업 아이엘츠" : `${D.name}님 · 밴드업 아이엘츠`;
   $("#who").textContent=new Date().toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"long"}); const br=document.querySelector(".brand"); if(br) br.innerHTML="Band<span>up</span>";
 
   buildTabs(); render();
@@ -156,7 +156,7 @@ function renderHome(app){
   const goalDone = doneToday>=DAILY;
   if(D.demo){ const bn=el("div","demobn"); bn.append(el("b",null,"체험용 앱이에요"), el("p",null,"실제 수업을 들으면, 수업에서 내가 틀린 문장으로 이런 큐카드가 매번 만들어져요. 큐카드·모의고사·예상 기출을 마음껏 써 보세요."));
     const k=el("a","demok","카톡으로 수업 상담하기 ›"); k.href="https://open.kakao.com/o/s6FxwzEi"; k.target="_blank"; k.rel="noopener"; bn.append(k); app.append(bn); }
-  const h1=el("h1","h-title"); h1.append(document.createTextNode(`${D.name}님,`), el("br"));
+  const h1=el("h1","h-title"); if(D.name) h1.append(document.createTextNode(`${D.name}님,`), el("br"));
   if(!D.cards.length || (due && !goalDone)){ h1.append(document.createTextNode("오늘도 화이팅!")); }
   else h1.append(document.createTextNode("꾸준함이 실력이 돼요. 오늘도 완료! 👏"));
   app.append(h1);
@@ -166,7 +166,7 @@ function renderHome(app){
   const rv=el("div","box rv"); const n=el("div","rv-n"); n.append(document.createTextNode(String(Math.min(doneToday,DAILY))), el("small",null,` / ${DAILY}`));
   rv.append(n, el("div","rv-l","오늘 목표"));
   const bar=el("div","bar"); const bi=el("i"); bi.style.width=Math.min(100,doneToday/DAILY*100)+"%"; bar.append(bi); rv.append(bar);
-  if(!D.cards.length){ rv.append(el("p","muted small","첫 수업이 끝나면 수업에서 나온 문장으로 복습이 시작돼요.")); s1.append(rv); app.append(s1); }
+  if(!D.cards.length){ rv.append(el("p","muted small", D.common? "수업을 들으면 수업에서 틀린 문장으로 나만의 복습이 시작돼요." : "첫 수업이 끝나면 수업에서 나온 문장으로 복습이 시작돼요.")); s1.append(rv); app.append(s1); }
   else {
   const queue=reviewQueue(!due);
   const b=el("button","btn primary", !due? "약한 카드 연습하기" : goalDone? "더 복습하기" : doneToday? "이어서 복습하기" : "복습 시작하기"); b.type="button"; b.onclick=()=>go("review",{extra:!due, ids:queue}); rv.append(b);
@@ -441,7 +441,7 @@ function deckTile(s){
 
 function renderDecks(app){
   pageHead(app,"큐카드","수업 시간에 나온 문장을 카드로 연습해요.");
-  if(!D.sessions.length || !D.cards.length){ const e=el("div","empty"); e.append(el("p",null,"아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
+  if(!D.sessions.length || !D.cards.length){ const e=el("div","empty"); e.append(el("p",null, D.common? "수업을 들으면 수업에서 내가 틀린 문장이 여기에 큐카드로 생겨요." : "아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
   const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
   if(cardMode!=="session" && cardMode!=="random") cardMode="session";
   for(const [k,label,sub] of [["session","회차별",`1~${D.sessions[D.sessions.length-1].no}회차`],["random","랜덤 퀴즈","섞어서 풀기"]]){
