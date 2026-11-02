@@ -163,7 +163,7 @@ function renderHome(app){
   list.append(listRow(LIC.bm,"북마크",`${cbmList().filter(id=>getCard(id)).length+qbmList().length}개`,()=>go("bm")));
   s2.append(list); app.append(s2);
   // 이번 주
-  const st=streak(); const s3=el("section","sec"); const h3=secHead("이번 주"); if(st){ const fl=el("span","streak"); fl.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path class="f-out" d="M12 2c.5 3.2 3 4.6 4.4 7 1.3 2.2 1.6 4.6.8 6.8A6 6 0 0 1 6 14.6c0-2.2 1-3.6 2.3-4.8.2 1.5.9 2.6 2 3.1-.6-3.5.4-7.6 1.7-10.9z" fill="#ff7a1a"/><path class="f-in" d="M12.2 11.5c1.3 1.4 2.3 2.7 2.3 4.4a2.5 2.5 0 0 1-5 0c0-1.3.7-2.3 1.6-3 .1.8.5 1.3 1.1 1.5-.3-1-.3-1.9 0-2.9z" fill="#ffc94a"/></svg>'; fl.append(document.createTextNode(`${st}일 연속`)); h3.append(fl); } s3.append(h3); s3.append(weekCard()); app.append(s3);
+  const st=streak(); const s3=el("section","sec"); const h3=secHead("이번 달"); if(st){ const fl=el("span","streak"); fl.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path class="f-out" d="M12 2c.5 3.2 3 4.6 4.4 7 1.3 2.2 1.6 4.6.8 6.8A6 6 0 0 1 6 14.6c0-2.2 1-3.6 2.3-4.8.2 1.5.9 2.6 2 3.1-.6-3.5.4-7.6 1.7-10.9z" fill="#ff7a1a"/><path class="f-in" d="M12.2 11.5c1.3 1.4 2.3 2.7 2.3 4.4a2.5 2.5 0 0 1-5 0c0-1.3.7-2.3 1.6-3 .1.8.5 1.3 1.1 1.5-.3-1-.3-1.9 0-2.9z" fill="#ffc94a"/></svg>'; fl.append(document.createTextNode(`${st}일 연속`)); h3.append(fl); } s3.append(h3); s3.append(weekCard()); app.append(s3);
 }
 
 function podcastBox(){
@@ -184,17 +184,16 @@ function toggleQbm(item){ let l=qbmList(); if(l.some(x=>x.q===item.q)) l=l.filte
 function qbmBtn(item, onChange){ const b=el("button","cstar"); b.type="button"; const set=()=>{ const on=isQbm(item.q); b.textContent=on? "★" : "☆"; b.setAttribute("aria-pressed",String(on)); b.setAttribute("aria-label", on? "북마크 해제" : "북마크에 추가"); }; set(); b.onclick=e=>{ e.stopPropagation(); toggleQbm(item); set(); if(onChange) onChange(); }; return b; }
 let todayQShift=0;
 function weekCard(){
-  const w=el("div","box weekcard");
-  const row=el("div","wk-row"); const names=["일","월","화","수","목","금","토"]; const set=new Set(days);
-  const now=new Date(); const t0=new Date(now.getFullYear(),now.getMonth(),now.getDate()); const start=new Date(t0); start.setDate(t0.getDate()-t0.getDay());
-  for(let k=0;k<7;k++){ const d=new Date(start); d.setDate(start.getDate()+k); const iso=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
-    const c=el("div","wk-day"+(set.has(iso)?" done":"")+(d.getTime()===t0.getTime()?" today":"")); c.append(el("span",null,names[k]), el("i",null,set.has(iso)?"✓":"")); row.append(c); }
-  w.append(row);
-  if(P1Q){ const all=P1Q.topics.flatMap(t=>t.qs.map(q=>[t.ko,q])); const dayNo=Math.floor(t0.getTime()/86400000); const [tk,q]=all[((dayNo*7+todayQShift)%all.length+all.length)%all.length];
-    const qb=el("div","wk-q"); qb.append(el("p",null,q));
-    const tools=el("div","wk-tools");
-    const nx=el("button","linkbtn","다른 질문 ›"); nx.type="button"; nx.onclick=()=>{ todayQShift++; const n=weekCard(); w.replaceWith(n); }; tools.append(nx);
-    qb.append(tools); w.append(qb); }
+  const w=el("div","box weekcard calcard");
+  const set=new Set(days); const now=new Date(); const y=now.getFullYear(), m=now.getMonth(), td=now.getDate();
+  const hd=el("div","cal-hd"); hd.append(el("b",null,`${y}년 ${m+1}월`)); const cnt=[...set].filter(s=>s.startsWith(`${y}-${String(m+1).padStart(2,"0")}-`)).length; hd.append(el("span",null,`이번 달 ${cnt}일 공부`)); w.append(hd);
+  const g=el("div","cal-grid");
+  ["일","월","화","수","목","금","토"].forEach(n=>g.append(el("span","cal-wd",n)));
+  const first=new Date(y,m,1).getDay(), last=new Date(y,m+1,0).getDate();
+  for(let i=0;i<first;i++) g.append(el("span","cal-d empty"));
+  for(let d=1;d<=last;d++){ const iso=`${y}-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+    g.append(el("span","cal-d"+(set.has(iso)?" done":"")+(d===td?" today":"")+(d>td?" future":""),String(d))); }
+  w.append(g);
   return w;
 }
 let bmHomeOpen=false;
