@@ -662,7 +662,7 @@ const IDIOMS=[
  ["tighten my belt", "허리띠를 졸라매다", "Prices went up, so I had to tighten my belt."],
  ["save for a rainy day", "만일을 대비해 저축하다", "I try to save some money for a rainy day."],
  ["a dog-eat-dog world", "치열한 경쟁 사회", "The job market is a dog-eat-dog world."],
- ["a level playing field", "공정한 경쟁의 장", "Online classes can create a level playing field for students."],
+ ["an even playing field", "공정한 경쟁의 장", "Online classes can create an even playing field for students."],
  ["it never rains but it pours", "안 좋은 일은 겹쳐서 온다", "I lost my phone and then my wallet. It never rains but it pours."],
  ["have a whale of a time", "아주 즐거운 시간을 보내다", "We had a whale of a time in Hawaii."],
  ["fight like cat and dog", "만나기만 하면 싸우다", "My sister and I used to fight like cat and dog."],
