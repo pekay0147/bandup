@@ -745,3 +745,4 @@ h2{font-weight:700;letter-spacing:-.02em}
 @keyframes bdgin{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
 @keyframes bdgout{to{opacity:0;transform:translateY(-12px)}}
 @media (max-width:350px){.bdg-m{width:38px;height:38px}}
+.sec-h .streak{display:inline-flex;align-items:center;gap:3px;font-size:13px;font-weight:700;color:#e8650f} .streak svg{width:16px;height:16px}
