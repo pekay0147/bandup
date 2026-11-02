@@ -36,7 +36,7 @@ async function boot(){
   }catch(e){ app.textContent=""; const x=el("div","empty"); x.append(el("h2",null,"카드를 불러오지 못했어요"), el("p",null,"인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 되면 선생님께 링크를 다시 받아 주세요.")); app.append(x); return; }
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
-  document.title=`${D.name}님 · 밴드업 아이엘츠`;
+  document.title= D.demo? "밴드업 체험하기" : `${D.name}님 · 밴드업 아이엘츠`;
   $("#who").textContent=new Date().toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"long"}); const br=document.querySelector(".brand"); if(br) br.innerHTML="Band<span>up</span>";
 
   buildTabs(); render();
@@ -152,6 +152,8 @@ function renderHome(app){
   const due=dueCards().length;
   const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length;
   const goalDone = doneToday>=DAILY;
+  if(D.demo){ const bn=el("div","demobn"); bn.append(el("b",null,"체험용 앱이에요"), el("p",null,"실제 수업을 들으면, 수업에서 내가 틀린 문장으로 이런 큐카드가 매번 만들어져요. 큐카드·모의고사·예상 기출을 마음껏 써 보세요."));
+    const k=el("a","demok","카톡으로 수업 상담하기 ›"); k.href="https://open.kakao.com/o/s6FxwzEi"; k.target="_blank"; k.rel="noopener"; bn.append(k); app.append(bn); }
   const h1=el("h1","h-title"); h1.append(document.createTextNode(`${D.name}님,`), el("br"));
   if(!D.cards.length || (due && !goalDone)){ h1.append(document.createTextNode("오늘도 화이팅!")); }
   else h1.append(document.createTextNode("꾸준함이 실력이 돼요. 오늘도 완료! 👏"));

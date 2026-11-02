@@ -843,3 +843,7 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .sp-logo span{position:relative;top:-.5em;font-size:.86em;margin-left:.03em;color:#ffd43b}
 .sp-by b{color:#fff}
 .sp-by{color:rgba(255,255,255,.75)}
+.demobn{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:12px;padding:12px 14px;display:grid;gap:4px}
+.demobn b{font-size:14px;color:var(--blue)}
+.demobn p{margin:0;font-size:13px;line-height:1.5;color:var(--muted)}
+.demok{justify-self:start;margin-top:4px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:none}

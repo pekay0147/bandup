@@ -1,0 +1,421 @@
+{
+ "slug": "demo",
+ "name": "수강생",
+ "demo": true,
+ "course": "IELTS Speaking",
+ "form": {
+  "url": "https://docs.google.com/forms/d/e/1FAIpQLSfybbvIl48g133Mx3PdH7rfqGDRy9NCum3SdpUJ3RDpWkdPNA/viewform?usp=pp_url&entry.1747437353=NAME_X&entry.1189878643=SESSION_X&entry.1202580096=RESULT_X"
+ },
+ "sessions": [
+  {
+   "no": 1,
+   "date": "2026-10-20",
+   "title": "Home · Hometown · Work"
+  },
+  {
+   "no": 2,
+   "date": "2026-10-24",
+   "title": "Hobbies · Free time"
+  },
+  {
+   "no": 3,
+   "date": "2026-10-28",
+   "title": "Travel"
+  }
+ ],
+ "types": [
+  "단·복수",
+  "주어-동사",
+  "동사·시제",
+  "문장 구조",
+  "관사·전치사",
+  "품사",
+  "단어 선택"
+ ],
+ "tips": {
+  "단·복수": "many, there are 뒤에는 복수형(-s). clothes는 항상 복수예요.",
+  "주어-동사": "he/she/it/my hometown → has, is. 동사는 하나만!",
+  "동사·시제": "과거 질문엔 끝까지 과거형. agree는 동사라 be동사 없이.",
+  "문장 구조": "한 문장에 동사는 하나! 나한테 어렵다는 It's difficult for me to.",
+  "관사·전치사": "good at, listen to, on the bus, in the evening.",
+  "품사": "내 기분은 -ed(interested, bored), 대상은 -ing(interesting, boring).",
+  "단어 선택": "tell + 사람, look forward to + -ing, be used to + -ing."
+ },
+ "focus": {
+  "3": "과거 이야기는 끝까지 과거형! 이유를 말할 땐 On top of that으로 하나 더."
+ },
+ "compare": [
+  [
+   "interested / interesting",
+   "<em>I'm interested in</em> music. (내 관심) · Music is <em>interesting</em>. (대상)"
+  ],
+  [
+   "used to / be used to",
+   "<em>I used to</em> + 동사원형 (예전엔 ~했다) · <em>I'm used to</em> + -ing (~에 익숙하다)"
+  ],
+  [
+   "say / tell",
+   "<em>say</em> + 말한 내용 · <em>tell</em> + 사람 + 내용"
+  ]
+ ],
+ "cards": [
+  {
+   "id": "m01",
+   "kind": "ko",
+   "type": "단·복수",
+   "sessions": [
+    1
+   ],
+   "ko": "우리 동네에는 맛있는 식당이 많아요.",
+   "en": "There are many good restaurants in my area.",
+   "gram": "여러 개면 <em>there are</em> + 복수명사. many 뒤에는 -s: restaurants.<br><b>there is vs there are</b> · 하나면 <em>there is</em> a restaurant, 여러 개면 <em>there are</em> many restaurants.",
+   "hint": "many",
+   "mine": "There is many good restaurant in my area."
+  },
+  {
+   "id": "m02",
+   "kind": "ko",
+   "type": "주어-동사",
+   "sessions": [
+    1
+   ],
+   "ko": "제 고향에는 공원이 많아요.",
+   "en": "My hometown has a lot of parks.",
+   "gram": "주어가 my hometown(하나)이라 <em>has</em>. he/she/it에는 has!",
+   "hint": "hometown",
+   "mine": "My hometown have a lot of park."
+  },
+  {
+   "id": "m03",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 그 의견에 동의해요.",
+   "en": "I agree with that opinion.",
+   "gram": "agree는 동사라 be동사가 필요 없어요. I'm agree ❌ → <em>I agree</em>.",
+   "hint": "agree",
+   "mine": "I'm agree with that opinion."
+  },
+  {
+   "id": "m04",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    3
+   ],
+   "ko": "작년 여름에 제주도에 갔어요.",
+   "en": "I went to Jeju last summer.",
+   "gram": "last summer가 있으면 과거형 <em>went</em>. 과거 이야기는 끝까지 과거형으로!",
+   "hint": "went",
+   "mine": "I go to Jeju last summer."
+  },
+  {
+   "id": "m05",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    2
+   ],
+   "ko": "그건 저를 편안하게 해 줘요.",
+   "en": "It makes me feel relaxed.",
+   "gram": "한 문장에 동사는 하나! is + make ❌ → <em>It makes me feel</em> relaxed.<br><b>make + 사람 + 동사원형</b> · It makes me <em>feel</em> happy.",
+   "hint": "makes",
+   "mine": "It is make me feel relax."
+  },
+  {
+   "id": "m06",
+   "kind": "ko",
+   "type": "품사",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 음악에 관심이 있어요.",
+   "en": "I'm interested in music.",
+   "gram": "내 기분·관심은 <em>interested</em>, 대상이 재밌으면 <em>interesting</em>.<br><b>interested vs interesting</b> · I'm interested in music. / Music is interesting.",
+   "hint": "interested",
+   "mine": "I'm interesting in music."
+  },
+  {
+   "id": "m07",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 요리를 잘해요.",
+   "en": "I'm good at cooking.",
+   "gram": "잘한다는 <em>good at</em> + 명사·-ing. good in ❌",
+   "hint": "good",
+   "mine": "I'm good in cooking."
+  },
+  {
+   "id": "m08",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 보통 저녁에 헬스장에 가요.",
+   "en": "I usually go to the gym in the evening.",
+   "gram": "저녁·아침은 <em>in the evening</em>, 헬스장은 <em>the gym</em>. at evening ❌",
+   "hint": "gym",
+   "mine": "I usually go to gym at evening."
+  },
+  {
+   "id": "m09",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    3
+   ],
+   "ko": "다음 여행이 정말 기대돼요.",
+   "en": "I'm really looking forward to my next trip.",
+   "gram": "<em>look forward to</em>의 to는 전치사라 뒤에 명사나 -ing가 와요: looking forward to <em>seeing</em> you.",
+   "hint": "forward",
+   "mine": "I'm really looking forward to go my next trip."
+  },
+  {
+   "id": "m10",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 서울에서 5년째 살고 있어요.",
+   "en": "I've lived in Seoul for five years.",
+   "gram": "과거부터 지금까지 계속이면 현재완료 <em>have lived</em> + for 기간.",
+   "hint": "lived",
+   "mine": "I live in Seoul for five years."
+  },
+  {
+   "id": "m11",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 일찍 일어나는 게 익숙해요.",
+   "en": "I'm used to getting up early.",
+   "gram": "<em>be used to + -ing</em> = ~에 익숙하다.<br><b>used to vs be used to</b> · I <em>used to</em> get up early. (예전엔 그랬다) / I'<em>m used to</em> getting up early. (지금 익숙하다)",
+   "hint": "used",
+   "mine": "I used to get up early."
+  },
+  {
+   "id": "m12",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    2
+   ],
+   "ko": "영어로 말하는 건 저한테 어려워요.",
+   "en": "It's difficult for me to speak English.",
+   "gram": "'나한테 어렵다'는 <em>It's difficult for me to</em> + 동사. difficult to me ❌",
+   "hint": "difficult",
+   "mine": "Speaking English is difficult to me."
+  },
+  {
+   "id": "m13",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    1
+   ],
+   "ko": "제 가족에 대해 말씀드릴게요.",
+   "en": "Let me tell you about my family.",
+   "gram": "사람에게 말해 줄 땐 <em>tell + 사람</em>. say는 사람이 바로 못 와요: say you ❌",
+   "hint": "tell",
+   "mine": "I'll say you about my family."
+  },
+  {
+   "id": "m14",
+   "kind": "ko",
+   "type": "품사",
+   "sessions": [
+    2
+   ],
+   "ko": "그 영화는 지루했어요.",
+   "en": "The movie was boring.",
+   "gram": "대상이 지루하면 <em>boring</em>, 내가 지루하면 <em>bored</em>: I was bored.",
+   "hint": "boring",
+   "mine": "The movie was bored."
+  },
+  {
+   "id": "m15",
+   "kind": "ko",
+   "type": "단·복수",
+   "sessions": [
+    3
+   ],
+   "ko": "새 옷을 좀 샀어요.",
+   "en": "I bought some new clothes.",
+   "gram": "<em>clothes</em>는 늘 복수라 a를 못 붙여요. '좀'은 <em>some</em>.",
+   "hint": "clothes",
+   "mine": "I bought a new clothes."
+  },
+  {
+   "id": "m16",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 버스에서 음악을 들어요.",
+   "en": "I listen to music on the bus.",
+   "gram": "<em>listen to</em> + 들을 것. 버스·지하철 안은 <em>on the bus</em>.",
+   "hint": "listen",
+   "mine": "I listen music in the bus."
+  },
+  {
+   "id": "e01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "솔직히 말하면, 저는 아침형 인간이 아니에요.",
+   "en": "To be honest, I'm not a morning person.",
+   "gram": "<em>To be honest</em> = 솔직히 말하면. 답변 첫마디로 자연스러워요.",
+   "hint": "honest"
+  },
+  {
+   "id": "e02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "상황에 따라 달라요.",
+   "en": "It depends on the situation.",
+   "gram": "<em>It depends on</em> + 명사 = ~에 따라 달라요. Part 3 첫마디로 딱이에요.",
+   "hint": "depends"
+  },
+  {
+   "id": "e03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "어려운 질문인데, 요리라고 할게요.",
+   "en": "That's a tricky question, but I'd say cooking.",
+   "gram": "생각할 시간이 필요할 때: <em>That's a tricky question, but I'd say</em> …",
+   "hint": "tricky"
+  },
+  {
+   "id": "e04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "요즘 요가에 푹 빠져 있어요.",
+   "en": "I'm really into yoga these days.",
+   "gram": "<em>be into</em> + 명사 = ~에 빠져 있다. like보다 자연스러워요.",
+   "hint": "into"
+  },
+  {
+   "id": "e05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그건 제 취향이 아니에요.",
+   "en": "It's not really my cup of tea.",
+   "gram": "<em>not my cup of tea</em> = 내 취향이 아니다.",
+   "hint": "cup"
+  },
+  {
+   "id": "e06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "게다가 가격도 엄청 싸요.",
+   "en": "On top of that, it's really cheap.",
+   "gram": "<em>On top of that</em> = 게다가. 이유를 하나 더 붙일 때.",
+   "hint": "top"
+  },
+  {
+   "id": "e07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "퇴근하고 요리하기 귀찮아요.",
+   "en": "I can't be bothered to cook after work.",
+   "gram": "<em>I can't be bothered to</em> + 동사 = ~하기 귀찮다.",
+   "hint": "bothered"
+  },
+  {
+   "id": "e08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "우리 집에서 걸어서 10분 거리예요.",
+   "en": "It's a 10-minute walk from my house.",
+   "gram": "거리를 시간으로: <em>It's a 10-minute walk</em>. minute은 단수로 붙여 써요.",
+   "hint": "walk"
+  }
+ ],
+ "part1": [
+  {
+   "session": 1,
+   "groups": [
+    {
+     "title": "Hometown",
+     "qs": [
+      "Where is your hometown?",
+      "What do you like about your hometown?",
+      "Is there good public transport in your hometown?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 2,
+   "groups": [
+    {
+     "title": "Hobbies",
+     "qs": [
+      "What do you like to do in your free time?",
+      "Did you have any hobbies as a child?",
+      "Is there a new hobby you'd like to try?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 3,
+   "groups": [
+    {
+     "title": "Travel",
+     "qs": [
+      "Do you like travelling?",
+      "Where did you go on your last holiday?",
+      "Do you prefer travelling alone or with others?"
+     ]
+    }
+   ]
+  }
+ ],
+ "part3": [
+  {
+   "session": 3,
+   "topic": "Describe a place that you like to visit but do not want to live in",
+   "qs": [
+    "Why do people like visiting places they wouldn't want to live in?",
+    "What makes a place a good place to live?",
+    "Is it better to live in a city or in the countryside?",
+    "Why do some people move abroad?",
+    "How does housing differ between generations in Korea?"
+   ]
+  }
+ ]
+}

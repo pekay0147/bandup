@@ -1,0 +1,33 @@
+{
+ "name": "밴드업 체험",
+ "short_name": "밴드업",
+ "description": "수업에서 나온 실수로 만든 나만의 아이엘츠 스피킹 큐카드",
+ "start_url": "./",
+ "scope": "../../",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#f5f4fa",
+ "theme_color": "#4457e8",
+ "lang": "ko",
+ "icons": [
+  {
+   "src": "../../icons/icon-192.png?v=3",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "../../icons/icon-512.png?v=3",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "../../icons/icon-maskable-512.png?v=3",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ],
+ "id": "./u/demo/"
+}
