@@ -767,4 +767,6 @@ h2{font-weight:700;letter-spacing:-.02em}
 @keyframes spUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes spFade{to{opacity:1}}
 @keyframes spOut{to{opacity:0;visibility:hidden}}
+.sp-by{margin-top:26px;display:grid;gap:6px;letter-spacing:.04em}
+.sp-by b{font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
 @media (prefers-reduced-motion:reduce){.sp-in,.sp-by{animation:none;opacity:1}.splash{animation-duration:.01s}}
