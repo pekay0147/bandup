@@ -38,7 +38,7 @@ async function boot(){
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
   document.title=`${D.name}님 · 밴드업 아이엘츠`;
   $("#who").textContent=new Date().toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"long"}); const br=document.querySelector(".brand"); if(br) br.innerHTML="Band<span>up</span>";
-  addKakao();
+
   buildTabs(); render();
 }
 function addKakao(){
