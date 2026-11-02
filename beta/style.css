@@ -817,3 +817,20 @@ h2{font-weight:700;letter-spacing:-.02em}
 button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;display:grid}
 .cal-chev{font-style:normal;margin-left:6px;font-size:11px}
 .cal-d.other{opacity:.4}
+
+/* IDIOM PAGE */
+.idlist{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.idrow{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;font:inherit;color:inherit;background:none;border:0;border-bottom:1px solid var(--line);padding:14px 16px;cursor:pointer}
+.idrow:last-child{border-bottom:0}
+.idrow .idt{flex:1;min-width:0;display:grid;gap:3px}
+.idrow b{font-size:16px;font-weight:700}
+.idko{font-size:14px;color:var(--muted)}
+.idex{margin:6px 0 0;font-size:14px;line-height:1.5;color:var(--ink);padding-left:10px;border-left:2px solid var(--blue)}
+.idtag{font-size:11px;font-weight:700;color:var(--blue)}
+.idrow.today{background:color-mix(in srgb,var(--blue) 6%,var(--surface))}
+.idcard{display:grid;gap:12px;align-content:center;min-height:240px;width:100%;text-align:left;font:inherit;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 20px;cursor:pointer}
+.idc-top{display:flex;gap:10px;align-items:center;justify-content:space-between}
+.idc-top b{font-size:22px;font-weight:800;letter-spacing:-.01em}
+.idc-ko{margin:0;font-size:17px;font-weight:600;color:var(--blue)}
+.idc-ex{margin:0;font-size:15px;line-height:1.55}
+.idc-hint{margin:0;font-size:14px;color:var(--muted)}

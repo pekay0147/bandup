@@ -105,6 +105,7 @@ function render(){
   if(view.tab==="words") renderWords(app);
   if(view.tab==="mock") renderMock(app);
   if(view.tab==="bm") renderBmTab(app);
+  if(view.tab==="idioms") renderIdioms(app);
   updateTabs();
   document.body.classList.toggle("lesson", !!app.querySelector(".lbar"));
 }
@@ -590,7 +591,7 @@ const IDIOMS=[
  ["let it slide","(잘못을) 그냥 넘어가다","My manager let it slide when I was late once."],
  ["like two peas in a pod","붕어빵처럼 똑 닮은","My cousin and I are like two peas in a pod."],
  ["sit on the fence","어느 편도 들지 않다, 결정을 미루다","I usually sit on the fence when my friends argue."],
- ["take it with a pinch of salt","걸러서 듣다","I take online reviews with a pinch of salt."],,
+ ["take it with a pinch of salt","걸러서 듣다","I take online reviews with a pinch of salt."],
  ["make a living", "생계를 꾸리다", "My uncle makes a living as a taxi driver."],
  ["be cut out for", "~에 소질이 있다, 체질이다", "I'm not cut out for working night shifts."],
  ["wet behind the ears", "풋내기의, 경험이 없는", "When I started my first job, I was still wet behind the ears."],
@@ -678,13 +679,50 @@ function quoteBox(){
   const d=new Date(); const dayNo=Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000);
   const i=((dayNo+idiomShift)%IDIOMS.length+IDIOMS.length)%IDIOMS.length;
   const [idiom,ko,ex]=IDIOMS[i];
-  const x=el("button","quote notice"); x.type="button"; x.setAttribute("aria-label",`오늘의 아이엘츠 idiom: ${idiom}. 누르면 다음 idiom`);
+  const x=el("button","quote notice"); x.type="button"; x.setAttribute("aria-label",`오늘의 아이엘츠 idiom: ${idiom}. 누르면 전체 idiom 보기`);
   const top=el("span","q-top"); top.append(el("span","q-lab",idiomShift? "아이엘츠 idiom" : "오늘의 아이엘츠 idiom"), el("span","q-next","터치하면 다음 ›"));
   const line=el("span","n-line"); line.append(el("span","n-tag","오늘의 idiom"), el("b","n-idiom",idiom));
   const more=el("span","n-more"); more.append(el("span","n-mean",ko), el("span","n-ex",ex)); more.hidden=true;
-  x.append(line, el("span","n-next","▾"), more); x.setAttribute("aria-expanded","false");
-  x.onclick=()=>{ const open=more.hidden; more.hidden=!open; x.setAttribute("aria-expanded",String(open)); x.querySelector(".n-next").textContent= open? "▴" : "▾"; if(open) stopIdiomTimer(); else startIdiomTimer(); };
+  x.append(line, el("span","n-next","›"));
+  x.onclick=()=>{ stopIdiomTimer(); idState=null; idMode="list"; go("idioms",{start:i}); };
   return x;
+}
+
+/* ---------- idiom study page ---------- */
+let idMode="list", idState=null, idOpen=new Set();
+function idiomToday(){ const d=new Date(); const dayNo=Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000); return ((dayNo+idiomShift)%IDIOMS.length+IDIOMS.length)%IDIOMS.length; }
+function renderIdioms(app){
+  const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
+  pageHead(app,"Idiom",`${IDIOMS.length}개 · 스피킹에서 한 번씩 써 보세요`);
+  const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
+  for(const [k,label] of [["list","전체 보기"],["card","카드로 공부"]]){ const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(idMode===k)); b.append(el("b",null,label)); b.onclick=()=>{ idMode=k; render(); }; seg.append(b); }
+  app.append(seg);
+  const start=view.start!=null? view.start : idiomToday();
+  if(idMode==="list"){
+    const box=el("div","idlist");
+    const order=[start, ...IDIOMS.map((_,i)=>i).filter(i=>i!==start)];
+    order.forEach((i,n)=>{ const [en,ko,ex]=IDIOMS[i];
+      const r=el("button","idrow"+(n===0?" today":"")); r.type="button"; const open=idOpen.has(i); r.setAttribute("aria-expanded",String(open));
+      const t=el("div","idt"); if(n===0) t.append(el("span","idtag","오늘의 idiom")); t.append(el("b",null,en), el("span","idko",ko));
+      const exl=el("p","idex",ex); exl.hidden=!open; t.append(exl);
+      r.append(t, speakBtn(en));
+      r.onclick=()=>{ if(idOpen.has(i)) idOpen.delete(i); else idOpen.add(i); exl.hidden=!idOpen.has(i); r.setAttribute("aria-expanded",String(idOpen.has(i))); };
+      box.append(r); });
+    app.append(box); return;
+  }
+  if(!idState){ const rest=IDIOMS.map((_,i)=>i).filter(i=>i!==start).sort(()=>Math.random()-.5); idState={ids:[start,...rest], i:0, show:false}; }
+  const S=idState, [en,ko,ex]=IDIOMS[S.ids[S.i]];
+  const pg=el("div","prog"); pg.append(el("span",null,`${S.i+1} / ${S.ids.length}`)); const sh=el("button","linkbtn","다시 섞기"); sh.type="button"; sh.onclick=()=>{ idState=null; view.start=null; render(); }; pg.append(sh); app.append(pg);
+  const bar=el("div","bar"); const bi=el("i"); bi.style.width=((S.i+1)/S.ids.length*100)+"%"; bar.append(bi); app.append(bar);
+  const c=el("button","idcard"); c.type="button";
+  const top=el("div","idc-top"); top.append(el("b",null,en), speakBtn(en)); c.append(top);
+  if(S.show){ c.append(el("p","idc-ko",ko), el("p","idc-ex",ex)); } else c.append(el("p","idc-hint","무슨 뜻일까요? 눌러서 확인"));
+  c.onclick=()=>{ S.show=!S.show; render(); }; app.append(c);
+  const mv=d=>{ S.i=Math.max(0,Math.min(S.ids.length-1,S.i+d)); S.show=false; render(); };
+  const acts=el("div","acts arrows");
+  const prev=el("button","nav","‹ 이전"); prev.type="button"; prev.disabled=S.i===0; prev.onclick=()=>mv(-1);
+  const next=el("button","nav","다음 ›"); next.type="button"; next.disabled=S.i>=S.ids.length-1; next.onclick=()=>mv(1);
+  acts.append(prev,next); app.append(acts);
 }
 
 /* ---------- deck (browse by session) ---------- */
