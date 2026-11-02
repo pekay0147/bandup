@@ -759,7 +759,7 @@ h2{font-weight:700;letter-spacing:-.02em}
 .gram p{font-weight:400;color:var(--ink);line-height:1.6} .gram p em{font-weight:700;color:var(--blue)} .gram p b{display:block;margin-top:8px;font-size:14px;font-weight:700}
 
 /* SPLASH */
-.splash{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:var(--bg);animation:spOut .45s ease 1.5s forwards}
+.splash{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:var(--bg);animation:spOut .5s ease 2.4s forwards}
 .sp-in{text-align:center;animation:spUp .6s cubic-bezier(.2,.8,.2,1) both}
 .sp-logo{font-size:44px;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1}
 .sp-logo span{color:var(--blue)}
