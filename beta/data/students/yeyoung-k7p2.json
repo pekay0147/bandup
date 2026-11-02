@@ -117,7 +117,7 @@
    "ko": "회사가 많이 있어요.",
    "en": "There are many companies.",
    "mine": "There is many company.",
-   "gram": "수가 여러 개면 <em>there are</em> + 복수명사. many 뒤에는 꼭 -s를 붙여요: companies.",
+   "gram": "수가 여러 개면 <em>there are</em> + 복수명사. many 뒤에는 꼭 -s를 붙여요: companies.<br><b>there is vs there are</b> · 하나면 <em>there is</em> a company, 여러 개면 <em>there are</em> many companies. there is many는 틀려요.",
    "hint": "many"
   },
   {
@@ -130,7 +130,7 @@
    "ko": "우리 집 근처에 공원이 많아요.",
    "en": "There are many parks near my house.",
    "mine": "There are many park near my house.",
-   "gram": "<em>many</em> 뒤에는 복수형: park → <em>parks</em>. 복수니까 there <em>are</em>.<br><b>near vs nearby</b> · <em>near</em>는 뒤에 장소가 와요: near my house. <em>nearby</em>는 혼자 쓰거나 명사 앞에: There's a park <em>nearby</em>. / a <em>nearby</em> park. <em>nearby my house</em>는 틀려요.",
+   "gram": "<em>many</em> 뒤에는 복수형: park → <em>parks</em>. 복수니까 there <em>are</em>.<br><b>near vs nearby</b> · <em>near</em>는 뒤에 장소가 와요: near my house. <em>nearby</em>는 혼자 쓰거나 명사 앞에: There's a park <em>nearby</em>. / a <em>nearby</em> park. <em>nearby my house</em>는 틀려요.<br><b>더 자세히</b> · <em>which</em>로 설명을 덧붙여요: There's a park nearby, <em>which is a minute walk</em> from my house.",
    "hint": "near"
   },
   {
@@ -195,7 +195,7 @@
    "ko": "거기에는 식당이 많아요.",
    "en": "It has many restaurants.",
    "mine": "It's have a many restaurants.",
-   "gram": "동사는 하나만! It's(It is) + have를 같이 쓰면 안 돼요. <em>It has</em> many restaurants.",
+   "gram": "동사는 하나만! It's(It is) + have를 같이 쓰면 안 돼요. <em>It has</em> many restaurants.<br><b>a many ❌</b> · many 앞에는 a를 안 붙여요. a lot of는 OK: It has <em>a lot of</em> restaurants.",
    "hint": "restaurants"
   },
   {
@@ -222,7 +222,7 @@
    "ko": "저는 스포츠에 관심이 있어요.",
    "en": "I'm interested in sports.",
    "mine": "I interested in sports.",
-   "gram": "interested는 형용사라 be동사가 필요해요. <em>I'm interested in</em> + 관심 있는 것.",
+   "gram": "interested는 형용사라 be동사가 필요해요. <em>I'm interested in</em> + 관심 있는 것.<br><b>interested vs interesting</b> · 내 기분은 <em>interested</em>: I'm interested in art. / 대상이 재밌으면 <em>interesting</em>: Art is interesting.",
    "hint": "interested"
   },
   {
@@ -235,7 +235,7 @@
    "ko": "저는 일을 안 해요.",
    "en": "I don't work.",
    "mine": "I no work.",
-   "gram": "일반동사 부정은 <em>don't</em> + 동사. I no work는 틀린 형태예요.",
+   "gram": "일반동사 부정은 <em>don't</em> + 동사. I no work는 틀린 형태예요.<br><b>be동사 vs 일반동사</b> · I'm <em>not</em> a student. / I <em>don't</em> work. 동사 종류에 따라 not 자리가 달라요.",
    "hint": "work"
   },
   {
@@ -248,7 +248,7 @@
    "ko": "작년에 캐나다로 이사했어요.",
    "en": "I moved to Canada last year.",
    "mine": "I'm moving to the Canada last year.",
-   "gram": "last year가 있으면 과거형 <em>moved</em>. 나라 이름 Canada 앞에는 the를 안 붙여요.",
+   "gram": "last year가 있으면 과거형 <em>moved</em>. 나라 이름 Canada 앞에는 the를 안 붙여요.<br><b>이미 한 일은 과거형</b> · I'm moving은 '이사 가는 중·이사할 예정'이에요. 이미 이사 왔으면 <em>I moved</em>.",
    "hint": "year"
   },
   {
@@ -261,7 +261,7 @@
    "ko": "저는 일어나면 물을 한 잔 마셔요.",
    "en": "When I wake up, I drink a cup of water.",
    "mine": "When I waking up, I drink one water.",
-   "gram": "when 뒤에도 주어 + 동사가 제대로 와야 해요: When I <em>wake up</em>. 물은 셀 수 없어서 <em>a cup of water</em>.",
+   "gram": "when 뒤에도 주어 + 동사가 제대로 와야 해요: When I <em>wake up</em>. 물은 셀 수 없어서 <em>a cup of water</em>.<br><b>셀 수 없는 명사</b> · one water ❌ → <em>a glass of</em> water, <em>a cup of</em> coffee, <em>a piece of</em> advice. water, money, information, advice엔 -s도 안 붙여요.",
    "hint": "cup"
   },
   {
@@ -274,7 +274,7 @@
    "ko": "지난달에 요가를 시작했어요.",
    "en": "I started yoga last month.",
    "mine": "I'm start yoga last month.",
-   "gram": "last month(지난달)이니까 과거형 <em>started</em>. I'm start처럼 be동사를 붙이지 않아요.",
+   "gram": "last month(지난달)이니까 과거형 <em>started</em>. I'm start처럼 be동사를 붙이지 않아요.<br><b>be동사 + 동사원형 ❌</b> · I'm start / I'm go처럼 섞지 않기. 과거는 <em>I started</em>, 지금 하는 중이면 <em>I'm starting</em>.",
    "hint": "yoga"
   },
   {
@@ -288,7 +288,7 @@
    "ko": "저는 주택에 사는 걸 더 좋아해요.",
    "en": "I prefer living in a house.",
    "mine": "I prefer to house.",
-   "gram": "<em>prefer + -ing</em>(~하는 걸 더 좋아하다). 주택은 <em>a house</em>로 관사까지.",
+   "gram": "<em>prefer + -ing</em>(~하는 걸 더 좋아하다). 주택은 <em>a house</em>로 관사까지.<br><b>prefer 뒤에 오는 것</b> · 명사: I prefer <em>a house</em>. / 동사: I prefer <em>living</em> in a house. = I prefer <em>to live</em> in a house. prefer to house처럼 to + 명사는 틀려요.",
    "hint": "prefer"
   },
   {
@@ -301,7 +301,7 @@
    "ko": "저는 티셔츠 입는 걸 좋아해요.",
    "en": "I like to wear T-shirts.",
    "mine": "I like wear the T-shirt.",
-   "gram": "like 뒤에 동사가 오면 <em>like to wear</em> 또는 like wearing. 티셔츠 일반을 말할 땐 복수 T-shirts.",
+   "gram": "like 뒤에 동사가 오면 <em>like to wear</em> 또는 like wearing. 티셔츠 일반을 말할 땐 복수 T-shirts.<br><b>동사 두 개 붙이지 않기</b> · like wear ❌ → like <em>to</em> wear / like wear<em>ing</em>. 동사 뒤에 또 동사가 오면 to나 -ing로 연결해요.",
    "hint": "T-shirts"
   },
   {
@@ -314,7 +314,7 @@
    "ko": "우리 도시에는 공원이 더 필요해요.",
    "en": "My city needs more parks.",
    "mine": "My city needs to more parks.",
-   "gram": "need to 뒤에는 동사가 와요. 명사가 필요할 땐 to 없이 <em>needs more parks</em>. city가 단수라 needs.",
+   "gram": "need to 뒤에는 동사가 와요. 명사가 필요할 땐 to 없이 <em>needs more parks</em>. city가 단수라 needs.<br><b>need vs need to</b> · need + 명사: My city <em>needs</em> more parks. / need to + 동사: We <em>need to build</em> more parks.",
    "hint": "city"
   },
   {
@@ -327,7 +327,7 @@
    "ko": "저는 회사에서 맡은 책임이 있어요.",
    "en": "I have responsibility at work.",
    "mine": "I have to responsibility at work.",
-   "gram": "have to 뒤에는 동사! 명사(책임)를 가졌다고 할 땐 <em>have responsibility</em>.",
+   "gram": "have to 뒤에는 동사! 명사(책임)를 가졌다고 할 땐 <em>have responsibility</em>.<br><b>have vs have to</b> · have + 명사: I <em>have</em> many responsibilities. / have to + 동사: I <em>have to</em> manage the team.",
    "hint": "responsibility"
   },
   {
@@ -340,7 +340,7 @@
    "ko": "그건 저를 편안하게 해 줘요.",
    "en": "It makes me feel relaxed.",
    "mine": "It is make me feel relaxed.",
-   "gram": "동사 두 개 겹치지 않기. is + make가 아니라 <em>It makes me feel</em> relaxed.",
+   "gram": "동사 두 개 겹치지 않기. is + make가 아니라 <em>It makes me feel</em> relaxed.<br><b>make + 사람 + 동사원형</b> · It makes me <em>feel</em> happy. / It makes me <em>laugh</em>. make 뒤에는 to 없이 동사원형이에요.",
    "hint": "relaxed"
   },
   {
@@ -366,7 +366,7 @@
    "ko": "저는 주택에 살고 싶어요.",
    "en": "I want to live in a house.",
    "mine": "I want to live in the house.",
-   "gram": "처음 말하는 집은 특정한 집이 아니니까 <em>a house</em>.",
+   "gram": "처음 말하는 집은 특정한 집이 아니니까 <em>a house</em>.<br><b>a vs the</b> · 처음 꺼낼 땐 <em>a</em>: I live in <em>a</em> house. 다시 말할 땐 <em>the</em>: <em>The</em> house has a garden.",
    "hint": "live"
   },
   {
@@ -380,7 +380,7 @@
    "ko": "비 오는 날에는 집에 있어요.",
    "en": "I stay home on a rainy day.",
    "mine": "I stay home in a rainy day.",
-   "gram": "특정한 날 앞에는 <em>on</em>: on a rainy day, on Monday, on my birthday.",
+   "gram": "특정한 날 앞에는 <em>on</em>: on a rainy day, on Monday, on my birthday.<br><b>더 써보기</b> · <em>on the days I feel exhausted</em> = 지치는 날에는. 다음 날은 the next day: Sleeping well helps me recover <em>the next day</em>.",
    "example": true,
    "hint": "rainy"
   },
@@ -407,7 +407,7 @@
    "ko": "제 식물이 죽었어요.",
    "en": "My plant is dead.",
    "mine": "My plant is die.",
-   "gram": "die는 동사(죽다), <em>dead</em>는 형용사(죽은 상태). be동사 뒤에는 형용사!",
+   "gram": "die는 동사(죽다), <em>dead</em>는 형용사(죽은 상태). be동사 뒤에는 형용사!<br><b>die vs dead</b> · 죽었다(사건): My plant <em>died</em>. / 죽어 있다(상태): My plant <em>is dead</em>. is die는 틀려요.",
    "example": true,
    "hint": "plant"
   },
@@ -463,7 +463,7 @@
    "ko": "그 영화는 무서웠어요.",
    "en": "The movie was scary.",
    "mine": "The movie was scared.",
-   "gram": "<em>scary</em>는 무서운 대상(영화가 무섭다), scared는 무서워하는 감정(내가 무섭다).",
+   "gram": "<em>scary</em>는 무서운 대상(영화가 무섭다), scared는 무서워하는 감정(내가 무섭다).<br><b>scare · scared · scary</b> · <em>scare</em>(동사): The movie scared me. / <em>scared</em>(내 기분): I was scared. / <em>scary</em>(대상): The movie was scary.",
    "example": true,
    "hint": "movie"
   },
@@ -490,7 +490,7 @@
    "ko": "저는 매년 여름 여행을 가요.",
    "en": "I go travelling every summer.",
    "mine": "I go to travel every summer.",
-   "gram": "go + -ing = ~하러 가다: <em>go travelling</em>, go shopping. go to travel은 어색해요.",
+   "gram": "go + -ing = ~하러 가다: <em>go travelling</em>, go shopping. go to travel은 어색해요.<br><b>go on vs go -ing</b> · 휴가·여행은 <em>go on</em> holiday / <em>go on</em> a trip, 활동은 <em>go</em> travelling / <em>go</em> sightseeing.",
    "hint": "summer"
   },
   {
@@ -503,7 +503,7 @@
    "ko": "저는 버스를 타고 출근해요.",
    "en": "I take a bus to go to work.",
    "mine": "I use a bus to go to work.",
-   "gram": "교통수단은 use가 아니라 <em>take</em>: take a bus, take the subway.",
+   "gram": "교통수단은 use가 아니라 <em>take</em>: take a bus, take the subway.<br><b>더 자연스럽게</b> · I go to work <em>by bus</em>. / I <em>take the bus</em> to work. 걸어가면 I walk to work.",
    "example": true,
    "hint": "bus"
   },
@@ -517,7 +517,7 @@
    "ko": "그것에 대해 많은 사람들과 이야기했어요.",
    "en": "I talked with many people about it.",
    "mine": "I talked many people about it.",
-   "gram": "사람과 이야기할 땐 <em>talk with/to</em> + 사람. 주제는 about으로.",
+   "gram": "사람과 이야기할 땐 <em>talk with/to</em> + 사람. 주제는 about으로.<br><b>talk about vs talk with</b> · talk <em>about</em> + 주제: talk about the trip. / talk <em>with</em> + 사람: talk with my friend. talk about many people은 '많은 사람에 대해' 이야기한 거예요.",
    "example": true,
    "hint": "talked"
   },
@@ -531,7 +531,7 @@
    "ko": "그녀가 저에게 그 이야기를 해 줬어요.",
    "en": "She told me the story.",
    "mine": "She said me the story.",
-   "gram": "say는 사람이 바로 못 와요. 사람에게 말해 줄 땐 <em>tell + 사람</em> + 내용.",
+   "gram": "say는 사람이 바로 못 와요. 사람에게 말해 줄 땐 <em>tell + 사람</em> + 내용.<br><b>say · tell · talk · speak</b> · <em>say</em> + 말: She said hello. / <em>tell</em> + 사람: She told me. / <em>talk</em> + about·with: We talked about it. / <em>speak</em> + 언어: I speak English.",
    "example": true,
    "hint": "story"
   },
@@ -619,7 +619,7 @@
    "ko": "걸어서 10분 거리야",
    "en": "It's a 10-minute walk.",
    "hint": "walk",
-   "gram": "거리를 시간으로 말할 때 <em>It's a 10-minute walk</em>. minute은 단수로 붙여 써요."
+   "gram": "거리를 시간으로 말할 때 <em>It's a 10-minute walk</em>. minute은 단수로 붙여 써요.<br><b>같은 뜻 다른 표현</b> · <em>It takes 10 minutes</em> on foot. 이땐 minutes 복수예요. 차로는 It's a 10-minute drive."
   },
   {
    "id": "e07",
@@ -751,7 +751,7 @@
    "ko": "나는 일찍 일어나는 게 익숙해",
    "en": "I'm used to getting up early.",
    "hint": "used",
-   "gram": "<em>be used to + -ing</em> = ~에 익숙하다. to 뒤에 -ing가 와요!"
+   "gram": "<em>be used to + -ing</em> = ~에 익숙하다. to 뒤에 -ing가 와요!<br><b>used to vs be used to</b> · I <em>used to</em> get up early. (예전엔 그랬다) / I'<em>m used to</em> getting up early. (지금 익숙하다)"
   },
   {
    "id": "e18",
@@ -763,7 +763,7 @@
    "ko": "나는 어릴 때 리코더를 불곤 했어",
    "en": "I used to play the recorder.",
    "hint": "used",
-   "gram": "<em>used to + 동사원형</em> = (예전에) ~하곤 했다. 지금은 안 한다는 느낌."
+   "gram": "<em>used to + 동사원형</em> = (예전에) ~하곤 했다. 지금은 안 한다는 느낌.<br><b>used to vs be used to</b> · I <em>used to</em> play the recorder. (예전 습관) / I'<em>m used to</em> playing it. (익숙하다, -ing)"
   },
   {
    "id": "e19",
