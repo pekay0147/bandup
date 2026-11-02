@@ -268,11 +268,29 @@ function mockCard(){
   const b=el("button","btn primary","시작하기"); b.type="button"; b.onclick=()=>{ MT=null; go("mock"); };
   w.append(t,b); return w;
 }
+/* Part 1 intro: always Home/Hometown or Study/Work (as in the real test) */
+const INTRO_EXTRA={
+  home:["Where are you from?","Which city are you living in?","Do you know any history about your hometown?","Do you prefer to live in an apartment or in a house?","Who do you live with?","Are there many rooms in your home?","What is your favourite room?","What would you change about your home?","How are the walls decorated?","How could your hometown be improved?","Is there good public transport in your hometown?","What's your neighbourhood like?","Do you think your hometown is a good place to bring up children?"],
+  study:["What do you study?","Why did you choose that subject?","Is it a popular subject in your country?","Do you get on with your classmates?","Do you plan to get a job in the same field as your subject?"],
+  work:["Why did you choose that job?","Do you like your job?","Where do you work?","Do you plan to continue with your job in the future?","What responsibilities do you have at work?","Do you get on with your colleagues?"]};
+function introPool(kind){
+  const names={home:["Hometown","Home"],study:["Study"],work:["Work"]}[kind];
+  const qs=[...(P1Q? P1Q.topics.filter(t=>names.includes(t.en)).flatMap(t=>t.qs) : []), ...INTRO_EXTRA[kind]];
+  const seen=new Set(); return qs.filter(q=>{ const k=q.toLowerCase().replace(/[^a-z ]/g,"").trim(); if(seen.has(k)) return false; seen.add(k); return true; });
+}
+function chooseIntro(kind){
+  const st=MT.steps[MT.i]; if(st.chosen) return; st.chosen=kind;
+  const open=kind==="work"? ["What do you do?","Where do you work?"] : ["What do you study?","What are you studying?"]; const o=open[Math.floor(Math.random()*open.length)];
+  const qs=[o,...introPool(kind).filter(q=>!open.includes(q)).sort(()=>Math.random()-.5).slice(0,2)].map(q=>({part:1,topic:kind==="work"?"일":"공부",q}));
+  MT.steps.splice(MT.i+1,0,...qs); render();
+}
 function buildMock(){
   const pick=(a,n)=>[...a].sort(()=>Math.random()-.5).slice(0,n);
   const steps=[];
-  if(P1Q){ const core=P1Q.topics.filter(t=>["Work","Study","Hometown","Home"].includes(t.en)); const rest=P1Q.topics.filter(t=>!core.includes(t));
-    for(const tp of [...pick(core,1),...pick(rest,2)]) tp.qs.slice(0,4).forEach(q=>steps.push({part:1,topic:tp.ko,q})); }
+  if(P1Q){ const core=["Work","Study","Hometown","Home"]; const rest=P1Q.topics.filter(t=>!core.includes(t.en));
+    if(Math.random()<.5){ const open=["Where are you from?","Where is your hometown?","Which city are you living in?","Do you live in a house or an apartment?"]; const o=pick(open,1)[0]; [o,...pick(introPool("home").filter(q=>!open.includes(q)),3)].forEach(q=>steps.push({part:1,topic:"집·고향",q})); }
+    else steps.push({part:1,topic:"일·공부",q:"Do you work or are you a student?",choose:true});
+    for(const tp of pick(rest,2)) pick(tp.qs,4).forEach(q=>steps.push({part:1,topic:tp.ko,q})); }
   const p2=[...(P2?P2.items:[]),...(P2X?P2X.items:[])]; const c=p2[Math.floor(Math.random()*p2.length)];
   if(c){ steps.push({part:2,topic:"Part 2",q:c.topic,say:c.say||[],no:c.no});
     const p3=P3&&P3.items.find(x=>x.no===c.no); if(p3) p3.qs.slice(0,5).forEach(q=>steps.push({part:3,topic:c.topic,q})); }
@@ -376,6 +394,7 @@ function renderMock(app){
     box.append(tm);
   }
   app.append(box);
+  if(st.choose){ const ch=el("div","introch"); for(const [k,lab,en] of [["study","학생이에요","I'm a student."],["work","일해요","I work."]]){ const b=el("button","btn"+(st.chosen===k?" on":"")); b.type="button"; b.append(el("b",null,lab), el("span",null,en)); b.disabled=!!st.chosen; b.onclick=()=>chooseIntro(k); ch.append(b); } app.append(ch); if(!st.chosen){ app.append(el("p","muted small introhint","답하고 나서 해당하는 쪽을 누르면 그에 맞는 질문이 이어져요.")); return; } }
   const nx=el("button","btn primary vstart", MT.i+1<S.length? (S[MT.i+1].part!==st.part? `Part ${S[MT.i+1].part}로 넘어가기` : "다음 질문") : "모의고사 끝내기"); nx.type="button";
   nx.onclick=()=>{ stopMockTimer(); MT.i++; MT.phase=null; MT.left=0; render(); window.scrollTo(0,0); const n=MT.steps[MT.i]; if(n && canSpeak()) setTimeout(()=>speak(n.q),250); };
   app.append(nx);
