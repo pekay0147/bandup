@@ -284,6 +284,16 @@ let REC=null; // {mr, stream, chunks, t0, timer, key, rc}
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition||null;
 const canRecord=()=>!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
 function stopRec(){ if(REC){ const rc=REC.rc; try{ if(REC.mr.state!=="inactive") REC.mr.stop(); }catch(_){} if(rc){ rc.onend=null; try{ rc.stop(); }catch(_){} } } }
+async function grammarCheck(text){
+  try{
+    const body=new URLSearchParams({text, language:"en-GB"});
+    const r=await fetch("https://api.languagetool.org/v2/check",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body});
+    if(!r.ok) return null; const j=await r.json();
+    const skip=/TYPOGRAPHY|PUNCTUATION|CASING|WHITESPACE|UPPERCASE|COMMA|REDUNDANCY|STYLE/i;
+    return (j.matches||[]).filter(m=>m.replacements&&m.replacements.length && !skip.test(m.rule.id) && !skip.test((m.rule.category||{}).id||""))
+      .map(m=>({offset:m.offset,length:m.length,rep:m.replacements[0].value,msg:m.shortMessage||m.message})).sort((a,b)=>a.offset-b.offset);
+  }catch(_){ return null; }
+}
 function recBox(key){
   MT.rec=MT.rec||{}; MT.txt=MT.txt||{};
   const w=el("div","recbox");
@@ -296,7 +306,14 @@ function recBox(key){
     if(url){ const a=el("audio"); a.controls=true; a.src=url; a.className="recaudio"; w.append(a); }
     txtBox(false);
   };
-  const txtBox=live=>{ if(!SR) return; const t=MT.txt[key]; if(!t && !live) return; const d=el("div","rectxt"); d.append(el("span","rectxt-lab","자동 받아쓰기"), el("p",null, t || "말씀하시면 여기에 적혀요…")); if(!live) d.append(el("span","rectxt-note","자동으로 받아쓴 거라 실제로 말한 것과 다를 수 있어요")); w.append(d); };
+  const txtBox=live=>{ if(!SR) return; const t=MT.txt[key]; if(!t && !live) return; const d=el("div","rectxt"); d.append(el("span","rectxt-lab","자동 받아쓰기"), el("p",null, t || "말씀하시면 여기에 적혀요…")); if(!live) d.append(el("span","rectxt-note","자동으로 받아쓴 거라 실제로 말한 것과 다를 수 있어요")); w.append(d); if(!live && t) fixBox(t); };
+  const fixBox=t=>{ MT.fix=MT.fix||{}; const F=MT.fix[key]; const d=el("div","recfix"); d.append(el("span","rectxt-lab","문법 고쳐보기"));
+    if(!F || F.text!==t){ d.append(el("p","muted small","확인하는 중…")); w.append(d); if(!F || F.text!==t){ MT.fix[key]={text:t,loading:true}; grammarCheck(t).then(r=>{ if(MT&&MT.fix) MT.fix[key]={text:t,res:r}; if(document.body.contains(w)) draw(); }); } return; }
+    if(F.loading){ d.append(el("p","muted small","확인하는 중…")); w.append(d); return; }
+    if(F.res===null){ d.append(el("p","muted small","지금은 문법 확인을 할 수 없어요. 잠시 후 다시 녹음해 보세요.")); w.append(d); return; }
+    if(!F.res.length){ d.append(el("p","fix-ok","고칠 부분을 찾지 못했어요 👍")); w.append(d); return; }
+    const p=el("p","fix-line"); let pos=0; for(const m of F.res){ if(m.offset<pos) continue; p.append(document.createTextNode(t.slice(pos,m.offset))); p.append(el("s",null,t.slice(m.offset,m.offset+m.length)), el("ins",null,m.rep)); pos=m.offset+m.length; } p.append(document.createTextNode(t.slice(pos))); d.append(p);
+    const ul=el("ul","fix-list"); F.res.forEach(m=>{ const li=el("li"); li.append(el("b",null,`${t.slice(m.offset,m.offset+m.length)} → ${m.rep}`), el("span",null,m.msg)); ul.append(li); }); d.append(ul); w.append(d); };
   const start=async()=>{
     try{ speechSynthesis.cancel(); }catch(_){}
     let stream; try{ stream=await navigator.mediaDevices.getUserMedia({audio:true}); }catch(_){ w.textContent=""; w.append(el("p","muted small","마이크를 쓸 수 없어요. 브라우저 설정에서 마이크를 허용해 주세요.")); return; }
