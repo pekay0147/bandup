@@ -1,0 +1,27 @@
+{
+ "name": "밴드업 · 박예은",
+ "short_name": "밴드업",
+ "description": "수업에서 나온 실수로 만든 나만의 아이엘츠 스피킹 큐카드",
+ "start_url": "./",
+ "scope": "../../",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#f5f4fa",
+ "theme_color": "#4457e8",
+ "lang": "ko",
+ "icons": [
+  {
+   "src": "../../icons/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "../../icons/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any maskable"
+  }
+ ],
+ "id": "./u/parkyeeun-x3f8/"
+}

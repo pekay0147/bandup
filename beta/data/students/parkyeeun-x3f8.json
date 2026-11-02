@@ -1,0 +1,1182 @@
+{
+ "slug": "parkyeeun-x3f8",
+ "name": "박예은",
+ "course": "IELTS Speaking",
+ "form": {
+  "url": "https://docs.google.com/forms/d/e/1FAIpQLSfybbvIl48g133Mx3PdH7rfqGDRy9NCum3SdpUJ3RDpWkdPNA/viewform?usp=pp_url&entry.1747437353=NAME_X&entry.1189878643=SESSION_X&entry.1202580096=RESULT_X"
+ },
+ "sessions": [
+  {
+   "no": 1,
+   "date": "2026-08-10",
+   "title": "Introduction · Travel"
+  },
+  {
+   "no": 2,
+   "date": "2026-08-29",
+   "title": "Exercise · Health"
+  },
+  {
+   "no": 3,
+   "date": "2026-09-21",
+   "title": "Perfect job"
+  },
+  {
+   "no": 4,
+   "date": "2026-09-25",
+   "title": "Not allowed to use a phone"
+  },
+  {
+   "no": 5,
+   "date": "2026-10-18",
+   "title": "Childhood · Daily life"
+  },
+  {
+   "no": 6,
+   "date": "2026-10-25",
+   "title": "Daily routine · Apps · Clothes"
+  },
+  {
+   "no": 7,
+   "date": "2026-11-01",
+   "title": "Holidays · Weather · Memory · Sugar"
+  }
+ ],
+ "types": [
+  "단·복수",
+  "동사·시제",
+  "문장 구조",
+  "관사·전치사",
+  "품사",
+  "단어 선택",
+  "발음·철자"
+ ],
+ "tips": {
+  "단·복수": "there are, a lot of 뒤에는 복수명사(-s): a lot of oceans.",
+  "동사·시제": "usually(습관)는 현재형, 과거 질문엔 과거형. late·tired 앞엔 be동사: I'm late!",
+  "문장 구조": "enjoy 뒤엔 -ing, try to 뒤엔 동사원형. '있다'는 there is / there are (there has ❌).",
+  "관사·전치사": "go to + 장소, near + 장소. 도시 이름 앞엔 a를 붙이지 않아요.",
+  "품사": "대상이 신나면 exciting, 내가 신나면 excited. 부사는 명사를 못 꾸며요: really good quality.",
+  "단어 선택": "걸어서는 on foot, 출신은 from + 나라. 가장 쉬운 표현으로 실수 없이!",
+  "발음·철자": "argue → argument(e가 빠져요). 헷갈리는 철자는 써 보며 외우기."
+ },
+ "focus": {
+  "7": "습관은 현재형, 형용사 앞 be동사(I'm late) 챙기기! look + 전치사 표현을 내 답변에 하나씩 넣어 보기."
+ },
+ "compare": [
+  [
+   "travel vs trip",
+   "<em>travel</em> 주로 동사 (여행하다) · <em>trip</em> 명사 (여행 한 번): I went on a <em>trip</em>."
+  ],
+  [
+   "while vs during",
+   "<em>while</em> + 주어 + 동사: while I study<br><em>during</em> + 명사: during the vacation"
+  ],
+  [
+   "excited / exciting",
+   "<em>excited</em> 내가 신난 감정 · <em>exciting</em> 신나게 하는 대상"
+  ],
+  [
+   "steady / steadily",
+   "<em>steady</em> 형용사 (꾸준한) · <em>steadily</em> 부사 (꾸준히)"
+  ],
+  [
+   "be used to / be accustomed to / adjust to",
+   "<em>I'm used to living here.</em> = <em>I'm accustomed to living here.</em> 익숙하다 (+ing)<br><em>I adjusted to it.</em> 적응했다"
+  ],
+  [
+   "look at / for / after / into",
+   "<em>look at</em> 보다 · <em>look for</em> 찾다 · <em>look after</em> 돌보다 · <em>look into</em> 알아보다"
+  ]
+ ],
+ "cards": [
+  {
+   "id": "m01",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 공원에 가는 걸 좋아해요.",
+   "en": "I like to go to parks.",
+   "mine": "I like to go parks.",
+   "gram": "<em>go</em> 뒤에 장소가 오면 <em>to</em>가 필요해요: go <em>to</em> parks, go <em>to</em> school.<br><b>go to vs go home</b> · home, there 앞에는 to 없이: <em>go home</em>, <em>go there</em>.",
+   "hint": "parks"
+  },
+  {
+   "id": "m02",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    1
+   ],
+   "ko": "우리 집 근처에 카페가 있어요.",
+   "en": "There is a cafe near my house.",
+   "mine": "There is a cafe nearby my house.",
+   "gram": "<em>near</em> 뒤에는 바로 장소가 와요: near my house.<br><b>near vs nearby</b> · <em>nearby</em>는 혼자 쓰거나 명사 앞에: There's a cafe <em>nearby</em>. nearby my house는 틀려요.",
+   "hint": "near"
+  },
+  {
+   "id": "m03",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 예푼에 살고 있었어요.",
+   "en": "I was living in Yepoon.",
+   "mine": "I was living in a Yepoon.",
+   "gram": "도시·지역 이름 앞에는 a를 붙이지 않아요: in Yepoon, in Seoul, in Sydney.",
+   "hint": "Yepoon"
+  },
+  {
+   "id": "m04",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    1
+   ],
+   "ko": "어릴 때 공원에 가는 걸 좋아했어요.",
+   "en": "I liked going to parks when I was a child.",
+   "gram": "과거 질문(Did you ~ as a child?)에는 과거형으로 대답해요: <em>liked</em>, <em>enjoyed</em>.<br><b>질문 시제 따라가기</b> · Did you ~? → I <em>liked</em>. / Do you ~? → I <em>like</em>.",
+   "hint": "child"
+  },
+  {
+   "id": "m05",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 여행하는 걸 즐겨요.",
+   "en": "I enjoy travelling.",
+   "mine": "I enjoy travel.",
+   "gram": "<em>enjoy</em> 뒤에 동사가 오면 꼭 <em>-ing</em>: enjoy travel<em>ling</em>, enjoy cook<em>ing</em>.<br><b>travel vs trip</b> · <em>travel</em>은 주로 동사(여행하다), <em>trip</em>은 명사(여행 한 번): I went on a <em>trip</em> to Australia.",
+   "hint": "enjoy"
+  },
+  {
+   "id": "m06",
+   "kind": "ko",
+   "type": "품사",
+   "sessions": [
+    2
+   ],
+   "ko": "그 영화는 정말 흥미진진해요.",
+   "en": "The movie is really exciting.",
+   "mine": "The movie is excited.",
+   "gram": "영화(대상)가 신나게 만들면 <em>exciting</em>, 내가 신나면 <em>excited</em>.<br><b>-ed vs -ing</b> · I'm <em>excited</em>. / The movie is <em>exciting</em>. I'm <em>bored</em>. / The class is <em>boring</em>.",
+   "hint": "movie"
+  },
+  {
+   "id": "m07",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 걸어서 출근해요.",
+   "en": "I go to work on foot.",
+   "mine": "I go to work by walk.",
+   "gram": "걸어서는 <em>on foot</em>. by는 교통수단에만 써요: by bus, by train.<br><b>더 자연스럽게</b> · I <em>walk</em> to work. 시간까지 말하면 <em>It's a 10-minute walk.</em>",
+   "hint": "foot"
+  },
+  {
+   "id": "m08",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    3
+   ],
+   "ko": "제 친구 중에 중국에서 온 친구들이 있어요.",
+   "en": "I have some friends who are from China.",
+   "gram": "<em>who are living in China</em>라고 하면 지금 중국에 살고 있다는 뜻이 돼요. 출신은 <em>who are from China</em>.<br><b>Chinese vs from China</b> · He is Chinese. = He is <em>from China</em>. 아이엘츠에서는 헷갈리지 않게 <em>from</em> + 나라로!",
+   "hint": "from"
+  },
+  {
+   "id": "m09",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    3
+   ],
+   "ko": "우리 도시에는 큰 공원이 있어요.",
+   "en": "There is a big park in my city.",
+   "mine": "There has a big park in my city.",
+   "gram": "'~이 있다'는 <em>there is / there are</em>. there has, there have는 쓰지 않아요.<br><b>there is vs there are</b> · 하나면 there <em>is</em> a park, 여러 개면 there <em>are</em> many parks.",
+   "hint": "park"
+  },
+  {
+   "id": "m10",
+   "kind": "ko",
+   "type": "단·복수",
+   "sessions": [
+    3
+   ],
+   "ko": "호주 주변에는 바다가 많아요.",
+   "en": "There are a lot of oceans around Australia.",
+   "mine": "There are a lot of ocean around Australia.",
+   "gram": "<em>there are</em> 뒤에는 복수명사: a lot of ocean → <em>oceans</em>.",
+   "hint": "oceans"
+  },
+  {
+   "id": "m11",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 보통 아침 6시에 일어나요.",
+   "en": "I usually wake up at 6 am.",
+   "mine": "I usually woke up at 6 am.",
+   "gram": "<em>usually</em>는 지금의 습관이라 현재형 <em>wake up</em>.<br><b>습관 vs 과거</b> · 지금 습관: I usually <em>wake up</em> at 6. / 예전 습관: I <em>used to wake up</em> at 6.",
+   "hint": "usually"
+  },
+  {
+   "id": "m12",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    4
+   ],
+   "ko": "요즘 책을 읽으려고 노력하고 있어요.",
+   "en": "I'm trying to read books.",
+   "mine": "I'm trying to reading books.",
+   "gram": "<em>try to</em> 뒤에는 동사원형: try to <em>read</em>.<br><b>to + 동사원형</b> · want to <em>go</em>, need to <em>study</em>, try to <em>read</em>. 단, <em>be used to</em> 뒤에는 -ing!",
+   "hint": "trying"
+  },
+  {
+   "id": "m13",
+   "kind": "ko",
+   "type": "품사",
+   "sessions": [
+    4
+   ],
+   "ko": "그건 품질이 정말 좋아요.",
+   "en": "It's really good quality.",
+   "mine": "It's really quality.",
+   "gram": "부사 <em>really</em>는 명사를 꾸밀 수 없어요. 형용사 <em>good</em>을 넣어서 really <em>good</em> quality.<br><b>부사 vs 형용사</b> · 부사는 형용사·동사를 꾸미고(<em>really good</em>), 형용사는 명사를 꾸며요(<em>good quality</em>).",
+   "hint": "quality"
+  },
+  {
+   "id": "m14",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    6
+   ],
+   "ko": "늦어서 죄송해요.",
+   "en": "Sorry, I'm late.",
+   "mine": "Sorry, I late.",
+   "gram": "<em>late</em>는 형용사라 be동사가 필요해요: I<em>'m</em> late.<br><b>be + 형용사</b> · I'm late / I'm tired / I'm busy. be동사를 빼먹지 않기!",
+   "hint": "late"
+  },
+  {
+   "id": "m15",
+   "kind": "ko",
+   "type": "발음·철자",
+   "sessions": [
+    6
+   ],
+   "ko": "어제 친구랑 말다툼을 했어요.",
+   "en": "I had an argument with my friend yesterday.",
+   "mine": "aruge / arguement",
+   "gram": "동사 <em>argue</em>(다투다) → 명사 <em>argument</em>. 명사에서는 e가 빠져요: argu<em>ment</em>.",
+   "hint": "friend"
+  },
+  {
+   "id": "m16",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    6
+   ],
+   "ko": "저는 공부하는 동안 음악을 들어요.",
+   "en": "I listen to music while I study.",
+   "gram": "<em>while</em> 뒤에는 주어 + 동사, <em>during</em> 뒤에는 명사.<br><b>while vs during</b> · <em>while I study</em> / <em>during the vacation</em>.",
+   "hint": "while"
+  },
+  {
+   "id": "e01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1,
+    5
+   ],
+   "ko": "주말에 쿠키를 한 번에 잔뜩 구웠어",
+   "en": "I baked a batch of cookies at the weekend.",
+   "hint": "batch",
+   "gram": "<em>a batch of</em> = 한 번에 만든 한 묶음. 음식이나 일을 한꺼번에 할 때 써요."
+  },
+  {
+   "id": "e02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1,
+    5
+   ],
+   "ko": "영어를 배우는 가장 좋은 방법은 매일 말하는 거야",
+   "en": "The best way to learn English is to speak every day.",
+   "hint": "way",
+   "gram": "<em>the best way to</em> + 동사 = ~하는 가장 좋은 방법."
+  },
+  {
+   "id": "e03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1,
+    5
+   ],
+   "ko": "맛있진 않지만 먹을 만해",
+   "en": "It's not great, but I've eaten worse.",
+   "hint": "worse",
+   "gram": "<em>I've eaten worse</em> = 더 별로인 것도 먹어 봤다 → 그럭저럭 먹을 만하다."
+  },
+  {
+   "id": "e04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1,
+    5,
+    6
+   ],
+   "ko": "선생님이 나를 혼냈어",
+   "en": "My teacher told me off.",
+   "hint": "told",
+   "gram": "<em>tell someone off</em> = ~를 야단치다. 사람은 tell과 off 사이에: told <em>me</em> off."
+  },
+  {
+   "id": "e05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1,
+    5
+   ],
+   "ko": "다 합쳐서 계산해 보자",
+   "en": "Let's tally it up.",
+   "hint": "tally",
+   "gram": "<em>tally it up</em> = (점수·금액을) 다 더해 보다."
+  },
+  {
+   "id": "e06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "요즘 어떻게 지냈어?",
+   "en": "What have you been up to?",
+   "hint": "up",
+   "gram": "<em>What have you been up to?</em> = 요즘 뭐 하고 지냈어? 정말 많이 쓰는 인사예요."
+  },
+  {
+   "id": "e07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "요즘 일 때문에 스트레스를 많이 받아",
+   "en": "I get stressed out because of work these days.",
+   "hint": "stressed",
+   "gram": "스트레스를 받다 = <em>get stressed</em> / <em>be stressed out</em>. 내 감정이라 -ed."
+  },
+  {
+   "id": "e08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "너만 괜찮다면, 하자!",
+   "en": "As long as you are OK, let's do it!",
+   "hint": "long",
+   "gram": "<em>as long as</em> = ~하는 한, ~이기만 하면."
+  },
+  {
+   "id": "e09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그 영상이 나에게 운동할 동기를 줬어",
+   "en": "The video motivated me to work out.",
+   "hint": "motivated",
+   "gram": "<em>motivate</em> + 사람 + to 동사 = ~하도록 동기부여를 주다."
+  },
+  {
+   "id": "e10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "내 영어 실력이 꾸준히 늘고 있어",
+   "en": "My English is improving steadily.",
+   "hint": "steadily",
+   "gram": "<em>steady</em> 형용사(꾸준한), <em>steadily</em> 부사(꾸준히).<br><b>steady vs steadily</b> · a <em>steady</em> routine / improve <em>steadily</em>."
+  },
+  {
+   "id": "e11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "버스로 40분 거리야",
+   "en": "It's a 40-minute bus ride.",
+   "hint": "ride",
+   "gram": "<em>It's a 40-minute</em> + 교통수단: bus ride, train ride, subway ride, drive, flight, walk. minute은 단수로 붙여 써요."
+  },
+  {
+   "id": "e12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "계획 없이 상황 봐서 하자",
+   "en": "Let's play it by ear.",
+   "hint": "ear",
+   "gram": "<em>play it by ear</em> = 그때그때 상황 보고 하다. 비슷한 부사: <em>spontaneously</em>(즉흥적으로)."
+  },
+  {
+   "id": "e13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2,
+    5
+   ],
+   "ko": "오늘은 요리하기 귀찮아",
+   "en": "I can't be bothered to cook today.",
+   "hint": "bothered",
+   "gram": "<em>I can't be bothered</em> (to + 동사) = ~하기 귀찮다."
+  },
+  {
+   "id": "e14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2,
+    3,
+    7
+   ],
+   "ko": "기본적으로 저는 아침형 인간이에요",
+   "en": "Basically, I'm a morning person.",
+   "hint": "Basically",
+   "gram": "문장 앞에 부사를 붙이면 자연스러워요: <em>basically, actually, technically, literally, genuinely, by and large</em>."
+  },
+  {
+   "id": "e15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2,
+    3
+   ],
+   "ko": "돈 면에서는 그 일이 최고야",
+   "en": "Money-wise, it's the best job.",
+   "hint": "wise",
+   "gram": "명사 + <em>-wise</em> = ~면에서는: money-wise, health-wise, work-wise."
+  },
+  {
+   "id": "e16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2,
+    3
+   ],
+   "ko": "오늘은 여기까지 하자",
+   "en": "Let's call it a day.",
+   "hint": "call",
+   "gram": "<em>call it a day</em> = (일·공부를) 오늘은 그만하다."
+  },
+  {
+   "id": "e17",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2,
+    3
+   ],
+   "ko": "지금 2시 10분이야",
+   "en": "It's ten past two.",
+   "hint": "past",
+   "gram": "<em>past</em> = ~시 ~분 지난, <em>to</em> = ~시 ~분 전. ten to two = 1시 50분."
+  },
+  {
+   "id": "e18",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "운동하면 건강해지고 몸매도 유지할 수 있어",
+   "en": "Exercising helps you get fit and stay in shape.",
+   "hint": "shape",
+   "gram": "<em>get fit</em> 건강해지다, <em>stay in shape</em> 몸매·체력을 유지하다. 운동의 장점을 말할 때 세트로!"
+  },
+  {
+   "id": "e19",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "질문을 다른 말로 해 주실 수 있나요?",
+   "en": "Can you rephrase the question?",
+   "hint": "rephrase",
+   "gram": "질문을 못 알아들었을 때 <em>Can you rephrase the question?</em> 시험장에서 쓸 수 있게 암기!"
+  },
+  {
+   "id": "e20",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "Part 1에서는 적어도 두세 문장은 말해야 해",
+   "en": "I should say at least two or three sentences in Part 1.",
+   "hint": "least",
+   "gram": "<em>at least</em> = 적어도, 최소한."
+  },
+  {
+   "id": "e21",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "많은 일자리가 AI로 대체될 거야",
+   "en": "Many jobs will be replaced by AI.",
+   "hint": "replaced",
+   "gram": "<em>be replaced by</em> = ~로 대체되다. 미래 직장 질문에 딱이에요."
+  },
+  {
+   "id": "e22",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "작년에 테니스를 취미로 시작했어",
+   "en": "I took up tennis last year.",
+   "hint": "took",
+   "gram": "<em>take up</em> = 새 취미를 시작하다. 과거는 took up."
+  },
+  {
+   "id": "e23",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "요리할 때 물 만난 물고기 같아",
+   "en": "I feel I'm in my element when I'm cooking.",
+   "hint": "element",
+   "gram": "<em>in my element</em> = 물 만난 물고기, 제일 나다운 상태."
+  },
+  {
+   "id": "e24",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "그 책은 생각할 거리를 많이 줬어",
+   "en": "The book gave me a lot of food for thought.",
+   "hint": "thought",
+   "gram": "<em>food for thought</em> = 생각할 거리. 책·영화 이야기할 때 써요."
+  },
+  {
+   "id": "e25",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "나는 강아지한테 약해",
+   "en": "I have a soft spot for dogs.",
+   "hint": "spot",
+   "gram": "<em>have a soft spot for</em> = ~에 애착이 있다, ~에 약하다."
+  },
+  {
+   "id": "e26",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "이게 훨씬 나아",
+   "en": "This is way better.",
+   "hint": "way",
+   "gram": "<em>way</em> + 비교급 = 훨씬 ~한. way better = much better."
+  },
+  {
+   "id": "e27",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "요즘 자기계발서를 읽고 있어",
+   "en": "I'm reading a self-development book these days.",
+   "hint": "self-development",
+   "gram": "자기계발서 = <em>self-development book</em>."
+  },
+  {
+   "id": "e28",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "이제 호주 생활에 익숙해",
+   "en": "I'm used to living in Australia now.",
+   "hint": "used",
+   "gram": "<em>be used to -ing</em> = <em>be accustomed to -ing</em> = ~에 익숙하다. 적응했다는 <em>I adjusted to it</em>.<br><b>to 뒤에 -ing</b> · 여기서 to는 전치사라 동사원형이 아니라 -ing: used to <em>living</em>."
+  },
+  {
+   "id": "e29",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4,
+    5
+   ],
+   "ko": "학교에서 현장학습을 갔어",
+   "en": "We went on a field trip at school.",
+   "hint": "field",
+   "gram": "<em>field trip</em> = 현장학습, <em>retreat</em> = (회사·단체) 수련회."
+  },
+  {
+   "id": "e30",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "나는 추위를 못 견뎌",
+   "en": "I can't stand the cold.",
+   "hint": "stand",
+   "gram": "<em>stand</em> = 견디다. 주로 <em>can't stand</em>로 써요."
+  },
+  {
+   "id": "e31",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "나는 매운 음식을 잘 먹어",
+   "en": "I can handle spicy food.",
+   "hint": "handle",
+   "gram": "<em>handle</em> = 감당하다. handle spicy food = 매운 걸 잘 먹다."
+  },
+  {
+   "id": "e32",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "나는 소변을 꽤 오래 참을 수 있어",
+   "en": "I can hold my pee for a long time.",
+   "hint": "hold",
+   "gram": "<em>hold</em> = 참다. hold my pee = 소변을 참다."
+  },
+  {
+   "id": "e33",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "그 드라마는 대박 났어",
+   "en": "The show was a huge hit.",
+   "hint": "hit",
+   "gram": "드라마가 잘됐다 = <em>it did well / it went well / it was a huge hit / it was a big success</em>."
+  },
+  {
+   "id": "e34",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "그 드라마는 망했어",
+   "en": "The show flopped.",
+   "hint": "flopped",
+   "gram": "<em>flop</em> = 망하다. = It didn't go well."
+  },
+  {
+   "id": "e35",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "모든 일에는 장단점이 있어",
+   "en": "Everything has its pros and cons.",
+   "hint": "pros",
+   "gram": "<em>pros and cons</em> = 장단점, 찬반 의견. corns가 아니라 <em>cons</em>!"
+  },
+  {
+   "id": "e36",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6,
+    7
+   ],
+   "ko": "알고 보니 내 실수였어",
+   "en": "It turned out it was my mistake.",
+   "hint": "turned",
+   "gram": "<em>It turned out (that)</em> + 문장 = 알고 보니 ~였다.<br><b>turn out to be</b> · 뒤에 명사·형용사: It <em>turned out to be</em> my mistake."
+  },
+  {
+   "id": "e37",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6,
+    7
+   ],
+   "ko": "좋은 아이디어가 하나도 안 떠올라!",
+   "en": "I can't come up with a clear idea!",
+   "hint": "come",
+   "gram": "<em>come up with</em> = (아이디어를) 떠올리다."
+  },
+  {
+   "id": "e38",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6,
+    7
+   ],
+   "ko": "나는 그것에 집중할 수가 없어!",
+   "en": "I can't concentrate on it!",
+   "hint": "concentrate",
+   "gram": "<em>concentrate on</em> = ~에 집중하다. on까지 함께!"
+  },
+  {
+   "id": "e39",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "그 식당은 정통 태국 요리를 팔아",
+   "en": "The restaurant serves authentic Thai cuisine.",
+   "hint": "authentic",
+   "gram": "<em>authentic</em> = 진짜의, 정통의. <em>cuisine</em> = (특정 나라·지역의) 요리."
+  },
+  {
+   "id": "e40",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "저는 시간 약속을 잘 지켜요",
+   "en": "I'm a punctual person.",
+   "hint": "punctual",
+   "gram": "<em>punctual</em> = 시간을 잘 지키는. 반대로 늦으면 I'm late."
+  },
+  {
+   "id": "e41",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "내 인생의 최우선순위는 먹는 거야",
+   "en": "My top priority in life is eating.",
+   "hint": "priority",
+   "gram": "<em>priority</em> = 우선순위. <em>top priority</em> = 최우선순위. 동사는 prioritise."
+  },
+  {
+   "id": "e42",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "시간 날 때마다 책을 읽어",
+   "en": "I read books whenever I have time.",
+   "hint": "whenever",
+   "gram": "<em>whenever</em> + 주어 + 동사 = ~할 때마다."
+  },
+  {
+   "id": "e43",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "휴대폰을 찾고 있어",
+   "en": "I'm looking for my phone.",
+   "hint": "looking",
+   "gram": "<em>look for</em> = ~을 찾다.<br><b>look at vs look for</b> · <em>look at</em> 보다 / <em>look for</em> 찾다."
+  },
+  {
+   "id": "e44",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "내 강아지 좀 돌봐 줄래?",
+   "en": "Can you look after my dog?",
+   "hint": "after",
+   "gram": "<em>look after</em> = ~을 돌보다."
+  },
+  {
+   "id": "e45",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "그 문제를 알아볼게",
+   "en": "I'll look into the problem.",
+   "hint": "into",
+   "gram": "<em>look into</em> = ~을 조사하다, 알아보다."
+  },
+  {
+   "id": "e46",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "그 단어를 사전에서 찾아봐",
+   "en": "Look up the word.",
+   "hint": "up",
+   "gram": "<em>look up</em> = (정보를) 찾아보다 / 올려다보다."
+  },
+  {
+   "id": "e47",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "내 에세이 좀 검토해 줘",
+   "en": "Please look over my essay.",
+   "hint": "over",
+   "gram": "<em>look over</em> = ~을 훑어보다, 검토하다. 쭉 넘겨 보는 건 <em>look through</em>."
+  },
+  {
+   "id": "e48",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "나는 종종 학창 시절을 돌이켜봐",
+   "en": "I often look back on my school days.",
+   "hint": "back",
+   "gram": "<em>look back on</em> = ~을 돌이켜보다."
+  },
+  {
+   "id": "e49",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "너를 만나길 기대해",
+   "en": "I look forward to seeing you.",
+   "hint": "forward",
+   "gram": "<em>look forward to</em> = ~을 기대하다. to 뒤에는 <em>-ing</em>: to <em>seeing</em>."
+  },
+  {
+   "id": "e50",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "나는 선생님을 존경해",
+   "en": "I look up to my teacher.",
+   "hint": "up",
+   "gram": "<em>look up to</em> = ~을 존경하다. 반대는 <em>look down on</em>(깔보다)."
+  },
+  {
+   "id": "e51",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "다른 사람을 깔보지 마",
+   "en": "Don't look down on others.",
+   "hint": "down",
+   "gram": "<em>look down on</em> = ~을 깔보다."
+  }
+ ],
+ "part1": [
+  {
+   "session": 7,
+   "groups": [
+    {
+     "title": "Holidays",
+     "qs": [
+      "When did you last go on holiday?",
+      "Did you often go on holiday as a child?",
+      "Do you prefer going to the beach or the mountains?",
+      "What holiday destinations are popular in your country? Why?",
+      "Do you think holidays are important for people? Why?",
+      "If you could go on holiday anywhere in the world, where would you go and why?"
+     ]
+    },
+    {
+     "title": "Weather",
+     "qs": [
+      "What is your favourite season?",
+      "Do you like rainy days?",
+      "Are there many sunny days in your country?",
+      "Does the weather affect your mood? How?",
+      "Would you ever consider living somewhere that is permanently hot or cold?",
+      "What problems with the weather does your country have?"
+     ]
+    },
+    {
+     "title": "Remembering",
+     "qs": [
+      "Do you have a good memory?",
+      "Do you use calendars?",
+      "Have you ever kept a diary?",
+      "Why are some people so forgetful?",
+      "Are there any apps that help you remember things? How useful are they?",
+      "What can people do to improve their memory?"
+     ]
+    },
+    {
+     "title": "Sugar",
+     "qs": [
+      "Do you have a sweet tooth?",
+      "What are some popular sweets in your country?",
+      "Did you eat many sweets as a child?",
+      "If you had a child, would you let them eat sweets? Why?",
+      "Do you think any sweet food is healthy?",
+      "Why do you think people crave sugar when they are stressed?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 6,
+   "groups": [
+    {
+     "title": "Daily routine",
+     "qs": [
+      "When did you wake up this morning?",
+      "Do you have a daily routine?"
+     ]
+    },
+    {
+     "title": "Apps",
+     "qs": [
+      "Do you often use apps?",
+      "What are the most popular apps in your country?",
+      "Are there any useful apps for children?"
+     ]
+    },
+    {
+     "title": "Trying new things",
+     "qs": [
+      "When was the last time you tried something new?",
+      "Do you enjoy stepping out of your comfort zone?",
+      "What did you find most challenging at school?"
+     ]
+    },
+    {
+     "title": "Clothes & shoes",
+     "qs": [
+      "What shoes do you prefer wearing?",
+      "Do you have any traditional clothes? When do you wear them?",
+      "Would you ever spend a lot of money on clothes?"
+     ]
+    },
+    {
+     "title": "Politeness",
+     "qs": [
+      "How do you show politeness in your country?",
+      "Do you ever lose your patience?"
+     ]
+    },
+    {
+     "title": "Plans & priorities",
+     "qs": [
+      "When was the last time you made a plan and didn't keep it?",
+      "How do you prioritise things in your life?",
+      "Do you think reliability is important?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 5,
+   "groups": [
+    {
+     "title": "Mixed",
+     "qs": [
+      "What did you often do with your friends in your childhood?",
+      "Are you good at memorizing things?",
+      "Is the city where you live crowded?",
+      "Have you ever sent handmade gifts to others?",
+      "Do you like getting up early in the morning?",
+      "Have you ever visited a zoo?",
+      "What is your favourite weather?",
+      "What is your favourite shop?",
+      "Do you have a pet?",
+      "Are you a patient person?",
+      "What do you often do in the morning?",
+      "Do many people in your country use bicycles?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 4,
+   "groups": [
+    {
+     "title": "Mixed",
+     "qs": [
+      "Do you look out the window at the scenery when travelling by bus or car?",
+      "Do you like reading?",
+      "Have you ever been part of a sports team?",
+      "Do you walk a lot?",
+      "Do you prefer typing or handwriting?",
+      "What is your favourite food?",
+      "Do you often have free time?",
+      "Do you have any hobbies?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 3,
+   "groups": [
+    {
+     "title": "Mixed",
+     "qs": [
+      "Do you like watching sports programmes on TV?",
+      "Do you like science?",
+      "Do you use headphones?",
+      "Are you good at telling jokes?",
+      "Do you like to get up early in the morning?",
+      "Do you like taking pictures of different views?",
+      "What is your favourite activity, food, book, movie, weather, animal or drink?",
+      "Are there tall buildings near your home?",
+      "How many foreign languages do you speak?",
+      "Do you often use a dictionary?",
+      "Do you like flowers?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 2,
+   "groups": [
+    {
+     "title": "Exercise · Health",
+     "qs": [
+      "Do you make plans ahead before your day starts?",
+      "What is your morning routine?",
+      "Do you think it is important to have a morning routine?",
+      "How often do you work out?",
+      "What are the benefits of exercising?",
+      "Are there any sports that people in your country enjoy?",
+      "What is your favourite sport?",
+      "Have you been part of a sports team before?",
+      "What do you hate doing in the evening?",
+      "Do you think exercising before bed is good?",
+      "Do you prefer working out alone or with friends?",
+      "Is it difficult for you to stick to a workout routine?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 1,
+   "groups": [
+    {
+     "title": "Introduction",
+     "qs": [
+      "Can you introduce yourself?",
+      "Where are you living? Which city are you living in?",
+      "How are you studying English? Do you have your own study plans?"
+     ]
+    },
+    {
+     "title": "Mixed",
+     "qs": [
+      "Do you wear a watch?",
+      "Did you enjoy travelling by car when you were a kid?",
+      "What kinds of websites do you often visit?",
+      "Do you like looking at yourself in the mirror?",
+      "Did you like going to parks as a child?",
+      "Do you like shopping?",
+      "Do you like to keep things tidy?",
+      "Do you prefer sad or happy music?",
+      "Do you have a favourite teacher?",
+      "When did you start using social media?"
+     ]
+    },
+    {
+     "title": "Travel",
+     "qs": [
+      "What was your favourite country you've been to?",
+      "Can you tell me about your life in Australia?",
+      "Can you recommend any places to me?"
+     ]
+    }
+   ]
+  }
+ ],
+ "part3": [
+  {
+   "session": 4,
+   "topic": "Describe an occasion when you were not allowed to use your mobile phone",
+   "qs": [
+    "How has the widespread use of smartphones changed the way people communicate?",
+    "Should there be more places where mobile phones are not allowed? Why?",
+    "Do you think children should be allowed to use mobile phones at school? Why or why not?",
+    "Why do some people find it difficult to put their phones away?"
+   ]
+  },
+  {
+   "session": 3,
+   "topic": "Describe a perfect job you would like to have in the future",
+   "qs": [
+    "What factors do people usually consider when choosing a career?",
+    "Do you think young people today change jobs more often than in the past? Why or why not?",
+    "Is it more important to earn a high salary or to enjoy your job? Why?",
+    "How do you think technology will change the workplace in the future?",
+    "What makes people satisfied with their jobs?",
+    "What kinds of jobs will be popular in the future?"
+   ]
+  },
+  {
+   "session": 2,
+   "topic": "Exercise and health",
+   "qs": [
+    "Has technology made people less physically active?",
+    "Should the government do more to encourage people to exercise?",
+    "Which is more important, exercising regularly or eating a healthy diet?",
+    "Do you think gym memberships should be cheaper?"
+   ]
+  }
+ ]
+}

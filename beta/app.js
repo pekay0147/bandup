@@ -146,7 +146,7 @@ function renderHome(app){
   const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length;
   const goalDone = doneToday>=DAILY;
   const h1=el("h1","h-title"); h1.append(document.createTextNode(`${D.name}님,`), el("br"));
-  if(due && !goalDone){ h1.append(document.createTextNode("오늘도 화이팅!")); }
+  if(!D.cards.length || (due && !goalDone)){ h1.append(document.createTextNode("오늘도 화이팅!")); }
   else h1.append(document.createTextNode("꾸준함이 실력이 돼요. 오늘도 완료! 👏"));
   app.append(h1);
   app.append(quoteBox()); startIdiomTimer();
@@ -155,9 +155,12 @@ function renderHome(app){
   const rv=el("div","box rv"); const n=el("div","rv-n"); n.append(document.createTextNode(String(Math.min(doneToday,DAILY))), el("small",null,` / ${DAILY}`));
   rv.append(n, el("div","rv-l","오늘 목표"));
   const bar=el("div","bar"); const bi=el("i"); bi.style.width=Math.min(100,doneToday/DAILY*100)+"%"; bar.append(bi); rv.append(bar);
+  if(!D.cards.length){ rv.append(el("p","muted small","첫 수업이 끝나면 수업에서 나온 문장으로 복습이 시작돼요.")); s1.append(rv); app.append(s1); }
+  else {
   const queue=reviewQueue(!due);
   const b=el("button","btn primary", !due? "약한 카드 연습하기" : goalDone? "더 복습하기" : doneToday? "이어서 복습하기" : "복습 시작하기"); b.type="button"; b.onclick=()=>go("review",{extra:!due, ids:queue}); rv.append(b);
   s1.append(rv); app.append(s1);
+  }
   // 학습
   const s2=el("section","sec"); s2.append(secHead("학습"));
   const list=el("div","box list2");
@@ -426,6 +429,7 @@ function deckTile(s){
 
 function renderDecks(app){
   pageHead(app,"큐카드","수업 시간에 나온 문장을 카드로 연습해요.");
+  if(!D.sessions.length || !D.cards.length){ const e=el("div","empty"); e.append(el("p",null,"아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
   const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
   if(cardMode!=="session" && cardMode!=="random") cardMode="session";
   for(const [k,label,sub] of [["session","회차별",`1~${D.sessions[D.sessions.length-1].no}회차`],["random","랜덤 퀴즈","섞어서 풀기"]]){
