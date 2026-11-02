@@ -1028,7 +1028,7 @@ function renderP3(app){
 let p2Set="main";
 function renderP2(app){
   if(P2X){ const sw=el("div","pchips");
-    for(const [k,l,n] of [["main","기출 문제",P2?P2.items.length:0],["extra","추가 주제",P2X.items.length]]){ const b=el("button",null,l); b.type="button"; b.append(el("small",null,String(n))); b.setAttribute("aria-pressed",String(p2Set===k)); b.onclick=()=>{ p2Set=k; openKey=null; render(); }; sw.append(b); }
+    for(const [k,l,n] of [["main","9~12월 예상 기출",P2?P2.items.length:0],["extra","추가 주제",P2X.items.length]]){ const b=el("button",null,l); b.type="button"; b.append(el("small",null,String(n))); b.setAttribute("aria-pressed",String(p2Set===k)); b.onclick=()=>{ p2Set=k; openKey=null; render(); }; sw.append(b); }
     app.append(sw);
     if(p2Set==="extra") return renderP2X(app);
   }
@@ -1048,7 +1048,7 @@ function renderP2(app){
   const hay=it=>(it.topic+" "+it.answer+" "+it.points.join(" ")+" "+(it.alts||[]).join(" ")).toLowerCase();
   const list=P2.items.filter(it=>(!p2Lesson || it.lesson));
   const shown=list.filter(it=>!q || hay(it).includes(q)).length;
-  const cnt=el("p","muted small",`기출 ${shown}개 주제`); cnt.id="p2count"; app.append(cnt);
+  const cnt=el("p","muted small",`9~12월 예상 기출 ${shown}개`); cnt.id="p2count"; app.append(cnt);
   for(const it of list){
     const hd=el("div");
     const top=el("span","from2", `#${it.no}`+(it.lesson? ` · ${it.lesson}회차 수업에서 다룸`:""));
