@@ -280,20 +280,40 @@ function buildMock(){
 }
 function stopMockTimer(){ if(mtTimer){ clearInterval(mtTimer); mtTimer=null; } if(typeof stopRec==="function") stopRec(); }
 /* ---------- answer recorder (mock test) ---------- */
-let REC=null; // {mr, stream, chunks, t0, timer, key}
+let REC=null; // {mr, stream, chunks, t0, timer, key, rc}
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition||null;
+/* clean up a speech transcript: drop fillers, stutters and self-corrections */
+function cleanSpeech(raw){
+  const fill=/^(um+|uh+|er+|erm+|ah+|hmm+|mm+|uhm+)$/i;
+  let w=String(raw||"").replace(/\s+/g," ").trim().split(" ").filter(x=>x && !fill.test(x.replace(/[.,!?]/g,"")));
+  const k=x=>x.toLowerCase().replace(/[^a-z0-9']/g,"");
+  const lev=(a,b)=>{ const d=Array.from({length:a.length+1},(_,i)=>[i]); for(let j=1;j<=b.length;j++) d[0][j]=j; for(let i=1;i<=a.length;i++) for(let j=1;j<=b.length;j++) d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1)); return d[a.length][b.length]; };
+  let changed=true;
+  while(changed){ changed=false;
+    // repeated phrases of 1-4 words: "I went I went to" -> "I went to"
+    for(let n=4;n>=1 && !changed;n--) for(let i=0;i+2*n<=w.length;i++){ let same=true; for(let j=0;j<n;j++) if(k(w[i+j])!==k(w[i+n+j])){ same=false; break; } if(same && k(w[i])){ w.splice(i,n); changed=true; break; } }
+    // self-correction of one word: "soul Seoul" -> "Seoul"
+    if(!changed) for(let i=0;i+1<w.length;i++){ const a=k(w[i]), b=k(w[i+1]); if(a.length>=3 && b.length>=3 && a!==b && a[0]===b[0] && lev(a,b)<=Math.max(1,Math.floor(Math.max(a.length,b.length)/3))){ w.splice(i,1); changed=true; break; } }
+  }
+  let s=w.join(" ").replace(/\s+([.,!?])/g,"$1");
+  return s? s[0].toUpperCase()+s.slice(1) : s;
+}
+
 const canRecord=()=>!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
-function stopRec(){ if(REC){ try{ if(REC.mr.state!=="inactive") REC.mr.stop(); }catch(_){} } }
+function stopRec(){ if(REC){ const rc=REC.rc; if(rc){ rc.onend=null; try{ rc.stop(); }catch(_){} } try{ if(REC.mr.state!=="inactive") REC.mr.stop(); }catch(_){} } }
 function recBox(key){
-  MT.rec=MT.rec||{};
+  MT.rec=MT.rec||{}; MT.txt=MT.txt||{};
   const w=el("div","recbox");
   const draw=()=>{ w.textContent="";
     const url=MT.rec[key];
     if(REC && REC.key===key){
       const b=el("button","btn rec on"); b.type="button"; const sec=Math.floor((Date.now()-REC.t0)/1000);
-      b.append(el("i","recdot"), document.createTextNode(` 녹음 중 ${Math.floor(sec/60)}:${String(sec%60).padStart(2,"0")} · 멈추기`)); b.onclick=stopRec; w.append(b); return; }
+      b.append(el("i","recdot"), document.createTextNode(` 녹음 중 ${Math.floor(sec/60)}:${String(sec%60).padStart(2,"0")} · 멈추기`)); b.onclick=stopRec; w.append(b); txtBox(true); return; }
     const r=el("button","btn rec"); r.type="button"; r.append(el("i","recdot"), document.createTextNode(url? " 다시 녹음" : " 질문 녹음")); r.onclick=start; w.append(r);
     if(url){ const a=el("audio"); a.controls=true; a.src=url; a.className="recaudio"; w.append(a); }
+    txtBox(false);
   };
+  const txtBox=live=>{ if(!SR) return; const t=cleanSpeech(MT.txt[key]); if(!t && !live) return; const d=el("div","rectxt"); d.append(el("span","rectxt-lab","내가 한 말"), el("p",null, t || "듣는 중…")); w.append(d); };
   const start=async()=>{
     try{ speechSynthesis.cancel(); }catch(_){}
     let stream; try{ stream=await navigator.mediaDevices.getUserMedia({audio:true}); }catch(_){ w.textContent=""; w.append(el("p","muted small","마이크를 쓸 수 없어요. 브라우저 설정에서 마이크를 허용해 주세요.")); return; }
@@ -301,6 +321,12 @@ function recBox(key){
     REC={mr,stream,chunks,t0:Date.now(),key,timer:setInterval(()=>{ if(document.body.contains(w)) draw(); },1000)};
     mr.ondataavailable=e=>{ if(e.data.size) chunks.push(e.data); };
     mr.onstop=()=>{ clearInterval(REC&&REC.timer); stream.getTracks().forEach(t=>t.stop()); if(MT){ if(MT.rec[key]) URL.revokeObjectURL(MT.rec[key]); MT.rec[key]=URL.createObjectURL(new Blob(chunks,{type:mr.mimeType||"audio/webm"})); } REC=null; if(document.body.contains(w)) draw(); };
+    MT.txt[key]="";
+    if(SR){ try{ const rc=new SR(); rc.lang="en-GB"; rc.continuous=true; rc.interimResults=false; let fin="";
+      rc.onresult=e=>{ for(let i=e.resultIndex;i<e.results.length;i++){ const r=e.results[i]; if(r.isFinal) fin+=r[0].transcript+" "; } if(MT) MT.txt[key]=fin; const p=w.querySelector(".rectxt p"); if(p) p.textContent=cleanSpeech(fin)||"듣는 중…"; else if(document.body.contains(w)) draw(); };
+      rc.onend=()=>{ if(REC && REC.key===key && REC.mr.state==="recording"){ try{ rc.start(); }catch(_){} } };
+      rc.onerror=()=>{};
+      REC.rc=rc; rc.start(); }catch(_){} }
     mr.start(); draw();
   };
   draw(); return w;

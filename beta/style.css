@@ -850,3 +850,6 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .btn.rec.on .recdot{animation:recblink 1s infinite}
 @keyframes recblink{50%{opacity:.25}}
 .recaudio{width:100%;height:40px}
+.rectxt{display:grid;gap:4px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.rectxt-lab{font-size:11px;font-weight:700;color:var(--blue)}
+.rectxt p{margin:0;font-size:15px;line-height:1.5}
