@@ -183,17 +183,22 @@ const isQbm=q=>qbmList().some(x=>x.q===q);
 function toggleQbm(item){ let l=qbmList(); if(l.some(x=>x.q===item.q)) l=l.filter(x=>x.q!==item.q); else l=[...l,{part:item.part,topic:item.topic,q:item.q}]; store.set(qbmKey(),l); }
 function qbmBtn(item, onChange){ const b=el("button","cstar"); b.type="button"; const set=()=>{ const on=isQbm(item.q); b.textContent=on? "★" : "☆"; b.setAttribute("aria-pressed",String(on)); b.setAttribute("aria-label", on? "북마크 해제" : "북마크에 추가"); }; set(); b.onclick=e=>{ e.stopPropagation(); toggleQbm(item); set(); if(onChange) onChange(); }; return b; }
 let todayQShift=0;
+let calOpen=false;
 function weekCard(){
-  const w=el("div","box weekcard calcard");
-  const set=new Set(days); const now=new Date(); const y=now.getFullYear(), m=now.getMonth(), td=now.getDate();
-  const hd=el("div","cal-hd"); hd.append(el("b",null,`${y}년 ${m+1}월`)); const cnt=[...set].filter(s=>s.startsWith(`${y}-${String(m+1).padStart(2,"0")}-`)).length; hd.append(el("span",null,`이번 달 ${cnt}일 공부`)); w.append(hd);
+  const w=el("button","box weekcard calcard"+(calOpen?" open":"")); w.type="button"; w.setAttribute("aria-expanded",String(calOpen));
+  const set=new Set(days); const now=new Date(); const y=now.getFullYear(), m=now.getMonth(), td=now.getDate(); const t0=new Date(y,m,td);
+  const isoOf=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+  const hd=el("div","cal-hd"); hd.append(el("b",null,`${y}년 ${m+1}월`)); const cnt=[...set].filter(s=>s.startsWith(`${y}-${String(m+1).padStart(2,"0")}-`)).length;
+  const rt=el("span",null,`이번 달 ${cnt}일 공부`); rt.append(el("i","cal-chev",calOpen?"▴":"▾")); hd.append(rt); w.append(hd);
   const g=el("div","cal-grid");
   ["일","월","화","수","목","금","토"].forEach(n=>g.append(el("span","cal-wd",n)));
-  const first=new Date(y,m,1).getDay(), last=new Date(y,m+1,0).getDate();
-  for(let i=0;i<first;i++) g.append(el("span","cal-d empty"));
-  for(let d=1;d<=last;d++){ const iso=`${y}-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
-    g.append(el("span","cal-d"+(set.has(iso)?" done":"")+(d===td?" today":"")+(d>td?" future":""),String(d))); }
+  const cell=d=>{ const iso=isoOf(d); return el("span","cal-d"+(set.has(iso)?" done":"")+(d.getTime()===t0.getTime()?" today":"")+(d>t0?" future":"")+(d.getMonth()!==m?" other":""),String(d.getDate())); };
+  if(calOpen){ const first=new Date(y,m,1).getDay(), last=new Date(y,m+1,0).getDate();
+    for(let i=0;i<first;i++) g.append(el("span","cal-d empty"));
+    for(let d=1;d<=last;d++) g.append(cell(new Date(y,m,d))); }
+  else { const s=new Date(t0); s.setDate(td-t0.getDay()); for(let k=0;k<7;k++){ const d=new Date(s); d.setDate(s.getDate()+k); g.append(cell(d)); } }
   w.append(g);
+  w.onclick=()=>{ calOpen=!calOpen; w.replaceWith(weekCard()); };
   return w;
 }
 let bmHomeOpen=false;
