@@ -693,7 +693,7 @@ let idMode="list", idState=null, idOpen=new Set();
 function idiomToday(){ const d=new Date(); const dayNo=Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000); return ((dayNo+idiomShift)%IDIOMS.length+IDIOMS.length)%IDIOMS.length; }
 function renderIdioms(app){
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
-  pageHead(app,"Idiom",`${IDIOMS.length}개 · 스피킹에서 한 번씩 써 보세요`);
+  pageHead(app,"Idiom",`${IDIOMS.length}개 · 누르면 예시가 나와요`);
   const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
   for(const [k,label] of [["list","전체 보기"],["card","카드로 공부"]]){ const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(idMode===k)); b.append(el("b",null,label)); b.onclick=()=>{ idMode=k; render(); }; seg.append(b); }
   app.append(seg);
@@ -705,8 +705,8 @@ function renderIdioms(app){
       const r=el("button","idrow"+(n===0?" today":"")); r.type="button"; const open=idOpen.has(i); r.setAttribute("aria-expanded",String(open));
       const t=el("div","idt"); if(n===0) t.append(el("span","idtag","오늘의 idiom")); t.append(el("b",null,en), el("span","idko",ko));
       const exl=el("p","idex",ex); exl.hidden=!open; t.append(exl);
-      r.append(t, speakBtn(en));
-      r.onclick=()=>{ if(idOpen.has(i)) idOpen.delete(i); else idOpen.add(i); exl.hidden=!idOpen.has(i); r.setAttribute("aria-expanded",String(idOpen.has(i))); };
+      r.append(t, el("span","idchev",open?"▴":"▾"));
+      r.onclick=()=>{ if(idOpen.has(i)) idOpen.delete(i); else idOpen.add(i); exl.hidden=!idOpen.has(i); r.setAttribute("aria-expanded",String(idOpen.has(i))); r.querySelector(".idchev").textContent=idOpen.has(i)?"▴":"▾"; };
       box.append(r); });
     app.append(box); return;
   }
@@ -715,8 +715,8 @@ function renderIdioms(app){
   const pg=el("div","prog"); pg.append(el("span",null,`${S.i+1} / ${S.ids.length}`)); const sh=el("button","linkbtn","다시 섞기"); sh.type="button"; sh.onclick=()=>{ idState=null; view.start=null; render(); }; pg.append(sh); app.append(pg);
   const bar=el("div","bar"); const bi=el("i"); bi.style.width=((S.i+1)/S.ids.length*100)+"%"; bar.append(bi); app.append(bar);
   const c=el("button","idcard"); c.type="button";
-  const top=el("div","idc-top"); top.append(el("b",null,en), speakBtn(en)); c.append(top);
-  if(S.show){ c.append(el("p","idc-ko",ko), el("p","idc-ex",ex)); } else c.append(el("p","idc-hint","무슨 뜻일까요? 눌러서 확인"));
+  const top=el("div","idc-top"); top.append(el("b",null,en)); c.append(top);
+  if(S.show){ c.append(el("p","idc-ko",ko), el("p","idc-ex",ex)); } else c.append(el("p","idc-hint","무슨 뜻일까요? 눌러서 뜻과 예시 보기"));
   c.onclick=()=>{ S.show=!S.show; render(); }; app.append(c);
   const mv=d=>{ S.i=Math.max(0,Math.min(S.ids.length-1,S.i+d)); S.show=false; render(); };
   const acts=el("div","acts arrows");

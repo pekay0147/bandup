@@ -834,3 +834,4 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .idc-ko{margin:0;font-size:17px;font-weight:600;color:var(--blue)}
 .idc-ex{margin:0;font-size:15px;line-height:1.55}
 .idc-hint{margin:0;font-size:14px;color:var(--muted)}
+.idchev{flex:none;font-size:12px;color:var(--muted);padding-top:4px}
