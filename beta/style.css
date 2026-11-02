@@ -835,3 +835,8 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .idc-ex{margin:0;font-size:15px;line-height:1.55}
 .idc-hint{margin:0;font-size:14px;color:var(--muted)}
 .idchev{flex:none;font-size:12px;color:var(--muted);padding-top:4px}
+/* FIXED CARD HEIGHT: no layout jump between cards */
+.scene .card{height:440px}
+.scene .face{min-height:0!important;height:100%}
+.scene .face .body{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
+@media (max-height:780px){.scene .card{height:400px}}
