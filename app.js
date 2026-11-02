@@ -37,7 +37,7 @@ async function boot(){
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
   document.title=`${D.name}님 · 밴드업 아이엘츠`;
-  $("#who").textContent=`${D.name}님`;
+  $("#who").textContent=new Date().toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"long"}); const br=document.querySelector(".brand"); if(br) br.innerHTML="Band<span>up</span>";
   buildTabs(); render();
 }
 function save(){ store.set(`bandup-srs-${slug}`,srs); store.set(`bandup-marks-${slug}`,marks); store.set(`bandup-days-${slug}`,days); }
@@ -109,41 +109,47 @@ function render(){
   document.body.classList.toggle("lesson", !!app.querySelector(".lbar"));
 }
 
-function renderHome(app){
-  const due=dueCards().length;
-  const h=el("div","hello"); const h1=el("h1"); h1.append(document.createTextNode(`${D.name}님, `), el("b",null,due? `오늘 ${Math.min(due,DAILY)}장`: "오늘 복습 끝!"));
-  h.append(h1); app.append(h);
-  app.append(quoteBox()); startIdiomTimer();
-  if(false){ const st=el("div","stats");
-  for(const [cls,n,l] of [["due",D.cards.length,"내 수업 카드"],["streak",streak(),"연속 공부일"]]){
-    const s=el("div","stat "+cls); s.append(el("b",null,String(n)), el("span",null,l)); st.append(s);
-  }
-  app.append(st); }
-  const hero=el("div","hero");
-  const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length, goal=Math.max(DAILY, doneToday);
-  const queue=reviewQueue(!due);
-  const qs=sessRange(queue.flatMap(id=>{ const c=D.cards.find(x=>x.id===id); return c? (c.sessions||[]) : []; }));
-  const goalDone = doneToday>=DAILY;
-  hero.append(el("h2",null, (due && !goalDone)? "오늘의 복습" : "오늘 복습 끝! 🎉"));
-  const gl=el("div","goal"); const gb=el("div","gbar"); const gi=el("i"); gi.style.width=Math.min(100,doneToday/DAILY*100)+"%"; gb.append(gi);
-  gl.append(gb, el("span",null,`${Math.min(doneToday,DAILY)} / ${DAILY}장`)); hero.append(gl);
-  const b=el("button",null, !due? "약한 카드 연습" : goalDone? `더 복습하기 (${Math.min(due,DAILY)}장)` : `복습 시작 (${Math.min(due,DAILY)}장)`); b.type="button"; b.onclick=()=>go("review",{extra:!due, ids:queue}); hero.append(b);
-  app.append(hero);
-  const last=D.sessions[D.sessions.length-1];
-  if(last){
-    const duo=el("div","duo"); duo.append(podcastBox(), mockCard()); app.append(duo);
-    app.append(weekCard());
-    app.append(bmHomeCard());
-  }
-  if(false){
-    const ins=el("div","install"); ins.append(el("b",null,"앱처럼 쓰려면 홈 화면에 추가하세요"),
-      el("span",null,"아이폰: Safari 아래 공유 버튼 → '홈 화면에 추가'"), el("span",null,"안드로이드: Chrome 오른쪽 위 ⋮ → '홈 화면에 추가'"));
-    app.append(ins);
-  }
-}
-
 /* ---------- daily podcast reminder ---------- */
 const POD_URL="https://podcasts.apple.com/nz/podcast/6-minute-english/id262026947";
+const LIC={
+  pod:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="2.2"/><path d="M12 13.5v7"/><path d="M8.2 14a5 5 0 1 1 7.6 0"/><path d="M5.6 16.6a8.5 8.5 0 1 1 12.8 0"/></svg>',
+  mock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>',
+  bm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>'
+};
+function secHead(title, right){ const h=el("div","sec-h"); h.append(el("b",null,title)); if(right) h.append(el("span",null,right)); return h; }
+function listRow(icon, title, sub, onClick, href){
+  const r=el(href? "a":"button","lrow2"); if(href){ r.href=href; r.target="_blank"; r.rel="noopener"; } else { r.type="button"; r.onclick=onClick; }
+  const ic=el("span","lic"); ic.innerHTML=icon; const t=el("span","lt"); t.append(el("b",null,title), el("span",null,sub));
+  r.append(ic,t,el("span","lchev","›")); return r;
+}
+function renderHome(app){
+  const due=dueCards().length;
+  const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length;
+  const goalDone = doneToday>=DAILY;
+  const h1=el("h1","h-title"); h1.append(document.createTextNode(`${D.name}님,`), el("br"));
+  if(due && !goalDone){ h1.append(document.createTextNode("오늘 복습할 문장이 "), el("em",null,`${Math.min(due,DAILY)}개`), document.createTextNode(" 있어요")); }
+  else h1.append(document.createTextNode("오늘 복습을 모두 마쳤어요"));
+  app.append(h1);
+  app.append(quoteBox()); startIdiomTimer();
+  // 오늘의 복습
+  const s1=el("section","sec"); s1.append(secHead("오늘의 복습"));
+  const rv=el("div","box rv"); const n=el("div","rv-n"); n.append(document.createTextNode(String(Math.min(doneToday,DAILY))), el("small",null,` / ${DAILY}`));
+  rv.append(n, el("div","rv-l","오늘 목표"));
+  const bar=el("div","bar"); const bi=el("i"); bi.style.width=Math.min(100,doneToday/DAILY*100)+"%"; bar.append(bi); rv.append(bar);
+  const queue=reviewQueue(!due);
+  const b=el("button","btn primary", !due? "약한 카드 연습하기" : goalDone? "더 복습하기" : doneToday? "이어서 복습하기" : "복습 시작하기"); b.type="button"; b.onclick=()=>go("review",{extra:!due, ids:queue}); rv.append(b);
+  s1.append(rv); app.append(s1);
+  // 학습
+  const s2=el("section","sec"); s2.append(secHead("학습"));
+  const list=el("div","box list2");
+  list.append(listRow(LIC.pod,"오늘의 팟캐스트","BBC 6 Minute English",null,POD_URL));
+  list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
+  list.append(listRow(LIC.bm,"북마크",`${cbmList().filter(id=>getCard(id)).length+qbmList().length}개`,()=>go("bm")));
+  s2.append(list); app.append(s2);
+  // 이번 주
+  const st=streak(); const s3=el("section","sec"); s3.append(secHead("이번 주", st? `${st}일 연속` : "")); s3.append(weekCard()); app.append(s3);
+}
+
 function podcastBox(){
   const key=`bandup-pod-${slug}`; const listened=store.get(key,[]); const done=listened.includes(today());
   const w=el("div","pod"+(done?" done":""));
@@ -162,9 +168,7 @@ function toggleQbm(item){ let l=qbmList(); if(l.some(x=>x.q===item.q)) l=l.filte
 function qbmBtn(item, onChange){ const b=el("button","cstar"); b.type="button"; const set=()=>{ const on=isQbm(item.q); b.textContent=on? "★" : "☆"; b.setAttribute("aria-pressed",String(on)); b.setAttribute("aria-label", on? "북마크 해제" : "북마크에 추가"); }; set(); b.onclick=e=>{ e.stopPropagation(); toggleQbm(item); set(); if(onChange) onChange(); }; return b; }
 let todayQShift=0;
 function weekCard(){
-  const w=el("div","weekcard");
-  const top=el("div","wk-top"); const st=streak(); top.append(el("b",null,"이번 주 공부"), el("span","wk-streak", st? `🔥 ${st}일째` : "오늘 시작해 봐요"));
-  w.append(top);
+  const w=el("div","box weekcard");
   const row=el("div","wk-row"); const names=["일","월","화","수","목","금","토"]; const set=new Set(days);
   const now=new Date(); const t0=new Date(now.getFullYear(),now.getMonth(),now.getDate()); const start=new Date(t0); start.setDate(t0.getDate()-t0.getDay());
   for(let k=0;k<7;k++){ const d=new Date(start); d.setDate(start.getDate()+k); const iso=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
@@ -835,7 +839,7 @@ function renderListen(app){
   const sAll=el("button","btn",`전체 ${all.length}개`); sAll.type="button"; sAll.onclick=()=>startDictation([...all].sort(()=>Math.random()-.5),`전체 ${all.length}개`);
   row.append(s20); app.append(row);
   if(!canSpeak()) app.append(el("p","muted small","이 기기에서는 소리 재생이 안 돼요. 뜻을 보고 철자를 써 보세요."));
-  const p=el("div","panel"); const h=el("div","ghead"); h.append(el("b",null,"단어 목록"), el("span",null,`${all.length}개 · 🔊 눌러서 듣기`)); p.append(h);
+  const p=el("div","panel"); const h=el("div","ghead"); h.append(el("b",null,"단어 목록"), el("span",null,`${all.length}개 · 눌러서 듣기`)); p.append(h);
   for(const [w,ko,tip] of all){
     const r=el("div","lrow"); r.append(speakBtn(w));
     const t2=el("div"); const top=el("div","vtop"); top.append(el("b",null,w), el("span",null,ko)); t2.append(top); if(tip) t2.append(el("p","ltip",tip));

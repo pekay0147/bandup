@@ -1,5 +1,5 @@
 // Network first for everything (so updates show right away), cache as the offline fallback.
-const VERSION = "bandup-1793577023";
+const VERSION = "bandup-1793578031";
 self.addEventListener("install", () => self.skipWaiting());
 self.addEventListener("activate", e => {
   e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== VERSION).map(k => caches.delete(k))))
