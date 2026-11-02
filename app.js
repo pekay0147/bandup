@@ -142,7 +142,7 @@ function renderHome(app){
   // 학습
   const s2=el("section","sec"); s2.append(secHead("학습"));
   const list=el("div","box list2");
-  list.append(listRow(LIC.pod,"오늘의 팟캐스트","BBC 6 Minute English",null,POD_URL));
+  { const pr=listRow(LIC.pod,"오늘의 팟캐스트","BBC 6 Minute English",null,POD_URL); pr.classList.add("podrow"); list.append(pr); }
   list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
   list.append(listRow(LIC.bm,"북마크",`${cbmList().filter(id=>getCard(id)).length+qbmList().length}개`,()=>go("bm")));
   s2.append(list); app.append(s2);

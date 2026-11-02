@@ -756,3 +756,4 @@ h2{font-weight:700;letter-spacing:-.02em}
 .toast{border-radius:10px}
 .face::before{display:none} .front .hint-tag{background:none!important;color:var(--muted)!important;padding:0;font-size:12px;font-weight:500} .front .hint{background:none!important} .rep{color:#c4413a!important;background:none!important}
 .who{display:none!important}
+.podrow .lic{color:#8a3ffc} @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .podrow .lic{color:#b38cff}}
