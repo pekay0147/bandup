@@ -290,14 +290,8 @@ async function grammarCheck(text){
     const r=await fetch("https://api.languagetool.org/v2/check",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body});
     if(!r.ok) return null; const j=await r.json();
     const skip=/TYPOGRAPHY|PUNCTUATION|CASING|WHITESPACE|UPPERCASE|COMMA|REDUNDANCY|STYLE/i;
-    const list=(j.matches||[]).filter(m=>m.replacements&&m.replacements.length && !skip.test(m.rule.id) && !skip.test((m.rule.category||{}).id||""))
-      .map(m=>{ const bad=text.slice(m.offset,m.offset+m.length); let reps=m.replacements.map(x=>x.value);
-        if(/^I\b/.test(bad)) reps=reps.filter(x=>!/^I (are|is)\b/.test(x)).concat(reps);
-        const cat=(m.rule.category||{}).id||""; const KO={GRAMMAR:"문법 (수 일치·동사 형태)",COLLOCATIONS:"짝꿍 표현",TYPOS:"철자",CONFUSED_WORDS:"헷갈리기 쉬운 단어",NONSTANDARD_PHRASES:"자연스러운 표현"};
-        return {offset:m.offset,length:m.length,rep:reps[0],msg:KO[cat]||m.shortMessage||m.message}; });
-    const own=[[/\b(there|here) is (many|a lot of|lots of|some|two|three|several)\b/gi,(a,b,c)=>`there are ${c}`,"여러 개면 there are"],[/\bI no (\w+)/gi,(a,b)=>`I don't ${b}`,"일반동사 부정은 don't + 동사"],[/\bit is (make|makes)\b/gi,()=>"it makes","동사는 하나만"]];
-    const out=list; for(const [re,fn,msg] of own){ re.lastIndex=0; let mm; while((mm=re.exec(text))){ const o=mm.index,l=mm[0].length; if(!out.some(x=>x.offset<o+l && o<x.offset+x.length)) out.push({offset:o,length:l,rep:fn(...mm),msg}); } }
-    return out.sort((a,b)=>a.offset-b.offset);
+    return (j.matches||[]).filter(m=>m.replacements&&m.replacements.length && !skip.test(m.rule.id) && !skip.test((m.rule.category||{}).id||""))
+      .map(m=>({offset:m.offset,length:m.length,rep:m.replacements[0].value,msg:m.shortMessage||m.message})).sort((a,b)=>a.offset-b.offset);
   }catch(_){ return null; }
 }
 function recBox(key){
