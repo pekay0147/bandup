@@ -899,8 +899,9 @@ function renderDictation(app){
   if(canSpeak()){
     const row=el("div","playrow");
     const p1=el("button","btn primary play"); p1.type="button"; p1.innerHTML=SPEAK_ICON; p1.append(document.createTextNode(" 듣기")); p1.onclick=()=>speak(w);
+    if(ko) card.append(el("p","dko",ko));
     row.append(p1); card.append(row);
-    card.append(el("p","muted small", L.checked? "" : "들리는 단어의 철자를 써 보세요"));
+    card.append(el("p","muted small", L.checked? "" : "뜻을 보고, 들리는 단어의 철자를 써 보세요"));
   } else { card.append(el("p","dko",ko), el("p","muted small","뜻을 보고 영어 철자를 써 보세요")); }
   const inp=el("input","dinput"); inp.id="dinput"; inp.type="text"; inp.value=L.typed; inp.placeholder="철자 입력";
   ["autocomplete","autocorrect","autocapitalize"].forEach(k=>inp.setAttribute(k,"off")); inp.spellcheck=false; inp.setAttribute("aria-label","들은 단어 철자"); inp.readOnly=L.checked;
