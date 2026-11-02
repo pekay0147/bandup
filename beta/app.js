@@ -118,6 +118,22 @@ const LIC={
   mock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>',
   bm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8l-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/></svg>'
 };
+const BADGES=[3,7,14,30,50,100];
+function bestStreak(){ const ds=[...new Set(days)].sort(); let best=0, run=0, prev=null; for(const d of ds){ run = (prev && addD(prev,1)===d)? run+1 : 1; best=Math.max(best,run); prev=d; } return best; }
+function badgeSection(){
+  const best=Math.max(bestStreak(), streak()); const st=streak();
+  const earned=BADGES.filter(n=>best>=n); const next=BADGES.find(n=>best<n);
+  const sec=el("section","sec"); sec.append(secHead("연속 기록 배지", `${earned.length} / ${BADGES.length}`));
+  const box=el("div","box badges");
+  const row=el("div","bdg-row");
+  for(const n of BADGES){ const on=best>=n; const b=el("div","bdg"+(on?" on":"")); const m=el("div","bdg-m"); m.append(el("b",null,String(n)), el("span",null,"일")); b.append(m, el("span","bdg-l", on? "획득" : "잠김")); row.append(b); }
+  box.append(row);
+  const studied=days.includes(today()); box.append(el("p","bdg-next", next? `다음 배지(${next}일)까지 ${Math.max(1,next-st)}일 남았어요` + (studied? "" : " · 오늘 공부하면 연속 기록이 이어져요") : "모든 배지를 모았어요!"));
+  sec.append(box);
+  try{ const key=`bandup-badges-${slug}`; const seen=store.get(key,[]); const fresh=earned.filter(n=>!seen.includes(n)); if(fresh.length){ store.set(key,earned); if(seen.length || fresh.some(n=>n>3) || earned.length) setTimeout(()=>badgeToast(fresh[fresh.length-1]),400); } }catch(_){}
+  return sec;
+}
+function badgeToast(n){ const t=el("div","bdg-toast"); const m=el("div","bdg-m"); m.append(el("b",null,String(n)), el("span",null,"일")); const tx=el("div"); tx.append(el("b",null,`${n}일 연속 배지 획득!`), el("span",null,"꾸준함이 실력이에요. 계속 가 봐요.")); t.append(m,tx); document.body.append(t); setTimeout(()=>t.classList.add("out"),2600); setTimeout(()=>t.remove(),3100); }
 function secHead(title, right){ const h=el("div","sec-h"); h.append(el("b",null,title)); if(right) h.append(el("span",null,right)); return h; }
 function listRow(icon, title, sub, onClick, href){
   const r=el(href? "a":"button","lrow2"); if(href){ r.href=href; r.target="_blank"; r.rel="noopener"; } else { r.type="button"; r.onclick=onClick; }
@@ -150,6 +166,7 @@ function renderHome(app){
   s2.append(list); app.append(s2);
   // 이번 주
   const st=streak(); const s3=el("section","sec"); s3.append(secHead("이번 주", st? `${st}일 연속` : "")); s3.append(weekCard()); app.append(s3);
+  app.append(badgeSection());
 }
 
 function podcastBox(){

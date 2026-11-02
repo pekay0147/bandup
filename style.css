@@ -727,3 +727,21 @@ h2{font-weight:700;letter-spacing:-.02em}
 .face::before{display:none} .front .hint-tag{background:none!important;color:var(--muted)!important;padding:0;font-size:12px;font-weight:500} .front .hint{background:none!important} .rep{color:#c4413a!important;background:none!important}
 .who{display:none!important}
 .podrow .lic{color:#8a3ffc} @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .podrow .lic{color:#b38cff}}
+/* streak badges */
+.badges{padding:16px;display:grid;gap:12px}
+.bdg-row{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.bdg{display:grid;justify-items:center;gap:6px}
+.bdg-m{width:44px;height:44px;border-radius:50%;display:grid;place-content:center;justify-items:center;line-height:1;border:1.5px dashed var(--line);color:var(--muted);background:var(--surface)}
+.bdg-m b{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
+.bdg-m span{font-size:9px;margin-top:2px}
+.bdg.on .bdg-m{border:0;background:var(--blue);color:#fff;box-shadow:0 0 0 3px var(--blue-soft)}
+.bdg-l{font-size:11px;color:var(--muted)}
+.bdg.on .bdg-l{color:var(--blue);font-weight:600}
+.bdg-next{margin:0;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.bdg-toast{position:fixed;left:16px;right:16px;top:calc(16px + env(safe-area-inset-top,0px));z-index:50;display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:0 10px 30px -12px rgba(22,24,29,.35)}
+.bdg-toast .bdg-m{border:0;background:var(--blue);color:#fff;flex:none}
+.bdg-toast div:last-child{display:grid;gap:2px}.bdg-toast div:last-child b{font-size:15px}.bdg-toast div:last-child span{font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.bdg-toast{animation:bdgin .35s ease both}.bdg-toast.out{animation:bdgout .4s ease both}}
+@keyframes bdgin{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+@keyframes bdgout{to{opacity:0;transform:translateY(-12px)}}
+@media (max-width:350px){.bdg-m{width:38px;height:38px}}
