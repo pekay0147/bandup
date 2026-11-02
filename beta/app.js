@@ -39,7 +39,16 @@ async function boot(){
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
   document.title=`${D.name}님 · 밴드업 아이엘츠`;
   $("#who").textContent=new Date().toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"long"}); const br=document.querySelector(".brand"); if(br) br.innerHTML="Band<span>up</span>";
+  addKakao();
   buildTabs(); render();
+}
+function addKakao(){
+  const top=document.querySelector(".top"); if(!top || top.querySelector(".kakao")) return;
+  const android=/android/i.test(navigator.userAgent);
+  const a=el("a","kakao"); a.href= android? "intent://main#Intent;scheme=kakaotalk;package=com.kakao.talk;end" : "kakaotalk://";
+  a.setAttribute("aria-label","카카오톡으로 선생님께 질문하기");
+  a.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4C7 4 3 7.1 3 11c0 2.5 1.7 4.7 4.2 6l-.9 3.3c-.1.4.3.7.6.5l3.9-2.6c.4 0 .8.1 1.2.1 5 0 9-3.1 9-7s-4-7.3-9-7.3z" fill="currentColor"/></svg><span>질문하기</span>';
+  top.append(a);
 }
 function save(){ store.set(`bandup-srs-${slug}`,srs); store.set(`bandup-marks-${slug}`,marks); store.set(`bandup-days-${slug}`,days); }
 function touchDay(){ const t=today(); if(!days.includes(t)){ days.push(t); days=days.slice(-120); save(); } }
