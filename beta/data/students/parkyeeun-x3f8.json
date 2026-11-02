@@ -239,7 +239,7 @@
     4
    ],
    "ko": "요즘 책을 읽으려고 노력하고 있어요.",
-   "en": "I'm trying to read books.",
+   "en": "I'm trying to read books these days.",
    "mine": "I'm trying to reading books.",
    "gram": "<em>try to</em> 뒤에는 동사원형: try to <em>read</em>.<br><b>to + 동사원형</b> · want to <em>go</em>, need to <em>study</em>, try to <em>read</em>. 단, <em>be used to</em> 뒤에는 -ing!",
    "hint": "trying"
@@ -393,7 +393,7 @@
     2
    ],
    "ko": "너만 괜찮다면, 하자!",
-   "en": "As long as you are OK, let's do it!",
+   "en": "As long as you're OK with it, let's do it!",
    "hint": "long",
    "gram": "<em>as long as</em> = ~하는 한, ~이기만 하면."
   },
@@ -509,7 +509,7 @@
    "ko": "지금 2시 10분이야",
    "en": "It's ten past two.",
    "hint": "past",
-   "gram": "<em>past</em> = ~시 ~분 지난, <em>to</em> = ~시 ~분 전. ten to two = 1시 50분."
+   "gram": "<em>past</em> = ~시 지나서 ~분, <em>to</em> = ~시 되기 ~분 전. ten to two = 1시 50분."
   },
   {
    "id": "e18",
@@ -627,9 +627,9 @@
     4
    ],
    "ko": "요즘 자기계발서를 읽고 있어",
-   "en": "I'm reading a self-development book these days.",
-   "hint": "self-development",
-   "gram": "자기계발서 = <em>self-development book</em>."
+   "en": "I'm reading a self-help book these days.",
+   "hint": "self-help",
+   "gram": "자기계발서 = <em>self-help book</em>."
   },
   {
    "id": "e28",
@@ -652,7 +652,7 @@
     5
    ],
    "ko": "학교에서 현장학습을 갔어",
-   "en": "We went on a field trip at school.",
+   "en": "We went on a school field trip.",
    "hint": "field",
    "gram": "<em>field trip</em> = 현장학습, <em>retreat</em> = (회사·단체) 수련회."
   },
@@ -750,7 +750,7 @@
     7
    ],
    "ko": "좋은 아이디어가 하나도 안 떠올라!",
-   "en": "I can't come up with a clear idea!",
+   "en": "I can't come up with any good ideas!",
    "hint": "come",
    "gram": "<em>come up with</em> = (아이디어를) 떠올리다."
   },
@@ -859,7 +859,7 @@
     7
    ],
    "ko": "그 단어를 사전에서 찾아봐",
-   "en": "Look up the word.",
+   "en": "Look up the word in the dictionary.",
    "hint": "up",
    "gram": "<em>look up</em> = (정보를) 찾아보다 / 올려다보다."
   },
@@ -894,7 +894,7 @@
    "sessions": [
     7
    ],
-   "ko": "너를 만나길 기대해",
+   "ko": "너 만나는 거 기대돼",
    "en": "I look forward to seeing you.",
    "hint": "forward",
    "gram": "<em>look forward to</em> = ~을 기대하다. to 뒤에는 <em>-ing</em>: to <em>seeing</em>."

@@ -46,7 +46,7 @@
   },
   {
    "no": 5,
-   "topic": "Describe a home that you like to visit but do not want to live in",
+   "topic": "Describe a place that you like to visit but do not want to live in",
    "qs": [
     "Why do people like visiting places they wouldn't want to live in?",
     "What makes a place a good place to live?",
@@ -94,7 +94,7 @@
    "qs": [
     "What is the biggest environmental problem in your country?",
     "What should individuals be doing to protect the natural environment?",
-    "How could government help prevent pollution?",
+    "How could the government help prevent pollution?",
     "Do you think young people today are more aware of environmental problems?",
     "Do you think it's important to protect trees?"
    ],
@@ -135,7 +135,7 @@
   },
   {
    "no": 13,
-   "topic": "Describe a bicycle/motorcycle/car trip you would like to go",
+   "topic": "Describe a bicycle/motorcycle/car trip you would like to go on",
    "qs": [
     "Why do people enjoy road trips?",
     "Is it better to travel by car or by train?",
@@ -190,7 +190,7 @@
   },
   {
    "no": 18,
-   "topic": "Describe a time when you organized a happy event successfully",
+   "topic": "Describe a time when you organised a happy event successfully",
    "qs": [
     "What makes an event successful?",
     "Why do people enjoy surprise parties?",
@@ -269,7 +269,7 @@
    "no": 26,
    "topic": "Describe a movie you watched and enjoyed recently",
    "qs": [
-    "Why are superhero movies so popular?",
+    "What kinds of films are most popular in Korea?",
     "Do people prefer watching films at home or at the cinema?",
     "Should films always teach a lesson?",
     "How have movies changed over the years?",
@@ -293,7 +293,7 @@
    "qs": [
     "Why do people admire famous people?",
     "Are celebrities good role models for young people?",
-    "What questions would people like to ask celebrities?",
+    "Why do people want to meet famous people?",
     "Do famous people have a responsibility to society?",
     "How has social media changed fame?"
    ]
@@ -482,7 +482,7 @@
     "Why do people enjoy watching videos online?",
     "Are online videos a good way to learn?",
     "Do people believe everything they see in videos?",
-    "Should children watch videos about animals and nature?",
+    "Should parents control what kinds of videos their children watch?",
     "How has YouTube changed entertainment?"
    ]
   },
@@ -521,7 +521,7 @@
   },
   {
    "no": 49,
-   "topic": "Describe a person you know who would like to choose a career in the medical field",
+   "topic": "Describe a person you know who has chosen a career in the medical field",
    "qs": [
     "Why do people want to work in medicine?",
     "Should doctors be paid more?",
@@ -547,7 +547,7 @@
    "qs": [
     "Why do people eat special food on special days?",
     "Are traditional foods still important?",
-    "Has Korean food culture changed?",
+    "How has Korean food culture changed in recent years?",
     "Do young people cook traditional food?",
     "Why is food an important part of celebrations?"
    ]
@@ -625,7 +625,7 @@
     "Is it rude not to reply to messages?",
     "Do people expect quick replies nowadays?",
     "Is it better to talk in person or send messages?",
-    "How do people solve arguments with friends?",
+    "How do people usually resolve arguments with friends?",
     "Has technology made relationships easier or harder?"
    ]
   },
@@ -653,7 +653,7 @@
   },
   {
    "no": 61,
-   "topic": "Describe a time when you changed an important opinion of yours",
+   "topic": "Describe a time when you changed your opinion about something important",
    "qs": [
     "Why do people change their opinions?",
     "Is it good to change your mind?",
@@ -730,7 +730,7 @@
   },
   {
    "no": 68,
-   "topic": "Describe a time when you read or heard something that you thought was not true.",
+   "topic": "Describe a time when you read or heard something that you thought was not true",
    "qs": [
     "Why do people believe false information?",
     "How can people check if news is true?",
@@ -741,7 +741,7 @@
   },
   {
    "no": 69,
-   "topic": "Describe a person you know who is very competitive.",
+   "topic": "Describe a person you know who is very competitive",
    "qs": [
     "Is competition good for children?",
     "Are people more competitive than before?",
@@ -754,21 +754,21 @@
    "no": 70,
    "topic": "Describe a course that impressed you a lot",
    "qs": [
-    "What can we learn from history?",
-    "What do people need to remember in their daily lives?",
-    "Can technology help people remember things better? How?",
-    "Which can help people remember things better, words or photos?",
-    "Do people like things of memorial significance?",
-    "Why do some people have a better memory than others?"
+    "What kinds of courses are popular with adults in Korea?",
+    "Is it better to take a course online or in a classroom?",
+    "How has technology changed the way people take courses?",
+    "What makes a course interesting for students?",
+    "Should employers pay for their staff to take courses?",
+    "Why do some people keep taking courses after they finish their education?"
    ]
   },
   {
    "no": 71,
    "topic": "Describe a time when someone talked about something you were not interested in but you kept listening",
    "qs": [
-    "How can we tell if a listener is listening carefully?",
-    "What would happen if the listener didn’t listen carefully?",
-    "What kind of topics do young people like to talk about today?",
+    "How can you tell whether someone is really listening to you?",
+    "What can happen when people don't listen carefully?",
+    "What kinds of topics do young people like to talk about today?",
     "Is it rude to stop someone who is talking about something boring?",
     "Why are some people better listeners than others?"
    ]
@@ -779,7 +779,7 @@
    "qs": [
     "Some people don't mind others walking into their shot when they're taking photos. What do you think?",
     "Why do tourists like taking photos while they are travelling?",
-    "Do you think it’s ok to take photos everywhere?",
+    "Is it acceptable to take photos anywhere?",
     "What kind of photos do people often take?",
     "Why are some people keen on taking photos?"
    ]
@@ -788,7 +788,7 @@
    "no": 73,
    "topic": "Describe a new skill you learned when you were a child",
    "qs": [
-    "Is it important for everyone to have a specialized skill?",
+    "Is it important for everyone to have a specialised skill?",
     "Can a child learn skills from another child?",
     "Do you think it is easier for children to learn new skills than for adults?",
     "What are the differences between the way adults learn and the way children learn?",
@@ -802,7 +802,7 @@
    "qs": [
     "What kind of things do people usually save money for?",
     "Is it easier to spend money or save money?",
-    "Do you think it is easier to teach teenagers how to manage money when they are around 16 or 17 years old?",
+    "At what age should young people learn how to manage money?",
     "Should parents teach their children to spend money freely or to save money?",
     "Should schools teach children how to manage money from a young age?"
    ]
@@ -811,8 +811,8 @@
    "no": 75,
    "topic": "Describe a natural place in your city that you enjoy visiting",
    "qs": [
-    "Do you think staying in a natural place would help change people’s mood?",
-    "Do you think there should be many natural places in cities?",
+    "Can spending time in nature improve people's mood?",
+    "Should cities have more natural spaces?",
     "Why do people like to spend time in nature?",
     "Should children spend more time outdoors?",
     "How can cities protect natural areas?"
@@ -820,14 +820,14 @@
   },
   {
    "no": 76,
-   "topic": "Describe a person you know who is very organized",
+   "topic": "Describe a person you know who is very organised",
    "qs": [
-    "Do you think it is important for managers to be well organized?",
-    "Should parents teach their children to be organized?",
-    "What can people do to become more organized?",
-    "Are organized people more likely to be successful at work or in their studies?",
-    "Do you think children should learn to be organized from a young age?",
-    "Why is it important for people to be organized?"
+    "Is it important for managers to be well organised?",
+    "Should parents teach their children to be organised?",
+    "What can people do to become more organised?",
+    "Are organised people more likely to be successful at work or in their studies?",
+    "Has technology made it easier for people to stay organised?",
+    "Why is it important for people to be organised?"
    ]
   },
   {
@@ -858,8 +858,8 @@
    "qs": [
     "Can consumption drive economic growth?",
     "What are the advantages and disadvantages of shopping online?",
-    "What are the differences between online shopping and in-store shopping?",
-    "Why do some people not like shopping in small shops?",
+    "Why do some people still prefer shopping in physical stores?",
+    "Why is good customer service important for shops?",
     "What are the advantages and disadvantages of shopping in small shops?",
     "Why are shopping malls so popular in Korea?"
    ]
@@ -868,22 +868,22 @@
    "no": 80,
    "topic": "Describe someone who is older than you that you admire",
    "qs": [
-    "What do old people usually do in their daily life?",
+    "What do older people usually do in their daily lives?",
     "Why is there a generation gap between the young and the old?",
-    "Has old people's life quality improved when compared to the past?",
+    "Has the quality of life for older people improved compared with the past?",
     "What can young and old people learn from each other?",
-    "What can young people learn from older people?"
+    "Do young people tend to admire older people or people their own age?"
    ]
   },
   {
    "no": 81,
    "topic": "Describe a noisy place you have been to",
    "qs": [
-    "How can people consider others' feelings when chatting in public?",
-    "How would people usually respond to noises in your country?",
-    "Which area is exposed to noise more, the city or the countryside?",
-    "What kinds of noises are there in our life?",
-    "Should children not be allowed to make noise under any circumstances?",
+    "How can people be considerate of others when talking in public?",
+    "How do people in Korea usually react to noise in public places?",
+    "Which is noisier, the city or the countryside?",
+    "What kinds of noise do people have to deal with in everyday life?",
+    "Should children be allowed to make noise in public places?",
     "Do you think it is good for children to make noise?"
    ]
   },
@@ -893,7 +893,7 @@
    "qs": [
     "Why do some people not trust experts?",
     "At what age do children start to have their own opinions?",
-    "Is it better to share a lot of opinions or to keep them short?",
+    "Why do some people express their opinions more strongly than others?",
     "Should people always say what they think?",
     "How can people disagree politely?"
    ]
@@ -902,8 +902,8 @@
    "no": 83,
    "topic": "Describe a time when you had some free time",
    "qs": [
-    "Do you like spending free time in nature? Why?",
-    "Why does nature help people relieve stress?",
+    "Is it better to spend free time indoors or outdoors?",
+    "Why does being in nature help people relieve stress?",
     "Should public parks be free?",
     "Do people have less free time than before?",
     "How do people in Korea usually spend their free time?"
@@ -1101,7 +1101,7 @@
    "topic": "Describe a time when you travelled with an old person",
    "qs": [
     "Do older people like travelling?",
-    "What problems do old people face when travelling?",
+    "What problems do older people face when travelling?",
     "Is it good for different generations to travel together?",
     "How can travel be made easier for older people?",
     "Do young people prefer to travel with friends or family?"

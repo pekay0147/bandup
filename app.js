@@ -954,10 +954,10 @@ function renderP2X(app){
 function renderP3(app){
   const t=el("div","focus p3tips"); t.append(el("b",null,"Part 3 답변 요령"));
   const ol=el("ol","steps4");
-  for(const [n,k,ex] of [["1","명확한 대답","Yes, I think…"],["2","근거","That's because…"],["3","예시","For example, …"],["4","다시 한 번 정리","So that's why…"]]){ const li=el("li"); li.append(el("b",null,`${n}. ${k}`), el("span",null,ex)); ol.append(li); }
+  for(const [n,k,ex] of [["1","명확한 대답","I think… / In my view, …"],["2","근거","That's because…"],["3","예시","For example, …"],["4","마무리","So that's why…"]]){ const li=el("li"); li.append(el("b",null,`${n}. ${k}`), el("span",null,ex)); ol.append(li); }
   t.append(ol); app.append(t);
   if(!P3) return;
-  const inp=el("input"); inp.type="search"; inp.placeholder="주제 검색 (예: friend, 옥스포드, technology)"; inp.setAttribute("aria-label","Part 3 주제 검색"); inp.className="p3search";
+  const inp=el("input"); inp.type="search"; inp.placeholder="주제 검색 (예: friend, technology)"; inp.setAttribute("aria-label","Part 3 주제 검색"); inp.className="p3search";
   const cnt=el("p","muted small",`Part 2 주제 ${P3.items.length}개 · 주제마다 심화 질문`);
   const apply=()=>{ const q=inp.value.trim().toLowerCase(); let n=0; document.querySelectorAll(".p3sec").forEach(c=>{ const ok=!q||c.dataset.search.includes(q); c.hidden=!ok; if(ok) n++; }); cnt.textContent=`${n}개 주제`; };
   inp.addEventListener("input",e=>{ if(e.isComposing) return; apply(); }); inp.addEventListener("compositionend",apply);
@@ -979,7 +979,7 @@ function renderP2(app){
   }
   if(!P2){ const e=el("div","empty"); e.append(el("p",null,"Part 2 자료를 불러오지 못했어요. 인터넷 연결을 확인해 주세요.")); app.append(e); return; }
   const tools=el("div","p2tools");
-  const inp=el("input"); inp.id="p2search"; inp.type="search"; inp.placeholder="주제 검색 (예: friend, 옥스포드, technology)"; inp.value=p2Query; inp.setAttribute("aria-label","Part 2 주제 검색");
+  const inp=el("input"); inp.id="p2search"; inp.type="search"; inp.placeholder="주제 검색 (예: friend, technology)"; inp.value=p2Query; inp.setAttribute("aria-label","Part 2 주제 검색");
   // filter in place (no full re-render), so typing Korean on a phone keeps working
   const applyFilter=()=>{ p2Query=inp.value; const q=p2Query.trim().toLowerCase(); let n=0;
     document.querySelectorAll(".idea[data-search]").forEach(c=>{ const ok=!q || c.dataset.search.includes(q); c.hidden=!ok; if(ok) n++; });

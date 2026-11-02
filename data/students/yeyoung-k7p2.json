@@ -73,7 +73,7 @@
   "동사·시제": "진행형은 be + -ing, 과거 질문엔 과거형, 부정은 don't / doesn't.",
   "문장 구조": "한 문장에 동사는 하나! need to / have to 뒤에는 동사, 명사는 바로 need / have.",
   "관사·전치사": "처음 말하는 집은 a house, 바다는 the beach. go on holiday, on a rainy day.",
-  "품사": "be 뒤에는 형용사: confident, dead, scary, active.",
+  "품사": "be 뒤에는 형용사: confident, dead, scary. 명사를 꾸밀 때도 형용사: active sports.",
   "단어 선택": "한국어를 그대로 옮기지 말고 영어에서 쓰는 짝꿍 표현으로.",
   "발음·철자": "walk(r 소리 없음) / work(r 소리). 철자는 소리 내어 한 번 더."
  },
@@ -95,7 +95,7 @@
   ],
   [
    "scare / scared / scary",
-   "<em>scared</em> 무서운 감정 · <em>scary</em> 무서운 대상"
+   "<em>scare</em> 동사 (겁주다) · <em>scared</em> 무서워하는 감정 · <em>scary</em> 무서운 대상"
   ],
   [
    "ago / for / in",
@@ -130,7 +130,7 @@
    "ko": "우리 집 근처에 공원이 많아요.",
    "en": "There are many parks near my house.",
    "mine": "There are many park near my house.",
-   "gram": "<em>many</em> 뒤에는 복수형: park → <em>parks</em>. 복수니까 there <em>are</em>.<br><b>near vs nearby</b> · <em>near</em>는 뒤에 장소가 와요: near my house. <em>nearby</em>는 혼자 쓰거나 명사 앞에: There's a park <em>nearby</em>. / a <em>nearby</em> park. <em>nearby my house</em>는 틀려요.<br><b>더 자세히</b> · <em>which</em>로 설명을 덧붙여요: There's a park nearby, <em>which is a minute walk</em> from my house.",
+   "gram": "<em>many</em> 뒤에는 복수형: park → <em>parks</em>. 복수니까 there <em>are</em>.<br><b>near vs nearby</b> · <em>near</em>는 뒤에 장소가 와요: near my house. <em>nearby</em>는 혼자 쓰거나 명사 앞에: There's a park <em>nearby</em>. / a <em>nearby</em> park. <em>nearby my house</em>는 틀려요.<br><b>더 자세히</b> · <em>which</em>로 설명을 덧붙여요: There's a park nearby, <em>which is a one-minute walk</em> from my house.",
    "hint": "near"
   },
   {
@@ -274,7 +274,7 @@
    "ko": "지난달에 요가를 시작했어요.",
    "en": "I started yoga last month.",
    "mine": "I'm start yoga last month.",
-   "gram": "last month(지난달)이니까 과거형 <em>started</em>. I'm start처럼 be동사를 붙이지 않아요.<br><b>be동사 + 동사원형 ❌</b> · I'm start / I'm go처럼 섞지 않기. 과거는 <em>I started</em>, 지금 하는 중이면 <em>I'm starting</em>.",
+   "gram": "last month(지난달)이니까 과거형 <em>started</em>. I'm start처럼 be동사를 붙이지 않아요.<br><b>be동사 + 동사원형 ❌</b> · I'm start / I'm go처럼 섞지 않기. 과거는 <em>I started</em>, 지금 막 시작하는 참이면 <em>I'm starting</em>.",
    "hint": "yoga"
   },
   {
@@ -325,10 +325,10 @@
     4
    ],
    "ko": "저는 회사에서 맡은 책임이 있어요.",
-   "en": "I have responsibility at work.",
+   "en": "I have responsibilities at work.",
    "mine": "I have to responsibility at work.",
-   "gram": "have to 뒤에는 동사! 명사(책임)를 가졌다고 할 땐 <em>have responsibility</em>.<br><b>have vs have to</b> · have + 명사: I <em>have</em> many responsibilities. / have to + 동사: I <em>have to</em> manage the team.",
-   "hint": "responsibility"
+   "gram": "have to 뒤에는 동사! 명사(책임)를 가졌다고 할 땐 <em>have responsibilities</em>.<br><b>have vs have to</b> · have + 명사: I <em>have</em> many responsibilities. / have to + 동사: I <em>have to</em> manage the team.",
+   "hint": "responsibilities"
   },
   {
    "id": "m19",
@@ -394,7 +394,7 @@
    "ko": "저는 활동적인 스포츠를 좋아해요.",
    "en": "I like active sports.",
    "mine": "I like activity sports.",
-   "gram": "sports를 꾸미는 건 형용사 <em>active</em>. activity는 명사라 앞에서 꾸밀 수 없어요.",
+   "gram": "sports를 꾸미는 건 형용사 <em>active</em>. activity sports라고는 하지 않아요. 활동적인 = 형용사 active.",
    "hint": "sports"
   },
   {
@@ -432,7 +432,7 @@
    "sessions": [
     6
    ],
-   "ko": "식당에 예약했어요.",
+   "ko": "그 식당에 예약했어요.",
    "en": "I made a reservation at the restaurant.",
    "mine": "I made a reserve at the restaurant.",
    "gram": "reserve는 동사, <em>reservation</em>은 명사. make a reservation이 짝꿍 표현.",
@@ -490,7 +490,7 @@
    "ko": "저는 매년 여름 여행을 가요.",
    "en": "I go travelling every summer.",
    "mine": "I go to travel every summer.",
-   "gram": "go + -ing = ~하러 가다: <em>go travelling</em>, go shopping. go to travel은 어색해요.<br><b>go on vs go -ing</b> · 휴가·여행은 <em>go on</em> holiday / <em>go on</em> a trip, 활동은 <em>go</em> travelling / <em>go</em> sightseeing.",
+   "gram": "go + -ing = ~하러 가다: <em>go travelling</em>, go shopping. go to travel은 어색해요.<br><b>go on vs go -ing</b> · 명사 앞엔 <em>go on</em>: go on holiday / go on a trip. -ing 앞엔 <em>go</em>만: go travelling / go sightseeing.",
    "hint": "summer"
   },
   {
@@ -501,7 +501,7 @@
     8
    ],
    "ko": "저는 버스를 타고 출근해요.",
-   "en": "I take a bus to go to work.",
+   "en": "I take the bus to work.",
    "mine": "I use a bus to go to work.",
    "gram": "교통수단은 use가 아니라 <em>take</em>: take a bus, take the subway.<br><b>더 자연스럽게</b> · I go to work <em>by bus</em>. / I <em>take the bus</em> to work. 걸어가면 I walk to work.",
    "example": true,
@@ -514,7 +514,7 @@
    "sessions": [
     9
    ],
-   "ko": "그것에 대해 많은 사람들과 이야기했어요.",
+   "ko": "그 일에 대해 많은 사람들과 이야기했어요.",
    "en": "I talked with many people about it.",
    "mine": "I talked many people about it.",
    "gram": "사람과 이야기할 땐 <em>talk with/to</em> + 사람. 주제는 about으로.<br><b>talk about vs talk with</b> · talk <em>about</em> + 주제: talk about the trip. / talk <em>with</em> + 사람: talk with my friend. talk about many people은 '많은 사람에 대해' 이야기한 거예요.",
@@ -531,7 +531,7 @@
    "ko": "그녀가 저에게 그 이야기를 해 줬어요.",
    "en": "She told me the story.",
    "mine": "She said me the story.",
-   "gram": "say는 사람이 바로 못 와요. 사람에게 말해 줄 땐 <em>tell + 사람</em> + 내용.<br><b>say · tell · talk · speak</b> · <em>say</em> + 말: She said hello. / <em>tell</em> + 사람: She told me. / <em>talk</em> + about·with: We talked about it. / <em>speak</em> + 언어: I speak English.",
+   "gram": "say 뒤에는 사람이 바로 못 와요. 사람에게 말해 줄 땐 <em>tell + 사람</em> + 내용.<br><b>say · tell · talk · speak</b> · <em>say</em> + 말: She said hello. / <em>tell</em> + 사람: She told me. / <em>talk</em> + about·with: We talked about it. / <em>speak</em> + 언어: I speak English.",
    "example": true,
    "hint": "story"
   },
@@ -543,7 +543,7 @@
     6,
     7
    ],
-   "ko": "'걷다'와 '일하다'를 발음을 구분해서 말해 보세요.",
+   "ko": "'걷다'와 '일하다'의 발음을 구분해서 말해 보세요.",
    "en": "walk (r 소리 없음) / work (r 소리)",
    "mine": "walk / work",
    "gram": "walk는 l이 소리 나지 않고 '워-크', work는 혀를 굴려 r 소리를 내요.",
@@ -688,7 +688,7 @@
    "sessions": [
     9
    ],
-   "ko": "그 방법이 만능해결책은 아니야",
+   "ko": "그 방법이 만능 해결책은 아니야",
    "en": "It's not a magic bullet.",
    "hint": "bullet",
    "gram": "<em>magic bullet</em> = 만능 해결책. 보통 부정문으로 써요: It's not a magic bullet."
@@ -701,7 +701,7 @@
     9
    ],
    "ko": "그는 처음에 좀 깐깐한 인상을 줬어",
-   "en": "He came across as strict at first.",
+   "en": "He came across as a bit strict at first.",
    "hint": "across",
    "gram": "<em>come across as</em> + 형용사 = ~한 인상을 주다."
   },
@@ -724,7 +724,7 @@
    "sessions": [
     9
    ],
-   "ko": "여행이 계획대로 되지 않았어",
+   "ko": "일이 계획대로 되지 않았어",
    "en": "Things didn't go to plan.",
    "hint": "plan",
    "gram": "<em>go to plan</em> = 계획대로 되다. 보통 didn't go to plan으로 많이 써요."
@@ -808,7 +808,7 @@
    "sessions": [
     10
    ],
-   "ko": "내가 말했던 것처럼, 나는 바다를 더 좋아해",
+   "ko": "내가 말했듯이, 나는 바다를 더 좋아해",
    "en": "As I said, I prefer the beach.",
    "hint": "As",
    "gram": "문장 앞 <em>As</em> = ~처럼, ~듯이. As I said / As usual."
@@ -925,7 +925,7 @@
    "ko": "6개월 전에 하와이에 갔어요.",
    "en": "I went to Hawaii six months ago.",
    "mine": "in 6 months · 하와이",
-   "gram": "<em>ago</em> 전에 · <em>for</em> 6 months 동안 · <em>in</em> 6 months 후에. 모르는 단어도 영어로: Hawaii.",
+   "gram": "6 months <em>ago</em> 전에 · <em>for</em> 6 months 동안 · <em>in</em> 6 months 후에. 모르는 단어도 영어로: Hawaii.",
    "hint": "Hawaii"
   },
   {

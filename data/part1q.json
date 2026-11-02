@@ -45,7 +45,7 @@
     ],
     [
      "full-time",
-     "정규직의",
+     "풀타임의, 전일제의",
      ""
     ],
     [
@@ -55,7 +55,7 @@
     ],
     [
      "nine-to-five job",
-     "평범한 사무직(9시 출근 6시 퇴근)",
+     "정해진 시간에 일하는 평범한 직장(9시~5시)",
      ""
     ],
     [
@@ -304,8 +304,8 @@
      ""
     ],
     [
-     "salary work",
-     "고정 월급제 일",
+     "salaried job",
+     "월급을 받는 직장",
      ""
     ]
    ]
@@ -343,7 +343,7 @@
     ],
     [
      "brush up on",
-     "다시 공부하다",
+     "(실력을) 다시 다듬다",
      "I'm brushing up on my English."
     ],
     [
@@ -497,11 +497,6 @@
      ""
     ],
     [
-     "lifeblood",
-     "생명줄, 가장 중요한 것",
-     ""
-    ],
-    [
      "command",
      "(언어) 구사 능력",
      ""
@@ -532,18 +527,13 @@
      ""
     ],
     [
-     "cultures",
+     "culture",
      "문화",
      ""
     ],
     [
      "classroom",
      "교실",
-     ""
-    ],
-    [
-     "enroll",
-     "등록하다",
      ""
     ],
     [
@@ -565,7 +555,7 @@
    ],
    "vocab": [
     [
-     "cozy",
+     "cosy",
      "아늑한",
      ""
     ],
@@ -576,7 +566,7 @@
     ],
     [
      "move in / move out",
-     "이사오다, 가다",
+     "이사 들어오다 / 이사 나가다",
      ""
     ],
     [
@@ -585,13 +575,8 @@
      ""
     ],
     [
-     "neighborhood",
-     "동네",
-     ""
-    ],
-    [
      "bustling",
-     "붐비는",
+     "북적거리는, 활기 넘치는",
      ""
     ],
     [
@@ -602,11 +587,6 @@
     [
      "suburban",
      "교외의",
-     ""
-    ],
-    [
-     "well-furnished",
-     "가구가 잘 갖춰진",
      ""
     ],
     [
@@ -621,7 +601,7 @@
     ],
     [
      "have easy access to",
-     "접근이 쉬운",
+     "~에 쉽게 갈 수 있다",
      ""
     ],
     [
@@ -753,18 +733,13 @@
    ],
    "vocab": [
     [
-     "cozy",
-     "아늑한",
-     ""
-    ],
-    [
      "cramped",
      "비좁은",
      ""
     ],
     [
      "move in / move out",
-     "이사오다, 가다",
+     "이사 들어오다 / 이사 나가다",
      ""
     ],
     [
@@ -773,13 +748,13 @@
      ""
     ],
     [
-     "neighborhood",
+     "neighbourhood",
      "동네",
      ""
     ],
     [
      "bustling",
-     "붐비는",
+     "북적거리는, 활기 넘치는",
      ""
     ],
     [
@@ -809,7 +784,7 @@
     ],
     [
      "have easy access to",
-     "접근이 쉬운",
+     "~에 쉽게 갈 수 있다",
      ""
     ],
     [
@@ -1162,11 +1137,6 @@
      ""
     ],
     [
-     "transfer",
-     "환승하다",
-     ""
-    ],
-    [
      "rush hour",
      "출퇴근 시간대",
      ""
@@ -1188,12 +1158,12 @@
     ],
     [
      "within walking distance",
-     "도보거리에 있는",
+     "도보 거리에 있는",
      ""
     ],
     [
      "accessible",
-     "접근성이 용이한",
+     "접근하기 쉬운, 이용하기 편한",
      ""
     ],
     [
@@ -1204,16 +1174,6 @@
     [
      "on foot",
      "걸어서",
-     ""
-    ],
-    [
-     "pull over",
-     "차를 길에 세우다",
-     ""
-    ],
-    [
-     "run every 10 minutes",
-     "10 분 간격으로",
      ""
     ],
     [
@@ -1360,7 +1320,7 @@
     ],
     [
      "low-key",
-     "조용히, 소박하게",
+     "조용한, 소박한",
      "I prefer a low-key birthday."
     ],
     [
@@ -1461,21 +1421,6 @@
      "This song brings back memories."
     ],
     [
-     "slip my mind",
-     "깜빡하다",
-     "It completely slipped my mind."
-    ],
-    [
-     "forgetful",
-     "잘 잊어버리는",
-     "I'm a bit forgetful."
-    ],
-    [
-     "jot down",
-     "적어 두다",
-     "I jot down important dates."
-    ],
-    [
      "used to",
      "~하곤 했다",
      "I used to play in the park every day."
@@ -1568,7 +1513,7 @@
      ""
     ],
     [
-     "colorful",
+     "colourful",
      "색이 다채로운",
      ""
     ],
@@ -1589,17 +1534,17 @@
     ],
     [
      "splash out on",
-     "탕진하다",
+     "~에 (큰맘 먹고) 돈을 쓰다",
      ""
     ],
     [
      "try on",
-     "입어보다",
+     "입어 보다",
      ""
     ],
     [
      "keep up with fashion trends",
-     "트랜드를 따라가다",
+     "유행을 따라가다",
      ""
     ],
     [
@@ -1608,8 +1553,8 @@
      ""
     ],
     [
-     "suit/fit someone",
-     "잘 어울리다",
+     "suit / fit someone",
+     "잘 어울리다 / (치수가) 잘 맞다",
      ""
     ],
     [
@@ -1629,7 +1574,7 @@
     ],
     [
      "reasonably priced",
-     "합리적으로 가격이 매겨진",
+     "가격이 적당한",
      ""
     ],
     [
@@ -1670,7 +1615,7 @@
     [
      "traditional clothes",
      "전통 의상",
-     "We wear hanbok on Chuseok."
+     "We wear traditional clothes like hanbok on Chuseok."
     ],
     [
      "outfit",
@@ -1823,11 +1768,6 @@
      ""
     ],
     [
-     "haute",
-     "고급의",
-     ""
-    ],
-    [
      "prêt-à-porter",
      "기성복",
      ""
@@ -1863,11 +1803,11 @@
    "en": "Computers",
    "ko": "컴퓨터",
    "qs": [
-    "Would you like to use a computer or tablet?",
-    "In what conditions would you use a computer or tablet?",
-    "When was the first time you used a computer or tablet?",
+    "Do you prefer using a computer or a tablet?",
+    "In what situations would you use a computer or a tablet?",
+    "When was the first time you used a computer or a tablet?",
     "What would your life be like without computers or tablets?",
-    "In what conditions would it be difficult for you to use a computer or tablet?",
+    "In what situations would it be difficult for you to use a computer or a tablet?",
     "How often do you use a computer?",
     "What do you usually use it for?",
     "When did you first start using a computer?",
@@ -1891,7 +1831,7 @@
     ],
     [
      "cutting-edge",
-     "최첨단 기술",
+     "최첨단의",
      ""
     ],
     [
@@ -1916,17 +1856,17 @@
     ],
     [
      "browse the internet",
-     "인터넷을 브라우징하다",
+     "인터넷 서핑을 하다",
      ""
     ],
     [
-     "scroll through the internet",
+     "scroll through social media",
      "인터넷을 스크롤하다",
      ""
     ],
     [
      "keep in touch with",
-     "~와 연락을 하다",
+     "~와 연락하고 지내다",
      ""
     ],
     [
@@ -1941,7 +1881,7 @@
     ],
     [
      "at my fingertips",
-     "간편하게",
+     "손쉽게 이용할 수 있는",
      ""
     ],
     [
@@ -2047,18 +1987,13 @@
      ""
     ],
     [
-     "night owl",
-     "밤형 인간",
-     ""
-    ],
-    [
      "stick to",
      "고수하다",
      ""
     ],
     [
      "sleep in",
-     "늦잠자다",
+     "늦잠 자다",
      ""
     ],
     [
@@ -2088,17 +2023,12 @@
     ],
     [
      "procrastinate",
-     "미루는",
+     "(할 일을) 미루다",
      ""
     ],
     [
      "the daily grind",
      "반복되는 일상",
-     ""
-    ],
-    [
-     "geek",
-     "(어떤 분야의) 광팬, 덕후",
      ""
     ],
     [
@@ -2118,7 +2048,7 @@
     ],
     [
      "a night owl",
-     "저녁형 인간",
+     "올빼미형 인간(밤에 활동적인 사람)",
      "My brother is a night owl."
     ],
     [
@@ -2300,7 +2230,7 @@
     ],
     [
      "time-consuming",
-     "시간이 걸리는",
+     "시간이 많이 걸리는",
      ""
     ],
     [
@@ -2560,18 +2490,13 @@
      ""
     ],
     [
-     "night owl",
-     "밤형 인간",
-     ""
-    ],
-    [
      "stick to",
      "고수하다",
      ""
     ],
     [
      "sleep in",
-     "늦잠자다",
+     "늦잠 자다",
      ""
     ],
     [
@@ -2601,17 +2526,12 @@
     ],
     [
      "procrastinate",
-     "미루는",
+     "(할 일을) 미루다",
      ""
     ],
     [
      "the daily grind",
      "반복되는 일상",
-     ""
-    ],
-    [
-     "geek",
-     "(어떤 분야의) 광팬, 덕후",
      ""
     ],
     [
@@ -2641,8 +2561,8 @@
     ],
     [
      "a night owl",
-     "저녁형 인간",
-     "I'm a night owl, so I'm busy in the evening."
+     "올빼미형 인간(밤에 활동적인 사람)",
+     "I'm a night owl, so I'm most productive in the evening."
     ],
     [
      "relax",
@@ -2696,7 +2616,7 @@
     ],
     [
      "night out",
-     "밤 외출",
+     "밤에 나가 노는 것",
      ""
     ],
     [
@@ -2763,7 +2683,7 @@
     ],
     [
      "get along with",
-     "~와 잘 어울리다",
+     "~와 잘 지내다",
      ""
     ],
     [
@@ -2774,11 +2694,6 @@
     [
      "hang out with",
      "~와 어울려 놀다",
-     ""
-    ],
-    [
-     "take after someone",
-     "성격/외모 등을 닮다",
      ""
     ],
     [
@@ -2798,7 +2713,7 @@
     ],
     [
      "friendly",
-     "친절한",
+     "다정한, 친근한",
      ""
     ],
     [
@@ -2823,27 +2738,27 @@
     ],
     [
      "moody",
-     "기분파인",
+     "기분 변화가 심한",
      ""
     ],
     [
      "bossy",
-     "권위적으로 구는",
+     "이래라저래라 하는, 대장 노릇 하는",
      ""
     ],
     [
-     "self-centered",
+     "self-centred",
      "자기 중심적인",
      ""
     ],
     [
      "stubborn",
-     "고집이 쌘",
+     "고집이 센",
      ""
     ],
     [
      "punctual",
-     "시간엄수를 잘하는",
+     "시간을 잘 지키는",
      ""
     ],
     [
@@ -2899,11 +2814,6 @@
     [
      "extended family",
      "대가족",
-     ""
-    ],
-    [
-     "only child",
-     "외동",
      ""
     ],
     [
@@ -3174,11 +3084,6 @@
      "I go hiking for some fresh air."
     ],
     [
-     "recycle",
-     "재활용하다",
-     "We recycle plastic and paper."
-    ],
-    [
      "bouquet",
      "꽃다발",
      ""
@@ -3205,7 +3110,7 @@
     ],
     [
      "houseplant",
-     "실내 화분",
+     "실내 식물",
      ""
     ],
     [
@@ -3220,11 +3125,11 @@
     ],
     [
      "colourful",
-     "화려한",
+     "색이 다채로운, 알록달록한",
      ""
     ],
     [
-     "symbolize",
+     "symbolise",
      "상징하다",
      ""
     ],
@@ -3291,7 +3196,7 @@
    ],
    "vocab": [
     [
-     "flavorful",
+     "flavourful",
      "맛이 풍부한",
      ""
     ],
@@ -3312,12 +3217,12 @@
     ],
     [
      "savoury",
-     "감칠맛 나는",
+     "짭짤한, 감칠맛 나는",
      ""
     ],
     [
      "rich",
-     "풍부한",
+     "(맛이) 진한, 깊은",
      ""
     ],
     [
@@ -3373,7 +3278,7 @@
     [
      "a balanced diet",
      "균형 잡힌 식단",
-     "I try to keep a balanced diet."
+     "I try to eat a balanced diet."
     ],
     [
      "grab a bite",
@@ -3536,7 +3441,7 @@
      ""
     ],
     [
-     "savor",
+     "savour",
      "음미하다",
      ""
     ],
@@ -3604,7 +3509,7 @@
     ],
     [
      "night out",
-     "저녁 외출",
+     "밤에 나가 노는 것",
      "We had a great night out."
     ],
     [
@@ -3643,7 +3548,7 @@
      ""
     ],
     [
-     "socialize",
+     "socialise",
      "어울리다",
      ""
     ],
@@ -3751,7 +3656,7 @@
     ],
     [
      "little things",
-     "작은 것들",
+     "소소한 것들",
      ""
     ],
     [
@@ -3803,7 +3708,7 @@
    "vocab": [
     [
      "take up",
-     "취미로 삼다",
+     "(취미를) 새로 시작하다",
      ""
     ],
     [
@@ -3817,8 +3722,8 @@
      ""
     ],
     [
-     "crazy about",
-     "좋아하다",
+     "be crazy about",
+     "~에 푹 빠져 있다",
      ""
     ],
     [
@@ -3838,7 +3743,7 @@
     ],
     [
      "time-consuming",
-     "시간이 소모되는",
+     "시간이 많이 드는",
      ""
     ],
     [
@@ -3848,7 +3753,7 @@
     ],
     [
      "quality time",
-     "좋은 시간",
+     "(소중한 사람과의) 알찬 시간",
      ""
     ],
     [
@@ -3945,7 +3850,7 @@
     ],
     [
      "cutting-edge",
-     "최첨단 기술",
+     "최첨단의",
      ""
     ],
     [
@@ -3970,17 +3875,17 @@
     ],
     [
      "browse the internet",
-     "인터넷을 브라우징하다",
+     "인터넷 서핑을 하다",
      ""
     ],
     [
-     "scroll through the internet",
+     "scroll through social media",
      "인터넷을 스크롤하다",
      ""
     ],
     [
      "keep in touch with",
-     "~와 연락을 하다",
+     "~와 연락하고 지내다",
      ""
     ],
     [
@@ -3995,7 +3900,7 @@
     ],
     [
      "at my fingertips",
-     "간편하게",
+     "손쉽게 이용할 수 있는",
      ""
     ],
     [
@@ -4092,12 +3997,12 @@
     ],
     [
      "brush up on",
-     "다시 공부하다",
+     "(실력을) 다시 다듬다",
      "I'm brushing up on my English."
     ],
     [
      "accent",
-     "억양",
+     "말투, 억양(악센트)",
      "I like the British accent."
     ],
     [
@@ -4162,7 +4067,7 @@
     ],
     [
      "second language",
-     "제2외국어",
+     "제2언어",
      ""
     ],
     [
@@ -4189,7 +4094,7 @@
    "vocab": [
     [
      "take up",
-     "취미로 삼다",
+     "(취미를) 새로 시작하다",
      ""
     ],
     [
@@ -4203,8 +4108,8 @@
      ""
     ],
     [
-     "crazy about",
-     "좋아하다",
+     "be crazy about",
+     "~에 푹 빠져 있다",
      ""
     ],
     [
@@ -4224,7 +4129,7 @@
     ],
     [
      "time-consuming",
-     "시간이 소모되는",
+     "시간이 많이 드는",
      ""
     ],
     [
@@ -4234,7 +4139,7 @@
     ],
     [
      "quality time",
-     "좋은 시간",
+     "(소중한 사람과의) 알찬 시간",
      ""
     ],
     [
@@ -4612,7 +4517,7 @@
    ],
    "vocab": [
     [
-     "cozy",
+     "cosy",
      "아늑한",
      ""
     ],
@@ -4623,7 +4528,7 @@
     ],
     [
      "move in / move out",
-     "이사오다, 가다",
+     "이사 들어오다 / 이사 나가다",
      ""
     ],
     [
@@ -4632,13 +4537,8 @@
      ""
     ],
     [
-     "neighborhood",
-     "동네",
-     ""
-    ],
-    [
      "bustling",
-     "붐비는",
+     "북적거리는, 활기 넘치는",
      ""
     ],
     [
@@ -4649,11 +4549,6 @@
     [
      "suburban",
      "교외의",
-     ""
-    ],
-    [
-     "well-furnished",
-     "가구가 잘 갖춰진",
      ""
     ],
     [
@@ -4668,7 +4563,7 @@
     ],
     [
      "have easy access to",
-     "접근이 쉬운",
+     "~에 쉽게 갈 수 있다",
      ""
     ],
     [
@@ -4713,7 +4608,7 @@
     ],
     [
      "friendly",
-     "친절한",
+     "다정한, 친근한",
      ""
     ],
     [
@@ -4875,7 +4770,7 @@
     ],
     [
      "stay informed",
-     "소식을 알고 있다",
+     "최신 소식을 계속 접하다",
      ""
     ],
     [
@@ -5332,7 +5227,7 @@
     ],
     [
      "peace and quiet",
-     "평화와 고요",
+     "조용하고 평온함",
      "I need some peace and quiet to study."
     ],
     [
@@ -5443,11 +5338,6 @@
      "Teachers need to be patient."
     ],
     [
-     "confident",
-     "자신 있는",
-     "I've become more confident."
-    ],
-    [
      "stressed out",
      "스트레스를 많이 받은",
      "I get stressed out before exams."
@@ -5552,7 +5442,7 @@
     [
      "pet owner",
      "반려동물 주인",
-     "More people are pet owners now."
+     "More and more people own pets now."
     ],
     [
      "adopt",
@@ -5571,7 +5461,7 @@
     ],
     [
      "companionship",
-     "동반자 관계, 위안",
+     "곁에 있어 주는 존재, 교감",
      "Pets give people companionship."
     ],
     [
@@ -5722,11 +5612,6 @@
      ""
     ],
     [
-     "bookworm",
-     "책벌레",
-     ""
-    ],
-    [
      "paperback",
      "종이책(문고판)",
      ""
@@ -5739,11 +5624,6 @@
     [
      "library",
      "도서관",
-     ""
-    ],
-    [
-     "bestseller",
-     "베스트셀러",
      ""
     ],
     [
@@ -5926,11 +5806,6 @@
      "I try to get enough sleep."
     ],
     [
-     "under the weather",
-     "몸이 안 좋은",
-     "I'm a bit under the weather today."
-    ],
-    [
      "cut down on",
      "줄이다",
      "I'm cutting down on sugar."
@@ -5982,7 +5857,7 @@
     ],
     [
      "team spirit",
-     "팀 정신",
+     "단결심, 팀워크",
      ""
     ],
     [
@@ -5998,11 +5873,6 @@
     [
      "nutrition",
      "영양",
-     ""
-    ],
-    [
-     "hygiene",
-     "위생",
      ""
     ],
     [
@@ -6161,7 +6031,7 @@
     ],
     [
      "a tear-jerker",
-     "눈물 나는 영화",
+     "눈물샘을 자극하는 작품",
      "That film was a real tear-jerker."
     ],
     [
@@ -6378,12 +6248,12 @@
     ],
     [
      "within walking distance",
-     "도보거리에 있는",
+     "도보 거리에 있는",
      ""
     ],
     [
      "accessible",
-     "접근성이 용이한",
+     "접근하기 쉬운, 이용하기 편한",
      ""
     ],
     [
@@ -6398,12 +6268,12 @@
     ],
     [
      "pull over",
-     "차를 길에 세우다",
+     "차를 길가에 세우다",
      ""
     ],
     [
      "run every 10 minutes",
-     "10 분 간격으로",
+     "10분 간격으로 운행하다",
      ""
     ],
     [
@@ -6424,7 +6294,7 @@
     [
      "take a bus",
      "버스를 타다",
-     "I usually take a bus to work."
+     "I usually take the bus to work."
     ],
     [
      "get around",
@@ -6590,7 +6460,7 @@
    "ko": "물건 모으기",
    "qs": [
     "Where do you usually keep things you need?",
-    "Would you keep old things for a long time? Why?",
+    "Do you keep old things for a long time? Why?",
     "Are there any things you have kept from your childhood?",
     "Do you collect things?"
    ],
@@ -6607,7 +6477,7 @@
     ],
     [
      "sentimental value",
-     "정서적 가치",
+     "추억이 담긴 가치",
      "This toy has sentimental value."
     ],
     [
@@ -6702,16 +6572,16 @@
    "ko": "분실물",
    "qs": [
     "Have you ever lost your keys?",
-    "Will you post on social media if you lose your item?",
+    "Would you post on social media if you lost something?",
     "Have you ever lost things?",
-    "Do you report to the police when finding something lost by others? Why?",
-    "What will you do if you find something lost by others?"
+    "Do you report it to the police when you find something that someone else has lost? Why?",
+    "What would you do if you found something that someone else had lost?"
    ],
    "vocab": [
     [
      "lose track of",
-     "~을 깜빡하다, 놓치다",
-     "I lost track of my keys."
+     "(시간·흐름 등을) 놓치다",
+     "I lost track of time while I was looking for my keys."
     ],
     [
      "misplace",
@@ -6831,8 +6701,8 @@
    "qs": [
     "Are there many street markets in Korea?",
     "When was the last time you went to a street market?",
-    "Do you prefer to go shopping in the shopping mall or at the street market?",
-    "What do people usually buy at the street market?"
+    "Do you prefer shopping in shopping malls or at street markets?",
+    "What do people usually buy at street markets?"
    ],
    "vocab": [
     [
@@ -7054,14 +6924,14 @@
    "en": "Fruit and vegetables",
    "ko": "과일·채소",
    "qs": [
-    "Were there any kinds of fruits and vegetables you disliked as a child?",
-    "What kinds of fruits and vegetables do you dislike?",
+    "Were there any kinds of fruit and vegetables you disliked as a child?",
+    "What kinds of fruit and vegetables do you dislike?",
     "Where do you usually buy fruit and vegetables?",
     "How often do you eat fruit and vegetables?"
    ],
    "vocab": [
     [
-     "flavorful",
+     "flavourful",
      "맛이 풍부한",
      ""
     ],
@@ -7082,12 +6952,12 @@
     ],
     [
      "savoury",
-     "감칠맛 나는",
+     "짭짤한, 감칠맛 나는",
      ""
     ],
     [
      "rich",
-     "풍부한",
+     "(맛이) 진한, 깊은",
      ""
     ],
     [
@@ -7128,7 +6998,7 @@
     [
      "a balanced diet",
      "균형 잡힌 식단",
-     "I try to keep a balanced diet."
+     "I try to eat a balanced diet."
     ],
     [
      "skip meals",
@@ -7203,11 +7073,6 @@
     [
      "picky eater",
      "편식하는 사람",
-     ""
-    ],
-    [
-     "balanced diet",
-     "균형 잡힌 식단",
      ""
     ]
    ]
@@ -7346,23 +7211,18 @@
      ""
     ],
     [
-     "roll eyes",
+     "roll your eyes",
      "눈을 굴리다(무시하는 표정)",
      ""
     ],
     [
-     "cross arms",
+     "cross your arms",
      "팔짱을 끼다",
      ""
     ],
     [
      "stance",
      "서 있는 자세, 입장",
-     ""
-    ],
-    [
-     "gait",
-     "걸음걸이",
      ""
     ],
     [
@@ -7401,11 +7261,6 @@
      ""
     ],
     [
-     "nod off",
-     "꾸벅꾸벅 졸다",
-     ""
-    ],
-    [
      "point",
      "가리키다",
      ""
@@ -7441,12 +7296,12 @@
      ""
     ],
     [
-     "bite lip",
+     "bite your lip",
      "입술을 깨물다",
      ""
     ],
     [
-     "clench fist",
+     "clench your fist",
      "주먹을 쥐다",
      ""
     ],
@@ -7456,12 +7311,12 @@
      ""
     ],
     [
-     "tap fingers",
+     "tap your fingers",
      "손가락으로 톡톡 두드리다",
      ""
     ],
     [
-     "fold hands",
+     "fold your hands",
      "손을 모으다",
      ""
     ]
@@ -7603,7 +7458,7 @@
     ],
     [
      "litter",
-     "쓰레기를 버리다",
+     "(아무 데나) 쓰레기를 버리다",
      "People shouldn't litter in parks."
     ],
     [
@@ -7762,23 +7617,8 @@
      ""
     ],
     [
-     "erosion",
-     "침식",
-     ""
-    ],
-    [
-     "overfishing",
-     "남획",
-     ""
-    ],
-    [
-     "ozone layer",
-     "오존층",
-     ""
-    ],
-    [
      "solar power",
-     "태양열 에너지",
+     "태양광 에너지",
      ""
     ],
     [
@@ -7790,11 +7630,6 @@
      "wildlife",
      "야생 동물",
      ""
-    ],
-    [
-     "afforestation",
-     "조림, 숲 가꾸기",
-     ""
     ]
    ]
   },
@@ -7803,8 +7638,8 @@
    "ko": "여행",
    "qs": [
     "Do you prefer to sit by the window when travelling?",
-    "Did you have a long journey with your family as a child?",
-    "What kind of transportation do you usually use when travelling?",
+    "Did you go on long journeys with your family as a child?",
+    "What kind of transport do you usually use when travelling?",
     "Do you think travelling is important for people?",
     "How has travelling changed compared to the past?",
     "What are the benefits of travelling with family?"
@@ -7842,7 +7677,7 @@
     ],
     [
      "breathtaking view",
-     "숨 막히는 경치",
+     "숨이 멎을 듯 아름다운 경치",
      "The view from the top was breathtaking."
     ],
     [
@@ -7912,7 +7747,7 @@
     ],
     [
      "explore",
-     "탐험하다",
+     "둘러보다, 탐방하다",
      ""
     ],
     [
@@ -7985,7 +7820,7 @@
     ],
     [
      "commercial",
-     "광고(TV)",
+     "(TV·라디오) 광고",
      ""
     ],
     [
@@ -8139,11 +7974,6 @@
      ""
     ],
     [
-     "advertisement placement",
-     "광고 배치",
-     ""
-    ],
-    [
      "advertiser",
      "광고주",
      ""
@@ -8159,7 +7989,7 @@
      ""
     ],
     [
-     "advertisement budget",
+     "advertising budget",
      "광고 예산",
      ""
     ],
@@ -8179,7 +8009,7 @@
      ""
     ],
     [
-     "advertisement medium",
+     "advertising medium",
      "광고 매체",
      ""
     ],
@@ -8221,7 +8051,7 @@
      ""
     ],
     [
-     "colorful",
+     "colourful",
      "색이 다채로운",
      ""
     ],
@@ -8242,17 +8072,17 @@
     ],
     [
      "splash out on",
-     "탕진하다",
+     "~에 (큰맘 먹고) 돈을 쓰다",
      ""
     ],
     [
      "try on",
-     "입어보다",
+     "신어 보다",
      ""
     ],
     [
      "keep up with fashion trends",
-     "트랜드를 따라가다",
+     "유행을 따라가다",
      ""
     ],
     [
@@ -8261,8 +8091,8 @@
      ""
     ],
     [
-     "suit/fit someone",
-     "잘 어울리다",
+     "suit / fit someone",
+     "잘 어울리다 / (치수가) 잘 맞다",
      ""
     ],
     [
@@ -8282,7 +8112,7 @@
     ],
     [
      "reasonably priced",
-     "합리적으로 가격이 매겨진",
+     "가격이 적당한",
      ""
     ],
     [
@@ -8304,11 +8134,6 @@
      "wear out",
      "닳다",
      "My shoes wear out quickly."
-    ],
-    [
-     "trainers / sneakers",
-     "운동화",
-     ""
     ],
     [
      "heels",

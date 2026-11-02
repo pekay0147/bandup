@@ -125,7 +125,7 @@
    "sessions": [
     1
    ],
-   "ko": "우리 고향은 대중교통이 더 좋아지면 발전할 수 있어요.",
+   "ko": "우리 고향은 대중교통이 더 좋아지면 개선될 수 있어요.",
    "en": "My hometown could be improved by having better public transport.",
    "gram": "'개선될 수 있다'는 <em>could be improved</em>. 주어(my hometown)를 꼭 넣고, 방법은 <em>by + -ing</em>로 붙여요. 철자도 improved!",
    "hint": "improved"
@@ -179,7 +179,7 @@
    "ko": "스포츠는 사람들을 하나로 모아줘요.",
    "en": "Sports bring people together.",
    "mine": "It makes people closer each other.",
-   "gram": "closer each other는 어색해요. 사람들을 모은다는 뜻은 <em>bring people together</em>가 자연스러워요.<br><b>같은 뜻 다른 표현</b> · It makes people closer <em>to</em> each other. / Sports can <em>make a connection between</em> people.",
+   "gram": "closer each other는 어색해요. 사람들을 모은다는 뜻은 <em>bring people together</em>가 자연스러워요.<br><b>같은 뜻 다른 표현</b> · It makes people closer <em>to</em> each other. / Sports can <em>create connections between</em> people.",
    "hint": "together"
   },
   {
@@ -191,7 +191,7 @@
    ],
    "ko": "고등학생이었을 때 과학을 좋아했어요.",
    "en": "When I was a high school student, I liked science.",
-   "gram": "사람·신분 앞에는 관사 <em>a</em>가 들어가 줘야 해요: <em>a</em> high school student, <em>a</em> teacher.",
+   "gram": "사람·신분 앞에는 관사 <em>a</em>를 붙여요: <em>a</em> high school student, <em>a</em> teacher.",
    "hint": "student"
   },
   {
@@ -239,7 +239,7 @@
    ],
    "ko": "산책을 하고 나면 재충전되는 느낌이에요.",
    "en": "Going for a walk makes me feel recharged.",
-   "gram": "<em>refreshed</em>가 너무 자주 들려요. 바꿔 쓸 표현: <em>recharged</em>, <em>energised</em>, <em>relaxed</em>, <em>clear-headed</em>.",
+   "gram": "<em>refreshed</em>를 너무 자주 써요. 바꿔 쓸 표현: <em>recharged</em>, <em>energised</em>, <em>relaxed</em>, <em>clear-headed</em>.",
    "hint": "recharged"
   },
   {
@@ -288,9 +288,9 @@
     4
    ],
    "ko": "주말에 음식을 한꺼번에 많이 만들어 둬",
-   "en": "I cook food in batches on weekends.",
+   "en": "I cook in batches on weekends.",
    "hint": "batches",
-   "gram": "<em>batch</em> = 한 번에 만드는 양, 한 묶음. <em>in batches</em> = 여러 번에 나눠 한꺼번에. batch cooking도 자주 써요."
+   "gram": "<em>batch</em> = 한 번에 만드는 양, 한 묶음. <em>cook in batches</em> = 한꺼번에 많이 만들어 두다. batch cooking도 자주 써요."
   },
   {
    "id": "e04",
@@ -301,9 +301,9 @@
     4
    ],
    "ko": "저녁엔 요리하기가 너무 귀찮아",
-   "en": "I cannot be bothered to cook in the evening.",
+   "en": "I can't be bothered to cook in the evening.",
    "hint": "bothered",
-   "gram": "<em>I cannot be bothered to</em> + 동사 = ~하기 귀찮다. What do you hate doing? 질문에 딱이에요."
+   "gram": "<em>I can't be bothered to</em> + 동사 = ~하기 귀찮다. What do you hate doing? 질문에 딱이에요."
   },
   {
    "id": "e05",
@@ -312,7 +312,7 @@
    "sessions": [
     2
    ],
-   "ko": "어릴 때 피아노를 대충 건성으로 배웠어",
+   "ko": "어릴 때 피아노를 건성으로 배웠어",
    "en": "I learnt the piano half-heartedly as a child.",
    "hint": "half-heartedly",
    "gram": "<em>half-heartedly</em> = 건성으로, 마지못해. 반대는 wholeheartedly(진심으로)."
@@ -350,7 +350,7 @@
    "sessions": [
     3
    ],
-   "ko": "시험은 생각보다 괜찮게 봤어",
+   "ko": "시험을 완벽하게 보진 못했지만, 더 못 본 적도 있어",
    "en": "I didn't do perfectly in the exam, but I've done worse.",
    "hint": "done",
    "gram": "<em>I've done worse</em> = 더 못한 적도 있다, 이 정도면 괜찮다."
@@ -387,7 +387,7 @@
     3
    ],
    "ko": "좋은 직업이 여러 개 있지만, 지금 바로 떠오르는 건 인플루언서야",
-   "en": "There are several good jobs, but among them I can think of an influencer off the top of my head.",
+   "en": "There are several good jobs, but among them, being an influencer comes to mind off the top of my head.",
    "hint": "top",
    "gram": "<em>off the top of my head</em> = 바로 떠오르는 대로. among them과 함께 Part 2 서론에 써먹기!"
   },
@@ -446,7 +446,7 @@
    "sessions": [
     5
    ],
-   "ko": "그 친구는 나이에 비해 성숙해",
+   "ko": "내 친구는 나이에 비해 성숙해",
    "en": "My friend is mature for her age.",
    "hint": "mature",
    "gram": "<em>mature</em> = 성숙한. <em>mature for her age</em> = 나이에 비해 성숙한."
@@ -507,9 +507,9 @@
     5
    ],
    "ko": "스포츠는 사람들 사이를 연결해 줄 수 있어",
-   "en": "Sports can make a connection between people.",
-   "hint": "connection",
-   "gram": "<em>make a connection between</em> + 사람들 = ~ 사이를 이어주다. bring people together와 같이 써요."
+   "en": "Sports can create connections between people.",
+   "hint": "connections",
+   "gram": "<em>create connections between</em> + 사람들 = ~ 사이를 이어주다. bring people together와 같이 써요."
   },
   {
    "id": "e22",
@@ -593,7 +593,7 @@
    "ko": "새치기하는 사람들은 정말 짜증 나",
    "en": "People who cut in line really piss me off.",
    "hint": "piss",
-   "gram": "<em>piss someone off</em> = ~를 열받게 하다(구어체). 좀 더 부드럽게는 <em>make me angry</em>."
+   "gram": "<em>piss someone off</em> = ~를 열받게 하다(거친 구어체라 시험에선 피하기). 부드럽게는 <em>make me angry</em>."
   },
   {
    "id": "e29",
@@ -639,7 +639,7 @@
     6
    ],
    "ko": "그 폰은 가볍고, 게다가 배터리도 오래가",
-   "en": "The phone is light, and on top of that, the battery lasts long.",
+   "en": "The phone is light, and on top of that, the battery lasts a long time.",
    "hint": "top",
    "gram": "<em>on top of that</em> = 게다가. 장점을 하나 더 덧붙일 때 쓰는 연결어."
   },
