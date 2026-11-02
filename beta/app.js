@@ -885,7 +885,7 @@ function quoteBox(){
 }
 
 /* ---------- idiom study page ---------- */
-let idMode="list", idState=null, idOpen=new Set();
+let idMode="list", idState=null, idOpen=new Set(), idQuery="";
 function idiomToday(){ const d=new Date(); const dayNo=Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000); return ((dayNo+idiomShift)%IDIOMS.length+IDIOMS.length)%IDIOMS.length; }
 function renderIdioms(app){
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
@@ -895,16 +895,20 @@ function renderIdioms(app){
   app.append(seg);
   const start=view.start!=null? view.start : idiomToday();
   if(idMode==="list"){
+    const sq=el("input","idsearch"); sq.id="idsearch"; sq.type="search"; sq.placeholder="영어나 한국어로 검색 (예: rain, 기회)"; sq.value=idQuery; sq.autocomplete="off"; sq.setAttribute("aria-label","idiom 검색");
+    const none=el("p","muted small idnone","찾는 idiom이 없어요."); none.hidden=true;
+    const filt=()=>{ idQuery=sq.value; const q=sq.value.trim().toLowerCase(); const re= /[a-z]/.test(q)? new RegExp("(^|[^a-z])"+q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")) : null; let n=0; box.querySelectorAll(".idrow").forEach(r=>{ const hit=!q || (re? re.test(r.dataset.k) : r.dataset.k.includes(q)); r.hidden=!hit; if(hit) n++; }); none.hidden=n>0; };
+    sq.oninput=filt; app.append(sq);
     const box=el("div","idlist");
     const order=[start, ...IDIOMS.map((_,i)=>i).filter(i=>i!==start)];
     order.forEach((i,n)=>{ const [en,ko,ex]=IDIOMS[i];
-      const r=el("button","idrow"+(n===0?" today":"")); r.type="button"; const open=idOpen.has(i); r.setAttribute("aria-expanded",String(open));
+      const r=el("button","idrow"+(n===0?" today":"")); r.type="button"; r.dataset.k=(en+" "+ko+" "+ex).toLowerCase(); const open=idOpen.has(i); r.setAttribute("aria-expanded",String(open));
       const t=el("div","idt"); if(n===0) t.append(el("span","idtag","오늘의 idiom")); t.append(el("b",null,en), el("span","idko",ko));
       const exl=el("p","idex",ex); exl.hidden=!open; t.append(exl);
       r.append(t, el("span","idchev",open?"▴":"▾"));
       r.onclick=()=>{ if(idOpen.has(i)) idOpen.delete(i); else idOpen.add(i); exl.hidden=!idOpen.has(i); r.setAttribute("aria-expanded",String(idOpen.has(i))); r.querySelector(".idchev").textContent=idOpen.has(i)?"▴":"▾"; };
       box.append(r); });
-    app.append(box); return;
+    app.append(box, none); if(idQuery) filt(); return;
   }
   if(!idState){ const rest=IDIOMS.map((_,i)=>i).filter(i=>i!==start).sort(()=>Math.random()-.5); idState={ids:[start,...rest], i:0, show:false}; }
   const S=idState, [en,ko,ex]=IDIOMS[S.ids[S.i]];
