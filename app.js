@@ -143,7 +143,7 @@ function renderHome(app){
   const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length;
   const goalDone = doneToday>=DAILY;
   const h1=el("h1","h-title"); h1.append(document.createTextNode(`${D.name}님,`), el("br"));
-  if(due && !goalDone){ h1.append(document.createTextNode("오늘 복습할 문장이 "), el("em",null,`${Math.min(due,DAILY)}개`), document.createTextNode(" 있어요")); }
+  if(due && !goalDone){ h1.append(document.createTextNode("오늘도 화이팅!")); }
   else h1.append(document.createTextNode("꾸준함이 실력이 돼요. 오늘도 완료! 👏"));
   app.append(h1);
   app.append(quoteBox()); startIdiomTimer();
