@@ -184,7 +184,7 @@ const qbmKey=()=>`bandup-qbm-${slug}`;
 const qbmList=()=>store.get(qbmKey(),[]);
 const isQbm=q=>qbmList().some(x=>x.q===q);
 function toggleQbm(item){ let l=qbmList(); if(l.some(x=>x.q===item.q)) l=l.filter(x=>x.q!==item.q); else l=[...l,{part:item.part,topic:item.topic,q:item.q}]; store.set(qbmKey(),l); }
-function qbmBtn(item, onChange){ const b=el("button","cstar"); b.type="button"; const set=()=>{ const on=isQbm(item.q); b.textContent=on? "★" : "☆"; b.setAttribute("aria-pressed",String(on)); b.setAttribute("aria-label", on? "북마크 해제" : "북마크에 추가"); }; set(); b.onclick=e=>{ e.stopPropagation(); toggleQbm(item); set(); if(onChange) onChange(); }; return b; }
+function qbmBtn(item, onChange){ const b=el("button","cstar"); b.type="button"; const set=()=>{ const on=isQbm(item.q); b.textContent=on? "★" : "☆"; b.setAttribute("aria-pressed",String(on)); b.setAttribute("aria-label", on? "모아두기 해제" : "질문 모아두기"); }; set(); b.onclick=e=>{ e.stopPropagation(); toggleQbm(item); set(); if(onChange) onChange(); }; return b; }
 let todayQShift=0;
 let calOpen=false;
 function weekCard(){
@@ -288,7 +288,7 @@ function renderMock(app){
     for(const [k,v] of [["Part 1","주제 3개 · 질문 12개 (4~5분)"],["Part 2","큐카드 1장 · 준비 1분 + 말하기 2분"],["Part 3","Part 2 주제 심화 질문 5개 (4~5분)"]]){ const r=el("div","mrow2"); r.append(el("b",null,k), el("span",null,v)); info.append(r); }
     app.append(info);
     const st=el("button","btn primary vstart","모의고사 시작"); st.type="button"; st.onclick=()=>{ MT=buildMock(); render(); window.scrollTo(0,0); }; app.append(st);
-    const bms=qbmList(); const bp=el("div","panel"); const bh=el("div","ghead"); bh.append(el("b",null,"★ 북마크한 질문"), el("span",null,`${bms.length}개`)); bp.append(bh);
+    const bms=qbmList(); const bp=el("div","panel"); const bh=el("div","ghead"); bh.append(el("b",null,"질문 모아두기"), el("span",null,`${bms.length}개`)); bp.append(bh);
     if(!bms.length) bp.append(el("p","gtip","모의고사를 보다가 다시 연습하고 싶은 질문에 ☆를 누르면 여기 모여요."));
     for(const part of [1,2,3]){ const list=bms.filter(x=>x.part===part); if(!list.length) continue; bp.append(el("span","idea-lab",`Part ${part}`));
       for(const it of list){ const r=el("div","qbmrow"); const t=el("div"); t.append(el("span","from2",it.topic), el("p",null,it.q)); r.append(t, qbmBtn(it,()=>render())); bp.append(r); } }
@@ -298,7 +298,7 @@ function renderMock(app){
   if(!st){
     const e=el("div","empty"); e.append(el("div","big","✓"), el("h2",null,"모의고사 끝!"), el("p",null,`Part 1 ${S.filter(x=>x.part===1).length}문제 · Part 2 1문제 · Part 3 ${S.filter(x=>x.part===3).length}문제를 풀었어요.`));
     const again=el("button","btn primary","새 모의고사 보기"); again.type="button"; again.onclick=()=>{ MT=buildMock(); render(); window.scrollTo(0,0); };
-    const bm=el("button","btn",`북마크한 질문 보기 (${qbmList().length}개)`); bm.type="button"; bm.onclick=()=>{ MT=null; render(); };
+    const bm=el("button","btn",`모아둔 질문 보기 (${qbmList().length}개)`); bm.type="button"; bm.onclick=()=>{ MT=null; render(); };
     const home=el("button","btn","홈으로"); home.type="button"; home.onclick=()=>{ MT=null; go("home"); };
     e.append(again,bm,home); app.append(e); return;
   }
@@ -380,8 +380,8 @@ function renderBmTab(app){
   const cards=cbmList().map(getCard).filter(Boolean);
   const h=el("h2","sec-t",`큐카드 ${cards.length}장`); app.append(h);
   inlineDeck(app,"bm",cards,"큐카드에서 ☆ 북마크에 추가를 누르면 여기에 모여요.");
-  const qs=qbmList(); const bp=el("div","panel"); const bh=el("div","ghead"); bh.append(el("b",null,"모의고사 질문"), el("span",null,`${qs.length}개`)); bp.append(bh);
-  if(!qs.length) bp.append(el("p","gtip","모의고사에서 ☆ 북마크를 누른 질문이 여기 모여요."));
+  const qs=qbmList(); const bp=el("div","panel"); const bh=el("div","ghead"); bh.append(el("b",null,"질문 모아두기"), el("span",null,`${qs.length}개`)); bp.append(bh);
+  if(!qs.length) bp.append(el("p","gtip","모의고사에서 ☆를 눌러 모아둔 질문이 여기 모여요."));
   for(const part of [1,2,3]){ const list=qs.filter(x=>x.part===part); if(!list.length) continue; bp.append(el("span","idea-lab",`Part ${part}`));
     for(const it of list){ const r=el("div","qbmrow"); const t=el("div"); t.append(el("span","from2",it.topic), el("p",null,it.q)); r.append(t, qbmBtn(it,()=>render())); bp.append(r); } }
   app.append(bp);
