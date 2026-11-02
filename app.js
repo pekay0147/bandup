@@ -37,7 +37,7 @@ async function boot(){
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
   PROFILE=store.get(`bandup-profile-${slug}`,null); if(D.common && PROFILE && PROFILE.name) D.name=PROFILE.name;
-  document.title= D.demo? "밴드업 체험하기" : D.common? "밴드업 아이엘츠" : `${D.name}님 · 밴드업 아이엘츠`;
+  document.title= D.demo? "밴드업 체험하기" : (D.common && !D.name)? "밴드업 아이엘츠" : `${D.name}님 · 밴드업 아이엘츠`;
   $("#who").textContent=new Date().toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"long"}); const br=document.querySelector(".brand"); if(br) br.innerHTML="Band<span>up</span>";
 
   buildTabs(); render();
@@ -454,7 +454,7 @@ function renderProfile(app, editing){
   if(!editing){ w.append(el("h1",null,"반가워요! 시작하기 전에\n몇 가지만 알려 주세요"), el("p","onb-lead","입력한 정보는 내 휴대폰에만 저장돼요.")); }
   else { const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); w.append(back, el("h1",null,"내 정보")); }
   const fld=(lab,node,sub)=>{ const l=el("label","onb-f"); l.append(el("span",null,lab)); if(sub) l.append(el("small",null,sub)); l.append(node); return l; };
-  const nm=el("input"); nm.id="p-name"; nm.placeholder="이름 또는 닉네임"; nm.value=P.name||""; nm.autocomplete="given-name"; nm.maxLength=12;
+  const nm=el("input"); nm.id="p-name"; nm.placeholder="이름 또는 닉네임"; nm.value=P.name||D.name||""; nm.autocomplete="given-name"; nm.maxLength=12;
   w.append(fld("이름",nm));
   const dt=el("input"); dt.id="p-date"; dt.type="date"; dt.value=P.exam||""; dt.min=today();
   const und=el("label","onb-check"); const cb=el("input"); cb.type="checkbox"; cb.id="p-undecided"; cb.checked=!!P.undecided; und.append(cb, document.createTextNode(" 아직 안 정했어요"));
