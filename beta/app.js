@@ -37,6 +37,7 @@ async function boot(){
   }catch(e){ app.textContent=""; const x=el("div","empty"); x.append(el("h2",null,"카드를 불러오지 못했어요"), el("p",null,"인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 되면 선생님께 링크를 다시 받아 주세요.")); app.append(x); return; }
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
+  if(D.common) loadMine();
   document.title= D.demo? "밴드업 체험하기" : D.common? "밴드업 아이엘츠" : `${D.name}님 · 밴드업 아이엘츠`;
   $("#who").textContent=new Date().toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"long"}); const br=document.querySelector(".brand"); if(br) br.innerHTML="Band<span>up</span>";
 
@@ -58,7 +59,7 @@ function streak(){ let n=0, d=today(); const set=new Set(days); if(!set.has(d)) 
 const typeOf=c=> c.kind==="ko" && !c.type ? "표현" : c.type;
 const col=c=>TCOL[typeOf(c)]||"#4457e8";
 const rep=c=>(c.sessions||[]).length>1;
-const sessLabel=c=>c.vtopic? c.vtopic : (c.sessions||[]).join("·")+"회차";
+const sessLabel=c=>c.type==="내 문장"? "내 문장" : c.vtopic? c.vtopic : (c.sessions||[]).join("·")+"회차";
 const VCARDS={};
 const getCard=id=>D.cards.find(c=>c.id===id) || VCARDS[id];
 const isWriting=c=>!(c.type==="발음·철자" && /발음/.test(c.ko||""));
@@ -166,7 +167,7 @@ function renderHome(app){
   const rv=el("div","box rv"); const n=el("div","rv-n"); n.append(document.createTextNode(String(Math.min(doneToday,DAILY))), el("small",null,` / ${DAILY}`));
   rv.append(n, el("div","rv-l","오늘 목표"));
   const bar=el("div","bar"); const bi=el("i"); bi.style.width=Math.min(100,doneToday/DAILY*100)+"%"; bar.append(bi); rv.append(bar);
-  if(!D.cards.length){ rv.append(el("p","muted small", D.common? "수업을 들으면 수업에서 틀린 문장으로 나만의 복습이 시작돼요." : "첫 수업이 끝나면 수업에서 나온 문장으로 복습이 시작돼요.")); s1.append(rv); app.append(s1); }
+  if(!D.cards.length){ rv.append(el("p","muted small", D.common? "큐카드 탭에서 외우고 싶은 문장을 넣으면 여기서 매일 복습할 수 있어요." : "첫 수업이 끝나면 수업에서 나온 문장으로 복습이 시작돼요.")); s1.append(rv); app.append(s1); }
   else {
   const queue=reviewQueue(!due);
   const b=el("button","btn primary", !due? "약한 카드 연습하기" : goalDone? "더 복습하기" : doneToday? "이어서 복습하기" : "복습 시작하기"); b.type="button"; b.onclick=()=>go("review",{extra:!due, ids:queue}); rv.append(b);
@@ -439,7 +440,43 @@ function deckTile(s){
   return t;
 }
 
+/* ---------- my own sentences (common app) ---------- */
+const esc=t=>String(t||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let MINE=[];
+function loadMine(){ MINE=store.get(`bandup-mycards-${slug}`,[]); D.cards=MINE.map(m=>({id:m.id,kind:"ko",type:"내 문장",sessions:[],ko:m.ko,en:m.en,gram:m.memo? esc(m.memo):"",hint:""})); }
+function saveMine(){ store.set(`bandup-mycards-${slug}`,MINE); loadMine(); deckState=null; }
+let mineEdit=null;
+function renderMyCards(app){
+  pageHead(app,"큐카드","외우고 싶은 문장을 직접 넣고, 카드로 뒤집어 보며 연습해요.");
+  const box=el("form","panel mineform"); const ed=mineEdit? MINE.find(m=>m.id===mineEdit) : null;
+  box.append(el("b",null, ed? "문장 고치기" : "내 문장 추가"));
+  const f=(lab,id,ph,val)=>{ const l=el("label","mf"); const i=el("input"); i.id=id; i.placeholder=ph; i.value=val||""; i.autocomplete="off"; l.append(el("span",null,lab),i); box.append(l); return i; };
+  const ko=f("한국어 (앞면)","m-ko","예: 저는 아침형 인간이 아니에요.",ed&&ed.ko);
+  const en=f("영어 (뒷면)","m-en","예: I'm not a morning person.",ed&&ed.en);
+  const memo=f("메모 (선택)","m-memo","예: morning person = 아침형 인간",ed&&ed.memo);
+  en.setAttribute("autocapitalize","sentences"); en.spellcheck=true;
+  const row=el("div","mrow"); const ok=el("button","btn primary", ed? "저장" : "카드 추가"); ok.type="submit"; row.append(ok);
+  if(ed){ const cx=el("button","btn","취소"); cx.type="button"; cx.onclick=()=>{ mineEdit=null; render(); }; row.append(cx); }
+  box.append(row);
+  const err=el("p","mferr"); err.hidden=true; box.append(err);
+  box.onsubmit=e=>{ e.preventDefault(); if(!ko.value.trim()||!en.value.trim()){ err.textContent="한국어와 영어를 둘 다 적어 주세요."; err.hidden=false; return; }
+    if(ed){ Object.assign(ed,{ko:ko.value.trim(),en:en.value.trim(),memo:memo.value.trim()}); mineEdit=null; }
+    else MINE.unshift({id:"u"+Date.now().toString(36),ko:ko.value.trim(),en:en.value.trim(),memo:memo.value.trim(),at:today()});
+    saveMine(); render(); };
+  app.append(box);
+  if(!MINE.length){ const e=el("div","empty"); e.append(el("p",null,"아직 넣은 문장이 없어요. 수업이나 공부하다가 외우고 싶은 문장을 하나 넣어 보세요. 넣은 문장은 홈의 ‘오늘의 복습’에도 나와요.")); app.append(e); return; }
+  app.append(el("h2","sec-t",`내 카드 ${MINE.length}장`));
+  inlineDeck(app,"mine",D.cards,"");
+  const det=el("details","minelist"); det.append(el("summary",null,`내 문장 목록 · 고치기/지우기`));
+  MINE.forEach(m=>{ const r=el("div","mine-row"); const t=el("div"); t.append(el("b",null,m.en), el("span",null,m.ko));
+    const eb=el("button","linkbtn","고치기"); eb.type="button"; eb.onclick=()=>{ mineEdit=m.id; render(); window.scrollTo(0,0); };
+    const xb=el("button","linkbtn danger","지우기"); xb.type="button"; xb.onclick=()=>{ if(xb.dataset.c!=="1"){ xb.dataset.c="1"; xb.textContent="정말 지우기"; setTimeout(()=>{ xb.dataset.c=""; xb.textContent="지우기"; },3000); return; } MINE=MINE.filter(x=>x!==m); saveMine(); render(); };
+    r.append(t,eb,xb); det.append(r); });
+  app.append(det);
+}
+
 function renderDecks(app){
+  if(D.common){ renderMyCards(app); return; }
   pageHead(app,"큐카드","수업 시간에 나온 문장을 카드로 연습해요.");
   if(!D.sessions.length || !D.cards.length){ const e=el("div","empty"); e.append(el("p",null, D.common? "수업을 들으면 수업에서 내가 틀린 문장이 여기에 큐카드로 생겨요." : "아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
   const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
