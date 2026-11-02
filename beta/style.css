@@ -892,3 +892,26 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .mine-row b{display:block;font-size:14px}
 .mine-row span{font-size:13px;color:var(--muted)}
 .linkbtn.danger{color:#d9534f}
+/* ONBOARDING / PROFILE */
+.onboard .tabs{display:none!important}
+.onb{display:grid;gap:18px;padding-top:8px}
+.onb-logo{font-size:30px;font-weight:800;letter-spacing:-.05em;color:var(--ink)}
+.onb-logo span{position:relative;top:-.45em;font-size:.86em;color:var(--blue)}
+.onb h1{margin:0;font-size:24px;line-height:1.35;white-space:pre-line;letter-spacing:-.02em}
+.onb-lead{margin:-10px 0 0;font-size:14px;color:var(--muted)}
+.onb-f{display:grid;gap:8px}
+.onb-f > span{font-size:15px;font-weight:700;color:var(--ink)}
+.onb-f > small{margin-top:-6px;font-size:12px;color:var(--muted)}
+.onb-f input:not([type=checkbox]){font:inherit;font-size:16px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+.onb-f input:disabled{opacity:.45}
+.onb-row{display:grid;gap:8px}
+.onb-check{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.onb-check input{width:18px;height:18px}
+.onb-chips{display:flex;flex-wrap:wrap;gap:8px}
+.onb-chips button{font:inherit;font-size:15px;font-weight:600;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.onb-chips button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.onb-err{margin:0;font-size:14px;color:#d9534f}
+.pline{display:flex;align-items:center;gap:10px;width:100%;margin-top:-6px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);font:inherit;text-align:left;cursor:pointer}
+.pline b{font-size:15px;color:var(--blue)}
+.pline span{font-size:14px;color:var(--muted)}
+.pline i{margin-left:auto;font-style:normal;color:var(--muted)}

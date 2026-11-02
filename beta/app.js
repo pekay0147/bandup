@@ -37,6 +37,7 @@ async function boot(){
   }catch(e){ app.textContent=""; const x=el("div","empty"); x.append(el("h2",null,"카드를 불러오지 못했어요"), el("p",null,"인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 되면 선생님께 링크를 다시 받아 주세요.")); app.append(x); return; }
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
+  PROFILE=store.get(`bandup-profile-${slug}`,null); if(D.common && PROFILE && PROFILE.name) D.name=PROFILE.name;
   document.title= D.demo? "밴드업 체험하기" : D.common? "밴드업 아이엘츠" : `${D.name}님 · 밴드업 아이엘츠`;
   $("#who").textContent=new Date().toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"long"}); const br=document.querySelector(".brand"); if(br) br.innerHTML="Band<span>up</span>";
 
@@ -108,6 +109,9 @@ function lessonBar(onClose, i, n){
 function pageHead(app, title, lead){ const h=el("div","phead"); h.append(el("h1",null,title)); if(lead) h.append(el("p","lead",lead)); app.append(h); }
 function render(){
   const app=$("#app"); app.textContent="";
+  const needOnboard = D.common && !(PROFILE && PROFILE.name);
+  document.body.classList.toggle("onboard", needOnboard || view.tab==="profile");
+  if(needOnboard || view.tab==="profile"){ renderProfile(app, !needOnboard); updateTabs(); return; }
   if(QZ){ renderQuiz(app); updateTabs(); document.body.classList.add("lesson"); return; }
   if(view.tab==="home") renderHome(app);
   if(view.tab==="cards") (view.deck!=null? renderDeck(app) : renderDecks(app));
@@ -160,6 +164,7 @@ function renderHome(app){
   if(!D.cards.length || (due && !goalDone)){ h1.append(document.createTextNode("오늘도 화이팅!")); }
   else h1.append(document.createTextNode("꾸준함이 실력이 돼요. 오늘도 완료! 👏"));
   app.append(h1);
+  { const pl=profileLine(); if(pl) app.append(pl); }
   app.append(quoteBox()); startIdiomTimer();
   // 오늘의 복습
   const s1=el("section","sec"); s1.append(secHead("오늘의 복습"));
@@ -437,6 +442,49 @@ function deckTile(s){
   t.append(el("span","no",String(s.no)), tt, el("span","go","›"));
   t.onclick=()=>go("cards",{deck:s.no});
   return t;
+}
+
+/* ---------- first-run profile (common app) ---------- */
+let PROFILE=null;
+const dday=iso=>{ if(!iso) return null; const t=new Date(today()+"T00:00:00"), d=new Date(iso+"T00:00:00"); return Math.round((d-t)/864e5); };
+function renderProfile(app, editing){
+  const P=PROFILE||{};
+  const w=el("form","onb");
+  if(!editing){ w.append(el("h1",null,"반가워요! 시작하기 전에\n몇 가지만 알려 주세요"), el("p","onb-lead","입력한 정보는 내 휴대폰에만 저장돼요.")); }
+  else { const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); w.append(back, el("h1",null,"내 정보")); }
+  const fld=(lab,node,sub)=>{ const l=el("label","onb-f"); l.append(el("span",null,lab)); if(sub) l.append(el("small",null,sub)); l.append(node); return l; };
+  const nm=el("input"); nm.id="p-name"; nm.placeholder="이름 또는 닉네임"; nm.value=P.name||""; nm.autocomplete="given-name"; nm.maxLength=12;
+  w.append(fld("이름",nm));
+  const dt=el("input"); dt.id="p-date"; dt.type="date"; dt.value=P.exam||""; dt.min=today();
+  const und=el("label","onb-check"); const cb=el("input"); cb.type="checkbox"; cb.id="p-undecided"; cb.checked=!!P.undecided; und.append(cb, document.createTextNode(" 아직 안 정했어요"));
+  cb.onchange=()=>{ dt.disabled=cb.checked; if(cb.checked) dt.value=""; }; dt.disabled=cb.checked;
+  const dwrap=el("div","onb-row"); dwrap.append(dt,und); w.append(fld("시험 날짜",dwrap));
+  const chips=(id,opts,val)=>{ const r=el("div","onb-chips"); r.id=id; r.dataset.val=val||""; opts.forEach(o=>{ const b=el("button",null,o); b.type="button"; b.setAttribute("aria-pressed",String(String(val)===o)); b.onclick=()=>{ r.dataset.val=o; r.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b))); }; r.append(b); }); return r; };
+  const goal=chips("p-goal",["5.5","6.0","6.5","7.0","7.5","8.0"],P.goal);
+  w.append(fld("스피킹 목표 점수",goal));
+  const now=chips("p-now",["처음 봐요","5.0 이하","5.5","6.0","6.5 이상"],P.now);
+  w.append(fld("지금 스피킹 점수",now,"선택"));
+  const type=chips("p-type",["Academic","General","잘 모르겠어요"],P.type);
+  w.append(fld("시험 종류",type,"선택"));
+  const err=el("p","onb-err"); err.hidden=true; w.append(err);
+  const sb=el("button","btn primary vstart", editing? "저장" : "시작하기"); sb.type="submit"; w.append(sb);
+  w.onsubmit=e=>{ e.preventDefault(); const name=nm.value.trim();
+    if(!name){ err.textContent="이름을 적어 주세요."; err.hidden=false; nm.focus(); return; }
+    if(!goal.dataset.val){ err.textContent="목표 점수를 골라 주세요."; err.hidden=false; return; }
+    PROFILE={name, exam: cb.checked? "" : dt.value, undecided: cb.checked || !dt.value, goal: goal.dataset.val, now: now.dataset.val||"", type: type.dataset.val||"", at: P.at||today()};
+    store.set(`bandup-profile-${slug}`,PROFILE); D.name=name; go("home"); };
+  app.append(w);
+  if(!editing) setTimeout(()=>{ try{ nm.focus({preventScroll:true}); }catch(_){} },300);
+}
+function profileLine(){
+  if(!D.common || !PROFILE) return null;
+  const b=el("button","pline"); b.type="button"; b.onclick=()=>go("profile");
+  const n=dday(PROFILE.exam);
+  if(n!=null) b.append(el("b",null, n>0? `시험까지 D-${n}` : n===0? "오늘 시험이에요! 화이팅" : "시험 끝! 수고했어요"));
+  else b.append(el("b",null,"시험 날짜 미정"));
+  if(PROFILE.goal) b.append(el("span",null,`목표 ${PROFILE.goal}`));
+  b.append(el("i",null,"›"));
+  return b;
 }
 
 /* ---------- my own sentences (common app) ---------- */
