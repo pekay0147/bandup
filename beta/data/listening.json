@@ -691,6 +691,1560 @@
      "-ment, e 없음"
     ]
    ]
+  },
+  {
+   "part": "Part 1",
+   "ko": "요일·계절",
+   "name": "Days & seasons",
+   "words": [
+    [
+     "Sunday",
+     "일요일",
+     "Sun-day"
+    ],
+    [
+     "Monday",
+     "월요일",
+     "Mon-day"
+    ],
+    [
+     "Friday",
+     "금요일",
+     "Fri-day"
+    ],
+    [
+     "March",
+     "3월",
+     "대문자 M"
+    ],
+    [
+     "April",
+     "4월",
+     "Ap-ril"
+    ],
+    [
+     "May",
+     "5월",
+     ""
+    ],
+    [
+     "June",
+     "6월",
+     "Ju-ne, e로 끝나요"
+    ],
+    [
+     "July",
+     "7월",
+     "Ju-ly"
+    ],
+    [
+     "winter",
+     "겨울",
+     "t 하나"
+    ],
+    [
+     "spring",
+     "봄",
+     ""
+    ],
+    [
+     "autumn",
+     "가을",
+     "끝에 n이 소리 안 나요"
+    ],
+    [
+     "summer",
+     "여름",
+     "m 두 개"
+    ]
+   ]
+  },
+  {
+   "part": "Part 1",
+   "ko": "모양",
+   "name": "Shapes",
+   "words": [
+    [
+     "circle",
+     "원",
+     "c-i-r-c-l-e, -cle로 끝나요"
+    ],
+    [
+     "rectangle",
+     "직사각형",
+     "rect-angle"
+    ],
+    [
+     "triangle",
+     "삼각형",
+     "tri-angle"
+    ],
+    [
+     "cylinder",
+     "원통",
+     "y가 들어가요: cyl-in-der"
+    ],
+    [
+     "oval",
+     "타원형",
+     ""
+    ]
+   ]
+  },
+  {
+   "part": "Part 1",
+   "ko": "교통",
+   "name": "Transport",
+   "words": [
+    [
+     "automobile",
+     "자동차",
+     "auto-mobile"
+    ],
+    [
+     "truck",
+     "트럭",
+     "-ck로 끝나요"
+    ],
+    [
+     "tractor",
+     "트랙터",
+     "-or로 끝나요"
+    ],
+    [
+     "tram",
+     "트램, 노면전차",
+     ""
+    ],
+    [
+     "subway",
+     "지하철",
+     "sub-way"
+    ],
+    [
+     "airplane",
+     "비행기",
+     "영국식은 aeroplane"
+    ],
+    [
+     "train",
+     "기차",
+     ""
+    ],
+    [
+     "bicycle",
+     "자전거",
+     "bi-cy-cle, y 위치 주의"
+    ],
+    [
+     "car",
+     "자동차",
+     ""
+    ],
+    [
+     "pedestrian",
+     "보행자",
+     "pe-des-tri-an"
+    ],
+    [
+     "passenger",
+     "승객",
+     "s 두 개"
+    ],
+    [
+     "commuter",
+     "통근자",
+     "m 두 개, computer와 헷갈리지 않기"
+    ]
+   ]
+  },
+  {
+   "part": "Part 1",
+   "ko": "색깔",
+   "name": "Colours",
+   "words": [
+    [
+     "red",
+     "빨간색",
+     ""
+    ],
+    [
+     "orange",
+     "주황색",
+     ""
+    ],
+    [
+     "yellow",
+     "노란색",
+     "l 두 개"
+    ],
+    [
+     "green",
+     "초록색",
+     "e 두 개"
+    ],
+    [
+     "blue",
+     "파란색",
+     "-ue로 끝나요"
+    ],
+    [
+     "purple",
+     "보라색",
+     "-ple로 끝나요"
+    ],
+    [
+     "white",
+     "흰색",
+     "wh로 시작"
+    ],
+    [
+     "black",
+     "검은색",
+     "-ck로 끝나요"
+    ],
+    [
+     "brown",
+     "갈색",
+     ""
+    ]
+   ]
+  },
+  {
+   "part": "Part 1",
+   "ko": "동사",
+   "name": "Verbs",
+   "words": [
+    [
+     "suggest",
+     "제안하다",
+     "g 두 개"
+    ],
+    [
+     "develop",
+     "개발하다",
+     "e로 안 끝나요: develop"
+    ],
+    [
+     "borrow",
+     "빌리다",
+     "r 두 개"
+    ],
+    [
+     "persuade",
+     "설득하다",
+     "-suade"
+    ],
+    [
+     "discuss",
+     "토론하다",
+     "s 두 개로 끝나요"
+    ],
+    [
+     "review",
+     "검토하다",
+     "-view"
+    ],
+    [
+     "concentrate",
+     "집중하다",
+     "con-cen-trate"
+    ],
+    [
+     "believe",
+     "믿다",
+     "i가 e 앞: -lieve"
+    ],
+    [
+     "crash",
+     "충돌하다",
+     ""
+    ]
+   ]
+  },
+  {
+   "part": "Part 1",
+   "ko": "형용사",
+   "name": "Adjectives",
+   "words": [
+    [
+     "beautiful",
+     "아름다운",
+     "beau-ti-ful, l 하나"
+    ],
+    [
+     "fantastic",
+     "환상적인",
+     ""
+    ],
+    [
+     "wonderful",
+     "멋진",
+     "-ful은 l 하나"
+    ],
+    [
+     "terrible",
+     "끔찍한",
+     "r 두 개"
+    ],
+    [
+     "temporary",
+     "일시적인",
+     "tem-po-rary"
+    ],
+    [
+     "permanent",
+     "영구적인",
+     "-nent로 끝나요"
+    ],
+    [
+     "knowledgeable",
+     "아는 게 많은",
+     "k 소리 안 남, e 남겨요: knowledge-able"
+    ],
+    [
+     "exciting",
+     "신나는",
+     "exc- 순서"
+    ],
+    [
+     "boring",
+     "지루한",
+     ""
+    ],
+    [
+     "difficult",
+     "어려운",
+     "f 두 개"
+    ],
+    [
+     "easy",
+     "쉬운",
+     ""
+    ]
+   ]
+  },
+  {
+   "part": "Part 2",
+   "ko": "방·건물",
+   "name": "Rooms",
+   "words": [
+    [
+     "kitchen",
+     "부엌",
+     "-tch-"
+    ],
+    [
+     "bathroom",
+     "욕실",
+     ""
+    ],
+    [
+     "bedroom",
+     "침실",
+     ""
+    ],
+    [
+     "living room",
+     "거실",
+     "띄어 써요"
+    ],
+    [
+     "dining room",
+     "식당 방",
+     "dining은 n 하나"
+    ],
+    [
+     "lounge",
+     "라운지, 휴게실",
+     "-ounge"
+    ],
+    [
+     "gymnasium",
+     "체육관",
+     "y가 들어가요"
+    ],
+    [
+     "cafeteria",
+     "구내식당",
+     "cafe-te-ria"
+    ],
+    [
+     "classroom",
+     "교실",
+     "s 두 개"
+    ],
+    [
+     "waiting room",
+     "대기실",
+     ""
+    ],
+    [
+     "reception",
+     "접수처, 리셉션",
+     "-cep-tion"
+    ],
+    [
+     "ticket desk",
+     "매표소",
+     ""
+    ],
+    [
+     "storage room",
+     "창고",
+     ""
+    ]
+   ]
+  },
+  {
+   "part": "Part 2",
+   "ko": "주소·길 이름",
+   "name": "Place markers",
+   "words": [
+    [
+     "road",
+     "도로",
+     ""
+    ],
+    [
+     "lane",
+     "좁은 길",
+     ""
+    ],
+    [
+     "drive",
+     "길(주소)",
+     ""
+    ],
+    [
+     "court",
+     "길·광장(주소)",
+     "-ourt"
+    ],
+    [
+     "place",
+     "플레이스(주소)",
+     ""
+    ],
+    [
+     "terrace",
+     "테라스(주소)",
+     "r 두 개"
+    ],
+    [
+     "way",
+     "길(주소)",
+     ""
+    ]
+   ]
+  },
+  {
+   "part": "Part 2",
+   "ko": "방향·위치",
+   "name": "Directions",
+   "words": [
+    [
+     "north",
+     "북쪽",
+     ""
+    ],
+    [
+     "south",
+     "남쪽",
+     ""
+    ],
+    [
+     "east",
+     "동쪽",
+     ""
+    ],
+    [
+     "west",
+     "서쪽",
+     ""
+    ],
+    [
+     "up",
+     "위",
+     ""
+    ],
+    [
+     "down",
+     "아래",
+     ""
+    ],
+    [
+     "right",
+     "오른쪽",
+     "gh 소리 안 남"
+    ],
+    [
+     "left",
+     "왼쪽",
+     ""
+    ],
+    [
+     "straight",
+     "곧장",
+     "-aight"
+    ],
+    [
+     "across from",
+     "~의 맞은편",
+     ""
+    ],
+    [
+     "between",
+     "~ 사이에",
+     "e 두 개"
+    ],
+    [
+     "beside",
+     "~ 옆에",
+     ""
+    ],
+    [
+     "diagonal",
+     "대각선의",
+     ""
+    ],
+    [
+     "corner",
+     "모퉁이",
+     ""
+    ],
+    [
+     "opposite",
+     "맞은편의",
+     "p 두 개"
+    ],
+    [
+     "adjacent to",
+     "~에 인접한",
+     "d 소리 약해요: ad-ja-cent"
+    ],
+    [
+     "near",
+     "가까이",
+     ""
+    ],
+    [
+     "past",
+     "~을 지나서",
+     ""
+    ],
+    [
+     "before",
+     "~ 전에",
+     ""
+    ],
+    [
+     "after",
+     "~ 후에",
+     ""
+    ]
+   ]
+  },
+  {
+   "part": "Part 2",
+   "ko": "길 안내 동사",
+   "name": "Direction verbs",
+   "words": [
+    [
+     "turn",
+     "돌다",
+     ""
+    ],
+    [
+     "move",
+     "움직이다",
+     ""
+    ],
+    [
+     "continue on",
+     "계속 가다",
+     ""
+    ],
+    [
+     "walk",
+     "걷다",
+     "l 소리 안 남"
+    ],
+    [
+     "cross",
+     "건너다",
+     "s 두 개"
+    ],
+    [
+     "pass",
+     "지나가다",
+     "s 두 개"
+    ],
+    [
+     "start",
+     "시작하다",
+     ""
+    ],
+    [
+     "finish",
+     "끝내다",
+     ""
+    ],
+    [
+     "end",
+     "끝",
+     ""
+    ],
+    [
+     "stop",
+     "멈추다",
+     ""
+    ],
+    [
+     "go straight ahead",
+     "곧장 가다",
+     ""
+    ]
+   ]
+  },
+  {
+   "part": "Part 2",
+   "ko": "지도 위 장소",
+   "name": "Places on a map",
+   "words": [
+    [
+     "tennis court",
+     "테니스장",
+     "n 두 개"
+    ],
+    [
+     "river",
+     "강",
+     ""
+    ],
+    [
+     "courtyard",
+     "안뜰",
+     ""
+    ],
+    [
+     "building",
+     "건물",
+     "bui- 순서"
+    ],
+    [
+     "bridge",
+     "다리",
+     "-dge"
+    ],
+    [
+     "path",
+     "오솔길",
+     ""
+    ],
+    [
+     "traffic lights",
+     "신호등",
+     "f 두 개"
+    ],
+    [
+     "bench",
+     "벤치",
+     ""
+    ],
+    [
+     "seat",
+     "좌석",
+     ""
+    ],
+    [
+     "table",
+     "탁자",
+     ""
+    ],
+    [
+     "basketball court",
+     "농구장",
+     ""
+    ],
+    [
+     "running track",
+     "육상 트랙",
+     "n 두 개"
+    ],
+    [
+     "swimming pool",
+     "수영장",
+     "m 두 개"
+    ],
+    [
+     "beach",
+     "해변",
+     ""
+    ],
+    [
+     "forest",
+     "숲",
+     ""
+    ],
+    [
+     "garden",
+     "정원",
+     ""
+    ],
+    [
+     "castle",
+     "성",
+     "t 소리 안 남"
+    ]
+   ]
+  },
+  {
+   "part": "Part 3",
+   "ko": "학교 용어",
+   "name": "School terms",
+   "words": [
+    [
+     "presentation",
+     "발표",
+     ""
+    ],
+    [
+     "project",
+     "프로젝트",
+     ""
+    ],
+    [
+     "teamwork",
+     "팀워크",
+     ""
+    ],
+    [
+     "pairs",
+     "짝, 2인 1조",
+     ""
+    ],
+    [
+     "organisation",
+     "조직",
+     "영국식 s, 미국식 organization"
+    ],
+    [
+     "outline",
+     "개요",
+     ""
+    ],
+    [
+     "proofreading",
+     "교정 보기",
+     "o 두 개"
+    ],
+    [
+     "reference",
+     "참고 문헌",
+     "ref-er-ence"
+    ],
+    [
+     "lecture",
+     "강의",
+     "-ture"
+    ],
+    [
+     "tutor",
+     "튜터, 지도 교사",
+     "-or로 끝나요"
+    ],
+    [
+     "teacher",
+     "선생님",
+     ""
+    ],
+    [
+     "attendance",
+     "출석",
+     "t 두 개, -ance"
+    ],
+    [
+     "specialist",
+     "전문가",
+     ""
+    ],
+    [
+     "knowledge",
+     "지식",
+     "k 소리 안 남, -dge"
+    ],
+    [
+     "faculty",
+     "학부",
+     ""
+    ],
+    [
+     "bachelor's",
+     "학사",
+     "t 없음: bache-lor"
+    ],
+    [
+     "master's",
+     "석사",
+     ""
+    ],
+    [
+     "management",
+     "경영",
+     "manage에 e 유지"
+    ],
+    [
+     "leadership",
+     "리더십",
+     ""
+    ],
+    [
+     "statistic",
+     "통계",
+     ""
+    ],
+    [
+     "percentage",
+     "백분율",
+     ""
+    ],
+    [
+     "school",
+     "학교",
+     "sch-"
+    ],
+    [
+     "university",
+     "대학교",
+     ""
+    ],
+    [
+     "college",
+     "대학",
+     "l 두 개, -ege"
+    ]
+   ]
+  },
+  {
+   "part": "Part 3",
+   "ko": "학교 과목",
+   "name": "School subjects",
+   "words": [
+    [
+     "Mathematics",
+     "수학",
+     "줄여서 Maths"
+    ],
+    [
+     "Science",
+     "과학",
+     "sc로 시작"
+    ],
+    [
+     "English",
+     "영어",
+     "대문자 E"
+    ],
+    [
+     "Physical Education",
+     "체육",
+     "ph-, 줄여서 PE"
+    ],
+    [
+     "Art",
+     "미술",
+     ""
+    ],
+    [
+     "Music",
+     "음악",
+     ""
+    ],
+    [
+     "Geography",
+     "지리",
+     "Geo-"
+    ],
+    [
+     "Biology",
+     "생물",
+     ""
+    ],
+    [
+     "Chemistry",
+     "화학",
+     "ch가 k 소리"
+    ],
+    [
+     "History",
+     "역사",
+     ""
+    ]
+   ]
+  },
+  {
+   "part": "Part 3",
+   "ko": "대학 전공",
+   "name": "University subjects",
+   "words": [
+    [
+     "Commerce",
+     "상학",
+     "m 두 개"
+    ],
+    [
+     "Engineering",
+     "공학",
+     "e 두 개: -neer-"
+    ],
+    [
+     "Marketing",
+     "마케팅",
+     ""
+    ],
+    [
+     "Sociology",
+     "사회학",
+     "soci-ology"
+    ],
+    [
+     "Medicine",
+     "의학",
+     "medi-cine"
+    ],
+    [
+     "Law",
+     "법학",
+     ""
+    ],
+    [
+     "Philosophy",
+     "철학",
+     "ph 두 번"
+    ],
+    [
+     "Economics",
+     "경제학",
+     ""
+    ],
+    [
+     "Education",
+     "교육학",
+     ""
+    ]
+   ]
+  },
+  {
+   "part": "Part 3",
+   "ko": "시험·평가",
+   "name": "Exams",
+   "words": [
+    [
+     "assessment",
+     "평가",
+     "s 두 개씩 두 번"
+    ],
+    [
+     "test",
+     "시험",
+     ""
+    ],
+    [
+     "revision",
+     "복습",
+     ""
+    ],
+    [
+     "fail",
+     "낙제하다",
+     ""
+    ],
+    [
+     "repeat",
+     "재수강하다",
+     ""
+    ],
+    [
+     "supervise",
+     "감독하다",
+     "-vise"
+    ],
+    [
+     "supervisor",
+     "지도 교수",
+     "-or로 끝나요"
+    ],
+    [
+     "assess",
+     "평가하다",
+     "s 두 개씩 두 번"
+    ],
+    [
+     "exam",
+     "시험",
+     ""
+    ],
+    [
+     "results",
+     "결과",
+     "s로 끝나요"
+    ],
+    [
+     "degree",
+     "학위",
+     "e 두 개"
+    ],
+    [
+     "certificate",
+     "자격증",
+     "cer-ti-fi-cate"
+    ]
+   ]
+  },
+  {
+   "part": "Part 4",
+   "ko": "건강",
+   "name": "Health",
+   "words": [
+    [
+     "vegetarian",
+     "채식주의자",
+     ""
+    ],
+    [
+     "vegan",
+     "비건",
+     ""
+    ],
+    [
+     "healthy",
+     "건강한",
+     ""
+    ],
+    [
+     "unhealthy",
+     "건강에 나쁜",
+     ""
+    ],
+    [
+     "leisure",
+     "여가",
+     "-ei-"
+    ],
+    [
+     "vitamin",
+     "비타민",
+     ""
+    ],
+    [
+     "protein",
+     "단백질",
+     "-ein"
+    ],
+    [
+     "carbohydrates",
+     "탄수화물",
+     "carbo-hydrates"
+    ],
+    [
+     "exercise",
+     "운동",
+     "ex-er-cise"
+    ],
+    [
+     "treatment",
+     "치료",
+     ""
+    ],
+    [
+     "obese",
+     "비만인",
+     ""
+    ],
+    [
+     "overweight",
+     "과체중의",
+     "-eigh-"
+    ],
+    [
+     "fit",
+     "건강한",
+     ""
+    ],
+    [
+     "doctor",
+     "의사",
+     "-or로 끝나요"
+    ],
+    [
+     "check up",
+     "건강 검진",
+     ""
+    ],
+    [
+     "pandemic",
+     "팬데믹",
+     ""
+    ],
+    [
+     "virus",
+     "바이러스",
+     ""
+    ],
+    [
+     "cure",
+     "치료법",
+     ""
+    ],
+    [
+     "vaccination",
+     "예방 접종",
+     "c 두 개"
+    ]
+   ]
+  },
+  {
+   "part": "Part 4",
+   "ko": "동물·서식지",
+   "name": "Animals & habitats",
+   "words": [
+    [
+     "mammals",
+     "포유류",
+     "m 두 개"
+    ],
+    [
+     "reptile",
+     "파충류",
+     ""
+    ],
+    [
+     "primates",
+     "영장류",
+     ""
+    ],
+    [
+     "predators",
+     "포식자",
+     ""
+    ],
+    [
+     "prey",
+     "먹이",
+     ""
+    ],
+    [
+     "mountain",
+     "산",
+     "-tain"
+    ],
+    [
+     "jungle",
+     "정글",
+     ""
+    ],
+    [
+     "island",
+     "섬",
+     "s 소리 안 남"
+    ],
+    [
+     "pond",
+     "연못",
+     ""
+    ],
+    [
+     "stream",
+     "개울",
+     ""
+    ],
+    [
+     "zoo",
+     "동물원",
+     ""
+    ],
+    [
+     "pet",
+     "반려동물",
+     ""
+    ],
+    [
+     "endangered",
+     "멸종 위기의",
+     "en-dan-gered"
+    ],
+    [
+     "ocean",
+     "대양",
+     "oce-"
+    ],
+    [
+     "sea",
+     "바다",
+     ""
+    ]
+   ]
+  },
+  {
+   "part": "Part 4",
+   "ko": "대륙·나라",
+   "name": "Continents & countries",
+   "words": [
+    [
+     "North America",
+     "북아메리카",
+     "대문자 두 개"
+    ],
+    [
+     "South America",
+     "남아메리카",
+     ""
+    ],
+    [
+     "Asia",
+     "아시아",
+     ""
+    ],
+    [
+     "Africa",
+     "아프리카",
+     ""
+    ],
+    [
+     "Europe",
+     "유럽",
+     "Eu-"
+    ],
+    [
+     "Antarctica",
+     "남극",
+     "c가 두 번: Ant-arc-tica"
+    ],
+    [
+     "Australia",
+     "호주",
+     "Aus-tra-lia"
+    ],
+    [
+     "Oceania",
+     "오세아니아",
+     ""
+    ],
+    [
+     "England",
+     "잉글랜드",
+     ""
+    ],
+    [
+     "Canada",
+     "캐나다",
+     ""
+    ],
+    [
+     "China",
+     "중국",
+     ""
+    ],
+    [
+     "United Kingdom",
+     "영국",
+     "the United Kingdom"
+    ],
+    [
+     "Germany",
+     "독일",
+     ""
+    ],
+    [
+     "Mexico",
+     "멕시코",
+     ""
+    ],
+    [
+     "Switzerland",
+     "스위스",
+     "Swit-zer-land"
+    ]
+   ]
+  },
+  {
+   "part": "Part 4",
+   "ko": "환경·재해",
+   "name": "Environment",
+   "words": [
+    [
+     "global warming",
+     "지구 온난화",
+     ""
+    ],
+    [
+     "disaster",
+     "재해",
+     ""
+    ],
+    [
+     "earthquake",
+     "지진",
+     "earth-quake"
+    ],
+    [
+     "tornado",
+     "토네이도",
+     ""
+    ],
+    [
+     "blizzard",
+     "눈보라",
+     "z 두 개"
+    ],
+    [
+     "hurricane",
+     "허리케인",
+     "r 두 개"
+    ],
+    [
+     "flood",
+     "홍수",
+     "oo"
+    ],
+    [
+     "cyclone",
+     "사이클론",
+     "cy-"
+    ],
+    [
+     "volcanic eruption",
+     "화산 폭발",
+     ""
+    ],
+    [
+     "deforestation",
+     "산림 파괴",
+     ""
+    ],
+    [
+     "desertification",
+     "사막화",
+     ""
+    ],
+    [
+     "bush fires",
+     "산불",
+     ""
+    ]
+   ]
+  },
+  {
+   "part": "Part 4",
+   "ko": "정부·사회",
+   "name": "Government",
+   "words": [
+    [
+     "politics",
+     "정치",
+     ""
+    ],
+    [
+     "leader",
+     "지도자",
+     ""
+    ],
+    [
+     "politician",
+     "정치인",
+     "-cian"
+    ],
+    [
+     "senator",
+     "상원 의원",
+     ""
+    ],
+    [
+     "mayor",
+     "시장(사람)",
+     ""
+    ],
+    [
+     "laws",
+     "법",
+     ""
+    ],
+    [
+     "regulations",
+     "규정",
+     ""
+    ],
+    [
+     "senate",
+     "상원",
+     ""
+    ],
+    [
+     "president",
+     "대통령",
+     ""
+    ],
+    [
+     "society",
+     "사회",
+     "철자를 가장 많이 틀리는 단어 중 하나: soc-i-ety"
+    ],
+    [
+     "individual",
+     "개인",
+     ""
+    ],
+    [
+     "council",
+     "의회",
+     ""
+    ],
+    [
+     "rules",
+     "규칙",
+     ""
+    ]
+   ]
+  },
+  {
+   "part": "Part 4",
+   "ko": "에너지",
+   "name": "Energy",
+   "words": [
+    [
+     "nuclear",
+     "원자력의",
+     "unclear로 잘못 쓰지 않기"
+    ],
+    [
+     "oil",
+     "석유",
+     ""
+    ],
+    [
+     "coal",
+     "석탄",
+     ""
+    ],
+    [
+     "hydro electrical power",
+     "수력 발전",
+     ""
+    ],
+    [
+     "natural gas",
+     "천연가스",
+     ""
+    ],
+    [
+     "solar power",
+     "태양열",
+     ""
+    ],
+    [
+     "source",
+     "원천",
+     ""
+    ],
+    [
+     "generate",
+     "생산하다",
+     ""
+    ],
+    [
+     "electricity",
+     "전기",
+     "-city"
+    ],
+    [
+     "dam",
+     "댐",
+     ""
+    ],
+    [
+     "windmill",
+     "풍차",
+     "l 두 개"
+    ],
+    [
+     "wind turbine",
+     "풍력 터빈",
+     ""
+    ],
+    [
+     "renewable",
+     "재생 가능한",
+     ""
+    ],
+    [
+     "non-renewable",
+     "재생 불가능한",
+     "하이픈"
+    ]
+   ]
+  },
+  {
+   "part": "Part 4",
+   "ko": "자주 나오는 단어",
+   "name": "General",
+   "words": [
+    [
+     "cooperation",
+     "협력",
+     "co-operation도 정답"
+    ],
+    [
+     "employment",
+     "고용",
+     ""
+    ],
+    [
+     "exhibition",
+     "전시회",
+     "h 소리 안 남: ex-hi-bi-tion"
+    ],
+    [
+     "aluminum",
+     "알루미늄",
+     "영국식 aluminium"
+    ],
+    [
+     "decade",
+     "10년",
+     ""
+    ],
+    [
+     "millennium",
+     "천 년",
+     "l 두 개, n 두 개"
+    ],
+    [
+     "creativity",
+     "창의성",
+     ""
+    ],
+    [
+     "satellite",
+     "인공위성",
+     "l 두 개"
+    ],
+    [
+     "opportunity",
+     "기회",
+     "p 두 개"
+    ],
+    [
+     "frequently",
+     "자주",
+     ""
+    ],
+    [
+     "different",
+     "다른",
+     "f 두 개, 자주 틀리는 단어"
+    ]
+   ]
   }
  ]
 }

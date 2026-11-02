@@ -967,7 +967,7 @@ function renderWordsOld(app){
 }
 
 /* ---------- listening spelling ---------- */
-const ALT={centre:["center"],theatre:["theater"],licence:["license"],civilisation:["civilization"],behaviour:["behavior"]};
+const ALT={centre:["center"],theatre:["theater"],licence:["license"],civilisation:["civilization"],behaviour:["behavior"],organisation:["organization"],aluminum:["aluminium"],airplane:["aeroplane"],cooperation:["co-operation"],mathematics:["maths","math"],"physical education":["pe"],"check up":["check-up","checkup"],"bachelor's":["bachelors"],"master's":["masters"],"bush fires":["bushfires"],"hydro electrical power":["hydroelectric power"],"united kingdom":["the united kingdom","uk"],colour:["color"]};
 let lsPart="Part 1", lsCat=null, LD=null;
 const SPEAK_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
 const canSpeak = ()=> "speechSynthesis" in window && typeof SpeechSynthesisUtterance!=="undefined";
