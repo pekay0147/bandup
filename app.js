@@ -940,18 +940,25 @@ function vocForm(app){
   if(vcOcr){
     const box=el("div","vcocr");
     if(vcOcr.status) box.append(el("p","small muted",vcOcr.status));
-    if(vcOcr.lines){
-      if(!vcOcr.lines.length) box.append(el("p","small muted","글자를 못 찾았어요. 더 밝고 가깝게 찍어 주세요."));
-      else box.append(el("p","small muted","추가할 단어를 눌러 주세요. 여러 개 누르면 표현이 돼요."));
-      const chips=el("div","vcchips");
-      vcOcr.lines.forEach((ln,li)=> ln.split(/\s+/).forEach((tok,ti)=>{ const wd=tok.replace(/^[^A-Za-z']+|[^A-Za-z']+$/g,""); if(!wd || (wd.length<2 && !/^[aAI]$/.test(wd))) return;
-        const key=li+":"+ti; const c=el("button","vcchip",wd); c.type="button"; if(vcOcr.sel.has(key)) c.classList.add("on");
-        c.onclick=()=>{ if(vcOcr.sel.has(key)) vcOcr.sel.delete(key); else vcOcr.sel.add(key); c.classList.toggle("on");
-          const keys=[...vcOcr.sel].map(k=>k.split(":").map(Number)).sort((a,b)=>a[0]-b[0]||a[1]-b[1]);
-          iw.value=keys.map(([l,t])=>vcOcr.lines[l].split(/\s+/)[t].replace(/^[^A-Za-z']+|[^A-Za-z']+$/g,"")).join(" ");
-          if(keys.length && (!ie.value || ie.dataset.auto)){ ie.value=vcOcr.lines[keys[0][0]].trim(); ie.dataset.auto="1"; } if(!keys.length && ie.dataset.auto){ ie.value=""; }
-        }; chips.append(c); }));
-      box.append(chips);
+    if(vcOcr.words){
+      if(!vcOcr.words.length) box.append(el("p","small muted","영어 단어를 못 찾았어요. 단어가 화면 가운데 크게 나오게, 밝은 곳에서 다시 찍어 주세요."));
+      else box.append(el("p","small muted","사진에서 추가할 단어를 눌러 주세요. 여러 개 누르면 표현이 돼요."));
+      const ph=el("div","vcphoto"); const im=el("img"); im.src=vcOcr.img; im.alt="찍은 사진"; ph.append(im);
+      const pick=()=>{ const ks=[...vcOcr.sel].sort((x,y)=>x-y); iw.value=ks.map(k=>vcOcr.words[k].t).join(" ");
+        if(ks.length && (!ie.value || ie.dataset.auto)){ ie.value=exLine(vcOcr.words[ks[0]].line, vcOcr.words[ks[0]].t); ie.dataset.auto="1"; } if(!ks.length && ie.dataset.auto) ie.value=""; };
+      vcOcr.words.forEach((w,k)=>{ const c=el("button","vcbox"); c.type="button"; c.setAttribute("aria-label",w.t);
+        Object.assign(c.style,{left:(w.x0/vcOcr.W*100)+"%",top:(w.y0/vcOcr.H*100)+"%",width:((w.x1-w.x0)/vcOcr.W*100)+"%",height:((w.y1-w.y0)/vcOcr.H*100)+"%"});
+        if(vcOcr.sel.has(k)) c.classList.add("on");
+        c.onclick=()=>{ if(vcOcr.sel.has(k)) vcOcr.sel.delete(k); else vcOcr.sel.add(k); c.classList.toggle("on"); pick(); }; ph.append(c); });
+      box.append(ph);
+      const chips=el("div","vcchips"), seen=new Set();
+      vcOcr.words.forEach((w,k)=>{ const lw=w.t.toLowerCase(); if(seen.has(lw)) return; seen.add(lw);
+        const c=el("button","vcchip",w.t); c.type="button"; if(vcOcr.sel.has(k)) c.classList.add("on");
+        c.onclick=()=>{ if(vcOcr.sel.has(k)) vcOcr.sel.delete(k); else vcOcr.sel.add(k); c.classList.toggle("on"); const bx=ph.querySelectorAll(".vcbox")[k]; if(bx) bx.classList.toggle("on",vcOcr.sel.has(k)); pick(); };
+        chips.append(c); });
+      if(vcOcr.words.length) box.append(el("p","small muted","사진 속 단어가 작으면 아래에서 골라도 돼요."), chips);
+      ph.querySelectorAll(".vcbox").forEach((bx,k)=>bx.addEventListener("click",()=>{ chips.querySelectorAll(".vcchip").forEach(c=>{ if(c.textContent===vcOcr.words[k].t) c.classList.toggle("on",vcOcr.sel.has(k)); }); }));
+      if(vcOcr.sel.size) setTimeout(pick,0);
     }
     f.append(box);
   }
@@ -967,10 +974,33 @@ function vocForm(app){
   row.append(cancel,save); f.append(msg,row); app.append(f);
   if(!vcOcr) setTimeout(()=>iw.focus(),50);
 }
+function exLine(line,word){
+  const segs=line.split(/\s*[—–|•·]\s*|\s+-\s+/).map(x=>x.replace(/[^\x20-\x7E’“”]/g," ").replace(/^[^A-Za-z]+/,"").replace(/\s+/g," ").trim()).filter(x=>x.toLowerCase().includes(word.toLowerCase()) && x.split(" ").length>=3);
+  return segs.sort((a,b)=>b.length-a.length)[0]||"";
+}
+async function prepImg(file){
+  let src=null; try{ src=await createImageBitmap(file,{imageOrientation:"from-image"}); }catch(_){ }
+  if(!src){ src=await new Promise((ok,no)=>{ const i=new Image(); i.onload=()=>ok(i); i.onerror=no; i.src=URL.createObjectURL(file); }); }
+  const w0=src.width||src.naturalWidth, h0=src.height||src.naturalHeight, sc=Math.min(1,1800/Math.max(w0,h0));
+  const cv=document.createElement("canvas"); cv.width=Math.round(w0*sc); cv.height=Math.round(h0*sc);
+  const cx=cv.getContext("2d"); cx.drawImage(src,0,0,cv.width,cv.height);
+  const show=cv.toDataURL("image/jpeg",.85);
+  const d=cx.getImageData(0,0,cv.width,cv.height), p=d.data, hist=new Array(256).fill(0);
+  for(let i=0;i<p.length;i+=4){ const g=(p[i]*.299+p[i+1]*.587+p[i+2]*.114)|0; p[i]=g; hist[g]++; }
+  const n=p.length/4; let lo=0,hi=255,acc=0; while(lo<255 && (acc+=hist[lo])<n*.02) lo++; acc=0; while(hi>0 && (acc+=hist[hi])<n*.02) hi--;
+  const r=Math.max(1,hi-lo); for(let i=0;i<p.length;i+=4){ const v=Math.max(0,Math.min(255,(p[i]-lo)*255/r)); p[i]=p[i+1]=p[i+2]=v; }
+  cx.putImageData(d,0,0); return {cv,show};
+}
 function vocPhoto(file){
   vcAdd=true; vcOcr={status:"사진에서 글자를 읽는 중… (처음엔 조금 걸려요)", sel:new Set()}; render();
-  loadTess().then(()=>Tesseract.recognize(file,"eng",{logger:m=>{ if(m.status==="recognizing text" && vcOcr){ const p=Math.round(m.progress*100); const s=document.querySelector(".vcocr p"); if(s) s.textContent=`사진에서 글자를 읽는 중… ${p}%`; } }}))
-   .then(r=>{ if(!vcOcr) return; vcOcr.status=null; vcOcr.lines=(r.data.text||"").split("\n").map(s=>s.trim()).filter(s=>/[A-Za-z]{2}/.test(s)); render(); })
+  let prep;
+  prepImg(file).then(x=>{ prep=x; return loadTess(); })
+   .then(()=>Tesseract.recognize(prep.cv,"eng",{logger:m=>{ if(m.status==="recognizing text" && vcOcr){ const s=document.querySelector(".vcocr p"); if(s) s.textContent=`사진에서 글자를 읽는 중… ${Math.round(m.progress*100)}%`; } }}))
+   .then(r=>{ if(!vcOcr) return;
+     const ws=(r.data.words||[]).map(w=>({t:(w.text||"").replace(/^[^A-Za-z']+|[^A-Za-z']+$/g,""), c:w.confidence, b:w.bbox, line:((w.line&&w.line.text)||"").replace(/\s+/g," ").trim()}))
+       .filter(w=>w.c>=55 && /^[A-Za-z][A-Za-z'’-]*$/.test(w.t) && (w.t.length>1 || /^[aAI]$/.test(w.t)))
+       .map(w=>({t:w.t,line:w.line,x0:w.b.x0,y0:w.b.y0,x1:w.b.x1,y1:w.b.y1}));
+     vcOcr.status=null; vcOcr.words=ws; vcOcr.img=prep.show; vcOcr.W=prep.cv.width; vcOcr.H=prep.cv.height; render(); })
    .catch(()=>{ if(!vcOcr) return; vcOcr.status="글자를 읽지 못했어요. 인터넷 연결을 확인하거나 직접 적어 주세요."; render(); });
 }
 function renderVocab(app){
