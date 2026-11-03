@@ -972,3 +972,13 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .vcbox.on{background:rgba(68,87,232,.45);border-color:#4457e8}
 
 .vcadds{grid-template-columns:1fr}
+
+/* DAILY SPELLING */
+.spday{display:grid;gap:10px;padding:16px;border-radius:16px;background:var(--surface,#fff);border:1px solid var(--line)}
+.spday-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.spday-h b{font-size:18px}
+.spday-h span{font-size:13px;color:var(--muted)}
+.spday p{margin:0}
+.spday-ok{margin:0;font-weight:700;color:#1d9a68}
+.lrow2.spdone .lt span{color:#1d9a68}
+.podwrap:not(:first-child)>.lrow2{border-top:1px solid var(--line)}
