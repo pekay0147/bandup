@@ -35,6 +35,11 @@
    "no": 6,
    "date": "2026-08-14",
    "title": "Technology"
+  },
+  {
+   "no": 7,
+   "date": "2026-11-03",
+   "title": "Proud of a family member"
   }
  ],
  "types": [
@@ -50,11 +55,12 @@
   "동사·시제": "일반동사(spend) 앞에 I'm을 붙이지 않기. interested 같은 형용사 앞에는 am을 꼭.",
   "문장 구조": "한 문장에 동사는 하나! are makes ❌ → make. love 뒤 동사는 -ing: love drawing.",
   "관사·전치사": "a high school student처럼 사람·직업 앞에 a. 날짜는 on the 7th of April.",
-  "단어 선택": "neighbour는 이웃 사람, neighbourhood는 동네. refreshed만 반복하지 말고 바꿔 말하기.",
+  "단어 선택": "neighbour는 이웃 사람, neighbourhood는 동네. refreshed만 반복하지 말고 바꿔 말하기. 기분은 relaxed·stressed, 그게 주는 느낌은 relaxing·stressful.",
   "발음·철자": "-ed 끝소리(t/d/id)를 흘리지 말고 또렷하게. I'm과 I도 구분해서 발음."
  },
  "focus": {
-  "6": "having said that, on top of that, I have to admit 같은 연결어를 Part 3 답에 꼭 한 번씩 넣어보기!"
+  "6": "having said that, on top of that, I have to admit 같은 연결어를 Part 3 답에 꼭 한 번씩 넣어보기!",
+  "7": "usually만 반복하지 말고 more often than not, on a regular basis로 바꿔 말해보기!"
  },
  "compare": [
   [
@@ -76,6 +82,18 @@
   [
    "lose my temper / throw a fit / tell someone off",
    "<em>lose my temper</em> 욱하다 · <em>throw a fit</em> 성질을 부리다 · <em>tell someone off</em> 꾸짖다 · <em>hold back my anger</em> 화를 참다"
+  ],
+  [
+   "relaxed / relaxing · stressed / stressful",
+   "내 기분은 <em>-ed</em>: I'm relaxed / stressed / interested · 그게 주는 느낌은 <em>-ing / -ful</em>: It's relaxing / stressful / interesting"
+  ],
+  [
+   "near / nearby",
+   "<em>near</em> + 장소: near my house · <em>nearby</em>는 혼자: There's a park nearby. / a nearby park"
+  ],
+  [
+   "on / at / in (때)",
+   "<em>on</em> weekdays, on Monday · <em>at</em> the weekend(영국) / on weekends(미국) · <em>in</em> May, in winter, in 2026"
   ]
  ],
  "cards": [
@@ -654,9 +672,239 @@
    "en": "I have to admit, I love buying the latest gadgets.",
    "hint": "admit",
    "gram": "<em>I have to admit</em> = 인정하자면, 솔직히. 내 이야기를 꺼낼 때 자연스러운 연결어."
+  },
+  {
+   "id": "e34",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "이 문제를 한 번에 해결할 방법은 없어",
+   "en": "There's no magic bullet for this problem.",
+   "hint": "bullet",
+   "gram": "<em>magic bullet</em> / <em>silver bullet</em> = 한 방에 해결하는 방법, 만능 해결책. 주로 There's no ~ 로 써요."
+  },
+  {
+   "id": "e35",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "SNS가 외로움을 해결해 주는 만능 해결책은 아니야",
+   "en": "Social media isn't a silver bullet for loneliness.",
+   "hint": "silver",
+   "gram": "<em>silver bullet</em> = magic bullet과 같은 뜻. Part 3에서 '그게 다 해결해 주진 않는다' 말할 때 좋아요."
+  },
+  {
+   "id": "e36",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "그 동네는 안전하다는 평판이 있어",
+   "en": "The area has a reputation for being safe.",
+   "hint": "reputation",
+   "gram": "<em>have a reputation for</em> + 명사/-ing = ~로 평판이 나 있다."
+  },
+  {
+   "id": "e37",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "우리 도시는 아이를 키우기 좋은 곳이에요",
+   "en": "My city is a good place to bring up children.",
+   "hint": "bring",
+   "gram": "<em>a good place to bring up children</em> = 아이 키우기 좋은 곳. bring up = raise(기르다)."
+  },
+  {
+   "id": "e38",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "대체로 저는 주말에 늦잠을 자요",
+   "en": "More often than not, I sleep in at the weekend.",
+   "hint": "often",
+   "gram": "<em>more often than not</em> = 대체로, 대개. usually 대신 쓰면 다양해 보여요."
+  },
+  {
+   "id": "e39",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "저는 정기적으로 운동을 해요",
+   "en": "I work out on a regular basis.",
+   "hint": "basis",
+   "gram": "<em>on a regular basis</em> = 정기적으로, 꾸준히. usually·regularly 대신."
+  },
+  {
+   "id": "m15",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    7
+   ],
+   "ko": "8시간이 좋긴 하지만, 저는 7시간밖에 못 자요.",
+   "en": "Even though eight hours is ideal, I only get seven hours of sleep.",
+   "gram": "<em>even though</em> + 문장, 문장 = ~이긴 하지만. 한 문장 안에 but을 같이 쓰지 않기.<br><b>but으로</b> · Eight hours is ideal, <em>but</em> I only sleep for seven hours.",
+   "hint": "though"
+  },
+  {
+   "id": "m16",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    7
+   ],
+   "ko": "주중에는 일찍 일어나고, 주말에는 늦게 일어나요.",
+   "en": "I get up early on weekdays and late at the weekend.",
+   "gram": "요일·주중은 <em>on</em>: on weekdays, on Monday. 주말은 영국식 <em>at the weekend</em>, 미국식 <em>on weekends</em> 둘 다 OK. 달·계절·연도는 <em>in</em>: in May, in winter.",
+   "hint": "weekdays"
+  },
+  {
+   "id": "m17",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    7
+   ],
+   "ko": "버스가 자주 안 와요.",
+   "en": "The bus doesn't come very frequently.",
+   "gram": "버스가 자주 다니다 = <em>come / run frequently</em>. The buses don't <em>run</em> very often.",
+   "hint": "frequently"
+  },
+  {
+   "id": "m18",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    7
+   ],
+   "ko": "저는 보통 아침에 일어나서 물을 마셔요.",
+   "en": "I usually drink a glass of water when I wake up.",
+   "gram": "습관은 현재형! <em>usually</em>는 일반동사 앞: I usually drink. '일어나서'는 when I wake up / after I get up.",
+   "hint": "glass"
+  },
+  {
+   "id": "m19",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    7
+   ],
+   "ko": "주말에는 집에서 쉬면 마음이 편해져요.",
+   "en": "I feel relaxed when I stay at home at the weekend.",
+   "gram": "사람의 기분은 <em>-ed</em>: I feel <em>relaxed / stressed / interested</em>. 그게 주는 느낌은 <em>-ing</em>: It's <em>relaxing / stressful / interesting</em>.",
+   "hint": "relaxed"
+  },
+  {
+   "id": "m20",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    7
+   ],
+   "ko": "시험 기간은 정말 스트레스예요.",
+   "en": "Exam season is really stressful.",
+   "gram": "상황·일이 스트레스를 줄 때는 <em>stressful</em>, 내가 스트레스 받을 때는 <em>I'm stressed</em>. stressful 철자: s 두 개, l 하나.",
+   "hint": "stressful"
+  },
+  {
+   "id": "m21",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    7
+   ],
+   "ko": "우리 집 근처에 공원이 있어요.",
+   "en": "There's a park near my house.",
+   "gram": "<em>near</em> + 장소 = ~ 근처에(뒤에 장소가 와요). <em>nearby</em>는 혼자 써요: There's a park <em>nearby</em>. / a <em>nearby</em> park.",
+   "hint": "near"
+  },
+  {
+   "id": "m22",
+   "kind": "ko",
+   "type": "주어-동사",
+   "sessions": [
+    7
+   ],
+   "ko": "한국 음식은 정말 맛있어요.",
+   "en": "Korean food is really tasty.",
+   "gram": "<em>food</em>는 셀 수 없는 명사! a food ❌, foods ❌ → food <em>is</em>. 종류를 말할 땐 dishes: Korean dishes are tasty.",
+   "hint": "food"
+  },
+  {
+   "id": "m23",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    7
+   ],
+   "ko": "저희는 친해요.",
+   "en": "We are close.",
+   "mine": "We are closely.",
+   "gram": "친하다 = <em>be close</em>(형용사). closely는 '자세히, 밀접하게'라는 부사라 be 뒤에 못 와요. We're <em>close friends</em>.",
+   "hint": "close"
   }
  ],
  "part1": [
+  {
+   "session": 7,
+   "groups": [
+    {
+     "title": "Sleep",
+     "qs": [
+      "How many hours do you usually sleep?",
+      "Are you a morning person or a night owl?",
+      "Do you ever take naps during the day?",
+      "What do you do when you can't fall asleep?",
+      "Did you sleep more when you were a child?",
+      "Do you think people sleep less these days than in the past? Why?"
+     ]
+    },
+    {
+     "title": "Neighbours",
+     "qs": [
+      "Do you know your neighbours well?",
+      "How often do you see your neighbours?",
+      "Have your neighbours ever helped you?",
+      "What makes a good neighbour?",
+      "Did you get on with your neighbours when you were a child?",
+      "Do you think people care less about their neighbours nowadays?"
+     ]
+    },
+    {
+     "title": "Gifts",
+     "qs": [
+      "Do you like giving gifts to others?",
+      "What was the last gift you received?",
+      "Do you prefer giving or receiving gifts?",
+      "What gifts are popular in your country?",
+      "Have you ever received a gift you didn't like?",
+      "Do you think expensive gifts are always better? Why?"
+     ]
+    },
+    {
+     "title": "Time management",
+     "qs": [
+      "Are you usually on time?",
+      "Do you make plans for your day?",
+      "How do you feel when you are late?",
+      "What do you usually do in your free time?",
+      "Do you think it's important to be punctual? Why?",
+      "If you had more free time, what would you do?"
+     ]
+    }
+   ]
+  },
   {
    "session": 6,
    "groups": [
@@ -816,6 +1064,16 @@
   }
  ],
  "part3": [
+  {
+   "session": 7,
+   "topic": "Describe a time when you felt proud of a family member",
+   "qs": [
+    "Why do parents feel proud of their children?",
+    "Do you think families today spend less time together than in the past?",
+    "Should children be praised often, or does it spoil them?",
+    "What can family members do to support each other?"
+   ]
+  },
   {
    "session": 6,
    "topic": "Describe a piece of technology that you would like to own",
@@ -1056,6 +1314,48 @@
    "ko": "인정하자면",
    "ex": "I have to admit, I'm not very patient.",
    "s": 6
+  },
+  {
+   "w": "magic bullet",
+   "ko": "한 방에 해결하는 방법",
+   "ex": "There's no magic bullet for learning English.",
+   "s": 7
+  },
+  {
+   "w": "silver bullet",
+   "ko": "만능 해결책",
+   "ex": "Technology isn't a silver bullet.",
+   "s": 7
+  },
+  {
+   "w": "reputation",
+   "ko": "평판, 명성",
+   "ex": "The restaurant has a good reputation.",
+   "s": 7
+  },
+  {
+   "w": "bring up children",
+   "ko": "아이를 키우다",
+   "ex": "My city is a good place to bring up children.",
+   "s": 7
+  },
+  {
+   "w": "more often than not",
+   "ko": "대체로, 대개",
+   "ex": "More often than not, I go to bed after midnight.",
+   "s": 7
+  },
+  {
+   "w": "on a regular basis",
+   "ko": "정기적으로",
+   "ex": "I meet my friends on a regular basis.",
+   "s": 7
+  },
+  {
+   "w": "run frequently",
+   "ko": "(버스 등이) 자주 다니다",
+   "ex": "The buses don't run very frequently.",
+   "s": 7
   }
  ]
 }
