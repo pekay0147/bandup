@@ -8,10 +8,11 @@ for f in glob.glob(os.path.join(ROOT,"data","students","*.json")):
     h=base.replace('<meta charset="utf-8">','<meta charset="utf-8">\n<base href="../../">',1)
     h=h.replace('<link rel="manifest" href="manifest.webmanifest">',f'<link rel="manifest" href="u/{slug}/manifest.webmanifest">')
     h=h.replace('<title>밴드업 아이엘츠</title>',f'<title>{name}님 · 밴드업 아이엘츠</title>')
-    h=h.replace('<script src="app.js"></script>',f'<script>window.BANDUP_SLUG="{slug}";</script>\n<script src="app.js"></script>')
+    h=re.sub(r'<script src="app\.js(\?v=\d+)?"></script>',lambda m:f'<script>window.BANDUP_SLUG="{slug}";</script>\n'+m.group(0),h,count=1)
+    assert 'BANDUP_SLUG' in h, slug
     open(os.path.join(out,"index.html"),"w",encoding="utf-8").write(h)
     m=json.load(open(os.path.join(ROOT,"manifest.webmanifest"),encoding="utf-8"))
-    m.update({"id":f"./u/{slug}/","name":f"밴드업 · {name}","short_name":"밴드업","start_url":"./","scope":"../../",
+    m.update({"id":f"./u/{slug}/","name":f"밴드업 · {name}" if name else "밴드업 아이엘츠","short_name":"밴드업","start_url":"./","scope":"../../",
               "icons":[{**i,"src":"../../"+i["src"]} for i in m["icons"]]})
     json.dump(m,open(os.path.join(out,"manifest.webmanifest"),"w",encoding="utf-8"),ensure_ascii=False,indent=1)
     print("built",slug)
