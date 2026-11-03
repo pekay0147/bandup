@@ -943,16 +943,13 @@ function renderVocab(app){
     const wrap=el("div","vcwrap");
     const filt=()=>{ vcQuery=sq.value; const q=sq.value.trim().toLowerCase(); let n=0; wrap.querySelectorAll(".idrow").forEach(r=>{ const hit=!q || r.dataset.k.includes(q); r.hidden=!hit; if(hit) n++; }); wrap.querySelectorAll(".vcgroup").forEach(g=>{ g.hidden=![...g.querySelectorAll(".idrow")].some(r=>!r.hidden); }); none.hidden=n>0; };
     sq.oninput=filt; app.append(sq);
-    const sessNos=[...new Set(W.map(w=>w.s))].sort((a,b)=>b-a);
-    sessNos.forEach(no=>{ const g=el("div","vcgroup"); const se=(D.sessions||[]).find(x=>x.no===no);
-      g.append(el("span","vclab", `${no}회차`+(se&&se.date? ` · ${(+se.date.slice(5,7))}/${(+se.date.slice(8,10))}` : "")));
-      const box=el("div","idlist");
-      W.forEach((w,i)=>{ if(w.s!==no) return; const r=el("button","idrow"); r.type="button"; r.dataset.k=(w.w+" "+w.ko+" "+(w.ex||"")).toLowerCase(); const open=vcOpen.has(i);
+    const box=el("div","idlist");
+    W.map((w,i)=>[w,i]).sort((x,y)=>(y[0].s||0)-(x[0].s||0)).forEach(([w,i])=>{ const r=el("button","idrow"); r.type="button"; r.dataset.k=(w.w+" "+w.ko+" "+(w.ex||"")).toLowerCase(); const open=vcOpen.has(i);
         const t=el("div","idt"); t.append(el("b",null,w.w), el("span","idko",w.ko)); const exl=el("p","idex",w.ex||""); exl.hidden=!open||!w.ex; t.append(exl);
         r.append(t, el("span","idchev", w.ex? (open?"▴":"▾") : ""));
         r.onclick=()=>{ if(!w.ex) return; if(vcOpen.has(i)) vcOpen.delete(i); else vcOpen.add(i); exl.hidden=!vcOpen.has(i); r.querySelector(".idchev").textContent=vcOpen.has(i)?"▴":"▾"; };
         box.append(r); });
-      g.append(box); wrap.append(g); });
+    wrap.append(box);
     app.append(wrap, none); if(vcQuery) filt(); return;
   }
   if(!vcState){ vcState={ids:W.map((_,i)=>i).sort(()=>Math.random()-.5), i:0, show:false}; }
@@ -960,7 +957,6 @@ function renderVocab(app){
   const pg=el("div","prog"); pg.append(el("span",null,`${S.i+1} / ${S.ids.length}`)); const sh=el("button","linkbtn","다시 섞기"); sh.type="button"; sh.onclick=()=>{ vcState=null; render(); }; pg.append(sh); app.append(pg);
   const bar=el("div","bar"); const bi=el("i"); bi.style.width=((S.i+1)/S.ids.length*100)+"%"; bar.append(bi); app.append(bar);
   const c=el("button","idcard"); c.type="button";
-  const tag=el("span","idtag",`${w.s}회차`); c.append(tag);
   const top=el("div","idc-top"); top.append(el("b",null, w.ko)); c.append(top);
   if(S.show){ c.append(el("p","idc-ko",w.w)); if(w.ex) c.append(el("p","idc-ex",w.ex)); } else c.append(el("p","idc-hint","영어로 뭐였을까요? 눌러서 확인"));
   c.onclick=()=>{ S.show=!S.show; render(); }; app.append(c);
