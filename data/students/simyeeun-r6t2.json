@@ -92,8 +92,8 @@
    "<em>near</em> + 장소: near my house · <em>nearby</em>는 혼자: There's a park nearby. / a nearby park"
   ],
   [
-   "on / at / in (때)",
-   "<em>on</em> weekdays, on Monday · <em>at</em> the weekend(영국) / on weekends(미국) · <em>in</em> May, in winter, in 2026"
+   "on / in (때)",
+   "<em>on</em> weekdays, <em>on weekends</em>, on Monday · 영국식 <em>at the weekend</em>도 OK (at the weekends ❌) · <em>in</em> May, in winter, in 2026"
   ]
  ],
  "cards": [
@@ -729,7 +729,7 @@
     7
    ],
    "ko": "대체로 저는 주말에 늦잠을 자요",
-   "en": "More often than not, I sleep in at the weekend.",
+   "en": "More often than not, I sleep in on weekends.",
    "hint": "often",
    "gram": "<em>more often than not</em> = 대체로, 대개. usually 대신 쓰면 다양해 보여요."
   },
@@ -765,8 +765,8 @@
     7
    ],
    "ko": "주중에는 일찍 일어나고, 주말에는 늦게 일어나요.",
-   "en": "I get up early on weekdays and late at the weekend.",
-   "gram": "요일·주중은 <em>on</em>: on weekdays, on Monday. 주말은 영국식 <em>at the weekend</em>, 미국식 <em>on weekends</em> 둘 다 OK. 달·계절·연도는 <em>in</em>: in May, in winter.",
+   "en": "I get up early on weekdays and late on weekends.",
+   "gram": "주중·주말 모두 <em>on</em>: on weekdays, <em>on weekends</em>, on Monday. 영국에서는 <em>at the weekend</em>도 많이 써요(at the weekends ❌). 달·계절·연도는 <em>in</em>: in May, in winter.",
    "hint": "weekdays"
   },
   {
@@ -801,7 +801,7 @@
     7
    ],
    "ko": "주말에는 집에서 쉬면 마음이 편해져요.",
-   "en": "I feel relaxed when I stay at home at the weekend.",
+   "en": "I feel relaxed when I stay at home on weekends.",
    "gram": "사람의 기분은 <em>-ed</em>: I feel <em>relaxed / stressed / interested</em>. 그게 주는 느낌은 <em>-ing</em>: It's <em>relaxing / stressful / interesting</em>.",
    "hint": "relaxed"
   },
