@@ -875,5 +875,187 @@
     "Is it better to travel alone or with other people? Why?"
    ]
   }
+ ],
+ "words": [
+  {
+   "w": "picky eater",
+   "ko": "편식쟁이",
+   "ex": "I'm not a picky eater.",
+   "s": 2
+  },
+  {
+   "w": "hit it off",
+   "ko": "금방 친해지다",
+   "ex": "We hit it off straight away.",
+   "s": 2
+  },
+  {
+   "w": "batch",
+   "ko": "동기, 기수",
+   "ex": "We were in the same batch.",
+   "s": 2
+  },
+  {
+   "w": "I cannot be bothered",
+   "ko": "귀찮아",
+   "ex": "I can't be bothered to go out today.",
+   "s": 2
+  },
+  {
+   "w": "half-heartedly",
+   "ko": "건성으로",
+   "ex": "I did my homework half-heartedly.",
+   "s": 2
+  },
+  {
+   "w": "10 to 7 / 10 past 7",
+   "ko": "7시 10분 전 / 7시 10분",
+   "ex": "I wake up at 10 past 7.",
+   "s": 3
+  },
+  {
+   "w": "I've eaten worse / I've done worse",
+   "ko": "나쁘지 않네",
+   "ex": "It wasn't perfect, but I've done worse.",
+   "s": 3
+  },
+  {
+   "w": "for the time being",
+   "ko": "당분간",
+   "ex": "I'm living with my parents for the time being.",
+   "s": 3
+  },
+  {
+   "w": "food for thought",
+   "ko": "생각할 거리",
+   "ex": "The film gave me food for thought.",
+   "s": 3
+  },
+  {
+   "w": "off the top of my head",
+   "ko": "바로 떠오르는 대로",
+   "ex": "Off the top of my head, I can think of two reasons.",
+   "s": 3
+  },
+  {
+   "w": "it's a 5-minute walk",
+   "ko": "걸어서 5분 걸리다",
+   "ex": "It's a 5-minute walk to the station.",
+   "s": 4
+  },
+  {
+   "w": "bossy",
+   "ko": "으스대는, 우두머리 행세하는",
+   "ex": "My older sister can be quite bossy.",
+   "s": 5
+  },
+  {
+   "w": "punctual",
+   "ko": "시간을 잘 지키는",
+   "ex": "I'm always punctual.",
+   "s": 5
+  },
+  {
+   "w": "warm-hearted",
+   "ko": "마음이 따뜻한",
+   "ex": "My grandmother is very warm-hearted.",
+   "s": 5
+  },
+  {
+   "w": "mature",
+   "ko": "성숙한",
+   "ex": "She is very mature for her age.",
+   "s": 5
+  },
+  {
+   "w": "down to earth",
+   "ko": "현실적인, 소탈한",
+   "ex": "My best friend is really down to earth.",
+   "s": 5
+  },
+  {
+   "w": "-wise (명사+wise)",
+   "ko": "~적인 측면에서",
+   "ex": "Price-wise, it's quite reasonable.",
+   "s": 5
+  },
+  {
+   "w": "reputation",
+   "ko": "평판",
+   "ex": "The restaurant has a good reputation.",
+   "s": 5
+  },
+  {
+   "w": "bring people together",
+   "ko": "사람들을 하나로 모으다",
+   "ex": "Sports bring people together.",
+   "s": 5
+  },
+  {
+   "w": "it's not confirmed yet",
+   "ko": "아직 미확정이야",
+   "ex": "My trip isn't confirmed yet.",
+   "s": 5
+  },
+  {
+   "w": "as well",
+   "ko": "또한",
+   "ex": "I like reading as well.",
+   "s": 6
+  },
+  {
+   "w": "so far",
+   "ko": "지금까지",
+   "ex": "So far, I've enjoyed my course.",
+   "s": 6
+  },
+  {
+   "w": "throw a fit",
+   "ko": "성질을 부리다",
+   "ex": "My nephew threw a fit at the shop.",
+   "s": 6
+  },
+  {
+   "w": "lose my temper",
+   "ko": "화를 내다",
+   "ex": "I rarely lose my temper.",
+   "s": 6
+  },
+  {
+   "w": "piss someone off",
+   "ko": "~를 열받게 하다",
+   "ex": "Loud neighbours really piss me off.",
+   "s": 6
+  },
+  {
+   "w": "tell someone off",
+   "ko": "누군가를 야단치다",
+   "ex": "My teacher told me off for being late.",
+   "s": 6
+  },
+  {
+   "w": "hold back my anger",
+   "ko": "화를 참다",
+   "ex": "I tried to hold back my anger.",
+   "s": 6
+  },
+  {
+   "w": "having said that",
+   "ko": "그렇긴 하지만",
+   "ex": "Having said that, I still love my city.",
+   "s": 6
+  },
+  {
+   "w": "on top of that",
+   "ko": "게다가",
+   "ex": "On top of that, it's very cheap.",
+   "s": 6
+  },
+  {
+   "w": "I have to admit",
+   "ko": "인정하자면",
+   "ex": "I have to admit, I'm not very patient.",
+   "s": 6
+  }
  ]
 }

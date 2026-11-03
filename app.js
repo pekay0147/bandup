@@ -120,6 +120,7 @@ function render(){
   if(view.tab==="bm") renderBmTab(app);
   if(view.tab==="idioms") renderIdioms(app);
   if(view.tab==="podpick") renderPodPick(app);
+  if(view.tab==="vocab") renderVocab(app);
   updateTabs();
   document.body.classList.toggle("lesson", !!app.querySelector(".lbar"));
 }
@@ -147,6 +148,7 @@ function renderPodPick(app){
   app.append(f);
 }
 const LIC={
+  voc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M9 8h7M9 11.5h5"/></svg>',
   pod:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="2.2"/><path d="M12 13.5v7"/><path d="M8.2 14a5 5 0 1 1 7.6 0"/><path d="M5.6 16.6a8.5 8.5 0 1 1 12.8 0"/></svg>',
   mock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>',
   bm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8l-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/></svg>'
@@ -200,6 +202,7 @@ function renderHome(app){
   const list=el("div","box list2");
   { const P=podSel(); const pr=listRow(LIC.pod,"오늘의 팟캐스트",P.name,null,P.url); pr.classList.add("podrow"); const pw=el("div","podwrap"); const cb=el("button","podchg","바꾸기"); cb.type="button"; cb.onclick=()=>go("podpick"); pw.append(pr,cb); list.append(pw); }
   list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
+  if((D.words||[]).length) list.append(listRow(LIC.voc,"내 단어장",`수업에서 배운 단어 ${D.words.length}개`,()=>{ vcState=null; go("vocab"); }));
   list.append(listRow(LIC.bm,"북마크",`${cbmList().filter(id=>getCard(id)).length+qbmList().length}개`,()=>go("bm")));
   s2.append(list); app.append(s2);
   // 이번 주
@@ -915,6 +918,49 @@ function renderIdioms(app){
   const c=el("button","idcard"); c.type="button";
   const top=el("div","idc-top"); top.append(el("b",null,en)); c.append(top);
   if(S.show){ c.append(el("p","idc-ko",ko), el("p","idc-ex",ex)); } else c.append(el("p","idc-hint","무슨 뜻일까요? 눌러서 뜻과 예시 보기"));
+  c.onclick=()=>{ S.show=!S.show; render(); }; app.append(c);
+  const mv=d=>{ S.i=Math.max(0,Math.min(S.ids.length-1,S.i+d)); S.show=false; render(); };
+  const acts=el("div","acts arrows");
+  const prev=el("button","nav","‹ 이전"); prev.type="button"; prev.disabled=S.i===0; prev.onclick=()=>mv(-1);
+  const next=el("button","nav","다음 ›"); next.type="button"; next.disabled=S.i>=S.ids.length-1; next.onclick=()=>mv(1);
+  acts.append(prev,next); app.append(acts);
+}
+
+/* ---------- personal vocabulary (from class "오늘의 단어") ---------- */
+let vcMode="list", vcState=null, vcOpen=new Set(), vcQuery="";
+function renderVocab(app){
+  const W=D.words||[];
+  const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
+  pageHead(app,"내 단어장",`수업에서 배운 단어 ${W.length}개`);
+  const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
+  for(const [k,label] of [["list","전체 보기"],["card","카드로 외우기"]]){ const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(vcMode===k)); b.append(el("b",null,label)); b.onclick=()=>{ vcMode=k; render(); }; seg.append(b); }
+  app.append(seg);
+  if(vcMode==="list"){
+    const sq=el("input","idsearch"); sq.id="vcsearch"; sq.type="search"; sq.placeholder="영어나 한국어로 검색"; sq.value=vcQuery; sq.autocomplete="off"; sq.setAttribute("aria-label","단어 검색");
+    const none=el("p","muted small idnone","찾는 단어가 없어요."); none.hidden=true;
+    const wrap=el("div","vcwrap");
+    const filt=()=>{ vcQuery=sq.value; const q=sq.value.trim().toLowerCase(); let n=0; wrap.querySelectorAll(".idrow").forEach(r=>{ const hit=!q || r.dataset.k.includes(q); r.hidden=!hit; if(hit) n++; }); wrap.querySelectorAll(".vcgroup").forEach(g=>{ g.hidden=![...g.querySelectorAll(".idrow")].some(r=>!r.hidden); }); none.hidden=n>0; };
+    sq.oninput=filt; app.append(sq);
+    const sessNos=[...new Set(W.map(w=>w.s))].sort((a,b)=>b-a);
+    sessNos.forEach(no=>{ const g=el("div","vcgroup"); const se=(D.sessions||[]).find(x=>x.no===no);
+      g.append(el("span","vclab", `${no}회차`+(se&&se.date? ` · ${(+se.date.slice(5,7))}/${(+se.date.slice(8,10))}` : "")));
+      const box=el("div","idlist");
+      W.forEach((w,i)=>{ if(w.s!==no) return; const r=el("button","idrow"); r.type="button"; r.dataset.k=(w.w+" "+w.ko+" "+(w.ex||"")).toLowerCase(); const open=vcOpen.has(i);
+        const t=el("div","idt"); t.append(el("b",null,w.w), el("span","idko",w.ko)); const exl=el("p","idex",w.ex||""); exl.hidden=!open||!w.ex; t.append(exl);
+        r.append(t, el("span","idchev", w.ex? (open?"▴":"▾") : ""));
+        r.onclick=()=>{ if(!w.ex) return; if(vcOpen.has(i)) vcOpen.delete(i); else vcOpen.add(i); exl.hidden=!vcOpen.has(i); r.querySelector(".idchev").textContent=vcOpen.has(i)?"▴":"▾"; };
+        box.append(r); });
+      g.append(box); wrap.append(g); });
+    app.append(wrap, none); if(vcQuery) filt(); return;
+  }
+  if(!vcState){ vcState={ids:W.map((_,i)=>i).sort(()=>Math.random()-.5), i:0, show:false}; }
+  const S=vcState, w=W[S.ids[S.i]];
+  const pg=el("div","prog"); pg.append(el("span",null,`${S.i+1} / ${S.ids.length}`)); const sh=el("button","linkbtn","다시 섞기"); sh.type="button"; sh.onclick=()=>{ vcState=null; render(); }; pg.append(sh); app.append(pg);
+  const bar=el("div","bar"); const bi=el("i"); bi.style.width=((S.i+1)/S.ids.length*100)+"%"; bar.append(bi); app.append(bar);
+  const c=el("button","idcard"); c.type="button";
+  const tag=el("span","idtag",`${w.s}회차`); c.append(tag);
+  const top=el("div","idc-top"); top.append(el("b",null, w.ko)); c.append(top);
+  if(S.show){ c.append(el("p","idc-ko",w.w)); if(w.ex) c.append(el("p","idc-ex",w.ex)); } else c.append(el("p","idc-hint","영어로 뭐였을까요? 눌러서 확인"));
   c.onclick=()=>{ S.show=!S.show; render(); }; app.append(c);
   const mv=d=>{ S.i=Math.max(0,Math.min(S.ids.length-1,S.i+d)); S.show=false; render(); };
   const acts=el("div","acts arrows");

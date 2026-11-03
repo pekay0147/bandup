@@ -1437,5 +1437,589 @@
     "Is it better to travel alone or with other people?"
    ]
   }
+ ],
+ "words": [
+  {
+   "w": "telltale sign",
+   "ko": "숨길 수 없는 징후",
+   "ex": "Yawning is a telltale sign that I'm tired.",
+   "s": 2
+  },
+  {
+   "w": "stave in",
+   "ko": "부수다, 구멍을 내다",
+   "ex": "The wave stove in the entire bow of the boat.",
+   "s": 2
+  },
+  {
+   "w": "make up",
+   "ko": "차지하다",
+   "ex": "Their heads make up around a third of their overall body length.",
+   "s": 2
+  },
+  {
+   "w": "worldwide",
+   "ko": "전세계적인, 전세계적으로",
+   "ex": "The song became popular worldwide.",
+   "s": 2
+  },
+  {
+   "w": "fangirl",
+   "ko": "팬질하다",
+   "ex": "I used to fangirl over K-pop idols.",
+   "s": 2
+  },
+  {
+   "w": "breakneck speed",
+   "ko": "감당할 수 없는 속도",
+   "ex": "Technology is changing at breakneck speed.",
+   "s": 2
+  },
+  {
+   "w": "catchy name",
+   "ko": "기억하기 쉬운 이름",
+   "ex": "The café has a really catchy name.",
+   "s": 2
+  },
+  {
+   "w": "cherish",
+   "ko": "소중히 여기다",
+   "ex": "I cherish the time I spend with my family.",
+   "s": 2
+  },
+  {
+   "w": "boil down to",
+   "ko": "핵심이 ~이다",
+   "ex": "It all boils down to practice.",
+   "s": 2
+  },
+  {
+   "w": "first-hand",
+   "ko": "직접",
+   "ex": "I saw the problem first-hand.",
+   "s": 2
+  },
+  {
+   "w": "lean",
+   "ko": "군살이 없는",
+   "ex": "He is tall and lean.",
+   "s": 2
+  },
+  {
+   "w": "picky eater",
+   "ko": "편식쟁이",
+   "ex": "I'm not a picky eater.",
+   "s": 2
+  },
+  {
+   "w": "10 to 8 / 10 past 8",
+   "ko": "8시 10분 전 / 8시 10분",
+   "ex": "I usually leave home at 10 past 8.",
+   "s": 2
+  },
+  {
+   "w": "batch",
+   "ko": "동기, 기수",
+   "ex": "We were in the same batch at university.",
+   "s": 2
+  },
+  {
+   "w": "-wise (명사+wise)",
+   "ko": "~적인 측면에서",
+   "ex": "Location-wise, my flat is perfect.",
+   "s": 2
+  },
+  {
+   "w": "run your own business",
+   "ko": "자기 사업을 운영하다",
+   "ex": "She is running her own business.",
+   "s": 2
+  },
+  {
+   "w": "longevity",
+   "ko": "장수",
+   "ex": "Korea is known for the longevity of its people.",
+   "s": 3
+  },
+  {
+   "w": "-oriented",
+   "ko": "~지향적인",
+   "ex": "My company is very goal-oriented.",
+   "s": 3
+  },
+  {
+   "w": "doom and gloom",
+   "ko": "어두운 전망",
+   "ex": "The news is all doom and gloom these days.",
+   "s": 3
+  },
+  {
+   "w": "per se",
+   "ko": "그 자체로는",
+   "ex": "I don't hate exercise per se, I'm just busy.",
+   "s": 3
+  },
+  {
+   "w": "take up",
+   "ko": "취미로 삼다",
+   "ex": "I took up yoga last year.",
+   "s": 3
+  },
+  {
+   "w": "brush up on",
+   "ko": "잊은 실력을 다시 다듬다",
+   "ex": "I need to brush up on my English.",
+   "s": 3
+  },
+  {
+   "w": "in my element",
+   "ko": "물 만난 물고기 같다",
+   "ex": "I feel I'm in my element when I do yoga.",
+   "s": 3
+  },
+  {
+   "w": "food for thought",
+   "ko": "생각할 거리",
+   "ex": "The book gives me food for thought.",
+   "s": 3
+  },
+  {
+   "w": "be afraid of",
+   "ko": "~을 두려워하다",
+   "ex": "I'm afraid of heights.",
+   "s": 3
+  },
+  {
+   "w": "fairy tale",
+   "ko": "동화",
+   "ex": "My mum read me fairy tales every night.",
+   "s": 3
+  },
+  {
+   "w": "beat the traffic",
+   "ko": "교통체증을 피하다",
+   "ex": "I leave early to beat the traffic.",
+   "s": 4
+  },
+  {
+   "w": "it's a 10-minute walk / it takes 10 minutes on foot",
+   "ko": "걸어서 10분 걸리다",
+   "ex": "It's a 10-minute walk from my house.",
+   "s": 4
+  },
+  {
+   "w": "take something with a pinch of salt",
+   "ko": "걸러서 듣다",
+   "ex": "I take online reviews with a pinch of salt.",
+   "s": 4
+  },
+  {
+   "w": "at someone's fingertips",
+   "ko": "손쉽게 이용 가능한",
+   "ex": "With a smartphone, information is at my fingertips.",
+   "s": 4
+  },
+  {
+   "w": "lead to",
+   "ko": "~로 이어지다",
+   "ex": "Stress can lead to health problems.",
+   "s": 4
+  },
+  {
+   "w": "result in",
+   "ko": "~을 초래하다",
+   "ex": "Bad weather resulted in delays.",
+   "s": 4
+  },
+  {
+   "w": "contribute to",
+   "ko": "~에 기여하다",
+   "ex": "Exercise contributes to good health.",
+   "s": 4
+  },
+  {
+   "w": "patience",
+   "ko": "인내심",
+   "ex": "Learning a language takes patience.",
+   "s": 4
+  },
+  {
+   "w": "endurance",
+   "ko": "(고통·어려움에 대한) 인내, 지구력",
+   "ex": "Running a marathon requires endurance.",
+   "s": 4
+  },
+  {
+   "w": "perseverance",
+   "ko": "끈기",
+   "ex": "Perseverance is the key to success.",
+   "s": 4
+  },
+  {
+   "w": "occupy",
+   "ko": "차지하다",
+   "ex": "Work occupies most of my time.",
+   "s": 5
+  },
+  {
+   "w": "self-optimisation",
+   "ko": "자기 최적화",
+   "ex": "Self-optimisation is a big trend among young people.",
+   "s": 6
+  },
+  {
+   "w": "be touted",
+   "ko": "(~로) 홍보되다, 극찬받다",
+   "ex": "The app is touted as the best way to learn English.",
+   "s": 6
+  },
+  {
+   "w": "sober",
+   "ko": "술에 취하지 않은",
+   "ex": "I stayed sober at the party.",
+   "s": 6
+  },
+  {
+   "w": "pushback era",
+   "ko": "반발하는 사회",
+   "ex": "We are living in a pushback era.",
+   "s": 6
+  },
+  {
+   "w": "cut down on alcohol",
+   "ko": "술을 줄이다",
+   "ex": "I'm trying to cut down on alcohol.",
+   "s": 6
+  },
+  {
+   "w": "on the days I feel exhausted",
+   "ko": "지치는 날에는",
+   "ex": "On the days I feel exhausted, I go to bed early.",
+   "s": 6
+  },
+  {
+   "w": "the next day",
+   "ko": "다음 날에",
+   "ex": "Sleeping well helps me to recover the next day.",
+   "s": 6
+  },
+  {
+   "w": "implement / introduce",
+   "ko": "시행하다 / 도입하다",
+   "ex": "The government should introduce a new law.",
+   "s": 7
+  },
+  {
+   "w": "take on the day",
+   "ko": "하루를 맞이하다",
+   "ex": "I'm ready to take on the day.",
+   "s": 7
+  },
+  {
+   "w": "full of life",
+   "ko": "활기가 넘치는",
+   "ex": "After a good night's sleep, I feel full of life.",
+   "s": 7
+  },
+  {
+   "w": "first and foremost",
+   "ko": "무엇보다도",
+   "ex": "First and foremost, I want to stay healthy.",
+   "s": 7
+  },
+  {
+   "w": "stick to a routine",
+   "ko": "루틴을 지키다",
+   "ex": "I try to stick to a routine every day.",
+   "s": 7
+  },
+  {
+   "w": "get into a routine",
+   "ko": "루틴이 생기다",
+   "ex": "It took me a month to get into a routine.",
+   "s": 7
+  },
+  {
+   "w": "implement environmental policies",
+   "ko": "환경 정책을 시행하다",
+   "ex": "The government should implement environmental policies.",
+   "s": 7
+  },
+  {
+   "w": "enforce strict regulations",
+   "ko": "엄격한 규제를 집행하다",
+   "ex": "We need to enforce strict regulations on factories.",
+   "s": 7
+  },
+  {
+   "w": "reduce carbon emissions",
+   "ko": "탄소 배출을 줄이다",
+   "ex": "Cycling helps reduce carbon emissions.",
+   "s": 7
+  },
+  {
+   "w": "tackle climate change",
+   "ko": "기후변화에 대응하다",
+   "ex": "Every country must tackle climate change.",
+   "s": 7
+  },
+  {
+   "w": "combat global warming",
+   "ko": "지구온난화에 맞서다",
+   "ex": "Planting trees can help combat global warming.",
+   "s": 7
+  },
+  {
+   "w": "raise environmental awareness",
+   "ko": "환경 인식을 높이다",
+   "ex": "Schools should raise environmental awareness.",
+   "s": 7
+  },
+  {
+   "w": "promote sustainable practices",
+   "ko": "지속 가능한 실천을 장려하다",
+   "ex": "Companies should promote sustainable practices.",
+   "s": 7
+  },
+  {
+   "w": "rely on fossil fuels",
+   "ko": "화석연료에 의존하다",
+   "ex": "Korea still relies on fossil fuels.",
+   "s": 7
+  },
+  {
+   "w": "switch to renewable energy",
+   "ko": "재생에너지로 전환하다",
+   "ex": "We should switch to renewable energy.",
+   "s": 7
+  },
+  {
+   "w": "preserve natural resources",
+   "ko": "천연자원을 보존하다",
+   "ex": "We must preserve natural resources for the future.",
+   "s": 7
+  },
+  {
+   "w": "protect endangered species",
+   "ko": "멸종위기종을 보호하다",
+   "ex": "Zoos can help protect endangered species.",
+   "s": 7
+  },
+  {
+   "w": "cut down on plastic waste",
+   "ko": "플라스틱 쓰레기를 줄이다",
+   "ex": "I bring my own bag to cut down on plastic waste.",
+   "s": 7
+  },
+  {
+   "w": "impose fines on polluters",
+   "ko": "오염 유발자에게 벌금을 부과하다",
+   "ex": "The government should impose fines on polluters.",
+   "s": 7
+  },
+  {
+   "w": "encourage people to recycle",
+   "ko": "사람들이 재활용하도록 장려하다",
+   "ex": "My city encourages people to recycle.",
+   "s": 7
+  },
+  {
+   "w": "take action against pollution",
+   "ko": "오염에 맞서 조치를 취하다",
+   "ex": "We need to take action against pollution now.",
+   "s": 7
+  },
+  {
+   "w": "used to + 동사",
+   "ko": "~하곤 했다",
+   "ex": "I used to play the recorder.",
+   "s": 7
+  },
+  {
+   "w": "be used to + -ing",
+   "ko": "~하는 데 익숙하다",
+   "ex": "I'm used to getting up early.",
+   "s": 7
+  },
+  {
+   "w": "my mind went blank",
+   "ko": "머리가 하얘지다",
+   "ex": "All of a sudden, my mind went blank.",
+   "s": 8
+  },
+  {
+   "w": "magic bullet / silver bullet",
+   "ko": "만능 해결책",
+   "ex": "It's not a magic bullet.",
+   "s": 9
+  },
+  {
+   "w": "feed information",
+   "ko": "정보를 제공하다",
+   "ex": "Apps feed information to us all day.",
+   "s": 9
+  },
+  {
+   "w": "furious",
+   "ko": "격노한",
+   "ex": "My boss was furious with me.",
+   "s": 9
+  },
+  {
+   "w": "come across as",
+   "ko": "~한 인상을 주다",
+   "ex": "He came across as bossy.",
+   "s": 9
+  },
+  {
+   "w": "miserable existence",
+   "ko": "비참한 존재(삶)",
+   "ex": "He lived a miserable existence.",
+   "s": 9
+  },
+  {
+   "w": "come up with",
+   "ko": "떠올리다",
+   "ex": "I came up with a good idea.",
+   "s": 9
+  },
+  {
+   "w": "mean",
+   "ko": "못된, 성가신",
+   "ex": "My brother was mean to me as a child.",
+   "s": 9
+  },
+  {
+   "w": "things don't go to plan",
+   "ko": "계획대로 되지 않다",
+   "ex": "Things didn't go to plan on my trip.",
+   "s": 9
+  },
+  {
+   "w": "turn out",
+   "ko": "드러나다, 알고 보니 ~이다",
+   "ex": "It turned out that the restaurant was closed.",
+   "s": 9
+  },
+  {
+   "w": "what do you mean by ~?",
+   "ko": "~가 무슨 말이야?",
+   "ex": "What do you mean by that?",
+   "s": 9
+  },
+  {
+   "w": "most of the time",
+   "ko": "대부분",
+   "ex": "Most of the time, I cook at home.",
+   "s": 9
+  },
+  {
+   "w": "outdoors",
+   "ko": "야외에서",
+   "ex": "I like spending time outdoors.",
+   "s": 9
+  },
+  {
+   "w": "eat out",
+   "ko": "외식하다",
+   "ex": "I eat out about twice a week.",
+   "s": 9
+  },
+  {
+   "w": "expert",
+   "ko": "전문가",
+   "ex": "My friend is an expert in marketing.",
+   "s": 10
+  },
+  {
+   "w": "expertise",
+   "ko": "전문지식",
+   "ex": "I don't have much expertise in finance.",
+   "s": 10
+  },
+  {
+   "w": "have a hankering for something",
+   "ko": "~을 갈망하다",
+   "ex": "I have a hankering for pizza.",
+   "s": 10
+  },
+  {
+   "w": "make something out of thin air",
+   "ko": "무에서 만들어내다",
+   "ex": "He built the company out of thin air.",
+   "s": 10
+  },
+  {
+   "w": "start from scratch",
+   "ko": "처음부터 시작하다",
+   "ex": "I had to start from scratch.",
+   "s": 10
+  },
+  {
+   "w": "ethereal",
+   "ko": "비현실적인, 천상의",
+   "ex": "The view was ethereal, almost surreal.",
+   "s": 10
+  },
+  {
+   "w": "go with",
+   "ko": "~로 하다(고르다)",
+   "ex": "I'll go with the blue one.",
+   "s": 10
+  },
+  {
+   "w": "safe haven",
+   "ko": "안식처",
+   "ex": "My room is my safe haven.",
+   "s": 10
+  },
+  {
+   "w": "make the most of it",
+   "ko": "최대한 활용하다",
+   "ex": "I only have one day off, so I'll make the most of it.",
+   "s": 10
+  },
+  {
+   "w": "be likely to",
+   "ko": "~할 가능성이 높다",
+   "ex": "It's likely to rain tomorrow.",
+   "s": 10
+  },
+  {
+   "w": "drop a bit",
+   "ko": "조금 떨어지다",
+   "ex": "The price has dropped a bit recently.",
+   "s": 10
+  },
+  {
+   "w": "as usual",
+   "ko": "평소처럼",
+   "ex": "As usual, I got up at 7 a.m.",
+   "s": 10
+  },
+  {
+   "w": "What's going on?",
+   "ko": "무슨 일이야?",
+   "ex": "What's going on? Why is it so noisy?",
+   "s": 10
+  },
+  {
+   "w": "be discharged",
+   "ko": "퇴원하다",
+   "ex": "My grandmother was discharged from hospital yesterday.",
+   "s": 10
+  },
+  {
+   "w": "have a sweet tooth",
+   "ko": "단것을 좋아하다",
+   "ex": "I have a sweet tooth.",
+   "s": 10
+  },
+  {
+   "w": "tourist attraction",
+   "ko": "관광지",
+   "ex": "Gyeongbokgung is a famous tourist attraction.",
+   "s": 10
+  }
  ]
 }

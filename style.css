@@ -909,3 +909,10 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .idsearch{font:inherit;font-size:15px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:11px 14px;width:100%}
 .idnone{text-align:center}
 .idrow[hidden]{display:none!important}
+
+/* PERSONAL VOCAB */
+.vcwrap{display:grid;gap:14px}
+.vcgroup{display:grid;gap:6px}
+.vcgroup[hidden]{display:none!important}
+.vclab{font-size:13px;font-weight:700;color:var(--muted)}
+.idcard .idtag{justify-self:start}

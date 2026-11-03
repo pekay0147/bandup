@@ -1178,5 +1178,391 @@
     "Do you think gym memberships should be cheaper?"
    ]
   }
+ ],
+ "words": [
+  {
+   "w": "batch",
+   "ko": "동기, 기수",
+   "ex": "We were in the same batch at university.",
+   "s": 1
+  },
+  {
+   "w": "the best way to ~",
+   "ko": "~하는 최고의 방법",
+   "ex": "The best way to learn English is to practise every day.",
+   "s": 1
+  },
+  {
+   "w": "I've eaten worse",
+   "ko": "나쁘지 않네(먹을 만해)",
+   "ex": "It's not great, but I've eaten worse.",
+   "s": 1
+  },
+  {
+   "w": "tell someone off",
+   "ko": "누군가를 야단치다",
+   "ex": "My mum told me off for being late.",
+   "s": 1
+  },
+  {
+   "w": "tally it up",
+   "ko": "합산하다",
+   "ex": "Let's tally it up and split the bill.",
+   "s": 1
+  },
+  {
+   "w": "technically",
+   "ko": "엄밀히 말하면",
+   "ex": "Technically, I'm still a student.",
+   "s": 2
+  },
+  {
+   "w": "basically",
+   "ko": "기본적으로, 사실상",
+   "ex": "Basically, I stay at home on weekends.",
+   "s": 2
+  },
+  {
+   "w": "actually",
+   "ko": "사실은",
+   "ex": "Actually, I don't like coffee.",
+   "s": 2
+  },
+  {
+   "w": "by and large",
+   "ko": "대체로",
+   "ex": "By and large, I'm happy with my job.",
+   "s": 2
+  },
+  {
+   "w": "literally",
+   "ko": "말 그대로",
+   "ex": "I literally ran to the station.",
+   "s": 2
+  },
+  {
+   "w": "genuinely",
+   "ko": "진심으로, 정말로",
+   "ex": "I genuinely enjoy cooking.",
+   "s": 2
+  },
+  {
+   "w": "-wise (명사+wise)",
+   "ko": "~적인 측면에서",
+   "ex": "Money-wise, it's a good deal.",
+   "s": 2
+  },
+  {
+   "w": "call it a day",
+   "ko": "그만하기로 하다",
+   "ex": "I was tired, so I called it a day.",
+   "s": 2
+  },
+  {
+   "w": "10 past 2 / 10 to 2",
+   "ko": "2시 10분 / 2시 10분 전",
+   "ex": "The class starts at 10 to 2.",
+   "s": 2
+  },
+  {
+   "w": "What have you been up to?",
+   "ko": "어떻게 지냈어?",
+   "ex": "Long time no see! What have you been up to?",
+   "s": 2
+  },
+  {
+   "w": "as long as",
+   "ko": "~하는 한",
+   "ex": "As long as you're OK, let's do it.",
+   "s": 2
+  },
+  {
+   "w": "motivate",
+   "ko": "동기부여를 주다",
+   "ex": "My friends motivate me to work out.",
+   "s": 2
+  },
+  {
+   "w": "steady / steadily",
+   "ko": "꾸준한 / 꾸준히",
+   "ex": "My English is improving steadily.",
+   "s": 2
+  },
+  {
+   "w": "it's a 40-minute bus ride",
+   "ko": "버스로 40분 걸리다",
+   "ex": "It's a 40-minute bus ride to work.",
+   "s": 2
+  },
+  {
+   "w": "on foot",
+   "ko": "걸어서",
+   "ex": "I go to school on foot.",
+   "s": 2
+  },
+  {
+   "w": "play it by ear",
+   "ko": "상황 보고 하다",
+   "ex": "I don't have a plan, so I'll play it by ear.",
+   "s": 2
+  },
+  {
+   "w": "spontaneously",
+   "ko": "즉흥적으로",
+   "ex": "We decided to travel spontaneously.",
+   "s": 2
+  },
+  {
+   "w": "I cannot be bothered",
+   "ko": "귀찮아",
+   "ex": "I can't be bothered to cook tonight.",
+   "s": 2
+  },
+  {
+   "w": "Can you rephrase the question?",
+   "ko": "질문을 다르게 말해 주시겠어요?",
+   "ex": "Sorry, can you rephrase the question?",
+   "s": 3
+  },
+  {
+   "w": "at least",
+   "ko": "적어도, 최소한",
+   "ex": "I work out at least three times a week.",
+   "s": 3
+  },
+  {
+   "w": "be replaced by",
+   "ko": "대체되다",
+   "ex": "Many jobs will be replaced by AI.",
+   "s": 3
+  },
+  {
+   "w": "take up",
+   "ko": "취미로 삼다",
+   "ex": "I took up running last year.",
+   "s": 4
+  },
+  {
+   "w": "in my element",
+   "ko": "물 만난 물고기 같다",
+   "ex": "I feel I'm in my element when I'm cooking.",
+   "s": 4
+  },
+  {
+   "w": "food for thought",
+   "ko": "생각할 거리를 주는 것",
+   "ex": "The documentary gave me food for thought.",
+   "s": 4
+  },
+  {
+   "w": "have a soft spot for",
+   "ko": "~에 애착이 있다",
+   "ex": "I have a soft spot for old films.",
+   "s": 4
+  },
+  {
+   "w": "way better",
+   "ko": "훨씬 더 좋은",
+   "ex": "This café is way better than the old one.",
+   "s": 4
+  },
+  {
+   "w": "self-development book",
+   "ko": "자기계발서",
+   "ex": "I'm reading a self-development book.",
+   "s": 4
+  },
+  {
+   "w": "be accustomed to + -ing",
+   "ko": "~하는 데 익숙하다",
+   "ex": "I'm accustomed to working late.",
+   "s": 4
+  },
+  {
+   "w": "be used to + -ing",
+   "ko": "~하는 데 익숙하다",
+   "ex": "I'm used to living alone.",
+   "s": 4
+  },
+  {
+   "w": "adjust to",
+   "ko": "~에 적응하다",
+   "ex": "It took me a while, but I adjusted to it.",
+   "s": 4
+  },
+  {
+   "w": "field trip",
+   "ko": "현장학습",
+   "ex": "We went on a field trip to a museum.",
+   "s": 4
+  },
+  {
+   "w": "retreat",
+   "ko": "수련회, 휴양",
+   "ex": "Our company went on a retreat last month.",
+   "s": 4
+  },
+  {
+   "w": "stand the cold",
+   "ko": "추위를 견디다",
+   "ex": "I can't stand the cold.",
+   "s": 5
+  },
+  {
+   "w": "handle spicy food",
+   "ko": "매운 음식을 잘 먹다",
+   "ex": "I can handle spicy food.",
+   "s": 5
+  },
+  {
+   "w": "hold (my) pee",
+   "ko": "소변을 참다",
+   "ex": "I couldn't hold my pee any longer.",
+   "s": 5
+  },
+  {
+   "w": "it was a huge hit / a big success",
+   "ko": "대박 났다, 크게 성공했다",
+   "ex": "The drama was a huge hit.",
+   "s": 5
+  },
+  {
+   "w": "flop",
+   "ko": "(흥행에) 망하다",
+   "ex": "The show flopped.",
+   "s": 5
+  },
+  {
+   "w": "pros and cons",
+   "ko": "장단점, 찬반의견",
+   "ex": "There are pros and cons to living alone.",
+   "s": 5
+  },
+  {
+   "w": "turn out",
+   "ko": "알고 보니 ~이다",
+   "ex": "It turned out it was my mistake.",
+   "s": 6
+  },
+  {
+   "w": "come up with",
+   "ko": "떠올리다",
+   "ex": "I can't come up with a clear idea!",
+   "s": 6
+  },
+  {
+   "w": "concentrate on",
+   "ko": "~에 집중하다",
+   "ex": "I can't concentrate on it.",
+   "s": 6
+  },
+  {
+   "w": "authentic food",
+   "ko": "정통 음식",
+   "ex": "I love eating authentic Italian food.",
+   "s": 6
+  },
+  {
+   "w": "cuisine",
+   "ko": "요리, 음식",
+   "ex": "Korean cuisine is very popular these days.",
+   "s": 6
+  },
+  {
+   "w": "punctual",
+   "ko": "시간을 잘 지키는",
+   "ex": "I'm always punctual.",
+   "s": 6
+  },
+  {
+   "w": "priority",
+   "ko": "우선순위",
+   "ex": "My top priority in my life is eating.",
+   "s": 6
+  },
+  {
+   "w": "look at",
+   "ko": "~을 보다",
+   "ex": "Look at this picture.",
+   "s": 7
+  },
+  {
+   "w": "look for",
+   "ko": "~을 찾다",
+   "ex": "I'm looking for my phone.",
+   "s": 7
+  },
+  {
+   "w": "look after",
+   "ko": "~을 돌보다",
+   "ex": "Can you look after my dog?",
+   "s": 7
+  },
+  {
+   "w": "look like",
+   "ko": "~처럼 생기다, ~와 닮다",
+   "ex": "You look like your dad.",
+   "s": 7
+  },
+  {
+   "w": "look into",
+   "ko": "~을 조사하다, 알아보다",
+   "ex": "I'll look into the problem.",
+   "s": 7
+  },
+  {
+   "w": "look around",
+   "ko": "둘러보다",
+   "ex": "Let's look around.",
+   "s": 7
+  },
+  {
+   "w": "look up",
+   "ko": "정보를 찾아보다",
+   "ex": "Look up the word.",
+   "s": 7
+  },
+  {
+   "w": "look over",
+   "ko": "~을 훑어보다, 검토하다",
+   "ex": "Please look over my essay.",
+   "s": 7
+  },
+  {
+   "w": "look through",
+   "ko": "~을 쭉 훑어보다",
+   "ex": "I looked through the magazine.",
+   "s": 7
+  },
+  {
+   "w": "look back on",
+   "ko": "~을 돌이켜보다",
+   "ex": "I look back on my school days.",
+   "s": 7
+  },
+  {
+   "w": "look forward to",
+   "ko": "~을 기대하다",
+   "ex": "I look forward to seeing you.",
+   "s": 7
+  },
+  {
+   "w": "look up to",
+   "ko": "~을 존경하다",
+   "ex": "I look up to my teacher.",
+   "s": 7
+  },
+  {
+   "w": "look down on",
+   "ko": "~을 깔보다",
+   "ex": "Don't look down on others.",
+   "s": 7
+  },
+  {
+   "w": "look out for",
+   "ko": "~을 주의해서 살피다",
+   "ex": "Look out for cars.",
+   "s": 7
+  }
  ]
 }
