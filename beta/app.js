@@ -1359,7 +1359,16 @@ const canSpeak = ()=> "speechSynthesis" in window && typeof SpeechSynthesisUtter
 let enVoice=null;
 function pickVoice(){ try{ const vs=speechSynthesis.getVoices(); enVoice = vs.find(v=>/en-GB/i.test(v.lang)) || vs.find(v=>/^en/i.test(v.lang)) || null; }catch(_){} }
 if(canSpeak()){ pickVoice(); try{ speechSynthesis.onvoiceschanged=pickVoice; }catch(_){} }
+let spAudio=null;
+function spFile(word){ return String(word).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""); }
 function speak(word, slow){
+  if(LS && spAll().some(w=>w[0]===word)){
+    try{ speechSynthesis.cancel(); }catch(_){}
+    try{ if(spAudio) spAudio.pause(); spAudio=new Audio(`audio/spell/${spFile(word)}.mp3`); spAudio.playbackRate= slow? .75 : 1; spAudio.play().catch(()=>ttsSpeak(word,slow)); return true; }catch(_){ }
+  }
+  return ttsSpeak(word,slow);
+}
+function ttsSpeak(word, slow){
   if(!canSpeak()) return false;
   try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(word); u.lang="en-GB"; if(enVoice) u.voice=enVoice; u.rate= slow? .55 : .85; speechSynthesis.speak(u); return true; }catch(_){ return false; }
 }
@@ -1378,7 +1387,6 @@ function renderListen(app){
   const s20=el("button","btn",`랜덤 20개 더 연습하기`); s20.type="button"; s20.onclick=()=>startDictation([...all].sort(()=>Math.random()-.5).slice(0,20),"받아쓰기");
   const sAll=el("button","btn",`전체 ${all.length}개`); sAll.type="button"; sAll.onclick=()=>startDictation([...all].sort(()=>Math.random()-.5),`전체 ${all.length}개`);
   row.append(s20); app.append(row);
-  if(!canSpeak()) app.append(el("p","muted small","이 기기에서는 소리 재생이 안 돼요. 뜻을 보고 철자를 써 보세요."));
   const p=el("div","panel"); const h=el("div","ghead"); h.append(el("b",null,"단어 목록"), el("span",null,`${all.length}개 · 눌러서 듣기`)); p.append(h);
   for(const [w,ko,tip] of all){
     const r=el("div","lrow"); r.append(speakBtn(w));
@@ -1437,7 +1445,7 @@ function renderDictation(app){
   const [w,ko,tip]=L.words[L.i];
   app.append(lessonBar(back.onclick, L.i, L.words.length));
   const card=el("div","dict");
-  if(canSpeak()){
+  if(true){
     const row=el("div","playrow");
     const p1=el("button","btn primary play"); p1.type="button"; p1.innerHTML=SPEAK_ICON; p1.append(document.createTextNode(" 듣기")); p1.onclick=()=>speak(w);
     if(ko) card.append(el("p","dko",ko));
