@@ -916,3 +916,21 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .vcgroup[hidden]{display:none!important}
 .vclab{font-size:13px;font-weight:700;color:var(--muted)}
 .idcard .idtag{justify-self:start}
+
+/* VOCAB ADD */
+.vcadds{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.vcaddbtn{font:inherit;font-size:15px;font-weight:700;padding:12px 8px;border-radius:12px;border:1px solid var(--line);background:var(--surface,#fff);color:var(--blue,#4457e8);cursor:pointer}
+.vcform{display:grid;gap:10px}
+.vcform label{display:grid;gap:4px}
+.vcform input{font:inherit;font-size:16px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--surface,#fff);color:inherit}
+.vcocr{display:grid;gap:8px;padding:12px;border-radius:12px;background:var(--soft,#eef0fd)}
+.vcocr p{margin:0}
+.vcchips{display:flex;flex-wrap:wrap;gap:6px;max-height:260px;overflow:auto}
+.vcchip{font:inherit;font-size:15px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface,#fff);color:inherit;cursor:pointer}
+.vcchip.on{background:var(--blue,#4457e8);border-color:var(--blue,#4457e8);color:#fff}
+.vcmsg{margin:0;color:#d33}
+.vcmine{margin-left:8px;font-size:11px;font-weight:700;color:var(--blue,#4457e8);background:var(--soft,#eef0fd);padding:2px 6px;border-radius:6px;vertical-align:2px}
+.vcmore{display:grid;gap:6px;justify-items:start}
+.vcmore[hidden]{display:none!important}
+.vcdel{color:#d33!important;font-size:13px;padding:0}
+.idrow{cursor:pointer}
