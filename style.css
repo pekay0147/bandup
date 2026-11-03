@@ -954,3 +954,13 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .podwrap:not(:first-child)>.lrow2{border-top:1px solid var(--line)}
 
 .spnext{display:grid;gap:10px}
+
+/* CONSENT */
+.consent h2{margin:0 0 6px;font-size:20px}
+.consent p{margin:0 0 10px}
+.consent-l{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:8px}
+.consent-l li{display:grid;gap:2px;padding:10px 12px;border-radius:12px;background:var(--soft,#eef0fd)}
+.consent-l b{font-size:13px;color:var(--blue,#4457e8)}
+.consent-l li:last-child b{color:#d33}
+.consent-l span{font-size:14px}
+.sharelink{border:0;background:none;width:100%;cursor:pointer;font:inherit;font-size:13px}

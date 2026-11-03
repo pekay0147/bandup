@@ -69,7 +69,41 @@ function grade(c,ok){
   const box=ok? Math.min(MASTER,(s.box||0)+1) : 0;
   let gap=INTERVALS[Math.min(box,INTERVALS.length-1)]; if(rep(c)) gap=Math.max(1,Math.ceil(gap/2));
   srs[c.id]={box,due: ok? addD(t,gap) : addD(t,1), reviews:(s.reviews||0)+1, correct:(s.correct||0)+(ok?1:0), last:t};
-  touchDay(); save();
+  touchDay(); save(); statCard(c.id,ok);
+}
+
+/* ---------- learning stats (opt-in; study results only, never recordings or text) ---------- */
+const STK=()=>`bandup-stat-${slug}`, CSK=()=>`bandup-consent-${slug}`;
+function statOn(){ return !!(D.form && D.form.url) && !D.demo && store.get(CSK(),null)===true; }
+function statBuf(){ return Object.assign({c:{},sp:{ok:0,ng:[]},rec:0,since:today()}, store.get(STK(),{})); }
+function statAdd(fn){ if(!statOn()) return; const b=statBuf(); fn(b); store.set(STK(),b); }
+function statCard(id,ok){ statAdd(b=>{ const r=b.c[id]||[0,0]; r[ok?0:1]++; b.c[id]=r; }); }
+function statSpell(w,typed,ok){ statAdd(b=>{ if(ok) b.sp.ok++; else if(b.sp.ng.length<60) b.sp.ng.push([w,String(typed||"").slice(0,40)]); }); }
+function statRec(){ statAdd(b=>{ b.rec++; }); }
+function statFlush(force){
+  if(!statOn()) return; const b=statBuf(); const n=Object.keys(b.c).length+b.sp.ok+b.sp.ng.length+b.rec; if(!n) return;
+  const last=store.get(STK()+"-at",0); if(!force && Date.now()-last<20*60*1000) return;
+  try{
+    const u=new URL(D.form.url); const ids=[...u.searchParams.keys()].filter(k=>k.startsWith("entry."));
+    const fd=new URLSearchParams(); const st=streak?streak():0;
+    const payload={v:1,from:b.since,to:today(),c:b.c,sp:b.sp,rec:b.rec,streak:st,days:(days||[]).filter(d=>d>=addD(today(),-6)).length};
+    fd.set(ids[0],slug); fd.set(ids[1],"stats"); fd.set(ids[2],JSON.stringify(payload));
+    fetch(D.form.url.split("/viewform")[0]+"/formResponse",{method:"POST",mode:"no-cors",body:fd}).catch(()=>{});
+    store.set(STK(),{c:{},sp:{ok:0,ng:[]},rec:0,since:today()}); store.set(STK()+"-at",Date.now());
+  }catch(_){}
+}
+document.addEventListener("visibilitychange",()=>{ if(document.hidden && D) statFlush(false); });
+function consentSheet(){
+  const bg=el("div","sheet-bg"); const sh=el("div","sheet consent"); sh.setAttribute("role","dialog"); sh.setAttribute("aria-label","공부 기록 공유");
+  sh.append(el("h2",null,"공부 기록을 선생님과 공유할까요?"),
+    el("p",null,"수업을 더 잘 준비하려고, 자주 틀리는 문제만 선생님께 전달돼요."));
+  const ul=el("ul","consent-l");
+  [["전달돼요","큐카드를 맞혔는지 틀렸는지, 틀린 철자, 공부한 날 수, 녹음한 횟수"],["전달 안 돼요","녹음, 말한 내용, 내 단어장, 위치나 기기 정보"]].forEach(([a,b])=>{ const li=el("li"); li.append(el("b",null,a), el("span",null,b)); ul.append(li); });
+  sh.append(ul, el("p","muted small","언제든 홈 맨 아래에서 끌 수 있어요."));
+  const row=el("div","row");
+  const yes=el("button","btn primary","좋아요"); yes.type="button"; yes.onclick=()=>{ store.set(CSK(),true); bg.remove(); render(); };
+  const no=el("button","btn","안 할래요"); no.type="button"; no.onclick=()=>{ store.set(CSK(),false); bg.remove(); render(); };
+  row.append(yes,no); sh.append(row); bg.append(sh); document.body.append(bg);
 }
 
 /* ---------- tabs ---------- */
@@ -177,6 +211,8 @@ function listRow(icon, title, sub, onClick, href){
   r.append(ic,t,el("span","lchev","›")); return r;
 }
 function renderHome(app){
+  if(D.form && D.form.url && !D.demo && store.get(CSK(),null)===null && !document.querySelector(".consent")) setTimeout(consentSheet,600);
+  statFlush(false);
   const due=dueCards().length;
   const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length;
   const goalDone = doneToday>=DAILY;
@@ -210,6 +246,7 @@ function renderHome(app){
   // 이번 주
   const st=streak(); const s3=el("section","sec"); const h3=secHead("이번 달"); if(st){ const fl=el("span","streak"); fl.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path class="f-out" d="M12 2c.5 3.2 3 4.6 4.4 7 1.3 2.2 1.6 4.6.8 6.8A6 6 0 0 1 6 14.6c0-2.2 1-3.6 2.3-4.8.2 1.5.9 2.6 2 3.1-.6-3.5.4-7.6 1.7-10.9z" fill="#ff7a1a"/><path class="f-in" d="M12.2 11.5c1.3 1.4 2.3 2.7 2.3 4.4a2.5 2.5 0 0 1-5 0c0-1.3.7-2.3 1.6-3 .1.8.5 1.3 1.1 1.5-.3-1-.3-1.9 0-2.9z" fill="#ffc94a"/></svg>'; fl.append(document.createTextNode(`${st}일 연속`)); h3.append(fl); } s3.append(h3); s3.append(weekCard()); app.append(s3);
   if(D.common && PROFILE){ const pe=el("button","guidelink","내 정보 (이름·시험 날짜·목표) 고치기 ›"); pe.type="button"; pe.style.cssText="border:0;background:none;width:100%;cursor:pointer;font:inherit;font-size:13px"; pe.onclick=()=>go("profile"); app.append(pe); }
+  if(D.form && D.form.url && !D.demo){ const on=store.get(CSK(),null)===true; const t=el("button","guidelink sharelink", on? "공부 기록 공유 중 · 끄기" : "공부 기록 공유 꺼짐 · 켜기"); t.type="button"; t.onclick=()=>{ if(on){ store.set(CSK(),false); store.set(STK(),{}); render(); } else consentSheet(); }; app.append(t); }
   if(!(window.matchMedia&&matchMedia("(display-mode: standalone)").matches) && !navigator.standalone){ const g=el("a","guidelink","홈 화면에 앱으로 추가하는 법 ›"); g.href="guide/"; app.append(g); }
 }
 
@@ -382,7 +419,7 @@ function recBox(key){
   const start=async()=>{
     try{ speechSynthesis.cancel(); }catch(_){}
     let stream; try{ stream=await navigator.mediaDevices.getUserMedia({audio:true}); }catch(_){ w.textContent=""; w.append(el("p","muted small","마이크를 쓸 수 없어요. 브라우저 설정에서 마이크를 허용해 주세요.")); return; }
-    const mr=new MediaRecorder(stream); const chunks=[];
+    const mr=new MediaRecorder(stream); const chunks=[]; statRec();
     REC={mr,stream,chunks,t0:Date.now(),key,timer:setInterval(()=>{ if(document.body.contains(w)) draw(); },1000)};
     mr.ondataavailable=e=>{ if(e.data.size) chunks.push(e.data); };
     mr.onstop=()=>{ clearInterval(REC&&REC.timer); stream.getTracks().forEach(t=>t.stop()); if(MT){ if(MT.rec[key]) URL.revokeObjectURL(MT.rec[key]); MT.rec[key]=URL.createObjectURL(new Blob(chunks,{type:mr.mimeType||"audio/webm"})); } REC=null; if(document.body.contains(w)) draw(); };
@@ -1073,6 +1110,7 @@ function renderDeck(app){
 function move(d){ const n=deckState.i+d; if(n<0||n>=deckState.ids.length) return; deckState.i=n; flipped=false; picked=null; render(); }
 function markDeck(c,kind){
   marks[c.id] = marks[c.id]===kind ? undefined : kind; if(!marks[c.id]) delete marks[c.id];
+  if(marks[c.id]) statCard(c.id, kind==="know");
   touchDay(); save();
   const last=deckState.i>=deckState.ids.length-1;
   if(marks[c.id] && !last){ deckState.i++; flipped=false; picked=null; render(); }
@@ -1375,7 +1413,7 @@ function renderDictation(app){
   const L=LD;
   const back=el("button","back","‹ 철자 받아쓰기"); back.type="button"; back.onclick=()=>{ LD=null; try{ speechSynthesis.cancel(); }catch(_){} render(); };
   if(L.i>=L.words.length){
-    if(L.daily && !L.saved){ saveDaily(L); L.saved=true; }
+    if(L.daily && !L.saved){ saveDaily(L); L.saved=true; } if(!L.flushed){ L.flushed=true; statFlush(true); }
     app.append(back, el("h1",null,L.title));
     if(L.daily){ const st=dailySpell(); const w=el("div","spnext"); w.append(el("p","spday-ok",`오늘 ${st.cnt}개 완료! 틀린 단어는 나중에 다시 나와요.`)); const nx=el("button","btn primary","다음 5개 하기"); nx.type="button"; nx.onclick=()=>startDaily(true); w.append(nx); app.append(w); }
     const ok=L.res.filter(r=>r.ok).length; const wrong=L.res.filter(r=>!r.ok);
@@ -1397,7 +1435,7 @@ function renderDictation(app){
   const inp=el("input","dinput"); inp.id="dinput"; inp.type="text"; inp.value=L.typed; inp.placeholder="철자 입력";
   ["autocomplete","autocorrect","autocapitalize"].forEach(k=>inp.setAttribute(k,"off")); inp.spellcheck=false; inp.setAttribute("aria-label","들은 단어 철자"); inp.readOnly=L.checked;
   inp.oninput=()=>{ L.typed=inp.value; };
-  const check=()=>{ if(L.checked) return next(); L.checked=true; L.res.push({w:L.words[L.i], typed:L.typed, ok:isRight(w,L.typed)}); render(); };
+  const check=()=>{ if(L.checked) return next(); L.checked=true; const ok=isRight(w,L.typed); L.res.push({w:L.words[L.i], typed:L.typed, ok}); statSpell(w,L.typed,ok); render(); };
   const next=()=>{ L.i++; L.checked=false; L.typed=""; render(); if(L.i<L.words.length) setTimeout(()=>speak(L.words[L.i][0]),200); };
   inp.onkeydown=e=>{ if(e.key==="Enter"){ e.preventDefault(); check(); } };
   card.append(inp);
