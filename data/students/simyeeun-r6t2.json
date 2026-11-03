@@ -853,6 +853,66 @@
    "mine": "We are closely.",
    "gram": "친하다 = <em>be close</em>(형용사). closely는 '자세히, 밀접하게'라는 부사라 be 뒤에 못 와요. We're <em>close friends</em>.",
    "hint": "close"
+  },
+  {
+   "id": "m24",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    7
+   ],
+   "ko": "그 영화 정말 지루했어요. 저는 거의 잠들 뻔했어요.",
+   "en": "The film was really boring. I nearly fell asleep.",
+   "gram": "영화가 주는 느낌은 <em>-ing</em>: The film was <em>boring</em>. 내가 지루하면 <em>-ed</em>: I was <em>bored</em>. (I was boring ❌ = 내가 지루한 사람이었다)",
+   "hint": "boring"
+  },
+  {
+   "id": "m25",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    7
+   ],
+   "ko": "저는 그 소식을 듣고 정말 놀랐어요.",
+   "en": "I was really surprised by the news.",
+   "gram": "내가 느낀 감정은 <em>-ed</em>: I was <em>surprised</em>. 소식이 주는 느낌은 <em>-ing</em>: The news was <em>surprising</em>.",
+   "hint": "surprised"
+  },
+  {
+   "id": "m26",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    7
+   ],
+   "ko": "요즘 일이 너무 많아서 지쳤어요.",
+   "en": "I'm exhausted because I have so much work these days.",
+   "gram": "내 상태는 <em>-ed</em>: I'm <em>exhausted / tired</em>. 일이 지치게 만들면 <em>-ing</em>: My job is <em>exhausting / tiring</em>.",
+   "hint": "exhausted"
+  },
+  {
+   "id": "m27",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    7
+   ],
+   "ko": "저는 역사에 관심이 많아요. 역사는 정말 흥미로워요.",
+   "en": "I'm really interested in history. It's so interesting.",
+   "gram": "사람은 <em>interested in</em> + 대상, 대상은 <em>interesting</em>. I'm interesting ❌ = 내가 흥미로운 사람이다.",
+   "hint": "interested"
+  },
+  {
+   "id": "m28",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    7
+   ],
+   "ko": "그 콘서트는 정말 신났고, 저도 엄청 들떴어요.",
+   "en": "The concert was really exciting, and I was so excited.",
+   "gram": "콘서트(대상)는 <em>exciting</em>, 나(사람)는 <em>excited</em>. 한 문장에 둘 다 넣어 연습해 보세요.",
+   "hint": "exciting"
   }
  ],
  "part1": [
