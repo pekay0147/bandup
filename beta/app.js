@@ -77,23 +77,27 @@ function grade(c,ok){
 const STK=()=>`bandup-stat-${slug}`, CSK=()=>`bandup-consent-${slug}`;
 function statOn(){ return !!(D.form && D.form.url) && !D.demo && store.get(CSK(),null)===true; }
 function statBuf(){ return Object.assign({c:{},sp:{ok:0,ng:[]},rec:0,since:today()}, store.get(STK(),{})); }
-function statAdd(fn){ if(!statOn()) return; const b=statBuf(); fn(b); store.set(STK(),b); }
+let statT=null;
+function statAdd(fn){ if(!statOn()) return; const b=statBuf(); fn(b); store.set(STK(),b); clearTimeout(statT); statT=setTimeout(()=>statFlush(false),45000); }
 function statCard(id,ok){ statAdd(b=>{ const r=b.c[id]||[0,0]; r[ok?0:1]++; b.c[id]=r; }); }
 function statSpell(w,typed,ok){ statAdd(b=>{ if(ok) b.sp.ok++; else if(b.sp.ng.length<60) b.sp.ng.push([w,String(typed||"").slice(0,40)]); }); }
 function statRec(){ statAdd(b=>{ b.rec++; }); }
 function statFlush(force){
   if(!statOn()) return; const b=statBuf(); const n=Object.keys(b.c).length+b.sp.ok+b.sp.ng.length+b.rec; if(!n) return;
-  const last=store.get(STK()+"-at",0); if(!force && Date.now()-last<20*60*1000) return;
+  const last=store.get(STK()+"-at",0); if(!force && Date.now()-last<60*1000) return;
   try{
     const u=new URL(D.form.url); const ids=[...u.searchParams.keys()].filter(k=>k.startsWith("entry."));
     const fd=new URLSearchParams(); const st=streak?streak():0;
     const payload={v:1,from:b.since,to:today(),c:b.c,sp:b.sp,rec:b.rec,streak:st,days:(days||[]).filter(d=>d>=addD(today(),-6)).length};
     fd.set(ids[0],slug); fd.set(ids[1],"stats"); fd.set(ids[2],JSON.stringify(payload));
-    fetch(D.form.url.split("/viewform")[0]+"/formResponse",{method:"POST",mode:"no-cors",body:fd}).catch(()=>{});
+    const to=D.form.url.split("/viewform")[0]+"/formResponse"; let sent=false;
+    try{ sent=!!(navigator.sendBeacon && navigator.sendBeacon(to,fd)); }catch(_){ }
+    if(!sent) fetch(to,{method:"POST",mode:"no-cors",body:fd,keepalive:true}).catch(()=>{});
     store.set(STK(),{c:{},sp:{ok:0,ng:[]},rec:0,since:today()}); store.set(STK()+"-at",Date.now());
   }catch(_){}
 }
-document.addEventListener("visibilitychange",()=>{ if(document.hidden && D) statFlush(false); });
+document.addEventListener("visibilitychange",()=>{ if(document.hidden && D) statFlush(true); });
+window.addEventListener("pagehide",()=>{ if(D) statFlush(true); });
 function consentSheet(){
   const bg=el("div","sheet-bg"); const sh=el("div","sheet consent"); sh.setAttribute("role","dialog"); sh.setAttribute("aria-label","공부 기록 공유");
   sh.append(el("h2",null,"공부 기록을 선생님과 공유할까요?"),
