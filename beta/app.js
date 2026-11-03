@@ -1011,9 +1011,7 @@ function renderVocab(app){
   pageHead(app,"내 단어장",`단어 ${W.length}개`);
   const adds=el("div","vcadds");
   const b1=el("button","vcaddbtn","+ 직접 추가"); b1.type="button"; b1.onclick=()=>{ vcAdd=true; vcOcr=null; vcMode="list"; render(); };
-  const fi=el("input"); fi.type="file"; fi.accept="image/*"; fi.setAttribute("capture","environment"); fi.hidden=true; fi.onchange=()=>{ if(fi.files[0]){ vcMode="list"; vocPhoto(fi.files[0]); } };
-  const b2=el("button","vcaddbtn","📷 사진으로 추가"); b2.type="button"; b2.onclick=()=>fi.click();
-  adds.append(b1,b2,fi); app.append(adds);
+  adds.append(b1); app.append(adds);
   if(vcAdd){ vocForm(app); return; }
   if(!W.length){ app.append(el("p","muted small","아직 단어가 없어요. 모르는 단어를 직접 적거나 사진으로 찍어서 모아 보세요.")); return; }
   const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
