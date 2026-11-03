@@ -982,3 +982,5 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .spday-ok{margin:0;font-weight:700;color:#1d9a68}
 .lrow2.spdone .lt span{color:#1d9a68}
 .podwrap:not(:first-child)>.lrow2{border-top:1px solid var(--line)}
+
+.spnext{display:grid;gap:10px}

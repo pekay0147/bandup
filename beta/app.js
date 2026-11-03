@@ -204,7 +204,7 @@ function renderHome(app){
   const s2=el("section","sec"); s2.append(secHead("학습"));
   const list=el("div","box list2");
   { const P=podSel(); const pr=listRow(LIC.pod,"오늘의 팟캐스트",P.name,null,P.url); pr.classList.add("podrow"); const pw=el("div","podwrap"); const cb=el("button","podchg","바꾸기"); cb.type="button"; cb.onclick=()=>go("podpick"); pw.append(pr,cb); list.append(pw); }
-  if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자 5개", st.ok? "오늘 완료 ✓ 내일 새 단어가 나와요" : `5개만 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily()); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
+  if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
   list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
   list.append(listRow(LIC.bm,"북마크",`${cbmList().filter(id=>getCard(id)).length+qbmList().length}개`,()=>go("bm")));
@@ -1378,10 +1378,10 @@ function renderListen(app){
   const all=LS.categories.flatMap(c=>c.words);
   const t=el("div","focus"); t.append(el("b",null,"철자 하나 틀려도 오답이에요"), document.createTextNode("리스닝에서 철자 때문에 자주 틀리는 단어예요. 듣고 직접 써 보세요. 영국식·미국식 철자는 둘 다 정답이에요.")); app.append(t);
   { const st=dailySpell(), tot=all.length, dn=st.done.length;
-    const c=el("div","spday"); const h=el("div","spday-h"); h.append(el("b",null,"오늘의 철자 5개"), el("span",null,`${dn} / ${tot}개 완료`)); c.append(h);
+    const c=el("div","spday"); const h=el("div","spday-h"); h.append(el("b",null,"오늘의 철자"), el("span",null,`${dn} / ${tot}개 완료`)); c.append(h);
     const bar=el("div","bar"); const bi=el("i"); bi.style.width=Math.min(100,dn/tot*100)+"%"; bar.append(bi); c.append(bar);
-    if(st.ok){ c.append(el("p","spday-ok","오늘 5개 완료! 내일 새 단어 5개가 나와요.")); const again=el("button","btn","오늘 단어 한 번 더"); again.type="button"; again.onclick=()=>startDaily(); c.append(again); }
-    else { c.append(el("p","muted small", st.wrong.length? "하루 5개씩, 전에 틀린 단어도 다시 나와요." : "하루 5개씩, 5분이면 끝나요.")); const go5=el("button","btn primary","오늘의 5개 시작"); go5.type="button"; go5.onclick=()=>startDaily(); c.append(go5); }
+    if(st.ok){ c.append(el("p","spday-ok",`오늘 ${st.cnt}개 완료! 계속하려면 다음 5개로 넘어가요.`)); const nx=el("button","btn primary","다음 5개"); nx.type="button"; nx.onclick=()=>startDaily(true); c.append(nx); }
+    else { c.append(el("p","muted small", st.wrong.length? "5개씩 듣고 써요. 전에 틀린 단어도 다시 나와요." : "5개씩 듣고 써요. 끝나면 다음 5개로 계속할 수 있어요.")); const go5=el("button","btn primary","5개 시작"); go5.type="button"; go5.onclick=()=>startDaily(); c.append(go5); }
     app.append(c); }
   const row=el("div","btnrow");
   const s20=el("button","btn",`랜덤 20개 더 연습하기`); s20.type="button"; s20.onclick=()=>startDictation([...all].sort(()=>Math.random()-.5).slice(0,20),"받아쓰기");
@@ -1397,22 +1397,26 @@ function renderListen(app){
 }
 function spAll(){ return LS? LS.categories.flatMap(c=>c.words) : []; }
 function spHash(str){ let h=2166136261; for(const ch of str){ h^=ch.charCodeAt(0); h=Math.imul(h,16777619); } return h>>>0; }
-function dailySpell(){
-  const k=`bandup-spell-${slug}`; const st=Object.assign({done:[],wrong:[],day:null,set:[],ok:false}, store.get(k,{}));
-  if(st.day===today() && st.set.length) return st;
+function spBuild(st){
   const all=spAll(), names=new Set(all.map(w=>w[0]));
   st.wrong=st.wrong.filter(w=>names.has(w)); st.done=st.done.filter(w=>names.has(w));
   if(st.done.length>=all.length) st.done=[];
   const order=all.map(w=>w[0]).sort((a,b)=>spHash(slug+a)-spHash(slug+b));
-  const pick=st.wrong.slice(0,2);
+  const prev=st.set||[]; const pick=st.wrong.filter(w=>!prev.includes(w)).slice(0,2);
+  for(const w of order){ if(pick.length>=5) break; if(!st.done.includes(w) && !pick.includes(w) && !prev.includes(w)) pick.push(w); }
   for(const w of order){ if(pick.length>=5) break; if(!st.done.includes(w) && !pick.includes(w)) pick.push(w); }
-  st.day=today(); st.set=pick; st.ok=false; store.set(k,st); return st;
+  st.set=pick; st.ok=false;
 }
-function startDaily(){ const st=dailySpell(); const all=spAll(); const ws=st.set.map(n=>all.find(w=>w[0]===n)).filter(Boolean); startDictation(ws,"오늘의 철자 5개"); LD.daily=true; }
+function dailySpell(){
+  const k=`bandup-spell-${slug}`; const st=Object.assign({done:[],wrong:[],day:null,set:[],ok:false,cnt:0}, store.get(k,{}));
+  if(st.day===today() && st.set.length) return st;
+  st.day=today(); st.cnt=0; st.set=[]; spBuild(st); store.set(k,st); return st;
+}
+function startDaily(next){ let st=dailySpell(); if(next && st.ok){ spBuild(st); store.set(`bandup-spell-${slug}`,st); } const all=spAll(); const ws=st.set.map(n=>all.find(w=>w[0]===n)).filter(Boolean); startDictation(ws,"오늘의 철자 5개"); LD.daily=true; }
 function saveDaily(L){
   const k=`bandup-spell-${slug}`; const st=dailySpell();
   for(const r of L.res){ const w=r.w[0]; if(r.ok){ if(!st.done.includes(w)) st.done.push(w); st.wrong=st.wrong.filter(x=>x!==w); } else if(!st.wrong.includes(w)) st.wrong.push(w); }
-  st.ok=true; store.set(k,st);
+  st.ok=true; st.cnt=(st.cnt||0)+L.res.length; store.set(k,st);
 }
 function startDictation(words, title){ LD={words, title, i:0, res:[], checked:false, typed:""}; wordMode="spell"; go("words"); setTimeout(()=>speak(words[0][0]),250); }
 function norm(x){ return String(x||"").trim().toLowerCase().replace(/\s+/g," "); }
@@ -1433,7 +1437,7 @@ function renderDictation(app){
   if(L.i>=L.words.length){
     if(L.daily && !L.saved){ saveDaily(L); L.saved=true; }
     app.append(back, el("h1",null,L.title));
-    if(L.daily) app.append(el("p","spday-ok","오늘 철자 완료! 틀린 단어는 다음에 다시 나와요."));
+    if(L.daily){ const st=dailySpell(); const w=el("div","spnext"); w.append(el("p","spday-ok",`오늘 ${st.cnt}개 완료! 틀린 단어는 나중에 다시 나와요.`)); const nx=el("button","btn primary","다음 5개 하기"); nx.type="button"; nx.onclick=()=>startDaily(true); w.append(nx); app.append(w); }
     const ok=L.res.filter(r=>r.ok).length; const wrong=L.res.filter(r=>!r.ok);
     const e=el("div","empty"); e.append(el("div","big",`${ok}/${L.res.length}`), el("h2",null, ok===L.res.length? "전부 맞혔어요!" : "받아쓰기 끝!"));
     if(wrong.length){ const ul=el("div","wronglist"); wrong.forEach(r=>{ const row=el("div"); row.append(speakBtn(r.w[0]), el("b",null,r.w[0]), el("s",null,r.typed||"(빈칸)")); ul.append(row); }); e.append(ul);
