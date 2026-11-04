@@ -974,3 +974,10 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 
 .onb-share{font-size:14px;color:var(--muted)}
 .scene .back .body{grid-auto-rows:max-content;align-content:start}
+
+/* WORD PRONUNCIATION */
+.wbox .wt{align-items:center}
+.sayw{display:inline-flex;align-items:center;gap:6px;margin-left:auto}
+.say{width:34px;height:34px;border-radius:50%;border:0;background:var(--surface,#fff);color:var(--blue,#4457e8);display:grid;place-items:center;cursor:pointer;padding:0}
+.say svg{width:18px;height:18px}
+.say-l{font-size:12px;color:var(--muted)}
