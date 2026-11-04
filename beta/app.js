@@ -14,6 +14,7 @@ const store={ get(k,f){ try{ const v=localStorage.getItem(k); return v==null? f 
               set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(_){} } };
 
 let NOTICE=null;
+const GSTOP=new Set(["a", "about", "after", "all", "also", "am", "an", "and", "another", "any", "are", "aren't", "as", "at", "be", "been", "before", "being", "both", "but", "by", "can", "can't", "could", "did", "didn't", "do", "does", "doesn't", "don't", "done", "each", "eight", "either", "every", "first", "five", "for", "four", "from", "had", "has", "have", "having", "he", "he's", "her", "here", "hers", "him", "his", "how", "i", "i'd", "i'll", "i'm", "i've", "if", "in", "into", "is", "isn't", "it", "it's", "its", "just", "last", "let", "let's", "lets", "many", "may", "me", "might", "mine", "more", "most", "much", "must", "my", "neither", "nine", "no", "not", "of", "on", "one", "or", "other", "our", "over", "own", "quite", "really", "same", "second", "seven", "shall", "she", "she's", "should", "six", "so", "some", "such", "ten", "than", "that", "that's", "the", "their", "them", "then", "there", "there's", "these", "they", "they're", "this", "those", "three", "to", "too", "two", "up", "us", "very", "was", "wasn't", "we", "we're", "were", "weren't", "what", "what's", "when", "where", "which", "who", "whom", "why", "will", "with", "won't", "would", "yes", "you", "you're", "your", "yours"]);
 let D=null, G={}, P1=null, P1Q=null, P3=null, P2X=null, P2=null, LS=null, WB=null, slug=null;
 let srs={}, marks={}, days=[];
 let view={tab:"home"};   // home | cards(deck?) | review | notes
@@ -792,7 +793,7 @@ function flipCard(c, onFlip){
   for(const tok of c.en.split(" ")){
     const m=tok.match(/^([A-Za-z'-]+)([.,!?…]*)$/); const word=m?m[1]:tok, punct=m?m[2]:""; const key=word.toLowerCase();
     const tk=el("span","tok");
-    if(G[key]){ const w=el("button","w"+(picked===key?" on":""),word); w.type="button"; w.tabIndex=flipped?0:-1;
+    if(G[key] && (!GSTOP.has(key) || key===String(c.hint||"").toLowerCase())){ const w=el("button","w"+(picked===key?" on":""),word); w.type="button"; w.tabIndex=flipped?0:-1;
       w.onclick=e=>{ e.stopPropagation(); picked=key; render(); }; tk.append(w); }
     else tk.append(el("span","p",word));
     if(punct) tk.append(el("span","p",punct));

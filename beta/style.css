@@ -1003,3 +1003,4 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .notice-r .btn{font-size:14px;padding:10px 8px}
 
 .onb-share{font-size:14px;color:var(--muted)}
+.scene .back .body{grid-auto-rows:max-content;align-content:start}
