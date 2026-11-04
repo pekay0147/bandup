@@ -227,6 +227,14 @@ function sendNotice(id,a){
     if(!sent) fetch(to,{method:"POST",mode:"no-cors",body:fd,keepalive:true}).catch(()=>{});
   }catch(_){ }
 }
+const NOTICE_FORM="https://docs.google.com/forms/d/e/1FAIpQLSdE708bHzDJ0xinpc3c-I-sOanT9Ygnm-U6F0SKsb-yDnzU5A/formResponse";
+function alertNotice(N,label){
+  if(D.demo) return;
+  try{ const fd=new URLSearchParams(); fd.set("entry.177614637",(D.name||"")+" ("+slug+")"); fd.set("entry.1044770154",N.title||N.id); fd.set("entry.1061875239",label||"");
+    let sent=false; try{ sent=!!(navigator.sendBeacon && navigator.sendBeacon(NOTICE_FORM,fd)); }catch(_){ }
+    if(!sent) fetch(NOTICE_FORM,{method:"POST",mode:"no-cors",body:fd,keepalive:true}).catch(()=>{});
+  }catch(_){ }
+}
 function noticeBox(app){
   const N=NOTICE; if(!N || !N.id || D.demo) return;
   if(N.to && N.to!=="all" && !(N.to||[]).includes(slug)) return;
@@ -235,9 +243,9 @@ function noticeBox(app){
   const b=el("section","notice"); b.append(el("b",null,N.title||"선생님 공지"));
   if(N.text) b.append(el("p",null,N.text));
   const row=el("div","notice-r");
-  const ans=a=>{ store.set(k,a); sendNotice(N.id,a); render(); };
+  const ans=(a,label)=>{ store.set(k,a); sendNotice(N.id,a); alertNotice(N,label); render(); };
   (N.buttons||[["yes","확인했어요"]]).forEach(([v,l],i)=>{ const bt=el("button","btn"+(i===0?" primary":""),l); bt.type="button";
-    bt.onclick=()=>{ if(v==="go-pod"){ const P=podSel(); window.open(P.url,"_blank","noopener"); } ans(v); }; row.append(bt); });
+    bt.onclick=()=>{ if(v==="go-pod"){ const P=podSel(); window.open(P.url,"_blank","noopener"); } ans(v,l); }; row.append(bt); });
   b.append(row); app.append(b);
 }
 function renderHome(app){
