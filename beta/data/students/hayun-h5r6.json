@@ -1,0 +1,272 @@
+{
+ "slug": "hayun-h5r6",
+ "name": "남하윤",
+ "course": "English",
+ "sessions": [
+  {
+   "no": 1,
+   "date": "2026-11-05",
+   "title": "Anxiety & little faith"
+  }
+ ],
+ "types": [
+  "표현"
+ ],
+ "tips": {},
+ "focus": {
+  "1": "to no avail, in another sense, That's what it's like to ~ 를 내 이야기로 한 번씩 말해보기!"
+ },
+ "compare": [
+  [
+   "discouraging / discouraged",
+   "일이 주는 느낌은 <em>discouraging</em> · 내 기분은 <em>discouraged</em>"
+  ]
+ ],
+ "cards": [
+  {
+   "id": "e01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "불안의 근본 원인은 믿음이 부족한 거예요.",
+   "en": "The root of anxiety is inadequate faith.",
+   "hint": "root",
+   "gram": "<em>the root of</em> ~ = ~의 근본 원인. <em>inadequate</em> = 부족한, 불충분한 (adequate의 반대)."
+  },
+  {
+   "id": "e02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "사실, 그걸 알게 되니까 꽤 낙담스러웠어요.",
+   "en": "In fact, it was quite discouraging to learn that.",
+   "hint": "discouraging",
+   "gram": "<em>discouraging</em> = (어떤 일이) 낙담하게 하는. 내 기분은 <em>I was discouraged</em>. -ing/-ed 구분!"
+  },
+  {
+   "id": "e03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "그건 단순한 고민이 아니라, 훨씬 더 깊은 문제예요.",
+   "en": "It's not a mere struggle; it's a far deeper one.",
+   "hint": "mere",
+   "gram": "<em>mere</em> = 단순한, 그저 ~에 불과한. 비교급 강조는 <em>far</em> + 비교급: far deeper, far better."
+  },
+  {
+   "id": "e04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "제 대답은, 일단 동의하지만 그다음엔 반대하는 거예요.",
+   "en": "My response is to agree, but then to disagree.",
+   "hint": "response",
+   "gram": "<em>My response is to</em> + 동사 = 제 대답(반응)은 ~하는 거예요. Part 3에서 의견을 말할 때 써 보기."
+  },
+  {
+   "id": "e05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "온갖 약과 식단을 다 써 봤지만 소용없었어요.",
+   "en": "I tried all kinds of medicines and diets, to no avail.",
+   "hint": "avail",
+   "gram": "<em>to no avail</em> = 소용없이, 허사로. 문장 끝에 붙여요: I tried to call her, to no avail."
+  },
+  {
+   "id": "e06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "정기 검진을 받고 나서 의사가 진짜 문제를 찾아냈어요.",
+   "en": "After a routine visit, the doctor found the real problem.",
+   "hint": "routine",
+   "gram": "<em>routine</em> = 정기적인, 일상적인. a routine check-up = 정기 검진."
+  },
+  {
+   "id": "e07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "그는 단호하게 아니라고 말했어요.",
+   "en": "He said no, emphatically.",
+   "hint": "emphatically",
+   "gram": "<em>emphatically</em> = 단호하게, 힘주어. emphasis(강조)의 부사형."
+  },
+  {
+   "id": "e08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "아직 치료할 수 있을 때 발견해서 정말 다행이에요.",
+   "en": "I'm so glad it was discovered while it's still treatable.",
+   "hint": "treatable",
+   "gram": "<em>treatable</em> = 치료할 수 있는. <em>while it's still</em> + 형용사 = 아직 ~할 때."
+  },
+  {
+   "id": "e09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "다른 의미에서 보면, 그건 좋은 소식이에요.",
+   "en": "In another sense, it's good news.",
+   "hint": "sense",
+   "gram": "<em>in another sense</em> = 다른 의미에서는. 반대로 보면 이렇다고 균형 잡힌 의견을 낼 때 좋아요."
+  },
+  {
+   "id": "e10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "진짜 뭐가 문제인지 아는 건 좋은 거예요.",
+   "en": "Knowing what's really wrong is a good thing.",
+   "hint": "Knowing",
+   "gram": "동명사(<em>-ing</em>)가 주어! Knowing ~ is good. 주어가 길면 It's good to know what's really wrong도 OK."
+  },
+  {
+   "id": "e11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "그게 바로 진짜 문제를 알게 되는 것과 같은 느낌이에요.",
+   "en": "That's what it's like to discover the real problem.",
+   "hint": "like",
+   "gram": "<em>That's what it's like to</em> + 동사 = ~하는 게 바로 그런 느낌이에요. 비유를 마무리할 때 써요."
+  },
+  {
+   "id": "e12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "믿습니다. 믿음 없는 저를 도와주세요!",
+   "en": "I believe; help my unbelief!",
+   "hint": "unbelief",
+   "gram": "<em>unbelief</em> = 불신, 믿음 없음. 마가복음 9:24의 유명한 고백이에요."
+  }
+ ],
+ "part1": [],
+ "part3": [],
+ "words": [
+  {
+   "w": "anxiety",
+   "ko": "불안, 걱정",
+   "ex": "Exams always cause me a lot of anxiety.",
+   "s": 1
+  },
+  {
+   "w": "inadequate",
+   "ko": "부족한, 불충분한",
+   "ex": "The instructions were inadequate, so I got lost.",
+   "s": 1
+  },
+  {
+   "w": "disposition",
+   "ko": "기질, 성향",
+   "ex": "She has a cheerful disposition.",
+   "s": 1
+  },
+  {
+   "w": "anxious",
+   "ko": "불안해하는, 걱정하는",
+   "ex": "I feel anxious before job interviews.",
+   "s": 1
+  },
+  {
+   "w": "discouraging",
+   "ko": "낙담하게 하는",
+   "ex": "The test results were a bit discouraging.",
+   "s": 1
+  },
+  {
+   "w": "mere",
+   "ko": "단순한, ~에 불과한",
+   "ex": "It was a mere mistake, nothing serious.",
+   "s": 1
+  },
+  {
+   "w": "struggle",
+   "ko": "애씀, 싸움 / 힘겹게 애쓰다",
+   "ex": "Learning a new language is a daily struggle.",
+   "s": 1
+  },
+  {
+   "w": "emphatically",
+   "ko": "단호하게, 힘주어",
+   "ex": "He emphatically said no to the offer.",
+   "s": 1
+  },
+  {
+   "w": "routine visit",
+   "ko": "정기 방문(검진)",
+   "ex": "I saw the dentist for a routine visit.",
+   "s": 1
+  },
+  {
+   "w": "intestine",
+   "ko": "창자, 장 (small intestine = 소장)",
+   "ex": "Food is digested in the small intestine.",
+   "s": 1
+  },
+  {
+   "w": "treatable",
+   "ko": "치료할 수 있는",
+   "ex": "Luckily, the illness is treatable.",
+   "s": 1
+  },
+  {
+   "w": "to no avail",
+   "ko": "소용없이, 헛되이",
+   "ex": "I tried to fix my laptop, to no avail.",
+   "s": 1
+  },
+  {
+   "w": "cry out",
+   "ko": "부르짖다, 외치다",
+   "ex": "She cried out for help.",
+   "s": 1
+  },
+  {
+   "w": "unbelief",
+   "ko": "불신, 믿음 없음",
+   "ex": "His unbelief made him doubt every promise.",
+   "s": 1
+  },
+  {
+   "w": "future grace",
+   "ko": "앞으로 받을 은혜",
+   "ex": "Piper often talks about trusting God's future grace.",
+   "s": 1
+  }
+ ],
+ "form": {
+  "url": "https://docs.google.com/forms/d/e/1FAIpQLSfybbvIl48g133Mx3PdH7rfqGDRy9NCum3SdpUJ3RDpWkdPNA/viewform?usp=pp_url&entry.1747437353=NAME_X&entry.1189878643=SESSION_X&entry.1202580096=RESULT_X"
+ },
+ "pod": {
+  "name": "Solid Joys Daily Devotional",
+  "url": "https://podcasts.apple.com/nz/podcast/solid-joys-daily-devotional/id1315817340"
+ }
+}
