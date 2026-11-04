@@ -1444,8 +1444,9 @@ function spBuild(st){
   st.wrong=st.wrong.filter(w=>names.has(w)); st.done=st.done.filter(w=>names.has(w));
   if(st.done.length>=all.length) st.done=[];
   const order=all.map(w=>w[0]).sort((a,b)=>spHash(slug+a)-spHash(slug+b));
-  const prev=st.set||[]; const pick=st.wrong.filter(w=>!prev.includes(w)).slice(0,2);
-  for(const w of order){ if(pick.length>=5) break; if(!st.done.includes(w) && !pick.includes(w) && !prev.includes(w)) pick.push(w); }
+  const prev=st.set||[];
+  const pick= prev.length? prev.filter(w=>st.wrong.includes(w)).slice(0,5) : st.wrong.slice(0,2);
+  for(const w of order){ if(pick.length>=5) break; if(!st.done.includes(w) && !st.wrong.includes(w) && !pick.includes(w) && !prev.includes(w)) pick.push(w); }
   for(const w of order){ if(pick.length>=5) break; if(!st.done.includes(w) && !pick.includes(w)) pick.push(w); }
   st.set=pick; st.ok=false;
 }
