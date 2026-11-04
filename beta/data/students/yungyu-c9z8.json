@@ -172,9 +172,93 @@
  "part3": [],
  "words": [
   {
-   "w": "avail",
-   "ko": "소용, 이익 (to no avail = 소용없이)",
-   "ex": "I tried all kinds of medicines, to no avail.",
+   "w": "anxiety",
+   "ko": "불안, 걱정",
+   "ex": "Exams always cause me a lot of anxiety.",
+   "s": 1
+  },
+  {
+   "w": "inadequate",
+   "ko": "부족한, 불충분한",
+   "ex": "The instructions were inadequate, so I got lost.",
+   "s": 1
+  },
+  {
+   "w": "disposition",
+   "ko": "기질, 성향",
+   "ex": "She has a cheerful disposition.",
+   "s": 1
+  },
+  {
+   "w": "anxious",
+   "ko": "불안해하는, 걱정하는",
+   "ex": "I feel anxious before job interviews.",
+   "s": 1
+  },
+  {
+   "w": "discouraging",
+   "ko": "낙담하게 하는",
+   "ex": "The test results were a bit discouraging.",
+   "s": 1
+  },
+  {
+   "w": "mere",
+   "ko": "단순한, ~에 불과한",
+   "ex": "It was a mere mistake, nothing serious.",
+   "s": 1
+  },
+  {
+   "w": "struggle",
+   "ko": "애씀, 싸움 / 힘겹게 애쓰다",
+   "ex": "Learning a new language is a daily struggle.",
+   "s": 1
+  },
+  {
+   "w": "emphatically",
+   "ko": "단호하게, 힘주어",
+   "ex": "He emphatically said no to the offer.",
+   "s": 1
+  },
+  {
+   "w": "routine visit",
+   "ko": "정기 방문(검진)",
+   "ex": "I saw the dentist for a routine visit.",
+   "s": 1
+  },
+  {
+   "w": "intestine",
+   "ko": "창자, 장 (small intestine = 소장)",
+   "ex": "Food is digested in the small intestine.",
+   "s": 1
+  },
+  {
+   "w": "treatable",
+   "ko": "치료할 수 있는",
+   "ex": "Luckily, the illness is treatable.",
+   "s": 1
+  },
+  {
+   "w": "to no avail",
+   "ko": "소용없이, 헛되이",
+   "ex": "I tried to fix my laptop, to no avail.",
+   "s": 1
+  },
+  {
+   "w": "cry out",
+   "ko": "부르짖다, 외치다",
+   "ex": "She cried out for help.",
+   "s": 1
+  },
+  {
+   "w": "unbelief",
+   "ko": "불신, 믿음 없음",
+   "ex": "His unbelief made him doubt every promise.",
+   "s": 1
+  },
+  {
+   "w": "future grace",
+   "ko": "앞으로 받을 은혜",
+   "ex": "Piper often talks about trusting God's future grace.",
    "s": 1
   }
  ],

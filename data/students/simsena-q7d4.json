@@ -3511,5 +3511,97 @@
  "pod": {
   "name": "Solid Joys Daily Devotional",
   "url": "https://podcasts.apple.com/nz/podcast/solid-joys-daily-devotional/id1315817340"
- }
+ },
+ "words": [
+  {
+   "w": "anxiety",
+   "ko": "불안, 걱정",
+   "ex": "Exams always cause me a lot of anxiety.",
+   "s": 13
+  },
+  {
+   "w": "inadequate",
+   "ko": "부족한, 불충분한",
+   "ex": "The instructions were inadequate, so I got lost.",
+   "s": 13
+  },
+  {
+   "w": "disposition",
+   "ko": "기질, 성향",
+   "ex": "She has a cheerful disposition.",
+   "s": 13
+  },
+  {
+   "w": "anxious",
+   "ko": "불안해하는, 걱정하는",
+   "ex": "I feel anxious before job interviews.",
+   "s": 13
+  },
+  {
+   "w": "discouraging",
+   "ko": "낙담하게 하는",
+   "ex": "The test results were a bit discouraging.",
+   "s": 13
+  },
+  {
+   "w": "mere",
+   "ko": "단순한, ~에 불과한",
+   "ex": "It was a mere mistake, nothing serious.",
+   "s": 13
+  },
+  {
+   "w": "struggle",
+   "ko": "애씀, 싸움 / 힘겹게 애쓰다",
+   "ex": "Learning a new language is a daily struggle.",
+   "s": 13
+  },
+  {
+   "w": "emphatically",
+   "ko": "단호하게, 힘주어",
+   "ex": "He emphatically said no to the offer.",
+   "s": 13
+  },
+  {
+   "w": "routine visit",
+   "ko": "정기 방문(검진)",
+   "ex": "I saw the dentist for a routine visit.",
+   "s": 13
+  },
+  {
+   "w": "intestine",
+   "ko": "창자, 장 (small intestine = 소장)",
+   "ex": "Food is digested in the small intestine.",
+   "s": 13
+  },
+  {
+   "w": "treatable",
+   "ko": "치료할 수 있는",
+   "ex": "Luckily, the illness is treatable.",
+   "s": 13
+  },
+  {
+   "w": "to no avail",
+   "ko": "소용없이, 헛되이",
+   "ex": "I tried to fix my laptop, to no avail.",
+   "s": 13
+  },
+  {
+   "w": "cry out",
+   "ko": "부르짖다, 외치다",
+   "ex": "She cried out for help.",
+   "s": 13
+  },
+  {
+   "w": "unbelief",
+   "ko": "불신, 믿음 없음",
+   "ex": "His unbelief made him doubt every promise.",
+   "s": 13
+  },
+  {
+   "w": "future grace",
+   "ko": "앞으로 받을 은혜",
+   "ex": "Piper often talks about trusting God's future grace.",
+   "s": 13
+  }
+ ]
 }
