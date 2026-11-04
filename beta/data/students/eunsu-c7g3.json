@@ -553,6 +553,18 @@
    "ko": "꾀어 끌어내다",
    "ex": "Big companies lure away good workers.",
    "s": 2
+  },
+  {
+   "w": "malicious",
+   "ko": "악의적인, 악성의",
+   "ex": "The company found malicious software on its computers.",
+   "s": 3
+  },
+  {
+   "w": "defrost",
+   "ko": "해동하다, 성에를 제거하다 (defrosting = 해동)",
+   "ex": "Hackers changed the settings and started defrosting the freezers.",
+   "s": 3
   }
  ],
  "pod": {
