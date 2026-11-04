@@ -7,6 +7,11 @@
    "no": 1,
    "date": "2026-11-04",
    "title": "Anxiety & little faith"
+  },
+  {
+   "no": 2,
+   "date": "2026-11-05",
+   "title": "So great a salvation"
   }
  ],
  "types": [
@@ -166,6 +171,150 @@
    "en": "I believe; help my unbelief!",
    "hint": "unbelief",
    "gram": "<em>unbelief</em> = 불신, 믿음 없음. 마가복음 9:24의 유명한 고백이에요."
+  },
+  {
+   "id": "s2-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "구원에 대해 위대하다는 느낌이 있나요?",
+   "en": "Is there a sense of greatness in your mind about your salvation?",
+   "hint": "greatness",
+   "gram": "<em>a sense of</em> + 명사 = ~라는 느낌·감각. <em>greatness</em> = 위대함 (great의 명사)."
+  },
+  {
+   "id": "s2-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 요즘 건강을 소홀히 하고 있어요.",
+   "en": "I've been neglecting my health lately.",
+   "hint": "neglecting",
+   "gram": "<em>neglect</em> = 소홀히 하다, 방치하다. 명사도 neglect."
+  },
+  {
+   "id": "s2-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "한 번 서명하고 서랍 어딘가에 넣어 뒀어요.",
+   "en": "I signed it once, and it's in a file drawer somewhere.",
+   "hint": "drawer",
+   "gram": "<em>file drawer</em> = 서류 서랍. <em>somewhere</em> = 어딘가에."
+  },
+  {
+   "id": "s2-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그건 제 일상에 아무 영향도 주지 않아요.",
+   "en": "It has no daily effect on me.",
+   "hint": "effect",
+   "gram": "<em>have an effect on</em> ~ = ~에 영향을 주다. effect(명사) vs affect(동사)."
+  },
+  {
+   "id": "s2-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "쉽게 말해, 저는 그걸 방치하고 있어요.",
+   "en": "Basically, I neglect it.",
+   "hint": "Basically",
+   "gram": "<em>Basically</em> = 쉽게 말해, 요컨대. 말을 정리할 때 문장 앞에."
+  },
+  {
+   "id": "s2-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그 선물은 공짜로 주어졌어요.",
+   "en": "It was given as a free gift.",
+   "hint": "gift",
+   "gram": "<em>a free gift</em> = 거저 받은 선물. 대가 없이 받았다는 걸 강조."
+  },
+  {
+   "id": "s2-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그녀의 미소가 다시 화해의 미소로 바뀌었어요.",
+   "en": "Her smile became a reconciled smile again.",
+   "hint": "reconciled",
+   "gram": "<em>reconcile</em> = 화해시키다. reconciled = 화해한. 명사 reconciliation."
+  },
+  {
+   "id": "s2-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그 책은 아이디어가 무궁무진한 보물 창고예요.",
+   "en": "The book is an inexhaustible treasure of ideas.",
+   "hint": "inexhaustible",
+   "gram": "<em>inexhaustible</em> = 무궁무진한, 다 쓸 수 없는 (exhaust = 다 써 버리다)."
+  },
+  {
+   "id": "s2-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그건 정말 대단한 기회예요.",
+   "en": "This is indeed a great opportunity.",
+   "hint": "indeed",
+   "gram": "<em>indeed</em> = 정말로, 참으로. 강조할 때 be동사 뒤에."
+  },
+  {
+   "id": "s2-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "영어 공부는 진지한 일이지만, 괴로운 일은 아니에요.",
+   "en": "Learning English is a serious business, not a sour business.",
+   "hint": "serious",
+   "gram": "<em>a serious business</em> = 진지하게 해야 할 일. <em>sour</em> = 시큰둥한, 언짢은."
+  },
+  {
+   "id": "s2-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 이런 일로 목표에서 벗어나지 않을 거예요.",
+   "en": "I won't be deflected from my goal by things like this.",
+   "hint": "deflected",
+   "gram": "<em>be deflected from</em> ~ = ~에서 빗나가다, 벗어나다."
+  },
+  {
+   "id": "s2-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "순간의 즐거움에 끌려가지 마세요.",
+   "en": "Don't be lured away by fleeting pleasures.",
+   "hint": "lured",
+   "gram": "<em>be lured away</em> = 꾀어 끌려가다. <em>fleeting</em> = 순식간에 지나가는."
   }
  ],
  "part1": [],
@@ -260,6 +409,150 @@
    "ko": "앞으로 받을 은혜",
    "ex": "Piper often talks about trusting God's future grace.",
    "s": 1
+  },
+  {
+   "w": "greatness",
+   "ko": "위대함",
+   "ex": "She never lost a sense of greatness about her calling.",
+   "s": 2
+  },
+  {
+   "w": "salvation",
+   "ko": "구원",
+   "ex": "For Christians, salvation is a gift from God.",
+   "s": 2
+  },
+  {
+   "w": "neglect",
+   "ko": "소홀히 하다, 방치하다",
+   "ex": "Don't neglect your health.",
+   "s": 2
+  },
+  {
+   "w": "last will and testament",
+   "ko": "유언장",
+   "ex": "He left his house to his son in his last will and testament.",
+   "s": 2
+  },
+  {
+   "w": "deed",
+   "ko": "(부동산) 증서",
+   "ex": "Keep the deed to your house in a safe place.",
+   "s": 2
+  },
+  {
+   "w": "file drawer",
+   "ko": "서류 서랍",
+   "ex": "All the receipts are in the file drawer.",
+   "s": 2
+  },
+  {
+   "w": "forgiven",
+   "ko": "용서받은",
+   "ex": "I felt forgiven after we talked.",
+   "s": 2
+  },
+  {
+   "w": "almighty",
+   "ko": "전능한",
+   "ex": "They prayed to almighty God.",
+   "s": 2
+  },
+  {
+   "w": "righteousness",
+   "ko": "의, 올바름",
+   "ex": "He spoke about justice and righteousness.",
+   "s": 2
+  },
+  {
+   "w": "impute",
+   "ko": "(~에게) 돌리다, 전가하다",
+   "ex": "In theology, righteousness is imputed by faith.",
+   "s": 2
+  },
+  {
+   "w": "wrath",
+   "ko": "진노, 분노",
+   "ex": "The story describes the wrath of the king.",
+   "s": 2
+  },
+  {
+   "w": "reconciled",
+   "ko": "화해한",
+   "ex": "The two brothers were finally reconciled.",
+   "s": 2
+  },
+  {
+   "w": "indwelling",
+   "ko": "내주하는, 안에 머무는",
+   "ex": "Christians talk about the indwelling Spirit.",
+   "s": 2
+  },
+  {
+   "w": "radiance",
+   "ko": "광채, 빛남",
+   "ex": "The radiance of the sunrise was amazing.",
+   "s": 2
+  },
+  {
+   "w": "throne",
+   "ko": "왕좌, 보좌",
+   "ex": "The queen sat on her throne.",
+   "s": 2
+  },
+  {
+   "w": "inexhaustible",
+   "ko": "무궁무진한",
+   "ex": "She seems to have inexhaustible energy.",
+   "s": 2
+  },
+  {
+   "w": "escape",
+   "ko": "벗어나다, 피하다",
+   "ex": "There was no escape from the heat.",
+   "s": 2
+  },
+  {
+   "w": "judgment",
+   "ko": "심판, 판단",
+   "ex": "Wait before you make a judgment.",
+   "s": 2
+  },
+  {
+   "w": "sour",
+   "ko": "언짢은, 시큰둥한 / 신",
+   "ex": "Don't be so sour about it.",
+   "s": 2
+  },
+  {
+   "w": "blood-earnest",
+   "ko": "목숨 걸 만큼 진지한",
+   "ex": "He was blood-earnest about his studies.",
+   "s": 2
+  },
+  {
+   "w": "deflect",
+   "ko": "빗나가게 하다, 벗어나게 하다",
+   "ex": "Don't let small problems deflect you.",
+   "s": 2
+  },
+  {
+   "w": "fleeting",
+   "ko": "순식간에 지나가는",
+   "ex": "It was just a fleeting moment.",
+   "s": 2
+  },
+  {
+   "w": "gouge out",
+   "ko": "도려내다",
+   "ex": "The story says he would rather gouge out his eye.",
+   "s": 2
+  },
+  {
+   "w": "lure away",
+   "ko": "꾀어 끌어내다",
+   "ex": "Big companies lure away good workers.",
+   "s": 2
   }
  ],
  "pod": {
