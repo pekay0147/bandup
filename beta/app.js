@@ -80,22 +80,26 @@ const STK=()=>`bandup-stat-${slug}`, CSK=()=>`bandup-consent-${slug}`;
 function statOn(){ return !!(D.form && D.form.url) && !D.demo && store.get(CSK(),null)===true; }
 function statBuf(){ return Object.assign({c:{},sp:{ok:0,ng:[]},rec:0,since:today()}, store.get(STK(),{})); }
 let statT=null;
+function statKick(){ if(!statOn()) return; clearTimeout(statT); statT=setTimeout(()=>statFlush(false),45000); }
 function statAdd(fn){ if(!statOn()) return; const b=statBuf(); fn(b); store.set(STK(),b); clearTimeout(statT); statT=setTimeout(()=>statFlush(false),45000); }
 function statCard(id,ok){ statAdd(b=>{ const r=b.c[id]||[0,0]; r[ok?0:1]++; b.c[id]=r; }); }
 function statSpell(w,typed,ok){ statAdd(b=>{ if(ok) b.sp.ok++; else if(b.sp.ng.length<60) b.sp.ng.push([w,String(typed||"").slice(0,40)]); }); }
 function statRec(){ statAdd(b=>{ b.rec++; }); }
 function statFlush(force){
-  if(!statOn()) return; const b=statBuf(); const n=Object.keys(b.c).length+b.sp.ok+b.sp.ng.length+b.rec; if(!n) return;
+  if(!statOn()) return; const b=statBuf();
+  const snap={bm:cbmList().filter(id=>D.cards.some(c=>c.id===id)).slice(-60), qbm:qbmList().map(x=>x.q).slice(-40), weak:Object.keys(marks).filter(id=>marks[id]==="again").slice(-60)};
+  const sig=JSON.stringify(snap), changed=sig!==store.get(STK()+"-snap","");
+  const n=Object.keys(b.c).length+b.sp.ok+b.sp.ng.length+b.rec+(changed?1:0); if(!n) return;
   const last=store.get(STK()+"-at",0); if(!force && Date.now()-last<60*1000) return;
   try{
     const u=new URL(D.form.url); const ids=[...u.searchParams.keys()].filter(k=>k.startsWith("entry."));
     const fd=new URLSearchParams(); const st=streak?streak():0;
-    const payload={v:1,from:b.since,to:today(),c:b.c,sp:b.sp,rec:b.rec,streak:st,days:(days||[]).filter(d=>d>=addD(today(),-6)).length};
+    const payload={v:1,from:b.since,to:today(),c:b.c,sp:b.sp,rec:b.rec,streak:st,days:(days||[]).filter(d=>d>=addD(today(),-6)).length,...snap};
     fd.set(ids[0],slug); fd.set(ids[1],"stats"); fd.set(ids[2],JSON.stringify(payload));
     const to=D.form.url.split("/viewform")[0]+"/formResponse"; let sent=false;
     try{ sent=!!(navigator.sendBeacon && navigator.sendBeacon(to,fd)); }catch(_){ }
     if(!sent) fetch(to,{method:"POST",mode:"no-cors",body:fd,keepalive:true}).catch(()=>{});
-    store.set(STK(),{c:{},sp:{ok:0,ng:[]},rec:0,since:today()}); store.set(STK()+"-at",Date.now());
+    store.set(STK(),{c:{},sp:{ok:0,ng:[]},rec:0,since:today()}); store.set(STK()+"-at",Date.now()); store.set(STK()+"-snap",sig);
   }catch(_){}
 }
 document.addEventListener("visibilitychange",()=>{ if(document.hidden && D) statFlush(true); });
@@ -105,7 +109,7 @@ function consentSheet(){
   sh.append(el("h2",null,"공부 기록을 선생님과 공유할까요?"),
     el("p",null,"수업을 더 잘 준비하려고, 자주 틀리는 문제만 선생님께 전달돼요."));
   const ul=el("ul","consent-l");
-  [["전달돼요","큐카드를 맞혔는지 틀렸는지, 틀린 철자, 공부한 날 수, 녹음한 횟수"],["전달 안 돼요","녹음, 말한 내용, 내 단어장, 위치나 기기 정보"]].forEach(([a,b])=>{ const li=el("li"); li.append(el("b",null,a), el("span",null,b)); ul.append(li); });
+  [["전달돼요","큐카드를 맞혔는지 틀렸는지, 북마크한 문장, 틀린 철자, 공부한 날 수, 녹음한 횟수"],["전달 안 돼요","녹음, 말한 내용, 내 단어장, 위치나 기기 정보"]].forEach(([a,b])=>{ const li=el("li"); li.append(el("b",null,a), el("span",null,b)); ul.append(li); });
   sh.append(ul, el("p","muted small","언제든 홈 맨 아래에서 끌 수 있어요."));
   const row=el("div","row");
   const yes=el("button","btn primary","좋아요"); yes.type="button"; yes.onclick=()=>{ store.set(CSK(),true); bg.remove(); render(); };
@@ -303,7 +307,7 @@ let MT=null, mtTimer=null;
 const qbmKey=()=>`bandup-qbm-${slug}`;
 const qbmList=()=>store.get(qbmKey(),[]);
 const isQbm=q=>qbmList().some(x=>x.q===q);
-function toggleQbm(item){ let l=qbmList(); if(l.some(x=>x.q===item.q)) l=l.filter(x=>x.q!==item.q); else l=[...l,{part:item.part,topic:item.topic,q:item.q}]; store.set(qbmKey(),l); }
+function toggleQbm(item){ let l=qbmList(); if(l.some(x=>x.q===item.q)) l=l.filter(x=>x.q!==item.q); else l=[...l,{part:item.part,topic:item.topic,q:item.q}]; store.set(qbmKey(),l); statKick(); }
 function qbmBtn(item, onChange){ const b=el("button","cstar"); b.type="button"; const set=()=>{ const on=isQbm(item.q); b.textContent=on? "★" : "☆"; b.setAttribute("aria-pressed",String(on)); b.setAttribute("aria-label", on? "모아두기 해제" : "질문 모아두기"); }; set(); b.onclick=e=>{ e.stopPropagation(); toggleQbm(item); set(); if(onChange) onChange(); }; return b; }
 let todayQShift=0;
 let calOpen=false;
@@ -707,7 +711,7 @@ function renderWrongList(app){
 const cbmKey=()=>`bandup-cbm-${slug}`;
 const cbmList=()=>store.get(cbmKey(),[]);
 const isCbm=id=>cbmList().includes(id);
-function toggleCbm(id){ let l=cbmList(); l= l.includes(id)? l.filter(x=>x!==id) : [...l,id]; store.set(cbmKey(),l); }
+function toggleCbm(id){ let l=cbmList(); l= l.includes(id)? l.filter(x=>x!==id) : [...l,id]; store.set(cbmKey(),l); statKick(); }
 function renderBmCards(app){
   const list=cbmList().map(getCard).filter(Boolean);
   const p=el("div","panel randbox");
@@ -1149,7 +1153,7 @@ function renderDeck(app){
 function move(d){ const n=deckState.i+d; if(n<0||n>=deckState.ids.length) return; deckState.i=n; flipped=false; picked=null; render(); }
 function markDeck(c,kind){
   marks[c.id] = marks[c.id]===kind ? undefined : kind; if(!marks[c.id]) delete marks[c.id];
-  if(marks[c.id]) statCard(c.id, kind==="know");
+  if(marks[c.id]) statCard(c.id, kind==="know"); else statKick();
   touchDay(); save();
   const last=deckState.i>=deckState.ids.length-1;
   if(marks[c.id] && !last){ deckState.i++; flipped=false; picked=null; render(); }
