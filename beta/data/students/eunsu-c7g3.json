@@ -7,6 +7,11 @@
    "no": 1,
    "date": "2026-11-04",
    "title": "Anxiety & little faith"
+  },
+  {
+   "no": 2,
+   "date": "2026-11-05",
+   "title": "Children of a Singing God"
   }
  ],
  "types": [
@@ -166,6 +171,150 @@
    "en": "I believe; help my unbelief!",
    "hint": "unbelief",
    "gram": "<em>unbelief</em> = 불신, 믿음 없음. 마가복음 9:24의 유명한 고백이에요."
+  },
+  {
+   "id": "s2-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "우리 팀은 서로 동료애가 정말 끈끈해요.",
+   "en": "There's a real sense of camaraderie in our team.",
+   "hint": "camaraderie",
+   "gram": "<em>camaraderie</em> = 동료애, 끈끈한 우정. 함께 고생한 사람들 사이의 정을 말할 때."
+  },
+  {
+   "id": "s2-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그분 목소리에는 시골 사투리 억양이 살짝 있어요.",
+   "en": "His voice has a slight down-home twang.",
+   "hint": "twang",
+   "gram": "<em>twang</em> = (콧소리 섞인) 억양. <em>down-home</em> = 시골스럽고 정겨운."
+  },
+  {
+   "id": "s2-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그녀는 흔들림 없이 맑은 음정으로 노래했어요.",
+   "en": "She sang with an unwavering, crystal-clear pitch.",
+   "hint": "unwavering",
+   "gram": "<em>unwavering</em> = 흔들림 없는, 변함없는. unwavering support(변함없는 지지)도 자주 써요."
+  },
+  {
+   "id": "s2-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그 소식 때문에 일상이 완전히 흔들렸어요.",
+   "en": "The news jolted my daily routine out of orbit.",
+   "hint": "jolted",
+   "gram": "<em>jolt</em> = 갑자기 뒤흔들다. <em>out of orbit</em> = 궤도를 벗어나, 정상 흐름에서 벗어나."
+  },
+  {
+   "id": "s2-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "제 믿음은 무슨 일이 있어도 흔들리지 않아요.",
+   "en": "My faith cannot be shaken, whatever happens.",
+   "hint": "shaken",
+   "gram": "<em>cannot be shaken</em> = 흔들릴 수 없다. shake-shook-<em>shaken</em>."
+  },
+  {
+   "id": "s2-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "달리 될 수가 없었어요. 그게 당연한 결과였어요.",
+   "en": "It could not be otherwise. It was the natural result.",
+   "hint": "otherwise",
+   "gram": "<em>could not be otherwise</em> = 달리 될 수 없다, 그럴 수밖에 없다."
+  },
+  {
+   "id": "s2-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "교회에서의 교제는 제게 큰 힘이 돼요.",
+   "en": "The fellowship at church gives me a lot of strength.",
+   "hint": "fellowship",
+   "gram": "<em>fellowship</em> = (신앙 안의) 교제, 친교."
+  },
+  {
+   "id": "s2-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "산 정상에서 보니 도시 전체가 파노라마처럼 펼쳐졌어요.",
+   "en": "From the top of the mountain, I saw a panorama of the whole city.",
+   "hint": "panorama",
+   "gram": "<em>a panorama of</em> ~ = ~의 전경, 한눈에 펼쳐진 모습."
+  },
+  {
+   "id": "s2-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그 아이디어가 어떻게 생겨났는지 궁금해요.",
+   "en": "I wonder how the idea came into being.",
+   "hint": "being",
+   "gram": "<em>come into being</em> = 생겨나다, 존재하게 되다."
+  },
+  {
+   "id": "s2-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "운동을 하면 쌓여 있던 에너지가 확 풀려요.",
+   "en": "When I exercise, a lot of pent-up energy is released.",
+   "hint": "released",
+   "gram": "<em>be released</em> = 방출되다, 풀려나다. release(놓아주다)의 수동태."
+  },
+  {
+   "id": "s2-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "제 아이들은 제 마음의 기쁨이에요.",
+   "en": "My children are my heart's delight.",
+   "hint": "delight",
+   "gram": "<em>heart's delight</em> = 마음의 기쁨, 가장 큰 즐거움. <em>delight in</em> ~ = ~을 기뻐하다."
+  },
+  {
+   "id": "s2-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "노래는 하나님이 우리에게 정해 주신 기쁨의 표현이에요.",
+   "en": "Song is the way God appointed for us to express our joy.",
+   "hint": "appointed",
+   "gram": "<em>appoint</em> = 정하다, 임명하다. the time appointed = 정해진 시간."
   }
  ],
  "part1": [],
@@ -260,6 +409,114 @@
    "ko": "앞으로 받을 은혜",
    "ex": "Piper often talks about trusting God's future grace.",
    "s": 1
+  },
+  {
+   "w": "camaraderie",
+   "ko": "동료애, 끈끈한 우정",
+   "ex": "We built real camaraderie during the project.",
+   "s": 2
+  },
+  {
+   "w": "twang",
+   "ko": "(콧소리 섞인) 억양",
+   "ex": "He speaks with a southern twang.",
+   "s": 2
+  },
+  {
+   "w": "down-home",
+   "ko": "시골스럽고 정겨운",
+   "ex": "I love the down-home food at my grandma's.",
+   "s": 2
+  },
+  {
+   "w": "unwavering",
+   "ko": "흔들림 없는",
+   "ex": "Thank you for your unwavering support.",
+   "s": 2
+  },
+  {
+   "w": "pitch",
+   "ko": "음정, 음높이",
+   "ex": "She can sing at a very high pitch.",
+   "s": 2
+  },
+  {
+   "w": "jolt",
+   "ko": "갑자기 뒤흔들다, 충격",
+   "ex": "The loud noise jolted me awake.",
+   "s": 2
+  },
+  {
+   "w": "out of orbit",
+   "ko": "궤도를 벗어나",
+   "ex": "The accident threw my plans out of orbit.",
+   "s": 2
+  },
+  {
+   "w": "cannot be shaken",
+   "ko": "흔들릴 수 없다",
+   "ex": "Her confidence cannot be shaken.",
+   "s": 2
+  },
+  {
+   "w": "could not be otherwise",
+   "ko": "그럴 수밖에 없다",
+   "ex": "Given the facts, it could not be otherwise.",
+   "s": 2
+  },
+  {
+   "w": "fellowship",
+   "ko": "교제, 친교",
+   "ex": "We enjoyed fellowship after the service.",
+   "s": 2
+  },
+  {
+   "w": "infinite",
+   "ko": "무한한",
+   "ex": "Parents seem to have infinite patience.",
+   "s": 2
+  },
+  {
+   "w": "eternal",
+   "ko": "영원한",
+   "ex": "They promised eternal love.",
+   "s": 2
+  },
+  {
+   "w": "panorama",
+   "ko": "전경, 파노라마",
+   "ex": "The hotel offers a panorama of the sea.",
+   "s": 2
+  },
+  {
+   "w": "come into being",
+   "ko": "생겨나다",
+   "ex": "The company came into being in 1990.",
+   "s": 2
+  },
+  {
+   "w": "release",
+   "ko": "방출하다, 풀어 주다",
+   "ex": "Exercise helps me release stress.",
+   "s": 2
+  },
+  {
+   "w": "heart's delight",
+   "ko": "마음의 기쁨",
+   "ex": "Gardening is my heart's delight.",
+   "s": 2
+  },
+  {
+   "w": "appoint",
+   "ko": "정하다, 임명하다",
+   "ex": "They appointed a new manager.",
+   "s": 2
+  },
+  {
+   "w": "native",
+   "ko": "타고난, 본래의",
+   "ex": "English is his native language.",
+   "s": 2
   }
  ],
  "pod": {
