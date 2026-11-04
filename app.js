@@ -243,31 +243,6 @@ function noticeBox(app){
     bt.onclick=()=>{ if(v==="go-pod"){ const P=podSel(); window.open(P.url,"_blank","noopener"); } ans(v,l); }; row.append(bt); });
   b.append(row); app.append(b);
 }
-/* ---------- human British pronunciation (Wiktionary recordings via dictionaryapi.dev) ---------- */
-const SAYC={}; let sayAud=null, SAYUK=null;
-function sayUK(){ if(SAYUK) return Promise.resolve(SAYUK); return fetch((typeof DATA!=="undefined"?DATA:"data/")+"sayuk.json").then(r=>r.ok?r.json():{}).catch(()=>({})).then(m=>SAYUK=m); }
-function sayBase(w,note){ const m=String(note||"").match(/^([a-z][a-z'-]*)의\s*(과거|과거형|과거분사|-ing형|ing형|복수|복수형|3인칭)/i); if(m) return m[1];
-  if(/ies$/.test(w)) return w.slice(0,-3)+"y"; if(/(ss|sh|ch|x)es$/.test(w)) return w.slice(0,-2); if(/[^s]s$/.test(w)) return w.slice(0,-1);
-  if(/ied$/.test(w)) return w.slice(0,-3)+"y"; if(/([^aeiou])\1ed$/.test(w)) return w.slice(0,-3); if(/ed$/.test(w)) return w.slice(0,-2);
-  if(/([^aeiou])\1ing$/.test(w)) return w.slice(0,-4); if(/ing$/.test(w)) return w.slice(0,-3); return null; }
-async function sayFind(w){
-  if(SAYC[w]!==undefined) return SAYC[w];
-  const M=await sayUK(); if(M[w]) return SAYC[w]={url:M[w],uk:true};
-  const r=await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/"+encodeURIComponent(w)).then(x=>x.ok?x.json():null).catch(()=>null);
-  let uk=null, any=null; (r||[]).forEach(e=>(e.phonetics||[]).forEach(p=>{ if(!p.audio) return; if(/-uk\.mp3$/i.test(p.audio)) uk=uk||p.audio; else any=any||p.audio; }));
-  return SAYC[w]= uk? {url:uk,uk:true} : any? {url:any,uk:false} : null;
-}
-function sayBtn(word,note){
-  const b=el("button","say"); b.type="button"; b.innerHTML=SPEAK_ICON; b.setAttribute("aria-label",word+" 영국 발음 듣기");
-  const lab=el("span","say-l",""); const wrap=el("span","sayw"); wrap.append(b,lab);
-  b.onclick=async e=>{ e.stopPropagation(); lab.textContent="불러오는 중…";
-    let hit=await sayFind(word); let used=word;
-    if(!hit){ const base=sayBase(word,note); if(base && base!==word){ hit=await sayFind(base); used=base; } }
-    if(!hit){ lab.textContent="원어민 녹음이 아직 없어요"; return; }
-    lab.textContent=(hit.uk?"영국 원어민 발음":"미국 원어민 발음 (영국 녹음 없음)")+(used!==word?` · ${used}`:"");
-    try{ if(sayAud) sayAud.pause(); sayAud=new Audio(hit.url); sayAud.play().catch(()=>{ lab.textContent="재생하지 못했어요"; }); }catch(_){ lab.textContent="재생하지 못했어요"; } };
-  return wrap;
-}
 function renderHome(app){
   if(D.form && D.form.url && !D.demo && store.get(CSK(),null)===null && !document.querySelector(".consent")) setTimeout(consentSheet,600);
   statFlush(false);
@@ -824,7 +799,7 @@ function flipCard(c, onFlip){
   }
   bb.append(sent);
   const wb=el("div","wbox"); const inSent=picked && c.en.toLowerCase().split(/[^a-z'-]+/).includes(picked);
-  if(inSent && G[picked]){ const [pos,mean,note]=G[picked]; const wt=el("div","wt"); wt.append(el("b",null,picked==="i"?"I":picked), el("span","pos",pos), sayBtn(picked,note)); wb.append(wt, el("span","mean",mean)); if(note) wb.append(el("span","wn",note)); }
+  if(inSent && G[picked]){ const [pos,mean,note]=G[picked]; const wt=el("div","wt"); wt.append(el("b",null,picked==="i"?"I":picked), el("span","pos",pos)); wb.append(wt, el("span","mean",mean)); if(note) wb.append(el("span","wn",note)); }
   else { wb.classList.add("empty"); wb.append(el("span","hint","단어를 누르면 뜻이 나와요")); }
   bb.append(wb);
   const gtext = c.gram || [c.note, (D.tips||{})[typeOf(c)]].filter(Boolean).join(" · ");
