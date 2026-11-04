@@ -55,6 +55,11 @@
    "no": 10,
    "date": "2026-10-30",
    "title": "Holidays · Weather · Memory · Sugar"
+  },
+  {
+   "no": 11,
+   "date": "2026-11-04",
+   "title": "Sleep · Neighbours · Gifts · Time"
   }
  ],
  "types": [
@@ -78,7 +83,8 @@
   "발음·철자": "walk(r 소리 없음) / work(r 소리). 철자는 소리 내어 한 번 더."
  },
  "focus": {
-  "10": "과거 질문엔 끝까지 과거형! 장소 앞 관사(the beach)와 전치사(on holiday) 챙기기."
+  "10": "과거 질문엔 끝까지 과거형! 장소 앞 관사(the beach)와 전치사(on holiday) 챙기기.",
+  "11": "동명사 주어(Making a list, Being punctual)는 단수 동사! annoying(그게 주는 느낌) vs annoyed(내 기분) 구분하기."
  },
  "compare": [
   [
@@ -104,6 +110,18 @@
   [
    "confidence / confident",
    "<em>confidence</em> 명사 · <em>confident</em> 형용사"
+  ],
+  [
+   "annoying / annoyed · exhausting / exhausted",
+   "그게 주는 느낌은 <em>-ing</em>: The work is exhausting · 내 기분은 <em>-ed</em>: I'm exhausted"
+  ],
+  [
+   "outdoor / outdoors",
+   "<em>outdoor</em> 형용사: outdoor activities · <em>outdoors</em> 부사: I like being outdoors"
+  ],
+  [
+   "delay / put off",
+   "<em>delay</em> 늦어지다·미루다(공식적) · <em>put off</em> (하기 싫어서) 미루다"
   ]
  ],
  "cards": [
@@ -1007,9 +1025,267 @@
    "en": "We were in the same batch. She is my batchmate.",
    "hint": "batch",
    "gram": "<em>batch</em> = 동기, 기수. <em>in the same batch</em> = 같은 기수(동기)인, <em>batchmate</em> = 동기 한 명.<br><b>batch vs classmate</b> · 학교 같은 반은 <em>classmate</em>, 입학·입사 같은 기수는 <em>batchmate</em>."
+  },
+  {
+   "id": "r11-01",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "관사·전치사",
+   "ko": "저는 보통 6~7시간 자요.",
+   "en": "I usually sleep for six to seven hours.",
+   "gram": "잠잔 시간은 <em>sleep for</em> + 시간. 'A~B시간'은 <em>six to seven hours</em>.",
+   "hint": "sleep"
+  },
+  {
+   "id": "r11-02",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "단어 선택",
+   "ko": "그건 충분한 시간이 아니에요.",
+   "en": "It's not enough time.",
+   "mine": "It is short time.",
+   "gram": "'시간이 짧다'를 short time으로 직역하지 말고 <em>not enough time</em> / <em>insufficient time</em>.",
+   "hint": "enough"
+  },
+  {
+   "id": "r11-03",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "문장 구조",
+   "ko": "저는 아침보다 저녁에 더 집중할 수 있어요.",
+   "en": "I can concentrate more in the evening than in the morning.",
+   "mine": "I can more concentrate in the evening.",
+   "gram": "more는 동사 뒤로! <em>concentrate more</em>. 동사 concentrate / 명사 concentration.",
+   "hint": "concentrate"
+  },
+  {
+   "id": "r11-04",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "문장 구조",
+   "ko": "저는 낮잠을 안 자려고 해요.",
+   "en": "I try not to take a nap.",
+   "gram": "<em>try not to</em> + 동사원형 = ~하지 않으려고 하다. not의 위치는 to 앞!",
+   "hint": "try"
+  },
+  {
+   "id": "r11-05",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "단어 선택",
+   "ko": "저는 보통 민트 사탕을 가지고 다녀요.",
+   "en": "I usually carry mints with me.",
+   "mine": "I carry with cool candy.",
+   "gram": "가지고 다니다 = <em>carry</em> 물건 <em>with me</em>. 시원한 사탕은 <em>mints</em>.",
+   "hint": "mints"
+  },
+  {
+   "id": "r11-06",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "단·복수",
+   "ko": "많은 사람들이 일이 엄청 많아요.",
+   "en": "Many people have heavy workloads.",
+   "gram": "작업량은 <em>workload</em>, 많으면 <em>heavy</em>. 여러 사람이니 workloads.",
+   "hint": "workloads"
+  },
+  {
+   "id": "r11-07",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "동사·시제",
+   "ko": "저 오늘 야근했어요.",
+   "en": "I worked overtime today.",
+   "gram": "야근하다 = <em>work overtime</em>. 오늘 이미 한 일이니 과거형 worked.",
+   "hint": "overtime"
+  },
+  {
+   "id": "r11-08",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "주어-동사",
+   "ko": "목록을 작성하는 건 제가 시간 관리하는 걸 도와줘요.",
+   "en": "Making a list helps me manage my time.",
+   "gram": "동명사 주어(<em>Making a list</em>)는 단수 → <em>helps</em>. help + 사람 + 동사원형.",
+   "hint": "list"
+  },
+  {
+   "id": "r11-09",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "품사",
+   "ko": "시간을 잘 지키는 건 중요해요.",
+   "en": "Being punctual is important.",
+   "gram": "형용사 punctual 앞에 <em>Being</em>을 붙이면 주어가 돼요. 동명사 주어는 단수 → is.",
+   "hint": "punctual"
+  },
+  {
+   "id": "r11-10",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "표현",
+   "ko": "저는 강아지를 산책시켜요.",
+   "en": "I walk my dog.",
+   "gram": "<em>walk</em> + 동물 = 산책시키다. walk와 work 발음 구분도 같이!",
+   "hint": "walk"
+  },
+  {
+   "id": "r11-11",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "표현",
+   "ko": "저는 영어만 쓰는 환경을 만들려고 노력 중이에요.",
+   "en": "I'm trying to make an environment where I can only use English.",
+   "gram": "<em>an environment where</em> + 문장 = ~하는 환경. where가 장소를 꾸며 줘요.",
+   "hint": "environment"
+  },
+  {
+   "id": "r11-12",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "표현",
+   "ko": "이 탁자는 나무로 만들어졌어요.",
+   "en": "This table is made of wood.",
+   "gram": "재료가 그대로 보이면 <em>be made of</em>. 나무 탁자, 유리컵처럼.",
+   "hint": "made"
+  },
+  {
+   "id": "r11-13",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "주어-동사",
+   "ko": "우리 이웃들은 좋은 사람들이에요.",
+   "en": "My neighbours are good people.",
+   "mine": "My neighbour is good people.",
+   "gram": "people은 복수! 주어도 <em>neighbours</em>, 동사도 <em>are</em>로 맞춰요.",
+   "hint": "neighbours"
+  },
+  {
+   "id": "r11-14",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "품사",
+   "ko": "저는 그녀를 우연히 마주쳤어요.",
+   "en": "I came across her.",
+   "mine": "I came across she.",
+   "gram": "우연히 마주치다 = <em>come across</em> / <em>run into</em>. 목적어 자리는 she가 아니라 <em>her</em>.",
+   "hint": "across"
+  },
+  {
+   "id": "r11-15",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "표현",
+   "ko": "최소한 눈은 안 와요.",
+   "en": "At least it doesn't snow.",
+   "gram": "<em>at least</em> = 최소한, 그래도. 안 좋은 것 중 좋은 점을 말할 때.",
+   "hint": "least"
+  },
+  {
+   "id": "r11-16",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "단어 선택",
+   "ko": "뭔가가 짜증 나는 일이면, 그건 나를 짜증 나게 해요.",
+   "en": "If something is annoying, it makes you feel annoyed.",
+   "gram": "그게 주는 느낌은 <em>annoying / exhausting</em>, 내 기분은 <em>annoyed / exhausted</em>.",
+   "hint": "annoying"
+  },
+  {
+   "id": "r11-17",
+   "kind": "ko",
+   "sessions": [
+    11
+   ],
+   "type": "표현",
+   "ko": "너무 마음에 담아 두지 마.",
+   "en": "Don't take it to heart.",
+   "gram": "<em>take it to heart</em> = 마음에 담아 두다, 상처받다. 위로할 때 Don't를 붙여요.",
+   "hint": "heart"
   }
  ],
  "part1": [
+  {
+   "session": 11,
+   "groups": [
+    {
+     "title": "Sleep",
+     "qs": [
+      "How many hours do you usually sleep?",
+      "Are you a morning person or a night owl?",
+      "Do you ever take naps during the day?",
+      "What do you do when you can't fall asleep?",
+      "Did you sleep more when you were a child?",
+      "Do you think people sleep less these days than in the past? Why?"
+     ]
+    },
+    {
+     "title": "Neighbours",
+     "qs": [
+      "Do you know your neighbours well?",
+      "How often do you see your neighbours?",
+      "Have your neighbours ever helped you?",
+      "What makes a good neighbour?",
+      "Did you get on with your neighbours when you were a child?",
+      "Do you think people care less about their neighbours nowadays?"
+     ]
+    },
+    {
+     "title": "Gifts",
+     "qs": [
+      "Do you like giving gifts to others?",
+      "What was the last gift you received?",
+      "Do you prefer giving or receiving gifts?",
+      "What gifts are popular in your country?",
+      "Have you ever received a gift you didn't like?",
+      "Do you think expensive gifts are always better? Why?"
+     ]
+    },
+    {
+     "title": "Time management",
+     "qs": [
+      "Are you usually on time?",
+      "Do you make plans for your day?",
+      "How do you feel when you are late?",
+      "What do you usually do in your free time?",
+      "Do you think it's important to be punctual? Why?",
+      "If you had more free time, what would you do?"
+     ]
+    }
+   ]
+  },
   {
    "session": 10,
    "groups": [
@@ -2020,6 +2296,84 @@
    "ko": "관광지",
    "ex": "Gyeongbokgung is a famous tourist attraction.",
    "s": 10
+  },
+  {
+   "w": "intriguing",
+   "ko": "흥미를 끄는",
+   "ex": "The story was really intriguing.",
+   "s": 11
+  },
+  {
+   "w": "pick up calls",
+   "ko": "전화를 받다",
+   "ex": "I can't pick up calls at work.",
+   "s": 11
+  },
+  {
+   "w": "don't take it to heart",
+   "ko": "마음에 담아 두지 마",
+   "ex": "It was just a joke, so don't take it to heart.",
+   "s": 11
+  },
+  {
+   "w": "exhausting / exhausted",
+   "ko": "지치게 하는 / 지친",
+   "ex": "My job is exhausting, so I'm always exhausted.",
+   "s": 11
+  },
+  {
+   "w": "annoying / annoyed",
+   "ko": "짜증 나게 하는 / 짜증 난",
+   "ex": "The noise was annoying, so I felt annoyed.",
+   "s": 11
+  },
+  {
+   "w": "mess / messy",
+   "ko": "엉망 / 지저분한",
+   "ex": "My room is a mess. It's really messy.",
+   "s": 11
+  },
+  {
+   "w": "concentration",
+   "ko": "집중(력)",
+   "ex": "Coffee helps my concentration.",
+   "s": 11
+  },
+  {
+   "w": "put off",
+   "ko": "미루다",
+   "ex": "I always put off my homework.",
+   "s": 11
+  },
+  {
+   "w": "workload",
+   "ko": "작업량",
+   "ex": "I have a heavy workload this week.",
+   "s": 11
+  },
+  {
+   "w": "outdoors",
+   "ko": "야외에서",
+   "ex": "I like spending time outdoors.",
+   "s": 11
+  },
+  {
+   "w": "come across / run into",
+   "ko": "우연히 마주치다",
+   "ex": "I came across my old teacher yesterday.",
+   "s": 11
+  },
+  {
+   "w": "impression",
+   "ko": "인상",
+   "ex": "She made a good impression on me.",
+   "s": 11
+  },
+  {
+   "w": "work overtime",
+   "ko": "야근하다",
+   "ex": "I worked overtime today.",
+   "s": 11
   }
  ]
 }
