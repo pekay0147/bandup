@@ -13,6 +13,7 @@ const mmdd=s=>s? s.slice(5).replace("-","/") : "";
 const store={ get(k,f){ try{ const v=localStorage.getItem(k); return v==null? f : JSON.parse(v);}catch(_){ return f; } },
               set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(_){} } };
 
+let NOTICE=null;
 let D=null, G={}, P1=null, P1Q=null, P3=null, P2X=null, P2=null, LS=null, WB=null, slug=null;
 let srs={}, marks={}, days=[];
 let view={tab:"home"};   // home | cards(deck?) | review | notes
@@ -33,6 +34,7 @@ async function boot(){
                                    fetch("data/glossary.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({}))]);
     D=s; G=g||{};
     [P1,P2,LS,WB,P1Q,P3,P2X]=await Promise.all(["data/part1.json","data/part2.json","data/listening.json","data/words.json","data/part1q.json","data/part3.json","data/part2x.json"].map(u=>fetch(u,{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
+    NOTICE=await fetch("data/notice.json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null);
   }catch(e){ app.textContent=""; const x=el("div","empty"); x.append(el("h2",null,"카드를 불러오지 못했어요"), el("p",null,"인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 되면 선생님께 링크를 다시 받아 주세요.")); app.append(x); return; }
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
@@ -214,6 +216,28 @@ function listRow(icon, title, sub, onClick, href){
   const ic=el("span","lic"); ic.innerHTML=icon; const t=el("span","lt"); t.append(el("b",null,title), el("span",null,sub));
   r.append(ic,t,el("span","lchev","›")); return r;
 }
+function sendNotice(id,a){
+  if(!(D.form && D.form.url) || D.demo) return;
+  try{ const u=new URL(D.form.url); const ids=[...u.searchParams.keys()].filter(k=>k.startsWith("entry."));
+    const fd=new URLSearchParams(); fd.set(ids[0],slug); fd.set(ids[1],"notice"); fd.set(ids[2],JSON.stringify({id,ans:a,at:today()}));
+    const to=D.form.url.split("/viewform")[0]+"/formResponse"; let sent=false;
+    try{ sent=!!(navigator.sendBeacon && navigator.sendBeacon(to,fd)); }catch(_){ }
+    if(!sent) fetch(to,{method:"POST",mode:"no-cors",body:fd,keepalive:true}).catch(()=>{});
+  }catch(_){ }
+}
+function noticeBox(app){
+  const N=NOTICE; if(!N || !N.id || D.demo) return;
+  if(N.to && N.to!=="all" && !(N.to||[]).includes(slug)) return;
+  if(N.until && today()>N.until) return;
+  const k=`bandup-notice-${slug}-${N.id}`; if(store.get(k,null)) return;
+  const b=el("section","notice"); b.append(el("b",null,N.title||"선생님 공지"));
+  if(N.text) b.append(el("p",null,N.text));
+  const row=el("div","notice-r");
+  const ans=a=>{ store.set(k,a); sendNotice(N.id,a); render(); };
+  (N.buttons||[["yes","확인했어요"]]).forEach(([v,l],i)=>{ const bt=el("button","btn"+(i===0?" primary":""),l); bt.type="button";
+    bt.onclick=()=>{ if(v==="go-pod"){ const P=podSel(); window.open(P.url,"_blank","noopener"); } ans(v); }; row.append(bt); });
+  b.append(row); app.append(b);
+}
 function renderHome(app){
   if(D.form && D.form.url && !D.demo && store.get(CSK(),null)===null && !document.querySelector(".consent")) setTimeout(consentSheet,600);
   statFlush(false);
@@ -226,6 +250,7 @@ function renderHome(app){
   if(!D.cards.length || (due && !goalDone)){ h1.append(document.createTextNode("오늘도 화이팅!")); }
   else h1.append(document.createTextNode("꾸준함이 실력이 돼요. 오늘도 완료! 👏"));
   app.append(h1);
+  noticeBox(app);
   app.append(quoteBox()); startIdiomTimer();
   // 오늘의 복습
   const s1=el("section","sec"); s1.append(secHead("오늘의 복습"));

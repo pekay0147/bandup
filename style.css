@@ -964,3 +964,10 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .consent-l li:last-child b{color:#d33}
 .consent-l span{font-size:14px}
 .sharelink{border:0;background:none;width:100%;cursor:pointer;font:inherit;font-size:13px}
+
+/* NOTICE */
+.notice{display:grid;gap:8px;padding:14px 16px;border-radius:16px;background:var(--soft,#eef0fd);border:1px solid var(--line)}
+.notice b{font-size:16px}
+.notice p{margin:0;font-size:14px}
+.notice-r{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.notice-r .btn{font-size:14px;padding:10px 8px}
