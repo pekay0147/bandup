@@ -1479,11 +1479,12 @@ function renderDictation(app){
   if(L.i>=L.words.length){
     if(L.daily && !L.saved){ saveDaily(L); L.saved=true; } if(!L.flushed){ L.flushed=true; statFlush(true); }
     app.append(back, el("h1",null,L.title));
-    if(L.daily){ const st=dailySpell(); const w=el("div","spnext"); w.append(el("p","spday-ok",`오늘 ${st.cnt}개 완료! 틀린 단어는 나중에 다시 나와요.`)); const nx=el("button","btn primary","다음 5개 하기"); nx.type="button"; nx.onclick=()=>startDaily(true); w.append(nx); app.append(w); }
+    if(L.daily){ const st=dailySpell(); const w=el("div","spnext"); w.append(el("p","spday-ok",`오늘 ${st.cnt}개 완료! 틀린 단어는 나중에 다시 나와요.`)); app.append(w); }
     const ok=L.res.filter(r=>r.ok).length; const wrong=L.res.filter(r=>!r.ok);
     const e=el("div","empty"); e.append(el("div","big",`${ok}/${L.res.length}`), el("h2",null, ok===L.res.length? "전부 맞혔어요!" : "받아쓰기 끝!"));
     if(wrong.length){ const ul=el("div","wronglist"); wrong.forEach(r=>{ const row=el("div"); row.append(speakBtn(r.w[0]), el("b",null,r.w[0]), el("s",null,r.typed||"(빈칸)")); ul.append(row); }); e.append(ul);
-      const again=el("button","btn primary","틀린 단어 다시 하기"); again.type="button"; again.onclick=()=>startDictation(wrong.map(r=>r.w), L.title+" (다시)"); e.append(again); }
+      if(!L.daily){ const again=el("button","btn primary","틀린 단어 다시 하기"); again.type="button"; again.onclick=()=>startDictation(wrong.map(r=>r.w), L.title+" (다시)"); e.append(again); } }
+    if(L.daily){ const nx=el("button","btn primary","다음 5개 하기"); nx.type="button"; nx.onclick=()=>startDaily(true); e.append(nx); }
     app.append(e); return;
   }
   const [w,ko,tip]=L.words[L.i];
