@@ -1043,6 +1043,7 @@ async function vocLookup(w){
     ko=ms.slice(0,3).join(", "); }
   if(!ex){ try{ const xs=(r[13]&&r[13][0]||[]).map(e=>String(e[0]||"").replace(/<\/?b>/g,"").trim()).filter(s=>s.split(" ").length>=4 && s.length<=90);
       xs.sort((a,b)=>a.length-b.length); const s=xs[0]||""; if(s) ex=s.charAt(0).toUpperCase()+s.slice(1)+(/[.!?]$/.test(s)?"":"."); }catch(_){ } }
+  if(!ex){ const re=new RegExp("\\b"+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b","i"); const c=(D.cards||[]).find(c=>c.en && re.test(c.en)); if(c) ex=c.en; }
   return {ko,ex};
 }
 let vcFill=false;
