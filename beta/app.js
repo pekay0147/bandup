@@ -18,7 +18,7 @@ const GSTOP=new Set(["a", "about", "after", "all", "also", "am", "an", "and", "a
 let D=null, G={}, P1=null, P1Q=null, P3=null, P2X=null, P2=null, LS=null, WB=null, slug=null;
 let srs={}, marks={}, days=[];
 let view={tab:"home"};   // home | cards(deck?) | review | notes
-let deckState=null, reviewState=null, picked=null, flipped=false, noteFilter="전체", noteSession="all", cardMode="session", selSession=null, randCount=10, randKind="all";
+let deckState=null, reviewState=null, picked=null, flipped=false, noteFilter="전체", noteSession="all", cardMode="session", selSession=null, selPod=null, randCount=10, randKind="all";
 
 /* ---------- boot ---------- */
 const DATA=window.BANDUP_DATA||"data/";
@@ -36,6 +36,12 @@ async function boot(){
                                    fetch(DATA+"glossary.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({}))]);
     if(s.group==="church" || s.group==="other"){ const gr=await fetch(DATA+"groups/"+s.group+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null); if(gr) for(const k of Object.keys(gr)) if(!["slug","name","form","group"].includes(k)) s[k]=gr[k]; }
     D=s; G=g||{};
+    D.podSessions=[];
+    if(s.group==="ielts"){ const pv=store.get(`bandup-podsel-${s.slug}`,null); const pu=((pv&&pv.url)||(!pv&&s.pod&&s.pod.url)||"");
+      const pf=/solid-joys/i.test(pu)? "church" : "other"; const pg=await fetch(DATA+"groups/"+pf+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null);
+      if(pg && pg.cards && pg.sessions){ D.podSessions=pg.sessions.filter(x=>x.link); const src=(D.podSessions[0]&&D.podSessions[0].link.src)||"팟캐스트";
+        D.podName=src; const lab={}; D.podSessions.forEach(x=>lab[x.no]=x.link.date||(x.no+"회"));
+        for(const c of pg.cards){ const ps=(c.sessions||[]).filter(n=>lab[n]); if(!ps.length) continue; D.cards.push({...c, id:"pd-"+c.id, sessions:[], psessions:ps, plabel:src+" · "+lab[ps[0]]}); } } }
     [P1,P2,LS,WB,P1Q,P3,P2X]=await Promise.all(["part1.json","part2.json","listening.json","words.json","part1q.json","part3.json","part2x.json"].map(u=>fetch(DATA+u,{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
     NOTICE=await fetch(DATA+"notice.json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null);
   }catch(e){ app.textContent=""; const x=el("div","empty"); x.append(el("h2",null,"카드를 불러오지 못했어요"), el("p",null,"인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 되면 선생님께 링크를 다시 받아 주세요.")); app.append(x); return; }
@@ -63,7 +69,7 @@ function streak(){ let n=0, d=today(); const set=new Set(days); if(!set.has(d)) 
 const typeOf=c=> c.kind==="ko" && !c.type ? "표현" : c.type;
 const col=c=>TCOL[typeOf(c)]||"#4457e8";
 const rep=c=>(c.sessions||[]).length>1;
-const sessLabel=c=>c.type==="내 문장"? "내 문장" : D.common? ((D.sessions.find(x=>x.no===(c.sessions||[])[0])||{}).title||"") : c.vtopic? c.vtopic : (c.sessions||[]).join("·")+"회차";
+const sessLabel=c=>c.plabel? c.plabel : c.type==="내 문장"? "내 문장" : D.common? ((D.sessions.find(x=>x.no===(c.sessions||[])[0])||{}).title||"") : c.vtopic? c.vtopic : (c.sessions||[]).join("·")+"회차";
 const VCARDS={};
 const getCard=id=>D.cards.find(c=>c.id===id) || VCARDS[id];
 const isWriting=c=>!(c.type==="발음·철자" && /발음/.test(c.ko||""));
@@ -636,10 +642,13 @@ function renderMyCards(app){
 
 function renderDecks(app){
   pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
-  if(!D.sessions.length || !D.cards.length){ const e=el("div","empty"); e.append(el("p",null, D.common? "수업을 들으면 수업에서 내가 틀린 문장이 여기에 큐카드로 생겨요." : "아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
-  const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
-  if(cardMode!=="session" && cardMode!=="random") cardMode="session";
-  for(const [k,label,sub] of [["session",D.common?"주제별":"회차별",`1~${D.sessions[D.sessions.length-1].no}회차`],["random","랜덤 퀴즈","섞어서 풀기"]]){
+  const hasLesson=D.sessions.length && D.cards.some(c=>(c.sessions||[]).length), hasPod=(D.podSessions||[]).length>0;
+  if(!hasLesson && !hasPod){ const e=el("div","empty"); e.append(el("p",null, D.common? "수업을 들으면 수업에서 내가 틀린 문장이 여기에 큐카드로 생겨요." : "아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
+  const seg=el("div","modeseg"+(hasPod&&hasLesson?"":" two")); seg.setAttribute("role","tablist");
+  if(cardMode!=="session" && cardMode!=="random" && cardMode!=="pod") cardMode= hasLesson? "session" : "pod";
+  if(cardMode==="session" && !hasLesson) cardMode="pod"; if(cardMode==="pod" && !hasPod) cardMode="session";
+  const modes=[...(hasLesson?[["session",D.common?"주제별":(hasPod?"수업 회차별":"회차별"),`1~${D.sessions[D.sessions.length-1].no}회차`]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ["random","랜덤 퀴즈","섞어서 풀기"]];
+  for(const [k,label,sub] of modes){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(cardMode===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; openKey=null; render(); }; seg.append(b);
   }
@@ -650,6 +659,13 @@ function renderDecks(app){
     app.append(sessionPicker(selSession, v=>{ selSession=v; render(); }, false));
     { const se=D.sessions.find(x=>x.no===selSession); if(se && se.link && se.link.url){ const a=el("a","eplink"); a.href=se.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null,[se.link.date, se.link.src].filter(Boolean).join(" · ")), el("b",null,se.link.title||"에피소드"), el("i",null,"›")); app.append(a); } }
     key="s"+selSession; list=D.cards.filter(c=>(c.sessions||[]).includes(selSession));
+  } else if(cardMode==="pod"){
+    const PS=D.podSessions; if(selPod==null || !PS.some(x=>x.no===selPod)) selPod=PS[PS.length-1].no;
+    const wrap=el("div","picker"); wrap.append(el("span","picker-lab","에피소드 선택")); const row=el("div","pchips");
+    PS.forEach(x=>{ const b=el("button",null,x.link.date||(x.no+"회")); b.type="button"; b.setAttribute("aria-pressed",String(selPod===x.no)); b.append(el("small",null,String(D.cards.filter(c=>(c.psessions||[]).includes(x.no)).length))); b.onclick=()=>{ selPod=x.no; render(); }; row.append(b); });
+    wrap.append(row); app.append(wrap);
+    const se=PS.find(x=>x.no===selPod); { const a=el("a","eplink"); a.href=se.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null,[se.link.date, se.link.src].filter(Boolean).join(" · ")), el("b",null,se.link.title||"에피소드"), el("i",null,"›")); app.append(a); }
+    key="p"+selPod; list=D.cards.filter(c=>(c.psessions||[]).includes(selPod));
   } else if(cardMode==="wrong"){
     const all=D.cards.filter(isWrong); key="wrong"; list=[...all.filter(rep),...all.filter(c=>!rep(c))];
   } else if(cardMode==="random"){
