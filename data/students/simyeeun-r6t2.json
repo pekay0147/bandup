@@ -993,18 +993,6 @@
    "gram": "<em>introvert</em> = 내향적인 사람(명사, a/an 필요). <em>introverted</em> = 내향적인(형용사): I'm introverted."
   },
   {
-   "id": "m29",
-   "kind": "ko",
-   "type": "단어 선택",
-   "sessions": [
-    8
-   ],
-   "ko": "제 폰 배터리가 다 됐어요",
-   "en": "My phone battery is dead.",
-   "hint": "dead",
-   "gram": "<em>dead</em> = 죽은 상태(형용사) → be dead. <em>die</em> = 죽다(동사) → My phone <em>died</em>. is die ❌"
-  },
-  {
    "id": "m30",
    "kind": "ko",
    "type": "문장 구조",
