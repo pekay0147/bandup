@@ -815,7 +815,7 @@ function flipCard(c, onFlip){
     sent.append(tk);
   }
   bb.append(sent);
-  if(c.mine && c.kind!=="fix"){ const mx=el("p","mine-x"); mx.append(el("span",null,"수업 때 이렇게 말했어요"), el("s",null,c.mine)); bb.append(mx); }
+  if(c.mine && c.kind!=="fix" && !c.good && !/발음/.test(c.type||"")){ const mx=el("p","mine-x"); mx.append(el("span",null,"수업 때 이렇게 말했어요"), el("s",null,c.mine)); bb.append(mx); }
   const wb=el("div","wbox"); const inSent=picked && c.en.toLowerCase().split(/[^a-z'-]+/).includes(picked);
   if(inSent && G[picked]){ const [pos,mean,note]=G[picked]; const wt=el("div","wt"); wt.append(el("b",null,picked==="i"?"I":picked), el("span","pos",pos)); wb.append(wt, el("span","mean",mean)); if(note) wb.append(el("span","wn",note));
     { const mine=store.get(`bandup-myvoc-${slug}`,[]); const has=mine.some(x=>x.w.toLowerCase()===picked) || (D.words||[]).some(x=>x.w.toLowerCase()===picked);
