@@ -7,6 +7,11 @@
    "no": 1,
    "date": "2026-11-05",
    "title": "Anxiety & little faith"
+  },
+  {
+   "no": 2,
+   "date": "2026-11-05",
+   "title": "So great a salvation"
   }
  ],
  "types": [
@@ -166,6 +171,102 @@
    "en": "I believe; help my unbelief!",
    "hint": "unbelief",
    "gram": "<em>unbelief</em> = 불신, 믿음 없음. 마가복음 9:24의 유명한 고백이에요."
+  },
+  {
+   "id": "s2-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "당신의 마음속에 당신의 구원이 위대하다는 느낌이 있습니까?",
+   "en": "Is there a sense of greatness in your mind about your salvation?",
+   "hint": "greatness",
+   "gram": "<em>a sense of</em> + 명사 = ~라는 느낌. greatness = 위대함. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s2-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "당신은 한 번 서명했고, 그건 서류 서랍 어딘가에 있습니다.",
+   "en": "You signed it once and it is in a file drawer somewhere.",
+   "hint": "drawer",
+   "gram": "<em>file drawer</em> = 서류 서랍. somewhere = 어딘가에. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s2-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "당신은 그것을 거의 생각하지 않습니다.",
+   "en": "You rarely think about it.",
+   "hint": "rarely",
+   "gram": "<em>rarely</em> = 거의 ~하지 않다 (빈도 부사, 동사 앞). <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s2-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그것은 당신에게 매일 아무 영향도 주지 않습니다.",
+   "en": "It has no daily effect on you.",
+   "hint": "effect",
+   "gram": "<em>have an effect on</em> ~ = ~에 영향을 주다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s2-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "하나님께 사랑받는 것을 소홀히 하지 마십시오.",
+   "en": "Don't neglect being loved by God.",
+   "hint": "loved",
+   "gram": "<em>neglect</em> + 동명사. being loved = 사랑받는 것 (수동 동명사). <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s2-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "하나님의 약속이라는 다함없는 보물을 소홀히 하지 마십시오.",
+   "en": "Don't neglect the inexhaustible treasure of God's promises.",
+   "hint": "inexhaustible",
+   "gram": "<em>inexhaustible</em> = 다함없는, 무궁무진한. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s2-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "이것은 참으로 위대한 구원입니다.",
+   "en": "This is indeed a great salvation.",
+   "hint": "indeed",
+   "gram": "<em>indeed</em> = 참으로, 정말로 (강조). <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s2-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "우리는 위대한 구원 안에서 행복해지는 것에 목숨 걸 만큼 진지해야 합니다.",
+   "en": "We should be blood-earnest about being happy in our great salvation.",
+   "hint": "blood-earnest",
+   "gram": "<em>be earnest about</em> ~ = ~에 진지하다. blood-earnest = 목숨 걸 만큼 진지한. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
   }
  ],
  "part1": [],
@@ -260,6 +361,150 @@
    "ko": "앞으로 받을 은혜",
    "ex": "Piper often talks about trusting God's future grace.",
    "s": 1
+  },
+  {
+   "w": "greatness",
+   "ko": "위대함",
+   "ex": "She never lost a sense of greatness about her calling.",
+   "s": 2
+  },
+  {
+   "w": "salvation",
+   "ko": "구원",
+   "ex": "For Christians, salvation is a gift from God.",
+   "s": 2
+  },
+  {
+   "w": "neglect",
+   "ko": "소홀히 하다, 방치하다",
+   "ex": "Don't neglect your health.",
+   "s": 2
+  },
+  {
+   "w": "last will and testament",
+   "ko": "유언장",
+   "ex": "He left his house to his son in his last will and testament.",
+   "s": 2
+  },
+  {
+   "w": "deed",
+   "ko": "(부동산) 증서",
+   "ex": "Keep the deed to your house in a safe place.",
+   "s": 2
+  },
+  {
+   "w": "file drawer",
+   "ko": "서류 서랍",
+   "ex": "All the receipts are in the file drawer.",
+   "s": 2
+  },
+  {
+   "w": "forgiven",
+   "ko": "용서받은",
+   "ex": "I felt forgiven after we talked.",
+   "s": 2
+  },
+  {
+   "w": "almighty",
+   "ko": "전능한",
+   "ex": "They prayed to almighty God.",
+   "s": 2
+  },
+  {
+   "w": "righteousness",
+   "ko": "의, 올바름",
+   "ex": "He spoke about justice and righteousness.",
+   "s": 2
+  },
+  {
+   "w": "impute",
+   "ko": "(~에게) 돌리다, 전가하다",
+   "ex": "In theology, righteousness is imputed by faith.",
+   "s": 2
+  },
+  {
+   "w": "wrath",
+   "ko": "진노, 분노",
+   "ex": "The story describes the wrath of the king.",
+   "s": 2
+  },
+  {
+   "w": "reconciled",
+   "ko": "화해한",
+   "ex": "The two brothers were finally reconciled.",
+   "s": 2
+  },
+  {
+   "w": "indwelling",
+   "ko": "내주하는, 안에 머무는",
+   "ex": "Christians talk about the indwelling Spirit.",
+   "s": 2
+  },
+  {
+   "w": "radiance",
+   "ko": "광채, 빛남",
+   "ex": "The radiance of the sunrise was amazing.",
+   "s": 2
+  },
+  {
+   "w": "throne",
+   "ko": "왕좌, 보좌",
+   "ex": "The queen sat on her throne.",
+   "s": 2
+  },
+  {
+   "w": "inexhaustible",
+   "ko": "무궁무진한",
+   "ex": "She seems to have inexhaustible energy.",
+   "s": 2
+  },
+  {
+   "w": "escape",
+   "ko": "벗어나다, 피하다",
+   "ex": "There was no escape from the heat.",
+   "s": 2
+  },
+  {
+   "w": "judgment",
+   "ko": "심판, 판단",
+   "ex": "Wait before you make a judgment.",
+   "s": 2
+  },
+  {
+   "w": "sour",
+   "ko": "언짢은, 시큰둥한 / 신",
+   "ex": "Don't be so sour about it.",
+   "s": 2
+  },
+  {
+   "w": "blood-earnest",
+   "ko": "목숨 걸 만큼 진지한",
+   "ex": "He was blood-earnest about his studies.",
+   "s": 2
+  },
+  {
+   "w": "deflect",
+   "ko": "빗나가게 하다, 벗어나게 하다",
+   "ex": "Don't let small problems deflect you.",
+   "s": 2
+  },
+  {
+   "w": "fleeting",
+   "ko": "순식간에 지나가는",
+   "ex": "It was just a fleeting moment.",
+   "s": 2
+  },
+  {
+   "w": "gouge out",
+   "ko": "도려내다",
+   "ex": "The story says he would rather gouge out his eye.",
+   "s": 2
+  },
+  {
+   "w": "lure away",
+   "ko": "꾀어 끌어내다",
+   "ex": "Big companies lure away good workers.",
+   "s": 2
   }
  ],
  "form": {
