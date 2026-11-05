@@ -34,7 +34,7 @@ async function boot(){
   try{
     const [s,g]=await Promise.all([fetch(`${DATA}students/${slug}.json`,{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
                                    fetch(DATA+"glossary.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({}))]);
-    if(s.group && s.group!=="other" && s.group!=="ielts"){ const gr=await fetch(DATA+"groups/"+s.group+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null); if(gr) for(const k of Object.keys(gr)) if(!["slug","name","form","group"].includes(k)) s[k]=gr[k]; }
+    if(s.group==="church" || s.group==="other"){ const gr=await fetch(DATA+"groups/"+s.group+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null); if(gr) for(const k of Object.keys(gr)) if(!["slug","name","form","group"].includes(k)) s[k]=gr[k]; }
     D=s; G=g||{};
     [P1,P2,LS,WB,P1Q,P3,P2X]=await Promise.all(["part1.json","part2.json","listening.json","words.json","part1q.json","part3.json","part2x.json"].map(u=>fetch(DATA+u,{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
     NOTICE=await fetch(DATA+"notice.json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null);

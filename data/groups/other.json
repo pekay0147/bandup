@@ -1,0 +1,315 @@
+{
+ "course": "English",
+ "sessions": [
+  {
+   "no": 1,
+   "date": "2026-11-05",
+   "title": "Part 1 · 나와 일상"
+  },
+  {
+   "no": 2,
+   "date": "2026-11-05",
+   "title": "Part 1 · 취향과 습관"
+  }
+ ],
+ "types": [
+  "표현"
+ ],
+ "tips": {},
+ "focus": {},
+ "compare": [],
+ "cards": [
+  {
+   "id": "p1-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 서울 출신이고, 지금도 거기 살고 있어요.",
+   "en": "I'm from Seoul, and I still live there.",
+   "hint": "from",
+   "gram": "<em>I'm from</em> + 도시 = ~ 출신이에요. Where are you from? 질문의 기본 답."
+  },
+  {
+   "id": "p1-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "우리 동네는 조용하고 살기 편해요.",
+   "en": "My neighbourhood is quiet and convenient to live in.",
+   "hint": "convenient",
+   "gram": "<em>convenient to live in</em> = 살기 편한. neighbourhood = 동네."
+  },
+  {
+   "id": "p1-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "집 근처에 공원이 있어서 자주 산책해요.",
+   "en": "There's a park near my home, so I often go for a walk.",
+   "hint": "near",
+   "gram": "<em>near</em> + 장소 = ~ 근처에. go for a walk = 산책하다."
+  },
+  {
+   "id": "p1-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 아파트에 사는 걸 더 좋아해요. 더 안전하거든요.",
+   "en": "I prefer living in an apartment because it's safer.",
+   "hint": "prefer",
+   "gram": "<em>prefer</em> + -ing = ~하는 걸 더 좋아하다. 이유는 because로 바로 붙이기."
+  },
+  {
+   "id": "p1-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 회사원이고, 마케팅 일을 해요.",
+   "en": "I'm an office worker, and I work in marketing.",
+   "hint": "work",
+   "gram": "<em>work in</em> + 분야 = ~ 분야에서 일하다. Do you work or study? 답."
+  },
+  {
+   "id": "p1-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "제 일에서 가장 좋은 점은 동료들이에요.",
+   "en": "The best thing about my job is my colleagues.",
+   "hint": "best",
+   "gram": "<em>The best thing about</em> ~ <em>is</em> ~ = ~의 가장 좋은 점은 ~예요. 어떤 질문에도 쓰기 좋은 틀."
+  },
+  {
+   "id": "p1-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 보통 7시에 일어나서 커피부터 마셔요.",
+   "en": "I usually get up at seven and have a coffee first.",
+   "hint": "usually",
+   "gram": "습관은 현재형! <em>usually</em>는 일반동사 앞. have a coffee = 커피를 마시다."
+  },
+  {
+   "id": "p1-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "출근하는 데 지하철로 30분 정도 걸려요.",
+   "en": "It takes about thirty minutes to get to work by subway.",
+   "hint": "takes",
+   "gram": "<em>It takes</em> + 시간 + <em>to</em> 동사 = ~하는 데 (시간)이 걸려요."
+  },
+  {
+   "id": "p1-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "주말에는 보통 집에서 쉬면서 재충전해요.",
+   "en": "At the weekend, I usually relax at home and recharge.",
+   "hint": "recharge",
+   "gram": "<em>recharge</em> = 재충전하다. 주말 질문 단골 표현."
+  },
+  {
+   "id": "p1-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "솔직히 말하면, 저는 아침형 인간이 아니에요.",
+   "en": "To be honest, I'm not a morning person.",
+   "hint": "honest",
+   "gram": "<em>To be honest</em> = 솔직히 말하면. 답의 첫마디로 시간 벌기 좋아요."
+  },
+  {
+   "id": "p1-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "그건 질문하기 어렵네요. 생각해 본 적이 없어요.",
+   "en": "That's a tricky question. I've never thought about it before.",
+   "hint": "tricky",
+   "gram": "<em>tricky</em> = 까다로운. 막힐 때 쓰는 안전한 첫 문장."
+  },
+  {
+   "id": "p1-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "제 고향은 교통이 좀 더 좋아지면 좋겠어요.",
+   "en": "I think my hometown could be improved with better public transport.",
+   "hint": "improved",
+   "gram": "<em>could be improved</em> = 개선될 수 있다. How could your hometown be improved? 답."
+  },
+  {
+   "id": "p2-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 여가 시간에 영화 보는 걸 좋아해요.",
+   "en": "In my free time, I like watching films.",
+   "hint": "free",
+   "gram": "<em>In my free time</em> = 여가 시간에. like + -ing."
+  },
+  {
+   "id": "p2-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "요즘 요리에 빠져 있어요.",
+   "en": "I'm really into cooking these days.",
+   "hint": "into",
+   "gram": "<em>be into</em> + 명사/-ing = ~에 빠져 있다. like보다 자연스러워요."
+  },
+  {
+   "id": "p2-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "가장 좋아하는 음식은 김치찌개예요. 맵고 따뜻하거든요.",
+   "en": "My favourite food is kimchi stew because it's spicy and warming.",
+   "hint": "favourite",
+   "gram": "<em>My favourite</em> + 명사 <em>is</em> ~. 영국식 철자 favourite."
+  },
+  {
+   "id": "p2-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 집밥을 외식보다 더 좋아해요.",
+   "en": "I prefer home-cooked meals to eating out.",
+   "hint": "home-cooked",
+   "gram": "<em>prefer A to B</em> = B보다 A를 더 좋아하다. home-cooked = 집에서 만든."
+  },
+  {
+   "id": "p2-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 일주일에 세 번 정도 운동해요.",
+   "en": "I work out about three times a week.",
+   "hint": "times",
+   "gram": "<em>three times a week</em> = 일주일에 세 번. work out = 운동하다."
+  },
+  {
+   "id": "p2-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 시끄러운 음악보다 잔잔한 음악을 좋아해요.",
+   "en": "I prefer calm music to loud music.",
+   "hint": "calm",
+   "gram": "<em>calm</em> = 잔잔한. prefer A to B."
+  },
+  {
+   "id": "p2-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "어렸을 때는 밖에서 노는 걸 정말 좋아했어요.",
+   "en": "When I was a child, I really loved playing outside.",
+   "hint": "child",
+   "gram": "과거 질문은 과거형으로! <em>When I was a child</em> = 어렸을 때."
+  },
+  {
+   "id": "p2-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 사진 찍는 걸 좋아하는데, 특히 풍경 사진이요.",
+   "en": "I like taking photos, especially of landscapes.",
+   "hint": "especially",
+   "gram": "<em>especially</em> = 특히. 답을 하나 더 구체적으로 만들 때."
+  },
+  {
+   "id": "p2-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "요즘은 대부분 온라인으로 쇼핑해요. 훨씬 편하거든요.",
+   "en": "These days, I mostly shop online because it's much more convenient.",
+   "hint": "online",
+   "gram": "<em>shop online</em> = 온라인으로 쇼핑하다 (online 앞에 전치사 X). much + 비교급."
+  },
+  {
+   "id": "p2-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "비 오는 날에는 보통 집에 있는 걸 좋아해요.",
+   "en": "On rainy days, I usually like to stay at home.",
+   "hint": "rainy",
+   "gram": "<em>On rainy days</em> = 비 오는 날에는. 날짜·요일처럼 on을 써요."
+  },
+  {
+   "id": "p2-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "휴대폰 없이는 하루도 못 살 것 같아요.",
+   "en": "I can't imagine a day without my phone.",
+   "hint": "imagine",
+   "gram": "<em>I can't imagine</em> ~ = ~은 상상도 못 하겠어요."
+  },
+  {
+   "id": "p2-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "스트레스를 풀려고 친구들이랑 수다를 떨어요.",
+   "en": "I chat with my friends to relieve stress.",
+   "hint": "relieve",
+   "gram": "<em>relieve stress</em> = 스트레스를 풀다. to + 동사 = ~하려고."
+  }
+ ],
+ "part1": [],
+ "part3": [],
+ "noP2": true,
+ "words": []
+}
