@@ -1227,7 +1227,7 @@ function renderIdeas(app){
   pageHead(app,"아이디어","스피킹 답변에 쓸 재료를 Part별로 모았어요.");
   const seg=el("div","modeseg"); seg.setAttribute("role","tablist");
   const n1=P1Q? P1Q.topics.reduce((b,t)=>b+t.qs.length,0) : 0;
-  const n2=(P2? P2.items.length : 0)+(P2X? P2X.items.length : 0), n3=P3? P3.items.reduce((a,s)=>a+s.qs.length,0) : 0;
+  const n2=(P2&&!D.noP2? P2.items.length : 0)+(P2X? P2X.items.length : 0), n3=P3? P3.items.reduce((a,s)=>a+s.qs.length,0) : 0;
   for(const [k,label,sub] of [["p1","Part 1",`질문 ${n1}개`],["p2","Part 2",`주제 ${n2}개`],["p3","Part 3",`질문 ${n3}개`]]){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(ideaPart===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ ideaPart=k; openKey=null; render(); }; seg.append(b);
@@ -1356,6 +1356,7 @@ function renderP3(app){
 }
 let p2Set="main";
 function renderP2(app){
+  if(D.noP2){ if(P2X) return renderP2X(app); const e=el("div","empty"); e.append(el("p",null,"Part 2 자료가 아직 없어요.")); app.append(e); return; }
   if(P2X){ const sw=el("div","pchips");
     for(const [k,l,n] of [["main","9~12월 예상 기출",P2?P2.items.length:0],["extra","추가 주제",P2X.items.length]]){ const b=el("button",null,l); b.type="button"; b.append(el("small",null,String(n))); b.setAttribute("aria-pressed",String(p2Set===k)); b.onclick=()=>{ p2Set=k; openKey=null; render(); }; sw.append(b); }
     app.append(sw);
