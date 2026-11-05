@@ -1023,48 +1023,52 @@ let vcMode="list", vcState=null, vcOpen=new Set(), vcQuery="";
 function vocAll(){ const mine=store.get(`bandup-myvoc-${slug}`,[]); return [...mine.slice().reverse().map(w=>({...w,mine:true})), ...(D.words||[]).slice().sort((a,b)=>(b.s||0)-(a.s||0))]; }
 let vcAdd=false, vcOcr=null;
 function loadTess(){ return window.Tesseract? Promise.resolve() : new Promise((ok,no)=>{ const sc=document.createElement("script"); sc.src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"; sc.onload=ok; sc.onerror=no; document.head.append(sc); }); }
+function vocLocal(w){
+  const k=w.toLowerCase(); let ko="", ex="";
+  for(const x of (D.words||[])) if(x.w && x.w.toLowerCase()===k){ ko=ko||x.ko||""; ex=ex||x.ex||""; }
+  if(P1Q && P1Q.topics) for(const t of P1Q.topics) for(const v of (t.vocab||[])) if(v[0].toLowerCase()===k){ ko=ko||v[1]; ex=ex||v[2]||""; }
+  if(!ko && G[k] && G[k][1]) ko=G[k][1];
+  return {ko,ex};
+}
+async function vocLookup(w){
+  const loc=vocLocal(w); if(loc.ko && loc.ex) return loc;
+  const u="https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&dt=bd&dt=ex&q="+encodeURIComponent(w);
+  const r=await fetch(u).then(x=>x.ok? x.json():null).catch(()=>null);
+  if(!r) return loc;
+  let ko=loc.ko, ex=loc.ex;
+  if(!ko){ const ms=[]; const add=s=>{ s=(s||"").trim(); if(s && s.toLowerCase()!==w.toLowerCase() && !ms.includes(s)) ms.push(s); };
+    try{ add(r[0][0][0]); }catch(_){ } try{ (r[1]||[]).forEach(p=>(p[1]||[]).slice(0,2).forEach(add)); }catch(_){ }
+    ko=ms.slice(0,3).join(", "); }
+  if(!ex){ try{ const xs=(r[13]&&r[13][0]||[]).map(e=>String(e[0]||"").replace(/<\/?b>/g,"").trim()).filter(s=>s.split(" ").length>=4 && s.length<=90);
+      xs.sort((a,b)=>a.length-b.length); const s=xs[0]||""; if(s) ex=s.charAt(0).toUpperCase()+s.slice(1)+(/[.!?]$/.test(s)?"":"."); }catch(_){ } }
+  return {ko,ex};
+}
+let vcFill=false;
+function vocBackfill(){
+  if(vcFill) return; const mine=store.get(`bandup-myvoc-${slug}`,[]); const need=mine.filter(x=>!x.ko || (!x.ex && !x.tried)); if(!need.length) return;
+  vcFill=true;
+  (async()=>{ let changed=false; for(const x of need){ const r=await vocLookup(x.w); if(!r.ko && !r.ex) continue; const m=store.get(`bandup-myvoc-${slug}`,[]); const y=m.find(z=>z.t===x.t); if(!y) continue; if(!y.ko) y.ko=r.ko; if(!y.ex) y.ex=r.ex; y.tried=1; if(y.ko) delete y.lk; store.set(`bandup-myvoc-${slug}`,m); changed=true; }
+    vcFill=false; if(changed && view.tab==="vocab") render(); })();
+}
 function vocForm(app){
   const f=el("div","mineform vcform");
-  const iw=el("input"); iw.id="v-w"; iw.placeholder="영어 단어나 표현"; iw.autocomplete="off";
-  const ik=el("input"); ik.id="v-ko"; ik.placeholder="뜻"; ik.autocomplete="off";
-  const ie=el("input"); ie.id="v-ex"; ie.placeholder="예문 (안 써도 돼요)"; ie.autocomplete="off";
-  const lab=(t,i)=>{ const l=el("label",null); l.append(el("span","small muted",t), i); return l; };
-  if(vcOcr){
-    const box=el("div","vcocr");
-    if(vcOcr.status) box.append(el("p","small muted",vcOcr.status));
-    if(vcOcr.words){
-      if(!vcOcr.words.length) box.append(el("p","small muted","영어 단어를 못 찾았어요. 단어가 화면 가운데 크게 나오게, 밝은 곳에서 다시 찍어 주세요."));
-      else box.append(el("p","small muted","사진에서 추가할 단어를 눌러 주세요. 여러 개 누르면 표현이 돼요."));
-      const ph=el("div","vcphoto"); const im=el("img"); im.src=vcOcr.img; im.alt="찍은 사진"; ph.append(im);
-      const pick=()=>{ const ks=[...vcOcr.sel].sort((x,y)=>x-y); iw.value=ks.map(k=>vcOcr.words[k].t).join(" ");
-        if(ks.length && (!ie.value || ie.dataset.auto)){ ie.value=exLine(vcOcr.words[ks[0]].line, vcOcr.words[ks[0]].t); ie.dataset.auto="1"; } if(!ks.length && ie.dataset.auto) ie.value=""; };
-      vcOcr.words.forEach((w,k)=>{ const c=el("button","vcbox"); c.type="button"; c.setAttribute("aria-label",w.t);
-        Object.assign(c.style,{left:(w.x0/vcOcr.W*100)+"%",top:(w.y0/vcOcr.H*100)+"%",width:((w.x1-w.x0)/vcOcr.W*100)+"%",height:((w.y1-w.y0)/vcOcr.H*100)+"%"});
-        if(vcOcr.sel.has(k)) c.classList.add("on");
-        c.onclick=()=>{ if(vcOcr.sel.has(k)) vcOcr.sel.delete(k); else vcOcr.sel.add(k); c.classList.toggle("on"); pick(); }; ph.append(c); });
-      box.append(ph);
-      const chips=el("div","vcchips"), seen=new Set();
-      vcOcr.words.forEach((w,k)=>{ const lw=w.t.toLowerCase(); if(seen.has(lw)) return; seen.add(lw);
-        const c=el("button","vcchip",w.t); c.type="button"; if(vcOcr.sel.has(k)) c.classList.add("on");
-        c.onclick=()=>{ if(vcOcr.sel.has(k)) vcOcr.sel.delete(k); else vcOcr.sel.add(k); c.classList.toggle("on"); const bx=ph.querySelectorAll(".vcbox")[k]; if(bx) bx.classList.toggle("on",vcOcr.sel.has(k)); pick(); };
-        chips.append(c); });
-      if(vcOcr.words.length) box.append(el("p","small muted","사진 속 단어가 작으면 아래에서 골라도 돼요."), chips);
-      ph.querySelectorAll(".vcbox").forEach((bx,k)=>bx.addEventListener("click",()=>{ chips.querySelectorAll(".vcchip").forEach(c=>{ if(c.textContent===vcOcr.words[k].t) c.classList.toggle("on",vcOcr.sel.has(k)); }); }));
-      if(vcOcr.sel.size) setTimeout(pick,0);
-    }
-    f.append(box);
-  }
-  ie.oninput=()=>{ delete ie.dataset.auto; };
-  f.append(lab("영어",iw), lab("뜻",ik), lab("예문",ie));
-  const msg=el("p","small vcmsg",""); 
+  const iw=el("input"); iw.id="v-w"; iw.placeholder="예: resilient, give up"; iw.autocomplete="off"; iw.autocapitalize="off"; iw.setAttribute("autocorrect","off"); iw.spellcheck=false;
+  const l=el("label",null); l.append(el("span","small muted","영어 단어나 표현"), iw); f.append(l);
+  f.append(el("p","small muted","뜻과 예문은 자동으로 찾아서 넣어 드려요."));
+  const msg=el("p","small vcmsg","");
   const row=el("div","acts arrows");
-  const cancel=el("button","nav","취소"); cancel.type="button"; cancel.onclick=()=>{ vcAdd=false; vcOcr=null; render(); };
+  const cancel=el("button","nav","취소"); cancel.type="button"; cancel.onclick=()=>{ vcAdd=false; render(); };
   const save=el("button","btn primary","저장"); save.type="button";
-  save.onclick=()=>{ const w=iw.value.trim(), ko=ik.value.trim(); if(!w){ msg.textContent="영어 단어를 적어 주세요."; iw.focus(); return; } if(!ko){ msg.textContent="뜻을 적어 주세요."; ik.focus(); return; }
-    const mine=store.get(`bandup-myvoc-${slug}`,[]); mine.push({w,ko,ex:ie.value.trim(),t:Date.now()}); store.set(`bandup-myvoc-${slug}`,mine);
-    vcAdd=false; vcOcr=null; vcState=null; vcQuery=""; render(); };
+  const go=async()=>{ const w=iw.value.trim().replace(/\s+/g," "); if(!w){ msg.textContent="영어 단어를 적어 주세요."; iw.focus(); return; }
+    if(!/[A-Za-z]/.test(w)){ msg.textContent="영어로 적어 주세요."; iw.focus(); return; }
+    if(vocAll().some(x=>x.w.toLowerCase()===w.toLowerCase())){ msg.textContent="이미 단어장에 있는 단어예요."; return; }
+    save.disabled=true; iw.disabled=true; msg.textContent="뜻과 예문을 찾는 중…";
+    const r=await vocLookup(w);
+    const mine=store.get(`bandup-myvoc-${slug}`,[]); const it={w,ko:r.ko||"",ex:r.ex||"",t:Date.now(),tried:1}; if(!r.ko) it.lk=0; mine.push(it); store.set(`bandup-myvoc-${slug}`,mine);
+    vcAdd=false; vcState=null; vcQuery=""; render(); };
+  save.onclick=go; iw.onkeydown=e=>{ if(e.key==="Enter"){ e.preventDefault(); go(); } };
   row.append(cancel,save); f.append(msg,row); app.append(f);
-  if(!vcOcr) setTimeout(()=>iw.focus(),50);
+  setTimeout(()=>iw.focus(),50);
 }
 function exLine(line,word){
   const segs=line.split(/\s*[—–|•·]\s*|\s+-\s+/).map(x=>x.replace(/[^\x20-\x7E’“”]/g," ").replace(/^[^A-Za-z]+/,"").replace(/\s+/g," ").trim()).filter(x=>x.toLowerCase().includes(word.toLowerCase()) && x.split(" ").length>=3);
@@ -1103,6 +1107,7 @@ function renderVocab(app){
   const b1=el("button","vcaddbtn","+ 직접 추가"); b1.type="button"; b1.onclick=()=>{ vcAdd=true; vcOcr=null; vcMode="list"; render(); };
   adds.append(b1); app.append(adds);
   if(vcAdd){ vocForm(app); return; }
+  vocBackfill();
   if(!W.length){ app.append(el("p","muted small","아직 단어가 없어요. 큐카드에서 모르는 단어를 눌러 '+ 내 단어장에 추가'를 누르거나, 위의 '+ 직접 추가'로 모아 보세요.")); return; }
   const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
   for(const [k,label] of [["list","전체 보기"],["card","카드로 외우기"]]){ const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(vcMode===k)); b.append(el("b",null,label)); b.onclick=()=>{ vcMode=k; render(); }; seg.append(b); }
@@ -1114,7 +1119,7 @@ function renderVocab(app){
     const filt=()=>{ vcQuery=sq.value; const q=sq.value.trim().toLowerCase(); let n=0; wrap.querySelectorAll(".idrow").forEach(r=>{ const hit=!q || r.dataset.k.includes(q); r.hidden=!hit; if(hit) n++; }); none.hidden=n>0; };
     sq.oninput=filt; app.append(sq);
     W.forEach((w,i)=>{ const key=(w.mine?"m":"c")+(w.t||w.w); const r=el("div","idrow"); r.setAttribute("role","button"); r.tabIndex=0; r.dataset.k=(w.w+" "+w.ko+" "+(w.ex||"")).toLowerCase(); const open=vcOpen.has(key);
-      const t=el("div","idt"); const hd=el("b",null,w.w); if(w.mine) hd.append(el("span","vcmine","내가 추가")); t.append(hd, el("span","idko",w.ko));
+      const t=el("div","idt"); const hd=el("b",null,w.w); if(w.mine) hd.append(el("span","vcmine","내가 추가")); t.append(hd, el("span","idko",w.ko||"뜻 찾는 중…"));
       const more=el("div","vcmore"); more.hidden=!open; if(w.ex) more.append(el("p","idex",w.ex));
       if(w.mine){ const del=el("button","linkbtn vcdel","삭제"); del.type="button"; del.onclick=e=>{ e.stopPropagation(); const mine=store.get(`bandup-myvoc-${slug}`,[]).filter(x=>x.t!==w.t); store.set(`bandup-myvoc-${slug}`,mine); vcState=null; render(); }; more.append(del); }
       t.append(more); const has=w.ex||w.mine;
