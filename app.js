@@ -1432,11 +1432,12 @@ function spBuild(st){
   const all=spAll(), names=new Set(all.map(w=>w[0]));
   st.wrong=st.wrong.filter(w=>names.has(w)); st.done=st.done.filter(w=>names.has(w));
   if(st.done.length>=all.length) st.done=[];
-  const order=all.map(w=>w[0]).sort((a,b)=>spHash(slug+a)-spHash(slug+b));
+  const order=all.map(w=>w[0]); for(let i=order.length-1;i>0;i--){ const k=Math.floor(Math.random()*(i+1)); [order[i],order[k]]=[order[k],order[i]]; }
   const prev=st.set||[];
   const pick= prev.length? prev.filter(w=>st.wrong.includes(w)).slice(0,5) : st.wrong.slice(0,2);
   for(const w of order){ if(pick.length>=5) break; if(!st.done.includes(w) && !st.wrong.includes(w) && !pick.includes(w) && !prev.includes(w)) pick.push(w); }
   for(const w of order){ if(pick.length>=5) break; if(!st.done.includes(w) && !pick.includes(w)) pick.push(w); }
+  for(let i=pick.length-1;i>0;i--){ const k=Math.floor(Math.random()*(i+1)); [pick[i],pick[k]]=[pick[k],pick[i]]; }
   st.set=pick; st.ok=false;
 }
 function dailySpell(){
