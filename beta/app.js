@@ -1021,7 +1021,7 @@ function renderIdioms(app){
 
 /* ---------- personal vocabulary (from class "오늘의 단어") ---------- */
 let vcMode="list", vcState=null, vcOpen=new Set(), vcQuery="";
-function vocAll(){ const mine=store.get(`bandup-myvoc-${slug}`,[]); return [...mine.slice().reverse().map(w=>({...w,mine:true})), ...(D.words||[]).slice().sort((a,b)=>(b.s||0)-(a.s||0))]; }
+function vocAll(){ const mine=store.get(`bandup-myvoc-${slug}`,[]); const hid=new Set(store.get(`bandup-vochide-${slug}`,[])); return [...mine.slice().reverse().map(w=>({...w,mine:true})), ...(D.words||[]).filter(w=>!hid.has(w.w.toLowerCase())).slice().sort((a,b)=>(b.s||0)-(a.s||0))]; }
 let vcAdd=false, vcOcr=null;
 function loadTess(){ return window.Tesseract? Promise.resolve() : new Promise((ok,no)=>{ const sc=document.createElement("script"); sc.src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"; sc.onload=ok; sc.onerror=no; document.head.append(sc); }); }
 function vocLocal(w){
@@ -1123,9 +1123,13 @@ function renderVocab(app){
     W.forEach((w,i)=>{ const key=(w.mine?"m":"c")+(w.t||w.w); const r=el("div","idrow"); r.setAttribute("role","button"); r.tabIndex=0; r.dataset.k=(w.w+" "+w.ko+" "+(w.ex||"")).toLowerCase(); const open=vcOpen.has(key);
       const t=el("div","idt"); const hd=el("b",null,w.w); if(w.mine) hd.append(el("span","vcmine","내가 추가")); t.append(hd, el("span","idko",w.ko||"뜻 찾는 중…"));
       const more=el("div","vcmore"); more.hidden=!open; if(w.ex) more.append(el("p","idex",w.ex));
-      if(w.mine){ const del=el("button","linkbtn vcdel","삭제"); del.type="button"; del.onclick=e=>{ e.stopPropagation(); const mine=store.get(`bandup-myvoc-${slug}`,[]).filter(x=>x.t!==w.t); store.set(`bandup-myvoc-${slug}`,mine); vcState=null; render(); }; more.append(del); }
+      const del=el("button","vcx","삭제"); del.type="button"; del.setAttribute("aria-label",w.w+" 삭제");
+      del.onclick=e=>{ e.stopPropagation(); if(!del.classList.contains("sure")){ del.classList.add("sure"); del.textContent="삭제할까요?"; setTimeout(()=>{ if(del.isConnected){ del.classList.remove("sure"); del.textContent="삭제"; } },3000); return; }
+        if(w.mine){ store.set(`bandup-myvoc-${slug}`, store.get(`bandup-myvoc-${slug}`,[]).filter(x=>x.t!==w.t)); }
+        else { const h=store.get(`bandup-vochide-${slug}`,[]); h.push(w.w.toLowerCase()); store.set(`bandup-vochide-${slug}`,h); }
+        vcState=null; render(); };
       t.append(more); const has=w.ex||w.mine;
-      r.append(t, el("span","idchev", has? (open?"▴":"▾") : ""));
+      r.append(t, del, el("span","idchev", has? (open?"▴":"▾") : ""));
       const tog=()=>{ if(!has) return; if(vcOpen.has(key)) vcOpen.delete(key); else vcOpen.add(key); more.hidden=!vcOpen.has(key); r.querySelector(".idchev").textContent=vcOpen.has(key)?"▴":"▾"; };
       r.onclick=tog; r.onkeydown=e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); tog(); } };
       box.append(r); });
