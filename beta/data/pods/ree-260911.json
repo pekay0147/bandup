@@ -20,25 +20,13 @@
    "sessions": [
     1
    ],
-   "ko": "저녁 먹고 나서 디저트로 뭐 먹을까요?",
-   "en": "What shall we have for pudding after dinner?",
+   "ko": "영국에서는 디저트를 푸딩이라고 부르기도 해요.",
+   "en": "In the UK, people often call dessert pudding.",
    "hint": "pudding",
    "gram": "<em>pudding</em> = 영국에서 '디저트'를 부르는 말. 꼭 푸딩이 아니어도 돼요."
   },
   {
    "id": "ree02",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "영국에서는 디저트를 푸딩이라고 부르기도 해요.",
-   "en": "In the UK, people often call dessert pudding.",
-   "hint": "pudding",
-   "gram": "<em>call</em> A B = A를 B라고 부르다."
-  },
-  {
-   "id": "ree03",
    "kind": "ko",
    "type": "표현",
    "sessions": [
@@ -50,19 +38,7 @@
    "gram": "<em>have a sweet tooth</em> = 단 걸 좋아하다. I like sweet tooth ❌ → <em>have</em>를 써요."
   },
   {
-   "id": "ree04",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "저희 엄마는 단 걸 별로 안 좋아하세요.",
-   "en": "My mum doesn't have a sweet tooth.",
-   "hint": "tooth",
-   "gram": "부정: <em>doesn't have a sweet tooth</em>. 주어가 한 명(my mum)이라 doesn't."
-  },
-  {
-   "id": "ree05",
+   "id": "ree03",
    "kind": "ko",
    "type": "표현",
    "sessions": [
@@ -74,19 +50,7 @@
    "gram": "<em>sour</em> = 신맛이 나는. <em>too</em> 형용사 <em>to</em> 동사 = 너무 ~해서 ~할 수 없다."
   },
   {
-   "id": "ree06",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "저는 신 사탕을 좋아해요.",
-   "en": "I like sour sweets.",
-   "hint": "sour",
-   "gram": "<em>sour</em> + 음식: sour sweets, sour fruit. sweets = 영국식 '사탕'."
-  },
-  {
-   "id": "ree07",
+   "id": "ree04",
    "kind": "ko",
    "type": "표현",
    "sessions": [
@@ -98,19 +62,7 @@
    "gram": "<em>sharp</em> = (맛이) 새콤하고 강한. <em>taste</em> + 형용사: tastes sharp."
   },
   {
-   "id": "ree08",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "이 치즈는 맛이 강하고 톡 쏴요.",
-   "en": "This cheese has a sharp taste.",
-   "hint": "sharp",
-   "gram": "<em>have a sharp taste</em> = 맛이 강하고 톡 쏘다."
-  },
-  {
-   "id": "ree09",
+   "id": "ree05",
    "kind": "ko",
    "type": "표현",
    "sessions": [
@@ -119,22 +71,10 @@
    "ko": "케이크가 너무 배불러서 다 못 먹었어요.",
    "en": "The cake was so filling that I couldn't finish it.",
    "hint": "filling",
-   "gram": "<em>filling</em> = 배부르게 하는. <em>so</em> 형용사 <em>that</em> ~ = 너무 ~해서 ~하다."
+   "gram": "<em>filling</em> = 배부르게 하는, 든든한. <em>so</em> 형용사 <em>that</em> ~ = 너무 ~해서 ~하다."
   },
   {
-   "id": "ree10",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "죽은 가볍지만 꽤 든든해요.",
-   "en": "Porridge is light, but it's quite filling.",
-   "hint": "filling",
-   "gram": "든든하다 = <em>filling</em>. 아침 메뉴 말할 때 좋아요."
-  },
-  {
-   "id": "ree11",
+   "id": "ree06",
    "kind": "ko",
    "type": "표현",
    "sessions": [
@@ -146,16 +86,124 @@
    "gram": "<em>a</em> + 좋아하는 것 + <em>person</em> = ~을 정말 좋아하는 사람. a coffee person, a dog person."
   },
   {
+   "id": "ree07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 애피타이저보다 디저트를 먹는 게 더 좋아요.",
+   "en": "I'd rather have a dessert than a starter.",
+   "hint": "rather",
+   "gram": "<em>I'd rather</em> + 동사원형 + A + <em>than</em> B = B보다 A가 더 좋아요. starter = 영국식 '애피타이저'."
+  },
+  {
+   "id": "ree08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 집에서 만든 디저트를 제일 좋아해요.",
+   "en": "I like homemade desserts the most.",
+   "hint": "homemade",
+   "gram": "<em>homemade</em> = 집에서 만든. homemade bread, homemade food."
+  },
+  {
+   "id": "ree09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "더운 날엔 아이스크림이 최고예요.",
+   "en": "On a hot day, you can't beat ice cream.",
+   "hint": "beat",
+   "gram": "<em>you can't beat</em> ~ = ~만한 게 없다, ~이 최고다."
+  },
+  {
+   "id": "ree10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 케이크는 특별한 날에만 먹어요.",
+   "en": "I only have cake as a treat on special occasions.",
+   "hint": "treat",
+   "gram": "<em>as a treat</em> = 특별히 나에게 주는 선물로. <em>special occasion</em> = 특별한 날."
+  },
+  {
+   "id": "ree11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 밥 먹고 나면 단 게 엄청 당겨요.",
+   "en": "I get strong sugar cravings after meals.",
+   "hint": "cravings",
+   "gram": "<em>sugar cravings</em> = 단 게 당기는 것. <em>get cravings</em> 형태로 써요."
+  },
+  {
    "id": "ree12",
    "kind": "ko",
    "type": "표현",
    "sessions": [
     1
    ],
-   "ko": "저는 아침형 인간이 아니라 커피 없으면 못 살아요.",
-   "en": "I'm not a morning person, so I'm a coffee person.",
-   "hint": "person",
-   "gram": "<em>a morning person</em>(아침형 인간)도 같은 패턴이에요."
+   "ko": "그게 제가 먹어 본 디저트 중에 최고였어요.",
+   "en": "It was the best dessert I've ever had.",
+   "hint": "ever",
+   "gram": "<em>the best</em> + 명사 + <em>I've ever had</em> = 지금까지 먹어 본 것 중 최고. Part 2 경험 묘사에 좋아요."
+  },
+  {
+   "id": "ree13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 단 간식보다 짭짤한 간식이 더 좋아요.",
+   "en": "I prefer savoury snacks to sweet ones.",
+   "hint": "savoury",
+   "gram": "<em>savoury</em> = 짭짤한(단맛이 아닌). <em>prefer</em> A <em>to</em> B = B보다 A를 더 좋아하다."
+  },
+  {
+   "id": "ree14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "겉이 바삭한 애플 크럼블을 정말 좋아해요.",
+   "en": "I love apple crumble with a crispy topping.",
+   "hint": "crispy",
+   "gram": "<em>crispy</em> = 바삭한. <em>topping</em> = 위에 올린 것."
+  },
+  {
+   "id": "ree15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "이 초콜릿 케이크는 저한테 너무 진해요.",
+   "en": "This chocolate cake is too rich for me.",
+   "hint": "rich",
+   "gram": "<em>rich</em> (음식) = 진하고 기름진, 무거운 맛. 돈이 많다는 뜻만 있는 게 아니에요."
+  },
+  {
+   "id": "ree16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "튀긴 음식은 맛있지만 건강에 별로 좋지 않아요.",
+   "en": "Deep-fried food is tasty, but it isn't very healthy.",
+   "hint": "deep-fried",
+   "gram": "<em>deep-fried</em> = 기름에 푹 튀긴. <em>isn't very</em> + 형용사 = 별로 ~하지 않다."
   }
  ]
 }
