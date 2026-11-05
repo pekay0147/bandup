@@ -228,7 +228,8 @@
    "ko": "고등학생이었을 때 과학을 좋아했어요.",
    "en": "When I was a high school student, I liked science.",
    "gram": "사람·신분 앞에는 관사 <em>a</em>를 붙여요: <em>a</em> high school student, <em>a</em> teacher.",
-   "hint": "student"
+   "hint": "student",
+   "mine": "When I was highschool student …"
   },
   {
    "id": "m10",
@@ -1172,7 +1173,7 @@
    "en": "She successfully ran her own business.",
    "hint": "successfully",
    "gram": "동사를 꾸밀 땐 부사 <em>successfully</em>. 명사 앞엔 형용사: a <em>successful</em> business.",
-   "mine": "She successful had her business."
+   "mine": "She successful had …"
   }
  ],
  "part1": [
