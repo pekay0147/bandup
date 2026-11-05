@@ -37,7 +37,7 @@ async function boot(){
     D=s; G=g||{};
     D.podSessions=[];
     if(s.group==="ielts"){ const pv=store.get(`bandup-podsel-${s.slug}`,null); const pu=((pv&&pv.url)||(!pv&&s.pod&&s.pod.url)||"");
-      const pf=/solid-joys/i.test(pu)? "church" : "other"; const pg=await fetch("data/groups/"+pf+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null);
+      const pf=/solid-joys/i.test(pu)? "church" : "other"; const pg=await fetch((s.podFile? "data/"+s.podFile : "data/groups/"+pf)+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null);
       if(pg && pg.cards && pg.sessions){ D.podSessions=pg.sessions.filter(x=>x.link); const src=(D.podSessions[0]&&D.podSessions[0].link.src)||"팟캐스트";
         D.podName=src; const lab={}; D.podSessions.forEach(x=>lab[x.no]=x.link.date||(x.no+"회"));
         for(const c of pg.cards){ const ps=(c.sessions||[]).filter(n=>lab[n]); if(!ps.length) continue; D.cards.push({...c, id:"pd-"+c.id, sessions:[], psessions:ps, plabel:src+" · "+lab[ps[0]]}); } } }
