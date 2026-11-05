@@ -1,0 +1,161 @@
+{
+ "sessions": [
+  {
+   "no": 1,
+   "date": "2026-09-11",
+   "title": "Real Easy English · 디저트",
+   "link": {
+    "title": "Talking about desserts",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/260911",
+    "date": "11 Sep",
+    "src": "Real Easy English"
+   }
+  }
+ ],
+ "cards": [
+  {
+   "id": "ree01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저녁 먹고 나서 디저트로 뭐 먹을까요?",
+   "en": "What shall we have for pudding after dinner?",
+   "hint": "pudding",
+   "gram": "<em>pudding</em> = 영국에서 '디저트'를 부르는 말. 꼭 푸딩이 아니어도 돼요."
+  },
+  {
+   "id": "ree02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "영국에서는 디저트를 푸딩이라고 부르기도 해요.",
+   "en": "In the UK, people often call dessert pudding.",
+   "hint": "pudding",
+   "gram": "<em>call</em> A B = A를 B라고 부르다."
+  },
+  {
+   "id": "ree03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 단 걸 정말 좋아해요.",
+   "en": "I have a really sweet tooth.",
+   "hint": "tooth",
+   "gram": "<em>have a sweet tooth</em> = 단 걸 좋아하다. I like sweet tooth ❌ → <em>have</em>를 써요."
+  },
+  {
+   "id": "ree04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저희 엄마는 단 걸 별로 안 좋아하세요.",
+   "en": "My mum doesn't have a sweet tooth.",
+   "hint": "tooth",
+   "gram": "부정: <em>doesn't have a sweet tooth</em>. 주어가 한 명(my mum)이라 doesn't."
+  },
+  {
+   "id": "ree05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "레몬은 너무 셔서 그냥은 못 먹어요.",
+   "en": "Lemons are too sour to eat on their own.",
+   "hint": "sour",
+   "gram": "<em>sour</em> = 신맛이 나는. <em>too</em> 형용사 <em>to</em> 동사 = 너무 ~해서 ~할 수 없다."
+  },
+  {
+   "id": "ree06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 신 사탕을 좋아해요.",
+   "en": "I like sour sweets.",
+   "hint": "sour",
+   "gram": "<em>sour</em> + 음식: sour sweets, sour fruit. sweets = 영국식 '사탕'."
+  },
+  {
+   "id": "ree07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "이 요거트는 맛이 꽤 새콤해요.",
+   "en": "This yoghurt tastes quite sharp.",
+   "hint": "sharp",
+   "gram": "<em>sharp</em> = (맛이) 새콤하고 강한. <em>taste</em> + 형용사: tastes sharp."
+  },
+  {
+   "id": "ree08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "이 치즈는 맛이 강하고 톡 쏴요.",
+   "en": "This cheese has a sharp taste.",
+   "hint": "sharp",
+   "gram": "<em>have a sharp taste</em> = 맛이 강하고 톡 쏘다."
+  },
+  {
+   "id": "ree09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "케이크가 너무 배불러서 다 못 먹었어요.",
+   "en": "The cake was so filling that I couldn't finish it.",
+   "hint": "filling",
+   "gram": "<em>filling</em> = 배부르게 하는. <em>so</em> 형용사 <em>that</em> ~ = 너무 ~해서 ~하다."
+  },
+  {
+   "id": "ree10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "죽은 가볍지만 꽤 든든해요.",
+   "en": "Porridge is light, but it's quite filling.",
+   "hint": "filling",
+   "gram": "든든하다 = <em>filling</em>. 아침 메뉴 말할 때 좋아요."
+  },
+  {
+   "id": "ree11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 초콜릿을 정말 좋아하는 사람이에요.",
+   "en": "I'm a chocolate person.",
+   "hint": "person",
+   "gram": "<em>a</em> + 좋아하는 것 + <em>person</em> = ~을 정말 좋아하는 사람. a coffee person, a dog person."
+  },
+  {
+   "id": "ree12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 아침형 인간이 아니라 커피 없으면 못 살아요.",
+   "en": "I'm not a morning person, so I'm a coffee person.",
+   "hint": "person",
+   "gram": "<em>a morning person</em>(아침형 인간)도 같은 패턴이에요."
+  }
+ ]
+}
