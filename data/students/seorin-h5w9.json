@@ -159,11 +159,35 @@
    "sessions": [
     1
    ],
-   "ko": "병원까지 걸어서 5분이에요",
+   "ko": "병원까지 걸어서 5분이에요 (It's a ~ walk로)",
    "en": "It's a 5-minute walk to the hospital.",
    "hint": "walk",
-   "gram": "<em>a 5-minute walk</em>: minute는 단수, 하이픈으로 연결. 다르게: <em>It takes 5 minutes on foot.</em>",
+   "gram": "<em>a 5-minute walk</em>: 숫자-minute는 하이픈으로 연결하고 minute는 단수. walk 자리에 drive, bus ride도 넣을 수 있어요.",
    "mine": "It take a 5 minute to the hospital for a walk."
+  },
+  {
+   "id": "m08",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    1
+   ],
+   "ko": "병원까지 걸어서 5분 걸려요 (It takes로)",
+   "en": "It takes 5 minutes on foot to get to the hospital.",
+   "hint": "takes",
+   "gram": "<em>It takes</em> + 시간 + <em>on foot</em> = 걸어서 ~ 걸린다. 여기선 minutes 복수. takes의 s 빠뜨리지 않기."
+  },
+  {
+   "id": "m09",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    1
+   ],
+   "ko": "회사까지 지하철로 15분이에요",
+   "en": "It's a 15-minute subway ride to work.",
+   "hint": "ride",
+   "gram": "교통수단이면 walk 대신 <em>subway ride / bus ride / drive</em>. It takes로 바꾸면: <em>It takes 15 minutes by subway.</em>"
   },
   {
    "id": "m06",
