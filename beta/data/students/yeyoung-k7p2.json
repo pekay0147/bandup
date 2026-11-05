@@ -2480,5 +2480,9 @@
   "name": "Solid Joys Daily Devotional",
   "url": "https://podcasts.apple.com/nz/podcast/solid-joys-daily-devotional/id1315817340"
  },
- "group": "ielts"
+ "group": "ielts",
+ "podFiles": [
+  "groups/church",
+  "pods/6min-261105"
+ ]
 }

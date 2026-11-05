@@ -1565,5 +1565,9 @@
    "s": 7
   }
  ],
- "group": "ielts"
+ "group": "ielts",
+ "podFiles": [
+  "groups/other",
+  "pods/6min-261105"
+ ]
 }

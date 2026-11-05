@@ -350,5 +350,7 @@
    "s": 1
   }
  ],
- "podFile": "pods/6min-261105"
+ "podFiles": [
+  "pods/6min-261105"
+ ]
 }

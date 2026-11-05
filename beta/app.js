@@ -38,10 +38,14 @@ async function boot(){
     D=s; G=g||{};
     D.podSessions=[];
     if(s.group==="ielts"){ const pv=store.get(`bandup-podsel-${s.slug}`,null); const pu=((pv&&pv.url)||(!pv&&s.pod&&s.pod.url)||"");
-      const pf=/solid-joys/i.test(pu)? "church" : "other"; const pg=await fetch((s.podFile? DATA+s.podFile : DATA+"groups/"+pf)+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null);
-      if(pg && pg.cards && pg.sessions){ D.podSessions=pg.sessions.filter(x=>x.link); const src=(D.podSessions[0]&&D.podSessions[0].link.src)||"팟캐스트";
-        D.podName=src; const lab={}; D.podSessions.forEach(x=>lab[x.no]=x.link.date||(x.no+"회"));
-        for(const c of pg.cards){ const ps=(c.sessions||[]).filter(n=>lab[n]); if(!ps.length) continue; D.cards.push({...c, id:"pd-"+c.id, sessions:[], psessions:ps, plabel:src+" · "+lab[ps[0]]}); } } }
+      const files= s.podFiles || [s.podFile || ("groups/"+(/solid-joys/i.test(pu)? "church" : "other"))];
+      const docs=await Promise.all(files.map(p=>fetch(DATA+p+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
+      let n=0; const all=[];
+      docs.forEach((pg,fi)=>{ if(!pg || !pg.cards || !pg.sessions) return; const map={};
+        pg.sessions.filter(x=>x.link).forEach(x=>{ n++; map[x.no]=n; all.push({...x, no:n, date:x.date||""}); });
+        for(const c of pg.cards){ const ps=(c.sessions||[]).map(k=>map[k]).filter(Boolean); if(!ps.length) continue; const se=all.find(x=>x.no===ps[0]);
+          D.cards.push({...c, id:(fi? "pd"+fi+"-" : "pd-")+c.id, sessions:[], psessions:ps, plabel:(se.link.src||"팟캐스트")+" · "+(se.link.date||"")}); } });
+      all.sort((a,b)=>String(a.date).localeCompare(String(b.date))); D.podSessions=all; D.podName=[...new Set(all.map(x=>x.link.src).filter(Boolean))].join(" · "); }
     [P1,P2,LS,WB,P1Q,P3,P2X]=await Promise.all(["part1.json","part2.json","listening.json","words.json","part1q.json","part3.json","part2x.json"].map(u=>fetch(DATA+u,{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
     NOTICE=await fetch(DATA+"notice.json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null);
   }catch(e){ app.textContent=""; const x=el("div","empty"); x.append(el("h2",null,"카드를 불러오지 못했어요"), el("p",null,"인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 되면 선생님께 링크를 다시 받아 주세요.")); app.append(x); return; }
@@ -662,7 +666,7 @@ function renderDecks(app){
   } else if(cardMode==="pod"){
     const PS=D.podSessions; if(selPod==null || !PS.some(x=>x.no===selPod)) selPod=PS[PS.length-1].no;
     const wrap=el("div","picker"); wrap.append(el("span","picker-lab","에피소드 선택")); const row=el("div","pchips");
-    PS.forEach(x=>{ const b=el("button",null,x.link.date||(x.no+"회")); b.type="button"; b.setAttribute("aria-pressed",String(selPod===x.no)); b.append(el("small",null,String(D.cards.filter(c=>(c.psessions||[]).includes(x.no)).length))); b.onclick=()=>{ selPod=x.no; render(); }; row.append(b); });
+    const multi=new Set(PS.map(x=>x.link.src)).size>1; PS.forEach(x=>{ const b=el("button",null,(multi? String(x.link.src||"").replace(/ 6 Minute English$/,"")+" " : "")+(x.link.date||(x.no+"회"))); b.type="button"; b.setAttribute("aria-pressed",String(selPod===x.no)); b.append(el("small",null,String(D.cards.filter(c=>(c.psessions||[]).includes(x.no)).length))); b.onclick=()=>{ selPod=x.no; render(); }; row.append(b); });
     wrap.append(row); app.append(wrap);
     const se=PS.find(x=>x.no===selPod); { const a=el("a","eplink"); a.href=se.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null,[se.link.date, se.link.src].filter(Boolean).join(" · ")), el("b",null,se.link.title||"에피소드"), el("i",null,"›")); app.append(a); }
     key="p"+selPod; list=D.cards.filter(c=>(c.psessions||[]).includes(selPod));
