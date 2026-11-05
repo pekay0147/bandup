@@ -79,7 +79,7 @@ function grade(c,ok){
 
 /* ---------- learning stats (opt-in; study results only, never recordings or text) ---------- */
 const STK=()=>`bandup-stat-${slug}`, CSK=()=>`bandup-consent-${slug}`;
-function statOn(){ return !!(D.form && D.form.url) && !D.demo && store.get(CSK(),null)===true; }
+function statOn(){ return !!(D.form && D.form.url) && !D.demo && true; }
 function statBuf(){ return Object.assign({c:{},sp:{ok:0,ng:[]},rec:0,since:today()}, store.get(STK(),{})); }
 let statT=null;
 function statKick(){ if(!statOn()) return; clearTimeout(statT); statT=setTimeout(()=>statFlush(false),45000); }
@@ -89,7 +89,7 @@ function statSpell(w,typed,ok){ statAdd(b=>{ if(ok) b.sp.ok++; else if(b.sp.ng.l
 function statRec(){ statAdd(b=>{ b.rec++; }); }
 function statFlush(force){
   if(!statOn()) return; const b=statBuf();
-  const snap={...(store.get(CSK()+"-v2",false)? {voc:store.get(`bandup-myvoc-${slug}`,[]).slice(-300).map(x=>[x.w,x.ko||""])} : {}), bm:cbmList().filter(id=>D.cards.some(c=>c.id===id)).slice(-60), qbm:qbmList().map(x=>x.q).slice(-40), weak:Object.keys(marks).filter(id=>marks[id]==="again").slice(-60)};
+  const snap={voc:store.get(`bandup-myvoc-${slug}`,[]).slice(-300).map(x=>[x.w,x.ko||""]), bm:cbmList().filter(id=>D.cards.some(c=>c.id===id)).slice(-60), qbm:qbmList().map(x=>x.q).slice(-40), weak:Object.keys(marks).filter(id=>marks[id]==="again").slice(-60)};
   const sig=JSON.stringify(snap), changed=sig!==store.get(STK()+"-snap","");
   const n=Object.keys(b.c).length+b.sp.ok+b.sp.ng.length+b.rec+(changed?1:0); if(!n) return;
   const last=store.get(STK()+"-at",0); if(!force && Date.now()-last<60*1000) return;
@@ -247,7 +247,6 @@ function noticeBox(app){
   b.append(row); app.append(b);
 }
 function renderHome(app){
-  if(D.form && D.form.url && !D.demo && (store.get(CSK(),null)===null || (store.get(CSK(),null)===true && !store.get(CSK()+"-v2",false))) && !document.querySelector(".consent")) setTimeout(consentSheet,600);
   statFlush(false);
   const due=dueCards().length;
   const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length;
@@ -283,7 +282,7 @@ function renderHome(app){
   // 이번 주
   const st=streak(); const s3=el("section","sec"); const h3=secHead("이번 달"); if(st){ const fl=el("span","streak"); fl.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path class="f-out" d="M12 2c.5 3.2 3 4.6 4.4 7 1.3 2.2 1.6 4.6.8 6.8A6 6 0 0 1 6 14.6c0-2.2 1-3.6 2.3-4.8.2 1.5.9 2.6 2 3.1-.6-3.5.4-7.6 1.7-10.9z" fill="#ff7a1a"/><path class="f-in" d="M12.2 11.5c1.3 1.4 2.3 2.7 2.3 4.4a2.5 2.5 0 0 1-5 0c0-1.3.7-2.3 1.6-3 .1.8.5 1.3 1.1 1.5-.3-1-.3-1.9 0-2.9z" fill="#ffc94a"/></svg>'; fl.append(document.createTextNode(`${st}일 연속`)); h3.append(fl); } s3.append(h3); s3.append(weekCard()); app.append(s3);
   if(D.common && PROFILE){ const pe=el("button","guidelink","내 정보 (이름·시험 날짜·목표) 고치기 ›"); pe.type="button"; pe.style.cssText="border:0;background:none;width:100%;cursor:pointer;font:inherit;font-size:13px"; pe.onclick=()=>go("profile"); app.append(pe); }
-  if(D.form && D.form.url && !D.demo){ const on=store.get(CSK(),null)===true; const t=el("button","guidelink sharelink", on? "공부 기록 공유 중 · 끄기" : "공부 기록 공유 꺼짐 · 켜기"); t.type="button"; t.onclick=()=>{ if(on){ store.set(CSK(),false); store.set(STK(),{}); render(); } else consentSheet(); }; app.append(t); }
+  if(D.form && D.form.url && !D.demo) app.append(el("p","muted small sharenote","공부 기록과 내 단어장은 선생님께 전달돼요. 수업 준비에만 써요."));
   if(!(window.matchMedia&&matchMedia("(display-mode: standalone)").matches) && !navigator.standalone){ const g=el("a","guidelink","홈 화면에 앱으로 추가하는 법 ›"); g.href="guide/"; app.append(g); }
 }
 
@@ -578,13 +577,13 @@ function renderProfile(app, editing){
   const type=chips("p-type",["Academic","General","잘 모르겠어요"],P.type);
   w.append(fld("시험 종류",type,"선택"));
   const shr=el("label","onb-check onb-share"); const scb=el("input"); scb.type="checkbox"; scb.id="p-share"; scb.checked=P.share!==false; shr.append(scb, document.createTextNode(" 이름·시험 날짜·점수를 선생님께 보내기"));
-  w.append(shr);
+  w.append(el("p","muted small onb-share","이름·시험 날짜·점수는 선생님께 전달돼요."));
   const err=el("p","onb-err"); err.hidden=true; w.append(err);
   const sb=el("button","btn primary vstart", editing? "저장" : "시작하기"); sb.type="submit"; w.append(sb);
   w.onsubmit=e=>{ e.preventDefault(); const name=nm.value.trim();
     if(!name){ err.textContent="이름을 적어 주세요."; err.hidden=false; nm.focus(); return; }
     if(!goal.dataset.val){ err.textContent="목표 점수를 골라 주세요."; err.hidden=false; return; }
-    PROFILE={name, exam: cb.checked? "" : dt.value, undecided: cb.checked || !dt.value, goal: goal.dataset.val, now: now.dataset.val||"", type: type.dataset.val||"", at: P.at||today(), pid: P.pid||Math.random().toString(36).slice(2,10), share: scb.checked};
+    PROFILE={name, exam: cb.checked? "" : dt.value, undecided: cb.checked || !dt.value, goal: goal.dataset.val, now: now.dataset.val||"", type: type.dataset.val||"", at: P.at||today(), pid: P.pid||Math.random().toString(36).slice(2,10), share: true};
     store.set(`bandup-profile-${slug}`,PROFILE); D.name=name; if(PROFILE.share) sendProfile(PROFILE); go("home"); };
   app.append(w);
   if(!editing) setTimeout(()=>{ try{ nm.focus({preventScroll:true}); }catch(_){} },300);
