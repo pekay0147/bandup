@@ -40,6 +40,11 @@
    "no": 7,
    "date": "2026-11-03",
    "title": "Proud of a family member"
+  },
+  {
+   "no": 8,
+   "date": "2026-11-05",
+   "title": "Helping someone"
   }
  ],
  "types": [
@@ -53,14 +58,15 @@
  "tips": {
   "주어-동사": "my house, my city처럼 하나면 have가 아니라 has!",
   "동사·시제": "일반동사(spend) 앞에 I'm을 붙이지 않기. interested 같은 형용사 앞에는 am을 꼭.",
-  "문장 구조": "한 문장에 동사는 하나! are makes ❌ → make. love 뒤 동사는 -ing: love drawing.",
+  "문장 구조": "한 문장에 동사는 하나! are makes ❌ → make. love 뒤 동사는 -ing: love drawing. be·seem·feel·remain 뒤에는 형용사: he seems happy.",
   "관사·전치사": "a high school student처럼 사람·직업 앞에 a. 날짜는 on the 7th of April.",
   "단어 선택": "neighbour는 이웃 사람, neighbourhood는 동네. refreshed만 반복하지 말고 바꿔 말하기. 기분은 relaxed·stressed, 그게 주는 느낌은 relaxing·stressful.",
   "발음·철자": "-ed 끝소리(t/d/id)를 흘리지 말고 또렷하게. I'm과 I도 구분해서 발음."
  },
  "focus": {
   "6": "having said that, on top of that, I have to admit 같은 연결어를 Part 3 답에 꼭 한 번씩 넣어보기!",
-  "7": "usually만 반복하지 말고 more often than not, on a regular basis로 바꿔 말해보기!"
+  "7": "usually만 반복하지 말고 more often than not, on a regular basis로 바꿔 말해보기!",
+  "8": "Part 2 서론 정확하게 암기하기! be·seem·feel 뒤에는 형용사(happy, calm) 쓰기."
  },
  "compare": [
   [
@@ -94,6 +100,18 @@
   [
    "on / in (때)",
    "<em>on</em> weekdays, <em>on weekends</em>, on Monday · 영국식 <em>at the weekend</em>도 OK (at the weekends ❌) · <em>in</em> May, in winter, in 2026"
+  ],
+  [
+   "used to / be used to",
+   "<em>used to</em> + 동사원형: 예전엔 ~했다 · <em>be used to</em> + -ing: ~에 익숙하다"
+  ],
+  [
+   "dead / die",
+   "<em>dead</em> 형용사: My battery is dead · <em>die</em> 동사: My phone died"
+  ],
+  [
+   "introvert / introverted",
+   "<em>an introvert</em> 내향적인 사람(명사) · <em>introverted</em> 내향적인(형용사)"
   ]
  ],
  "cards": [
@@ -913,9 +931,265 @@
    "en": "The concert was really exciting, and I was so excited.",
    "gram": "콘서트(대상)는 <em>exciting</em>, 나(사람)는 <em>excited</em>. 한 문장에 둘 다 넣어 연습해 보세요.",
    "hint": "exciting"
+  },
+  {
+   "id": "e40",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "그냥 어림짐작으로 찍었어요",
+   "en": "I had a wild guess.",
+   "hint": "wild",
+   "gram": "<em>wild guess</em> = 어림짐작, 대충 찍기. 모르는 질문엔 I had a wild guess / I'd make a wild guess로 넘어가요."
+  },
+  {
+   "id": "e41",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "이 앱은 제 역할을 톡톡히 해요",
+   "en": "This app does its job.",
+   "hint": "job",
+   "gram": "<em>do its job</em> = 제 역할을 하다. 소유격은 <em>its</em>(아포스트로피 없음). it's = it is라서 it's job ❌."
+  },
+  {
+   "id": "e42",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "식기세척기는 시간을 정말 많이 아껴 줘요",
+   "en": "A dishwasher is really time-saving.",
+   "hint": "time-saving",
+   "gram": "<em>time-saving</em> = 시간을 절약해 주는(형용사). Technology 질문에 바로 쓸 수 있어요."
+  },
+  {
+   "id": "e43",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "오늘은 사람 만날 에너지가 다 떨어졌어요",
+   "en": "My social battery is dead today.",
+   "hint": "social",
+   "gram": "<em>social battery</em> = 사람 만날 에너지. 다 떨어졌으면 <em>is dead</em> / <em>is low</em>."
+  },
+  {
+   "id": "e44",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "저는 내향적인 사람이라서 혼자 있는 시간이 필요해요",
+   "en": "I'm an introvert, so I need some time alone.",
+   "hint": "introvert",
+   "gram": "<em>introvert</em> = 내향적인 사람(명사, a/an 필요). <em>introverted</em> = 내향적인(형용사): I'm introverted."
+  },
+  {
+   "id": "m29",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    8
+   ],
+   "ko": "제 폰 배터리가 다 됐어요",
+   "en": "My phone battery is dead.",
+   "hint": "dead",
+   "gram": "<em>dead</em> = 죽은 상태(형용사) → be dead. <em>die</em> = 죽다(동사) → My phone <em>died</em>. is die ❌"
+  },
+  {
+   "id": "m30",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    8
+   ],
+   "ko": "가족과 시간을 보내는 건 중요해요 (It is로 시작)",
+   "en": "It is important to have time with my family.",
+   "hint": "important",
+   "gram": "<em>It is</em> + 형용사 + <em>to</em> + 동사원형. spend time with my family도 좋아요."
+  },
+  {
+   "id": "m31",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    8
+   ],
+   "ko": "가족과 시간을 보내는 건 중요해요 (-ing로 시작)",
+   "en": "Having time with my family is important.",
+   "hint": "Having",
+   "gram": "동명사 주어(<em>-ing</em>) + 동사. 주어가 하나라서 <em>is</em>."
+  },
+  {
+   "id": "m32",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    8
+   ],
+   "ko": "엄마 요리하는 걸 도와드릴걸 그랬어요",
+   "en": "I should've helped my mom cook.",
+   "hint": "should've",
+   "gram": "<em>should have</em> + p.p. = ~할걸 그랬다(후회). help + 사람 + 동사원형: helped my mom <em>cook</em>."
+  },
+  {
+   "id": "m33",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    8
+   ],
+   "ko": "예전에는 아침에 일찍 일어났었어요 (지금은 아님)",
+   "en": "I used to wake up early in the morning.",
+   "hint": "used",
+   "gram": "<em>used to</em> + 동사원형 = 예전엔 ~했다(지금은 안 함)."
+  },
+  {
+   "id": "m34",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    8
+   ],
+   "ko": "저는 아침에 일찍 일어나는 게 익숙해요",
+   "en": "I'm used to getting up early in the morning.",
+   "hint": "used",
+   "gram": "<em>be used to</em> + <em>-ing</em> = ~에 익숙하다. used to + 동사원형(예전엔 ~했다)과 헷갈리지 않기."
+  },
+  {
+   "id": "m35",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    8
+   ],
+   "ko": "저희는 은행에 잘 안 가요",
+   "en": "We don't often go to the bank.",
+   "hint": "bank",
+   "gram": "go 뒤에 장소가 오면 <em>to</em>: go <em>to</em> the bank. 은행·우체국은 보통 the를 붙여요.",
+   "mine": "We don't go bank."
+  },
+  {
+   "id": "e45",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "새로운 걸 해 보려고 익숙한 데서 벗어나려고 해요",
+   "en": "I try to step out of my comfort zone.",
+   "hint": "comfort",
+   "gram": "<em>step out of my comfort zone</em> = 익숙한 영역에서 벗어나다. Part 2 경험 말할 때 좋아요."
+  },
+  {
+   "id": "m36",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    8
+   ],
+   "ko": "그녀는 사업을 성공적으로 운영했어요",
+   "en": "She successfully ran her own business.",
+   "hint": "successfully",
+   "gram": "동사를 꾸밀 땐 부사 <em>successfully</em>. 명사 앞엔 형용사: a <em>successful</em> business.",
+   "mine": "She successful had her business."
+  },
+  {
+   "id": "m37",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    8
+   ],
+   "ko": "그는 시험 내내 침착했어요",
+   "en": "He remained calm during the exam.",
+   "hint": "remained",
+   "gram": "<em>be · become · remain · appear · seem</em> + 형용사. remained calmly ❌"
+  },
+  {
+   "id": "m38",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    8
+   ],
+   "ko": "그는 요즘 행복해 보여요",
+   "en": "He seems happy these days.",
+   "hint": "seems",
+   "gram": "<em>seem / look / feel</em> + 형용사: seems happy, feels good. happily ❌"
+  },
+  {
+   "id": "m39",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    8
+   ],
+   "ko": "대부분의 사람들은 주말을 좋아해요",
+   "en": "Most people love weekends.",
+   "hint": "Most",
+   "gram": "'대부분의 사람들' = <em>most people</em>. almost는 부사라 명사 앞에 바로 못 와요(almost all people은 OK).",
+   "mine": "Almost people love weekends."
   }
  ],
  "part1": [
+  {
+   "session": 8,
+   "groups": [
+    {
+     "title": "Technology",
+     "qs": [
+      "What piece of technology do you use the most?",
+      "How often do you use your phone in a day?",
+      "Do you prefer reading on paper or on a screen?",
+      "Is there an app you can't live without?",
+      "What technology did you use when you were a child?",
+      "Do you think people rely too much on technology these days?"
+     ]
+    },
+    {
+     "title": "Public transport",
+     "qs": [
+      "How do you usually get around?",
+      "Do you often take the bus or the subway?",
+      "What do you do while you're on public transport?",
+      "Is public transport in your city convenient?",
+      "Did you use public transport a lot when you were young?",
+      "How could public transport in your city be improved?"
+     ]
+    },
+    {
+     "title": "Cooking",
+     "qs": [
+      "Do you like cooking?",
+      "Who usually cooks in your family?",
+      "What's the first dish you learnt to cook?",
+      "Do you prefer eating at home or eating out?",
+      "Did you help your parents cook when you were a child?",
+      "Do you think it's important for children to learn to cook?"
+     ]
+    },
+    {
+     "title": "Birthdays",
+     "qs": [
+      "How do you usually celebrate your birthday?",
+      "What did you do on your last birthday?",
+      "Do you prefer big parties or small get-togethers?",
+      "What was your best birthday as a child?",
+      "Do you remember your friends' birthdays?",
+      "Are birthdays more important for children or adults?"
+     ]
+    }
+   ]
+  },
   {
    "session": 7,
    "groups": [
@@ -1124,6 +1398,16 @@
   }
  ],
  "part3": [
+  {
+   "session": 8,
+   "topic": "Describe a time when you helped someone",
+   "qs": [
+    "Why do some people enjoy helping others?",
+    "Should children be taught to help others at school?",
+    "Do you think people are less willing to help strangers nowadays?",
+    "What kind of help do elderly people need in your country?"
+   ]
+  },
   {
    "session": 7,
    "topic": "Describe a time when you felt proud of a family member",
@@ -1416,6 +1700,48 @@
    "ko": "(버스 등이) 자주 다니다",
    "ex": "The buses don't run very frequently.",
    "s": 7
+  },
+  {
+   "w": "wild guess",
+   "ko": "어림짐작",
+   "ex": "I had a wild guess.",
+   "s": 8
+  },
+  {
+   "w": "do its job",
+   "ko": "제 역할을 하다",
+   "ex": "This app does its job.",
+   "s": 8
+  },
+  {
+   "w": "time-saving",
+   "ko": "시간을 절약해 주는",
+   "ex": "A dishwasher is really time-saving.",
+   "s": 8
+  },
+  {
+   "w": "social battery",
+   "ko": "사람 만날 에너지",
+   "ex": "My social battery is dead.",
+   "s": 8
+  },
+  {
+   "w": "introvert",
+   "ko": "내향적인 사람",
+   "ex": "I'm an introvert.",
+   "s": 8
+  },
+  {
+   "w": "introverted",
+   "ko": "내향적인",
+   "ex": "I'm quite introverted.",
+   "s": 8
+  },
+  {
+   "w": "step out of my comfort zone",
+   "ko": "익숙한 데서 벗어나다",
+   "ex": "I try to step out of my comfort zone.",
+   "s": 8
   }
  ],
  "group": "ielts"

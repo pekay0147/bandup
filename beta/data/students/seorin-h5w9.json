@@ -5,13 +5,325 @@
  "form": {
   "url": "https://docs.google.com/forms/d/e/1FAIpQLSfybbvIl48g133Mx3PdH7rfqGDRy9NCum3SdpUJ3RDpWkdPNA/viewform?usp=pp_url&entry.1747437353=NAME_X&entry.1189878643=SESSION_X&entry.1202580096=RESULT_X"
  },
- "sessions": [],
- "types": [],
- "tips": {},
- "focus": {},
- "compare": [],
- "cards": [],
- "part1": [],
- "part3": [],
- "group": "ielts"
+ "sessions": [
+  {
+   "no": 1,
+   "date": "2026-11-05",
+   "title": "Proud of a family member"
+  }
+ ],
+ "types": [
+  "주어-동사",
+  "동사·시제",
+  "문장 구조",
+  "관사·전치사",
+  "단어 선택",
+  "발음·철자"
+ ],
+ "tips": {
+  "동사·시제": "과거 이야기는 끝까지 과거형! 현재와 섞지 않기. 일반동사 앞에 I'm 붙이지 않기.",
+  "주어-동사": "my hometown처럼 하나면 has.",
+  "단어 선택": "every + 단수명사: every day.",
+  "발음·철자": "raise(기르다) 발음 [레이즈] 또렷하게."
+ },
+ "focus": {
+  "1": "Part 1 Study·Hometown 질문은 3줄씩 말할 수 있게 연습하기!"
+ },
+ "compare": [
+  [
+   "a 5-minute walk / It takes 5 minutes",
+   "<em>It's a 5-minute walk.</em> minute 단수 · <em>It takes 5 minutes on foot.</em> minutes 복수"
+  ],
+  [
+   "every day / everyday",
+   "<em>every day</em> 매일(부사) · <em>everyday</em> 일상적인(형용사): everyday life"
+  ]
+ ],
+ "cards": [
+  {
+   "id": "e01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "간호사로서 가장 중요한 건 마음챙김이에요",
+   "en": "The most important thing as a nurse is mindfulness.",
+   "hint": "mindfulness",
+   "gram": "<em>The most important thing as a</em> + 직업 + <em>is</em> ~ = ~로서 가장 중요한 건 ~예요. Work 질문에 그대로 쓰세요."
+  },
+  {
+   "id": "e02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "환자를 돌보기 전에 우리 스스로를 돌볼 줄 알아야 해요",
+   "en": "We need to know how to take care of ourselves before we take care of our patients.",
+   "hint": "ourselves",
+   "gram": "<em>know how to</em> + 동사 = ~할 줄 알다. <em>take care of</em> = 돌보다."
+  },
+  {
+   "id": "e03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 혼자 살고 싶어요",
+   "en": "I want to live on my own.",
+   "hint": "own",
+   "gram": "혼자 = <em>on my own</em> 또는 <em>by myself</em>. by my own ❌"
+  },
+  {
+   "id": "e04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 밤형 인간이에요",
+   "en": "I'm a night owl.",
+   "hint": "owl",
+   "gram": "<em>night owl</em> = 밤에 활동하는 사람. 반대는 <em>morning person</em>."
+  },
+  {
+   "id": "e05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "소음 때문에 잠을 잘 못 자요",
+   "en": "I can't sleep well because of the noise.",
+   "hint": "noise",
+   "gram": "<em>noise</em> = 소음(셀 수 없음). <em>because of</em> + 명사."
+  },
+  {
+   "id": "m01",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    1
+   ],
+   "ko": "어렸을 때 저는 밖에서 노는 걸 정말 좋아했어요",
+   "en": "When I was young, I really loved playing outside.",
+   "hint": "was",
+   "gram": "과거 이야기는 처음부터 끝까지 과거형! when I <em>was</em> young (was 빠뜨리지 않기).",
+   "mine": "When I younger, I love playing outside."
+  },
+  {
+   "id": "m02",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 보통 아침에 커피를 마셔요",
+   "en": "I usually drink coffee in the morning.",
+   "hint": "usually",
+   "gram": "일반동사(drink) 앞에 I'm을 붙이지 않아요. 습관은 현재형.",
+   "mine": "I'm usually drink coffee."
+  },
+  {
+   "id": "m03",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 매일 산책해요",
+   "en": "I go for a walk every day.",
+   "hint": "every",
+   "gram": "<em>every</em> + 단수명사: every day, every week. everydays ❌. '매일'은 띄어서 <em>every day</em>.",
+   "mine": "I go for a walk everydays."
+  },
+  {
+   "id": "m04",
+   "kind": "ko",
+   "type": "주어-동사",
+   "sessions": [
+    1
+   ],
+   "ko": "제 고향에는 공항이 있어요",
+   "en": "My hometown has an airport.",
+   "hint": "has",
+   "gram": "주어가 하나(my hometown)면 <em>has</em>. 모음 앞 관사는 <em>an</em> airport.",
+   "mine": "My hometown have airport."
+  },
+  {
+   "id": "m05",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    1
+   ],
+   "ko": "병원까지 걸어서 5분이에요",
+   "en": "It's a 5-minute walk to the hospital.",
+   "hint": "walk",
+   "gram": "<em>a 5-minute walk</em>: minute는 단수, 하이픈으로 연결. 다르게: <em>It takes 5 minutes on foot.</em>",
+   "mine": "It take a 5 minute to the hospital for a walk."
+  },
+  {
+   "id": "m06",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 불면증이 있어요",
+   "en": "I have insomnia.",
+   "hint": "insomnia",
+   "gram": "병 이름(insomnia)에는 보통 a를 안 붙여요. 철자: in-som-ni-a.",
+   "mine": "I have a insomnia."
+  },
+  {
+   "id": "m07",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    1
+   ],
+   "ko": "그래서 다른 방법을 써 봤어요",
+   "en": "So I tried a different way.",
+   "hint": "different",
+   "gram": "다른 방법 = <em>another method</em> / <em>a different way</em>. tried to 뒤엔 동사원형이 와야 해요.",
+   "mine": "I tried to other method."
+  }
+ ],
+ "part1": [
+  {
+   "session": 1,
+   "groups": [
+    {
+     "title": "Home · Hometown",
+     "qs": [
+      "Where are you from?",
+      "Which city are you living in?",
+      "Do you know any history about your hometown?",
+      "Do you prefer to live in an apartment or in a house?",
+      "Who do you live with?",
+      "Are there many rooms in your home?",
+      "What is your favourite room?",
+      "What would you change about your home?",
+      "How are the walls decorated?",
+      "How could your hometown be improved?",
+      "Is there good public transport in your hometown?",
+      "What's your neighbourhood like?",
+      "Do you think your hometown is a good place to bring up children?"
+     ]
+    },
+    {
+     "title": "Study",
+     "qs": [
+      "Do you study or work?",
+      "What do you study?",
+      "Why did you choose that subject?",
+      "Is it a popular subject in your country?",
+      "Do you plan to get a job in the same field as your subject?"
+     ]
+    },
+    {
+     "title": "Work",
+     "qs": [
+      "Why did you choose that job?",
+      "Do you like your job?",
+      "Where do you work?",
+      "Do you plan to continue with your job in the future?",
+      "What responsibilities do you have at work?"
+     ]
+    },
+    {
+     "title": "Sleep",
+     "qs": [
+      "How many hours do you usually sleep?",
+      "Are you a morning person or a night owl?",
+      "Do you ever take naps during the day?",
+      "What do you do when you can't fall asleep?",
+      "Did you sleep more when you were a child?",
+      "Do you think people sleep less these days than in the past? Why?"
+     ]
+    },
+    {
+     "title": "Neighbours",
+     "qs": [
+      "Do you know your neighbours well?",
+      "How often do you see your neighbours?",
+      "Have your neighbours ever helped you?",
+      "What makes a good neighbour?",
+      "Did you get on with your neighbours when you were a child?",
+      "Do you think people care less about their neighbours nowadays?"
+     ]
+    },
+    {
+     "title": "Gifts",
+     "qs": [
+      "Do you like giving gifts to others?",
+      "What was the last gift you received?",
+      "Do you prefer giving or receiving gifts?",
+      "What gifts are popular in your country?",
+      "Have you ever received a gift you didn't like?",
+      "Do you think expensive gifts are always better? Why?"
+     ]
+    },
+    {
+     "title": "Time management",
+     "qs": [
+      "Are you usually on time?",
+      "Do you make plans for your day?",
+      "How do you feel when you are late?",
+      "What do you usually do in your free time?",
+      "Do you think it's important to be punctual? Why?",
+      "If you had more free time, what would you do?"
+     ]
+    }
+   ]
+  }
+ ],
+ "part3": [
+  {
+   "session": 1,
+   "topic": "Describe a time when you felt proud of a family member",
+   "qs": [
+    "Why do parents feel proud of their children?",
+    "Do you think families today spend less time together than in the past?",
+    "Should children be praised often, or does it spoil them?",
+    "What can family members do to support each other?"
+   ]
+  }
+ ],
+ "group": "ielts",
+ "words": [
+  {
+   "w": "mindfulness",
+   "ko": "마음챙김",
+   "ex": "The most important thing as a nurse is mindfulness.",
+   "s": 1
+  },
+  {
+   "w": "noise",
+   "ko": "소음",
+   "ex": "I can't sleep because of the noise.",
+   "s": 1
+  },
+  {
+   "w": "night owl",
+   "ko": "밤형 인간",
+   "ex": "I'm a night owl.",
+   "s": 1
+  },
+  {
+   "w": "insomnia",
+   "ko": "불면증",
+   "ex": "I have insomnia.",
+   "s": 1
+  },
+  {
+   "w": "on my own",
+   "ko": "혼자서",
+   "ex": "I want to live on my own.",
+   "s": 1
+  }
+ ]
 }
