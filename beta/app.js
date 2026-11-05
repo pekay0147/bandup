@@ -1104,7 +1104,7 @@ function renderVocab(app){
   const b1=el("button","vcaddbtn","+ 직접 추가"); b1.type="button"; b1.onclick=()=>{ vcAdd=true; vcOcr=null; vcMode="list"; render(); };
   adds.append(b1); app.append(adds);
   if(vcAdd){ vocForm(app); return; }
-  if(!W.length){ app.append(el("p","muted small","아직 단어가 없어요. 모르는 단어를 직접 적거나 사진으로 찍어서 모아 보세요.")); return; }
+  if(!W.length){ app.append(el("p","muted small","아직 단어가 없어요. 큐카드에서 모르는 단어를 눌러 "+ 내 단어장에 추가"하거나, 위의 "+ 직접 추가"로 모아 보세요.")); return; }
   const seg=el("div","modeseg two"); seg.setAttribute("role","tablist");
   for(const [k,label] of [["list","전체 보기"],["card","카드로 외우기"]]){ const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(vcMode===k)); b.append(el("b",null,label)); b.onclick=()=>{ vcMode=k; render(); }; seg.append(b); }
   app.append(seg);
