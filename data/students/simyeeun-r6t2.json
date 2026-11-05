@@ -1170,10 +1170,23 @@
     8
    ],
    "ko": "그녀는 사업을 성공적으로 운영했어요",
-   "en": "She successfully ran her own business.",
+   "en": "She successfully had her own business.",
    "hint": "successfully",
-   "gram": "동사를 꾸밀 땐 부사 <em>successfully</em>. 명사 앞엔 형용사: a <em>successful</em> business.",
+   "gram": "동사(had)를 꾸밀 땐 부사 <em>successfully</em>. 명사 앞엔 형용사: a <em>successful</em> business.",
    "mine": "She successful had …"
+  },
+  {
+   "id": "m39",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    8
+   ],
+   "ko": "대부분의 사람들은 주말을 좋아해요",
+   "en": "Most people love weekends.",
+   "hint": "Most",
+   "mine": "Almost people …",
+   "gram": "'대부분의 사람들' = <em>most people</em>. almost는 부사라 명사 앞에 바로 못 와요(almost all people은 OK)."
   }
  ],
  "part1": [
