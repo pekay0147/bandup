@@ -1053,6 +1053,90 @@
    "gram": "<em>be used to</em> + <em>-ing</em> = ~에 익숙하다. used to + 동사원형(예전엔 ~했다)과 헷갈리지 않기."
   },
   {
+   "id": "m40",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    8
+   ],
+   "ko": "예전에는 매일 버스로 출근했어요 (지금은 아니에요)",
+   "en": "I used to go to work by bus every day.",
+   "hint": "used",
+   "gram": "<em>used to</em> + 동사원형 = 예전엔 ~했다(지금은 안 함)."
+  },
+  {
+   "id": "m41",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    8
+   ],
+   "ko": "어렸을 때 저는 채소를 안 먹곤 했어요",
+   "en": "When I was a child, I didn't use to eat vegetables.",
+   "hint": "use",
+   "gram": "부정은 <em>didn't use to</em> + 동사원형 (didn't <em>used</em> to ❌, d 빼기)."
+  },
+  {
+   "id": "m42",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    8
+   ],
+   "ko": "예전에는 커피를 안 마셨는데, 지금은 매일 마셔요",
+   "en": "I didn't use to drink coffee, but now I drink it every day.",
+   "hint": "use",
+   "gram": "과거 습관(didn't use to)과 지금 습관(현재형)을 한 문장에서 대비해요."
+  },
+  {
+   "id": "m43",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    8
+   ],
+   "ko": "저는 늦게 자는 게 익숙해요",
+   "en": "I'm used to staying up late.",
+   "hint": "used",
+   "gram": "<em>be used to</em> + <em>-ing</em> = ~에 익숙하다. to 뒤에 동사원형 ❌ → staying."
+  },
+  {
+   "id": "m44",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    8
+   ],
+   "ko": "저는 아직 영국 날씨에 익숙하지 않아요",
+   "en": "I'm not used to the British weather yet.",
+   "hint": "used",
+   "gram": "<em>be used to</em> + 명사도 돼요: I'm used to <em>the weather</em>."
+  },
+  {
+   "id": "m45",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    8
+   ],
+   "ko": "처음엔 힘들었지만, 이제는 혼자 사는 게 익숙해졌어요",
+   "en": "It was hard at first, but now I've got used to living alone.",
+   "hint": "got",
+   "gram": "익숙해지다(변화) = <em>get used to</em> + -ing. I've got used to living alone."
+  },
+  {
+   "id": "m46",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    8
+   ],
+   "ko": "저는 예전엔 늦잠을 잤는데, 이제는 일찍 일어나는 게 익숙해요",
+   "en": "I used to sleep in, but now I'm used to getting up early.",
+   "hint": "used",
+   "gram": "한 문장에 둘 다: <em>used to</em> + 동사원형(예전 습관) / <em>be used to</em> + -ing(익숙함)."
+  },
+  {
    "id": "m35",
    "kind": "ko",
    "type": "관사·전치사",
@@ -1089,43 +1173,6 @@
    "hint": "successfully",
    "gram": "동사를 꾸밀 땐 부사 <em>successfully</em>. 명사 앞엔 형용사: a <em>successful</em> business.",
    "mine": "She successful had her business."
-  },
-  {
-   "id": "m37",
-   "kind": "ko",
-   "type": "문장 구조",
-   "sessions": [
-    8
-   ],
-   "ko": "그는 시험 내내 침착했어요",
-   "en": "He remained calm during the exam.",
-   "hint": "remained",
-   "gram": "<em>be · become · remain · appear · seem</em> + 형용사. remained calmly ❌"
-  },
-  {
-   "id": "m38",
-   "kind": "ko",
-   "type": "문장 구조",
-   "sessions": [
-    8
-   ],
-   "ko": "그는 요즘 행복해 보여요",
-   "en": "He seems happy these days.",
-   "hint": "seems",
-   "gram": "<em>seem / look / feel</em> + 형용사: seems happy, feels good. happily ❌"
-  },
-  {
-   "id": "m39",
-   "kind": "ko",
-   "type": "단어 선택",
-   "sessions": [
-    8
-   ],
-   "ko": "대부분의 사람들은 주말을 좋아해요",
-   "en": "Most people love weekends.",
-   "hint": "Most",
-   "gram": "'대부분의 사람들' = <em>most people</em>. almost는 부사라 명사 앞에 바로 못 와요(almost all people은 OK).",
-   "mine": "Almost people love weekends."
   }
  ],
  "part1": [
