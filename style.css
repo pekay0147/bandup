@@ -992,3 +992,6 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 /* ---------- VOCAB DELETE ---------- */
 .vcx{flex:none;align-self:flex-start;font:inherit;font-size:12px;font-weight:600;color:var(--muted);background:none;border:1px solid var(--line,#e3e3e3);border-radius:999px;padding:3px 9px;margin-top:1px;cursor:pointer;white-space:nowrap}
 .vcx.sure{color:#fff;background:#d33;border-color:#d33}
+/* ---------- PART1 VOCAB → MY VOCAB ---------- */
+.vadd{margin-left:auto;align-self:center;flex:none;font:inherit;font-size:12px;font-weight:700;color:var(--blue);background:none;border:1px solid var(--line);border-radius:999px;padding:3px 10px;cursor:pointer;white-space:nowrap}
+.vadd.done{color:var(--muted);cursor:default}

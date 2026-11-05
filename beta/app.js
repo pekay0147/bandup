@@ -1269,7 +1269,11 @@ function renderP1(app){
     if(tp.vocab && tp.vocab.length){
       const vb=el("button","p1vbtn",`관련 어휘 ${tp.vocab.length}개 보기 ▾`); vb.type="button"; vb.setAttribute("aria-expanded","false");
       const vl=el("div","p1vocab"); vl.hidden=true;
-      for(const [en,ko,ex] of tp.vocab){ const r=el("div","vrow"); const top=el("div","vtop"); top.append(el("b",null,en), el("span",null,ko)); r.append(top); if(ex) r.append(el("p","vex",ex)); vl.append(r); }
+      for(const [en,ko,ex] of tp.vocab){ const r=el("div","vrow"); const top=el("div","vtop"); top.append(el("b",null,en), el("span",null,ko));
+        const inV=()=>vocAll().some(x=>x.w.toLowerCase()===en.toLowerCase()); const ad=el("button","vadd"); ad.type="button";
+        const paint=()=>{ const on=inV(); ad.textContent=on? "✓ 단어장" : "+ 단어장"; ad.classList.toggle("done",on); ad.setAttribute("aria-label", on? en+" 단어장에 있어요" : en+" 내 단어장에 추가"); }; paint();
+        ad.onclick=e=>{ e.stopPropagation(); if(inV()) return; const m=store.get(`bandup-myvoc-${slug}`,[]); m.push({w:en,ko,ex:ex||"",t:Date.now(),tried:1}); store.set(`bandup-myvoc-${slug}`,m); paint(); };
+        top.append(ad); r.append(top); if(ex) r.append(el("p","vex",ex)); vl.append(r); }
       vb.onclick=()=>{ const open=vl.hidden; vl.hidden=!open; vb.setAttribute("aria-expanded",String(open)); vb.textContent= open? `관련 어휘 접기 ▴` : `관련 어휘 ${tp.vocab.length}개 보기 ▾`; };
       p.append(vb, vl);
     }
