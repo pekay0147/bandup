@@ -22,6 +22,17 @@
     "date": "29 Oct",
     "src": "BBC 6 Minute English"
    }
+  },
+  {
+   "no": 3,
+   "date": "2026-11-05",
+   "title": "6 Minute English · 백신과 암",
+   "link": {
+    "title": "Could vaccines cure cancer?",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-261105",
+    "date": "5 Nov",
+    "src": "BBC 6 Minute English"
+   }
   }
  ],
  "types": [
@@ -50,10 +61,10 @@
    "sessions": [
     1
    ],
-   "ko": "저는 필요한 영양소를 챙기려고 아침을 먹어요.",
-   "en": "I eat breakfast to get the nutrients I need.",
-   "hint": "nutrients",
-   "gram": "<em>to get</em> ~ = ~를 얻으려고. <em>the nutrients I need</em> = 내가 필요한 영양소."
+   "ko": "저는 요즘 포화지방을 덜 먹으려고 해요.",
+   "en": "These days, I'm trying to eat less saturated fat.",
+   "hint": "saturated",
+   "gram": "<em>saturated fat</em> = 포화지방(고기·유제품에 많음). <em>try to</em> + 동사 = ~하려고 노력하다."
   },
   {
    "id": "6ms03",
@@ -62,10 +73,10 @@
    "sessions": [
     1
    ],
-   "ko": "패스트푸드에는 포화지방이 많아요.",
-   "en": "Fast food has a lot of saturated fats.",
-   "hint": "saturated",
-   "gram": "<em>saturated fats</em> = 포화지방. 고기·유제품에 많은 몸에 덜 좋은 지방."
+   "ko": "자기 전에 휴대폰을 쓰면 깊이 못 자요.",
+   "en": "I don't get much deep sleep if I use my phone before bed.",
+   "hint": "deep",
+   "gram": "<em>deep sleep</em> = 깊은 잠. <em>get deep sleep</em>으로 자주 써요."
   },
   {
    "id": "6ms04",
@@ -74,10 +85,10 @@
    "sessions": [
     1
    ],
-   "ko": "저는 요즘 포화지방을 덜 먹으려고 노력하고 있어요.",
-   "en": "These days, I'm trying to eat less saturated fat.",
-   "hint": "saturated",
-   "gram": "<em>try to</em> + 동사 = ~하려고 노력하다. <em>less</em> = 덜."
+   "ko": "저는 매일 아침 비타민 영양제를 먹어요.",
+   "en": "I take a vitamin supplement every morning.",
+   "hint": "supplement",
+   "gram": "<em>supplement</em> = 영양제. 약·영양제는 eat 말고 <em>take</em>."
   },
   {
    "id": "6ms05",
@@ -86,10 +97,10 @@
    "sessions": [
     1
    ],
-   "ko": "깊은 잠을 충분히 자면 다음 날 개운해요.",
-   "en": "When I get enough deep sleep, I feel fresh the next day.",
-   "hint": "deep",
-   "gram": "<em>deep sleep</em> = 깊은 잠. 몸이 쉬고 회복하는 단계. <em>get deep sleep</em>으로 자주 써요."
+   "ko": "SNS는 하루 종일 우리에게 정보를 쏟아내요.",
+   "en": "Social media feeds us information all day long.",
+   "hint": "feeds",
+   "gram": "<em>feed</em> (someone) <em>information</em> = 정보를 계속 주다."
   },
   {
    "id": "6ms06",
@@ -98,10 +109,10 @@
    "sessions": [
     1
    ],
-   "ko": "자기 전에 휴대폰을 쓰면 깊이 못 자요.",
-   "en": "I don't get much deep sleep if I use my phone before bed.",
-   "hint": "deep",
-   "gram": "<em>not get much</em> ~ = ~를 많이 못 하다. <em>before bed</em> = 자기 전에."
+   "ko": "잘 자는 데 만능 해결책은 없어요.",
+   "en": "There's no magic bullet for good sleep.",
+   "hint": "magic",
+   "gram": "<em>magic bullet</em> = 한 번에 다 해결하는 방법. <em>no magic bullet for</em> ~."
   },
   {
    "id": "6ms07",
@@ -110,10 +121,10 @@
    "sessions": [
     1
    ],
-   "ko": "저는 매일 아침 비타민 영양제를 먹어요.",
-   "en": "I take a vitamin supplement every morning.",
-   "hint": "supplement",
-   "gram": "<em>supplement</em> = 영양제. 약·영양제는 eat 말고 <em>take</em>를 써요."
+   "ko": "저는 가끔 잠을 푹 자기가 힘들어요.",
+   "en": "I sometimes struggle to get a good night's sleep.",
+   "hint": "struggle",
+   "gram": "<em>struggle to</em> + 동사 = ~하는 데 애를 먹다. <em>a good night's sleep</em> = 푹 자는 것."
   },
   {
    "id": "6ms08",
@@ -122,10 +133,10 @@
    "sessions": [
     1
    ],
-   "ko": "영양제가 좋은 음식을 대신할 수는 없어요.",
-   "en": "Supplements can't replace good food.",
-   "hint": "supplements",
-   "gram": "<em>replace</em> = 대신하다. <em>can't replace</em> = 대신할 수 없다."
+   "ko": "가끔 몇 시간씩 누워만 있고 잠이 안 와요.",
+   "en": "Sometimes I lie in bed for hours and can't fall asleep.",
+   "hint": "lie",
+   "gram": "<em>lie in bed</em> = 침대에 누워 있다. <em>fall asleep</em> = 잠들다."
   },
   {
    "id": "6ms09",
@@ -134,10 +145,10 @@
    "sessions": [
     1
    ],
-   "ko": "휴대폰은 하루 종일 우리에게 정보를 쏟아내요.",
-   "en": "Our phones feed us information all day long.",
-   "hint": "feed",
-   "gram": "<em>feed</em> (someone) <em>information</em> = 정보를 계속 주다. 음식 주듯 계속 넣어 준다는 느낌."
+   "ko": "커피를 너무 늦게 마셔서 잠을 못 잤어요.",
+   "en": "I had coffee later than I should, so I couldn't sleep.",
+   "hint": "later",
+   "gram": "<em>later than I should</em> = 그러면 안 되는 시간보다 늦게. 후회할 때 좋아요."
   },
   {
    "id": "6ms10",
@@ -146,10 +157,10 @@
    "sessions": [
     1
    ],
-   "ko": "SNS가 계속 정보를 쏟아내서 머리가 피곤해요.",
-   "en": "Social media keeps feeding me information, so my brain gets tired.",
-   "hint": "feeding",
-   "gram": "<em>keep</em> + -ing = 계속 ~하다. <em>keeps feeding me information</em>."
+   "ko": "많은 사람들이 이런 기분을 잘 알아요.",
+   "en": "Many people are familiar with this feeling.",
+   "hint": "familiar",
+   "gram": "<em>be familiar with</em> ~ = ~을 잘 알다, 익숙하다."
   },
   {
    "id": "6ms11",
@@ -158,10 +169,10 @@
    "sessions": [
     1
    ],
-   "ko": "잘 자는 데 만능 해결책은 없어요.",
-   "en": "There's no magic bullet for good sleep.",
-   "hint": "magic",
-   "gram": "<em>magic bullet</em> = 한 번에 다 해결하는 방법(현실엔 거의 없음). <em>no magic bullet for</em> ~."
+   "ko": "건강한 식단은 더 좋은 잠과 관련이 있어요.",
+   "en": "A healthy diet is associated with better sleep.",
+   "hint": "associated",
+   "gram": "<em>be associated with</em> ~ = ~와 관련이 있다. Part 3에서 원인·결과 말할 때 좋아요."
   },
   {
    "id": "6ms12",
@@ -170,10 +181,58 @@
    "sessions": [
     1
    ],
-   "ko": "운동이 모든 문제의 만능 해결책은 아니에요.",
-   "en": "Exercise isn't a magic bullet for every problem.",
-   "hint": "magic",
-   "gram": "<em>a magic bullet for</em> ~ = ~의 만능 해결책."
+   "ko": "운동은 건강에 장기적으로 좋아요.",
+   "en": "Exercise has long-term benefits for your health.",
+   "hint": "long-term",
+   "gram": "<em>long-term</em> = 장기적인. 반대는 <em>short-term</em>."
+  },
+  {
+   "id": "6ms13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "음식 하나보다 식단 전체에 집중하는 게 좋아요.",
+   "en": "It's better to focus on your whole diet than one food.",
+   "hint": "focus",
+   "gram": "<em>focus on</em> ~ = ~에 집중하다."
+  },
+  {
+   "id": "6ms14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 식물성 음식을 더 먹으려고 해요.",
+   "en": "I'm trying to eat more plant-based food.",
+   "hint": "plant-based",
+   "gram": "<em>plant-based</em> = 식물성의. 채식 얘기할 때 써요."
+  },
+  {
+   "id": "6ms15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "과일과 채소에는 식이섬유가 많아요.",
+   "en": "Fruit and vegetables are high in fibre.",
+   "hint": "fibre",
+   "gram": "<em>be high in</em> ~ = ~이 많이 들어 있다. fibre = 영국식 철자(미국식 fiber)."
+  },
+  {
+   "id": "6ms16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "평소 식단에서 비타민을 충분히 못 먹어요.",
+   "en": "I don't get enough vitamins from my everyday diet.",
+   "hint": "everyday",
+   "gram": "<em>everyday</em> = 일상적인(형용사, 붙여 씀). 매일은 every day(띄어 씀)."
   },
   {
    "id": "6ma01",
@@ -185,7 +244,7 @@
    "ko": "아주 더운 날에는 에어컨이 생명을 구할 수도 있어요.",
    "en": "On very hot days, air conditioning can be life-saving.",
    "hint": "life-saving",
-   "gram": "<em>life-saving</em> = 생명을 구하는. 형용사라서 <em>be</em> 뒤에 바로 써요."
+   "gram": "<em>life-saving</em> = 생명을 구하는(형용사)."
   },
   {
    "id": "6ma02",
@@ -194,37 +253,13 @@
    "sessions": [
     2
    ],
-   "ko": "그 수술은 할머니에게 생명을 구하는 일이었어요.",
-   "en": "The operation was life-saving for my grandmother.",
-   "hint": "life-saving",
-   "gram": "<em>life-saving for</em> + 사람 = ~에게 생명을 구하는."
-  },
-  {
-   "id": "6ma03",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    2
-   ],
    "ko": "수백만 명이 그 도시에 살고 있어요.",
    "en": "Millions of people inhabit the city.",
    "hint": "inhabit",
-   "gram": "<em>inhabit</em> = ~에 살다. live와 달리 <em>in</em> 없이 바로 장소를 써요."
+   "gram": "<em>inhabit</em> = ~에 살다. live와 달리 <em>in</em> 없이 바로 장소."
   },
   {
-   "id": "6ma04",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    2
-   ],
-   "ko": "북극곰은 아주 추운 곳에 살아요.",
-   "en": "Polar bears inhabit very cold places.",
-   "hint": "inhabit",
-   "gram": "<em>inhabit</em> + 장소. 동물이 사는 곳을 말할 때 자주 써요."
-  },
-  {
-   "id": "6ma05",
+   "id": "6ma03",
    "kind": "ko",
    "type": "표현",
    "sessions": [
@@ -236,19 +271,7 @@
    "gram": "<em>the grid</em> = 전력망. <em>under pressure</em> = 부담을 받는."
   },
   {
-   "id": "6ma06",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    2
-   ],
-   "ko": "폭풍 때문에 그 마을은 전력망에서 끊겼어요.",
-   "en": "The storm cut the village off from the grid.",
-   "hint": "grid",
-   "gram": "<em>cut</em> A <em>off from</em> B = A를 B에서 끊다."
-  },
-  {
-   "id": "6ma07",
+   "id": "6ma04",
    "kind": "ko",
    "type": "표현",
    "sessions": [
@@ -257,22 +280,10 @@
    "ko": "피곤하면 운동을 안 하고, 그러면 더 피곤해져요. 악순환이에요.",
    "en": "When I'm tired, I don't exercise, and then I feel even more tired. It's a vicious cycle.",
    "hint": "vicious",
-   "gram": "<em>vicious cycle</em> = 악순환. <em>even more</em> = 훨씬 더."
+   "gram": "<em>vicious cycle</em> = 악순환."
   },
   {
-   "id": "6ma08",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    2
-   ],
-   "ko": "스트레스와 잠 부족은 악순환이 될 수 있어요.",
-   "en": "Stress and poor sleep can become a vicious cycle.",
-   "hint": "vicious",
-   "gram": "<em>become a vicious cycle</em> = 악순환이 되다."
-  },
-  {
-   "id": "6ma09",
+   "id": "6ma05",
    "kind": "ko",
    "type": "표현",
    "sessions": [
@@ -281,22 +292,10 @@
    "ko": "우리 집은 밤에 창문을 열어서 전기 없이 시원하게 해요.",
    "en": "We use passive cooling at home, like opening the windows at night.",
    "hint": "passive",
-   "gram": "<em>passive cooling</em> = 전기를 거의 안 쓰고 건물을 시원하게 하는 방법. <em>like</em> + -ing = 예를 들면 ~처럼."
+   "gram": "<em>passive cooling</em> = 전기를 거의 안 쓰고 시원하게 하는 방법."
   },
   {
-   "id": "6ma10",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    2
-   ],
-   "ko": "패시브 쿨링은 전기를 많이 안 써요.",
-   "en": "Passive cooling doesn't use much electricity.",
-   "hint": "passive",
-   "gram": "<em>doesn't use much</em> ~ = ~를 많이 쓰지 않다. electricity는 셀 수 없어서 much."
-  },
-  {
-   "id": "6ma11",
+   "id": "6ma06",
    "kind": "ko",
    "type": "표현",
    "sessions": [
@@ -305,7 +304,67 @@
    "ko": "나무는 여름에 좋은 그늘을 만들어 줘요.",
    "en": "Trees provide good shading in summer.",
    "hint": "shading",
-   "gram": "<em>shading</em> = 햇빛과 열을 가려 주는 것. <em>provide</em> = 제공하다."
+   "gram": "<em>shading</em> = 햇빛과 열을 가려 주는 것."
+  },
+  {
+   "id": "6ma07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 선풍기로 더위를 버텨요.",
+   "en": "I use a fan to cope with the heat.",
+   "hint": "cope",
+   "gram": "<em>cope with</em> ~ = ~을 견디다, 대처하다."
+  },
+  {
+   "id": "6ma08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "에어컨이 없었는데, 있었으면 좋았을 거예요.",
+   "en": "I didn't have air conditioning, and I wish I had.",
+   "hint": "wish",
+   "gram": "<em>I wish I had</em> = (과거에) 그랬으면 좋았을 텐데."
+  },
+  {
+   "id": "6ma09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "우리 집 낡은 선풍기는 제 역할을 잘 못했어요.",
+   "en": "My old fan didn't always do its job.",
+   "hint": "job",
+   "gram": "<em>do its job</em> = 제 역할을 하다(물건·기계)."
+  },
+  {
+   "id": "6ma10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "매년 여름 더위 기록이 깨지고 있어요.",
+   "en": "Heat records are broken every summer.",
+   "hint": "records",
+   "gram": "<em>break a record</em> = 기록을 깨다. 수동태: records <em>are broken</em>."
+  },
+  {
+   "id": "6ma11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "여름에 늘 피곤하다면, 당신만 그런 게 아니에요.",
+   "en": "If you always feel tired in summer, you're not alone.",
+   "hint": "alone",
+   "gram": "<em>you're not alone</em> = 너만 그런 게 아니야."
   },
   {
    "id": "6ma12",
@@ -314,10 +373,250 @@
    "sessions": [
     2
    ],
-   "ko": "창문에 차양이 있으면 방이 더 시원해요.",
-   "en": "Shading on the windows keeps the room cooler.",
-   "hint": "shading",
-   "gram": "<em>keep</em> + 명사 + 형용사 = ~를 ~하게 유지하다. <em>keeps the room cooler</em>."
+   "ko": "에어컨의 단점 하나는 전기를 많이 쓴다는 거예요.",
+   "en": "One downside of air conditioning is that it uses a lot of energy.",
+   "hint": "downside",
+   "gram": "<em>downside</em> = 단점. <em>One downside of</em> A <em>is that</em> ~ 패턴."
+  },
+  {
+   "id": "6ma13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "여름에 제가 제일 자주 찾는 간식은 아이스크림이에요.",
+   "en": "Ice cream is my go-to snack in summer.",
+   "hint": "go-to",
+   "gram": "<em>go-to</em> = 늘 찾는, 단골. my go-to café, my go-to song."
+  },
+  {
+   "id": "6ma14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "폭풍 때문에 정전이 됐어요.",
+   "en": "We had a power cut because of the storm.",
+   "hint": "power",
+   "gram": "<em>power cut</em> = 정전(영국식). 미국식은 power outage."
+  },
+  {
+   "id": "6ma15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "답을 몰라서 그냥 찍었어요.",
+   "en": "I didn't know the answer, so I made a wild guess.",
+   "hint": "guess",
+   "gram": "<em>make a wild guess</em> = 대충 찍다, 어림짐작하다."
+  },
+  {
+   "id": "6ma16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "우리는 지속 가능한 에너지를 더 써야 해요.",
+   "en": "We should use more sustainable energy.",
+   "hint": "sustainable",
+   "gram": "<em>sustainable</em> = 지속 가능한. 환경 Part 3 단골 단어."
+  },
+  {
+   "id": "6mv01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "새 병원이 생긴 건 오래 기다려 온 일이에요.",
+   "en": "The new hospital in my town was a long time coming.",
+   "hint": "coming",
+   "gram": "<em>a long time coming</em> = 오래 걸려서 드디어 이뤄진 일."
+  },
+  {
+   "id": "6mv02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "좋아지는 줄 알았는데, 반짝하고 끝났어요.",
+   "en": "I thought things were getting better, but it was a false dawn.",
+   "hint": "dawn",
+   "gram": "<em>false dawn</em> = 좋아지는 것처럼 보였지만 아닌 상황."
+  },
+  {
+   "id": "6mv03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 의료 분야에서 일하고 싶어요.",
+   "en": "I want to work in the healthcare space.",
+   "hint": "space",
+   "gram": "<em>space</em> = (연구·사업) 분야. the tech space, the healthcare space."
+  },
+  {
+   "id": "6mv04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "과학자들이 암 치료에서 큰 돌파구를 찾았어요.",
+   "en": "Scientists have made a big breakthrough in cancer treatment.",
+   "hint": "breakthrough",
+   "gram": "<em>make a breakthrough in</em> ~ = ~에서 획기적인 진전을 이루다."
+  },
+  {
+   "id": "6mv05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "백신은 우리 몸이 병과 싸울 준비를 시켜 줘요.",
+   "en": "Vaccines prime your body to fight diseases.",
+   "hint": "prime",
+   "gram": "<em>prime</em> + 대상 + <em>to</em> 동사 = ~할 준비를 시키다."
+  },
+  {
+   "id": "6mv06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "이 새로운 치료법은 가능성이 많아요.",
+   "en": "This new treatment shows a lot of promise.",
+   "hint": "promise",
+   "gram": "<em>show promise</em> = 가능성을 보이다. promise = '가능성'."
+  },
+  {
+   "id": "6mv07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 어릴 때부터 주사를 엄청 많이 맞았어요.",
+   "en": "I've had loads of injections since I was a child.",
+   "hint": "loads",
+   "gram": "<em>loads of</em> = 엄청 많은(a lot of의 구어체). <em>have an injection</em> = 주사를 맞다."
+  },
+  {
+   "id": "6mv08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "백신은 우리를 병으로부터 지켜 줘요.",
+   "en": "Vaccines protect us from diseases.",
+   "hint": "protect",
+   "gram": "<em>protect</em> A <em>from</em> B = A를 B로부터 보호하다."
+  },
+  {
+   "id": "6mv09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "이 약은 부작용이 좀 있어요.",
+   "en": "This medicine has a few side effects.",
+   "hint": "side",
+   "gram": "<em>side effects</em> = 부작용. 보통 복수형."
+  },
+  {
+   "id": "6mv10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 이번 시험 점수에 희망을 갖고 있어요.",
+   "en": "I'm hopeful about my next IELTS score.",
+   "hint": "hopeful",
+   "gram": "<em>be hopeful about</em> ~ = ~에 대해 희망적이다."
+  },
+  {
+   "id": "6mv11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 그 답을 혼자 알아냈어요.",
+   "en": "I worked out the answer on my own.",
+   "hint": "worked",
+   "gram": "<em>work out</em> = (생각해서) 알아내다, 풀다."
+  },
+  {
+   "id": "6mv12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "요즘 영어 말하기가 점점 늘고 있어요.",
+   "en": "I'm getting better at speaking English these days.",
+   "hint": "better",
+   "gram": "<em>get better at</em> + <em>-ing</em> = ~하는 게 점점 나아지다."
+  },
+  {
+   "id": "6mv13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "잠을 잘 자면 면역력이 강해져요.",
+   "en": "Sleeping well keeps your immune system strong.",
+   "hint": "immune",
+   "gram": "<em>immune system</em> = 면역 체계. <em>keep</em> + 명사 + 형용사."
+  },
+  {
+   "id": "6mv14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "통증이 다시 안 생겼으면 좋겠어요.",
+   "en": "I hope the pain doesn't come back.",
+   "hint": "come",
+   "gram": "<em>come back</em> = 다시 생기다, 돌아오다."
+  },
+  {
+   "id": "6mv15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 이번 시험에서 실수를 꽤 많이 했어요.",
+   "en": "I made quite a few mistakes in the test.",
+   "hint": "quite",
+   "gram": "<em>quite a few</em> = 꽤 많은(셀 수 있는 명사 앞)."
+  },
+  {
+   "id": "6mv16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "잘 모르겠지만, B라고 찍어 볼게요.",
+   "en": "I'm not sure, but I'm going to guess B.",
+   "hint": "guess",
+   "gram": "<em>I'm going to guess</em> ~ = ~라고 찍어 볼게요. 모르는 질문에 자연스럽게 넘어가는 표현."
   }
  ],
  "part1": [],

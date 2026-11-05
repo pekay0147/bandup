@@ -20,10 +20,10 @@
    "sessions": [
     1
    ],
-   "ko": "이 변화는 정말 오래 걸려서 이제야 이뤄졌어요.",
-   "en": "This change has been a long time coming.",
+   "ko": "새 병원이 생긴 건 오래 기다려 온 일이에요.",
+   "en": "The new hospital in my town was a long time coming.",
    "hint": "coming",
-   "gram": "<em>a long time coming</em> = 오래 걸려서 드디어 이뤄진(기다리던) 일. has been a long time coming 형태로 자주 써요."
+   "gram": "<em>a long time coming</em> = 오래 걸려서 드디어 이뤄진 일."
   },
   {
    "id": "6mv02",
@@ -32,10 +32,10 @@
    "sessions": [
     1
    ],
-   "ko": "새 병원이 생긴 건 오래 기다려 온 일이에요.",
-   "en": "The new hospital in my town was a long time coming.",
-   "hint": "coming",
-   "gram": "좋은 일이 드디어 생겼을 때: It was <em>a long time coming</em>."
+   "ko": "좋아지는 줄 알았는데, 반짝하고 끝났어요.",
+   "en": "I thought things were getting better, but it was a false dawn.",
+   "hint": "dawn",
+   "gram": "<em>false dawn</em> = 좋아지는 것처럼 보였지만 아닌 상황."
   },
   {
    "id": "6mv03",
@@ -44,49 +44,13 @@
    "sessions": [
     1
    ],
-   "ko": "좋아지는 줄 알았는데, 그건 잠깐의 착각이었어요.",
-   "en": "I thought things were getting better, but it was a false dawn.",
-   "hint": "dawn",
-   "gram": "<em>false dawn</em> = 좋아지는 것처럼 보였지만 실제로는 아닌 상황."
+   "ko": "저는 의료 분야에서 일하고 싶어요.",
+   "en": "I want to work in the healthcare space.",
+   "hint": "space",
+   "gram": "<em>space</em> = (연구·사업) 분야. the tech space, the healthcare space."
   },
   {
    "id": "6mv04",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "다이어트 효과가 처음엔 좋아 보였지만 금방 끝났어요.",
-   "en": "My diet looked successful at first, but it was a false dawn.",
-   "hint": "dawn",
-   "gram": "<em>it was a false dawn</em> = 반짝하고 끝난 희망."
-  },
-  {
-   "id": "6mv05",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "의료 분야에는 새로운 기술이 많아요.",
-   "en": "There's a lot of new technology in the medical space.",
-   "hint": "space",
-   "gram": "<em>space</em> = (연구·사업) 분야. the medical space, the tech space."
-  },
-  {
-   "id": "6mv06",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "저는 간호 분야에서 일하고 싶어요.",
-   "en": "I want to work in the healthcare space.",
-   "hint": "space",
-   "gram": "<em>in the</em> + 분야 + <em>space</em> = ~ 분야에서. field와 같은 뜻으로 써요."
-  },
-  {
-   "id": "6mv07",
    "kind": "ko",
    "type": "표현",
    "sessions": [
@@ -98,19 +62,7 @@
    "gram": "<em>make a breakthrough in</em> ~ = ~에서 획기적인 진전을 이루다."
   },
   {
-   "id": "6mv08",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "영어 말하기에서 드디어 큰 발전이 있었어요.",
-   "en": "I finally had a breakthrough with my English speaking.",
-   "hint": "breakthrough",
-   "gram": "개인적인 큰 발전에도 써요: <em>have a breakthrough</em>."
-  },
-  {
-   "id": "6mv09",
+   "id": "6mv05",
    "kind": "ko",
    "type": "표현",
    "sessions": [
@@ -122,19 +74,7 @@
    "gram": "<em>prime</em> + 대상 + <em>to</em> 동사 = ~할 준비를 시키다."
   },
   {
-   "id": "6mv10",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "시험 전에 아침을 먹으면 뇌가 준비돼요.",
-   "en": "Eating breakfast primes my brain before an exam.",
-   "hint": "primes",
-   "gram": "<em>prime</em>은 '미리 준비시키다'. 주어가 동명사(Eating)라서 primes."
-  },
-  {
-   "id": "6mv11",
+   "id": "6mv06",
    "kind": "ko",
    "type": "표현",
    "sessions": [
@@ -143,7 +83,67 @@
    "ko": "이 새로운 치료법은 가능성이 많아요.",
    "en": "This new treatment shows a lot of promise.",
    "hint": "promise",
-   "gram": "<em>show promise</em> = 가능성(잠재력)을 보이다. promise = 약속 말고 '가능성'."
+   "gram": "<em>show promise</em> = 가능성을 보이다. promise = '가능성'."
+  },
+  {
+   "id": "6mv07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 어릴 때부터 주사를 엄청 많이 맞았어요.",
+   "en": "I've had loads of injections since I was a child.",
+   "hint": "loads",
+   "gram": "<em>loads of</em> = 엄청 많은(a lot of의 구어체). <em>have an injection</em> = 주사를 맞다."
+  },
+  {
+   "id": "6mv08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "백신은 우리를 병으로부터 지켜 줘요.",
+   "en": "Vaccines protect us from diseases.",
+   "hint": "protect",
+   "gram": "<em>protect</em> A <em>from</em> B = A를 B로부터 보호하다."
+  },
+  {
+   "id": "6mv09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "이 약은 부작용이 좀 있어요.",
+   "en": "This medicine has a few side effects.",
+   "hint": "side",
+   "gram": "<em>side effects</em> = 부작용. 보통 복수형."
+  },
+  {
+   "id": "6mv10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 이번 시험 점수에 희망을 갖고 있어요.",
+   "en": "I'm hopeful about my next IELTS score.",
+   "hint": "hopeful",
+   "gram": "<em>be hopeful about</em> ~ = ~에 대해 희망적이다."
+  },
+  {
+   "id": "6mv11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 그 답을 혼자 알아냈어요.",
+   "en": "I worked out the answer on my own.",
+   "hint": "worked",
+   "gram": "<em>work out</em> = (생각해서) 알아내다, 풀다."
   },
   {
    "id": "6mv12",
@@ -152,10 +152,58 @@
    "sessions": [
     1
    ],
-   "ko": "그 학생은 간호사로서 가능성이 커요.",
-   "en": "She shows great promise as a nurse.",
-   "hint": "promise",
-   "gram": "<em>show great promise as a</em> + 직업 = ~로서 잠재력이 크다."
+   "ko": "요즘 영어 말하기가 점점 늘고 있어요.",
+   "en": "I'm getting better at speaking English these days.",
+   "hint": "better",
+   "gram": "<em>get better at</em> + <em>-ing</em> = ~하는 게 점점 나아지다."
+  },
+  {
+   "id": "6mv13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "잠을 잘 자면 면역력이 강해져요.",
+   "en": "Sleeping well keeps your immune system strong.",
+   "hint": "immune",
+   "gram": "<em>immune system</em> = 면역 체계. <em>keep</em> + 명사 + 형용사."
+  },
+  {
+   "id": "6mv14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "통증이 다시 안 생겼으면 좋겠어요.",
+   "en": "I hope the pain doesn't come back.",
+   "hint": "come",
+   "gram": "<em>come back</em> = 다시 생기다, 돌아오다."
+  },
+  {
+   "id": "6mv15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 이번 시험에서 실수를 꽤 많이 했어요.",
+   "en": "I made quite a few mistakes in the test.",
+   "hint": "quite",
+   "gram": "<em>quite a few</em> = 꽤 많은(셀 수 있는 명사 앞)."
+  },
+  {
+   "id": "6mv16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "잘 모르겠지만, B라고 찍어 볼게요.",
+   "en": "I'm not sure, but I'm going to guess B.",
+   "hint": "guess",
+   "gram": "<em>I'm going to guess</em> ~ = ~라고 찍어 볼게요. 모르는 질문에 자연스럽게 넘어가는 표현."
   }
  ]
 }

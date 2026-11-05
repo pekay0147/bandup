@@ -1567,7 +1567,6 @@
  ],
  "group": "ielts",
  "podFiles": [
-  "groups/other",
-  "pods/6min-261105"
+  "groups/other"
  ]
 }
