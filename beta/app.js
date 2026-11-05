@@ -190,19 +190,19 @@ const PODS=[
  {id:"conv",name:"BBC Learning English Conversations",lv:"초급~중급",desc:"짧은 대화로 일상 표현을 익혀요. 처음 시작하기 좋아요.",url:"https://podcasts.apple.com/podcast/learning-english-conversations/id262026989"},
  {id:"ielts",name:"IELTS Energy English",lv:"아이엘츠",desc:"아이엘츠 스피킹·리스닝 팁과 모범 답변을 들려줘요.",url:"https://podcasts.apple.com/podcast/ielts-energy-english-7/id969076668"},
  {id:"luke",name:"Luke's English Podcast",lv:"중상급",desc:"영국식 영어로 길고 재미있는 이야기를 들려줘요.",url:"https://podcasts.apple.com/podcast/id312059190"}];
-function podSel(){ const v=store.get(`bandup-podsel-${slug}`,null); if(v && v.custom && v.url) return {id:"custom",name:v.name||"내 팟캐스트",url:v.url}; if(!v && D && D.pod && D.pod.url) return {id:"custom",name:D.pod.name||"내 팟캐스트",url:D.pod.url}; return PODS.find(p=>p.id===(v&&v.id))||PODS[0]; }
+function podSel(){ const v=store.get(`bandup-podsel-${slug}`,null); if(D && D.pod && D.pod.url && D.pod.since && !(v && v.at>Date.parse(D.pod.since))) return {id:"custom",name:D.pod.name||"내 팟캐스트",url:D.pod.url}; if(v && v.custom && v.url) return {id:"custom",name:v.name||"내 팟캐스트",url:v.url}; if(!v && D && D.pod && D.pod.url) return {id:"custom",name:D.pod.name||"내 팟캐스트",url:D.pod.url}; return PODS.find(p=>p.id===(v&&v.id))||PODS[0]; }
 function renderPodPick(app){
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
   pageHead(app,"팟캐스트 고르기","매일 홈에서 바로 열 팟캐스트를 골라요.");
   const cur=podSel(); const box=el("div","podpick");
-  PODS.forEach(p=>{ const b=el("button","pp"+(cur.id===p.id?" on":"")); b.type="button"; const t=el("div"); t.append(el("b",null,p.name), el("span","pp-lv",p.lv), el("p",null,p.desc)); b.append(t, el("i",null, cur.id===p.id? "✓":"")); b.onclick=()=>{ store.set(`bandup-podsel-${slug}`,{id:p.id}); go("home"); }; box.append(b); });
+  PODS.forEach(p=>{ const b=el("button","pp"+(cur.id===p.id?" on":"")); b.type="button"; const t=el("div"); t.append(el("b",null,p.name), el("span","pp-lv",p.lv), el("p",null,p.desc)); b.append(t, el("i",null, cur.id===p.id? "✓":"")); b.onclick=()=>{ store.set(`bandup-podsel-${slug}`,{id:p.id,at:Date.now()}); go("home"); }; box.append(b); });
   app.append(box);
   const f=el("form","panel ppform"); f.append(el("b",null,"직접 넣기"), el("p","muted small","듣고 싶은 팟캐스트나 유튜브 채널 링크를 붙여 넣어요."));
   const nm=el("input"); nm.id="pp-name"; nm.placeholder="이름 (예: 내가 좋아하는 팟캐스트)"; const ur=el("input"); ur.id="pp-url"; ur.type="url"; ur.placeholder="https://…"; ur.inputMode="url";
   if(cur.id==="custom"){ nm.value=cur.name; ur.value=cur.url; }
   const er=el("p","mferr"); er.hidden=true; const sb=el("button","btn primary","이걸로 할게요"); sb.type="submit";
   f.append(nm,ur,er,sb);
-  f.onsubmit=e=>{ e.preventDefault(); const u=ur.value.trim(); if(!/^https:\/\/\S+\.\S+/.test(u)){ er.textContent="https:// 로 시작하는 링크를 넣어 주세요."; er.hidden=false; return; } store.set(`bandup-podsel-${slug}`,{custom:true,name:nm.value.trim()||"내 팟캐스트",url:u}); go("home"); };
+  f.onsubmit=e=>{ e.preventDefault(); const u=ur.value.trim(); if(!/^https:\/\/\S+\.\S+/.test(u)){ er.textContent="https:// 로 시작하는 링크를 넣어 주세요."; er.hidden=false; return; } store.set(`bandup-podsel-${slug}`,{at:Date.now(),custom:true,name:nm.value.trim()||"내 팟캐스트",url:u}); go("home"); };
   app.append(f);
 }
 const LIC={
