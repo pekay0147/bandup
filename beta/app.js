@@ -645,14 +645,14 @@ function renderDecks(app){
   const hasLesson=D.sessions.length && D.cards.some(c=>(c.sessions||[]).length), hasPod=(D.podSessions||[]).length>0;
   if(!hasLesson && !hasPod){ const e=el("div","empty"); e.append(el("p",null, D.common? "수업을 들으면 수업에서 내가 틀린 문장이 여기에 큐카드로 생겨요." : "아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
   const seg=el("div","modeseg"+(hasPod&&hasLesson?"":" two")); seg.setAttribute("role","tablist");
-  if(cardMode!=="session" && cardMode!=="random" && cardMode!=="pod") cardMode= hasLesson? "session" : "pod";
+  if(cardMode!=="session" && cardMode!=="pod") cardMode= hasLesson? "session" : "pod";
   if(cardMode==="session" && !hasLesson) cardMode="pod"; if(cardMode==="pod" && !hasPod) cardMode="session";
-  const modes=[...(hasLesson?[["session",D.common?"주제별":(hasPod?"수업 회차별":"회차별"),`1~${D.sessions[D.sessions.length-1].no}회차`]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ["random","랜덤 퀴즈","섞어서 풀기"]];
+  const modes=[...(hasLesson?[["session",D.common?"주제별":(hasPod?"수업 회차별":"회차별"),`1~${D.sessions[D.sessions.length-1].no}회차`]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[])];
   for(const [k,label,sub] of modes){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(cardMode===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; openKey=null; render(); }; seg.append(b);
   }
-  app.append(seg);
+  if(modes.length>1) app.append(seg);
   let key, list, empty="카드가 없어요.";
   if(cardMode==="session"){
     if(selSession==null || !D.sessions.some(x=>x.no===selSession)) selSession= D.common? D.sessions[0].no : D.sessions[D.sessions.length-1].no;
