@@ -1011,3 +1011,10 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .addvoc{justify-self:start;margin-top:6px;font:inherit;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--blue,#4457e8);background:var(--surface,#fff);color:var(--blue,#4457e8);cursor:pointer}
 .addvoc.done{background:var(--blue,#4457e8);color:#fff}
 .addvoc:disabled{border-color:var(--line);color:var(--muted);cursor:default}
+
+/* EPISODE LINK ABOVE DECK */
+.eplink{display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;padding:12px 14px;border-radius:14px;background:var(--blue-soft,#eef0fd);color:var(--ink);text-decoration:none}
+.eplink svg{grid-row:1/3;width:22px;height:22px;color:var(--blue,#4457e8)}
+.eplink span{font-size:12px;color:var(--muted)}
+.eplink b{font-size:15px;grid-column:2}
+.eplink i{grid-row:1/3;grid-column:3;font-style:normal;color:var(--muted);font-size:20px}
