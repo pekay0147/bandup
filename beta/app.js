@@ -801,7 +801,12 @@ function flipCard(c, onFlip){
   }
   bb.append(sent);
   const wb=el("div","wbox"); const inSent=picked && c.en.toLowerCase().split(/[^a-z'-]+/).includes(picked);
-  if(inSent && G[picked]){ const [pos,mean,note]=G[picked]; const wt=el("div","wt"); wt.append(el("b",null,picked==="i"?"I":picked), el("span","pos",pos)); wb.append(wt, el("span","mean",mean)); if(note) wb.append(el("span","wn",note)); }
+  if(inSent && G[picked]){ const [pos,mean,note]=G[picked]; const wt=el("div","wt"); wt.append(el("b",null,picked==="i"?"I":picked), el("span","pos",pos)); wb.append(wt, el("span","mean",mean)); if(note) wb.append(el("span","wn",note));
+    { const mine=store.get(`bandup-myvoc-${slug}`,[]); const has=mine.some(x=>x.w.toLowerCase()===picked) || (D.words||[]).some(x=>x.w.toLowerCase()===picked);
+      const ab=el("button","addvoc", has? "✓ 내 단어장에 있어요" : "+ 내 단어장에 추가"); ab.type="button"; ab.disabled=has;
+      ab.onclick=e=>{ e.stopPropagation(); const m=store.get(`bandup-myvoc-${slug}`,[]); if(!m.some(x=>x.w.toLowerCase()===picked)){ m.push({w:picked==="i"?"I":picked, ko:mean, ex:c.en, t:Date.now()}); store.set(`bandup-myvoc-${slug}`,m); }
+        ab.textContent="✓ 추가했어요 · 단어장 보기 ›"; ab.disabled=false; ab.classList.add("done"); ab.onclick=ev=>{ ev.stopPropagation(); vcState=null; vcAdd=false; vcMode="list"; go("vocab"); }; };
+      wb.append(ab); } }
   else { wb.classList.add("empty"); wb.append(el("span","hint","단어를 누르면 뜻이 나와요")); }
   bb.append(wb);
   const gtext = c.gram || [c.note, (D.tips||{})[typeOf(c)]].filter(Boolean).join(" · ");
