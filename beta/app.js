@@ -89,7 +89,7 @@ function statSpell(w,typed,ok){ statAdd(b=>{ if(ok) b.sp.ok++; else if(b.sp.ng.l
 function statRec(){ statAdd(b=>{ b.rec++; }); }
 function statFlush(force){
   if(!statOn()) return; const b=statBuf();
-  const snap={bm:cbmList().filter(id=>D.cards.some(c=>c.id===id)).slice(-60), qbm:qbmList().map(x=>x.q).slice(-40), weak:Object.keys(marks).filter(id=>marks[id]==="again").slice(-60)};
+  const snap={...(store.get(CSK()+"-v2",false)? {voc:store.get(`bandup-myvoc-${slug}`,[]).slice(-300).map(x=>[x.w,x.ko||""])} : {}), bm:cbmList().filter(id=>D.cards.some(c=>c.id===id)).slice(-60), qbm:qbmList().map(x=>x.q).slice(-40), weak:Object.keys(marks).filter(id=>marks[id]==="again").slice(-60)};
   const sig=JSON.stringify(snap), changed=sig!==store.get(STK()+"-snap","");
   const n=Object.keys(b.c).length+b.sp.ok+b.sp.ng.length+b.rec+(changed?1:0); if(!n) return;
   const last=store.get(STK()+"-at",0); if(!force && Date.now()-last<60*1000) return;
@@ -109,12 +109,12 @@ window.addEventListener("pagehide",()=>{ if(D) statFlush(true); });
 function consentSheet(){
   const bg=el("div","sheet-bg"); const sh=el("div","sheet consent"); sh.setAttribute("role","dialog"); sh.setAttribute("aria-label","공부 기록 공유");
   sh.append(el("h2",null,"공부 기록을 선생님과 공유할까요?"),
-    el("p",null,"수업을 더 잘 준비하려고, 자주 틀리는 문제만 선생님께 전달돼요."));
+    el("p",null, store.get(CSK(),null)===true ? "이제 내 단어장에 모은 단어도 함께 전달돼요. 선생님이 모아서 맞춤 단어장을 만들어 드릴 수 있어요." : "수업을 더 잘 준비하려고, 틀린 문제와 모은 단어가 선생님께 전달돼요."));
   const ul=el("ul","consent-l");
-  [["전달돼요","큐카드를 맞혔는지 틀렸는지, 북마크한 문장, 틀린 철자, 공부한 날 수, 녹음한 횟수"],["전달 안 돼요","녹음, 말한 내용, 내 단어장, 위치나 기기 정보"]].forEach(([a,b])=>{ const li=el("li"); li.append(el("b",null,a), el("span",null,b)); ul.append(li); });
+  [["전달돼요","큐카드를 맞혔는지 틀렸는지, 북마크한 문장, 틀린 철자, 내 단어장에 모은 단어, 공부한 날 수, 녹음한 횟수"],["전달 안 돼요","녹음, 말한 내용, 위치나 기기 정보"]].forEach(([a,b])=>{ const li=el("li"); li.append(el("b",null,a), el("span",null,b)); ul.append(li); });
   sh.append(ul, el("p","muted small","언제든 홈 맨 아래에서 끌 수 있어요."));
   const row=el("div","row");
-  const yes=el("button","btn primary","좋아요"); yes.type="button"; yes.onclick=()=>{ store.set(CSK(),true); bg.remove(); render(); };
+  const yes=el("button","btn primary","좋아요"); yes.type="button"; yes.onclick=()=>{ store.set(CSK(),true); store.set(CSK()+"-v2",true); bg.remove(); render(); };
   const no=el("button","btn","안 할래요"); no.type="button"; no.onclick=()=>{ store.set(CSK(),false); bg.remove(); render(); };
   row.append(yes,no); sh.append(row); bg.append(sh); document.body.append(bg);
 }
@@ -247,7 +247,7 @@ function noticeBox(app){
   b.append(row); app.append(b);
 }
 function renderHome(app){
-  if(D.form && D.form.url && !D.demo && store.get(CSK(),null)===null && !document.querySelector(".consent")) setTimeout(consentSheet,600);
+  if(D.form && D.form.url && !D.demo && (store.get(CSK(),null)===null || (store.get(CSK(),null)===true && !store.get(CSK()+"-v2",false))) && !document.querySelector(".consent")) setTimeout(consentSheet,600);
   statFlush(false);
   const due=dueCards().length;
   const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length;
