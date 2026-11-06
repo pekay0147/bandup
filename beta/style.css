@@ -1034,3 +1034,6 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .mine-x s{text-decoration-thickness:1px;text-decoration-color:rgba(210,60,60,.5)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .mine-x{color:#ff7b7b}}
 :root[data-theme="dark"] .mine-x{color:#ff7b7b}
+/* ---------- DAILY PRACTICE ---------- */
+.dy-note{margin:2px 0 0}
+.dy-src{margin:2px 0 4px}
