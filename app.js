@@ -673,6 +673,30 @@ async function dyTranslate(list){
   const keys=Object.keys(TR); if(keys.length>600) keys.slice(0,keys.length-600).forEach(k=>delete TR[k]);
   store.set("bandup-tr",TR); dyBusy=false; if(view.tab==="cards" && cardMode==="daily") render();
 }
+/* ---------- multi-word expressions on a card (false dawn, magic bullet …) ---------- */
+let PHRASE_BANK=null;
+function phraseBank(){
+  if(PHRASE_BANK) return PHRASE_BANK; const m=new Map(); const add=(w,ko,idiom)=>{ w=String(w||"").trim(); if(!/\s/.test(w)||w.length>40) return; if(!idiom && w.split(/\s+/).length<3) return; const k=w.toLowerCase(); if(!m.has(k)) m.set(k,{w,ko:ko||""}); };
+  IDIOMS.forEach(([w,ko])=>add(w,ko,1)); (D.words||[]).forEach(x=>add(x.w,x.ko)); if(P1Q&&P1Q.topics) P1Q.topics.forEach(t=>(t.vocab||[]).forEach(v=>add(v[0],v[1])));
+  return PHRASE_BANK=m;
+}
+const PH_SKIP=new Set(["someone","something","sb","sth","a","an","the","to","of","my","your","his","her","its","our","their","be","is","are","was","were"]);
+const PH_IRR={got:"get",gotten:"get",went:"go",gone:"go",made:"make",took:"take",taken:"take",had:"have",has:"have",gave:"give",given:"give",ran:"run",came:"come",felt:"feel",built:"build",kept:"keep",fell:"fall",fallen:"fall",turned:"turn",broke:"break",broken:"break"};
+const phStem=w=>(PH_IRR[w.toLowerCase()]||w).toLowerCase().replace(/[^a-z']/g,"").replace(/(ies|es|s|ed|ing|'s)$/,"").slice(0,5);
+function phIn(phrase,sent){ const S=sent.toLowerCase().split(/[^a-z']+/).filter(Boolean).map(phStem); const P=phrase.toLowerCase().split(/[^a-z']+/).filter(w=>w&&!PH_SKIP.has(w)).map(phStem); if(!P.length) return false; let i=0; for(const p of P){ const j=S.indexOf(p,i); if(j<0 || (i && j-i>3)) return false; i=j+1; } return true; }
+const phOk=w=>/\s/.test(w) && /^[A-Za-z' ,.!?-]+$/.test(w) && !/[\d\/()]/.test(w) && !/^-/.test(w) && w.split(" ").length<=6;
+const phExact=(w,sent)=>new RegExp("\\b"+w.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b").test(sent.toLowerCase());
+function cardPhrases(c){
+  const out=new Map(); const g=String(c.gram||"");
+  const re=/<em>([^<]+)<\/em>((?:\s*(?:\/|,|·)\s*<em>[^<]+<\/em>)*)\s*(?:\(([^)]*)\))?((?:\s*\+\s*(?:<em>[^<]+<\/em>|[^=<+]{1,14}))*)\s*=\s*([^<.]*)/g; let m;
+  while((m=re.exec(g))){ const ko=(m[5]||"").replace(/\s*\(.*$/,"").trim(); const alts=[m[1],...[...(m[2]||"").matchAll(/<em>([^<]+)<\/em>/g)].map(x=>x[1])];
+    for(let w of alts){ w=w.replace(/[~+…]/g," ").replace(/\b(someone|something)\b/gi," ").replace(/\s+/g," ").trim(); if(phOk(w) && phIn(w,c.en) && !out.has(w.toLowerCase())) out.set(w.toLowerCase(),{w,ko}); } }
+  const re2=/([^<>=.]{1,24}?)\s*=\s*<em>([^<]+)<\/em>/g; while((m=re2.exec(g))){ const ko=m[1].replace(/^.*?[:·>]\s*/,"").replace(/\(.*?\)/g,"").trim(); let w=m[2].replace(/[~+…]/g," ").replace(/\b(someone|something)\b/gi," ").replace(/\s+/g," ").trim(); if(phOk(w) && phIn(w,c.en) && !out.has(w.toLowerCase())) out.set(w.toLowerCase(),{w,ko}); }
+  for(const [k,v] of phraseBank()) if(!out.has(k) && phOk(v.w) && phExact(v.w,c.en) && !(/^used to/i.test(v.w) && /(\bam|'m|\bis|\bare|\bwas|\bwere|\bbe|\bget|\bgot|\bgetting|\bbeen)\s+(not\s+)?used to/i.test(c.en))) out.set(k,v);
+  if(c.hint && phOk(c.hint) && !out.has(c.hint.toLowerCase())) out.set(c.hint.toLowerCase(),{w:c.hint,ko:""});
+  const L=[...out.values()]; const norm=x=>" "+x.w.toLowerCase().replace(/^(a|an|the|be)\s+/,"")+" ";
+  return L.filter(a=>!L.some(b=>b!==a && norm(b).includes(norm(a)) && norm(b)!==norm(a))).filter((a,i,arr)=>arr.findIndex(b=>norm(b)===norm(a))===i).slice(0,4);
+}
 function renderDecks(app){
   pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
   const hasLesson=D.sessions.length && D.cards.some(c=>(c.sessions||[]).length), hasPod=(D.podSessions||[]).length>0;
@@ -856,6 +880,10 @@ function flipCard(c, onFlip){
     sent.append(tk);
   }
   bb.append(sent);
+  { const ph=cardPhrases(c); if(ph.length){ const box=el("div","phbox"); box.append(el("span","phlab","표현째로 담기"));
+      ph.forEach(p=>{ const inV=()=>vocAll().some(x=>x.w.toLowerCase()===p.w.toLowerCase()); const b=el("button","phadd"+(inV()?" done":"")); b.type="button"; b.tabIndex=flipped?0:-1;
+        b.textContent=(inV()?"✓ ":"+ ")+p.w; b.onclick=e=>{ e.stopPropagation(); if(inV()) return; const m=store.get(`bandup-myvoc-${slug}`,[]); m.push({w:p.w, ko:p.ko||"", ex:c.en, t:Date.now(), tried:p.ko?1:undefined}); store.set(`bandup-myvoc-${slug}`,m); b.textContent="✓ "+p.w; b.classList.add("done"); };
+        box.append(b); }); bb.append(box); } }
   if(c.mine && c.kind!=="fix" && !c.good && !/발음/.test(c.type||"")){ const mx=el("p","mine-x"); mx.append(el("span",null,"수업 때 이렇게 말했어요"), el("s",null,c.mine)); bb.append(mx); }
   const wb=el("div","wbox"); const inSent=picked && c.en.toLowerCase().split(/[^a-z'-]+/).includes(picked);
   if(inSent && G[picked]){ const [pos,mean,note]=G[picked]; const wt=el("div","wt"); wt.append(el("b",null,picked==="i"?"I":picked), el("span","pos",pos)); wb.append(wt, el("span","mean",mean)); if(note) wb.append(el("span","wn",note));

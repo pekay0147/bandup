@@ -1004,3 +1004,8 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 /* ---------- DAILY PRACTICE ---------- */
 .dy-note{margin:2px 0 0}
 .dy-src{margin:2px 0 4px}
+/* ---------- PHRASE ADD ---------- */
+.phbox{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0 2px}
+.phlab{font-size:11px;font-weight:600;color:var(--muted);margin-right:2px}
+.phadd{font:inherit;font-size:13px;font-weight:600;color:var(--blue);background:none;border:1px solid var(--line);border-radius:999px;padding:3px 10px;cursor:pointer}
+.phadd.done{color:var(--muted);cursor:default}
