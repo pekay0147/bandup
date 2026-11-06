@@ -72,7 +72,7 @@ function streak(){ let n=0, d=today(); const set=new Set(days); if(!set.has(d)) 
 const typeOf=c=> c.kind==="ko" && !c.type ? "표현" : c.type;
 const col=c=>TCOL[typeOf(c)]||"#4457e8";
 const rep=c=>(c.sessions||[]).length>1;
-const sessLabel=c=>c.plabel? c.plabel : c.type==="내 문장"? "내 문장" : D.common? ((D.sessions.find(x=>x.no===(c.sessions||[])[0])||{}).title||"") : c.vtopic? c.vtopic : (()=>{ const se=D.sessions.find(x=>x.no===(c.sessions||[])[0]); return se&&se.label? se.label : (c.sessions||[]).join("·")+"회차"; })();
+const sessLabel=c=>c.plabel? c.plabel : c.type==="내 문장"? "내 문장" : D.common? ((D.sessions.find(x=>x.no===(c.sessions||[])[0])||{}).title||"") : c.vtopic? c.vtopic : (()=>{ const se=D.sessions.find(x=>x.no===(c.sessions||[])[0]); return se&&se.link&&se.link.src? se.link.src+" · "+(se.link.date||"") : se&&se.label? se.label : (c.sessions||[]).join("·")+"회차"; })();
 const VCARDS={};
 const getCard=id=>D.cards.find(c=>c.id===id) || VCARDS[id];
 const isWriting=c=>!(c.type==="발음·철자" && /발음/.test(c.ko||""));
@@ -698,14 +698,14 @@ function cardPhrases(c){
   return L.filter(a=>!L.some(b=>b!==a && norm(b).includes(norm(a)) && norm(b)!==norm(a))).filter((a,i,arr)=>arr.findIndex(b=>norm(b)===norm(a))===i).slice(0,4);
 }
 function renderDecks(app){
-  pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
+  pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : D.group==="other"? "팟캐스트 표현과 매일 연습 문장을 한국어 보고 영어로 말해 보세요." : D.group==="church"? "팟캐스트 문장을 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
   const hasLesson=D.sessions.length && D.cards.some(c=>(c.sessions||[]).length), hasPod=(D.podSessions||[]).length>0;
   if(!hasLesson && !hasPod){ const e=el("div","empty"); e.append(el("p",null, D.common? "수업을 들으면 수업에서 내가 틀린 문장이 여기에 큐카드로 생겨요." : "아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
   const hasDaily=D.group==="other"||D.group==="ielts";
   const seg=el("div","modeseg"+((+!!hasPod + +!!hasLesson + +hasDaily)>2?"":" two")); seg.setAttribute("role","tablist");
   if(cardMode!=="session" && cardMode!=="pod" && !(cardMode==="daily"&&hasDaily)) cardMode= hasLesson? "session" : "pod";
   if(cardMode==="session" && !hasLesson) cardMode="pod"; if(cardMode==="pod" && !hasPod) cardMode="session";
-  const modes=[...(hasLesson?[["session",D.common?"주제별":D.group==="other"?"팟캐스트":(hasPod?"수업 회차별":"회차별"),`1~${D.sessions[D.sessions.length-1].no}회차`]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","단어장·이디엄·아이디어"]]:[])];
+  const modes=[...(hasLesson?[["session",D.common?"주제별":D.group==="other"?"팟캐스트":(hasPod?"수업 회차별":"회차별"),`1~${D.sessions[D.sessions.length-1].no}회차`]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","오늘의 문장 10개"]]:[])];
   for(const [k,label,sub] of modes){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(cardMode===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; openKey=null; render(); }; seg.append(b);
@@ -718,8 +718,8 @@ function renderDecks(app){
     { const se=D.sessions.find(x=>x.no===selSession); if(se && se.link && se.link.url){ const a=el("a","eplink"); a.href=se.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null,[se.link.date, se.link.src].filter(Boolean).join(" · ")), el("b",null,se.link.title||"에피소드"), el("i",null,"›")); app.append(a); } }
     key="s"+selSession; list=D.cards.filter(c=>(c.sessions||[]).includes(selSession));
   } else if(cardMode==="daily"){
-    app.append(el("p","muted small dy-note","팟캐스트가 없는 날엔 여기서 연습해요. 매일 새 문장 10개가 나와요."));
-    const row=el("div","pchips dy-src"); DY_SRC.forEach(([k,l])=>{ const b=el("button",null,l); b.type="button"; b.setAttribute("aria-pressed",String(dySrc===k)); b.onclick=()=>{ dySrc=k; deckState=null; render(); }; row.append(b); }); app.append(row);
+    app.append(el("p","muted small dy-note","팟캐스트가 없는 날엔 여기서 연습해요. 내 단어장·이디엄·아이디어 단어에서 매일 새 문장 10개가 나와요."));
+    dySrc="mix";
     list=dyCards(); key="dy-"+dySrc+"-"+today(); empty= dySrc==="voc"? "내 단어장에 예문이 있는 단어가 아직 없어요. 단어를 추가하면 여기서 문장 연습을 할 수 있어요." : "카드가 없어요.";
     dyTranslate(list);
   } else if(cardMode==="pod"){
@@ -831,7 +831,7 @@ function randPool(){
 /* ---------- session picker ---------- */
 function sessionPicker(current, onPick, withAll=true){
   const wrap=el("div","picker");
-  wrap.append(el("span","picker-lab", D.common? "주제 선택" : "회차 선택"));
+  wrap.append(el("span","picker-lab", D.common? "주제 선택" : D.group==="other"? "에피소드 선택" : "회차 선택"));
   const row=el("div","pchips"); row.setAttribute("role","group"); row.setAttribute("aria-label","회차 선택");
   const opts=[...(withAll?[["all","전체"]]:[]), ...D.sessions.map(x=>[x.no, x.label? x.label : D.common? x.title : `${x.no}회`])];
   for(const [v,label] of opts){
