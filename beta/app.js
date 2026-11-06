@@ -648,32 +648,32 @@ function renderMyCards(app){
 }
 
 /* ---------- daily practice deck (between weekly podcast episodes) ---------- */
-let dySrc="mix", dyBusy=false;
+let dySrc="mix", dyBusy=false; const dyTried=new Set();
 const DY_SRC=[["mix","섞어서"],["voc","내 단어장"],["idiom","이디엄"],["idea","아이디어 단어"]];
 function dyRand(seed){ let h=2166136261; for(const ch of seed){ h^=ch.charCodeAt(0); h=Math.imul(h,16777619); } return ()=>{ h^=h<<13; h^=h>>>17; h^=h<<5; return ((h>>>0)%100000)/100000; }; }
 function dyPick(arr,n,seed){ const r=dyRand(seed), a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(r()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a.slice(0,n); }
 function dyPool(src){
   if(src==="voc") return vocAll().filter(w=>w.ex && /[A-Za-z]/.test(w.ex)).map(w=>({w:w.w, ko:w.ko||"", ex:w.ex, lab:"내 단어장"}));
   if(src==="idiom") return IDIOMS.map(([w,ko,ex])=>({w,ko,ex,lab:"이디엄"}));
-  if(src==="idea") return (P1Q&&P1Q.topics||[]).flatMap(t=>(t.vocab||[]).filter(v=>v[2]).map(v=>({w:v[0],ko:v[1],ex:v[2],lab:"아이디어 · "+t.ko})));
+  if(src==="idea") return (P1Q&&P1Q.topics||[]).flatMap(t=>(t.vocab||[]).filter(v=>v[2]).map((v,i)=>({w:v[0],ko:v[1],ex:v[2],lab:"Part 1 · "+t.ko,q:(t.qs||[])[i%Math.max(1,(t.qs||[]).length)]})));
   return [];
 }
 function dyCards(){
   const day=today(), TR=store.get("bandup-tr",{});
   let picks;
-  if(dySrc==="mix"){ const v=dyPick(dyPool("voc"),4,day+slug+"v"), i=dyPick(dyPool("idiom"),3,day+slug+"i"); picks=[...v,...i,...dyPick(dyPool("idea"),10-v.length-i.length,day+slug+"d")]; picks=dyPick(picks,picks.length,day+slug+"m"); }
+  if(dySrc==="mix"){ const v=dyPick(dyPool("voc"),4,day+slug+"v"), i=dyPick(dyPool("idiom"),1,day+slug+"i"); picks=[...v,...i,...dyPick(dyPool("idea"),10-v.length-i.length,day+slug+"d")]; picks=dyPick(picks,picks.length,day+slug+"m"); }
   else picks=dyPick(dyPool(dySrc),10,day+slug+dySrc);
   return picks.map(p=>{ const id="dy-"+dySrc+"-"+p.w.toLowerCase().replace(/[^a-z0-9]+/g,"-"); const tr=TR[p.ex];
     const c={id,kind:"ko",type:"표현",sessions:[],plabel:p.lab,en:p.ex,hint:p.w,
       ko: tr || `'${p.ko||p.w}' 표현을 넣어 영어로 말해 보세요`,
-      gram:`<em>${p.w.replace(/[<>&]/g,"")}</em> = ${String(p.ko||"").replace(/[<>&]/g,"")}`+(tr? "" : "<br><small>번역을 불러오면 한국어 문장으로 바뀌어요.</small>")};
+      gram:`<em>${p.w.replace(/[<>&]/g,"")}</em> = ${String(p.ko||"").replace(/[<>&]/g,"")}`+(p.q? `<br>이런 Part 1 질문에 답할 때 써요: <b>${String(p.q).replace(/[<>&]/g,"")}</b>` : "")+(tr? "" : "<br><small>번역을 불러오면 한국어 문장으로 바뀌어요.</small>")};
     VCARDS[id]=c; return c; });
 }
 async function dyTranslate(list){
-  if(dyBusy) return; const TR=store.get("bandup-tr",{}); const need=list.filter(c=>!TR[c.en]); if(!need.length) return; dyBusy=true;
-  for(const c of need){ try{ const r=await fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q="+encodeURIComponent(c.en)).then(x=>x.ok? x.json():null); const t=r&&r[0]? r[0].map(x=>x[0]).join("").trim() : ""; if(t) TR[c.en]=t; }catch(_){ } }
+  if(dyBusy) return; const TR=store.get("bandup-tr",{}); const need=list.filter(c=>!TR[c.en] && !dyTried.has(c.en)); if(!need.length) return; dyBusy=true; let got=0; need.forEach(c=>dyTried.add(c.en));
+  for(const c of need){ try{ const r=await fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q="+encodeURIComponent(c.en)).then(x=>x.ok? x.json():null); const t=r&&r[0]? r[0].map(x=>x[0]).join("").trim() : ""; if(t){ TR[c.en]=t; got++; } }catch(_){ } }
   const keys=Object.keys(TR); if(keys.length>600) keys.slice(0,keys.length-600).forEach(k=>delete TR[k]);
-  store.set("bandup-tr",TR); dyBusy=false; if(view.tab==="cards" && cardMode==="daily") render();
+  store.set("bandup-tr",TR); dyBusy=false; if(got && view.tab==="cards" && cardMode==="daily" && view.deck==null) render();
 }
 /* ---------- multi-word expressions on a card (false dawn, magic bullet …) ---------- */
 let PHRASE_BANK=null;
@@ -720,7 +720,7 @@ function renderDecks(app){
     { const se=D.sessions.find(x=>x.no===selSession); if(se && se.link && se.link.url){ const a=el("a","eplink"); a.href=se.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null,[se.link.date, se.link.src].filter(Boolean).join(" · ")), el("b",null,se.link.title||"에피소드"), el("i",null,"›")); app.append(a); } }
     key="s"+selSession; list=D.cards.filter(c=>(c.sessions||[]).includes(selSession));
   } else if(cardMode==="daily"){
-    app.append(el("p","muted small dy-note","팟캐스트가 없는 날엔 여기서 연습해요. 내 단어장·이디엄·아이디어 단어에서 매일 새 문장 10개가 나와요."));
+    app.append(el("p","muted small dy-note","팟캐스트가 없는 날엔 여기서 연습해요. Part 1 답변 문장과 내 단어장 단어로 매일 새 문장 10개가 나와요."));
     dySrc="mix";
     list=dyCards(); key="dy-"+dySrc+"-"+today(); empty= dySrc==="voc"? "내 단어장에 예문이 있는 단어가 아직 없어요. 단어를 추가하면 여기서 문장 연습을 할 수 있어요." : "카드가 없어요.";
     dyTranslate(list);
