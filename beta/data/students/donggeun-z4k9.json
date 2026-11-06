@@ -5,5 +5,18 @@
  "form": {
   "url": "https://docs.google.com/forms/d/e/1FAIpQLSfybbvIl48g133Mx3PdH7rfqGDRy9NCum3SdpUJ3RDpWkdPNA/viewform?usp=pp_url&entry.1747437353=NAME_X&entry.1189878643=SESSION_X&entry.1202580096=RESULT_X"
  },
- "group": "other"
+ "group": "other",
+ "rvCards": [
+  {
+   "id": "bv-6mv01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "제 승진은 오래 기다려 온 일이었어요.",
+   "en": "My promotion was a long time coming.",
+   "hint": "a long time coming",
+   "gram": "<em>a long time coming</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  }
+ ]
 }

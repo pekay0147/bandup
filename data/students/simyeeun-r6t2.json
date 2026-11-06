@@ -2269,5 +2269,128 @@
  "group": "ielts",
  "podFiles": [
   "groups/other"
+ ],
+ "rvCards": [
+  {
+   "id": "bv-e33",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "솔직히 말하면 저는 아침형 인간이 아니에요.",
+   "en": "I have to admit, I'm not a morning person.",
+   "hint": "I have to admit",
+   "gram": "<em>I have to admit</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e32",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "그 식당은 싸고, 게다가 음식도 맛있어요.",
+   "en": "The restaurant is cheap, and on top of that, the food is delicious.",
+   "hint": "on top of that",
+   "gram": "<em>on top of that</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e21",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "음악은 세대 사이를 이어 줄 수 있어요.",
+   "en": "Music can create connections between generations.",
+   "hint": "Music",
+   "gram": "<em>create connections between</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-m06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저녁에 산책하면 마음이 편해져요.",
+   "en": "Going for a walk in the evening makes me feel relaxed.",
+   "hint": "Going",
+   "gram": "<em>-ing 주어 + makes me feel</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e36",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "그 카페는 커피가 맛있기로 유명해요.",
+   "en": "The café has a reputation for great coffee.",
+   "hint": "have a reputation for",
+   "gram": "<em>have a reputation for</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e37",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "우리 동네는 운동하기 좋은 곳이에요.",
+   "en": "My neighbourhood is a good place to exercise.",
+   "hint": "a good place to",
+   "gram": "<em>a good place to</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e38",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "대체로 저는 점심을 회사 근처에서 먹어요.",
+   "en": "More often than not, I have lunch near my office.",
+   "hint": "more often than not",
+   "gram": "<em>more often than not</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-m18",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 보통 퇴근하고 나서 샤워를 해요.",
+   "en": "I usually take a shower when I get home from work.",
+   "hint": "usually",
+   "gram": "<em>usually + 동사</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-m19",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 음악을 들으면 마음이 편해져요.",
+   "en": "I feel relaxed when I listen to music.",
+   "hint": "feel relaxed",
+   "gram": "<em>feel relaxed</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e31",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "배달 음식은 편해요. 그렇긴 해도 건강엔 안 좋아요.",
+   "en": "Delivery food is convenient. Having said that, it's not good for your health.",
+   "hint": "Having said that",
+   "gram": "<em>Having said that</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e25",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "너희 회사 분위기는 어때?",
+   "en": "What's your company like?",
+   "hint": "What's like?",
+   "gram": "<em>What's ~ like?</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  }
  ]
 }

@@ -3683,5 +3683,326 @@
  "group": "ielts",
  "podFiles": [
   "pods/ree-260911"
+ ],
+ "rvCards": [
+  {
+   "id": "bv-r11-20",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "비가 왔지만 그래도 산책을 했어요.",
+   "en": "Even though it was raining, I went for a walk.",
+   "hint": "even though",
+   "gram": "<em>even though</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-r11-24",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 거의 외식을 안 해요.",
+   "en": "I hardly ever eat out.",
+   "hint": "hardly ever",
+   "gram": "<em>hardly ever</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-r11-23",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "그건 제가 본 영화 중에 최고예요.",
+   "en": "It's the best film I've ever seen.",
+   "hint": "the best I've ever had",
+   "gram": "<em>the best ~ I've ever had</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "여행이 계획대로 되지 않았어요.",
+   "en": "My trip didn't go to plan.",
+   "hint": "didn't go to plan",
+   "gram": "<em>didn't go to plan</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-pd-ree12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "그건 제가 마셔 본 커피 중에 최고였어요.",
+   "en": "It was the best coffee I've ever had.",
+   "hint": "the best I've ever had",
+   "gram": "<em>the best ~ I've ever had</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-pd-ree02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "제 남편은 단 걸 별로 안 좋아해요.",
+   "en": "My husband doesn't have a sweet tooth.",
+   "hint": "have a sweet tooth",
+   "gram": "<em>have a sweet tooth</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-pd-ree09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "추운 날엔 따뜻한 국물만 한 게 없어요.",
+   "en": "On a cold day, you can't beat hot soup.",
+   "hint": "you can't beat",
+   "gram": "<em>you can't beat</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "우리는 플라스틱 사용을 줄여야 해요.",
+   "en": "We need to reduce our plastic use.",
+   "hint": "reduce",
+   "gram": "<em>reduce</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-pd-ree08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 집에서 만든 빵을 제일 좋아해요.",
+   "en": "I like homemade bread the most.",
+   "hint": "homemade",
+   "gram": "<em>homemade</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-pd-ree13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 커피보다 차를 더 좋아해요.",
+   "en": "I prefer tea to coffee.",
+   "hint": "prefer A to B",
+   "gram": "<em>prefer A to B</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-r11-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 집보다 도서관에서 더 집중할 수 있어요.",
+   "en": "I can concentrate more in the library than at home.",
+   "hint": "can concentrate more",
+   "gram": "<em>can concentrate more</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-r11-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 자기 전에 휴대폰을 안 보려고 해요.",
+   "en": "I try not to look at my phone before bed.",
+   "hint": "try not to",
+   "gram": "<em>try not to</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-r11-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "이번 주에 세 번이나 야근했어요.",
+   "en": "I worked overtime three times this week.",
+   "hint": "work overtime",
+   "gram": "<em>work overtime</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-r11-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "매일 운동하는 건 쉽지 않아요.",
+   "en": "Exercising every day isn't easy.",
+   "hint": "Exercising",
+   "gram": "<em>-ing 주어 + is</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-r11-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 집중할 수 있는 환경을 만들려고 해요.",
+   "en": "I'm trying to make an environment where I can focus.",
+   "hint": "an environment where",
+   "gram": "<em>an environment where</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-m14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 혼자 여행하는 걸 더 좋아해요.",
+   "en": "I prefer travelling alone.",
+   "hint": "prefer -ing",
+   "gram": "<em>prefer -ing</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "제 딸은 편식이 좀 심해요.",
+   "en": "My daughter is a bit of a picky eater.",
+   "hint": "picky eater",
+   "gram": "<em>picky eater</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 바닷가에 있을 때 물 만난 물고기 같아요.",
+   "en": "I'm in my element when I'm by the sea.",
+   "hint": "in my element",
+   "gram": "<em>in my element</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "시험 전에 문법을 다시 다듬고 싶어요.",
+   "en": "I want to brush up on my grammar before the test.",
+   "hint": "brush up on",
+   "gram": "<em>brush up on</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 최근에 그림 그리기를 취미로 시작했어요.",
+   "en": "I recently took up drawing.",
+   "hint": "take up",
+   "gram": "<em>take up</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-m03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "마트에서 과일을 좀 샀어요.",
+   "en": "I bought some fruit at the supermarket.",
+   "hint": "some",
+   "gram": "<em>some + 셀 수 없는/복수 명사</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "그녀는 처음엔 조용한 사람처럼 보였어요.",
+   "en": "She came across as quiet at first.",
+   "hint": "come across as",
+   "gram": "<em>come across as</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-pd-ree04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "이 수프는 좀 짜요.",
+   "en": "This soup tastes a bit salty.",
+   "hint": "taste",
+   "gram": "<em>taste + 형용사</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-pd-ree15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "이 크림 파스타는 저한테 너무 느끼해요.",
+   "en": "This cream pasta is too rich for me.",
+   "hint": "too rich for me",
+   "gram": "<em>too rich for me</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-m26",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "호텔을 예약했어요.",
+   "en": "I made a reservation at the hotel.",
+   "hint": "make a reservation",
+   "gram": "<em>make a reservation</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-m30",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 주말마다 등산을 가요.",
+   "en": "I go hiking every weekend.",
+   "hint": "go",
+   "gram": "<em>go + -ing</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 커피를 줄이려고 하고 있어요.",
+   "en": "I'm trying to cut down on coffee.",
+   "hint": "cut down on",
+   "gram": "<em>cut down on</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-m33",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "친구가 저에게 비밀을 말해 줬어요.",
+   "en": "My friend told me a secret.",
+   "hint": "tell",
+   "gram": "<em>tell + 사람 + 것</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "돈이 만능 해결책은 아니에요.",
+   "en": "Money isn't a magic bullet.",
+   "hint": "not a magic bullet",
+   "gram": "<em>not a magic bullet</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  }
  ]
 }

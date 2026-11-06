@@ -407,5 +407,172 @@
  ],
  "podFiles": [
   "pods/6min-261105"
+ ],
+ "rvCards": [
+  {
+   "id": "bv-pd-6mv15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 오늘 환자를 꽤 많이 만났어요.",
+   "en": "I saw quite a few patients today.",
+   "hint": "quite a few",
+   "gram": "<em>quite a few</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-pd-6mv03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "제 친구는 IT 분야에서 일해요.",
+   "en": "My friend works in the tech space.",
+   "hint": "the space",
+   "gram": "<em>the ~ space</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 혼자 여행하는 걸 좋아해요.",
+   "en": "I like travelling on my own.",
+   "hint": "on my own",
+   "gram": "<em>on my own</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-pd-6mv06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "그 신입 간호사는 가능성이 커요.",
+   "en": "The new nurse shows a lot of promise.",
+   "hint": "show promise",
+   "gram": "<em>show promise</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-pd-6mv05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "좋은 아침밥은 하루를 시작할 준비를 시켜 줘요.",
+   "en": "A good breakfast primes you to start the day.",
+   "hint": "prime to",
+   "gram": "<em>prime ~ to</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-m08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "집에서 역까지 걸어서 10분 걸려요.",
+   "en": "It takes 10 minutes on foot to get to the station.",
+   "hint": "It takes on foot",
+   "gram": "<em>It takes ~ on foot</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-pd-6mv13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "운동은 몸을 건강하게 유지해 줘요.",
+   "en": "Exercise keeps your body healthy.",
+   "hint": "keep 형용사",
+   "gram": "<em>keep ~ 형용사</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-m07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 다른 방법으로 공부해 봤어요.",
+   "en": "I tried studying in a different way.",
+   "hint": "a different way",
+   "gram": "<em>a different way</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "간호사는 침착하게 있는 법을 알아야 해요.",
+   "en": "Nurses need to know how to stay calm.",
+   "hint": "know how to",
+   "gram": "<em>know how to</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-m05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "병원에서 카페까지 걸어서 3분이에요.",
+   "en": "It's a 3-minute walk from the hospital to the café.",
+   "hint": "It's a -minute walk",
+   "gram": "<em>It's a ~-minute walk</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-pd-6mv11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "결국 혼자 문제를 해결했어요.",
+   "en": "In the end, I worked out the problem on my own.",
+   "hint": "work out",
+   "gram": "<em>work out</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-e01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "간호사로서 가장 중요한 건 소통이에요.",
+   "en": "The most important thing as a nurse is communication.",
+   "hint": "The",
+   "gram": "<em>The most important thing as a ~ is</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-m01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "어렸을 때 저는 그림 그리는 걸 좋아했어요.",
+   "en": "When I was young, I loved drawing.",
+   "hint": "When I was young",
+   "gram": "<em>When I was young</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-pd-6mv04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "저는 드디어 영어 말하기에서 돌파구를 찾았어요.",
+   "en": "I finally made a breakthrough with my English speaking.",
+   "hint": "make a breakthrough",
+   "gram": "<em>make a breakthrough</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  },
+  {
+   "id": "bv-m09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "병원까지 지하철로 20분이에요.",
+   "en": "It's a 20-minute subway ride to the hospital.",
+   "hint": "a -minute subway ride",
+   "gram": "<em>a ~-minute subway ride</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  }
  ]
 }

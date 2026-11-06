@@ -5,5 +5,18 @@
  "form": {
   "url": "https://docs.google.com/forms/d/e/1FAIpQLSfybbvIl48g133Mx3PdH7rfqGDRy9NCum3SdpUJ3RDpWkdPNA/viewform?usp=pp_url&entry.1747437353=NAME_X&entry.1189878643=SESSION_X&entry.1202580096=RESULT_X"
  },
- "group": "church"
+ "group": "church",
+ "rvCards": [
+  {
+   "id": "bv-e03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "북마크 변형",
+   "ko": "그건 단순한 실수가 아니라, 훨씬 더 큰 문제예요.",
+   "en": "It's not a mere mistake; it's a far bigger problem.",
+   "hint": "not a mere",
+   "gram": "<em>not a mere ~; it's a far deeper one</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
+  }
+ ]
 }
