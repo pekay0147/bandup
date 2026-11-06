@@ -4,269 +4,29 @@
  "course": "English",
  "sessions": [
   {
-   "no": 1,
-   "date": "2026-11-04",
-   "title": "Anxiety & little faith"
-  },
-  {
-   "no": 2,
-   "date": "2026-11-05",
-   "title": "So great a salvation"
+   "no": 9,
+   "date": "2026-11-06",
+   "title": "Speaking Matrix"
   }
  ],
  "types": [
   "표현"
  ],
  "tips": {},
- "focus": {
-  "1": "to no avail, in another sense, That's what it's like to ~ 를 내 이야기로 한 번씩 말해보기!"
- },
- "compare": [
-  [
-   "discouraging / discouraged",
-   "일이 주는 느낌은 <em>discouraging</em> · 내 기분은 <em>discouraged</em>"
-  ]
- ],
+ "focus": {},
+ "compare": [],
  "cards": [
   {
-   "id": "e01",
+   "id": "sm09-01",
    "kind": "ko",
    "type": "표현",
    "sessions": [
-    1
+    9
    ],
-   "ko": "불안의 근본 원인은 믿음이 부족한 거예요.",
-   "en": "The root of anxiety is inadequate faith.",
-   "hint": "root",
-   "gram": "<em>the root of</em> ~ = ~의 근본 원인. <em>inadequate</em> = 부족한, 불충분한 (adequate의 반대)."
-  },
-  {
-   "id": "e02",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "사실, 그걸 알게 되니까 꽤 낙담스러웠어요.",
-   "en": "In fact, it was quite discouraging to learn that.",
-   "hint": "discouraging",
-   "gram": "<em>discouraging</em> = (어떤 일이) 낙담하게 하는. 내 기분은 <em>I was discouraged</em>. -ing/-ed 구분!"
-  },
-  {
-   "id": "e03",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "그건 단순한 고민이 아니라, 훨씬 더 깊은 문제예요.",
-   "en": "It's not a mere struggle; it's a far deeper one.",
-   "hint": "mere",
-   "gram": "<em>mere</em> = 단순한, 그저 ~에 불과한. 비교급 강조는 <em>far</em> + 비교급: far deeper, far better."
-  },
-  {
-   "id": "e04",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "제 대답은, 일단 동의하지만 그다음엔 반대하는 거예요.",
-   "en": "My response is to agree, but then to disagree.",
-   "hint": "response",
-   "gram": "<em>My response is to</em> + 동사 = 제 대답(반응)은 ~하는 거예요. Part 3에서 의견을 말할 때 써 보기."
-  },
-  {
-   "id": "e05",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "온갖 약과 식단을 다 써 봤지만 소용없었어요.",
-   "en": "I tried all kinds of medicines and diets, to no avail.",
-   "hint": "avail",
-   "gram": "<em>to no avail</em> = 소용없이, 허사로. 문장 끝에 붙여요: I tried to call her, to no avail."
-  },
-  {
-   "id": "e06",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "정기 검진을 받고 나서 의사가 진짜 문제를 찾아냈어요.",
-   "en": "After a routine visit, the doctor found the real problem.",
-   "hint": "routine",
-   "gram": "<em>routine</em> = 정기적인, 일상적인. a routine check-up = 정기 검진."
-  },
-  {
-   "id": "e07",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "그는 단호하게 아니라고 말했어요.",
-   "en": "He said no, emphatically.",
-   "hint": "emphatically",
-   "gram": "<em>emphatically</em> = 단호하게, 힘주어. emphasis(강조)의 부사형."
-  },
-  {
-   "id": "e08",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "아직 치료할 수 있을 때 발견해서 정말 다행이에요.",
-   "en": "I'm so glad it was discovered while it's still treatable.",
-   "hint": "treatable",
-   "gram": "<em>treatable</em> = 치료할 수 있는. <em>while it's still</em> + 형용사 = 아직 ~할 때."
-  },
-  {
-   "id": "e09",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "다른 의미에서 보면, 그건 좋은 소식이에요.",
-   "en": "In another sense, it's good news.",
-   "hint": "sense",
-   "gram": "<em>in another sense</em> = 다른 의미에서는. 반대로 보면 이렇다고 균형 잡힌 의견을 낼 때 좋아요."
-  },
-  {
-   "id": "e10",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "진짜 뭐가 문제인지 아는 건 좋은 거예요.",
-   "en": "Knowing what's really wrong is a good thing.",
-   "hint": "Knowing",
-   "gram": "동명사(<em>-ing</em>)가 주어! Knowing ~ is good. 주어가 길면 It's good to know what's really wrong도 OK."
-  },
-  {
-   "id": "e11",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "그게 바로 진짜 문제를 알게 되는 것과 같은 느낌이에요.",
-   "en": "That's what it's like to discover the real problem.",
-   "hint": "like",
-   "gram": "<em>That's what it's like to</em> + 동사 = ~하는 게 바로 그런 느낌이에요. 비유를 마무리할 때 써요."
-  },
-  {
-   "id": "e12",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    1
-   ],
-   "ko": "믿습니다. 믿음 없는 저를 도와주세요!",
-   "en": "I believe; help my unbelief!",
-   "hint": "unbelief",
-   "gram": "<em>unbelief</em> = 불신, 믿음 없음. 마가복음 9:24의 유명한 고백이에요."
-  },
-  {
-   "id": "s2-01",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    2
-   ],
-   "ko": "당신의 마음속에 당신의 구원이 위대하다는 느낌이 있습니까?",
-   "en": "Is there a sense of greatness in your mind about your salvation?",
-   "hint": "greatness",
-   "gram": "<em>a sense of</em> + 명사 = ~라는 느낌. greatness = 위대함. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
-  },
-  {
-   "id": "s2-03",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    2
-   ],
-   "ko": "당신은 한 번 서명했고, 그건 서류 서랍 어딘가에 있습니다.",
-   "en": "You signed it once and it is in a file drawer somewhere.",
-   "hint": "drawer",
-   "gram": "<em>file drawer</em> = 서류 서랍. somewhere = 어딘가에. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
-  },
-  {
-   "id": "s2-04",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    2
-   ],
-   "ko": "당신은 그것을 거의 생각하지 않습니다.",
-   "en": "You rarely think about it.",
-   "hint": "rarely",
-   "gram": "<em>rarely</em> = 거의 ~하지 않다 (빈도 부사, 동사 앞). <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
-  },
-  {
-   "id": "s2-05",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    2
-   ],
-   "ko": "그것은 당신에게 매일 아무 영향도 주지 않습니다.",
-   "en": "It has no daily effect on you.",
-   "hint": "effect",
-   "gram": "<em>have an effect on</em> ~ = ~에 영향을 주다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
-  },
-  {
-   "id": "s2-07",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    2
-   ],
-   "ko": "하나님께 사랑받는 것을 소홀히 하지 마십시오.",
-   "en": "Don't neglect being loved by God.",
-   "hint": "loved",
-   "gram": "<em>neglect</em> + 동명사. being loved = 사랑받는 것 (수동 동명사). <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
-  },
-  {
-   "id": "s2-08",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    2
-   ],
-   "ko": "하나님의 약속이라는 다함없는 보물을 소홀히 하지 마십시오.",
-   "en": "Don't neglect the inexhaustible treasure of God's promises.",
-   "hint": "inexhaustible",
-   "gram": "<em>inexhaustible</em> = 다함없는, 무궁무진한. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
-  },
-  {
-   "id": "s2-09",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    2
-   ],
-   "ko": "이것은 참으로 위대한 구원입니다.",
-   "en": "This is indeed a great salvation.",
-   "hint": "indeed",
-   "gram": "<em>indeed</em> = 참으로, 정말로 (강조). <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
-  },
-  {
-   "id": "s2-11",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    2
-   ],
-   "ko": "우리는 위대한 구원 안에서 행복해지는 것에 목숨 걸 만큼 진지해야 합니다.",
-   "en": "We should be blood-earnest about being happy in our great salvation.",
-   "hint": "blood-earnest",
-   "gram": "<em>be earnest about</em> ~ = ~에 진지하다. blood-earnest = 목숨 걸 만큼 진지한. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+   "ko": "제 계획은 서류상으로는 좋아 보였어요. 하지만 실제로는 시간도 에너지도 충분하지 않았어요.",
+   "en": "My plan looked great on paper, but in reality, I didn't have enough time or energy.",
+   "hint": "paper",
+   "gram": "<em>look great on paper</em> = 계획·이론상으로는 좋아 보이다. <em>but in reality</em> = 하지만 실제로는. 부정문에서 '둘 다 없다'는 <em>not enough A or B</em>."
   }
  ],
  "part1": [],
