@@ -100,7 +100,7 @@ function statSpell(w,typed,ok){ statAdd(b=>{ if(ok) b.sp.ok++; else if(b.sp.ng.l
 function statRec(){ statAdd(b=>{ b.rec++; }); }
 function statFlush(force){
   if(!statOn()) return; const b=statBuf();
-  const snap={voc:store.get(`bandup-myvoc-${slug}`,[]).slice(-300).map(x=>[x.w,x.ko||""]), bm:cbmList().filter(id=>D.cards.some(c=>c.id===id)).slice(-60), qbm:qbmList().map(x=>x.q).slice(-40), weak:Object.keys(marks).filter(id=>marks[id]==="again").slice(-60)};
+  const snap={voc:store.get(`bandup-myvoc-${slug}`,[]).slice(-300).map(x=>[x.w,x.ko||""]), bm:cbmList().filter(id=>getCard(id)).slice(-60), bmt:cbmList().map(getCard).filter(Boolean).slice(-60).map(c=>[c.en,c.ko||""]), qbm:qbmList().map(x=>x.q).slice(-40), weak:Object.keys(marks).filter(id=>marks[id]==="again").slice(-60)};
   const sig=JSON.stringify(snap), changed=sig!==store.get(STK()+"-snap","");
   const n=Object.keys(b.c).length+b.sp.ok+b.sp.ng.length+b.rec+(changed?1:0); if(!n) return;
   const last=store.get(STK()+"-at",0); if(!force && Date.now()-last<60*1000) return;
