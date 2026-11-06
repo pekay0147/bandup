@@ -1276,10 +1276,25 @@ function markDeck(c,kind){
 }
 
 /* ---------- spaced review ---------- */
+function reviewP1(n){
+  const TR=store.get("bandup-tr",{}); const day=today();
+  const ps=dyPick(dyPool("idea"),n,day+slug+"rv");
+  const list=ps.map(p=>{ const id="rp-"+p.w.toLowerCase().replace(/[^a-z0-9]+/g,"-"); const tr=TR[p.ex];
+    const c={id,kind:"ko",type:"표현",sessions:[],plabel:p.lab,en:p.ex,hint:p.w, ko: tr || `'${p.ko||p.w}' 표현을 넣어 영어로 말해 보세요`,
+      gram:`<em>${p.w.replace(/[<>&]/g,"")}</em> = ${String(p.ko||"").replace(/[<>&]/g,"")}`+(p.q? `<br>이런 Part 1 질문에 답할 때 써요: <b>${String(p.q).replace(/[<>&]/g,"")}</b>` : "")};
+    VCARDS[id]=c; return c; });
+  setTimeout(()=>dyTranslate(list),800); return list;
+}
 function reviewQueue(extra){
   let pool = extra ? D.cards.filter(c=>isWriting(c) && ((srs[c.id]||{}).box||0)<MASTER) : dueCards();
   pool.sort((a,b)=>(rep(b)-rep(a)) || (((srs[a.id]||{}).box||0)-((srs[b.id]||{}).box||0)) || (marks[b.id]==="again")-(marks[a.id]==="again") || Math.random()-.5);
-  return pool.slice(0, extra?10:DAILY).map(c=>c.id);
+  if(extra) return pool.slice(0,10).map(c=>c.id);
+  const isV=c=>/^(rv-|rvm-|bv-)/.test(c.id);
+  const voc=pool.filter(isV), cue=pool.filter(c=>!isV(c));
+  const p1=(P1Q&&!D.common&&!D.demo)? reviewP1(5).filter(c=>!((srs[c.id]||{}).due>today())) : [];
+  const out=[...p1.slice(0,5), ...voc.slice(0,5)]; for(const c of cue){ if(out.length>=DAILY) break; out.push(c); }
+  for(const c of [...voc.slice(5)]){ if(out.length>=DAILY) break; out.push(c); }
+  return dyPick(out.map(c=>c.id), out.length, today()+slug+"mix");
 }
 function sessRange(nums){
   const n=[...new Set(nums)].filter(x=>x!=null).sort((a,b)=>a-b); const out=[];
@@ -1292,7 +1307,7 @@ function renderReview(app){
     reviewState={ids, i:0, res:[]};
   }
   const R=reviewState;
-  const c=R.ids[R.i] && D.cards.find(x=>x.id===R.ids[R.i]);
+  const c=R.ids[R.i] && getCard(R.ids[R.i]);
   if(!c){
   pageHead(app, view.extra? "약한 카드 연습" : "오늘의 복습", view.extra? "헷갈렸던 카드 10장을 다시 봐요." : `하루 ${DAILY}장씩, 다시 볼 때가 된 카드가 자동으로 나와요.`);
     const e=el("div","empty");
@@ -1312,7 +1327,7 @@ function renderReview(app){
 }
 function toast(msg,ok){ const t=el("div","toast "+(ok?"ok":"no"),msg); document.body.append(t); setTimeout(()=>t.remove(),1300); }
 function reviewMove(d){ const R=reviewState; if(d<0){ if(R.i>0){ R.i--; flipped=false; picked=null; render(); } return; }
-  const c=D.cards.find(x=>x.id===R.ids[R.i]); if(c && !R.res.some(r=>r.c.id===c.id)){ grade(c,true); R.res.push({ok:true,c}); }
+  const c=getCard(R.ids[R.i]); if(c && !R.res.some(r=>r.c.id===c.id)){ grade(c,true); R.res.push({ok:true,c}); }
   R.i++; flipped=false; picked=null; render(); window.scrollTo(0,0); }
 function answer(c,ok){ toast(ok? "좋아요! 며칠 뒤에 다시 나와요" : "괜찮아요, 내일 다시 나와요", ok); grade(c,ok); reviewState.res.push({ok,c}); reviewState.i++; flipped=false; picked=null; render(); }
 
