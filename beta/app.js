@@ -73,7 +73,7 @@ function streak(){ let n=0, d=today(); const set=new Set(days); if(!set.has(d)) 
 const typeOf=c=> c.kind==="ko" && !c.type ? "표현" : c.type;
 const col=c=>TCOL[typeOf(c)]||"#4457e8";
 const rep=c=>(c.sessions||[]).length>1;
-const sessLabel=c=>c.plabel? c.plabel : c.type==="내 문장"? "내 문장" : D.common? ((D.sessions.find(x=>x.no===(c.sessions||[])[0])||{}).title||"") : c.vtopic? c.vtopic : (c.sessions||[]).join("·")+"회차";
+const sessLabel=c=>c.plabel? c.plabel : c.type==="내 문장"? "내 문장" : D.common? ((D.sessions.find(x=>x.no===(c.sessions||[])[0])||{}).title||"") : c.vtopic? c.vtopic : (()=>{ const se=D.sessions.find(x=>x.no===(c.sessions||[])[0]); return se&&se.label? se.label : (c.sessions||[]).join("·")+"회차"; })();
 const VCARDS={};
 const getCard=id=>D.cards.find(c=>c.id===id) || VCARDS[id];
 const isWriting=c=>!(c.type==="발음·철자" && /발음/.test(c.ko||""));
@@ -774,7 +774,7 @@ function sessionPicker(current, onPick, withAll=true){
   const wrap=el("div","picker");
   wrap.append(el("span","picker-lab", D.common? "주제 선택" : "회차 선택"));
   const row=el("div","pchips"); row.setAttribute("role","group"); row.setAttribute("aria-label","회차 선택");
-  const opts=[...(withAll?[["all","전체"]]:[]), ...D.sessions.map(x=>[x.no, D.common? x.title : `${x.no}회`])];
+  const opts=[...(withAll?[["all","전체"]]:[]), ...D.sessions.map(x=>[x.no, x.label? x.label : D.common? x.title : `${x.no}회`])];
   for(const [v,label] of opts){
     const n = v==="all"? D.cards.length : D.cards.filter(c=>(c.sessions||[]).includes(v)).length;
     const b=el("button",null,label); b.type="button"; b.setAttribute("aria-pressed",String(current===v));
