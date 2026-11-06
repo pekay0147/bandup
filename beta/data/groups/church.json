@@ -21,6 +21,17 @@
     "date": "5 Nov",
     "src": "Solid Joys"
    }
+  },
+  {
+   "no": 3,
+   "date": "2026-11-06",
+   "title": "Love one another gladly",
+   "link": {
+    "title": "Love One Another Gladly",
+    "url": "https://www.desiringgod.org/solid-joys/love-one-another-gladly",
+    "date": "6 Nov",
+    "src": "Solid Joys"
+   }
   }
  ],
  "types": [
@@ -276,6 +287,150 @@
    "en": "We should be blood-earnest about being happy in our great salvation.",
    "hint": "blood-earnest",
    "gram": "<em>be earnest about</em> ~ = ~에 진지하다. blood-earnest = 목숨 걸 만큼 진지한. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s3-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "주님께서 네게 구하시는 것은 오직 정의를 행하며 인자를 사랑하며 겸손히 네 하나님과 함께 행하는 것이 아니냐? (미가 6:8)",
+   "en": "What does the Lord require of you but to do justice, and to love kindness, and to walk humbly with your God?",
+   "hint": "humbly",
+   "gram": "<em>require</em> A <em>of</em> B = B에게 A를 요구하다. <em>walk humbly</em> = 겸손히 행하다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s3-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "제 친절이 저를 기쁘게 한다는 이유로 이기적이라는 비난을 받은 적은 한 번도 없습니다.",
+   "en": "I have never been accused of selfishness when justifying a kindness on the basis that it delights me.",
+   "hint": "accused",
+   "gram": "<em>be accused of</em> ~ = ~라는 비난을 받다. <em>on the basis that</em> ~ = ~라는 이유로. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s3-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "오히려, 사랑의 행동은 마지못해 하지 않을수록 진실합니다.",
+   "en": "On the contrary, loving acts are genuine to the degree that they are not done begrudgingly.",
+   "hint": "begrudgingly",
+   "gram": "<em>On the contrary</em> = 오히려. <em>begrudgingly</em> = 마지못해. <em>to the degree that</em> = ~하는 만큼. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s3-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "'마지못해'의 좋은 대안은 덤덤하게나 의무적으로가 아니라, 기쁘게입니다.",
+   "en": "The good alternative to begrudgingly is not neutrally or dutifully, but gladly.",
+   "hint": "gladly",
+   "gram": "<em>not A but B</em> = A가 아니라 B. <em>dutifully</em> = 의무적으로. <em>gladly</em> = 기쁘게. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s3-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "참된 사랑의 마음은 친절을 그저 행하는 것이 아니라 친절을 사랑합니다.",
+   "en": "The authentic heart of love loves kindness; it doesn't just do kindness.",
+   "hint": "authentic",
+   "gram": "<em>authentic</em> = 진짜의, 참된. <em>doesn't just</em> + 동사 = 그저 ~하는 게 아니다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s3-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "그의 계명들은 무거운 것이 아닙니다.",
+   "en": "His commandments are not burdensome.",
+   "hint": "burdensome",
+   "gram": "<em>burdensome</em> = 부담스러운, 무거운. commandments = 계명. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s3-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "이 문장들을 거꾸로 읽고 그 논리를 살펴보세요.",
+   "en": "Read these sentences in reverse order and notice the logic.",
+   "hint": "reverse",
+   "gram": "<em>in reverse order</em> = 거꾸로, 역순으로. <em>notice</em> = 알아차리다, 살펴보다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s3-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "하나님께로부터 난 것은 세상을 이기는 힘을 줍니다.",
+   "en": "Being born of God gives a power that conquers the world.",
+   "hint": "conquers",
+   "gram": "동명사 주어 <em>Being born of God</em> + gives. <em>conquer</em> = 이기다, 정복하다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s3-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "이제 그의 계명들은 우리 마음의 소원이자 기쁨입니다.",
+   "en": "Now his commandments are the desire and delight of our heart.",
+   "hint": "delight",
+   "gram": "<em>delight</em> = 기쁨, 즐거움. the desire and delight of ~ = ~의 소원이자 기쁨. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s3-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "하나님의 사랑은 우리가 그의 계명을 지키는 것만이 아니라, 그것이 무겁지 않다는 것입니다.",
+   "en": "This is the love of God: not just that we do his commandments, but also that they are not burdensome.",
+   "hint": "burdensome",
+   "gram": "<em>not just</em> A <em>but also</em> B = A뿐만 아니라 B도. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s3-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "하나님을 향한 사랑은 짐처럼이 아니라 기쁘게 그의 뜻을 행하는 것입니다.",
+   "en": "Love for God is doing his will gladly rather than with a sense of burden.",
+   "hint": "rather",
+   "gram": "A <em>rather than</em> B = B보다는 A. <em>a sense of burden</em> = 부담감. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s3-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "그것은 우리를 마지못한 순종이 아니라 기쁜 순종으로 이끕니다.",
+   "en": "It presses us on to glad obedience, not just begrudging obedience.",
+   "hint": "obedience",
+   "gram": "<em>obedience</em> = 순종. <em>press</em> someone <em>on to</em> ~ = ~로 밀고 나아가게 하다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
   }
  ],
  "part1": [],
