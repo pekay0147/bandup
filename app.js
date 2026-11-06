@@ -188,6 +188,9 @@ const PODS=[
  {id:"conv",name:"BBC Learning English Conversations",lv:"초급~중급",desc:"짧은 대화로 일상 표현을 익혀요. 처음 시작하기 좋아요.",url:"https://podcasts.apple.com/podcast/learning-english-conversations/id262026989"},
  {id:"ielts",name:"IELTS Energy English",lv:"아이엘츠",desc:"아이엘츠 스피킹·리스닝 팁과 모범 답변을 들려줘요.",url:"https://podcasts.apple.com/podcast/ielts-energy-english-7/id969076668"},
  {id:"luke",name:"Luke's English Podcast",lv:"중상급",desc:"영국식 영어로 길고 재미있는 이야기를 들려줘요.",url:"https://podcasts.apple.com/podcast/id312059190"}];
+const IS_ANDROID=/Android/i.test(navigator.userAgent||"");
+const POD_WEB={"262026947":"https://www.bbc.co.uk/learningenglish/english/features/6-minute-english","1315817340":"https://www.desiringgod.org/solid-joys","1742967932":"https://www.bbc.co.uk/learningenglish/english/features/real-easy-english","262026989":"https://www.bbc.co.uk/learningenglish/english/features/real-easy-english","312059190":"https://teacherluke.co.uk/"};
+function podUrl(P){ const u=P.url||""; if(!IS_ANDROID || !/podcasts\.apple\.com/.test(u)) return u; const m=u.match(/id(\d+)/); return (m&&POD_WEB[m[1]]) || ("https://open.spotify.com/search/"+encodeURIComponent(P.name||"")+"/podcasts"); }
 function podSel(){ const v=store.get(`bandup-podsel-${slug}`,null); if(D && D.pod && D.pod.url && D.pod.since && !(v && v.at>Date.parse(D.pod.since))) return {id:"custom",name:D.pod.name||"내 팟캐스트",url:D.pod.url}; if(v && v.custom && v.url) return {id:"custom",name:v.name||"내 팟캐스트",url:v.url}; if(!v && D && D.pod && D.pod.url) return {id:"custom",name:D.pod.name||"내 팟캐스트",url:D.pod.url}; return PODS.find(p=>p.id===(v&&v.id))||PODS[0]; }
 function renderPodPick(app){
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
@@ -251,7 +254,7 @@ function noticeBox(app){
   const row=el("div","notice-r");
   const ans=(a,label)=>{ store.set(k,a); sendNotice(N.id,a); render(); };
   (N.buttons||[["yes","확인했어요"]]).forEach(([v,l],i)=>{ const bt=el("button","btn"+(i===0?" primary":""),l); bt.type="button";
-    bt.onclick=()=>{ if(v==="go-pod"){ const P=podSel(); window.open(P.url,"_blank","noopener"); } ans(v,l); }; row.append(bt); });
+    bt.onclick=()=>{ if(v==="go-pod"){ const P=podSel(); window.open(podUrl(P),"_blank","noopener"); } ans(v,l); }; row.append(bt); });
   b.append(row); app.append(b);
 }
 function renderHome(app){
@@ -281,7 +284,7 @@ function renderHome(app){
   // 학습
   const s2=el("section","sec"); s2.append(secHead("학습"));
   const list=el("div","box list2");
-  { const P=podSel(); const pr=listRow(LIC.pod,"오늘의 팟캐스트",P.name,null,P.url); pr.classList.add("podrow"); const pw=el("div","podwrap"); const cb=el("button","podchg","바꾸기"); cb.type="button"; cb.onclick=()=>go("podpick"); pw.append(pr,cb); list.append(pw); }
+  { const P=podSel(); const pr=listRow(LIC.pod,"오늘의 팟캐스트",P.name,null,podUrl(P)); pr.classList.add("podrow"); const pw=el("div","podwrap"); const cb=el("button","podchg","바꾸기"); cb.type="button"; cb.onclick=()=>go("podpick"); pw.append(pr,cb); list.append(pw); }
   if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
   list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
