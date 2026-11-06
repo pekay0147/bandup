@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>밴드업 사용 설명서</title><meta name="theme-color" content="#4457e8"><link rel="icon" href="../icons/icon-192.png?v=3">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--bg:#f7f7f5;--surface:#fff;--ink:#16181d;--muted:#6b6f76;--line:#e7e7e3;--blue:#4457e8;--soft:#eef0fd}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:560px;margin:0 auto;padding:24px max(18px,env(safe-area-inset-left)) 48px max(18px,env(safe-area-inset-right));display:grid;gap:18px}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.02em}.logo span{color:var(--blue)}
+h1{margin:0;font-size:26px;line-height:1.3;letter-spacing:-.02em}
+.lead{margin:0;color:var(--muted);font-size:15px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.tabs button{font:inherit;font-size:16px;font-weight:700;background:none;border:0;padding:12px 0;color:var(--muted);cursor:pointer}
+.tabs button[aria-selected="true"]{color:var(--blue);box-shadow:inset 0 -3px 0 var(--blue)}
+.steps{display:grid;gap:12px;margin:0;padding:0;list-style:none;counter-reset:s}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;grid-template-columns:36px 1fr;gap:12px;counter-increment:s}
+.step::before{content:counter(s);width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;display:grid;place-items:center;font-size:16px}
+.step h3{margin:2px 0 4px;font-size:17px}
+.step p{margin:0;font-size:15px;color:#33363d}
+.key{display:inline-flex;align-items:center;gap:4px;padding:1px 8px;border:1px solid var(--line);border-radius:6px;background:var(--soft);font-weight:700;font-size:14px;color:var(--ink);white-space:nowrap}
+.key svg{width:15px;height:15px}
+.note{background:var(--soft);border-radius:14px;padding:14px 16px;font-size:15px}
+.note b{display:block;margin-bottom:4px}
+.note ul{margin:6px 0 0;padding-left:18px}
+.done{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;gap:12px;align-items:center}
+.done img{width:52px;height:52px;border-radius:12px}
+.done p{margin:0;font-size:15px}
+[hidden]{display:none!important}
+</style><style>
+body{font-size:17px}
+.sec{display:grid;gap:12px}
+.sec h2{margin:10px 0 0;font-size:21px;letter-spacing:-.02em}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:grid;gap:8px}
+.card h3{margin:0;font-size:18px;display:flex;gap:10px;align-items:center}
+.card p{margin:0;font-size:16px;color:#2b2e35;line-height:1.7}
+.ic{flex:none;width:34px;height:34px;border-radius:10px;background:var(--soft);color:var(--blue);display:grid;place-items:center;font-weight:800;font-size:15px}
+.big{font-size:18px;font-weight:700}
+.day{display:grid;grid-template-columns:auto 1fr;gap:10px 12px;align-items:start}
+.day > b{background:var(--blue);color:#fff;border-radius:999px;padding:3px 11px;font-size:14px;white-space:nowrap}
+.day span{font-size:16px;line-height:1.6}
+.tip{background:#fff7e6;border:1px solid #f3dfb5;border-radius:14px;padding:14px 16px;font-size:16px;line-height:1.7}
+.tip > b:first-child{display:block;margin-bottom:2px}
+.toc{display:flex;flex-wrap:wrap;gap:8px}
+.toc a{font-size:14px;font-weight:700;color:var(--blue);background:var(--soft);border-radius:999px;padding:5px 12px;text-decoration:none}
+ol.simple{margin:0;padding-left:22px;display:grid;gap:6px;font-size:16px;line-height:1.6}
+.foot{color:var(--muted);font-size:14px;text-align:center}
+</style></head><body><main class="wrap">
+<div class="logo">Band<span>up</span></div>
+<div><h1>밴드업 사용 설명서</h1><p class="lead"> 하루 10분이면 충분해요. 천천히 따라 해 보세요.</p></div>
+<nav class="toc"><a href="#start">처음 시작</a><a href="#buttons">아래 4개 버튼</a><a href="#card">큐카드</a><a href="#home">홈 화면</a><a href="#how">공부 순서</a></nav>
+
+<section class="sec" id="start"><h2>1. 처음 시작하기</h2>
+  <div class="card"><p>선생님이 보내 준 <b>내 앱 링크</b>를 누르면 나만의 앱이 열려요. 다른 사람 링크가 아니라 꼭 <b>내 링크</b>로 들어가세요.</p>
+  <p>매번 링크를 찾기 번거로우면 휴대폰 홈 화면에 앱처럼 추가해 두세요. 방법은 <a href="./">여기(설치 방법)</a>에 있어요.</p></div>
+</section>
+
+<section class="sec" id="buttons"><h2>2. 화면 맨 아래 4개 버튼</h2>
+  <div class="card"><h3><span class="ic">홈</span>홈</h3><p>오늘 할 일이 다 모여 있는 첫 화면이에요. 여기서부터 시작하면 돼요.</p></div>
+  <div class="card"><h3><span class="ic">카</span>큐카드</h3><p>앞면에 한국어, 뒷면에 영어가 있는 카드예요. <b>가장 중요한 공부</b>예요. BBC 방송에서 배운 표현으로 쉬운 문장을 만들어 카드로 넣었어요.</p></div>
+  <div class="card"><h3><span class="ic">아</span>아이디어</h3><p>영어로 말할 때 쓸 재료를 모아 둔 곳이에요. 주제별 질문과 단어, 예문이 있어요. 단어 옆 <span class="key">+ 단어장</span>을 누르면 내 단어장에 담겨요.</p></div>
+  <div class="card"><h3><span class="ic">철</span>철자</h3><p>영어 단어를 <b>소리로 듣고 직접 써 보는</b> 연습이에요. 한 번에 5개씩, 하나도 안 틀리면 성공!</p></div>
+</section>
+
+<section class="sec" id="card"><h2>3. 큐카드 쓰는 법</h2>
+  <div class="card"><ol class="simple">
+    <li><b>한국어 문장</b>을 보고, <b>소리 내서</b> 영어로 말해 보세요. 틀려도 괜찮아요.</li>
+    <li>막히면 아래 <b>힌트 단어</b>를 보세요.</li>
+    <li>카드를 <b>톡 누르면</b> 뒤집혀서 정답 영어가 나와요.</li>
+    <li>모르는 단어를 누르면 <b>뜻</b>이 나와요. <span class="key">+ 단어장에 추가</span>를 누르면 내 단어장에 모여요.</li>
+    <li>두 단어 이상이 한 묶음인 표현(예: false dawn)은 <span class="key">표현째로 담기</span> 버튼으로 통째로 담아요.</li>
+    <li>다음 카드는 <span class="key">다음 ›</span> 버튼을 누르거나 카드를 <b>옆으로 밀면</b> 넘어가요.</li>
+    <li>마음에 드는 문장은 <span class="key">☆</span>를 눌러 <b>북마크</b>해 두세요.</li>
+  </ol></div>
+  <div class="card"><p>카드 위 파란 칸 <span class="key">BBC 6 Minute English 링크</span>을 누르면 그 카드가 나온 <b>방송 원문</b>을 듣고 읽을 수 있어요.</p></div>
+  
+    <div class="card"><h3><span class="ic">탭</span>큐카드 위쪽 두 칸</h3>
+      <p><span class="key">팟캐스트</span> 방송에서 나온 표현 카드예요. 날짜(예: <span class="key">5 Nov</span>)를 눌러 방송을 고르세요.</p>
+      <p><span class="key">매일 연습</span> 방송이 없는 날 하는 카드예요. <b>매일 밤 12시에 새 문장 10개</b>로 바뀌어요. 쉬운 생활 대화 문장, 내 단어장 단어, 숙어 하나가 섞여 나와요.</p></div>
+</section>
+
+<section class="sec" id="home"><h2>4. 홈 화면에 있는 것들</h2>
+  <div class="card"><h3><span class="ic">숙</span>오늘의 IDIOM</h3><p>하루 하나, 원어민이 자주 쓰는 숙어예요. 눌러서 뜻과 예문을 보세요.</p></div>
+  <div class="card"><h3><span class="ic">복</span>오늘의 복습</h3><p>전에 본 카드 중에서 <b>다시 볼 때가 된 카드</b>를 앱이 골라 줘요. 하루 목표는 15장이에요. <span class="key">복습 시작하기</span>만 누르면 돼요.</p></div>
+  <div class="card"><h3><span class="ic">철</span>오늘의 철자</h3><p>5개씩 듣고 쓰기. 다 하면 <span class="key">다음 5개</span>로 계속할 수 있어요.</p></div>
+  <div class="card"><h3><span class="ic">팟</span>오늘의 팟캐스트 · BBC 6 Minute English</h3><p>영국 BBC가 만드는 6분짜리 영어 방송이에요. 생활 주제 하나와 쓸모 있는 표현을 배워요. <b>일주일에 한 번</b> 새 방송이 올라와요. 누르면 바로 들을 수 있어요. 갤럭시폰은 웹페이지에서 바로 재생돼요.</p></div>
+  <div class="card"><h3><span class="ic">모</span>모의고사</h3><p>실제 시험처럼 질문이 나오고, 내 대답을 <b>녹음</b>해 볼 수 있어요. 약 12분이에요.</p></div>
+  <div class="card"><h3><span class="ic">단</span>내 단어장</h3><p>내가 모은 단어가 다 있어요. <span class="key">+ 직접 추가</span>를 누르고 <b>영어만 적으면</b> 뜻과 예문은 앱이 알아서 채워 줘요. <span class="key">카드로 외우기</span>로 외워 보세요. 필요 없는 단어는 <span class="key">삭제</span>를 두 번 누르면 지워져요.</p></div>
+  <div class="card"><h3><span class="ic">★</span>북마크</h3><p>☆ 눌러 둔 문장만 따로 모아 봐요.</p></div>
+  <div class="card"><h3><span class="ic">달</span>이번 달 달력</h3><p>공부한 날에 표시가 생겨요. 하루도 안 빠지고 채워 보세요!</p></div>
+</section>
+
+<section class="sec" id="how"><h2>5. 이렇게 공부하세요</h2>
+  <div class="card">
+      <div class="day"><b>방송 나온 날</b><span>홈에서 <b>오늘의 팟캐스트</b> 듣기 → <b>큐카드 · 팟캐스트</b> 카드 연습</span>
+      <b>나머지 날</b><span><b>큐카드 · 매일 연습</b>에서 오늘의 10문장 소리 내 말하기</span>
+      <b>매일 조금씩</b><span><b>오늘의 철자</b> 5개 · 모르는 단어는 <b>내 단어장</b>에 담기</span></div></div>
+  <div class="tip"><b>꼭 소리 내서 말하세요</b>눈으로만 보면 금방 잊어요. 작게라도 입으로 말해야 말하기 실력이 늘어요.</div>
+  <div class="tip"><b>틀려도 괜찮아요</b>홈의 <b>오늘의 복습</b>이 전에 본 카드를 다시 보여 줘요. 여러 번 보다 보면 저절로 외워져요.</div>
+  <div class="tip"><b>하루 10분, 매일</b>한 번에 오래 하는 것보다 매일 조금씩이 훨씬 좋아요.</div>
+</section>
+
+<div class="note"><b>궁금한 게 있으면</b>선생님(인스타 @ielts_tim)께 편하게 물어보세요. 공부 기록과 내 단어장은 선생님께 전달돼서 수업 준비에만 쓰여요.</div>
+<p class="foot">Bandup · 가장 합리적인 아이엘츠</p>
+</main></body></html>
