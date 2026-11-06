@@ -18,6 +18,30 @@
  "compare": [],
  "cards": [
   {
+   "id": "sm09-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "최근까지만 해도, 저는 운동, 독서, 영어 공부를 한꺼번에 다 하려고 했어요.",
+   "en": "Until recently, I was trying to exercise, read, and study English all at the same time.",
+   "hint": "recently",
+   "gram": "<em>Until recently,</em> = 최근까지만 해도(지금은 아님). <em>was trying to</em> + 동사 = ~하려고 하고 있었다. <em>all at the same time</em> = 한꺼번에, 동시에."
+  },
+  {
+   "id": "sm09-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "하지만 어느 것도 제대로 즐기지 못했고, 곧 세 가지 모두 흐지부지되기 시작했어요.",
+   "en": "But I could not fully enjoy any of them, and soon all three started to fall by the wayside.",
+   "hint": "wayside",
+   "gram": "<em>not ~ any of them</em> = 그중 어느 것도 ~ 못하다. <em>fall by the wayside</em> = 흐지부지되다, 중간에 포기되다. <em>start to</em> + 동사 = ~하기 시작하다."
+  },
+  {
    "id": "sm09-01",
    "kind": "ko",
    "type": "표현",
