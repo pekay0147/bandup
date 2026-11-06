@@ -36,7 +36,7 @@ async function boot(){
     if(s.group==="church" || s.group==="other"){ const gr=await fetch("data/groups/"+s.group+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null); if(gr) for(const k of Object.keys(gr)) if(!["slug","name","form","group"].includes(k)) s[k]=gr[k]; }
     D=s; G=g||{};
     D.podSessions=[];
-    if(s.vocReview){ const TR=store.get("bandup-tr",{}); for(const w of store.get(`bandup-myvoc-${s.slug}`,[])){ if(!w.ex || !/[A-Za-z]/.test(w.ex)) continue; D.cards.push({id:"rvm-"+w.t, kind:"ko", type:"표현", sessions:[], plabel:"단어장 복습 · "+w.w, en:w.ex, hint:w.w, ko: TR[w.ex] || `'${w.ko||w.w}' 표현을 넣어 영어로 말해 보세요`, gram:`<em>${String(w.w).replace(/[<>&]/g,"")}</em> = ${String(w.ko||"").replace(/[<>&]/g,"")}`}); }
+    if(!s.common && !s.demo){ const TR=store.get("bandup-tr",{}); for(const w of store.get(`bandup-myvoc-${s.slug}`,[])){ if(!w.ex || !/[A-Za-z]/.test(w.ex)) continue; D.cards.push({id:"rvm-"+w.t, kind:"ko", type:"표현", sessions:[], plabel:"단어장 복습 · "+w.w, en:w.ex, hint:w.w, ko: TR[w.ex] || `'${w.ko||w.w}' 표현을 넣어 영어로 말해 보세요`, gram:`<em>${String(w.w).replace(/[<>&]/g,"")}</em> = ${String(w.ko||"").replace(/[<>&]/g,"")}`}); }
       const miss=D.cards.filter(c=>c.id.startsWith("rvm-") && !TR[c.en]); if(miss.length) setTimeout(()=>dyTranslate(miss),1500); }
     if(s.group==="ielts"){ const pv=store.get(`bandup-podsel-${s.slug}`,null); const pu=((pv&&pv.url)||(!pv&&s.pod&&s.pod.url)||"");
       const files= s.podFiles || [s.podFile || ("groups/"+(/solid-joys/i.test(pu)? "church" : "other"))];

@@ -214,6 +214,61 @@
    "hint": "different",
    "gram": "다른 방법 = <em>another method</em> / <em>a different way</em>. tried to 뒤엔 동사원형이 와야 해요.",
    "mine": "I tried to other method."
+  },
+  {
+   "id": "rv-001",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "단어장 복습 · mindfulness",
+   "ko": "저는 스트레스를 줄이려고 마음챙김 명상을 해요.",
+   "en": "I practise mindfulness to reduce stress.",
+   "hint": "mindfulness",
+   "gram": "<em>mindfulness</em> = 마음챙김. 내 단어장 단어로 만든 새 문장이에요."
+  },
+  {
+   "id": "rv-002",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "단어장 복습 · noise",
+   "ko": "우리 동네는 밤에 소음이 거의 없어요.",
+   "en": "There's hardly any noise in my neighbourhood at night.",
+   "hint": "noise",
+   "gram": "<em>noise</em> = 소음. 내 단어장 단어로 만든 새 문장이에요."
+  },
+  {
+   "id": "rv-003",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "단어장 복습 · night owl",
+   "ko": "저는 밤형 인간이라 밤에 공부가 더 잘 돼요.",
+   "en": "I'm a night owl, so I study better at night.",
+   "hint": "night owl",
+   "gram": "<em>night owl</em> = 밤형 인간. 내 단어장 단어로 만든 새 문장이에요."
+  },
+  {
+   "id": "rv-004",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "단어장 복습 · insomnia",
+   "ko": "야간 근무 후에는 가끔 불면증이 생겨요.",
+   "en": "I sometimes get insomnia after night shifts.",
+   "hint": "insomnia",
+   "gram": "<em>insomnia</em> = 불면증. 내 단어장 단어로 만든 새 문장이에요."
+  },
+  {
+   "id": "rv-005",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "plabel": "단어장 복습 · on my own",
+   "ko": "주말에는 혼자 산책하는 걸 좋아해요.",
+   "en": "I like going for walks on my own at the weekend.",
+   "hint": "on my own",
+   "gram": "<em>on my own</em> = 혼자서. 내 단어장 단어로 만든 새 문장이에요."
   }
  ],
  "part1": [
