@@ -123,7 +123,7 @@ function consentSheet(){
   sh.append(el("h2",null,"공부 기록을 선생님과 공유할까요?"),
     el("p",null, store.get(CSK(),null)===true ? "이제 내 단어장에 모은 단어도 함께 전달돼요. 선생님이 모아서 맞춤 단어장을 만들어 드릴 수 있어요." : "수업을 더 잘 준비하려고, 틀린 문제와 모은 단어가 선생님께 전달돼요."));
   const ul=el("ul","consent-l");
-  [["전달돼요","큐카드를 맞혔는지 틀렸는지, 북마크한 문장, 틀린 철자, 내 단어장에 모은 단어, 공부한 날 수, 녹음한 횟수"],["전달 안 돼요","녹음, 말한 내용, 위치나 기기 정보"]].forEach(([a,b])=>{ const li=el("li"); li.append(el("b",null,a), el("span",null,b)); ul.append(li); });
+  [["전달돼요","큐카드를 맞혔는지 틀렸는지, 북마크한 문장, 틀린 철자, 내 단어장에 모은 단어, 공부한 날 수"],["전달 안 돼요","말한 내용, 위치나 기기 정보"]].forEach(([a,b])=>{ const li=el("li"); li.append(el("b",null,a), el("span",null,b)); ul.append(li); });
   sh.append(ul, el("p","muted small","언제든 홈 맨 아래에서 끌 수 있어요."));
   const row=el("div","row");
   const yes=el("button","btn primary","좋아요"); yes.type="button"; yes.onclick=()=>{ store.set(CSK(),true); store.set(CSK()+"-v2",true); bg.remove(); render(); };
@@ -514,7 +514,7 @@ function renderMock(app){
   box.append(el("p","mq",st.q));
   if(st.part===2 && st.say.length){ box.append(el("span","idea-lab","You should say")); const ul=el("ul","say"); st.say.forEach(x=>ul.append(el("li",null,x))); box.append(ul); }
   const tools=el("div","mtools");
-  if(canRecord()) tools.append(recBox(MT.i));
+  // 질문 녹음 제거 (2026-11-07)
   tools.append(qbmBtn(st)); box.append(tools);
   if(st.part===2){
     const tm=el("div","mtimer"); const lab=el("b",null,""); const btn=el("button","btn"); btn.type="button"; tm.append(lab,btn);

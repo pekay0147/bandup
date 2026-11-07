@@ -2,6 +2,54 @@
  "course": "English",
  "sessions": [
   {
+   "no": 7,
+   "date": "2026-09-03",
+   "title": "6 Minute English · 기후와 극한 날씨",
+   "link": {
+    "title": "Climate change and extreme weather",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-260903",
+    "date": "3 Sep",
+    "src": "BBC 6 Minute English"
+   },
+   "label": "3 Sep"
+  },
+  {
+   "no": 8,
+   "date": "2026-09-10",
+   "title": "6 Minute English · 언어 앱",
+   "link": {
+    "title": "Can apps teach you a language?",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-260910",
+    "date": "10 Sep",
+    "src": "BBC 6 Minute English"
+   },
+   "label": "10 Sep"
+  },
+  {
+   "no": 9,
+   "date": "2026-09-17",
+   "title": "6 Minute English · 거절",
+   "link": {
+    "title": "Is rejection good for us?",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-260917",
+    "date": "17 Sep",
+    "src": "BBC 6 Minute English"
+   },
+   "label": "17 Sep"
+  },
+  {
+   "no": 10,
+   "date": "2026-09-24",
+   "title": "6 Minute English · 가려움",
+   "link": {
+    "title": "Why do we itch?",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-260924",
+    "date": "24 Sep",
+    "src": "BBC 6 Minute English"
+   },
+   "label": "24 Sep"
+  },
+  {
    "no": 4,
    "date": "2026-10-01",
    "title": "6 Minute English · 이별과 뇌",
@@ -1232,6 +1280,774 @@
    "en": "I have absolutely no idea, but I'm going to go with C.",
    "hint": "go",
    "gram": "<em>go with</em> ~ = ~로 정하다. <em>I have absolutely no idea</em> = 전혀 모르겠어요."
+  },
+  {
+   "id": "6mw01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "오늘 밤 비가 올 가능성이 높아요.",
+   "en": "There's a high likelihood of rain tonight.",
+   "hint": "likelihood",
+   "gram": "<em>likelihood (of)</em> ~ = ~할 가능성. <em>a high likelihood</em> = 높은 가능성."
+  },
+  {
+   "id": "6mw02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "폭우 때문에 산사태가 났어요.",
+   "en": "The heavy rain caused a landslide.",
+   "hint": "landslide",
+   "gram": "<em>landslide</em> = 산사태. <em>heavy rain</em> = 폭우(heavy를 써요)."
+  },
+  {
+   "id": "6mw03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "진흙 사태로 도로가 막혔어요.",
+   "en": "A mudslide blocked the road.",
+   "hint": "mudslide",
+   "gram": "<em>mudslide</em> = 진흙 사태(산사태보다 빠르고 질척해요). <em>block</em> = 막다."
+  },
+  {
+   "id": "6mw04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "태풍이 오면 해일이 아주 위험해요.",
+   "en": "A storm surge can be very dangerous during a typhoon.",
+   "hint": "surge",
+   "gram": "<em>storm surge</em> = 폭풍 해일. <em>during</em> + 명사 = ~ 동안."
+  },
+  {
+   "id": "6mw05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "강한 바람이 마을로 휩쓸고 들어왔어요.",
+   "en": "Strong winds swept in over the town.",
+   "hint": "swept",
+   "gram": "<em>sweep in</em> = 빠르고 세게 들이닥치다(과거 swept in)."
+  },
+  {
+   "id": "6mw06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "다행히 그 사고로 사상자는 없었어요.",
+   "en": "Luckily, there were no casualties in the accident.",
+   "hint": "casualties",
+   "gram": "<em>casualty</em> = (사고·재난의) 사상자. 복수 casualties."
+  },
+  {
+   "id": "6mw07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "날씨는 매일 느끼는 거고, 기후는 더 장기적인 거예요.",
+   "en": "Weather is what you feel every day. Climate is more long-term.",
+   "hint": "long-term",
+   "gram": "<em>what you feel</em> = 네가 느끼는 것. <em>long-term</em> = 장기적인."
+  },
+  {
+   "id": "6mw08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "요즘 극단적인 날씨 소식을 점점 더 많이 들어요.",
+   "en": "We're hearing about more and more extreme weather.",
+   "hint": "extreme",
+   "gram": "<em>more and more</em> + 명사 = 점점 더 많은 ~. <em>extreme weather</em> = 극단적인 날씨."
+  },
+  {
+   "id": "6mw09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "기후 변화가 극단적인 날씨에 영향을 주고 있어요.",
+   "en": "Climate change is affecting extreme weather.",
+   "hint": "affecting",
+   "gram": "<em>affect</em> = ~에 영향을 주다. 진행형 <em>is affecting</em> = 지금 영향을 주고 있다."
+  },
+  {
+   "id": "6mw10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "어디서 생기느냐에 따라 부르는 이름이 달라요.",
+   "en": "We use different names depending on where they form.",
+   "hint": "depending",
+   "gram": "<em>depending on</em> + where 문장 = 어디서 ~하느냐에 따라."
+  },
+  {
+   "id": "6mw11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "세상이 따뜻해지면서 태풍이 더 파괴적이 될 거예요.",
+   "en": "As the world warms, storms will get more destructive.",
+   "hint": "destructive",
+   "gram": "<em>As</em> + 문장 = ~하면서(점점). <em>get more destructive</em> = 더 파괴적이 되다."
+  },
+  {
+   "id": "6mw12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "비가 더 오래 계속되면 홍수가 더 많이 나요.",
+   "en": "If the rain lasts longer, there will be more flooding.",
+   "hint": "lasts",
+   "gram": "<em>last</em> = (시간이) 계속되다. <em>If</em> 현재, <em>will</em> 미래."
+  },
+  {
+   "id": "6mw13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "해수면이 올라가고 있어요.",
+   "en": "Sea levels are rising.",
+   "hint": "rising",
+   "gram": "<em>sea level(s)</em> = 해수면. <em>rise</em> = 오르다(진행형 rising)."
+  },
+  {
+   "id": "6mw14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "작은 변화가 훨씬 큰 문제로 이어질 수 있어요.",
+   "en": "A small change can lead to a much bigger problem.",
+   "hint": "lead",
+   "gram": "<em>lead to</em> ~ = ~로 이어지다. 비교급 강조 <em>much</em> bigger."
+  },
+  {
+   "id": "6mw15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "북극은 평균보다 세 배 빨리 따뜻해지고 있어요.",
+   "en": "The Arctic is warming three times faster than the average.",
+   "hint": "times",
+   "gram": "<em>three times faster than</em> ~ = ~보다 세 배 빠르게."
+  },
+  {
+   "id": "6mw16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "어, 잘 모르겠는데 한 2도쯤?",
+   "en": "I don't know, about two degrees?",
+   "hint": "degrees",
+   "gram": "<em>about</em> + 숫자 = ~쯤. 모를 때 자연스럽게 추측하는 말."
+  },
+  {
+   "id": "6mp01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "그녀는 직접 말하진 않았지만 화가 난 게 느껴졌어요.",
+   "en": "She didn't say it, but her anger was implicit.",
+   "hint": "implicit",
+   "gram": "<em>implicit</em> = 직접 말하지 않아도 담겨 있는, 암묵적인."
+  },
+  {
+   "id": "6mp02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "선생님이 규칙을 아주 분명하게 설명해 주셨어요.",
+   "en": "The teacher gave us explicit instructions.",
+   "hint": "explicit",
+   "gram": "<em>explicit</em> = 분명하게 직접 말한. implicit의 반대."
+  },
+  {
+   "id": "6mp03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "해외에서 살면 언어에 완전히 빠져서 배울 수 있어요.",
+   "en": "Living abroad gives you full immersion in the language.",
+   "hint": "immersion",
+   "gram": "<em>immersion (in)</em> ~ = ~에 완전히 빠짐, 몰입."
+  },
+  {
+   "id": "6mp04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "이 연구의 핵심 결과는 잠이 기억력에 중요하다는 거예요.",
+   "en": "The key finding of the study is that sleep matters for memory.",
+   "hint": "finding",
+   "gram": "<em>key finding</em> = 연구의 핵심 결과. <em>matter</em> = 중요하다."
+  },
+  {
+   "id": "6mp05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "첫 결과가 꽤 희망적이에요.",
+   "en": "The first results are really promising.",
+   "hint": "promising",
+   "gram": "<em>promising</em> = 전망이 밝은, 희망적인."
+  },
+  {
+   "id": "6mp06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "저는 특정한 한 브랜드만 써요.",
+   "en": "I only use one particular brand.",
+   "hint": "particular",
+   "gram": "<em>one particular</em> + 명사 = 특정한 하나의 ~."
+  },
+  {
+   "id": "6mp07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "저는 출퇴근길에 이동하면서 영어 공부를 해요.",
+   "en": "I study English on the go, during my commute.",
+   "hint": "commute",
+   "gram": "<em>on the go</em> = 이동하면서, 바쁘게 다니며. <em>commute</em> = 출퇴근(길)."
+  },
+  {
+   "id": "6mp08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "앱은 언제 어디서나 공부할 수 있어서 편해요.",
+   "en": "I love the convenience of learning with apps.",
+   "hint": "convenience",
+   "gram": "<em>convenience</em> = 편리함. <em>the convenience of</em> + -ing."
+  },
+  {
+   "id": "6mp09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "단어 시험 결과 확인하러 웹사이트에 가 보세요.",
+   "en": "Head to our website to check your test results.",
+   "hint": "Head",
+   "gram": "<em>head to</em> ~ = ~로 가다(구어체)."
+  },
+  {
+   "id": "6mp10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "이 앱들은 언어를 빨리 배우게 도와주는 걸 목표로 해요.",
+   "en": "These apps aim to help you learn a language quickly.",
+   "hint": "aim",
+   "gram": "<em>aim to</em> + 동사 = ~하는 것을 목표로 하다."
+  },
+  {
+   "id": "6mp11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "아이들은 계속 언어에 노출돼요.",
+   "en": "Children get constantly exposed to language.",
+   "hint": "exposed",
+   "gram": "<em>be(get) exposed to</em> ~ = ~에 노출되다. <em>constantly</em> = 계속."
+  },
+  {
+   "id": "6mp12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "현실적으로 매일 세 시간씩 공부할 순 없어요.",
+   "en": "Realistically, I can't study for three hours every day.",
+   "hint": "Realistically",
+   "gram": "<em>Realistically,</em> = 현실적으로(문장 맨 앞)."
+  },
+  {
+   "id": "6mp13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "그 앱으로 쓰기 실력은 늘었지만 듣기는 별로였어요.",
+   "en": "My writing improved with the app, but my listening didn't.",
+   "hint": "improved",
+   "gram": "<em>improve</em> = 늘다, 향상되다. 앞 동사 반복을 피해 <em>didn't</em>로 끝내요."
+  },
+  {
+   "id": "6mp14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "앱과 수업을 같이 하는 게 가장 좋은 방법이에요.",
+   "en": "Combining apps with classes is the best way to learn.",
+   "hint": "Combining",
+   "gram": "<em>combine</em> A <em>with</em> B = A와 B를 결합하다. 동명사 주어."
+  },
+  {
+   "id": "6mp15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "자신에게 맞는 방법을 찾으세요.",
+   "en": "Find what works for you.",
+   "hint": "works",
+   "gram": "<em>what works for you</em> = 너에게 효과 있는 것. <em>work</em> = 효과가 있다."
+  },
+  {
+   "id": "6mp16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "너무 어려우면 0.5배속으로 들어 보세요.",
+   "en": "If it's too difficult, try listening at 0.5 speed.",
+   "hint": "speed",
+   "gram": "<em>try</em> + -ing = (시험 삼아) ~해 보다. <em>at 0.5 speed</em> = 0.5배속으로."
+  },
+  {
+   "id": "6mr01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "거절당하는 걸 좋아하는 사람은 없어요.",
+   "en": "Nobody likes rejection.",
+   "hint": "rejection",
+   "gram": "<em>rejection</em> = 거절. <em>Nobody</em> + 단수동사 likes."
+  },
+  {
+   "id": "6mr02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "발표 전에 심장이 갑자기 빨리 뛰었어요.",
+   "en": "My heart rate spiked before the presentation.",
+   "hint": "spiked",
+   "gram": "<em>spike</em> = 갑자기 치솟다. heart rate = 심박수."
+  },
+  {
+   "id": "6mr03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "저는 사람 많은 곳에서 좀 사회적으로 불안해요.",
+   "en": "I get a bit socially anxious in big crowds.",
+   "hint": "anxious",
+   "gram": "<em>socially anxious</em> = 사람들 앞에서 불안한, 남의 시선이 걱정되는."
+  },
+  {
+   "id": "6mr04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "연습할수록 말하기가 점점 쉬워졌어요.",
+   "en": "Speaking came easier the more I practised.",
+   "hint": "easier",
+   "gram": "<em>come easier</em> = 더 쉬워지다(구어체). <em>the more</em> 문장 = ~할수록."
+  },
+  {
+   "id": "6mr05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "저는 완벽주의 때문에 시작을 잘 못해요.",
+   "en": "My perfectionism makes it hard to start things.",
+   "hint": "perfectionism",
+   "gram": "<em>perfectionism</em> = 완벽주의. <em>make it hard to</em> + 동사 = ~하기 어렵게 만들다."
+  },
+  {
+   "id": "6mr06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "사람들이 저를 어떻게 평가할지 걱정돼요.",
+   "en": "I worry about how people will appraise me.",
+   "hint": "appraise",
+   "gram": "<em>appraise</em> = 평가하다(judge). <em>how people will</em> ~ = 사람들이 어떻게 ~할지."
+  },
+  {
+   "id": "6mr07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "나이가 들수록 거절에 익숙해져요.",
+   "en": "As you get older, you get used to rejection.",
+   "hint": "used",
+   "gram": "<em>get used to</em> + 명사 = ~에 익숙해지다. <em>As you get older</em> = 나이 들수록."
+  },
+  {
+   "id": "6mr08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "원하는 걸 항상 가질 수는 없잖아요.",
+   "en": "We can't always get what we want.",
+   "hint": "always",
+   "gram": "<em>can't always</em> = 항상 ~할 수는 없다(부분 부정)."
+  },
+  {
+   "id": "6mr09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "유명한 사람들도 성공하기 전에 거절을 많이 겪었어요.",
+   "en": "Many famous people faced rejection before they became successful.",
+   "hint": "faced",
+   "gram": "<em>face rejection</em> = 거절에 부딪히다. <em>become successful</em> = 성공하다."
+  },
+  {
+   "id": "6mr10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "저도 그 챌린지를 한번 해 봤어요.",
+   "en": "I had a go at the challenge too.",
+   "hint": "go",
+   "gram": "<em>have a go at</em> ~ = ~을 한번 해 보다(영국식)."
+  },
+  {
+   "id": "6mr11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "첫 면접은 어떻게 됐어요?",
+   "en": "How did you get on at your first interview?",
+   "hint": "get",
+   "gram": "<em>How did you get on?</em> = 어떻게 됐어요?(영국식 구어)."
+  },
+  {
+   "id": "6mr12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "저는 두려움을 이겨 내려고 혼자 여행을 갔어요.",
+   "en": "I travelled alone to face my fears.",
+   "hint": "fears",
+   "gram": "<em>face one's fears</em> = 두려움에 맞서다."
+  },
+  {
+   "id": "6mr13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "그게 '네'일 줄은 몰랐어요!",
+   "en": "I didn't expect that one to be a yes!",
+   "hint": "expect",
+   "gram": "<em>expect</em> A <em>to be</em> B = A가 B일 거라고 예상하다. <em>a yes</em> = 승낙."
+  },
+  {
+   "id": "6mr14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "네 번째쯤엔 거절당해도 신경 안 썼어요.",
+   "en": "By the fourth time, I didn't even mind.",
+   "hint": "mind",
+   "gram": "<em>By</em> + 시점 = ~쯤에는. <em>not mind</em> = 신경 쓰지 않다."
+  },
+  {
+   "id": "6mr15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "운동은 자신감을 높여 줘요.",
+   "en": "Exercise can boost your confidence.",
+   "hint": "boost",
+   "gram": "<em>boost</em> = 높이다, 끌어올리다. <em>boost one's confidence</em>."
+  },
+  {
+   "id": "6mr16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "일부러 실수하는 건 좀 극단적인 방법이에요.",
+   "en": "Making mistakes on purpose is a bit of an extreme way to learn.",
+   "hint": "extreme",
+   "gram": "<em>on purpose</em> = 일부러. <em>a bit of an</em> + 형용사 + 명사 = 좀 ~한."
+  },
+  {
+   "id": "6mi01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "모기에 물려서 너무 가려워요.",
+   "en": "I got bitten by a mosquito and it's really itchy.",
+   "hint": "itchy",
+   "gram": "<em>itchy</em> = 가려운. <em>get bitten by</em> ~ = ~에 물리다."
+  },
+  {
+   "id": "6mi02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "긁지 마세요, 더 심해져요.",
+   "en": "Don't scratch it. It'll get worse.",
+   "hint": "scratch",
+   "gram": "<em>scratch</em> = 긁다. <em>get worse</em> = 더 심해지다."
+  },
+  {
+   "id": "6mi03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "이 주제는 풀어서 설명할 게 많아요.",
+   "en": "There's a lot to unpack in this topic.",
+   "hint": "unpack",
+   "gram": "<em>unpack</em> = (복잡한 걸) 풀어서 설명하다. 원래 뜻은 짐을 풀다."
+  },
+  {
+   "id": "6mi04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "벼룩은 동물에 붙어 사는 기생충이에요.",
+   "en": "Fleas are parasites that live on animals.",
+   "hint": "parasites",
+   "gram": "<em>parasite</em> = 기생충, 기생 생물. <em>live on</em> ~ = ~에 붙어 살다."
+  },
+  {
+   "id": "6mi05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "아이가 갑자기 노래를 부르기 시작했어요.",
+   "en": "My child spontaneously started singing.",
+   "hint": "spontaneously",
+   "gram": "<em>spontaneously</em> = 자연스럽게, 시키지 않았는데. <em>start</em> + -ing."
+  },
+  {
+   "id": "6mi06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "동생한테 감기가 옮았어요.",
+   "en": "I caught a cold from my brother.",
+   "hint": "caught",
+   "gram": "<em>catch a cold from</em> ~ = ~에게서 감기가 옮다(과거 caught)."
+  },
+  {
+   "id": "6mi07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "이 스웨터는 좀 따가워요.",
+   "en": "This jumper is a bit itchy.",
+   "hint": "jumper",
+   "gram": "<em>jumper</em> = 스웨터(영국식). <em>a bit</em> = 조금."
+  },
+  {
+   "id": "6mi08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "가끔 별 이유 없이 가려워요.",
+   "en": "Sometimes I feel itchy for no particular reason.",
+   "hint": "reason",
+   "gram": "<em>for no particular reason</em> = 별 이유 없이."
+  },
+  {
+   "id": "6mi09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "마침 물어봐서 하는 말인데, 저 지금 그거 하고 있어요.",
+   "en": "Funny you should ask, because I'm doing that right now.",
+   "hint": "Funny",
+   "gram": "<em>Funny you should ask</em> = 마침 그걸 물어보시네요(딱 관련 있을 때)."
+  },
+  {
+   "id": "6mi10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "저 그거 진짜 싫어요.",
+   "en": "I hate it when that happens.",
+   "hint": "hate",
+   "gram": "<em>I hate it when</em> + 문장 = ~할 때 정말 싫어요."
+  },
+  {
+   "id": "6mi11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "긁으면 피부에 해로운 것들이 없어져요.",
+   "en": "Scratching helps get rid of harmful things on our skin.",
+   "hint": "rid",
+   "gram": "<em>get rid of</em> ~ = ~을 없애다. 동명사 주어 Scratching."
+  },
+  {
+   "id": "6mi12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "가려움은 우리 피부가 스스로를 지키는 방법이에요.",
+   "en": "Itching is our skin's way of protecting itself.",
+   "hint": "protecting",
+   "gram": "<em>one's way of</em> + -ing = ~하는 방식. <em>protect itself</em> = 스스로를 지키다."
+  },
+  {
+   "id": "6mi13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "이 얘기 들으니까 저도 가려워지네요.",
+   "en": "All this talk of itching is making me feel itchy.",
+   "hint": "talk",
+   "gram": "<em>all this talk of</em> ~ = ~ 이야기를 계속 하니. <em>make</em> 사람 + 동사원형."
+  },
+  {
+   "id": "6mi14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "그 영상을 보니 더 가려워졌어요.",
+   "en": "Watching the video made me feel itchier.",
+   "hint": "itchier",
+   "gram": "<em>itchier</em> = 더 가려운(itchy의 비교급). 동명사 주어 Watching."
+  },
+  {
+   "id": "6mi15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "하품도 옮을 수 있어요.",
+   "en": "You can catch a yawn from someone else.",
+   "hint": "catch",
+   "gram": "<em>catch</em> = (감정·행동이) 옮다. 병뿐 아니라 하품, 웃음에도 써요."
+  },
+  {
+   "id": "6mi16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "털이 많은 소리 같아서 수염이라고 할게요.",
+   "en": "It sounded a bit hairy, so I'm going to go with a beard.",
+   "hint": "hairy",
+   "gram": "<em>sound</em> + 형용사 = ~하게 들리다. <em>hairy</em> = 털이 많은."
   }
  ],
  "part1": [],
