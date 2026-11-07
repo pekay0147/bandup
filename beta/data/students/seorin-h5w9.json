@@ -10,6 +10,11 @@
    "no": 1,
    "date": "2026-11-05",
    "title": "Proud of a family member"
+  },
+  {
+   "no": 2,
+   "date": "2026-11-07",
+   "title": "Helping someone"
   }
  ],
  "types": [
@@ -21,13 +26,16 @@
   "발음·철자"
  ],
  "tips": {
-  "동사·시제": "과거 이야기는 끝까지 과거형! 현재와 섞지 않기. 일반동사 앞에 I'm 붙이지 않기.",
+  "동사·시제": "과거 이야기는 끝까지 과거형! 현재와 섞지 않기. 일반동사 앞에 I'm 붙이지 않기. used to + 동사원형 / be used to + -ing.",
   "주어-동사": "my hometown처럼 하나면 has.",
-  "단어 선택": "every + 단수명사: every day.",
-  "발음·철자": "raise(기르다) 발음 [레이즈] 또렷하게."
+  "단어 선택": "every + 단수명사: every day. stress(명사)·stressed(사람)·stressful(일), affect(동사)·effect(명사) 구분.",
+  "발음·철자": "raise(기르다) 발음 [레이즈] 또렷하게.",
+  "관사·전치사": "listen to music. 신분 앞에 a: a high school student. take the bus.",
+  "문장 구조": "prefer + -ing: I prefer taking the bus. 주어 먼저: The subway is more convenient."
  },
  "focus": {
-  "1": "Part 1 Study·Hometown 질문은 3줄씩 말할 수 있게 연습하기!"
+  "1": "Part 1 Study·Hometown 질문은 3줄씩 말할 수 있게 연습하기!",
+  "2": "used to + 동사원형(예전에 ~했다) vs be used to + -ing(~에 익숙하다) 구분! 거리는 It takes 20 minutes on foot / It's a 20-minute walk 두 가지로."
  },
  "compare": [
   [
@@ -37,6 +45,22 @@
   [
    "every day / everyday",
    "<em>every day</em> 매일(부사) · <em>everyday</em> 일상적인(형용사): everyday life"
+  ],
+  [
+   "used to / be used to",
+   "<em>used to</em> + 동사원형 예전에 ~했다 · <em>be used to</em> + -ing ~에 익숙하다"
+  ],
+  [
+   "stress / stressed / stressful",
+   "<em>stress</em> 명사 · <em>stressed</em> (사람이) 스트레스 받은 · <em>stressful</em> (일이) 스트레스를 주는"
+  ],
+  [
+   "affect / effect",
+   "<em>affect</em> 영향을 주다(동사) · <em>effect</em> 영향, 효과(명사)"
+  ],
+  [
+   "-ed / -ing",
+   "내 기분은 <em>-ed</em>: I'm bored · 그게 주는 느낌은 <em>-ing</em>: It's boring"
   ]
  ],
  "cards": [
@@ -269,6 +293,238 @@
    "en": "I like going for walks on my own at the weekend.",
    "hint": "on my own",
    "gram": "<em>on my own</em> = 혼자서. 내 단어장 단어로 만든 새 문장이에요."
+  },
+  {
+   "id": "e06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 간호사가 되고 싶었어요.",
+   "en": "I wanted to become a nurse.",
+   "hint": "become",
+   "gram": "<em>want to become</em> + 직업 = ~가 되고 싶다. 과거 이야기라 <em>wanted</em>."
+  },
+  {
+   "id": "e07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "환자들이 회복하는 걸 볼 때 뿌듯해요.",
+   "en": "I feel proud when I see my patients recover.",
+   "hint": "recover",
+   "gram": "<em>feel proud when</em> ~ = ~할 때 뿌듯하다. <em>see</em> + 사람 + 동사원형: see my patients <em>recover</em>."
+  },
+  {
+   "id": "e08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "우리가 우리 자신을 돌볼 줄 모르면, 그들도 돌볼 수 없을 거예요.",
+   "en": "If we don't know how to take care of ourselves, we won't know how to take care of them.",
+   "hint": "ourselves",
+   "gram": "<em>If</em> + 현재, <em>won't</em> + 동사 = ~하면 ~하지 못할 거예요. <em>know how to</em> + 동사 = ~할 줄 알다."
+  },
+  {
+   "id": "e09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "우리 도시에는 기차 노선이 하나밖에 없어요.",
+   "en": "There is only one train line in my city.",
+   "hint": "line",
+   "gram": "<em>There is only one</em> + 단수명사 = ~이 하나밖에 없다. <em>train line</em> = 기차 노선."
+  },
+  {
+   "id": "m10",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    2
+   ],
+   "ko": "걸어서 20분 걸려요.",
+   "en": "It takes 20 minutes on foot.",
+   "hint": "takes",
+   "gram": "<em>It takes</em> + 시간 + <em>on foot</em>. 여기서는 minutes 복수."
+  },
+  {
+   "id": "m11",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    2
+   ],
+   "ko": "걸어서 20분 거리예요.",
+   "en": "It's a 20-minute walk.",
+   "hint": "walk",
+   "gram": "<em>It's a 20-minute walk.</em> 숫자-minute이 형용사라 minute 단수!"
+  },
+  {
+   "id": "m12",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 버스 타는 걸 더 좋아해요.",
+   "en": "I prefer taking the bus.",
+   "hint": "prefer",
+   "gram": "<em>prefer</em> + -ing(또는 to + 동사). 교통수단 앞에 <em>the</em>: take <em>the</em> bus.",
+   "mine": "I prefer take bus."
+  },
+  {
+   "id": "m13",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 지하철에서 음악을 들어요.",
+   "en": "I listen to music on the subway.",
+   "hint": "listen",
+   "gram": "<em>listen to</em> + 대상. to를 빼먹지 않기! 교통수단 안에서는 <em>on the subway</em>.",
+   "mine": "… listen music"
+  },
+  {
+   "id": "m14",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    2
+   ],
+   "ko": "지하철이 더 편리해요.",
+   "en": "The subway is more convenient.",
+   "hint": "convenient",
+   "gram": "주어(The subway) + 동사(is) + 형용사 순서로. convenient는 긴 형용사라 <em>more</em> convenient.",
+   "mine": "Convenient is subway …"
+  },
+  {
+   "id": "m15",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    2
+   ],
+   "ko": "고등학생 때 저는 공부를 많이 했어요.",
+   "en": "When I was a high school student, I studied a lot.",
+   "hint": "student",
+   "gram": "사람·신분 앞에 <em>a</em>: <em>a high school student</em>. high school은 두 단어.",
+   "mine": "When I was highschool student …"
+  },
+  {
+   "id": "e10",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    2
+   ],
+   "ko": "예전에는 커피를 많이 마셨어요.",
+   "en": "I used to drink a lot of coffee.",
+   "hint": "used",
+   "gram": "<em>used to</em> + 동사원형 = 예전에는 ~했다(지금은 아님)."
+  },
+  {
+   "id": "e11",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 야간 근무에 익숙해요.",
+   "en": "I'm used to working night shifts.",
+   "hint": "used",
+   "gram": "<em>be used to</em> + -ing = ~하는 데 익숙하다. used to 동사원형(예전에 ~했다)과 구분!"
+  },
+  {
+   "id": "e12",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    2
+   ],
+   "ko": "제 일은 스트레스가 많아서 가끔 스트레스를 받아요.",
+   "en": "My job is stressful, so I sometimes feel stressed.",
+   "hint": "stressful",
+   "gram": "<em>stressful</em> = (일·상황이) 스트레스를 주는, <em>stressed</em> = (사람이) 스트레스 받은, <em>stress</em> = 명사."
+  },
+  {
+   "id": "e13",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    2
+   ],
+   "ko": "스트레스는 제 잠에 영향을 줘요.",
+   "en": "Stress affects my sleep.",
+   "hint": "affects",
+   "gram": "<em>affect</em> = 영향을 주다(동사), <em>effect</em> = 영향, 효과(명사)."
+  },
+  {
+   "id": "e14",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    2
+   ],
+   "ko": "야간 근무는 제 건강에 큰 영향을 줘요.",
+   "en": "Night shifts have a big effect on my health.",
+   "hint": "effect",
+   "gram": "<em>have an effect on</em> ~ = ~에 영향을 주다. effect는 명사!"
+  },
+  {
+   "id": "e15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "우리는 같은 기수였어요.",
+   "en": "We were in the same batch.",
+   "hint": "batch",
+   "gram": "<em>batch</em> = 동기, 기수. <em>She is my batchmate.</em>"
+  },
+  {
+   "id": "e16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "지금 7시 10분 전이에요.",
+   "en": "It's ten to seven.",
+   "hint": "ten",
+   "gram": "<em>10 to 7</em> = 7시 10분 전(6:50), <em>10 past 7</em> = 7시 10분."
+  },
+  {
+   "id": "e17",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "가격 면에서는 꽤 싸요.",
+   "en": "Price-wise, it's quite cheap.",
+   "hint": "Price-wise",
+   "gram": "명사 + <em>-wise</em> = ~ 면에서: price-wise, location-wise."
+  },
+  {
+   "id": "e18",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 편식 안 해요.",
+   "en": "I'm not a picky eater.",
+   "hint": "picky",
+   "gram": "<em>picky eater</em> = 편식하는 사람. Food 질문에 바로 쓰세요."
   }
  ],
  "part1": [
@@ -358,6 +614,55 @@
      ]
     }
    ]
+  },
+  {
+   "session": 2,
+   "groups": [
+    {
+     "title": "Transport",
+     "qs": [
+      "How do you usually get to work?",
+      "How long does it take you to get to work?",
+      "Do you prefer taking the bus or the subway?",
+      "Is public transport in your city convenient?",
+      "Did you use public transport a lot when you were a child?",
+      "What would make your commute easier?"
+     ]
+    },
+    {
+     "title": "Childhood",
+     "qs": [
+      "Where did you grow up?",
+      "What did you like doing when you were young?",
+      "Did you have a favourite toy?",
+      "Who was your best friend as a child?",
+      "Did you prefer playing outside or inside?",
+      "Is your childhood different from children's lives today?"
+     ]
+    },
+    {
+     "title": "Colours",
+     "qs": [
+      "What's your favourite colour?",
+      "Do you prefer light colours or dark colours?",
+      "What colours suit you?",
+      "Did you like the same colours when you were a child?",
+      "Are there any colours you don't like?",
+      "Do colours affect your mood?"
+     ]
+    },
+    {
+     "title": "Health & Stress",
+     "qs": [
+      "What do you do to stay healthy?",
+      "How do you deal with stress?",
+      "Do you sleep well these days?",
+      "Is it easy to stay healthy when you work shifts?",
+      "Did you do any sports when you were younger?",
+      "Do you think people are more stressed now than in the past?"
+     ]
+    }
+   ]
   }
  ],
  "part3": [
@@ -369,6 +674,16 @@
     "Do you think families today spend less time together than in the past?",
     "Should children be praised often, or does it spoil them?",
     "What can family members do to support each other?"
+   ]
+  },
+  {
+   "session": 2,
+   "topic": "Describe a time when you helped someone",
+   "qs": [
+    "Why do some people choose jobs that help others, like nursing?",
+    "Do you think people help each other less than in the past?",
+    "Should young people be taught to help others at school?",
+    "What can hospitals do to support stressed staff?"
    ]
   }
  ],
@@ -403,6 +718,72 @@
    "ko": "혼자서",
    "ex": "I want to live on my own.",
    "s": 1
+  },
+  {
+   "w": "false dawn",
+   "ko": "좋아지는 듯했지만 아닌 상황",
+   "ex": "There's been some false dawns in cancer vaccines.",
+   "s": 2
+  },
+  {
+   "w": "a long time coming",
+   "ko": "오래 걸려 드디어 이뤄진 일",
+   "ex": "This moment has been quite a long time coming.",
+   "s": 2
+  },
+  {
+   "w": "breakthrough",
+   "ko": "돌파구, 획기적 진전",
+   "ex": "It's very exciting that there's this breakthrough.",
+   "s": 2
+  },
+  {
+   "w": "prime",
+   "ko": "~할 준비를 시키다",
+   "ex": "It's a way of priming the immune system to the cancer.",
+   "s": 2
+  },
+  {
+   "w": "show promise",
+   "ko": "가능성을 보이다",
+   "ex": "This new treatment shows a lot of promise.",
+   "s": 2
+  },
+  {
+   "w": "side effects",
+   "ko": "부작용",
+   "ex": "Radiotherapy and chemotherapy have quite a few side effects.",
+   "s": 2
+  },
+  {
+   "w": "batch",
+   "ko": "동기, 기수",
+   "ex": "We were in the same batch.",
+   "s": 2
+  },
+  {
+   "w": "10 to 7",
+   "ko": "7시 10분 전(6시 50분)",
+   "ex": "It's ten to seven.",
+   "s": 2
+  },
+  {
+   "w": "-wise",
+   "ko": "~ 면에서",
+   "ex": "Price-wise, it's quite cheap.",
+   "s": 2
+  },
+  {
+   "w": "picky eater",
+   "ko": "편식하는 사람",
+   "ex": "I'm not a picky eater.",
+   "s": 2
+  },
+  {
+   "w": "used to / be used to -ing",
+   "ko": "예전에 ~했다 / ~에 익숙하다",
+   "ex": "I'm used to working night shifts.",
+   "s": 2
   }
  ],
  "podFiles": [
