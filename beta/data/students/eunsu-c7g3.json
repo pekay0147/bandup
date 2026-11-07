@@ -910,5 +910,9 @@
   "url": "https://podcasts.apple.com/nz/podcast/solid-joys-daily-devotional/id1315817340"
  },
  "group": "self",
- "vocReview": true
+ "vocReview": true,
+ "podFiles": [
+  "groups/other",
+  "groups/church"
+ ]
 }

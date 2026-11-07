@@ -40,7 +40,7 @@ async function boot(){
     if(s.rvCards) D.cards.push(...s.rvCards);
     if(!s.common && !s.demo){ const TR=store.get("bandup-tr",{}); for(const w of store.get(`bandup-myvoc-${s.slug}`,[])){ if(!w.ex || !/[A-Za-z]/.test(w.ex)) continue; D.cards.push({id:"rvm-"+w.t, kind:"ko", type:"표현", sessions:[], plabel:"단어장 복습 · "+w.w, en:w.ex, hint:w.w, ko: TR[w.ex] || `'${w.ko||w.w}' 표현을 넣어 영어로 말해 보세요`, gram:`<em>${String(w.w).replace(/[<>&]/g,"")}</em> = ${String(w.ko||"").replace(/[<>&]/g,"")}`}); }
       const miss=D.cards.filter(c=>c.id.startsWith("rvm-") && !TR[c.en]); if(miss.length) setTimeout(()=>dyTranslate(miss),1500); }
-    if(s.group==="ielts"){ const pv=store.get(`bandup-podsel-${s.slug}`,null); const pu=((pv&&pv.url)||(!pv&&s.pod&&s.pod.url)||"");
+    if(s.group==="ielts" || s.podFiles){ const pv=store.get(`bandup-podsel-${s.slug}`,null); const pu=((pv&&pv.url)||(!pv&&s.pod&&s.pod.url)||"");
       const files= s.podFiles || [s.podFile || ("groups/"+(/solid-joys/i.test(pu)? "church" : "other"))];
       const docs=await Promise.all(files.map(p=>fetch(DATA+p+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
       let n=0; const all=[];
@@ -711,7 +711,7 @@ function renderDecks(app){
   const seg=el("div","modeseg"+((+!!hasPod + +!!hasLesson + +hasDaily)>2?"":" two")); seg.setAttribute("role","tablist");
   if(cardMode!=="session" && cardMode!=="pod" && !(cardMode==="daily"&&hasDaily)) cardMode= hasLesson? "session" : "pod";
   if(cardMode==="session" && !hasLesson) cardMode="pod"; if(cardMode==="pod" && !hasPod) cardMode="session";
-  const modes=[...(hasLesson?[["session",D.common?"주제별":D.group==="other"?"팟캐스트":(hasPod?"수업 회차별":"회차별"),(D.group==="other"||D.group==="church")? `에피소드 ${D.sessions.length}편` : `1~${D.sessions[D.sessions.length-1].no}회차`]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","오늘의 문장 10개"]]:[])];
+  const modes=[...(hasLesson?[["session",D.common?"주제별":D.group==="other"?"팟캐스트":(D.group==="self"? "스피킹 매트릭스" : hasPod?"수업 회차별":"회차별"),(D.group==="other"||D.group==="church")? `에피소드 ${D.sessions.length}편` : `1~${D.sessions[D.sessions.length-1].no}회차`]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","오늘의 문장 10개"]]:[])];
   for(const [k,label,sub] of modes){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(cardMode===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; openKey=null; render(); }; seg.append(b);
@@ -732,7 +732,11 @@ function renderDecks(app){
   } else if(cardMode==="pod"){
     const PS=D.podSessions; if(selPod==null || !PS.some(x=>x.no===selPod)) selPod=PS[PS.length-1].no;
     const wrap=el("div","picker"); wrap.append(el("span","picker-lab","에피소드 선택")); const row=el("div","pchips");
-    const multi=new Set(PS.map(x=>x.link.src)).size>1; const [mr,PSm]=monthRow(PS,selPod,v=>{ selPod=v; render(); }); if(mr) wrap.append(mr); PSm.forEach(x=>{ const b=el("button",null,(multi? String(x.link.src||"").replace(/ 6 Minute English$/,"")+" " : "")+(x.link.date||(x.no+"회"))); b.type="button"; b.setAttribute("aria-pressed",String(selPod===x.no)); b.append(el("small",null,String(D.cards.filter(c=>(c.psessions||[]).includes(x.no)).length))); b.onclick=()=>{ selPod=x.no; render(); }; row.append(b); });
+    const srcs=[...new Set(PS.map(x=>x.link.src||""))], multi=srcs.length>1; let PSs=PS;
+    if(multi){ const cs=(PS.find(x=>x.no===selPod)||PS[PS.length-1]).link.src||""; const sr=el("div","pchips srcchips"); sr.setAttribute("role","group"); sr.setAttribute("aria-label","팟캐스트 선택");
+      for(const sname of srcs){ const its=PS.filter(x=>(x.link.src||"")===sname); const b=el("button",null,sname||"팟캐스트"); b.type="button"; b.setAttribute("aria-pressed",String(sname===cs)); b.append(el("small",null,its.length+"편")); b.onclick=()=>{ selPod=its[its.length-1].no; render(); }; sr.append(b); }
+      wrap.append(sr); PSs=PS.filter(x=>(x.link.src||"")===cs); }
+    const [mr,PSm]=monthRow(PSs,selPod,v=>{ selPod=v; render(); }); if(mr) wrap.append(mr); PSm.forEach(x=>{ const b=el("button",null,(x.link.date||(x.no+"회"))); b.type="button"; b.setAttribute("aria-pressed",String(selPod===x.no)); b.append(el("small",null,String(D.cards.filter(c=>(c.psessions||[]).includes(x.no)).length))); b.onclick=()=>{ selPod=x.no; render(); }; row.append(b); });
     wrap.append(row); app.append(wrap);
     const se=PS.find(x=>x.no===selPod); { const a=el("a","eplink"); a.href=se.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null,[se.link.date, se.link.src].filter(Boolean).join(" · ")), el("b",null,se.link.title||"에피소드"), el("i",null,"›")); app.append(a); }
     key="p"+selPod; list=D.cards.filter(c=>(c.psessions||[]).includes(selPod));
