@@ -9,7 +9,104 @@
     "url": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/260911",
     "date": "11 Sep",
     "src": "Real Easy English"
-   }
+   },
+   "vocab": [
+    {
+     "w": "pudding",
+     "ko": "(영국) 디저트",
+     "ex": "In the UK, people often call dessert pudding."
+    },
+    {
+     "w": "have a sweet tooth",
+     "ko": "단 걸 좋아하다",
+     "ex": "I have a really sweet tooth."
+    },
+    {
+     "w": "sour",
+     "ko": "신, 시큼한",
+     "ex": "Lemons are too sour to eat on their own."
+    },
+    {
+     "w": "sharp",
+     "ko": "(맛이) 새콤하고 강한",
+     "ex": "This yoghurt tastes quite sharp."
+    },
+    {
+     "w": "filling",
+     "ko": "배부르게 하는, 든든한",
+     "ex": "The cake was so filling that I couldn't finish it."
+    },
+    {
+     "w": "a chocolate person",
+     "ko": "초콜릿을 정말 좋아하는 사람",
+     "ex": "I'm a chocolate person."
+    },
+    {
+     "w": "I'd rather",
+     "ko": "차라리 ~하겠다",
+     "ex": "I'd rather have a dessert than a starter."
+    },
+    {
+     "w": "starter",
+     "ko": "(영국) 전채 요리",
+     "ex": "I'd rather have a dessert than a starter."
+    },
+    {
+     "w": "homemade",
+     "ko": "집에서 만든",
+     "ex": "I like homemade desserts the most."
+    },
+    {
+     "w": "you can't beat",
+     "ko": "~만한 게 없다",
+     "ex": "On a hot day, you can't beat ice cream."
+    },
+    {
+     "w": "as a treat",
+     "ko": "특별히 나에게 주는 선물로",
+     "ex": "I only have cake as a treat on special occasions."
+    },
+    {
+     "w": "special occasions",
+     "ko": "특별한 날",
+     "ex": "I only have cake as a treat on special occasions."
+    },
+    {
+     "w": "sugar cravings",
+     "ko": "단 게 당기는 것",
+     "ex": "I get strong sugar cravings after meals."
+    },
+    {
+     "w": "savoury",
+     "ko": "짭짤한(단맛이 아닌)",
+     "ex": "I prefer savoury snacks to sweet ones."
+    },
+    {
+     "w": "prefer A to B",
+     "ko": "B보다 A를 더 좋아하다",
+     "ex": "I prefer savoury snacks to sweet ones."
+    },
+    {
+     "w": "crispy",
+     "ko": "바삭한",
+     "ex": "I love apple crumble with a crispy topping."
+    },
+    {
+     "w": "rich",
+     "ko": "(음식이) 진하고 기름진",
+     "ex": "This chocolate cake is too rich for me."
+    },
+    {
+     "w": "deep-fried",
+     "ko": "기름에 튀긴",
+     "ex": "Deep-fried food is tasty, but it isn't very healthy."
+    },
+    {
+     "w": "What do you mean by",
+     "ko": "~가 무슨 뜻이에요?",
+     "ex": "What do you mean by that?"
+    }
+   ]
   }
  ],
  "cards": [
