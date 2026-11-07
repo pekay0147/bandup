@@ -32,6 +32,17 @@
     "date": "6 Nov",
     "src": "Solid Joys"
    }
+  },
+  {
+   "no": 4,
+   "date": "2026-11-07",
+   "title": "Is God's love conditional?",
+   "link": {
+    "title": "Is God's Love Conditional?",
+    "url": "https://www.desiringgod.org/solid-joys/is-gods-love-conditional",
+    "date": "7 Nov",
+    "src": "Solid Joys"
+   }
   }
  ],
  "types": [
@@ -431,6 +442,150 @@
    "en": "It presses us on to glad obedience, not just begrudging obedience.",
    "hint": "obedience",
    "gram": "<em>obedience</em> = 순종. <em>press</em> someone <em>on to</em> ~ = ~로 밀고 나아가게 하다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s4-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "하나님께 가까이 가라. 그리하면 그가 너희에게 가까이 오시리라. (야고보서 4:8)",
+   "en": "Draw near to God, and he will draw near to you.",
+   "hint": "near",
+   "gram": "<em>draw near to</em> ~ = ~에게 가까이 가다. 명령문 + <em>and</em> = ~해라, 그러면 ~할 것이다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s4-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "하나님은 교만한 자를 물리치시고 겸손한 자에게 은혜를 주십니다.",
+   "en": "God opposes the proud but gives grace to the humble.",
+   "hint": "humble",
+   "gram": "<em>the</em> + 형용사 = ~한 사람들: the proud(교만한 자들), the humble(겸손한 자들). <em>oppose</em> = 대적하다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s4-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "그러므로 하나님께 순종하십시오. 마귀를 대적하면 그가 도망칠 것입니다.",
+   "en": "Submit yourselves therefore to God. Resist the devil, and he will flee from you.",
+   "hint": "resist",
+   "gram": "<em>submit to</em> ~ = ~에 복종하다. <em>resist</em> = 저항하다. <em>flee</em> = 도망치다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s4-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "이것은 분명 놀라운 경험입니다.",
+   "en": "Surely this is a wonderful experience.",
+   "hint": "Surely",
+   "gram": "<em>Surely</em> = 분명히, 확실히(문장 맨 앞에서 강조). <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s4-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "하나님의 사랑에 대한 이 경험은 무조건적인가요? 아닙니다.",
+   "en": "Is this experience of the love of God unconditional? No. It is not.",
+   "hint": "unconditional",
+   "gram": "<em>unconditional</em> = 무조건적인. 반대는 <em>conditional</em>(조건적인). <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s4-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "그것은 우리가 스스로 겸손해지고 하나님께 가까이 가는 것에 달려 있습니다.",
+   "en": "It is conditional on our humbling ourselves and our drawing near to God.",
+   "hint": "conditional",
+   "gram": "<em>be conditional on</em> ~ = ~에 달려 있다, ~이 조건이다. on 뒤에는 명사/-ing. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s4-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "교만과 싸우고 겸손을 구해야 하는 소중한 경험들이 있습니다.",
+   "en": "There are precious experiences of the love of God that require that we fight pride and seek humility.",
+   "hint": "require",
+   "gram": "<em>require that</em> + 주어 + 동사원형 = ~해야 한다고 요구하다. <em>seek</em> = 구하다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s4-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "물론 그 조건들 자체도 우리 안에서 하시는 하나님의 일입니다.",
+   "en": "Of course, the conditions themselves are the work of God in us.",
+   "hint": "themselves",
+   "gram": "<em>Of course,</em> = 물론. 명사 + <em>themselves</em> = 그 ~ 자체. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s4-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "그렇다고 우리가 채워야 할 조건이 아닌 것은 아닙니다.",
+   "en": "But they are no less conditions we fulfill.",
+   "hint": "fulfill",
+   "gram": "<em>no less</em> ~ = 그렇다고 덜 ~한 것은 아니다. <em>fulfill</em> = (조건을) 채우다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s4-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "사람들은 평안을 간절히 원합니다.",
+   "en": "People desperately crave peace.",
+   "hint": "crave",
+   "gram": "<em>crave</em> = 간절히 원하다. <em>desperately</em> = 절실하게. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s4-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "분명하게 크게 선포합시다.",
+   "en": "Let us proclaim it, loud and clear.",
+   "hint": "proclaim",
+   "gram": "<em>Let us</em> + 동사원형 = ~합시다. <em>loud and clear</em> = 분명하고 크게. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s4-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "가장 풍성하고 달콤한 은혜는 매일 겸손히 하나님께 가까이 가는 사람들이 누립니다.",
+   "en": "The fullest and sweetest experiences of grace will be enjoyed by those who daily humble themselves and draw near to God.",
+   "hint": "enjoyed",
+   "gram": "<em>those who</em> + 동사 = ~하는 사람들. 수동태 <em>will be enjoyed by</em> ~ = ~가 누리게 될 것이다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
   }
  ],
  "part1": [],
