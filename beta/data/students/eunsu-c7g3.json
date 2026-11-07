@@ -8,6 +8,12 @@
    "date": "2026-11-06",
    "title": "Speaking Matrix",
    "label": "스피킹 매트릭스 9회"
+  },
+  {
+   "no": 10,
+   "date": "2026-11-07",
+   "title": "Speaking Matrix",
+   "label": "스피킹 매트릭스 10회"
   }
  ],
  "types": [
@@ -88,6 +94,102 @@
    "en": "Looking back, focusing on one thing was one of the best decisions I made for my growth.",
    "hint": "Looking",
    "gram": "<em>Looking back,</em> = 돌이켜 보면(문장 맨 앞). <em>one of the best</em> + 복수명사(decisions). <em>the best decision(s) I made</em> = 내가 내린 최고의 결정."
+  },
+  {
+   "id": "sm10-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "처음 한 일은 옷 정리였어요. 50벌이 넘던 옷을 딱 10벌로 줄였어요.",
+   "en": "The first thing I did was sort through my clothes. I went from over 50 items down to just 10.",
+   "hint": "sort",
+   "gram": "<em>The first thing I did was</em> + 동사원형 = 처음 한 일은 ~였다. <em>sort through</em> = (하나하나 보며) 정리하다, 추려내다. <em>go from A down to B</em> = A에서 B로 줄이다. <em>over 50</em> = 50개 넘게."
+  },
+  {
+   "id": "sm10-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "처음에는 옷이 적어지면 뭘 입어야 할지 모를까 봐 걱정했어요.",
+   "en": "At first, I was afraid that with fewer clothes, I would not know what to wear.",
+   "hint": "afraid",
+   "gram": "<em>At first,</em> = 처음에는(나중엔 달라짐). <em>be afraid that</em> + 문장 = ~할까 봐 걱정하다. <em>with fewer clothes</em> = 옷이 더 적으면(셀 수 있는 명사라 fewer). <em>what to wear</em> = 무엇을 입을지."
+  },
+  {
+   "id": "sm10-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "저는 가진 건 적어졌지만, 더 자유로워진 느낌이었어요.",
+   "en": "I owned less but felt freer.",
+   "hint": "owned",
+   "gram": "<em>own less</em> = 덜 소유하다. 과거 이야기라 owned / felt 둘 다 과거형으로 맞춰요. <em>feel freer</em> = 더 자유롭게 느끼다(free → freer)."
+  },
+  {
+   "id": "sm10-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "어떤 사람들은 더 많이 가지면 더 부유해진 느낌이 든다고 생각하는 것도 이해가 돼요.",
+   "en": "It is understandable that some people feel owning more can make them feel richer.",
+   "hint": "understandable",
+   "gram": "<em>It is understandable that</em> + 문장 = ~하는 것도 이해가 된다. 동명사 주어 <em>owning more</em> = 더 많이 가지는 것(owing = 빚지는 것과 구분!). <em>make</em> + 사람 + 동사원형: make <em>them feel</em> richer."
+  },
+  {
+   "id": "sm10-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "나중에 깨달았는데, 물건을 줄이니 공간이 더 생겼을 뿐 아니라 마음도 훨씬 편안해졌어요.",
+   "en": "Later, I realized that reducing things not only created more space but also led to more peace of mind.",
+   "hint": "realized",
+   "gram": "<em>Later, I realized that</em> ~ = 나중에 ~라는 걸 깨달았다. 동명사 주어 <em>reducing things</em>는 단수, 과거라 created. <em>not only A but also B</em> = A뿐만 아니라 B도(A·B 모두 동사 과거형으로). <em>lead to</em> = ~로 이어지다(과거 led). <em>peace of mind</em> = 마음의 평화."
+  },
+  {
+   "id": "sm10-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "적게 가지는 것이 결국 훨씬 더 만족스러운 삶의 방식이었어요.",
+   "en": "Having less turned out to be a much more satisfying way to live.",
+   "hint": "turned",
+   "gram": "동명사 주어 <em>Having less</em> = 적게 가지는 것. <em>turn out to be</em> = 결국 ~인 것으로 드러나다. 비교급 강조는 <em>much</em> more. <em>a way to live</em> = 사는 방식."
+  },
+  {
+   "id": "sm10-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "결론적으로, 미니멀 라이프는 단순히 정리정돈에 관한 게 아니었어요. 제가 사는 방식을 바꿔 놓았어요.",
+   "en": "All in all, minimalist living was not just about tidying up. It changed the way I live.",
+   "hint": "All in all",
+   "gram": "<em>All in all,</em> = 대체로, 결론적으로(마무리 표현). <em>not just about</em> ~ = 단순히 ~에 관한 게 아니다. <em>tidy up</em> = 정리정돈하다. <em>the way I live</em> = 내가 사는 방식."
+  },
+  {
+   "id": "sm10-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "취향과 생활 방식에 따라, 어떤 사람들에게는 물건을 더 많이 갖는 게 맞는 선택일 수도 있어요.",
+   "en": "Depending on their taste and lifestyle, owning more things may be the right choice for some people.",
+   "hint": "Depending",
+   "gram": "<em>Depending on</em> ~ = ~에 따라(문장 맨 앞, 쉼표). 동명사 주어 <em>owning more things</em>. <em>may be</em> = ~일 수도 있다. <em>the right choice for</em> 사람 = ~에게 맞는 선택."
   },
   {
    "id": "rv-01",
