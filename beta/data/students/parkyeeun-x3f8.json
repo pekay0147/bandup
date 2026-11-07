@@ -35,6 +35,11 @@
    "no": 6,
    "date": "2026-10-25",
    "title": "Daily routine · Apps · Clothes"
+  },
+  {
+   "no": 7,
+   "date": "2026-11-08",
+   "title": "Holidays · Weather · Memory · Sugar"
   }
  ],
  "types": [
@@ -55,7 +60,9 @@
   "단어 선택": "걸어서는 on foot, 출신은 from + 나라. 가장 쉬운 표현으로 실수 없이!",
   "발음·철자": "argue → argument(e가 빠져요). 헷갈리는 철자는 써 보며 외우기."
  },
- "focus": {},
+ "focus": {
+  "7": "prefer·like 같은 일반동사 앞에 I'm 붙이지 않기! used to + 동사원형(예전에) vs be used to + -ing(익숙하다). look + 전치사 표현을 답변에 하나씩 넣어 보기."
+ },
  "compare": [
   [
    "travel vs trip",
@@ -76,6 +83,26 @@
   [
    "be used to / be accustomed to / adjust to",
    "<em>I'm used to living here.</em> = <em>I'm accustomed to living here.</em> 익숙하다 (+ing)<br><em>I adjusted to it.</em> 적응했다"
+  ],
+  [
+   "look at / for / after / into",
+   "<em>look at</em> 보다 · <em>look for</em> 찾다 · <em>look after</em> 돌보다 · <em>look into</em> 알아보다"
+  ],
+  [
+   "used to / be used to",
+   "<em>used to</em> + 동사원형 예전에 ~했다 · <em>be used to</em> + -ing ~에 익숙하다"
+  ],
+  [
+   "get in / get on",
+   "<em>get in</em> the car·taxi (작은 차) · <em>get on</em> the bus·train·plane (큰 교통수단)"
+  ],
+  [
+   "addicted / addictive",
+   "<em>I'm addicted to</em> sugar (사람) · Sugar is <em>addictive</em> (대상)"
+  ],
+  [
+   "during / when",
+   "<em>during</em> + 명사: during the holiday · <em>when</em> + 문장: when I was on holiday"
   ]
  ],
  "cards": [
@@ -453,7 +480,8 @@
    "type": "표현",
    "sessions": [
     2,
-    3
+    3,
+    7
    ],
    "ko": "기본적으로 저는 아침형 인간이에요",
    "en": "Basically, I'm a morning person.",
@@ -721,7 +749,8 @@
    "kind": "ko",
    "type": "표현",
    "sessions": [
-    6
+    6,
+    7
    ],
    "ko": "알고 보니 내 실수였어",
    "en": "It turned out it was my mistake.",
@@ -733,7 +762,8 @@
    "kind": "ko",
    "type": "표현",
    "sessions": [
-    6
+    6,
+    7
    ],
    "ko": "좋은 아이디어가 하나도 안 떠올라!",
    "en": "I can't come up with any good ideas!",
@@ -745,7 +775,8 @@
    "kind": "ko",
    "type": "표현",
    "sessions": [
-    6
+    6,
+    7
    ],
    "ko": "나는 그것에 집중할 수가 없어!",
    "en": "I can't concentrate on it!",
@@ -1491,6 +1522,359 @@
    "en": "Look out for bikes when you cross the road.",
    "hint": "look out for",
    "gram": "<em>look out for</em> = ~을 주의해서 살피다. 내 단어장 단어로 만든 새 문장이에요."
+  },
+  {
+   "id": "e42",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "시간 날 때마다 책을 읽어",
+   "en": "I read books whenever I have time.",
+   "hint": "whenever",
+   "gram": "<em>whenever</em> + 주어 + 동사 = ~할 때마다."
+  },
+  {
+   "id": "e43",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "휴대폰을 찾고 있어",
+   "en": "I'm looking for my phone.",
+   "hint": "looking",
+   "gram": "<em>look for</em> = ~을 찾다.<br><b>look at vs look for</b> · <em>look at</em> 보다 / <em>look for</em> 찾다."
+  },
+  {
+   "id": "e44",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "내 강아지 좀 돌봐 줄래?",
+   "en": "Can you look after my dog?",
+   "hint": "after",
+   "gram": "<em>look after</em> = ~을 돌보다."
+  },
+  {
+   "id": "e45",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "그 문제를 알아볼게",
+   "en": "I'll look into the problem.",
+   "hint": "into",
+   "gram": "<em>look into</em> = ~을 조사하다, 알아보다."
+  },
+  {
+   "id": "e46",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "그 단어를 사전에서 찾아봐",
+   "en": "Look up the word in the dictionary.",
+   "hint": "up",
+   "gram": "<em>look up</em> = (정보를) 찾아보다 / 올려다보다."
+  },
+  {
+   "id": "e47",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "내 에세이 좀 검토해 줘",
+   "en": "Please look over my essay.",
+   "hint": "over",
+   "gram": "<em>look over</em> = ~을 훑어보다, 검토하다. 쭉 넘겨 보는 건 <em>look through</em>."
+  },
+  {
+   "id": "e48",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "나는 종종 학창 시절을 돌이켜봐",
+   "en": "I often look back on my school days.",
+   "hint": "back",
+   "gram": "<em>look back on</em> = ~을 돌이켜보다."
+  },
+  {
+   "id": "e49",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "너 만나는 거 기대돼",
+   "en": "I look forward to seeing you.",
+   "hint": "forward",
+   "gram": "<em>look forward to</em> = ~을 기대하다. to 뒤에는 <em>-ing</em>: to <em>seeing</em>."
+  },
+  {
+   "id": "e50",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "나는 선생님을 존경해",
+   "en": "I look up to my teacher.",
+   "hint": "up",
+   "gram": "<em>look up to</em> = ~을 존경하다. 반대는 <em>look down on</em>(깔보다)."
+  },
+  {
+   "id": "e51",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "다른 사람을 깔보지 마",
+   "en": "Don't look down on others.",
+   "hint": "down",
+   "gram": "<em>look down on</em> = ~을 깔보다."
+  },
+  {
+   "id": "m17",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    7
+   ],
+   "ko": "저는 한국 드라마에 푹 빠져 있어요.",
+   "en": "I'm really into K-dramas.",
+   "hint": "into",
+   "gram": "<em>be into</em> + 명사 = ~에 푹 빠져 있다. be동사(I'm)를 꼭 넣어요!",
+   "mine": "I really in to …"
+  },
+  {
+   "id": "m18",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    7
+   ],
+   "ko": "저는 산보다 바다가 더 좋아요.",
+   "en": "I prefer the beach to the mountains.",
+   "hint": "prefer",
+   "gram": "prefer는 일반동사라 앞에 I'm을 붙이지 않아요. <em>prefer A to B</em> = B보다 A가 좋다.",
+   "mine": "I'm prefer …"
+  },
+  {
+   "id": "m19",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    7
+   ],
+   "ko": "저는 걸어서 출근해요.",
+   "en": "I go to work on foot.",
+   "hint": "foot",
+   "gram": "걸어서는 <em>on foot</em>. by bus, by car지만 걸어서는 by foot ❌",
+   "mine": "… by foot"
+  },
+  {
+   "id": "m20",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    7
+   ],
+   "ko": "예전에 크로스핏을 했었어요.",
+   "en": "I used to do CrossFit.",
+   "hint": "used",
+   "gram": "<em>used to</em> + 동사원형 = 예전에 ~했다. I'm used to는 뒤에 -ing(익숙하다): I'm used to doing CrossFit.",
+   "mine": "I'm used to do CrossFit."
+  },
+  {
+   "id": "m21",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    7
+   ],
+   "ko": "엄마한테 전화할 거예요.",
+   "en": "I will call my mom.",
+   "hint": "call",
+   "gram": "<em>call</em> + 사람(with 없이). ~와 통화하다는 <em>talk to</em> my mom on the phone.",
+   "mine": "I will call with my mom."
+  },
+  {
+   "id": "e52",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "저는 한 달에 두 번 수영하러 가요.",
+   "en": "I go swimming twice a month.",
+   "hint": "twice",
+   "gram": "<em>twice a month</em> = 한 달에 두 번. once a week, three times a year."
+  },
+  {
+   "id": "e53",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "저는 수영하는 걸 안 좋아해요.",
+   "en": "I don't like swimming.",
+   "hint": "swimming",
+   "gram": "<em>don't like</em> + -ing / to 동사원형 둘 다 돼요: I don't like to swim."
+  },
+  {
+   "id": "e54",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    7
+   ],
+   "ko": "방학 동안 제주도에 갔어요.",
+   "en": "During the vacation, I went to Jeju.",
+   "hint": "During",
+   "gram": "<em>during</em> + 명사(the vacation), <em>when/while</em> + 문장(when I was on holiday)."
+  },
+  {
+   "id": "e55",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "작년에 휴가로 일본에 갔어요.",
+   "en": "I went to Japan on holiday last year.",
+   "hint": "holiday",
+   "gram": "<em>on holiday</em> = 휴가로, 휴가 중에. go on holiday = 휴가 가다."
+  },
+  {
+   "id": "e56",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    7
+   ],
+   "ko": "저는 단 거에 중독됐어요. 설탕은 정말 중독성이 강해요.",
+   "en": "I'm addicted to sweets. Sugar is really addictive.",
+   "hint": "addictive",
+   "gram": "<em>be addicted to</em> = (사람이) ~에 중독되다, <em>addictive</em> = (대상이) 중독성 있는. sweet things보다 <em>sweets</em>."
+  },
+  {
+   "id": "e57",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "전에 말씀드렸듯이, 저는 아침형 인간이에요.",
+   "en": "As I mentioned before, I'm a morning person.",
+   "hint": "mentioned",
+   "gram": "<em>As I mentioned before,</em> = 앞에서 말했듯이. 답변 이어갈 때 좋아요."
+  },
+  {
+   "id": "e58",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    7
+   ],
+   "ko": "일이 스트레스가 많아서 스트레스를 받아요.",
+   "en": "Work is stressful, so I feel stressed.",
+   "hint": "stressful",
+   "gram": "<em>stressful</em> = (일이) 스트레스를 주는, <em>stressed</em> = (내가) 스트레스 받은."
+  },
+  {
+   "id": "e59",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "이 전화 받아야 해요. 금방 올게요.",
+   "en": "I need to take this call. I'll be right back.",
+   "hint": "call",
+   "gram": "<em>take a call</em> = 전화를 받다. <em>I'll be right back.</em> = 금방 올게요."
+  },
+  {
+   "id": "e60",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "저 지금 통화 중이에요.",
+   "en": "I'm on the phone right now.",
+   "hint": "phone",
+   "gram": "<em>be on the phone</em> = 통화 중이다."
+  },
+  {
+   "id": "e61",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "이제 끊어야 해요.",
+   "en": "I have to hang up now.",
+   "hint": "hang",
+   "gram": "<em>hang up</em> = 전화를 끊다. Don't hang up! = 끊지 마!"
+  },
+  {
+   "id": "e62",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "마음껏 드세요.",
+   "en": "Help yourself.",
+   "hint": "Help",
+   "gram": "<em>Help yourself (to</em> ~<em>)</em> = 마음껏 드세요. Help yourself to some cake."
+  },
+  {
+   "id": "e63",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "다음에 해도 될까요?",
+   "en": "Can I take a rain check?",
+   "hint": "rain",
+   "gram": "<em>take a rain check</em> = (약속·제안을) 다음으로 미루다. Rain check? 이라고만 해도 돼요."
+  },
+  {
+   "id": "e64",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    7
+   ],
+   "ko": "차에 타고 버스에 올라탔어요.",
+   "en": "I got in the car, and then I got on the bus.",
+   "hint": "got",
+   "gram": "작은 차·택시는 <em>get in</em>, 버스·기차·비행기는 <em>get on</em>."
+  },
+  {
+   "id": "e65",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "혹시 펜 있으세요?",
+   "en": "Do you have a pen, by any chance?",
+   "hint": "chance",
+   "gram": "<em>by any chance</em> = 혹시. 공손하게 물어볼 때 끝에 붙여요."
   }
  ],
  "part1": [
@@ -1660,6 +2044,77 @@
       "What was your favourite country you've been to?",
       "Can you tell me about your life in Australia?",
       "Can you recommend any places to me?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 7,
+   "groups": [
+    {
+     "title": "Holidays",
+     "qs": [
+      "When did you last go on holiday?",
+      "Did you often go on holiday as a child?",
+      "Do you prefer going to the beach or the mountains?",
+      "What holiday destinations are popular in your country? Why?",
+      "Do you think holidays are important for people? Why?",
+      "If you could go on holiday anywhere in the world, where would you go and why?"
+     ]
+    },
+    {
+     "title": "Weather",
+     "qs": [
+      "What is your favourite season?",
+      "Do you like rainy days?",
+      "Are there many sunny days in your country?",
+      "Does the weather affect your mood? How?",
+      "Would you ever consider living somewhere that is permanently hot or cold?",
+      "What problems with the weather does your country have?"
+     ]
+    },
+    {
+     "title": "Remembering",
+     "qs": [
+      "Do you have a good memory?",
+      "Do you use calendars?",
+      "Have you ever kept a diary?",
+      "Why are some people so forgetful?",
+      "Are there any apps that help you remember things? How useful are they?",
+      "What can people do to improve their memory?"
+     ]
+    },
+    {
+     "title": "Sugar",
+     "qs": [
+      "Do you have a sweet tooth?",
+      "What are some popular sweets in your country?",
+      "Did you eat many sweets as a child?",
+      "If you had a child, would you let them eat sweets? Why?",
+      "Do you think any sweet food is healthy?",
+      "Why do you think people crave sugar when they are stressed?"
+     ]
+    },
+    {
+     "title": "Transport",
+     "qs": [
+      "How do you usually get to work?",
+      "How long does it take you to get to work?",
+      "Do you prefer taking the bus or the subway?",
+      "Is public transport in your city convenient?",
+      "Did you use public transport a lot when you were a child?",
+      "What would make your commute easier?"
+     ]
+    },
+    {
+     "title": "Health & Stress",
+     "qs": [
+      "What do you do to stay healthy?",
+      "How do you deal with stress?",
+      "Do you sleep well these days?",
+      "Is it easy to stay healthy when you work shifts?",
+      "Did you do any sports when you were younger?",
+      "Do you think people are more stressed now than in the past?"
      ]
     }
    ]
@@ -1999,6 +2454,168 @@
    "ko": "우선순위",
    "ex": "My top priority in my life is eating.",
    "s": 6
+  },
+  {
+   "w": "look at",
+   "ko": "~을 보다",
+   "ex": "Look at this picture.",
+   "s": 7
+  },
+  {
+   "w": "look for",
+   "ko": "~을 찾다",
+   "ex": "I'm looking for my phone.",
+   "s": 7
+  },
+  {
+   "w": "look after",
+   "ko": "~을 돌보다",
+   "ex": "Can you look after my dog?",
+   "s": 7
+  },
+  {
+   "w": "look like",
+   "ko": "~처럼 생기다, ~와 닮다",
+   "ex": "You look like your dad.",
+   "s": 7
+  },
+  {
+   "w": "look into",
+   "ko": "~을 조사하다, 알아보다",
+   "ex": "I'll look into the problem.",
+   "s": 7
+  },
+  {
+   "w": "look around",
+   "ko": "둘러보다",
+   "ex": "Let's look around.",
+   "s": 7
+  },
+  {
+   "w": "look up",
+   "ko": "정보를 찾아보다",
+   "ex": "Look up the word.",
+   "s": 7
+  },
+  {
+   "w": "look over",
+   "ko": "~을 훑어보다, 검토하다",
+   "ex": "Please look over my essay.",
+   "s": 7
+  },
+  {
+   "w": "look through",
+   "ko": "~을 쭉 훑어보다",
+   "ex": "I looked through the magazine.",
+   "s": 7
+  },
+  {
+   "w": "look back on",
+   "ko": "~을 돌이켜보다",
+   "ex": "I look back on my school days.",
+   "s": 7
+  },
+  {
+   "w": "look forward to",
+   "ko": "~을 기대하다",
+   "ex": "I look forward to seeing you.",
+   "s": 7
+  },
+  {
+   "w": "look up to",
+   "ko": "~을 존경하다",
+   "ex": "I look up to my teacher.",
+   "s": 7
+  },
+  {
+   "w": "look down on",
+   "ko": "~을 깔보다",
+   "ex": "Don't look down on others.",
+   "s": 7
+  },
+  {
+   "w": "look out for",
+   "ko": "~을 주의해서 살피다",
+   "ex": "Look out for cars.",
+   "s": 7
+  },
+  {
+   "w": "twice a month",
+   "ko": "한 달에 두 번",
+   "ex": "I go swimming twice a month.",
+   "s": 7
+  },
+  {
+   "w": "on holiday",
+   "ko": "휴가로, 휴가 중에",
+   "ex": "Basically, I'm a morning person.",
+   "s": 7
+  },
+  {
+   "w": "be into",
+   "ko": "~에 푹 빠져 있다",
+   "ex": "I prefer the beach to the mountains.",
+   "s": 7
+  },
+  {
+   "w": "addicted to / addictive",
+   "ko": "~에 중독된 / 중독성 있는",
+   "ex": "I'm addicted to sweets. Sugar is really addictive.",
+   "s": 7
+  },
+  {
+   "w": "sweets",
+   "ko": "단 것, 사탕류",
+   "ex": "I'm addicted to sweets. Sugar is really addictive.",
+   "s": 7
+  },
+  {
+   "w": "as I mentioned before",
+   "ko": "앞에서 말했듯이",
+   "ex": "Basically, I'm a morning person.",
+   "s": 7
+  },
+  {
+   "w": "take a call",
+   "ko": "전화를 받다",
+   "ex": "It turned out it was my mistake.",
+   "s": 7
+  },
+  {
+   "w": "be on the phone",
+   "ko": "통화 중이다",
+   "ex": "I prefer the beach to the mountains.",
+   "s": 7
+  },
+  {
+   "w": "hang up",
+   "ko": "전화를 끊다",
+   "ex": "I have to hang up now.",
+   "s": 7
+  },
+  {
+   "w": "help yourself",
+   "ko": "마음껏 드세요",
+   "ex": "Help yourself.",
+   "s": 7
+  },
+  {
+   "w": "rain check",
+   "ko": "다음으로 미루기",
+   "ex": "Can I take a rain check?",
+   "s": 7
+  },
+  {
+   "w": "get in / get on",
+   "ko": "(차에) 타다 / (버스·기차에) 타다",
+   "ex": "I got in the car, and then I got on the bus.",
+   "s": 7
+  },
+  {
+   "w": "by any chance",
+   "ko": "혹시",
+   "ex": "Do you have a pen, by any chance?",
+   "s": 7
   }
  ],
  "group": "ielts",
