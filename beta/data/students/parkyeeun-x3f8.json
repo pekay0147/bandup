@@ -476,8 +476,7 @@
    "type": "표현",
    "sessions": [
     2,
-    3,
-    7
+    3
    ],
    "ko": "기본적으로 저는 아침형 인간이에요",
    "en": "Basically, I'm a morning person.",
@@ -1364,18 +1363,6 @@
    "en": "My priority right now is my health.",
    "hint": "priority",
    "gram": "<em>priority</em> = 우선순위. 내 단어장 단어로 만든 새 문장이에요."
-  },
-  {
-   "id": "e42",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    7
-   ],
-   "ko": "시간 날 때마다 책을 읽어",
-   "en": "I read books whenever I have time.",
-   "hint": "whenever",
-   "gram": "<em>whenever</em> + 주어 + 동사 = ~할 때마다."
   },
   {
    "id": "m17",
