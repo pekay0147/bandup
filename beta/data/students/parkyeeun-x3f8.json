@@ -1442,18 +1442,6 @@
    "gram": "<em>twice a month</em> = 한 달에 두 번. once a week, three times a year."
   },
   {
-   "id": "e53",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    7
-   ],
-   "ko": "저는 수영하는 걸 안 좋아해요.",
-   "en": "I don't like swimming.",
-   "hint": "swimming",
-   "gram": "<em>don't like</em> + -ing / to 동사원형 둘 다 돼요: I don't like to swim."
-  },
-  {
    "id": "e54",
    "kind": "ko",
    "type": "관사·전치사",
