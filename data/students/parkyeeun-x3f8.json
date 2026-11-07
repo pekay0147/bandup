@@ -1430,18 +1430,6 @@
    "mine": "I will call with my mom."
   },
   {
-   "id": "e52",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    7
-   ],
-   "ko": "저는 한 달에 두 번 수영하러 가요.",
-   "en": "I go swimming twice a month.",
-   "hint": "twice",
-   "gram": "<em>twice a month</em> = 한 달에 두 번. once a week, three times a year."
-  },
-  {
    "id": "e55",
    "kind": "ko",
    "type": "표현",
@@ -2155,7 +2143,7 @@
   {
    "w": "twice a month",
    "ko": "한 달에 두 번",
-   "ex": "I go swimming twice a month.",
+   "ex": "",
    "s": 7
   },
   {
