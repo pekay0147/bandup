@@ -1442,18 +1442,6 @@
    "gram": "<em>twice a month</em> = 한 달에 두 번. once a week, three times a year."
   },
   {
-   "id": "e54",
-   "kind": "ko",
-   "type": "관사·전치사",
-   "sessions": [
-    7
-   ],
-   "ko": "방학 동안 제주도에 갔어요.",
-   "en": "During the vacation, I went to Jeju.",
-   "hint": "During",
-   "gram": "<em>during</em> + 명사(the vacation), <em>when/while</em> + 문장(when I was on holiday)."
-  },
-  {
    "id": "e55",
    "kind": "ko",
    "type": "표현",
