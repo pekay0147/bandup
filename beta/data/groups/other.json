@@ -11,7 +11,69 @@
     "date": "3 Sep",
     "src": "BBC 6 Minute English"
    },
-   "label": "3 Sep"
+   "label": "3 Sep",
+   "vocab": [
+    {
+     "w": "likelihood",
+     "ko": "가능성",
+     "ex": "There's a high likelihood of rain tonight."
+    },
+    {
+     "w": "landslide",
+     "ko": "산사태",
+     "ex": "The heavy rain caused a landslide."
+    },
+    {
+     "w": "mudslide",
+     "ko": "진흙 사태",
+     "ex": "A mudslide blocked the road."
+    },
+    {
+     "w": "storm surge",
+     "ko": "폭풍 해일",
+     "ex": "A storm surge can be very dangerous during a typhoon."
+    },
+    {
+     "w": "sweep in",
+     "ko": "빠르고 세게 들이닥치다",
+     "ex": "Strong winds swept in over the town."
+    },
+    {
+     "w": "casualty",
+     "ko": "(사고·재난의) 사상자",
+     "ex": "Luckily, there were no casualties in the accident."
+    },
+    {
+     "w": "long-term",
+     "ko": "장기적인",
+     "ex": "Weather is what you feel every day. Climate is more long-term."
+    },
+    {
+     "w": "extreme weather",
+     "ko": "극단적인 날씨",
+     "ex": "We're hearing about more and more extreme weather."
+    },
+    {
+     "w": "depending on",
+     "ko": "~에 따라",
+     "ex": "We use different names depending on where they form."
+    },
+    {
+     "w": "destructive",
+     "ko": "파괴적인",
+     "ex": "As the world warms, storms will get more destructive."
+    },
+    {
+     "w": "sea level",
+     "ko": "해수면",
+     "ex": "Sea levels are rising."
+    },
+    {
+     "w": "lead to",
+     "ko": "~로 이어지다",
+     "ex": "A small change can lead to a much bigger problem."
+    }
+   ]
   },
   {
    "no": 8,
@@ -23,7 +85,79 @@
     "date": "10 Sep",
     "src": "BBC 6 Minute English"
    },
-   "label": "10 Sep"
+   "label": "10 Sep",
+   "vocab": [
+    {
+     "w": "implicit",
+     "ko": "암묵적인, 직접 말하지 않은",
+     "ex": "She didn't say it, but her anger was implicit."
+    },
+    {
+     "w": "explicit",
+     "ko": "분명한, 직접 말한",
+     "ex": "The teacher gave us explicit instructions."
+    },
+    {
+     "w": "immersion",
+     "ko": "몰입, 완전히 빠짐",
+     "ex": "Living abroad gives you full immersion in the language."
+    },
+    {
+     "w": "key finding",
+     "ko": "핵심 결과",
+     "ex": "The key finding of the study is that sleep matters for memory."
+    },
+    {
+     "w": "promising",
+     "ko": "전망이 밝은, 희망적인",
+     "ex": "The first results are really promising."
+    },
+    {
+     "w": "one particular",
+     "ko": "특정한 하나의",
+     "ex": "I only use one particular brand."
+    },
+    {
+     "w": "on the go",
+     "ko": "이동하면서",
+     "ex": "I study English on the go, during my commute."
+    },
+    {
+     "w": "commute",
+     "ko": "출퇴근(길)",
+     "ex": "I study English on the go, during my commute."
+    },
+    {
+     "w": "convenience",
+     "ko": "편리함",
+     "ex": "I love the convenience of learning with apps."
+    },
+    {
+     "w": "head to",
+     "ko": "~로 가다",
+     "ex": "Head to our website to check your test results."
+    },
+    {
+     "w": "aim to",
+     "ko": "~하는 것을 목표로 하다",
+     "ex": "These apps aim to help you learn a language quickly."
+    },
+    {
+     "w": "exposed to",
+     "ko": "~에 노출된",
+     "ex": "Children get constantly exposed to language."
+    },
+    {
+     "w": "realistically",
+     "ko": "현실적으로",
+     "ex": "Realistically, I can't study for three hours every day."
+    },
+    {
+     "w": "combine",
+     "ko": "결합하다",
+     "ex": "Combining apps with classes is the best way to learn."
+    }
+   ]
   },
   {
    "no": 9,
@@ -35,7 +169,74 @@
     "date": "17 Sep",
     "src": "BBC 6 Minute English"
    },
-   "label": "17 Sep"
+   "label": "17 Sep",
+   "vocab": [
+    {
+     "w": "rejection",
+     "ko": "거절",
+     "ex": "Nobody likes rejection."
+    },
+    {
+     "w": "spike",
+     "ko": "갑자기 치솟다",
+     "ex": "My heart rate spiked before the presentation."
+    },
+    {
+     "w": "socially anxious",
+     "ko": "사람들 앞에서 불안한",
+     "ex": "I get a bit socially anxious in big crowds."
+    },
+    {
+     "w": "perfectionism",
+     "ko": "완벽주의",
+     "ex": "My perfectionism makes it hard to start things."
+    },
+    {
+     "w": "come easier",
+     "ko": "더 쉬워지다",
+     "ex": "Speaking came easier the more I practised."
+    },
+    {
+     "w": "appraise",
+     "ko": "평가하다",
+     "ex": "I worry about how people will appraise me."
+    },
+    {
+     "w": "get used to",
+     "ko": "~에 익숙해지다",
+     "ex": "As you get older, you get used to rejection."
+    },
+    {
+     "w": "face rejection",
+     "ko": "거절에 부딪히다",
+     "ex": "Many famous people faced rejection before they became successful."
+    },
+    {
+     "w": "get on",
+     "ko": "(일이) 되어 가다",
+     "ex": "How did you get on at your first interview?"
+    },
+    {
+     "w": "have a go at",
+     "ko": "~을 한번 해 보다",
+     "ex": "I had a go at the challenge too."
+    },
+    {
+     "w": "face my fears",
+     "ko": "두려움에 맞서다",
+     "ex": "I travelled alone to face my fears."
+    },
+    {
+     "w": "boost",
+     "ko": "높이다, 끌어올리다",
+     "ex": "Exercise can boost your confidence."
+    },
+    {
+     "w": "on purpose",
+     "ko": "일부러",
+     "ex": "Making mistakes on purpose is a bit of an extreme way to learn."
+    }
+   ]
   },
   {
    "no": 10,
@@ -47,7 +248,69 @@
     "date": "24 Sep",
     "src": "BBC 6 Minute English"
    },
-   "label": "24 Sep"
+   "label": "24 Sep",
+   "vocab": [
+    {
+     "w": "itchy",
+     "ko": "가려운",
+     "ex": "I got bitten by a mosquito and it's really itchy."
+    },
+    {
+     "w": "scratch",
+     "ko": "긁다",
+     "ex": "Don't scratch it. It'll get worse."
+    },
+    {
+     "w": "unpack",
+     "ko": "풀어서 설명하다",
+     "ex": "There's a lot to unpack in this topic."
+    },
+    {
+     "w": "parasite",
+     "ko": "기생충, 기생 생물",
+     "ex": "Fleas are parasites that live on animals."
+    },
+    {
+     "w": "spontaneously",
+     "ko": "자연스럽게, 시키지 않았는데",
+     "ex": "My child spontaneously started singing."
+    },
+    {
+     "w": "catch a cold",
+     "ko": "감기가 옮다",
+     "ex": "I caught a cold from my brother."
+    },
+    {
+     "w": "jumper",
+     "ko": "스웨터(영국식)",
+     "ex": "This jumper is a bit itchy."
+    },
+    {
+     "w": "for no particular reason",
+     "ko": "별 이유 없이",
+     "ex": "Sometimes I feel itchy for no particular reason."
+    },
+    {
+     "w": "Funny you should ask",
+     "ko": "마침 그걸 물어보시네요",
+     "ex": "Funny you should ask, because I'm doing that right now."
+    },
+    {
+     "w": "get rid of",
+     "ko": "~을 없애다",
+     "ex": "Scratching helps get rid of harmful things on our skin."
+    },
+    {
+     "w": "protect itself",
+     "ko": "스스로를 지키다",
+     "ex": "Itching is our skin's way of protecting itself."
+    },
+    {
+     "w": "hairy",
+     "ko": "털이 많은",
+     "ex": "It sounded a bit hairy, so I'm going to go with a beard."
+    }
+   ]
   },
   {
    "no": 4,
@@ -59,7 +322,79 @@
     "date": "1 Oct",
     "src": "BBC 6 Minute English"
    },
-   "label": "1 Oct"
+   "label": "1 Oct",
+   "vocab": [
+    {
+     "w": "heartbreak",
+     "ko": "이별 후의 큰 슬픔",
+     "ex": "I went through months of heartbreak after the breakup."
+    },
+    {
+     "w": "addicted to",
+     "ko": "~에 중독된",
+     "ex": "I think I'm addicted to coffee these days."
+    },
+    {
+     "w": "oriented towards",
+     "ko": "~에 초점을 둔",
+     "ex": "My mum is always oriented towards her family."
+    },
+    {
+     "w": "social bonds",
+     "ko": "가까운 인간관계",
+     "ex": "Strong social bonds help reduce stress."
+    },
+    {
+     "w": "longevity",
+     "ko": "장수, 수명",
+     "ex": "Eating healthily is the key to longevity."
+    },
+    {
+     "w": "ex",
+     "ko": "전 연인",
+     "ex": "I'm still friends with my ex."
+    },
+    {
+     "w": "think back to",
+     "ko": "~를 떠올려 보다",
+     "ex": "Think back to the last time you had your heart broken."
+    },
+    {
+     "w": "imaginary",
+     "ko": "상상 속의",
+     "ex": "It's not just imaginary. It's real pain."
+    },
+    {
+     "w": "remind",
+     "ko": "상기시키다",
+     "ex": "Our brain reminds us to eat when we're hungry."
+    },
+    {
+     "w": "impact",
+     "ko": "영향을 주다",
+     "ex": "Stress impacts our body in many ways."
+    },
+    {
+     "w": "lonely",
+     "ko": "외로운",
+     "ex": "Being lonely can be as bad as smoking."
+    },
+    {
+     "w": "immune system",
+     "ko": "면역 체계",
+     "ex": "Exercise supports your immune system."
+    },
+    {
+     "w": "confident",
+     "ko": "자신 있는",
+     "ex": "I was quite confident about the answer."
+    },
+    {
+     "w": "What's the point of",
+     "ko": "~하는 게 무슨 소용이에요?",
+     "ex": "So, what's the point of being in love?"
+    }
+   ]
   },
   {
    "no": 5,
@@ -71,7 +406,79 @@
     "date": "8 Oct",
     "src": "BBC 6 Minute English"
    },
-   "label": "8 Oct"
+   "label": "8 Oct",
+   "vocab": [
+    {
+     "w": "sober",
+     "ko": "술을 안 마시는",
+     "ex": "I've been sober for three years."
+    },
+    {
+     "w": "societal pressure",
+     "ko": "사회적 압박",
+     "ex": "In Korea, there's societal pressure to get married."
+    },
+    {
+     "w": "the norm",
+     "ko": "흔한 일, 보통",
+     "ex": "Working late is the norm at my company."
+    },
+    {
+     "w": "self-optimisation content",
+     "ko": "자기계발 콘텐츠",
+     "ex": "There's so much self-optimisation content these days."
+    },
+    {
+     "w": "tout",
+     "ko": "떠들썩하게 홍보하다",
+     "ex": "Influencers tout this diet as the best way to lose weight."
+    },
+    {
+     "w": "pushback",
+     "ko": "반발",
+     "ex": "There was a lot of pushback against the new rule."
+    },
+    {
+     "w": "cut down on",
+     "ko": "~을 줄이다",
+     "ex": "I'm trying to cut down on coffee."
+    },
+    {
+     "w": "give up",
+     "ko": "끊다, 포기하다",
+     "ex": "I've decided to give up alcohol this year."
+    },
+    {
+     "w": "weird glances",
+     "ko": "이상하다는 눈빛",
+     "ex": "You might get a few weird glances at work drinks."
+    },
+    {
+     "w": "step away from",
+     "ko": "~에서 한 발 물러나다",
+     "ex": "Covid gave me the confidence to step away from drinking."
+    },
+    {
+     "w": "moving forward",
+     "ko": "앞으로는",
+     "ex": "It's not something I want to do moving forward."
+    },
+    {
+     "w": "up to the individual",
+     "ko": "개인이 결정할 일",
+     "ex": "It's really up to the individual."
+    },
+    {
+     "w": "It's all about",
+     "ko": "결국 ~가 핵심이다",
+     "ex": "I think it's all about balance, really."
+    },
+    {
+     "w": "give it away",
+     "ko": "(답·비밀을) 말해 버리다",
+     "ex": "I know the answer, but I'm not going to give it away."
+    }
+   ]
   },
   {
    "no": 6,
@@ -83,7 +490,84 @@
     "date": "15 Oct",
     "src": "BBC 6 Minute English"
    },
-   "label": "15 Oct"
+   "label": "15 Oct",
+   "vocab": [
+    {
+     "w": "asset",
+     "ko": "자산",
+     "ex": "A house is the biggest asset most people have."
+    },
+    {
+     "w": "safe haven",
+     "ko": "안전한 피난처, 안전 자산",
+     "ex": "My home is a safe haven when life gets hard."
+    },
+    {
+     "w": "out of thin air",
+     "ko": "아무것도 없는 데서",
+     "ex": "He built his business out of thin air."
+    },
+    {
+     "w": "alchemy",
+     "ko": "연금술",
+     "ex": "People in the past tried to make gold through alchemy."
+    },
+    {
+     "w": "ethereal",
+     "ko": "비현실적인, 꿈같은",
+     "ex": "The lake in the morning mist looked ethereal."
+    },
+    {
+     "w": "a hankering for",
+     "ko": "~이 몹시 당김",
+     "ex": "I've had a hankering for spicy food lately."
+    },
+    {
+     "w": "made of",
+     "ko": "~로 만든",
+     "ex": "I don't own anything made of gold."
+    },
+    {
+     "w": "all-time high",
+     "ko": "사상 최고치",
+     "ex": "House prices hit an all-time high this year."
+    },
+    {
+     "w": "go up and down",
+     "ko": "오르락내리락하다",
+     "ex": "The price keeps going up and down."
+    },
+    {
+     "w": "uncertain times",
+     "ko": "불확실한 시기",
+     "ex": "Saving money is important in uncertain times."
+    },
+    {
+     "w": "peak",
+     "ko": "정점, 최고치",
+     "ex": "Since the peak in January, the price has dropped a bit."
+    },
+    {
+     "w": "likely",
+     "ko": "~할 가능성이 높은",
+     "ex": "It's likely that the price will go up again."
+    },
+    {
+     "w": "dependable",
+     "ko": "믿을 수 있는",
+     "ex": "She's a solid, dependable friend."
+    },
+    {
+     "w": "old-fashioned",
+     "ko": "구식의",
+     "ex": "My grandma is a little bit old-fashioned."
+    },
+    {
+     "w": "go with",
+     "ko": "~로 정하다",
+     "ex": "I have absolutely no idea, but I'm going to go with C."
+    }
+   ]
   },
   {
    "no": 1,
@@ -95,7 +579,59 @@
     "date": "22 Oct",
     "src": "BBC 6 Minute English"
    },
-   "label": "22 Oct"
+   "label": "22 Oct",
+   "vocab": [
+    {
+     "w": "nutrients",
+     "ko": "영양소",
+     "ex": "Bananas have a lot of healthy nutrients."
+    },
+    {
+     "w": "saturated fat",
+     "ko": "포화지방",
+     "ex": "These days, I'm trying to eat less saturated fat."
+    },
+    {
+     "w": "deep sleep",
+     "ko": "깊은 잠",
+     "ex": "I don't get much deep sleep if I use my phone before bed."
+    },
+    {
+     "w": "supplement",
+     "ko": "영양제",
+     "ex": "I take a vitamin supplement every morning."
+    },
+    {
+     "w": "magic bullet",
+     "ko": "한 번에 다 해결하는 방법",
+     "ex": "There's no magic bullet for good sleep."
+    },
+    {
+     "w": "a good night's sleep",
+     "ko": "푹 자는 것",
+     "ex": "I sometimes struggle to get a good night's sleep."
+    },
+    {
+     "w": "lie in bed",
+     "ko": "침대에 누워 있다",
+     "ex": "Sometimes I lie in bed for hours and can't fall asleep."
+    },
+    {
+     "w": "long-term",
+     "ko": "장기적인",
+     "ex": "Exercise has long-term benefits for your health."
+    },
+    {
+     "w": "plant-based",
+     "ko": "식물성의",
+     "ex": "I'm trying to eat more plant-based food."
+    },
+    {
+     "w": "everyday",
+     "ko": "일상적인",
+     "ex": "I don't get enough vitamins from my everyday diet."
+    }
+   ]
   },
   {
    "no": 2,
@@ -107,7 +643,79 @@
     "date": "29 Oct",
     "src": "BBC 6 Minute English"
    },
-   "label": "29 Oct"
+   "label": "29 Oct",
+   "vocab": [
+    {
+     "w": "life-saving",
+     "ko": "생명을 구하는",
+     "ex": "On very hot days, air conditioning can be life-saving."
+    },
+    {
+     "w": "inhabit",
+     "ko": "~에 살다",
+     "ex": "Millions of people inhabit the city."
+    },
+    {
+     "w": "the grid",
+     "ko": "전력망",
+     "ex": "In summer, everyone turns on the aircon, so the grid is under a lot of pressure."
+    },
+    {
+     "w": "vicious cycle",
+     "ko": "악순환",
+     "ex": "When I'm tired, I don't exercise, and then I feel even more tired. It's a vicious cycle."
+    },
+    {
+     "w": "passive cooling",
+     "ko": "전기 없이 시원하게 하는 방법",
+     "ex": "We use passive cooling at home, like opening the windows at night."
+    },
+    {
+     "w": "shading",
+     "ko": "햇빛 가림",
+     "ex": "Trees provide good shading in summer."
+    },
+    {
+     "w": "do its job",
+     "ko": "제 역할을 하다",
+     "ex": "My old fan didn't always do its job."
+    },
+    {
+     "w": "you're not alone",
+     "ko": "너만 그런 게 아니야",
+     "ex": "If you always feel tired in summer, you're not alone."
+    },
+    {
+     "w": "break a record",
+     "ko": "기록을 깨다",
+     "ex": "Heat records are broken every summer."
+    },
+    {
+     "w": "downside",
+     "ko": "단점",
+     "ex": "One downside of air conditioning is that it uses a lot of energy."
+    },
+    {
+     "w": "go-to",
+     "ko": "늘 찾는, 단골",
+     "ex": "Ice cream is my go-to snack in summer."
+    },
+    {
+     "w": "power cut",
+     "ko": "정전",
+     "ex": "We had a power cut because of the storm."
+    },
+    {
+     "w": "make a wild guess",
+     "ko": "대충 찍다",
+     "ex": "I didn't know the answer, so I made a wild guess."
+    },
+    {
+     "w": "sustainable",
+     "ko": "지속 가능한",
+     "ex": "We should use more sustainable energy."
+    }
+   ]
   },
   {
    "no": 3,
@@ -119,7 +727,74 @@
     "date": "5 Nov",
     "src": "BBC 6 Minute English"
    },
-   "label": "5 Nov"
+   "label": "5 Nov",
+   "vocab": [
+    {
+     "w": "a long time coming",
+     "ko": "오래 걸려 드디어 이뤄진 일",
+     "ex": "The new hospital in my town was a long time coming."
+    },
+    {
+     "w": "false dawn",
+     "ko": "좋아지는 듯했지만 아닌 상황",
+     "ex": "I thought things were getting better, but it was a false dawn."
+    },
+    {
+     "w": "space",
+     "ko": "(연구·사업) 분야",
+     "ex": "I want to work in the healthcare space."
+    },
+    {
+     "w": "breakthrough",
+     "ko": "돌파구, 획기적 진전",
+     "ex": "Scientists have made a big breakthrough in cancer treatment."
+    },
+    {
+     "w": "prime",
+     "ko": "~할 준비를 시키다",
+     "ex": "Vaccines prime your body to fight diseases."
+    },
+    {
+     "w": "show promise",
+     "ko": "가능성을 보이다",
+     "ex": "This new treatment shows a lot of promise."
+    },
+    {
+     "w": "loads of",
+     "ko": "엄청 많은",
+     "ex": "I've had loads of injections since I was a child."
+    },
+    {
+     "w": "side effects",
+     "ko": "부작용",
+     "ex": "This medicine has a few side effects."
+    },
+    {
+     "w": "hopeful",
+     "ko": "희망적인",
+     "ex": "I'm hopeful about my next IELTS score."
+    },
+    {
+     "w": "work out",
+     "ko": "알아내다, 풀다",
+     "ex": "I worked out the answer on my own."
+    },
+    {
+     "w": "immune system",
+     "ko": "면역 체계",
+     "ex": "Sleeping well keeps your immune system strong."
+    },
+    {
+     "w": "come back",
+     "ko": "다시 생기다",
+     "ex": "I hope the pain doesn't come back."
+    },
+    {
+     "w": "quite a few",
+     "ko": "꽤 많은",
+     "ex": "I made quite a few mistakes in the test."
+    }
+   ]
   }
  ],
  "types": [

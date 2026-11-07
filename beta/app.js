@@ -736,6 +736,7 @@ function renderDecks(app){
     wrap.append(row); app.append(wrap);
     const se=PS.find(x=>x.no===selPod); { const a=el("a","eplink"); a.href=se.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null,[se.link.date, se.link.src].filter(Boolean).join(" · ")), el("b",null,se.link.title||"에피소드"), el("i",null,"›")); app.append(a); }
     key="p"+selPod; list=D.cards.filter(c=>(c.psessions||[]).includes(selPod));
+    if((se.vocab||[]).length){ inlineDeck(app,key,list,empty,()=>vocabPage(se)); return; }
   } else if(cardMode==="wrong"){
     const all=D.cards.filter(isWrong); key="wrong"; list=[...all.filter(rep),...all.filter(c=>!rep(c))];
   } else if(cardMode==="random"){
