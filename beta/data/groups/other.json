@@ -2,6 +2,42 @@
  "course": "English",
  "sessions": [
   {
+   "no": 4,
+   "date": "2026-10-01",
+   "title": "6 Minute English · 이별과 뇌",
+   "link": {
+    "title": "Why does heartbreak hurt so much?",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-261001",
+    "date": "1 Oct",
+    "src": "BBC 6 Minute English"
+   },
+   "label": "1 Oct"
+  },
+  {
+   "no": 5,
+   "date": "2026-10-08",
+   "title": "6 Minute English · 술 줄이기",
+   "link": {
+    "title": "Are people drinking less alcohol?",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-261008",
+    "date": "8 Oct",
+    "src": "BBC 6 Minute English"
+   },
+   "label": "8 Oct"
+  },
+  {
+   "no": 6,
+   "date": "2026-10-15",
+   "title": "6 Minute English · 금 투자",
+   "link": {
+    "title": "Why do people buy gold?",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-261015",
+    "date": "15 Oct",
+    "src": "BBC 6 Minute English"
+   },
+   "label": "15 Oct"
+  },
+  {
    "no": 1,
    "date": "2026-10-22",
    "title": "6 Minute English · 잠과 음식",
@@ -620,6 +656,582 @@
    "en": "I'm not sure, but I'm going to guess B.",
    "hint": "guess",
    "gram": "<em>I'm going to guess</em> ~ = ~라고 찍어 볼게요. 모르는 질문에 자연스럽게 넘어가는 표현."
+  },
+  {
+   "id": "6mh01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "이별 후에 몇 달 동안 마음이 너무 아팠어요.",
+   "en": "I went through months of heartbreak after the breakup.",
+   "hint": "heartbreak",
+   "gram": "<em>heartbreak</em> = 이별 후의 큰 슬픔. <em>go through</em> ~ = (힘든 일을) 겪다."
+  },
+  {
+   "id": "6mh02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 요즘 커피에 중독된 것 같아요.",
+   "en": "I think I'm addicted to coffee these days.",
+   "hint": "addicted",
+   "gram": "<em>be addicted to</em> + 명사 = ~에 중독되다. 좋아하는 것에 비유로도 많이 써요."
+  },
+  {
+   "id": "6mh03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "저희 엄마는 늘 가족을 먼저 생각하세요.",
+   "en": "My mum is always oriented towards her family.",
+   "hint": "oriented",
+   "gram": "<em>be oriented(orientated) towards</em> ~ = ~에 초점을 두다, ~를 먼저 생각하다."
+  },
+  {
+   "id": "6mh04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "친구들과의 끈끈한 관계가 스트레스를 줄여 줘요.",
+   "en": "Strong social bonds help reduce stress.",
+   "hint": "bonds",
+   "gram": "<em>social bonds</em> = 가족·친구·연인과의 가까운 관계. <em>help</em> + 동사원형."
+  },
+  {
+   "id": "6mh05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "건강하게 먹는 것이 장수의 비결이에요.",
+   "en": "Eating healthily is the key to longevity.",
+   "hint": "longevity",
+   "gram": "<em>longevity</em> = 오래 사는 것, 수명. <em>the key to</em> ~ = ~의 비결."
+  },
+  {
+   "id": "6mh06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 전 여자친구랑 아직 친구로 지내요.",
+   "en": "I'm still friends with my ex.",
+   "hint": "ex",
+   "gram": "<em>ex</em> = 전 연인. <em>be friends with</em> ~ = ~와 친구로 지내다(friends 복수)."
+  },
+  {
+   "id": "6mh07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "마지막으로 마음 아팠던 때를 떠올려 보세요.",
+   "en": "Think back to the last time you had your heart broken.",
+   "hint": "Think",
+   "gram": "<em>think back to</em> ~ = ~를 떠올려 보다. <em>have one's heart broken</em> = 마음에 상처를 받다."
+  },
+  {
+   "id": "6mh08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "그건 단지 상상이 아니라 진짜 고통이에요.",
+   "en": "It's not just imaginary. It's real pain.",
+   "hint": "imaginary",
+   "gram": "<em>imaginary</em> = 상상 속의, 가짜의. <em>not just</em> ~ = 단지 ~인 게 아니라."
+  },
+  {
+   "id": "6mh09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "사랑에 빠지면 뇌가 바뀌어요.",
+   "en": "Our brains change when we fall in love.",
+   "hint": "fall",
+   "gram": "<em>fall in love</em> = 사랑에 빠지다. <em>when</em> + 문장 = ~할 때."
+  },
+  {
+   "id": "6mh10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "배고프면 먹으라고 뇌가 알려 줘요.",
+   "en": "Our brain reminds us to eat when we're hungry.",
+   "hint": "reminds",
+   "gram": "<em>remind</em> + 사람 + <em>to</em> 동사 = ~에게 ~하라고 상기시키다."
+  },
+  {
+   "id": "6mh11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "스트레스는 우리 몸에 큰 영향을 줘요.",
+   "en": "Stress impacts our body in many ways.",
+   "hint": "impacts",
+   "gram": "<em>impact</em> = ~에 영향을 주다(동사). affect와 비슷해요."
+  },
+  {
+   "id": "6mh12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "외로움은 흡연만큼 건강에 안 좋을 수 있어요.",
+   "en": "Being lonely can be as bad as smoking.",
+   "hint": "lonely",
+   "gram": "<em>as</em> 형용사 <em>as</em> ~ = ~만큼 ~한. 동명사 주어 <em>Being lonely</em>."
+  },
+  {
+   "id": "6mh13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "운동은 면역 체계를 튼튼하게 해 줘요.",
+   "en": "Exercise supports your immune system.",
+   "hint": "supports",
+   "gram": "<em>support</em> = 돕다, 받쳐 주다. <em>immune system</em> = 면역 체계."
+  },
+  {
+   "id": "6mh14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 그 답에 꽤 자신 있었어요.",
+   "en": "I was quite confident about the answer.",
+   "hint": "confident",
+   "gram": "<em>be confident about</em> ~ = ~에 자신 있다. <em>quite</em> = 꽤."
+  },
+  {
+   "id": "6mh15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "어린 시절은 어른이 됐을 때의 관계에 영향을 줘요.",
+   "en": "Our childhood affects our relationships as adults.",
+   "hint": "adults",
+   "gram": "<em>as adults</em> = 어른이 되어서, 어른으로서. <em>affect</em> = 영향을 주다."
+  },
+  {
+   "id": "6mh16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "그래서 사랑에 빠지는 게 무슨 의미가 있을까요?",
+   "en": "So, what's the point of being in love?",
+   "hint": "point",
+   "gram": "<em>What's the point of</em> + -ing? = ~하는 게 무슨 소용이 있어요?"
+  },
+  {
+   "id": "6mk01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "저는 3년째 술을 안 마시고 있어요.",
+   "en": "I've been sober for three years.",
+   "hint": "sober",
+   "gram": "<em>sober</em> = 술을 안 마시는. <em>have been</em> ~ <em>for</em> 기간 = ~째 ~한 상태예요."
+  },
+  {
+   "id": "6mk02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "한국에서는 결혼해야 한다는 사회적 압박이 있어요.",
+   "en": "In Korea, there's societal pressure to get married.",
+   "hint": "societal",
+   "gram": "<em>societal pressure</em> = 사회적 압박. <em>pressure to</em> + 동사 = ~해야 한다는 압박."
+  },
+  {
+   "id": "6mk03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "우리 회사에서는 야근이 당연한 일이에요.",
+   "en": "Working late is the norm at my company.",
+   "hint": "norm",
+   "gram": "<em>the norm</em> = 흔한 일, 보통. 동명사 주어 <em>Working late</em>."
+  },
+  {
+   "id": "6mk04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "요즘 자기계발 콘텐츠가 엄청 많아요.",
+   "en": "There's so much self-optimisation content these days.",
+   "hint": "self-optimisation",
+   "gram": "<em>self-optimisation content</em> = 건강·운동·목표 달성에 관한 영상과 글."
+  },
+  {
+   "id": "6mk05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "인플루언서들이 이 다이어트를 엄청 홍보해요.",
+   "en": "Influencers tout this diet as the best way to lose weight.",
+   "hint": "tout",
+   "gram": "<em>tout</em> A <em>as</em> B = A를 B라고 떠들썩하게 홍보하다."
+  },
+  {
+   "id": "6mk06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "새 규칙에 대해 반발이 많았어요.",
+   "en": "There was a lot of pushback against the new rule.",
+   "hint": "pushback",
+   "gram": "<em>pushback (against)</em> ~ = ~에 대한 반발."
+  },
+  {
+   "id": "6mk07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "저는 커피를 줄이려고 노력 중이에요.",
+   "en": "I'm trying to cut down on coffee.",
+   "hint": "cut",
+   "gram": "<em>cut down on</em> ~ = ~을 줄이다. give up = 완전히 끊다."
+  },
+  {
+   "id": "6mk08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "올해는 술을 끊기로 했어요.",
+   "en": "I've decided to give up alcohol this year.",
+   "hint": "give",
+   "gram": "<em>give up</em> + 명사 = ~을 끊다, 포기하다. <em>decide to</em> + 동사."
+  },
+  {
+   "id": "6mk09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "젊은 사람들은 예전만큼 술을 많이 안 마셔요.",
+   "en": "Young people don't drink as much as they used to.",
+   "hint": "used",
+   "gram": "<em>not as much as they used to</em> = 예전만큼 많이 ~하지 않다."
+  },
+  {
+   "id": "6mk10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "팀 회식 때 이상한 눈빛을 받을 수도 있어요.",
+   "en": "You might get a few weird glances at work drinks.",
+   "hint": "glances",
+   "gram": "<em>get weird glances</em> = 이상하다는 눈빛을 받다. <em>work drinks</em> = 회사 술자리."
+  },
+  {
+   "id": "6mk11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "코로나 덕분에 술에서 한 발 물러날 자신감이 생겼어요.",
+   "en": "Covid gave me the confidence to step away from drinking.",
+   "hint": "step",
+   "gram": "<em>step away from</em> ~ = ~에서 한 발 물러나다. <em>give</em> 사람 <em>the confidence to</em> 동사."
+  },
+  {
+   "id": "6mk12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "앞으로는 이걸 계속하고 싶지 않아요.",
+   "en": "It's not something I want to do moving forward.",
+   "hint": "forward",
+   "gram": "<em>moving forward</em> = 앞으로는. <em>something I want to do</em> = 내가 하고 싶은 것."
+  },
+  {
+   "id": "6mk13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "저는 친구들이랑 노는 걸 좋아해요.",
+   "en": "I like going out and having fun with my friends.",
+   "hint": "fun",
+   "gram": "<em>go out</em> = 놀러 나가다. <em>have fun with</em> ~ = ~와 즐겁게 놀다."
+  },
+  {
+   "id": "6mk14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "그건 정말 개인이 결정할 일이에요.",
+   "en": "It's really up to the individual.",
+   "hint": "up",
+   "gram": "<em>be up to</em> 사람 = ~가 결정할 일이다."
+  },
+  {
+   "id": "6mk15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "결국 다 균형의 문제예요.",
+   "en": "I think it's all about balance, really.",
+   "hint": "balance",
+   "gram": "<em>It's all about</em> ~ = 결국 ~가 핵심이에요."
+  },
+  {
+   "id": "6mk16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "답은 알지만 말하지 않을게요.",
+   "en": "I know the answer, but I'm not going to give it away.",
+   "hint": "away",
+   "gram": "<em>give away</em> = (비밀·답을) 말해 버리다. 대명사는 가운데: give <em>it</em> away."
+  },
+  {
+   "id": "6mg01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "집은 대부분 사람들이 가진 가장 큰 자산이에요.",
+   "en": "A house is the biggest asset most people have.",
+   "hint": "asset",
+   "gram": "<em>asset</em> = 자산, 팔 수 있는 가치 있는 것."
+  },
+  {
+   "id": "6mg02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "힘들 때 우리 집은 제 안식처예요.",
+   "en": "My home is a safe haven when life gets hard.",
+   "hint": "haven",
+   "gram": "<em>safe haven</em> = 안전한 피난처. 금융에서는 '안전 자산'."
+  },
+  {
+   "id": "6mg03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "그는 아무것도 없는 데서 사업을 일으켰어요.",
+   "en": "He built his business out of thin air.",
+   "hint": "thin",
+   "gram": "<em>out of thin air</em> = 아무것도 없는 데서, 갑자기."
+  },
+  {
+   "id": "6mg04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "옛날 사람들은 연금술로 금을 만들려고 했어요.",
+   "en": "People in the past tried to make gold through alchemy.",
+   "hint": "alchemy",
+   "gram": "<em>alchemy</em> = 연금술. <em>try to</em> + 동사 = ~하려고 하다."
+  },
+  {
+   "id": "6mg05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "새벽 안개 속 호수는 비현실적으로 아름다웠어요.",
+   "en": "The lake in the morning mist looked ethereal.",
+   "hint": "ethereal",
+   "gram": "<em>ethereal</em> = 비현실적인, 꿈같은. <em>look</em> + 형용사."
+  },
+  {
+   "id": "6mg06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "요즘 매운 음식이 너무 당겨요.",
+   "en": "I've had a hankering for spicy food lately.",
+   "hint": "hankering",
+   "gram": "<em>a hankering for</em> ~ = ~이 몹시 당김, 강한 욕구."
+  },
+  {
+   "id": "6mg07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "저는 금으로 만든 건 하나도 없어요.",
+   "en": "I don't own anything made of gold.",
+   "hint": "made",
+   "gram": "<em>made of</em> + 재료 = ~로 만든. <em>not ~ anything</em> = 아무것도 ~ 없다."
+  },
+  {
+   "id": "6mg08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "집값이 올해 사상 최고치를 찍었어요.",
+   "en": "House prices hit an all-time high this year.",
+   "hint": "all-time",
+   "gram": "<em>hit an all-time high</em> = 사상 최고치를 찍다."
+  },
+  {
+   "id": "6mg09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "가격이 오르락내리락해요.",
+   "en": "The price keeps going up and down.",
+   "hint": "down",
+   "gram": "<em>go up and down</em> = 오르락내리락하다. <em>keep</em> + -ing = 계속 ~하다."
+  },
+  {
+   "id": "6mg10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "현금은 들고 다니기 쉬워요.",
+   "en": "Cash is much easier to carry than gold.",
+   "hint": "carry",
+   "gram": "<em>easier to</em> + 동사 = ~하기 더 쉬운. 비교급 강조 <em>much</em>."
+  },
+  {
+   "id": "6mg11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "요즘 같은 불확실한 시기에는 저축이 중요해요.",
+   "en": "Saving money is important in uncertain times.",
+   "hint": "uncertain",
+   "gram": "<em>in uncertain times</em> = 불확실한 시기에. 동명사 주어 <em>Saving money</em>."
+  },
+  {
+   "id": "6mg12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "정점을 찍은 후로 가격이 조금 떨어졌어요.",
+   "en": "Since the peak in January, the price has dropped a bit.",
+   "hint": "peak",
+   "gram": "<em>since</em> + 시점 = ~ 이후로(현재완료와 함께). <em>drop</em> = 떨어지다."
+  },
+  {
+   "id": "6mg13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "가격이 다시 오를 가능성이 높아요.",
+   "en": "It's likely that the price will go up again.",
+   "hint": "likely",
+   "gram": "<em>It's likely that</em> + 문장 = ~할 가능성이 높다."
+  },
+  {
+   "id": "6mg14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "그녀는 믿을 수 있는 친구예요.",
+   "en": "She's a solid, dependable friend.",
+   "hint": "dependable",
+   "gram": "<em>dependable</em> = 믿을 수 있는. <em>solid</em> = 단단한, 믿음직한."
+  },
+  {
+   "id": "6mg15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "우리 할머니는 좀 옛날 스타일이세요.",
+   "en": "My grandma is a little bit old-fashioned.",
+   "hint": "old-fashioned",
+   "gram": "<em>old-fashioned</em> = 구식의, 옛날 스타일의. <em>a little bit</em> = 조금."
+  },
+  {
+   "id": "6mg16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "전혀 모르겠지만, C로 할게요.",
+   "en": "I have absolutely no idea, but I'm going to go with C.",
+   "hint": "go",
+   "gram": "<em>go with</em> ~ = ~로 정하다. <em>I have absolutely no idea</em> = 전혀 모르겠어요."
   }
  ],
  "part1": [],

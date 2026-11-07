@@ -711,7 +711,7 @@ function renderDecks(app){
   const seg=el("div","modeseg"+((+!!hasPod + +!!hasLesson + +hasDaily)>2?"":" two")); seg.setAttribute("role","tablist");
   if(cardMode!=="session" && cardMode!=="pod" && !(cardMode==="daily"&&hasDaily)) cardMode= hasLesson? "session" : "pod";
   if(cardMode==="session" && !hasLesson) cardMode="pod"; if(cardMode==="pod" && !hasPod) cardMode="session";
-  const modes=[...(hasLesson?[["session",D.common?"주제별":D.group==="other"?"팟캐스트":(hasPod?"수업 회차별":"회차별"),`1~${D.sessions[D.sessions.length-1].no}회차`]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","오늘의 문장 10개"]]:[])];
+  const modes=[...(hasLesson?[["session",D.common?"주제별":D.group==="other"?"팟캐스트":(hasPod?"수업 회차별":"회차별"),(D.group==="other"||D.group==="church")? `에피소드 ${D.sessions.length}편` : `1~${D.sessions[D.sessions.length-1].no}회차`]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","오늘의 문장 10개"]]:[])];
   for(const [k,label,sub] of modes){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(cardMode===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; openKey=null; render(); }; seg.append(b);
@@ -731,7 +731,7 @@ function renderDecks(app){
   } else if(cardMode==="pod"){
     const PS=D.podSessions; if(selPod==null || !PS.some(x=>x.no===selPod)) selPod=PS[PS.length-1].no;
     const wrap=el("div","picker"); wrap.append(el("span","picker-lab","에피소드 선택")); const row=el("div","pchips");
-    const multi=new Set(PS.map(x=>x.link.src)).size>1; PS.forEach(x=>{ const b=el("button",null,(multi? String(x.link.src||"").replace(/ 6 Minute English$/,"")+" " : "")+(x.link.date||(x.no+"회"))); b.type="button"; b.setAttribute("aria-pressed",String(selPod===x.no)); b.append(el("small",null,String(D.cards.filter(c=>(c.psessions||[]).includes(x.no)).length))); b.onclick=()=>{ selPod=x.no; render(); }; row.append(b); });
+    const multi=new Set(PS.map(x=>x.link.src)).size>1; const [mr,PSm]=monthRow(PS,selPod,v=>{ selPod=v; render(); }); if(mr) wrap.append(mr); PSm.forEach(x=>{ const b=el("button",null,(multi? String(x.link.src||"").replace(/ 6 Minute English$/,"")+" " : "")+(x.link.date||(x.no+"회"))); b.type="button"; b.setAttribute("aria-pressed",String(selPod===x.no)); b.append(el("small",null,String(D.cards.filter(c=>(c.psessions||[]).includes(x.no)).length))); b.onclick=()=>{ selPod=x.no; render(); }; row.append(b); });
     wrap.append(row); app.append(wrap);
     const se=PS.find(x=>x.no===selPod); { const a=el("a","eplink"); a.href=se.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null,[se.link.date, se.link.src].filter(Boolean).join(" · ")), el("b",null,se.link.title||"에피소드"), el("i",null,"›")); app.append(a); }
     key="p"+selPod; list=D.cards.filter(c=>(c.psessions||[]).includes(selPod));
@@ -796,7 +796,7 @@ function renderWrongList(app){
   sec("헷갈렸던 문장", weak.filter(c=>!rep(c)));
   for(const s of [...D.sessions].reverse()){
     const list=all.filter(c=>c.sessions[0]===s.no && !rep(c));
-    sec(`${s.no}회차`, list);
+    sec(s.label||`${s.no}회차`, list);
   }
 }
 const cbmKey=()=>`bandup-cbm-${slug}`;
@@ -835,11 +835,20 @@ function randPool(){
 
 
 /* ---------- session picker ---------- */
+function monthRow(items, cur, onPick){ /* items: [{no,date}] ; returns [rowEl|null, filteredItems] */
+  const mk=d=>String(d||"").slice(0,7); const ms=[...new Set(items.map(x=>mk(x.date)).filter(Boolean))];
+  if(ms.length<2) return [null,items];
+  const curIt=items.find(x=>x.no===cur)||items[items.length-1]; const cm=mk(curIt.date);
+  const row=el("div","pchips mchips"); row.setAttribute("role","group"); row.setAttribute("aria-label","월 선택");
+  for(const m of ms){ const its=items.filter(x=>mk(x.date)===m); const b=el("button",null,(+m.slice(5,7))+"월"); b.type="button"; b.setAttribute("aria-pressed",String(m===cm)); b.append(el("small",null,its.length+"편")); b.onclick=()=>onPick(its[its.length-1].no); row.append(b); }
+  return [row, items.filter(x=>mk(x.date)===cm)];
+}
 function sessionPicker(current, onPick, withAll=true){
   const wrap=el("div","picker");
   wrap.append(el("span","picker-lab", D.common? "주제 선택" : (D.group==="other"||D.group==="church")? "에피소드 선택" : "회차 선택"));
   const row=el("div","pchips"); row.setAttribute("role","group"); row.setAttribute("aria-label","회차 선택");
-  const opts=[...(withAll?[["all","전체"]]:[]), ...D.sessions.map(x=>[x.no, x.label? x.label : D.common? x.title : `${x.no}회`])];
+  let SS=D.sessions; if(!withAll && SS.some(x=>x.link)){ const [mr,f]=monthRow(SS,current,onPick); if(mr){ wrap.append(mr); SS=f; } }
+  const opts=[...(withAll?[["all","전체"]]:[]), ...SS.map(x=>[x.no, x.label? x.label : D.common? x.title : `${x.no}회`])];
   for(const [v,label] of opts){
     const n = v==="all"? D.cards.length : D.cards.filter(c=>(c.sessions||[]).includes(v)).length;
     const b=el("button",null,label); b.type="button"; b.setAttribute("aria-pressed",String(current===v));
