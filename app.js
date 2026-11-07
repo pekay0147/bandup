@@ -835,7 +835,7 @@ function randPool(){
 /* ---------- session picker ---------- */
 function sessionPicker(current, onPick, withAll=true){
   const wrap=el("div","picker");
-  wrap.append(el("span","picker-lab", D.common? "주제 선택" : D.group==="other"? "에피소드 선택" : "회차 선택"));
+  wrap.append(el("span","picker-lab", D.common? "주제 선택" : (D.group==="other"||D.group==="church")? "에피소드 선택" : "회차 선택"));
   const row=el("div","pchips"); row.setAttribute("role","group"); row.setAttribute("aria-label","회차 선택");
   const opts=[...(withAll?[["all","전체"]]:[]), ...D.sessions.map(x=>[x.no, x.label? x.label : D.common? x.title : `${x.no}회`])];
   for(const [v,label] of opts){
