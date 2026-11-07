@@ -723,6 +723,7 @@ function renderDecks(app){
     app.append(sessionPicker(selSession, v=>{ selSession=v; render(); }, false));
     { const se=D.sessions.find(x=>x.no===selSession); if(se && se.link && se.link.url){ const a=el("a","eplink"); a.href=se.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null,[se.link.date, se.link.src].filter(Boolean).join(" · ")), el("b",null,se.link.title||"에피소드"), el("i",null,"›")); app.append(a); } }
     key="s"+selSession; list=D.cards.filter(c=>(c.sessions||[]).includes(selSession));
+    { const se=D.sessions.find(x=>x.no===selSession); if(se && (se.vocab||[]).length){ inlineDeck(app,key,list,empty,()=>vocabPage(se)); return; } }
   } else if(cardMode==="daily"){
     app.append(el("p","muted small dy-note","팟캐스트가 없는 날엔 여기서 연습해요. Part 1 답변 문장과 내 단어장 단어로 매일 새 문장 10개가 나와요."));
     dySrc="mix";
@@ -755,8 +756,22 @@ function renderBmTab(app){
     for(const it of list){ const r=el("div","qbmrow"); const t=el("div"); t.append(el("span","from2",it.topic), el("p",null,it.q)); r.append(t, qbmBtn(it,()=>render())); bp.append(r); } }
   app.append(bp);
 }
-function inlineDeck(app,key,list,empty){
-  if(!deckState || deckState.key!==key || (key==="bm" && deckState.ids.length!==list.length)) deckState={key, ids:list.map(c=>c.id), i:0};
+function vocabPage(se){
+  const p=el("div","panel vocpage"); const h=el("div","ghead"); h.append(el("b",null,"오늘 나온 단어"), el("span",null,`${se.vocab.length}개`)); p.append(h);
+  p.append(el("p","muted small","눌러서 내 단어장에 담아 두세요. 담은 단어는 단어장과 오늘의 복습에 나와요."));
+  const key=`bandup-myvoc-${slug}`; const has=w=>store.get(key,[]).some(x=>x.w.toLowerCase()===w.toLowerCase());
+  const list=el("div","vplist");
+  const paint=()=>{ list.textContent=""; for(const v of se.vocab){ const r=el("div","vprow"+(has(v.w)?" on":"")); const t=el("div","vpt"); t.append(el("b",null,v.w), el("span",null,v.ko)); if(v.ex) t.append(el("i",null,v.ex));
+      const b=el("button","vpadd",has(v.w)?"✓ 담음":"+ 단어장"); b.type="button"; b.disabled=has(v.w);
+      b.onclick=()=>{ const m=store.get(key,[]); if(!m.some(x=>x.w.toLowerCase()===v.w.toLowerCase())){ m.push({w:v.w,ko:v.ko,ex:v.ex||"",t:Date.now(),tried:1}); store.set(key,m); statKick(); } paint(); };
+      r.append(t,b); list.append(r); }
+    const left=se.vocab.filter(v=>!has(v.w)); allb.disabled=!left.length; allb.textContent= left.length? `전부 담기 ${left.length}개` : "모두 담았어요"; };
+  const allb=el("button","btn primary"); allb.type="button";
+  allb.onclick=()=>{ const m=store.get(key,[]); let t=Date.now(); for(const v of se.vocab) if(!m.some(x=>x.w.toLowerCase()===v.w.toLowerCase())) m.push({w:v.w,ko:v.ko,ex:v.ex||"",t:t++,tried:1}); store.set(key,m); statKick(); paint(); };
+  p.append(list, allb); paint(); return p;
+}
+function inlineDeck(app,key,list,empty,tail){
+  if(!deckState || deckState.key!==key || (key==="bm" && deckState.ids.length!==list.length)) deckState={key, ids:[...list.map(c=>c.id), ...(tail&&list.length?["__tail"]:[])], i:0};
   const ids=deckState.ids;
   if(!ids.length){ const e=el("div","empty"); e.append(el("p",null,empty)); app.append(e); return; }
   if(deckState.i>=ids.length) deckState.i=ids.length-1;
@@ -765,7 +780,8 @@ function inlineDeck(app,key,list,empty){
   if(key==="rand"){ const sh=el("button","linkbtn","다시 섞기"); sh.type="button"; sh.onclick=()=>{ deckState=null; render(); }; pg.append(sh); }
   app.append(pg);
   const bar=el("div","bar"); const bi=el("i"); bi.style.width=((deckState.i+1)/ids.length*100)+"%"; bar.append(bi); app.append(bar);
-  const sc=flipCard(c); sc.onswipe=d=>move(d); app.append(sc);
+  if(ids[deckState.i]==="__tail"){ const tp=tail(); let x0=null; tp.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true}); tp.addEventListener("touchend",e=>{ if(x0==null) return; const dx=e.changedTouches[0].clientX-x0; x0=null; if(dx>60) move(-1); },{passive:true}); app.append(tp); }
+  else { const sc=flipCard(c); sc.onswipe=d=>move(d); app.append(sc); }
   const acts=el("div","acts arrows");
   const prev=el("button","nav","‹ 이전"); prev.type="button"; prev.disabled=deckState.i===0; prev.onclick=()=>move(-1);
   const next=el("button","nav","다음 ›"); next.type="button"; next.disabled=deckState.i>=ids.length-1; next.onclick=()=>move(1);

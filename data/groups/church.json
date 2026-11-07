@@ -10,7 +10,59 @@
     "date": "4 Nov",
     "src": "Solid Joys"
    },
-   "label": "4 Nov"
+   "label": "4 Nov",
+   "vocab": [
+    {
+     "w": "anxiety",
+     "ko": "불안, 걱정",
+     "ex": "The root of anxiety is inadequate faith."
+    },
+    {
+     "w": "inadequate",
+     "ko": "부족한, 불충분한",
+     "ex": "The root of anxiety is inadequate faith."
+    },
+    {
+     "w": "discouraging",
+     "ko": "낙담하게 하는",
+     "ex": "In fact, it was quite discouraging to learn that."
+    },
+    {
+     "w": "mere",
+     "ko": "단순한, ~에 불과한",
+     "ex": "It's not a mere struggle; it's a far deeper one."
+    },
+    {
+     "w": "emphatically",
+     "ko": "단호하게, 힘주어",
+     "ex": "He said no, emphatically."
+    },
+    {
+     "w": "routine visit",
+     "ko": "정기 검진",
+     "ex": "After a routine visit, the doctor found the real problem."
+    },
+    {
+     "w": "treatable",
+     "ko": "치료할 수 있는",
+     "ex": "I'm so glad it was discovered while it's still treatable."
+    },
+    {
+     "w": "to no avail",
+     "ko": "소용없이, 헛되이",
+     "ex": "I tried all kinds of medicines and diets, to no avail."
+    },
+    {
+     "w": "unbelief",
+     "ko": "불신, 믿음 없음",
+     "ex": "I believe; help my unbelief!"
+    },
+    {
+     "w": "root",
+     "ko": "근원, 뿌리",
+     "ex": "The root of anxiety is inadequate faith."
+    }
+   ]
   },
   {
    "no": 2,
@@ -22,7 +74,49 @@
     "date": "5 Nov",
     "src": "Solid Joys"
    },
-   "label": "5 Nov"
+   "label": "5 Nov",
+   "vocab": [
+    {
+     "w": "greatness",
+     "ko": "위대함",
+     "ex": "Is there a sense of greatness in your mind about your salvation?"
+    },
+    {
+     "w": "salvation",
+     "ko": "구원",
+     "ex": "Is there a sense of greatness in your mind about your salvation?"
+    },
+    {
+     "w": "neglect",
+     "ko": "소홀히 하다",
+     "ex": "Don't neglect being loved by God."
+    },
+    {
+     "w": "file drawer",
+     "ko": "서류 서랍",
+     "ex": "You signed it once and it is in a file drawer somewhere."
+    },
+    {
+     "w": "treasure",
+     "ko": "보물, 귀하게 여기다",
+     "ex": "Don't neglect the inexhaustible treasure of God's promises."
+    },
+    {
+     "w": "inexhaustible",
+     "ko": "무궁무진한",
+     "ex": "Don't neglect the inexhaustible treasure of God's promises."
+    },
+    {
+     "w": "blood-earnest",
+     "ko": "목숨 걸 만큼 진지한",
+     "ex": "We should be blood-earnest about being happy in our great salvation."
+    },
+    {
+     "w": "rarely",
+     "ko": "좀처럼 ~않는",
+     "ex": "You rarely think about it."
+    }
+   ]
   },
   {
    "no": 3,
@@ -34,7 +128,99 @@
     "date": "6 Nov",
     "src": "Solid Joys"
    },
-   "label": "6 Nov"
+   "label": "6 Nov",
+   "vocab": [
+    {
+     "w": "begrudgingly",
+     "ko": "마지못해",
+     "ex": "On the contrary, loving acts are genuine to the degree that they are not done begrudgingly."
+    },
+    {
+     "w": "dutifully",
+     "ko": "의무감으로",
+     "ex": "The good alternative to begrudgingly is not neutrally or dutifully, but gladly."
+    },
+    {
+     "w": "neutrally",
+     "ko": "덤덤하게, 중립적으로",
+     "ex": "The good alternative to begrudgingly is not neutrally or dutifully, but gladly."
+    },
+    {
+     "w": "burdensome",
+     "ko": "부담스러운",
+     "ex": "His commandments are not burdensome."
+    },
+    {
+     "w": "burden",
+     "ko": "짐, 부담",
+     "ex": "His commandments are not burdensome."
+    },
+    {
+     "w": "humbly",
+     "ko": "겸손히",
+     "ex": "What does the Lord require of you but to do justice, and to love kindness, and to walk humbly with your God?"
+    },
+    {
+     "w": "selfishness",
+     "ko": "이기심",
+     "ex": "I have never been accused of selfishness when justifying a kindness on the basis that it delights me."
+    },
+    {
+     "w": "justify",
+     "ko": "정당화하다",
+     "ex": "What does the Lord require of you but to do justice, and to love kindness, and to walk humbly with your God?"
+    },
+    {
+     "w": "delight",
+     "ko": "기쁨 / 기뻐하다",
+     "ex": "I have never been accused of selfishness when justifying a kindness on the basis that it delights me."
+    },
+    {
+     "w": "commandment",
+     "ko": "계명",
+     "ex": "His commandments are not burdensome."
+    },
+    {
+     "w": "obedience",
+     "ko": "순종",
+     "ex": "It presses us on to glad obedience, not just begrudging obedience."
+    },
+    {
+     "w": "gladly",
+     "ko": "기꺼이, 기쁘게",
+     "ex": "The good alternative to begrudgingly is not neutrally or dutifully, but gladly."
+    },
+    {
+     "w": "conquer",
+     "ko": "이기다, 정복하다",
+     "ex": "Being born of God gives a power that conquers the world."
+    },
+    {
+     "w": "authentic",
+     "ko": "진짜의, 진정한",
+     "ex": "The authentic heart of love loves kindness; it doesn't just do kindness."
+    },
+    {
+     "w": "genuine",
+     "ko": "진실한, 진짜의",
+     "ex": "On the contrary, loving acts are genuine to the degree that they are not done begrudgingly."
+    },
+    {
+     "w": "contrary",
+     "ko": "반대(의)",
+     "ex": "On the contrary, loving acts are genuine to the degree that they are not done begrudgingly."
+    },
+    {
+     "w": "logic",
+     "ko": "논리",
+     "ex": "Read these sentences in reverse order and notice the logic."
+    },
+    {
+     "w": "accuse",
+     "ko": "비난하다, 고발하다",
+     "ex": "I have never been accused of selfishness when justifying a kindness on the basis that it delights me."
+    }
+   ]
   },
   {
    "no": 4,
@@ -46,7 +232,94 @@
     "date": "7 Nov",
     "src": "Solid Joys"
    },
-   "label": "7 Nov"
+   "label": "7 Nov",
+   "vocab": [
+    {
+     "w": "humility",
+     "ko": "겸손",
+     "ex": "There are precious experiences of the love of God that require that we fight pride and seek humility."
+    },
+    {
+     "w": "humble",
+     "ko": "겸손한 / 낮추다",
+     "ex": "God opposes the proud but gives grace to the humble."
+    },
+    {
+     "w": "proclaim",
+     "ko": "선포하다",
+     "ex": "Let us proclaim it, loud and clear."
+    },
+    {
+     "w": "oppose",
+     "ko": "대적하다, 반대하다",
+     "ex": "God opposes the proud but gives grace to the humble."
+    },
+    {
+     "w": "unconditional",
+     "ko": "무조건적인",
+     "ex": "Is this experience of the love of God unconditional? No. It is not."
+    },
+    {
+     "w": "conditional",
+     "ko": "조건부의",
+     "ex": "It is conditional on our humbling ourselves and our drawing near to God."
+    },
+    {
+     "w": "crave",
+     "ko": "갈망하다",
+     "ex": "People desperately crave peace."
+    },
+    {
+     "w": "flee",
+     "ko": "도망치다, 달아나다",
+     "ex": "Submit yourselves therefore to God. Resist the devil, and he will flee from you."
+    },
+    {
+     "w": "fulfill",
+     "ko": "(조건을) 채우다, 이루다",
+     "ex": "But they are no less conditions we fulfill."
+    },
+    {
+     "w": "desperately",
+     "ko": "절실하게",
+     "ex": "People desperately crave peace."
+    },
+    {
+     "w": "resist",
+     "ko": "저항하다, 물리치다",
+     "ex": "Submit yourselves therefore to God. Resist the devil, and he will flee from you."
+    },
+    {
+     "w": "submit",
+     "ko": "복종하다",
+     "ex": "Submit yourselves therefore to God. Resist the devil, and he will flee from you."
+    },
+    {
+     "w": "devil",
+     "ko": "마귀",
+     "ex": "Submit yourselves therefore to God. Resist the devil, and he will flee from you."
+    },
+    {
+     "w": "precious",
+     "ko": "소중한",
+     "ex": "There are precious experiences of the love of God that require that we fight pride and seek humility."
+    },
+    {
+     "w": "pride",
+     "ko": "교만, 자부심",
+     "ex": "There are precious experiences of the love of God that require that we fight pride and seek humility."
+    },
+    {
+     "w": "grace",
+     "ko": "은혜",
+     "ex": "God opposes the proud but gives grace to the humble."
+    },
+    {
+     "w": "draw near",
+     "ko": "가까이 나아가다",
+     "ex": "Draw near to God, and he will draw near to you."
+    }
+   ]
   }
  ],
  "types": [
