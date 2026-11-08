@@ -708,14 +708,16 @@ function renderDecks(app){
   const hasDaily=D.group==="other"||D.group==="ielts";
   const seg=el("div","modeseg"+((+!!hasPod + +!!hasLesson + +hasDaily)>2?"":" two")); seg.setAttribute("role","tablist");
   if(cardMode!=="session" && cardMode!=="pod" && !(cardMode==="daily"&&hasDaily)) cardMode= hasLesson? "session" : "pod";
-  if(cardMode==="session" && !hasLesson) cardMode="pod"; if(cardMode==="pod" && !hasPod) cardMode="session";
-  const modes=[...(hasLesson?[["session",D.common?"주제별":D.group==="other"?"팟캐스트":(D.group==="self"? "스피킹 매트릭스" : hasPod?"수업 회차별":"회차별"),(D.group==="other"||D.group==="church")? `에피소드 ${D.sessions.length}편` : `1~${D.sessions[D.sessions.length-1].no}회차`]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","오늘의 문장 10개"]]:[])];
+  const lessonTab=hasLesson || (D.group==="ielts" && !D.common && !D.demo);
+  if(cardMode==="session" && !lessonTab) cardMode="pod"; if(cardMode==="pod" && !hasPod) cardMode="session";
+  const modes=[...(lessonTab?[["session",D.common?"주제별":D.group==="other"?"팟캐스트":(D.group==="self"? "스피킹 매트릭스" : hasPod?"수업 회차별":"회차별"),(D.group==="other"||D.group==="church")? `에피소드 ${D.sessions.length}편` : (D.sessions.length? `1~${D.sessions[D.sessions.length-1].no}회차` : "수업 기록")]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","오늘의 문장 10개"]]:[])];
   for(const [k,label,sub] of modes){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(cardMode===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; openKey=null; render(); }; seg.append(b);
   }
   if(modes.length>1) app.append(seg);
   let key, list, empty="카드가 없어요.";
+  if(cardMode==="session" && !hasLesson){ const e=el("div","empty"); e.append(el("p",null,"아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 회차별 큐카드로 생겨요.")); app.append(e); return; }
   if(cardMode==="session"){
     if(selSession==null || !D.sessions.some(x=>x.no===selSession)) selSession= D.common? D.sessions[0].no : D.sessions[D.sessions.length-1].no;
     app.append(sessionPicker(selSession, v=>{ selSession=v; render(); }, false));
