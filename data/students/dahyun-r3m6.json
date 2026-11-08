@@ -1,0 +1,1457 @@
+{
+ "slug": "dahyun-r3m6",
+ "name": "고다현",
+ "course": "IELTS Speaking",
+ "form": {
+  "url": "https://docs.google.com/forms/d/e/1FAIpQLSfybbvIl48g133Mx3PdH7rfqGDRy9NCum3SdpUJ3RDpWkdPNA/viewform?usp=pp_url&entry.1747437353=NAME_X&entry.1189878643=SESSION_X&entry.1202580096=RESULT_X"
+ },
+ "sessions": [
+  {
+   "no": 1,
+   "date": "2026-09-28",
+   "title": "Recommend a place"
+  },
+  {
+   "no": 2,
+   "date": "2026-10-01",
+   "title": "Successful business person"
+  },
+  {
+   "no": 3,
+   "date": "2026-10-03",
+   "title": "Perfect future job"
+  },
+  {
+   "no": 4,
+   "date": "2026-10-05",
+   "title": "Live sports event"
+  },
+  {
+   "no": 5,
+   "date": "2026-10-08",
+   "title": "Technology to own"
+  },
+  {
+   "no": 6,
+   "date": "2026-10-09",
+   "title": "Environmental law"
+  }
+ ],
+ "types": [
+  "주어-동사",
+  "동사·시제",
+  "문장 구조",
+  "관사·전치사",
+  "단어 선택",
+  "발음·철자"
+ ],
+ "tips": {
+  "동사·시제": "I'm 뒤에는 -ing: I'm studying, I'm living (I'm study ❌). 과거 질문엔 과거로, -ed 발음 또렷하게.",
+  "관사·전치사": "listen to music. nearby는 뒤에 아무것도 안 붙고, near 뒤엔 명사. on the bus / in a car. during + 명사. 나라 앞엔 관사 없음(the US, the UK 예외).",
+  "문장 구조": "동사는 주어가 못 돼요: Having a cellphone is good. 주어 먼저: My university has the longest history.",
+  "주어-동사": "several, one of 뒤에는 복수명사. The bus doesn't come often.",
+  "단어 선택": "easier(more easier ❌), the biggest difference. success·successful·succeed, famous·popular, late·lately, indoor·indoors 구분.",
+  "발음·철자": "about, like 습관 줄이기! -ed 끝소리 또렷하게."
+ },
+ "focus": {
+  "1": "Home·Study·Work 답변은 3문장으로 compact하게! about, like 습관 줄이기.",
+  "2": "Part 2 내용을 더 알차게, several 뒤엔 복수명사.",
+  "4": "always, sometimes 대신 쓸 빈도 표현 익히기.",
+  "6": "Part 2 서론 정확히 외우기, Part 3는 off-topic 금지!"
+ },
+ "compare": [
+  [
+   "near / nearby",
+   "<em>near</em> + 명사: near my house · <em>nearby</em> 단독: a playground nearby"
+  ],
+  [
+   "success / successful / succeed",
+   "<em>success</em> 명사 · <em>successful</em> 형용사 · <em>succeed</em> 동사"
+  ],
+  [
+   "late / lately",
+   "<em>late</em> 늦은, 늦게 · <em>lately</em> 최근에"
+  ],
+  [
+   "famous / popular",
+   "<em>famous</em> 유명한 · <em>popular</em> 인기 많은"
+  ],
+  [
+   "indoor / indoors",
+   "<em>indoor</em> 형용사: indoor sports · <em>indoors</em> 부사: stay indoors"
+  ],
+  [
+   "on / in (교통수단)",
+   "<em>on</em> a plane·bus·train · <em>in</em> a car·taxi"
+  ],
+  [
+   "affect / affect to",
+   "<em>affect</em> + 대상 (to 없이): affect people"
+  ]
+ ],
+ "cards": [
+  {
+   "id": "d01",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    1
+   ],
+   "ko": "음악을 들을 때 기분이 좋아져요.",
+   "en": "When I listen to music, I feel better.",
+   "hint": "listen",
+   "gram": "<em>listen to</em> + 대상. to를 빼먹지 않기!",
+   "mine": "… when I listen music"
+  },
+  {
+   "id": "d02",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    1
+   ],
+   "ko": "근처에 놀이터가 있어요.",
+   "en": "There is a playground nearby.",
+   "hint": "nearby",
+   "gram": "<em>nearby</em>는 전치사가 아니라 뒤에 아무것도 안 붙어요. nearby my house ❌",
+   "mine": "There is a playground nearby my house."
+  },
+  {
+   "id": "d03",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    1
+   ],
+   "ko": "우리 집 근처에 놀이터가 있어요.",
+   "en": "There is a playground near my house.",
+   "hint": "near",
+   "gram": "<em>near</em> 뒤에는 꼭 명사: near my house. near로 끝내기 ❌",
+   "mine": "There is a playground near."
+  },
+  {
+   "id": "d04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "질문을 다르게 말씀해 주실 수 있나요?",
+   "en": "Can you rephrase the question?",
+   "hint": "rephrase",
+   "gram": "<em>Can you rephrase the question?</em> = 질문을 조금 바꿔 말해 주시겠어요? 통째로 암기!"
+  },
+  {
+   "id": "d05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "잘 모르겠어요. 별로 관심이 없어서요. 하지만 배울 기회가 있으면 배우고 싶어요.",
+   "en": "I don't really know. I'm not very interested, but I'd like to learn if I have the chance.",
+   "hint": "interested",
+   "gram": "아이엘츠는 가장 쉬운 방법으로! 모르면 솔직하고 짧게 + 한 문장 덧붙이기."
+  },
+  {
+   "id": "d06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "그는 시간을 잘 지켜요.",
+   "en": "He is very punctual.",
+   "hint": "punctual",
+   "gram": "<em>punctual</em> = 시간을 잘 지키는."
+  },
+  {
+   "id": "d07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "우리는 같은 기수였어요.",
+   "en": "We were in the same batch.",
+   "hint": "batch",
+   "gram": "<em>batch</em> = 동기, 기수. <em>She is my batchmate.</em>"
+  },
+  {
+   "id": "d08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 동료들과 잘 지내요.",
+   "en": "I get on well with my colleagues.",
+   "hint": "colleagues",
+   "gram": "<em>colleague</em> = 직장 동료. <em>get on well with</em> = ~와 잘 지내다."
+  },
+  {
+   "id": "d09",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 경영학을 공부하고 있어요.",
+   "en": "I'm studying business.",
+   "hint": "studying",
+   "gram": "<em>I'm</em> 뒤에는 -ing: I'm <em>studying</em>. 또는 I study / I'm majoring in ~.",
+   "mine": "I'm study …"
+  },
+  {
+   "id": "d10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 영화에 푹 빠져 있어요.",
+   "en": "I'm crazy about movies.",
+   "hint": "crazy",
+   "gram": "좋아한다는 표현 바꿔 쓰기: I'm interested in / I'm fond of / I'm a big fan of / <em>I'm crazy about</em> / I'm keen on."
+  },
+  {
+   "id": "d11",
+   "kind": "ko",
+   "type": "주어-동사",
+   "sessions": [
+    2
+   ],
+   "ko": "버스가 자주 안 와요.",
+   "en": "The bus doesn't come often.",
+   "hint": "doesn't",
+   "gram": "주어 the bus(하나)라 <em>doesn't</em>. 철자 doesn't!"
+  },
+  {
+   "id": "d12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그 경치에 완전히 감탄했어요.",
+   "en": "I was blown away by the view.",
+   "hint": "blown",
+   "gram": "<em>be blown away</em> = 깜짝 놀라다, 감탄하다."
+  },
+  {
+   "id": "d13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "주말에는 가족과 소중한 시간을 보내요.",
+   "en": "I spend quality time with my family at the weekend.",
+   "hint": "quality",
+   "gram": "<em>quality time</em> = (가족·친구와) 의미 있게 보내는 시간."
+  },
+  {
+   "id": "d14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "특별한 날엔 근사한 식당에서 외식해요.",
+   "en": "On special days, we eat out at a fancy restaurant.",
+   "hint": "fancy",
+   "gram": "<em>eat out</em> = 외식하다. <em>fancy restaurant</em> = 근사한 식당."
+  },
+  {
+   "id": "d15",
+   "kind": "ko",
+   "type": "주어-동사",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 여러 나라를 가 봤어요.",
+   "en": "I've been to several countries.",
+   "hint": "countries",
+   "gram": "<em>several</em> 뒤에는 복수명사! Part 2 서론에서 특히 조심."
+  },
+  {
+   "id": "d16",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    2
+   ],
+   "ko": "그는 성공한 사업가예요. 성공하려고 정말 열심히 일했어요.",
+   "en": "He is a successful businessman. He worked really hard to succeed.",
+   "hint": "successful",
+   "gram": "<em>success</em> 명사(성공) · <em>successful</em> 형용사(성공한) · <em>succeed</em> 동사(성공하다)."
+  },
+  {
+   "id": "d17",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그들은 은행에서 돈을 빌려야 해요.",
+   "en": "They should borrow money from banks.",
+   "hint": "borrow",
+   "gram": "<em>borrow</em> A <em>from</em> B = B에게서 A를 빌리다."
+  },
+  {
+   "id": "d18",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 대체로 집에서 밥을 먹어요.",
+   "en": "More often than not, I eat at home.",
+   "hint": "often",
+   "gram": "빈도 표현: <em>more often than not</em> 자주 · from time to time 가끔 · once in a blue moon 아주 가끔."
+  },
+  {
+   "id": "d19",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 서울에 살고 있어요.",
+   "en": "I'm living in Seoul.",
+   "hint": "living",
+   "gram": "<em>I'm</em> 뒤에는 -ing: I'm living in. 또는 I live in. I'm live ❌",
+   "mine": "I'm live in …"
+  },
+  {
+   "id": "d20",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "걸어서 10분 걸려요.",
+   "en": "It takes 10 minutes on foot.",
+   "hint": "foot",
+   "gram": "<em>It takes</em> + 시간 + <em>on foot</em> = 걸어서 ~ 걸려요."
+  },
+  {
+   "id": "d21",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "버스로 10분 거리예요.",
+   "en": "It's a 10-minute bus ride.",
+   "hint": "ride",
+   "gram": "<em>It's a 10-minute</em> walk / bus ride / drive / subway ride. minute은 단수!"
+  },
+  {
+   "id": "d22",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "차 막히는 걸 피하려고 일찍 나왔어요.",
+   "en": "I left early to beat the traffic.",
+   "hint": "traffic",
+   "gram": "<em>beat the traffic</em> = 차 막히기 전에 움직이다. 막혔을 땐 <em>I was stuck in traffic.</em>"
+  },
+  {
+   "id": "d23",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "그 말은 걸러서 들어야 해요.",
+   "en": "It should be taken with a pinch of salt.",
+   "hint": "salt",
+   "gram": "<em>take something with a pinch of salt</em> = 곧이곧대로 믿지 않고 걸러 듣다."
+  },
+  {
+   "id": "d24",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "요즘은 모든 정보가 손끝에 있어요.",
+   "en": "These days, all the information is at our fingertips.",
+   "hint": "fingertips",
+   "gram": "<em>at one's fingertips</em> = 바로 손닿는 곳에, 쉽게 얻을 수 있는."
+  },
+  {
+   "id": "d25",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 우리 팀을 응원해요.",
+   "en": "I always root for my team.",
+   "hint": "root",
+   "gram": "<em>root for / cheer for</em> = ~를 응원하다."
+  },
+  {
+   "id": "d26",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "커가면서 요리에 관심이 생겼어요.",
+   "en": "As I grew up, I got interested in cooking.",
+   "hint": "grew",
+   "gram": "<em>As I grow up</em> = 내가 커가면서. 과거 이야기면 grew."
+  },
+  {
+   "id": "d27",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "주말에는 늦잠을 자요.",
+   "en": "I sleep in at the weekend.",
+   "hint": "sleep",
+   "gram": "<em>sleep in</em> = 늦잠 자다."
+  },
+  {
+   "id": "d28",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    3
+   ],
+   "ko": "최근에 운동을 시작했어요.",
+   "en": "I've started working out lately.",
+   "hint": "lately",
+   "gram": "<em>late</em> = 늦은, 늦게 · <em>lately</em> = 최근에."
+  },
+  {
+   "id": "d29",
+   "kind": "ko",
+   "type": "주어-동사",
+   "sessions": [
+    3
+   ],
+   "ko": "제가 가장 좋아하는 책 중 하나는 해리 포터예요.",
+   "en": "One of my favourite books is Harry Potter.",
+   "hint": "books",
+   "gram": "<em>one of</em> + 복수명사(books), 동사는 is(하나니까).",
+   "mine": "One of my favourite book is …"
+  },
+  {
+   "id": "d30",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    4
+   ],
+   "ko": "우리 대학교가 역사가 가장 길어요.",
+   "en": "My university has the longest history.",
+   "hint": "longest",
+   "gram": "주어(My university) 먼저, 그다음 동사: <em>has the longest history</em>.",
+   "mine": "Longest history is my university."
+  },
+  {
+   "id": "d31",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    4
+   ],
+   "ko": "이게 더 쉬워요.",
+   "en": "This is easier.",
+   "hint": "easier",
+   "gram": "짧은 형용사는 -er: easy → <em>easier</em>. more easier ❌",
+   "mine": "… more easier"
+  },
+  {
+   "id": "d32",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "다른 도시와 비교하면 서울은 비싸요.",
+   "en": "Compared to other cities, Seoul is expensive.",
+   "hint": "Compared",
+   "gram": "<em>compared to</em> ~ / <em>in comparison with</em> ~ = ~와 비교하면."
+  },
+  {
+   "id": "d33",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "상황에 따라 달라요.",
+   "en": "It depends on the situation.",
+   "hint": "depends",
+   "gram": "<em>It depends on</em> ~ = ~에 따라 달라요."
+  },
+  {
+   "id": "d34",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 버스 안에서 음악을 들어요.",
+   "en": "I listen to music on the bus.",
+   "hint": "bus",
+   "gram": "큰 교통수단은 <em>on</em> a plane / bus / train, 승용차는 <em>in</em> a car."
+  },
+  {
+   "id": "d35",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "아침에 잠을 깨려고 커피 한잔 해요.",
+   "en": "I grab a coffee to wake myself up.",
+   "hint": "grab",
+   "gram": "<em>grab a coffee</em> = 커피 한잔 하다. <em>wake myself up</em> = 잠을 깨우다."
+  },
+  {
+   "id": "d36",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    4
+   ],
+   "ko": "이 음료는 카페인이 많아요.",
+   "en": "This drink has a high amount of caffeine.",
+   "hint": "caffeine",
+   "gram": "high caffeine ❌ → <em>a high amount of caffeine</em>.",
+   "mine": "… high caffeine"
+  },
+  {
+   "id": "d37",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    4
+   ],
+   "ko": "그는 유명하고, 그 노래는 인기가 많아요.",
+   "en": "He is famous, and the song is really popular.",
+   "hint": "popular",
+   "gram": "<em>famous</em> = 유명한(많이 알려진), <em>popular</em> = 인기 많은(많이 좋아하는)."
+  },
+  {
+   "id": "d38",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    4
+   ],
+   "ko": "야구 시즌 동안 경기를 자주 봐요.",
+   "en": "During baseball season, I often watch games.",
+   "hint": "During",
+   "gram": "<em>during</em> + 명사 = ~ 동안. when + 명사 ❌",
+   "mine": "… when baseball season"
+  },
+  {
+   "id": "d39",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    4
+   ],
+   "ko": "실내 운동은 실내에서 해요.",
+   "en": "I do indoor exercise indoors.",
+   "hint": "indoors",
+   "gram": "<em>indoor</em> 형용사(실내의) + 명사 · <em>indoors</em> 부사(실내에서)."
+  },
+  {
+   "id": "d40",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 주말에 엄청 먹었어요.",
+   "en": "I pigged out at the weekend.",
+   "hint": "pigged",
+   "gram": "<em>pig out</em> = 엄청 많이 먹다."
+  },
+  {
+   "id": "d41",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 단 걸 좋아해요.",
+   "en": "I have a sweet tooth.",
+   "hint": "sweet",
+   "gram": "<em>have a sweet tooth</em> = 단 걸 좋아하다."
+  },
+  {
+   "id": "d42",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "공포 영화는 제 취향이 아니에요.",
+   "en": "Horror films are not my cup of tea.",
+   "hint": "cup",
+   "gram": "<em>not my cup of tea</em> = 내 취향이 아닌."
+  },
+  {
+   "id": "d43",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "출출할 때 과자를 먹어요.",
+   "en": "I eat snacks when I feel peckish.",
+   "hint": "peckish",
+   "gram": "<em>feel peckish</em> = 출출하다. <em>mouth-watering</em> = 군침 도는."
+  },
+  {
+   "id": "d44",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    5
+   ],
+   "ko": "기술은 사람들에게 많은 영향을 줘요.",
+   "en": "Technology affects people a lot.",
+   "hint": "affects",
+   "gram": "<em>affect</em> + 대상(to 없이). affect to ❌",
+   "mine": "… affect to people"
+  },
+  {
+   "id": "d45",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    5
+   ],
+   "ko": "대부분의 기술은 삶을 더 편하게 해 줘요.",
+   "en": "Most technology makes life easier.",
+   "hint": "Most",
+   "gram": "<em>most</em> + 명사. most of 뒤에는 the/my가 필요해요. technology는 셀 수 없는 명사.",
+   "mine": "… most of technology"
+  },
+  {
+   "id": "d46",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "기술은 삶의 질을 높여 줘요.",
+   "en": "Technology improves the quality of life.",
+   "hint": "improves",
+   "gram": "<em>improve the quality of life</em> = 삶의 질을 높이다."
+  },
+  {
+   "id": "d47",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "저는 유행을 따라가려고 해요.",
+   "en": "I try to keep up with the trends.",
+   "hint": "keep",
+   "gram": "<em>keep up with</em> ~ = ~에 뒤처지지 않다."
+  },
+  {
+   "id": "d48",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "울음을 겨우 참았어요.",
+   "en": "I tried to hold back my tears.",
+   "hint": "hold",
+   "gram": "<em>hold back</em> = (감정 등을) 참다."
+  },
+  {
+   "id": "d49",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "그렇긴 하지만, 비싸요.",
+   "en": "Having said that, it's expensive.",
+   "hint": "Having",
+   "gram": "<em>Having said that,</em> = 그렇긴 하지만. <em>Come to think of it,</em> = 생각해 보니."
+  },
+  {
+   "id": "d50",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "잠깐 숨 좀 돌리자.",
+   "en": "Let's take a breather.",
+   "hint": "breather",
+   "gram": "<em>take a breather</em> = 잠깐 쉬다, 숨 돌리다."
+  },
+  {
+   "id": "d51",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "모두가 자기 몫을 해야 해요.",
+   "en": "Everyone has to pull their weight.",
+   "hint": "weight",
+   "gram": "<em>pull one's weight</em> = 자기 몫을 다하다."
+  },
+  {
+   "id": "d52",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    6
+   ],
+   "ko": "가장 큰 차이는 가격이에요.",
+   "en": "The biggest difference is the price.",
+   "hint": "biggest",
+   "gram": "차이가 크다는 <em>big</em>: <em>the biggest difference</em>. the most difference ❌",
+   "mine": "… the most difference"
+  },
+  {
+   "id": "d53",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    6
+   ],
+   "ko": "휴대폰이 있는 건 좋아요.",
+   "en": "Having a cellphone is good.",
+   "hint": "Having",
+   "gram": "동사는 그대로 주어가 못 돼요. -ing로: <em>Having</em> a cellphone is good.",
+   "mine": "Have a cellphone is good."
+  },
+  {
+   "id": "d54",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    6
+   ],
+   "ko": "저는 일본과 미국에 가 봤어요.",
+   "en": "I've been to Japan and the US.",
+   "hint": "Japan",
+   "gram": "나라 이름 앞에는 관사 없음! 예외: <em>the US</em>, <em>the UK</em>."
+  },
+  {
+   "id": "d55",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "비 오는 날엔 우울해요.",
+   "en": "I feel depressed on rainy days.",
+   "hint": "depressed",
+   "gram": "<em>feel depressed</em> = 우울하다(사람). 날씨가 우울하면 depressing."
+  },
+  {
+   "id": "d56",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "그 섬은 야생 동물 보호구역이에요.",
+   "en": "The island is a wildlife sanctuary.",
+   "hint": "sanctuary",
+   "gram": "<em>sanctuary</em> = (야생동물) 보호구역."
+  }
+ ],
+ "part1": [
+  {
+   "session": 1,
+   "groups": [
+    {
+     "title": "Home · Hometown",
+     "qs": [
+      "Where are you from?",
+      "Which city are you living in?",
+      "Do you know any history about your hometown?",
+      "Do you prefer to live in an apartment or in a house?",
+      "Who do you live with?",
+      "Are there many rooms in your home?",
+      "What is your favourite room?",
+      "What would you change about your home?",
+      "How are the walls decorated?",
+      "How could your hometown be improved?",
+      "Is there good public transport in your hometown?",
+      "What's your neighbourhood like?",
+      "Do you think your hometown is a good place to bring up children?"
+     ]
+    },
+    {
+     "title": "Study",
+     "qs": [
+      "Do you study or work?",
+      "What do you study?",
+      "Why did you choose that subject?",
+      "Is it a popular subject in your country?",
+      "Do you get on with your colleagues?",
+      "Do you plan to get a job in the same field as your subject?"
+     ]
+    },
+    {
+     "title": "Work",
+     "qs": [
+      "Why did you choose that job?",
+      "Do you like your job?",
+      "Where do you work?",
+      "Do you plan to continue with your job in the future?",
+      "What responsibilities do you have at work?"
+     ]
+    },
+    {
+     "title": "1회차 질문",
+     "qs": [
+      "Do you wear a watch?",
+      "Did you enjoy travelling by car when you were a kid?",
+      "What kinds of websites do you often visit?",
+      "Do you like looking at yourself in the mirror?",
+      "Did you like going to parks as a child?",
+      "Do you like shopping?",
+      "Do you like to keep things tidy?",
+      "Do you prefer sad or happy music?",
+      "Do you have a favourite teacher?",
+      "When did you start using social media?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 2,
+   "groups": [
+    {
+     "title": "2회차 질문",
+     "qs": [
+      "What kind of clothes do you like to wear?",
+      "What films do you like?",
+      "What was your childhood dream?",
+      "Have you ever learnt about outer space and stars?",
+      "Do you like art?",
+      "Do you like singing? Why?",
+      "What do you hate doing in the evening?",
+      "Do you celebrate your birthday?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 3,
+   "groups": [
+    {
+     "title": "3회차 질문",
+     "qs": [
+      "Do you like watching sports programmes on TV?",
+      "Do you like science?",
+      "Do you use headphones?",
+      "Are you good at telling jokes?",
+      "Do you like to get up early in the morning?",
+      "Do you like taking pictures of different views?",
+      "What are your favourite activities, food, books or movies?",
+      "Are there tall buildings near your home?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 4,
+   "groups": [
+    {
+     "title": "4회차 질문",
+     "qs": [
+      "What do you usually buy at the street market?",
+      "Do you collect things?",
+      "What will you do if you find something lost by others?",
+      "Do you like buying shoes? How often?",
+      "Do you prefer to sit by the window when travelling?",
+      "What do you do when you see rubbish on the street?",
+      "Do you often feel tired?",
+      "How did you learn to be polite as a child?",
+      "How often do you eat fruit and vegetables?",
+      "Do you remember your first day at secondary school?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 5,
+   "groups": [
+    {
+     "title": "5회차 질문",
+     "qs": [
+      "What did you often do with your friends in your childhood?",
+      "Are you good at memorising things?",
+      "Is the city where you live crowded?",
+      "Have you ever sent handmade gifts to others?",
+      "Do you like getting up early in the morning?",
+      "Have you ever visited a zoo?",
+      "What is your favourite weather?",
+      "What is your favourite shop?",
+      "Do you have a pet?",
+      "Are you a patient person?",
+      "What do you often do in the morning?",
+      "Do many people in your country use bicycles?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 6,
+   "groups": [
+    {
+     "title": "6회차 질문",
+     "qs": [
+      "What's your favourite type of music?",
+      "Where do most young people like to go out in your country?",
+      "Does the weather ever affect how you feel?",
+      "What is the difference between taking a bus and taking a train?",
+      "What's your favourite animal, book or movie?",
+      "Do you often read newspapers?",
+      "What is your favourite advertisement?",
+      "Have you ever bought anything online?",
+      "Do you grow any plants?",
+      "Did you learn how to grow plants when you were a child?",
+      "Why do you think some people enjoy growing plants?"
+     ]
+    }
+   ]
+  }
+ ],
+ "part3": [
+  {
+   "session": 1,
+   "topic": "Describe a place you have travelled to that you would like to recommend to others",
+   "qs": [
+    "Do you think people travel more nowadays than in the past?",
+    "What kinds of places do people in your country like to visit?",
+    "What are the main reasons people choose to travel abroad?",
+    "Do young people and older people prefer different travel destinations?",
+    "Is it better to travel alone or with other people?"
+   ]
+  },
+  {
+   "session": 2,
+   "topic": "Describe a person you know who has a successful business",
+   "qs": [
+    "Do you think small businesses are important for the economy?",
+    "Why do some businesses become successful while others fail?",
+    "Do you think young people should be encouraged to start their own businesses? Why or why not?",
+    "Do you think customer service is important for a successful business? Why or why not?"
+   ]
+  },
+  {
+   "session": 3,
+   "topic": "Describe a perfect job you would like to have in the future",
+   "qs": [
+    "What factors do people usually consider when choosing a career?",
+    "Do you think young people today change jobs more often than in the past? Why or why not?",
+    "Is it more important to earn a high salary or to enjoy your job? Why?",
+    "How do you think technology will change the workplace in the future?",
+    "What makes people satisfied with their jobs?",
+    "What kinds of jobs will be popular in the future?"
+   ]
+  },
+  {
+   "session": 4,
+   "topic": "Describe a live sports event you watched and liked",
+   "qs": [
+    "What qualities do successful athletes usually have?",
+    "Do you think children should be encouraged to play sports from a young age? Why?",
+    "Do you think hosting major sporting events is beneficial for a country? Why or why not?",
+    "Do you think watching sports can bring people together?"
+   ]
+  },
+  {
+   "session": 5,
+   "topic": "Describe a piece of technology that you would like to own",
+   "qs": [
+    "How has technology changed people's daily lives?",
+    "How has technology changed the way people communicate with each other?",
+    "Should schools encourage students to use more technology in the classroom? Why or why not?",
+    "Why do some people always want to buy the latest technology?"
+   ]
+  },
+  {
+   "session": 6,
+   "topic": "Describe an environmental law you would like your country to introduce",
+   "qs": [
+    "What are the biggest environmental problems in your country?",
+    "What should individuals be doing to protect the natural environment?",
+    "How could the government help prevent pollution?",
+    "Do you think young people today are more aware of environmental problems?",
+    "Do you think it's important to protect trees?",
+    "Do you think more money should be spent on protecting wild animals?"
+   ]
+  }
+ ],
+ "words": [
+  {
+   "w": "punctual",
+   "ko": "시간을 잘 지키는",
+   "ex": "He is very punctual.",
+   "s": 1
+  },
+  {
+   "w": "batch / batchmate",
+   "ko": "동기, 기수",
+   "ex": "We were in the same batch.",
+   "s": 1
+  },
+  {
+   "w": "area",
+   "ko": "동네, 지역",
+   "ex": "",
+   "s": 1
+  },
+  {
+   "w": "colleague",
+   "ko": "동료",
+   "ex": "I get on well with my colleagues.",
+   "s": 1
+  },
+  {
+   "w": "telltale sign",
+   "ko": "숨길 수 없는 징후",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "stave in",
+   "ko": "부수다(과거 stove in)",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "make up",
+   "ko": "차지하다",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "worldwide",
+   "ko": "전 세계적인",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "fangirl",
+   "ko": "팬질하다",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "breakneck speed",
+   "ko": "엄청난 속도",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "catchy",
+   "ko": "기억하기 쉬운",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "cherish",
+   "ko": "소중히 여기다",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "boil down to",
+   "ko": "핵심이 ~이다",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "first hand",
+   "ko": "직접",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "lean",
+   "ko": "군살이 없는",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "picky eater",
+   "ko": "편식하는 사람",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "10 to 8 / 10 past 8",
+   "ko": "8시 10분 전 / 8시 10분",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "-wise",
+   "ko": "~ 면에서",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "take up",
+   "ko": "(취미로) 시작하다",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "in my element",
+   "ko": "물 만난 물고기",
+   "ex": "I'm studying business.",
+   "s": 2
+  },
+  {
+   "w": "food for thought",
+   "ko": "생각할 거리",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "blown away",
+   "ko": "감탄한, 깜짝 놀란",
+   "ex": "I was blown away by the view.",
+   "s": 2
+  },
+  {
+   "w": "quality time",
+   "ko": "소중한 시간",
+   "ex": "I spend quality time with my family at the weekend.",
+   "s": 2
+  },
+  {
+   "w": "dominant",
+   "ko": "지배적인",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "more often than not",
+   "ko": "대개, 자주",
+   "ex": "More often than not, I eat at home.",
+   "s": 2
+  },
+  {
+   "w": "from time to time",
+   "ko": "가끔",
+   "ex": "They should borrow money from banks.",
+   "s": 2
+  },
+  {
+   "w": "once in a blue moon",
+   "ko": "아주 가끔",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "on a daily basis",
+   "ko": "평소에",
+   "ex": "On special days, we eat out at a fancy restaurant.",
+   "s": 2
+  },
+  {
+   "w": "every now and then",
+   "ko": "종종, 가끔",
+   "ex": "",
+   "s": 2
+  },
+  {
+   "w": "longevity",
+   "ko": "장수",
+   "ex": "",
+   "s": 3
+  },
+  {
+   "w": "oriented",
+   "ko": "지향하는",
+   "ex": "",
+   "s": 3
+  },
+  {
+   "w": "doom and gloom",
+   "ko": "어두운 전망",
+   "ex": "",
+   "s": 3
+  },
+  {
+   "w": "per se",
+   "ko": "그 자체로는",
+   "ex": "",
+   "s": 3
+  },
+  {
+   "w": "beat the traffic",
+   "ko": "차 막히기 전에 가다",
+   "ex": "I left early to beat the traffic.",
+   "s": 3
+  },
+  {
+   "w": "stuck in traffic",
+   "ko": "차가 막힌",
+   "ex": "",
+   "s": 3
+  },
+  {
+   "w": "with a pinch of salt",
+   "ko": "걸러서",
+   "ex": "It should be taken with a pinch of salt.",
+   "s": 3
+  },
+  {
+   "w": "at one's fingertips",
+   "ko": "손닿는 곳에",
+   "ex": "I left early to beat the traffic.",
+   "s": 3
+  },
+  {
+   "w": "commuter",
+   "ko": "통근자",
+   "ex": "",
+   "s": 3
+  },
+  {
+   "w": "root for / cheer for",
+   "ko": "응원하다",
+   "ex": "I always root for my team.",
+   "s": 3
+  },
+  {
+   "w": "authentic food",
+   "ko": "정통 음식",
+   "ex": "",
+   "s": 3
+  },
+  {
+   "w": "sleep in",
+   "ko": "늦잠 자다",
+   "ex": "I sleep in at the weekend.",
+   "s": 3
+  },
+  {
+   "w": "lately",
+   "ko": "최근에",
+   "ex": "I've started working out lately.",
+   "s": 3
+  },
+  {
+   "w": "occupation",
+   "ko": "직업",
+   "ex": "",
+   "s": 3
+  },
+  {
+   "w": "implicit / explicit",
+   "ko": "암묵적인 / 분명한",
+   "ex": "",
+   "s": 4
+  },
+  {
+   "w": "immersion",
+   "ko": "몰입",
+   "ex": "",
+   "s": 4
+  },
+  {
+   "w": "likelihood",
+   "ko": "가능성",
+   "ex": "",
+   "s": 4
+  },
+  {
+   "w": "sentimental",
+   "ko": "감상적인",
+   "ex": "",
+   "s": 4
+  },
+  {
+   "w": "stinky / fragrant",
+   "ko": "냄새나는 / 향기로운",
+   "ex": "",
+   "s": 4
+  },
+  {
+   "w": "have a sweet tooth",
+   "ko": "단 걸 좋아하다",
+   "ex": "I have a sweet tooth.",
+   "s": 4
+  },
+  {
+   "w": "mouth-watering",
+   "ko": "군침 도는",
+   "ex": "",
+   "s": 4
+  },
+  {
+   "w": "not my cup of tea",
+   "ko": "내 취향이 아닌",
+   "ex": "Horror films are not my cup of tea.",
+   "s": 4
+  },
+  {
+   "w": "feel peckish",
+   "ko": "출출하다",
+   "ex": "I eat snacks when I feel peckish.",
+   "s": 4
+  },
+  {
+   "w": "within walking distance",
+   "ko": "걸어갈 수 있는 거리",
+   "ex": "",
+   "s": 4
+  },
+  {
+   "w": "pig out",
+   "ko": "엄청 먹다",
+   "ex": "I pigged out at the weekend.",
+   "s": 4
+  },
+  {
+   "w": "compared to",
+   "ko": "~와 비교하면",
+   "ex": "Compared to other cities, Seoul is expensive.",
+   "s": 4
+  },
+  {
+   "w": "wake myself up",
+   "ko": "잠을 깨우다",
+   "ex": "I grab a coffee to wake myself up.",
+   "s": 4
+  },
+  {
+   "w": "grab a coffee",
+   "ko": "커피 한잔 하다",
+   "ex": "I grab a coffee to wake myself up.",
+   "s": 4
+  },
+  {
+   "w": "secondary school",
+   "ko": "중·고등학교",
+   "ex": "",
+   "s": 4
+  },
+  {
+   "w": "broadcast",
+   "ko": "방송하다",
+   "ex": "",
+   "s": 4
+  },
+  {
+   "w": "indoor / indoors",
+   "ko": "실내의 / 실내에서",
+   "ex": "I do indoor exercise indoors.",
+   "s": 4
+  },
+  {
+   "w": "jaywalking",
+   "ko": "무단횡단",
+   "ex": "",
+   "s": 5
+  },
+  {
+   "w": "pull one's weight",
+   "ko": "자기 몫을 다하다",
+   "ex": "Everyone has to pull their weight.",
+   "s": 5
+  },
+  {
+   "w": "take a breather",
+   "ko": "숨 돌리다",
+   "ex": "Let's take a breather.",
+   "s": 5
+  },
+  {
+   "w": "on and off",
+   "ko": "간헐적으로",
+   "ex": "Everyone has to pull their weight.",
+   "s": 5
+  },
+  {
+   "w": "having said that",
+   "ko": "그렇긴 하지만",
+   "ex": "Having said that, it's expensive.",
+   "s": 5
+  },
+  {
+   "w": "come to think of it",
+   "ko": "생각해 보니",
+   "ex": "",
+   "s": 5
+  },
+  {
+   "w": "hold back",
+   "ko": "참다",
+   "ex": "I tried to hold back my tears.",
+   "s": 5
+  },
+  {
+   "w": "era / age",
+   "ko": "시대",
+   "ex": "",
+   "s": 5
+  },
+  {
+   "w": "keep up with the trend",
+   "ko": "유행을 따라가다",
+   "ex": "I try to keep up with the trends.",
+   "s": 5
+  },
+  {
+   "w": "function",
+   "ko": "기능",
+   "ex": "",
+   "s": 5
+  },
+  {
+   "w": "feel depressed",
+   "ko": "우울하다",
+   "ex": "I feel depressed on rainy days.",
+   "s": 6
+  },
+  {
+   "w": "wholesale shop",
+   "ko": "도매점",
+   "ex": "",
+   "s": 6
+  },
+  {
+   "w": "tan",
+   "ko": "태닝하다",
+   "ex": "",
+   "s": 6
+  },
+  {
+   "w": "sanctuary",
+   "ko": "야생 보호구역",
+   "ex": "The island is a wildlife sanctuary.",
+   "s": 6
+  }
+ ],
+ "group": "ielts",
+ "podFiles": [
+  "groups/other"
+ ]
+}
