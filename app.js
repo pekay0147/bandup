@@ -54,7 +54,7 @@ async function boot(){
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
   PROFILE=store.get(`bandup-profile-${slug}`,null); if(D.common && PROFILE && PROFILE.name) D.name=PROFILE.name;
-  document.title= D.demo? "밴드업 체험하기" : (D.common && !D.name)? "밴드업 아이엘츠" : `${D.name}님 · 밴드업 아이엘츠`;
+  document.title= D.demo? "밴드업 체험하기" : !D.name? "밴드업 아이엘츠" : `${D.name}님 · 밴드업 아이엘츠`;
   $("#who").textContent=new Date().toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"long"}); const br=document.querySelector(".brand"); if(br) br.innerHTML="Band<span>up</span>";
 
   buildTabs(); render();
@@ -376,7 +376,7 @@ function homeCat(){
   const STATES=["walk","walk","walk","sit","meow","stretch","eat","exercise","sleep","groom"];
   const LINES={meow:["야옹~","냐아앙","냥냥!"],eat:["냠냠","츄르 최고","밥 먹는 중이다냥"],exercise:["운동 중! 하나 둘","점프 점프!","다이어트 중이다냥"],sleep:["쿨쿨…","5분만 더…"],stretch:["으아아 기지개~","쭉쭉"],groom:["단장 중","털 고르는 중"]};
   const say=(txt)=>{ bub.textContent=txt; bub.hidden=false; clearTimeout(bt); bt=setTimeout(()=>{ bub.hidden=true; },2400); };
-  const sayCheer=()=>say(CAT_LINES[Math.floor(Math.random()*CAT_LINES.length)].replace("{name}",D.name+"님"));
+  const sayCheer=()=>say(CAT_LINES[Math.floor(Math.random()*CAT_LINES.length)].replace("{name}",D.name? D.name+"님" : ""));
   const setState=(s,t)=>{
     state=s; w.className="cat-walk st-"+s+(dir<0?" left":"");
     const dur={walk:3000+Math.random()*4000,sit:2000+Math.random()*2000,meow:2200,stretch:2600,eat:4200,exercise:3200,sleep:5000+Math.random()*3000,groom:3200}[s];
