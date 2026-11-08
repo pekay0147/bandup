@@ -5,5 +5,24 @@
  "form": {
   "url": "https://docs.google.com/forms/d/e/1FAIpQLSfybbvIl48g133Mx3PdH7rfqGDRy9NCum3SdpUJ3RDpWkdPNA/viewform?usp=pp_url&entry.1747437353=NAME_X&entry.1189878643=SESSION_X&entry.1202580096=RESULT_X"
  },
- "group": "other"
+ "group": "ielts",
+ "sessions": [],
+ "types": [
+  "주어-동사",
+  "동사·시제",
+  "문장 구조",
+  "관사·전치사",
+  "단어 선택",
+  "발음·철자"
+ ],
+ "tips": {},
+ "focus": {},
+ "compare": [],
+ "cards": [],
+ "part1": [],
+ "part3": [],
+ "words": [],
+ "podFiles": [
+  "groups/other"
+ ]
 }
