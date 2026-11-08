@@ -1,0 +1,943 @@
+{
+ "slug": "jaeyul-p5n8",
+ "name": "재율",
+ "course": "IELTS Speaking",
+ "form": {
+  "url": "https://docs.google.com/forms/d/e/1FAIpQLSfybbvIl48g133Mx3PdH7rfqGDRy9NCum3SdpUJ3RDpWkdPNA/viewform?usp=pp_url&entry.1747437353=NAME_X&entry.1189878643=SESSION_X&entry.1202580096=RESULT_X"
+ },
+ "sessions": [
+  {
+   "no": 1,
+   "date": "2026-07-18",
+   "title": "Recommend a place"
+  },
+  {
+   "no": 2,
+   "date": "2026-07-25",
+   "title": "Successful business person"
+  },
+  {
+   "no": 3,
+   "date": "2026-08-03",
+   "title": "Perfect future job"
+  },
+  {
+   "no": 4,
+   "date": "2026-08-17",
+   "title": "Not allowed to use a phone"
+  },
+  {
+   "no": 5,
+   "date": "2026-09-01",
+   "title": "Sports event · Technology"
+  },
+  {
+   "no": 6,
+   "date": "2026-09-08",
+   "title": "Giving advice"
+  },
+  {
+   "no": 7,
+   "date": "2026-09-12",
+   "title": "Technological problem"
+  }
+ ],
+ "types": [
+  "주어-동사",
+  "동사·시제",
+  "문장 구조",
+  "관사·전치사",
+  "단어 선택",
+  "발음·철자"
+ ],
+ "tips": {
+  "동사·시제": "prefer는 일반동사: I prefer (I'm prefer ❌), 과거 부정은 didn't prefer. used to + 동사원형. 과거 이야기는 끝까지 과거형(went, sold).",
+  "관사·전치사": "go to + 장소, listen to music, near + 장소(nearby는 부사). in the morning, the internet.",
+  "문장 구조": "목적은 to + 동사원형: I came here to study English.",
+  "주어-동사": "one of + 복수명사: one of my favourite apps.",
+  "단어 선택": "neighbourhood(동네) vs neighbour(이웃 사람).",
+  "발음·철자": "빨리 말하면 실수가 나와요. 살짝 천천히, 또박또박!"
+ },
+ "focus": {
+  "1": "조금 천천히, 또박또박 말하기! Part 2 템플릿 암기.",
+  "3": "favourite activity, food, animal, exercise 답은 미리 정해 두기.",
+  "4": "Part 1 주제별로 딱 맞는 표현 공부하기.",
+  "6": "Part 3는 더 straightforward하게: 답 → 이유 → 예시."
+ },
+ "compare": [
+  [
+   "near / nearby",
+   "<em>near</em> + 장소: near my house · <em>nearby</em> 부사·형용사: a café nearby, a nearby café"
+  ],
+  [
+   "neighbourhood / neighbour",
+   "<em>neighbourhood</em> 동네 · <em>neighbour</em> 이웃 사람"
+  ],
+  [
+   "10 to 8 / 10 past 8",
+   "<em>10 to 8</em> 8시 10분 전 · <em>10 past 8</em> 8시 10분"
+  ],
+  [
+   "to study / for studying",
+   "목적은 <em>to</em> + 동사원형: I came here <em>to study</em>"
+  ]
+ ],
+ "cards": [
+  {
+   "id": "j01",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    1
+   ],
+   "ko": "우리 집 근처에 카페가 있어요.",
+   "en": "There's a café near my house.",
+   "hint": "near",
+   "gram": "<em>near</em> + 장소(전치사): near my house. <em>nearby</em>는 부사·형용사: There's a café nearby. / a nearby café."
+  },
+  {
+   "id": "j02",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    1
+   ],
+   "ko": "어릴 때 저는 공원에 자주 가곤 했어요.",
+   "en": "I used to go to the park a lot when I was a kid.",
+   "hint": "used",
+   "gram": "<em>used to</em> + 동사원형. used to went ❌",
+   "mine": "… used to went"
+  },
+  {
+   "id": "j03",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 행복한 음악을 더 좋아해요.",
+   "en": "I prefer happy music.",
+   "hint": "prefer",
+   "gram": "prefer는 일반동사라 앞에 I'm을 붙이지 않아요: <em>I prefer</em>.",
+   "mine": "I'm prefer …"
+  },
+  {
+   "id": "j04",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 공원에 가는 걸 좋아해요.",
+   "en": "I like to go to the park.",
+   "hint": "go",
+   "gram": "장소로 갈 때는 <em>go to</em> + 장소. go park ❌",
+   "mine": "I like to go park."
+  },
+  {
+   "id": "j05",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    1
+   ],
+   "ko": "작년에 일본에 갔어요.",
+   "en": "I went to Japan last year.",
+   "hint": "went",
+   "gram": "과거 이야기는 끝까지 과거형: <em>went</em>. 빨리 말하다 go/went가 섞이지 않게!"
+  },
+  {
+   "id": "j06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그 집은 제 조건에 다 맞아요.",
+   "en": "That house ticks all the boxes.",
+   "hint": "ticks",
+   "gram": "<em>tick all the boxes</em> = 원하는 조건을 다 충족하다."
+  },
+  {
+   "id": "j07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "우리는 같은 기수였어요.",
+   "en": "We were in the same batch.",
+   "hint": "batch",
+   "gram": "<em>batch</em> = 동기, 기수. <em>She is my batchmate.</em>"
+  },
+  {
+   "id": "j08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "그 순간은 정말 비현실적이었어요.",
+   "en": "That moment felt surreal.",
+   "hint": "surreal",
+   "gram": "<em>surreal</em> = 꿈같은, 비현실적인."
+  },
+  {
+   "id": "j09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 편식 안 해요.",
+   "en": "I'm not a picky eater.",
+   "hint": "picky",
+   "gram": "<em>picky eater</em> = 편식하는 사람."
+  },
+  {
+   "id": "j10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "우리는 처음 만나자마자 잘 맞았어요.",
+   "en": "We hit it off right away.",
+   "hint": "hit",
+   "gram": "<em>hit it off</em> = (처음 만나서) 바로 죽이 잘 맞다."
+  },
+  {
+   "id": "j11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "운동하다가 다시 옛날 습관으로 돌아갔어요.",
+   "en": "I was working out, but I fell off the wagon.",
+   "hint": "wagon",
+   "gram": "<em>fall off the wagon</em> = 끊었던 나쁜 습관으로 돌아가다."
+  },
+  {
+   "id": "j12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "오늘은 요리하기 귀찮아요.",
+   "en": "I can't be bothered to cook today.",
+   "hint": "bothered",
+   "gram": "<em>I can't be bothered to</em> + 동사 = ~하기 귀찮다."
+  },
+  {
+   "id": "j13",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    2
+   ],
+   "ko": "우리 동네는 조용해요. 이웃들도 친절해요.",
+   "en": "My neighbourhood is quiet, and my neighbours are friendly.",
+   "hint": "neighbourhood",
+   "gram": "<em>neighbourhood</em> = 동네, <em>neighbour</em> = 이웃 사람."
+  },
+  {
+   "id": "j14",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    2
+   ],
+   "ko": "그는 작년에 회사를 팔았어요.",
+   "en": "He sold his company last year.",
+   "hint": "sold",
+   "gram": "sell의 과거는 <em>sold</em>. 과거 이야기에 sells ❌"
+  },
+  {
+   "id": "j15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 그가 정말 자랑스러워요.",
+   "en": "I'm really proud of him.",
+   "hint": "proud",
+   "gram": "<em>be proud of</em> + 사람 = ~가 자랑스럽다."
+  },
+  {
+   "id": "j16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "지금 8시 10분 전이에요.",
+   "en": "It's ten to eight.",
+   "hint": "ten",
+   "gram": "<em>10 to 8</em> = 8시 10분 전(7:50), <em>10 past 8</em> = 8시 10분."
+  },
+  {
+   "id": "j17",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "집에서 거기까지 차로 9분이에요.",
+   "en": "It's a 9-minute drive from my home.",
+   "hint": "drive",
+   "gram": "<em>It's a 9-minute drive.</em> 숫자-minute이 형용사라 minute 단수."
+  },
+  {
+   "id": "j18",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 집에 있는 걸 좋아하는 집순이·집돌이예요.",
+   "en": "I'm a homebody.",
+   "hint": "homebody",
+   "gram": "<em>homebody</em> = 집에 있는 걸 좋아하는 사람."
+  },
+  {
+   "id": "j19",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 아침에 커피를 마셔요.",
+   "en": "I drink coffee in the morning.",
+   "hint": "morning",
+   "gram": "<em>in the morning</em> / in the afternoon / in the evening. the를 빼먹지 않기. at night만 the 없음.",
+   "mine": "… in morning"
+  },
+  {
+   "id": "j20",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 현지 음식을 먹어 보는 걸 좋아해요.",
+   "en": "I love trying authentic food.",
+   "hint": "authentic",
+   "gram": "<em>authentic food</em> = 현지 그대로의 음식, 정통 음식."
+  },
+  {
+   "id": "j21",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "영어 실력을 다시 다듬어야 해요.",
+   "en": "I need to brush up on my English.",
+   "hint": "brush",
+   "gram": "<em>brush up on</em> ~ = (잊은 실력을) 다시 감 잡다, 다듬다."
+  },
+  {
+   "id": "j22",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "한번 해 봐요!",
+   "en": "Give it a go!",
+   "hint": "go",
+   "gram": "<em>give it a go</em> = 한번 해 보다."
+  },
+  {
+   "id": "j23",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 차를 타면 멀미를 해요.",
+   "en": "I get car sick.",
+   "hint": "sick",
+   "gram": "<em>get car sick</em> = 차멀미를 하다."
+  },
+  {
+   "id": "j24",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    5
+   ],
+   "ko": "어릴 때 저는 운동을 별로 좋아하지 않았어요.",
+   "en": "I didn't like sports when I was a child.",
+   "hint": "didn't",
+   "gram": "일반동사 과거 부정은 <em>didn't</em> + 동사원형. wasn't prefer ❌ → didn't prefer.",
+   "mine": "I wasn't prefer …"
+  },
+  {
+   "id": "j25",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    5
+   ],
+   "ko": "저는 운동할 때 음악을 들어요.",
+   "en": "I listen to music when I work out.",
+   "hint": "listen",
+   "gram": "<em>listen to</em> + 대상. to를 빼먹지 않기!",
+   "mine": "… listen music"
+  },
+  {
+   "id": "j26",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "가격 면에서는 꽤 합리적이에요.",
+   "en": "Price-wise, it's quite reasonable.",
+   "hint": "Price-wise",
+   "gram": "명사 + <em>-wise</em> = ~ 면에서: price-wise, location-wise."
+  },
+  {
+   "id": "j27",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "물은 소중한 자원이에요.",
+   "en": "Water is a precious resource.",
+   "hint": "resource",
+   "gram": "<em>resource</em> = 자원, 물자."
+  },
+  {
+   "id": "j28",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "좋은 선생님은 대체할 수 없어요.",
+   "en": "Good teachers are irreplaceable.",
+   "hint": "irreplaceable",
+   "gram": "<em>irreplaceable</em> = 대체할 수 없는. Technology Part 3에 좋아요."
+  },
+  {
+   "id": "j29",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "그는 자존심이 정말 세요.",
+   "en": "He has a strong ego.",
+   "hint": "ego",
+   "gram": "<em>strong ego / strong pride</em> = 자존심이 세다."
+  },
+  {
+   "id": "j30",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "제 관점에서는 경험이 더 중요해요.",
+   "en": "From my perspective, experience is more important.",
+   "hint": "perspective",
+   "gram": "<em>From my perspective,</em> = 제 관점에서는. Part 3 답변 시작에 좋아요."
+  },
+  {
+   "id": "j31",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "선생님이 저를 혼내셨어요.",
+   "en": "My teacher told me off.",
+   "hint": "told",
+   "gram": "<em>tell someone off</em> = 야단치다(과거 told off)."
+  },
+  {
+   "id": "j32",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    6
+   ],
+   "ko": "저는 영어를 공부하러 여기 왔어요.",
+   "en": "I came here to study English.",
+   "hint": "study",
+   "gram": "목적은 <em>to</em> + 동사원형: came here <em>to study</em>. for studying보다 자연스러워요.",
+   "mine": "I came here for studying English."
+  },
+  {
+   "id": "j33",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "저는 그 질문에 바로 답할게요. 저는 동의해요.",
+   "en": "To answer directly, I agree.",
+   "hint": "directly",
+   "gram": "Part 3는 돌려 말하지 말고 <em>straightforward</em>하게: 먼저 답 → 이유 → 예시."
+  },
+  {
+   "id": "j34",
+   "kind": "ko",
+   "type": "주어-동사",
+   "sessions": [
+    7
+   ],
+   "ko": "그건 제가 가장 좋아하는 앱 중 하나예요.",
+   "en": "It's one of my favourite apps.",
+   "hint": "apps",
+   "gram": "<em>one of the most</em> ~ / <em>one of my favourite</em> + 복수명사."
+  },
+  {
+   "id": "j35",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "배경을 조금 말씀드리자면, 저는 그때 대학생이었어요.",
+   "en": "To give you some background, I was a university student at the time.",
+   "hint": "background",
+   "gram": "<em>To give you some background,</em> = 배경을 말씀드리자면. Part 2 시작에 좋아요."
+  },
+  {
+   "id": "j36",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    7
+   ],
+   "ko": "인터넷이 갑자기 끊겼어요.",
+   "en": "The internet suddenly stopped working.",
+   "hint": "internet",
+   "gram": "<em>the internet</em>처럼 the를 붙여요. the environment, the government도 마찬가지."
+  }
+ ],
+ "part1": [
+  {
+   "session": 1,
+   "groups": [
+    {
+     "title": "1회차 질문",
+     "qs": [
+      "What's your name?",
+      "Where are you from?",
+      "Which city do you live in?",
+      "Do you know any history about your city?",
+      "Are you a student or a worker?",
+      "Do you live in a house or an apartment?",
+      "Do you wear a watch?",
+      "Did you enjoy travelling by car when you were a kid?",
+      "What kinds of websites do you often visit?",
+      "Do you like looking at yourself in the mirror?",
+      "Did you like going to parks as a child?",
+      "Do you like shopping?",
+      "Do you like to keep things tidy?",
+      "Do you prefer sad or happy music?",
+      "Do you have a favourite teacher?",
+      "When did you start using social media?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 2,
+   "groups": [
+    {
+     "title": "2회차 질문",
+     "qs": [
+      "What kind of clothes do you like to wear?",
+      "What films do you like?",
+      "What was your childhood dream?",
+      "Have you ever learnt about outer space and stars?",
+      "Do you like art?",
+      "Do you like singing? Why?",
+      "What do you hate doing in the evening?",
+      "Have you ever seen old buildings in the city?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 3,
+   "groups": [
+    {
+     "title": "Home · Hometown",
+     "qs": [
+      "Where are you from?",
+      "Which city are you living in?",
+      "Do you know any history about your hometown?",
+      "Do you prefer to live in an apartment or in a house?",
+      "Are there many rooms in your home?",
+      "What is there for a foreigner to do or see in your hometown?",
+      "Is there good public transport in your hometown?",
+      "Who do you live with?",
+      "What is your favourite room?",
+      "What's your neighbourhood like?",
+      "Do you think your hometown is a good place to bring up children?"
+     ]
+    },
+    {
+     "title": "Study",
+     "qs": [
+      "Do you study or work?",
+      "What do you study?",
+      "Do you get on with your colleagues?",
+      "Why did you choose that subject?",
+      "Is it a popular subject in your country?"
+     ]
+    },
+    {
+     "title": "Work",
+     "qs": [
+      "Where do you work?",
+      "Why did you choose that job?",
+      "Do you like your job?",
+      "Do you plan to continue with your job in the future?"
+     ]
+    },
+    {
+     "title": "3회차 질문",
+     "qs": [
+      "Do you like watching sports programmes on TV?",
+      "Do you like science?",
+      "Do you use headphones?",
+      "Are you good at telling jokes?",
+      "Do you like to get up early in the morning?",
+      "Do you like taking pictures of different views?",
+      "What are your favourite activities?",
+      "Are there tall buildings near your home?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 4,
+   "groups": [
+    {
+     "title": "4회차 질문",
+     "qs": [
+      "Do you look out the window at the scenery when travelling by bus or car?",
+      "Do you like reading?",
+      "Have you ever been part of a sports team?",
+      "Do you walk a lot?",
+      "Do you prefer typing or handwriting?",
+      "What is your favourite food?",
+      "Do you often have free time?",
+      "Do you have any hobbies?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 5,
+   "groups": [
+    {
+     "title": "5회차 질문",
+     "qs": [
+      "What did you often do with your friends in your childhood?",
+      "Are you good at memorising things?",
+      "Is the city where you live crowded?",
+      "Have you ever sent handmade gifts to others?",
+      "Do you like getting up early in the morning?",
+      "Have you ever visited a zoo?",
+      "What is your favourite drink?",
+      "What is your favourite food?",
+      "How often do you go online?",
+      "Do you like sport?",
+      "What's the weather like today?",
+      "What did you watch on TV when you were a child?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 6,
+   "groups": [
+    {
+     "title": "6회차 질문",
+     "qs": [
+      "What do people usually buy at the street market?",
+      "Do you collect things?",
+      "What will you do if you find something lost by others?",
+      "Do you like buying shoes? How often?",
+      "Do you prefer to sit by the window when travelling?",
+      "What do you do when you see rubbish on the street?",
+      "Do you often feel tired?",
+      "How did you learn to be polite as a child?",
+      "How often do you eat fruit and vegetables?",
+      "Do you remember your first day at secondary school?",
+      "Do you like listening to music?",
+      "Do you like to keep things tidy?",
+      "Are you a patient person?",
+      "Do you have a pet?",
+      "What's your favourite animal?",
+      "What's your favourite book?",
+      "What's your favourite movie?",
+      "Do you often read newspapers?",
+      "What is your favourite advertisement?",
+      "Have you ever bought anything online?",
+      "Have you ever fought with anyone?",
+      "Do you grow any plants?",
+      "What's your favourite flower?"
+     ]
+    }
+   ]
+  },
+  {
+   "session": 7,
+   "groups": [
+    {
+     "title": "7회차 질문",
+     "qs": [
+      "Do you prefer sad or happy music?",
+      "Do you usually celebrate your birthday?",
+      "Do you prefer desktops or laptops?",
+      "What is your favourite drink?",
+      "Did you learn music at school?",
+      "Do you often read?",
+      "Do you think leisure time is important?",
+      "What's your favourite sport, weather, food or movie?",
+      "Do you often read the news?"
+     ]
+    }
+   ]
+  }
+ ],
+ "part3": [
+  {
+   "session": 1,
+   "topic": "Describe a place you have travelled to that you would like to recommend to others",
+   "qs": [
+    "Do you think people travel more nowadays than in the past?",
+    "What kinds of places do people in your country like to visit?",
+    "Do young people and older people prefer different travel destinations?",
+    "Is it better to travel alone or with other people? Why?"
+   ]
+  },
+  {
+   "session": 2,
+   "topic": "Describe a person you know who has a successful business",
+   "qs": [
+    "Do you think small businesses are important for the economy?",
+    "Why do some businesses become successful while others fail?",
+    "Do you think young people should be encouraged to start their own businesses? Why or why not?",
+    "Do you think customer service is important for a successful business? Why or why not?"
+   ]
+  },
+  {
+   "session": 3,
+   "topic": "Describe a perfect job you would like to have in the future",
+   "qs": [
+    "What factors do people usually consider when choosing a career?",
+    "Do you think young people today change jobs more often than in the past? Why or why not?",
+    "Is it more important to earn a high salary or to enjoy your job? Why?",
+    "How do you think technology will change the workplace in the future?"
+   ]
+  },
+  {
+   "session": 4,
+   "topic": "Describe an occasion when you were not allowed to use your mobile phone",
+   "qs": [
+    "How has the widespread use of smartphones changed the way people communicate?",
+    "Should there be more places where mobile phones are not allowed? Why?",
+    "Do you think children should be allowed to use mobile phones at school? Why or why not?",
+    "Why do some people find it difficult to put their phones away?"
+   ]
+  },
+  {
+   "session": 5,
+   "topic": "Describe a live sports event you watched and liked",
+   "qs": [
+    "What qualities do successful athletes usually have?",
+    "Do you think children should be encouraged to play sports from a young age? Why?",
+    "Do you think hosting major sporting events is beneficial for a country? Why or why not?",
+    "Do you think watching sports can bring people together?",
+    "Do you think sports will become more or less popular in the future?",
+    "What can children learn from playing team sports?"
+   ]
+  },
+  {
+   "session": 5,
+   "topic": "Describe a piece of technology that you would like to own",
+   "qs": [
+    "How has technology changed people's daily lives in the past 20 years?",
+    "Should schools encourage students to use more technology in the classroom? Why or why not?",
+    "Why do some people always want to buy the latest technology?",
+    "Do you think people rely too much on technology nowadays?",
+    "Do you think AI will have a positive or negative impact on society?",
+    "Can technology replace teachers in the future?"
+   ]
+  },
+  {
+   "session": 6,
+   "topic": "Describe a time when you gave advice to others",
+   "qs": [
+    "Why do some people ignore advice from others?",
+    "Who gives better advice, older people or younger people?",
+    "Why do some people prefer solving problems on their own instead of asking for advice?",
+    "Is it important to listen to different opinions before making a decision?",
+    "Whose advice is more influential for young people, their parents' or their friends'?"
+   ]
+  },
+  {
+   "session": 7,
+   "topic": "Describe a challenging technological problem you faced",
+   "qs": [
+    "What kinds of technological problems do people commonly face nowadays?",
+    "Are older people more likely to struggle with technology than younger people?",
+    "Do technological problems affect people's productivity at work or school? How?",
+    "What are the disadvantages of relying too much on technology in daily life?",
+    "Will artificial intelligence help reduce technological problems in the future?"
+   ]
+  }
+ ],
+ "words": [
+  {
+   "w": "tick all the boxes",
+   "ko": "조건을 다 충족하다",
+   "ex": "That house ticks all the boxes.",
+   "s": 2
+  },
+  {
+   "w": "batch",
+   "ko": "동기, 기수",
+   "ex": "We were in the same batch.",
+   "s": 2
+  },
+  {
+   "w": "surreal",
+   "ko": "비현실적인",
+   "ex": "That moment felt surreal.",
+   "s": 2
+  },
+  {
+   "w": "picky eater",
+   "ko": "편식하는 사람",
+   "ex": "I'm not a picky eater.",
+   "s": 2
+  },
+  {
+   "w": "hit it off",
+   "ko": "바로 죽이 잘 맞다",
+   "ex": "We hit it off right away.",
+   "s": 2
+  },
+  {
+   "w": "fall off the wagon",
+   "ko": "나쁜 습관으로 돌아가다",
+   "ex": "I was working out, but I fell off the wagon.",
+   "s": 2
+  },
+  {
+   "w": "I can't be bothered",
+   "ko": "귀찮다",
+   "ex": "That house ticks all the boxes.",
+   "s": 2
+  },
+  {
+   "w": "10 to 8 / 10 past 8",
+   "ko": "8시 10분 전 / 8시 10분",
+   "ex": "It's ten to eight.",
+   "s": 3
+  },
+  {
+   "w": "homebody",
+   "ko": "집에 있는 걸 좋아하는 사람",
+   "ex": "It's a 9-minute drive from my home.",
+   "s": 3
+  },
+  {
+   "w": "authentic food",
+   "ko": "현지 음식, 정통 음식",
+   "ex": "I love trying authentic food.",
+   "s": 4
+  },
+  {
+   "w": "brush up on",
+   "ko": "다시 감 잡다",
+   "ex": "I need to brush up on my English.",
+   "s": 4
+  },
+  {
+   "w": "give it a go",
+   "ko": "한번 해 보다",
+   "ex": "Give it a go!",
+   "s": 4
+  },
+  {
+   "w": "car sick",
+   "ko": "차멀미하는",
+   "ex": "I get car sick.",
+   "s": 4
+  },
+  {
+   "w": "-wise",
+   "ko": "~ 면에서",
+   "ex": "Price-wise, it's quite reasonable.",
+   "s": 5
+  },
+  {
+   "w": "resource",
+   "ko": "자원, 물자",
+   "ex": "Water is a precious resource.",
+   "s": 5
+  },
+  {
+   "w": "irreplaceable",
+   "ko": "대체할 수 없는",
+   "ex": "Good teachers are irreplaceable.",
+   "s": 5
+  },
+  {
+   "w": "strong ego / strong pride",
+   "ko": "자존심이 센",
+   "ex": "He has a strong ego.",
+   "s": 6
+  },
+  {
+   "w": "from my perspective",
+   "ko": "제 관점에서는",
+   "ex": "From my perspective, experience is more important.",
+   "s": 6
+  },
+  {
+   "w": "tell someone off",
+   "ko": "야단치다",
+   "ex": "My teacher told me off.",
+   "s": 6
+  },
+  {
+   "w": "straightforward",
+   "ko": "직설적인",
+   "ex": "To answer directly, I agree.",
+   "s": 6
+  },
+  {
+   "w": "to give you some background",
+   "ko": "배경을 말씀드리자면",
+   "ex": "To give you some background, I was a university student at the time.",
+   "s": 7
+  },
+  {
+   "w": "the internet",
+   "ko": "인터넷",
+   "ex": "To give you some background, I was a university student at the time.",
+   "s": 7
+  }
+ ],
+ "group": "ielts",
+ "podFiles": [
+  "groups/other"
+ ]
+}
