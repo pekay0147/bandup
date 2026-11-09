@@ -768,7 +768,7 @@ function renderDecks(app){
     if(TPp && selPod===TPp.no && !podPickOpen){
       const a=el("a","eplink today"); a.href=TPp.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null,`오늘의 팟캐스트 · ${TPp.link.date}`), el("b",null,TPp.link.title||"에피소드"), el("i",null,"듣기 ›")); app.append(a);
       const mb=el("button","linkbtn pickmore","다른 에피소드 보기 ▾"); mb.type="button"; mb.onclick=()=>{ podPickOpen=true; render(); };
-      if(D.podAuto){ const rw=el("div","pdrow"); const db=el("button","pdone","다음 에피소드 듣기 ›"); db.type="button"; db.onclick=()=>{ podDone(TPp); selPod=null; deckState=null; podPickOpen=false; render(); }; rw.append(mb,db); app.append(rw); } else app.append(mb);
+      if(D.podAuto){ const rw=el("div","pdrow"); const db=el("button","pdone","다 들었어요! 하나 더 듣기"); db.type="button"; db.onclick=()=>{ podDone(TPp); selPod=null; deckState=null; podPickOpen=false; render(); }; rw.append(mb,db); app.append(rw); } else app.append(mb);
     } else {
     if(TPp){ const back=el("button","linkbtn pickmore","★ 오늘의 팟캐스트로 돌아가기"); back.type="button"; back.onclick=()=>{ selPod=TPp.no; podPickOpen=false; deckState=null; render(); }; app.append(back); }
     const wrap=el("div","picker"); wrap.append(el("span","picker-lab","에피소드 선택")); const row=el("div","pchips");
