@@ -941,6 +941,41 @@
      "w": "everyday",
      "ko": "일상적인",
      "ex": "I don't get enough vitamins from my everyday diet."
+    },
+    {
+     "w": "find it hard to",
+     "ko": "~하는 게 어렵다",
+     "ex": "I find it hard to fall asleep."
+    },
+    {
+     "w": "have an impact on",
+     "ko": "~에 영향을 주다",
+     "ex": "What we eat has an impact on our sleep."
+    },
+    {
+     "w": "less about A, more about B",
+     "ko": "A보다 B가 중요",
+     "ex": "Learning English is less about memorising rules and more about using it."
+    },
+    {
+     "w": "high in / low in",
+     "ko": "함량이 높은/낮은",
+     "ex": "I try to eat foods that are high in protein and low in sugar."
+    },
+    {
+     "w": "quality sleep",
+     "ko": "양질의 수면",
+     "ex": "I'm trying to improve the quality of my sleep."
+    },
+    {
+     "w": "claim to",
+     "ko": "~한다고 주장하다",
+     "ex": "This app claims to help you learn English faster."
+    },
+    {
+     "w": "in more detail",
+     "ko": "더 자세히",
+     "ex": "We need to look at this issue in more detail."
     }
    ]
   },
@@ -1306,6 +1341,150 @@
    "en": "I don't get enough vitamins from my everyday diet.",
    "hint": "everyday",
    "gram": "<em>everyday</em> = 일상적인(형용사, 붙여 씀). 매일은 every day(띄어 씀)."
+  },
+  {
+   "id": "6ms17",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 잠드는 게 어려워요.",
+   "en": "I find it hard to fall asleep.",
+   "hint": "find",
+   "gram": "<em>find it</em> + 형용사 + <em>to</em> 동사 = ~하는 게 …하다고 느끼다. Part 1 수면 질문에 바로 써요."
+  },
+  {
+   "id": "6ms18",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 영어로 말하는 게 어렵다고 느껴요.",
+   "en": "I find speaking English difficult.",
+   "hint": "find",
+   "gram": "<em>find</em> + 목적어 + 형용사 = ~가 …하다고 느끼다. speaking English가 목적어."
+  },
+  {
+   "id": "6ms19",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "우리가 먹는 것은 수면에 영향을 줘요.",
+   "en": "What we eat has an impact on our sleep.",
+   "hint": "impact",
+   "gram": "<em>have an impact on</em> ~ = <em>affect</em> ~. affect on ❌ / affect our sleep ⭕"
+  },
+  {
+   "id": "6ms20",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "우리가 먹는 게 기분에 영향을 줘요.",
+   "en": "What we eat affects how we feel.",
+   "hint": "affects",
+   "gram": "<em>what we eat</em>이 한 덩어리 주어라서 affects. how we feel = 우리가 어떻게 느끼는지."
+  },
+  {
+   "id": "6ms21",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "영어 공부는 규칙 암기보다 실제로 써 보는 게 더 중요해요.",
+   "en": "Learning English is less about memorising rules and more about using it.",
+   "hint": "less",
+   "gram": "<em>less about</em> A <em>and more about</em> B = A보다 B가 더 중요하다. Part 3 답변용."
+  },
+  {
+   "id": "6ms22",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 단백질은 많고 당은 적은 음식을 먹으려고 해요.",
+   "en": "I try to eat foods that are high in protein and low in sugar.",
+   "hint": "high",
+   "gram": "<em>high in</em> ~ / <em>low in</em> ~ = ~ 함량이 높은 / 낮은."
+  },
+  {
+   "id": "6ms23",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 수면의 질을 높이려고 노력하고 있어요.",
+   "en": "I'm trying to improve the quality of my sleep.",
+   "hint": "quality",
+   "gram": "<em>the quality of my sleep</em> = 수면의 질. quality sleep = 양질의 수면."
+  },
+  {
+   "id": "6ms24",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 보통 하룻밤에 7시간 정도 자요.",
+   "en": "I usually get around seven hours of sleep a night.",
+   "hint": "get",
+   "gram": "<em>get</em> + 시간 + <em>of sleep</em> = ~시간 자다. a night = 하룻밤에."
+  },
+  {
+   "id": "6ms25",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "이 앱은 영어를 더 빨리 배우게 해 준다고 주장해요.",
+   "en": "This app claims to help you learn English faster.",
+   "hint": "claims",
+   "gram": "<em>claim to</em> + 동사 = ~한다고 주장하다. 효과를 단정하지 않을 때."
+  },
+  {
+   "id": "6ms26",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "영어 알약이 있다면 모두가 먹을 거예요.",
+   "en": "If there were a magic pill for English, everyone would take it.",
+   "hint": "were",
+   "gram": "<em>If</em> + 과거형, <em>would</em> + 동사 = 지금 사실이 아닌 일 가정. 격식체는 there <em>were</em>."
+  },
+  {
+   "id": "6ms27",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 매일 영어를 공부해요.",
+   "en": "I study English every day.",
+   "hint": "every",
+   "gram": "<em>every day</em>(띄어 씀) = 매일(부사). everyday(붙여 씀) = 일상적인(형용사)."
+  },
+  {
+   "id": "6ms28",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    1
+   ],
+   "ko": "이 문제는 더 자세히 살펴볼 필요가 있어요.",
+   "en": "We need to look at this issue in more detail.",
+   "hint": "detail",
+   "gram": "<em>look at</em> ~ <em>in more detail</em> = ~을 더 자세히 살펴보다. Part 3 마무리용."
   },
   {
    "id": "6ma01",
