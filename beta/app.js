@@ -264,21 +264,18 @@ function noticeBox(app){
 }
 function studyGuide(app){
   if(D.demo) return;
-  const gk=`bandup-guide-${slug}-${today()}`; const done=store.get(gk,{});
-  const mark=k=>{ const d=store.get(gk,{}); d[k]=1; store.set(gk,d); };
   const P=podSel(); const podTab=(D.group==="church"||D.group==="other")? "session" : ((D.podSessions||[]).length? "pod" : "session");
   const steps=[
-    ["pod","팟캐스트 듣기", `${P.name||"오늘의 팟캐스트"} 한 편을 끝까지 들어요`, null, podUrl(P)],
-    ["cards","큐카드로 문장·표현 공부하기","방금 들은 팟캐스트 문장을 한국어 보고 영어로 말해 봐요",()=>{ cardMode=podTab; selSession=null; selPod=null; deckState=null; go("cards"); }],
-    ["p1","아이디어 탭에서 Part 1 단어 공부하기","Part 1 주제별로 정리된 단어와 표현을 익혀요",()=>{ ideaPart="p1"; go("ideas"); }],
-    ["rv","오늘의 복습으로 마무리하기","오늘 목표 개수만큼 복습해요",()=>{ const due=dueCards().length; go("review",{extra:!due, ids:reviewQueue(!due)}); }]];
-  const n=steps.filter(x=>done[x[0]]).length;
-  const sec=el("section","sec sguide"); sec.append(secHead("오늘의 공부 순서", n>=steps.length? "오늘 완료 ✓" : `${n} / ${steps.length}`));
+    ["팟캐스트 듣기", `${P.name||"오늘의 팟캐스트"} 한 편을 끝까지 들어요`, null, podUrl(P)],
+    ["큐카드로 문장·표현 공부하기","방금 들은 팟캐스트 문장을 한국어 보고 영어로 말해 봐요",()=>{ cardMode=podTab; selSession=null; selPod=null; deckState=null; go("cards"); }],
+    ["아이디어 탭에서 Part 1 단어 공부하기","Part 1 주제별로 정리된 단어와 표현을 익혀요",()=>{ ideaPart="p1"; go("ideas"); }],
+    ["오늘의 복습으로 마무리하기","오늘 목표 개수만큼 복습해요",()=>{ const due=dueCards().length; go("review",{extra:!due, ids:reviewQueue(!due)}); }]];
+  const sec=el("section","sec sguide"); sec.append(secHead("오늘의 공부 순서","위에서부터 차례대로"));
   const box=el("div","box list2");
-  steps.forEach(([k,title,sub,fn,href],i)=>{
-    const r=el(href? "a":"button","lrow2 sg-row"+(done[k]?" done":"")); if(href){ r.href=href; r.target="_blank"; r.rel="noopener"; r.onclick=()=>{ mark(k); setTimeout(()=>render(),300); }; } else { r.type="button"; r.onclick=()=>{ mark(k); fn(); }; }
-    const num=el("span","sg-n",done[k]? "✓" : String(i+1)); const t=el("span","lt"); t.append(el("b",null,title), el("span",null,sub));
-    r.append(num,t,el("span","lchev","›")); box.append(r); });
+  steps.forEach(([title,sub,fn,href],i)=>{
+    const r=el(href? "a":"button","lrow2 sg-row"); if(href){ r.href=href; r.target="_blank"; r.rel="noopener"; } else { r.type="button"; r.onclick=fn; }
+    const t=el("span","lt"); t.append(el("b",null,title), el("span",null,sub));
+    r.append(el("span","sg-n",String(i+1)),t,el("span","lchev","›")); box.append(r); });
   sec.append(box); app.append(sec);
 }
 function renderHome(app){
