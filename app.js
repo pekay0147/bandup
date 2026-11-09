@@ -266,7 +266,7 @@ function studyGuide(app){
   const steps=[
     ["팟캐스트 듣기", `${P.name||"오늘의 팟캐스트"} 한 편을 끝까지 들어요`, null, podUrl(P)],
     ["큐카드로 문장·표현 공부하기","방금 들은 팟캐스트 문장을 한국어 보고 영어로 말해 봐요",()=>{ cardMode=podTab; selSession=null; selPod=null; deckState=null; go("cards"); }],
-    ["아이디어 탭에서 Part 1 단어 공부하기","Part 1 주제별로 정리된 단어와 표현을 익혀요",()=>{ ideaPart="p1"; go("ideas"); }],
+    ["큐카드 매일 연습으로 일상 영어 공부하기","매일 바뀌는 생활 영어 문장 10개를 소리 내 말해 봐요",()=>{ cardMode="daily"; deckState=null; go("cards"); }],
     ["오늘의 복습으로 마무리하기","오늘 목표 개수만큼 복습해요",()=>{ const due=dueCards().length; go("review",{extra:!due, ids:reviewQueue(!due)}); }]];
   const sec=el("section","sec sguide"); sec.append(secHead("오늘의 공부 순서","위에서부터 차례대로"));
   const box=el("div","box list2");
