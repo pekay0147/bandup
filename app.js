@@ -260,12 +260,13 @@ function noticeBox(app){
     bt.onclick=()=>{ if(v==="go-pod"){ const P=podSel(); window.open(podUrl(P),"_blank","noopener"); } ans(v,l); }; row.append(bt); });
   b.append(row); app.append(b);
 }
+function todayPod(){ const P=D&&D.podDaily; if(!P||!P.order||!P.order.length||!D.sessions) return null; const t=today(); let n=0; while(addD(P.start,n)<t && n<4000) n++; if(t<P.start) n=0; const no=P.order[Math.min(n,P.order.length-1)]; return D.sessions.find(x=>x.no===no)||null; }
 function studyGuide(app){
   if(D.demo || (D.group==="ielts" && !D.showGuide)) return;
   const P=podSel(); const podTab=(D.group==="church"||D.group==="other")? "session" : ((D.podSessions||[]).length? "pod" : "session");
   const steps=[
-    ["팟캐스트 듣기", `${P.name||"오늘의 팟캐스트"} 한 편을 끝까지 들어요`, null, podUrl(P)],
-    ["큐카드 팟캐스트로 오늘 들은 팟캐스트 복습하기","큐카드 → 팟캐스트에서 오늘 날짜를 골라, 방금 들은 문장을 한국어만 보고 영어로 말해 봐요. 마지막 장의 단어는 단어장에 담아요",()=>{ cardMode=podTab; selSession=null; selPod=null; deckState=null; go("cards"); }],
+    (()=>{ const TP=todayPod(); return TP? ["팟캐스트 듣기", `오늘은 6 Minute English ${TP.link.date} 편 \u201c${TP.link.title}\u201d을 끝까지 들어요`, null, TP.link.url] : ["팟캐스트 듣기", `${P.name||"오늘의 팟캐스트"} 한 편을 끝까지 들어요`, null, podUrl(P)]; })(),
+    ["큐카드 팟캐스트로 오늘 들은 팟캐스트 복습하기","큐카드 → 팟캐스트에서 오늘 날짜를 골라, 방금 들은 문장을 한국어만 보고 영어로 말해 봐요. 마지막 장의 단어는 단어장에 담아요",()=>{ cardMode=podTab; const TP=todayPod(); selSession=TP? TP.no : null; selPod=null; deckState=null; go("cards"); }],
     ["큐카드 매일 연습으로 일상 영어 공부하기","매일 바뀌는 생활 영어 문장 10개를 소리 내 말해 봐요",()=>{ cardMode="daily"; deckState=null; go("cards"); }],
     ["그 외","시간이 더 있으면 골라서 해요. 철자 탭에서 단어 듣고 쓰기, 아이디어 탭에서 Part 1·2·3 질문별 단어와 답변 재료 보기, 내 단어장 외우기, 오늘의 복습까지!",null,null,[["철자",()=>go("words")],["아이디어",()=>go("ideas")],["내 단어장",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); }],["오늘의 복습",()=>{ const due=dueCards().length; go("review",{extra:!due, ids:reviewQueue(!due)}); }]]]];
   const sec=el("section","sec sguide"); sec.append(secHead("오늘의 공부 순서","위에서부터 차례대로"));
@@ -307,7 +308,7 @@ function renderHome(app){
   // 학습
   const s2=el("section","sec"); s2.append(secHead("학습"));
   const list=el("div","box list2");
-  { const P=podSel(); const pr=listRow(LIC.pod,"오늘의 팟캐스트",P.name,null,podUrl(P)); pr.classList.add("podrow"); const pw=el("div","podwrap"); const cb=el("button","podchg","바꾸기"); cb.type="button"; cb.onclick=()=>go("podpick"); pw.append(pr,cb); list.append(pw); }
+  { const P=podSel(); const TP=todayPod(); const pr=TP? listRow(LIC.pod,"오늘의 팟캐스트",`6 Minute English · ${TP.link.date} · ${TP.link.title}`,null,TP.link.url) : listRow(LIC.pod,"오늘의 팟캐스트",P.name,null,podUrl(P)); pr.classList.add("podrow"); const pw=el("div","podwrap"); const cb=el("button","podchg","바꾸기"); cb.type="button"; cb.onclick=()=>go("podpick"); pw.append(pr,cb); list.append(pw); }
   if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
   list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
@@ -739,7 +740,7 @@ function renderDecks(app){
   let key, list, empty="카드가 없어요.";
   if(cardMode==="session" && !hasLesson){ const e=el("div","empty"); e.append(el("p",null,"아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 회차별 큐카드로 생겨요.")); app.append(e); return; }
   if(cardMode==="session"){
-    if(selSession==null || !D.sessions.some(x=>x.no===selSession)) selSession= D.common? D.sessions[0].no : D.sessions[D.sessions.length-1].no;
+    if(selSession==null || !D.sessions.some(x=>x.no===selSession)){ const TP=todayPod(); selSession= TP? TP.no : D.common? D.sessions[0].no : D.sessions[D.sessions.length-1].no; }
     app.append(sessionPicker(selSession, v=>{ selSession=v; render(); }, false));
     { const se=D.sessions.find(x=>x.no===selSession); if(se && se.link && se.link.url){ const a=el("a","eplink"); a.href=se.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null,[se.link.date, se.link.src].filter(Boolean).join(" · ")), el("b",null,se.link.title||"에피소드"), el("i",null,"›")); app.append(a); } }
     key="s"+selSession; list=D.cards.filter(c=>(c.sessions||[]).includes(selSession));

@@ -2,6 +2,317 @@
  "course": "English",
  "sessions": [
   {
+   "no": 14,
+   "date": "2026-08-06",
+   "title": "6 Minute English · 기후 예측",
+   "link": {
+    "title": "How do climate scientists make predictions?",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-260806",
+    "date": "6 Aug",
+    "src": "BBC 6 Minute English"
+   },
+   "label": "6 Aug",
+   "vocab": [
+    {
+     "w": "prediction",
+     "ko": "예측",
+     "ex": "The weather prediction was wrong again."
+    },
+    {
+     "w": "conditional",
+     "ko": "조건부의",
+     "ex": "It's conditional on the weather, so it's not certain."
+    },
+    {
+     "w": "the thing about",
+     "ko": "~의 핵심은",
+     "ex": "The weather prediction was wrong again."
+    },
+    {
+     "w": "out of whack",
+     "ko": "엉망인",
+     "ex": "The thing about this restaurant is that it's cheap."
+    },
+    {
+     "w": "pro-",
+     "ko": "~에 찬성하는",
+     "ex": "I'm pro-public transport."
+    },
+    {
+     "w": "on the table",
+     "ko": "고려 대상인",
+     "ex": "The weather prediction was wrong again."
+    },
+    {
+     "w": "year after year",
+     "ko": "해마다",
+     "ex": "Year after year, temperatures are going up."
+    },
+    {
+     "w": "sweltering",
+     "ko": "찌는 듯이 더운",
+     "ex": "It was a sweltering day."
+    },
+    {
+     "w": "certain",
+     "ko": "확실한",
+     "ex": "It's conditional on the weather, so it's not certain."
+    },
+    {
+     "w": "factor",
+     "ko": "요인",
+     "ex": "It depends on many other factors."
+    },
+    {
+     "w": "play a big part in",
+     "ko": "큰 역할을 하다",
+     "ex": "Clouds play a big part in the climate."
+    },
+    {
+     "w": "associate A with B",
+     "ko": "A 하면 B를 떠올리다",
+     "ex": "I associate hot summers with blue skies."
+    },
+    {
+     "w": "dual",
+     "ko": "이중의",
+     "ex": "It has a dual effect."
+    }
+   ]
+  },
+  {
+   "no": 13,
+   "date": "2026-08-13",
+   "title": "6 Minute English · 집안일",
+   "link": {
+    "title": "Who does the housework?",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-260813",
+    "date": "13 Aug",
+    "src": "BBC 6 Minute English"
+   },
+   "label": "13 Aug",
+   "vocab": [
+    {
+     "w": "chores",
+     "ko": "집안일",
+     "ex": "I do the household chores at the weekend."
+    },
+    {
+     "w": "fair share",
+     "ko": "자기 몫",
+     "ex": "Everyone should do their fair share."
+    },
+    {
+     "w": "women's work",
+     "ko": "'여자 일'(부정적)",
+     "ex": "The idea of 'women's work' is old-fashioned."
+    },
+    {
+     "w": "division of labour",
+     "ko": "일의 분담",
+     "ex": "We have a clear division of labour at home."
+    },
+    {
+     "w": "take a breather",
+     "ko": "잠깐 쉬다",
+     "ex": "Let's take a breather."
+    },
+    {
+     "w": "pull your weight",
+     "ko": "자기 몫을 다하다",
+     "ex": "Everyone in the team has to pull their weight."
+    },
+    {
+     "w": "split",
+     "ko": "나누다",
+     "ex": "My husband and I try to split the housework."
+    },
+    {
+     "w": "take out the bins",
+     "ko": "쓰레기를 내다 버리다",
+     "ex": "Let's take a breather."
+    },
+    {
+     "w": "hardly ever",
+     "ko": "거의 ~ 않다",
+     "ex": "I hardly ever do the ironing."
+    },
+    {
+     "w": "help with",
+     "ko": "~을 돕다",
+     "ex": "I helped with the housework when I was a child."
+    },
+    {
+     "w": "attitude",
+     "ko": "태도, 생각",
+     "ex": "It isn't easy to change people's attitudes."
+    },
+    {
+     "w": "get on well",
+     "ko": "사이좋게 지내다",
+     "ex": "My family gets on well together."
+    }
+   ]
+  },
+  {
+   "no": 12,
+   "date": "2026-08-20",
+   "title": "6 Minute English · 자율주행차",
+   "link": {
+    "title": "Sharing the road with driverless cars",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-260820",
+    "date": "20 Aug",
+    "src": "BBC 6 Minute English"
+   },
+   "label": "20 Aug",
+   "vocab": [
+    {
+     "w": "make eye contact",
+     "ko": "눈을 마주치다",
+     "ex": "It's important to make eye contact in an interview."
+    },
+    {
+     "w": "wave",
+     "ko": "손을 흔들다",
+     "ex": "The driver waved me across the road."
+    },
+    {
+     "w": "alert",
+     "ko": "알리다, 경고하다",
+     "ex": "The app alerted me that it was going to rain."
+    },
+    {
+     "w": "animation",
+     "ko": "애니메이션",
+     "ex": "I love watching animations."
+    },
+    {
+     "w": "glance",
+     "ko": "힐끗 봄",
+     "ex": "I took a quick glance at my watch."
+    },
+    {
+     "w": "jaywalking",
+     "ko": "무단횡단",
+     "ex": "Jaywalking is dangerous."
+    },
+    {
+     "w": "self-driving",
+     "ko": "자율주행의",
+     "ex": "I'd like to try a self-driving taxi."
+    },
+    {
+     "w": "nervous",
+     "ko": "긴장한",
+     "ex": "I'd feel a little bit nervous."
+    },
+    {
+     "w": "I get that",
+     "ko": "그 마음 이해해요",
+     "ex": "It's important to make eye contact in an interview."
+    },
+    {
+     "w": "deal with",
+     "ko": "처리하다",
+     "ex": "I don't know how to deal with the problem."
+    },
+    {
+     "w": "car-friendly",
+     "ko": "차가 다니기 좋은",
+     "ex": "Seoul is quite a car-friendly city."
+    },
+    {
+     "w": "oncoming",
+     "ko": "다가오는",
+     "ex": "Accidents often happen because people don't see oncoming danger."
+    },
+    {
+     "w": "visible",
+     "ko": "눈에 보이는",
+     "ex": "Cyclists should wear clothes that are more visible."
+    },
+    {
+     "w": "controversial",
+     "ko": "논란이 많은",
+     "ex": "It's important to make eye contact in an interview."
+    }
+   ]
+  },
+  {
+   "no": 11,
+   "date": "2026-08-27",
+   "title": "6 Minute English · 냄새 표현",
+   "link": {
+    "title": "How do we describe smells?",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-260827",
+    "date": "27 Aug",
+    "src": "BBC 6 Minute English"
+   },
+   "label": "27 Aug",
+   "vocab": [
+    {
+     "w": "stinky",
+     "ko": "냄새가 고약한",
+     "ex": "My dog smells really stinky after the rain."
+    },
+    {
+     "w": "fragrant",
+     "ko": "향기로운",
+     "ex": "These flowers are really fragrant."
+    },
+    {
+     "w": "subjective",
+     "ko": "주관적인",
+     "ex": "Taste is subjective. There's no right answer."
+    },
+    {
+     "w": "visual",
+     "ko": "시각의",
+     "ex": "I'm a visual learner, so I like learning with pictures."
+    },
+    {
+     "w": "auditory",
+     "ko": "청각의",
+     "ex": "Auditory learning works better for me."
+    },
+    {
+     "w": "shut down",
+     "ko": "문을 닫다, 멈추다",
+     "ex": "The factory was shut down last year."
+    },
+    {
+     "w": "you can't beat",
+     "ko": "~만한 게 없다",
+     "ex": "You can't beat the smell of freshly baked bread."
+    },
+    {
+     "w": "sentimental",
+     "ko": "옛 생각이 나는",
+     "ex": "The smell of old books gives me a sentimental feeling."
+    },
+    {
+     "w": "second-hand",
+     "ko": "중고의",
+     "ex": "I love looking around second-hand bookshops."
+    },
+    {
+     "w": "smell like",
+     "ko": "~ 같은 냄새가 나다",
+     "ex": "My dog smells really stinky after the rain."
+    },
+    {
+     "w": "can't stand",
+     "ko": "못 참다, 정말 싫다",
+     "ex": "You can't beat the smell of freshly baked bread."
+    },
+    {
+     "w": "extensively",
+     "ko": "폭넓게, 깊이",
+     "ex": "She has researched the subject extensively."
+    }
+   ]
+  },
+  {
    "no": 7,
    "date": "2026-09-03",
    "title": "6 Minute English · 기후와 극한 날씨",
@@ -2723,10 +3034,797 @@
    "en": "It sounded a bit hairy, so I'm going to go with a beard.",
    "hint": "hairy",
    "gram": "<em>sound</em> + 형용사 = ~하게 들리다. <em>hairy</em> = 털이 많은."
+  },
+  {
+   "id": "6mo01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "우리 집 강아지가 비 맞고 와서 냄새가 고약해요.",
+   "en": "My dog smells really stinky after the rain.",
+   "hint": "stinky",
+   "gram": "<em>stinky</em> = 냄새가 고약한(구어). <em>smell</em> + 형용사: smells stinky."
+  },
+  {
+   "id": "6mo02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "이 꽃은 향기가 정말 좋아요.",
+   "en": "These flowers are really fragrant.",
+   "hint": "fragrant",
+   "gram": "<em>fragrant</em> = 향기로운. stinky의 반대."
+  },
+  {
+   "id": "6mo03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "맛은 주관적이에요. 정답은 없어요.",
+   "en": "Taste is subjective. There's no right answer.",
+   "hint": "subjective",
+   "gram": "<em>subjective</em> = 주관적인(개인 의견에 따른). 반대는 objective."
+  },
+  {
+   "id": "6mo04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "저는 시각적인 학습자라 그림으로 외우는 게 좋아요.",
+   "en": "I'm a visual learner, so I like learning with pictures.",
+   "hint": "visual",
+   "gram": "<em>visual</em> = 시각의, 눈으로 보는. auditory = 청각의."
+  },
+  {
+   "id": "6mo05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "저는 들으면서 배우는 게 더 잘 맞아요.",
+   "en": "Auditory learning works better for me.",
+   "hint": "Auditory",
+   "gram": "<em>auditory</em> = 청각의, 듣는 것과 관련된."
+  },
+  {
+   "id": "6mo06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "그 공장은 작년에 문을 닫았어요.",
+   "en": "The factory was shut down last year.",
+   "hint": "shut",
+   "gram": "<em>shut down</em> = (가게·공장·기계를) 멈추다, 문을 닫다."
+  },
+  {
+   "id": "6mo07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "갓 구운 빵 냄새만 한 게 없어요.",
+   "en": "You can't beat the smell of freshly baked bread.",
+   "hint": "beat",
+   "gram": "<em>You can't beat</em> ~ = ~만한 게 없어요. <em>freshly baked</em> = 갓 구운."
+  },
+  {
+   "id": "6mo08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "헌책 냄새를 맡으면 옛날 생각이 나요.",
+   "en": "The smell of old books gives me a sentimental feeling.",
+   "hint": "sentimental",
+   "gram": "<em>sentimental</em> = 옛 생각이 나는, 감상적인."
+  },
+  {
+   "id": "6mo09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "저는 중고 서점 둘러보는 걸 좋아해요.",
+   "en": "I love looking around second-hand bookshops.",
+   "hint": "second-hand",
+   "gram": "<em>second-hand</em> = 중고의. look around = 둘러보다."
+  },
+  {
+   "id": "6mo10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "장미 같은 냄새가 나요.",
+   "en": "It smells like a rose.",
+   "hint": "smells",
+   "gram": "<em>smell like</em> + 명사 = ~ 같은 냄새가 나다. smell + 형용사와 구분!"
+  },
+  {
+   "id": "6mo11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "비 온 뒤 땅 냄새를 좋아해요.",
+   "en": "I like the smell of the ground after rain.",
+   "hint": "ground",
+   "gram": "<em>the smell of</em> ~ = ~의 냄새. Part 1 Smell 질문에 바로 쓰세요."
+  },
+  {
+   "id": "6mo12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "커피 원두를 갓 뜯었을 때 냄새가 제일 좋아요.",
+   "en": "My favourite smell is a freshly opened packet of coffee.",
+   "hint": "freshly",
+   "gram": "<em>freshly opened</em> = 갓 뜯은. <em>My favourite smell is</em> ~."
+  },
+  {
+   "id": "6mo13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "땀 냄새 나는 양말은 정말 싫어요.",
+   "en": "I can't stand the smell of sweaty socks.",
+   "hint": "stand",
+   "gram": "<em>I can't stand</em> ~ = ~을 못 참겠어요, 정말 싫어요."
+  },
+  {
+   "id": "6mo14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "그건 사람마다 달라요. 둘 다 맞을 수 있어요.",
+   "en": "It depends on the person. Both can be true.",
+   "hint": "depends",
+   "gram": "<em>It depends on</em> ~ = ~에 따라 달라요. <em>Both can be true.</em> = 둘 다 맞을 수 있다."
+  },
+  {
+   "id": "6mo15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "그 주제를 꽤 깊이 연구했어요.",
+   "en": "She has researched the subject extensively.",
+   "hint": "extensively",
+   "gram": "<em>extensively</em> = 폭넓게, 깊이."
+  },
+  {
+   "id": "6mo16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "잘 모르겠지만 A로 할게요.",
+   "en": "I'm going to go with A.",
+   "hint": "go",
+   "gram": "<em>go with</em> ~ = ~로 정하다. 모를 때도 자신 있게 고르는 표현."
+  },
+  {
+   "id": "6mc01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "면접 때는 눈을 마주치는 게 중요해요.",
+   "en": "It's important to make eye contact in an interview.",
+   "hint": "contact",
+   "gram": "<em>make eye contact</em> = 눈을 마주치다."
+  },
+  {
+   "id": "6mc02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "운전자가 저에게 건너가라고 손짓했어요.",
+   "en": "The driver waved me across the road.",
+   "hint": "waved",
+   "gram": "<em>wave</em> 사람 <em>across</em> = 손을 흔들어 건너가라고 하다. wave = 손을 흔들다."
+  },
+  {
+   "id": "6mc03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "앱이 비가 올 거라고 알려 줬어요.",
+   "en": "The app alerted me that it was going to rain.",
+   "hint": "alerted",
+   "gram": "<em>alert</em> 사람 = ~에게 알리다, 경고하다."
+  },
+  {
+   "id": "6mc04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "저는 애니메이션 영화를 좋아해요.",
+   "en": "I love watching animations.",
+   "hint": "animations",
+   "gram": "<em>animation</em> = 애니메이션, 움직이는 그림."
+  },
+  {
+   "id": "6mc05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "시계를 힐끗 봤어요.",
+   "en": "I took a quick glance at my watch.",
+   "hint": "glance",
+   "gram": "<em>glance</em> = 힐끗 봄. <em>take a glance at</em> ~."
+  },
+  {
+   "id": "6mc06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "무단횡단은 위험해요.",
+   "en": "Jaywalking is dangerous.",
+   "hint": "Jaywalking",
+   "gram": "<em>jaywalking</em> = 무단횡단(미국 영어)."
+  },
+  {
+   "id": "6mc07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "저는 무인 택시에 타 보고 싶어요.",
+   "en": "I'd like to try a self-driving taxi.",
+   "hint": "self-driving",
+   "gram": "<em>self-driving</em> = 자율주행의. driverless, autonomous와 같은 뜻."
+  },
+  {
+   "id": "6mc08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "저는 출근길에 길을 하나 건너야 해요.",
+   "en": "On my walk to work, I need to cross a road.",
+   "hint": "cross",
+   "gram": "<em>on my walk to work</em> = 걸어서 출근하는 길에. <em>cross the road</em> = 길을 건너다."
+  },
+  {
+   "id": "6mc09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "조금 긴장될 것 같아요.",
+   "en": "I'd feel a little bit nervous.",
+   "hint": "nervous",
+   "gram": "<em>I'd feel</em> ~ = (가정) ~할 것 같아요. a little bit = 조금."
+  },
+  {
+   "id": "6mc10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "그 마음 이해해요.",
+   "en": "Yeah, I get that.",
+   "hint": "get",
+   "gram": "<em>I get that.</em> = 그 마음 이해해요(구어)."
+  },
+  {
+   "id": "6mc11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "새 기술에 점점 익숙해질 거예요.",
+   "en": "We'll get more used to new technology.",
+   "hint": "used",
+   "gram": "<em>get used to</em> + 명사 = ~에 익숙해지다."
+  },
+  {
+   "id": "6mc12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "그 문제를 어떻게 처리할지 모르겠어요.",
+   "en": "I don't know how to deal with the problem.",
+   "hint": "deal",
+   "gram": "<em>deal with</em> ~ = ~을 처리하다, 다루다."
+  },
+  {
+   "id": "6mc13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "서울은 차가 다니기 좋은 도시예요.",
+   "en": "Seoul is quite a car-friendly city.",
+   "hint": "car-friendly",
+   "gram": "명사 + <em>-friendly</em> = ~에 친화적인: car-friendly, eco-friendly."
+  },
+  {
+   "id": "6mc14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "사고는 보통 다가오는 위험을 못 봐서 생겨요.",
+   "en": "Accidents often happen because people don't see oncoming danger.",
+   "hint": "oncoming",
+   "gram": "<em>oncoming</em> = 다가오는(차·위험)."
+  },
+  {
+   "id": "6mc15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "자전거 타는 사람들은 더 눈에 띄는 옷을 입어야 해요.",
+   "en": "Cyclists should wear clothes that are more visible.",
+   "hint": "visible",
+   "gram": "<em>visible</em> = 눈에 잘 보이는."
+  },
+  {
+   "id": "6mc16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "그건 논란이 많은 기술이에요.",
+   "en": "It's a very controversial technology.",
+   "hint": "controversial",
+   "gram": "<em>controversial</em> = 논란이 많은."
+  },
+  {
+   "id": "6mu01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "저는 주말에 집안일을 해요.",
+   "en": "I do the household chores at the weekend.",
+   "hint": "chores",
+   "gram": "<em>chores</em> = 집안일. <em>do the chores</em>."
+  },
+  {
+   "id": "6mu02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "모두가 자기 몫을 해야 해요.",
+   "en": "Everyone should do their fair share.",
+   "hint": "share",
+   "gram": "<em>do one's fair share</em> = 자기 몫을 하다."
+  },
+  {
+   "id": "6mu03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "집안일은 여자 일이라는 생각은 구식이에요.",
+   "en": "The idea of 'women's work' is old-fashioned.",
+   "hint": "old-fashioned",
+   "gram": "<em>women's work</em> = '여자 일'(부정적 표현). <em>old-fashioned</em> = 구식의."
+  },
+  {
+   "id": "6mu04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "우리 집은 일 분담이 잘 돼 있어요.",
+   "en": "We have a clear division of labour at home.",
+   "hint": "division",
+   "gram": "<em>division of labour</em> = 일의 분담."
+  },
+  {
+   "id": "6mu05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "잠깐 숨 좀 돌리자.",
+   "en": "Let's take a breather.",
+   "hint": "breather",
+   "gram": "<em>take a breather</em> = 잠깐 쉬다."
+  },
+  {
+   "id": "6mu06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "팀에서 모두가 자기 몫을 다해야 해요.",
+   "en": "Everyone in the team has to pull their weight.",
+   "hint": "weight",
+   "gram": "<em>pull one's weight</em> = 자기 몫을 다하다."
+  },
+  {
+   "id": "6mu07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "저랑 남편은 집안일을 나눠서 해요.",
+   "en": "My husband and I try to split the housework.",
+   "hint": "split",
+   "gram": "<em>split</em> = 나누다. <em>housework</em> = 집안일(셀 수 없는 명사)."
+  },
+  {
+   "id": "6mu08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "아무도 화장실 청소를 좋아하지 않아요.",
+   "en": "No one enjoys cleaning the toilet.",
+   "hint": "enjoys",
+   "gram": "<em>No one</em> + 단수동사(enjoys). <em>enjoy</em> + -ing."
+  },
+  {
+   "id": "6mu09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "제가 쓰레기를 내다 버려요.",
+   "en": "I usually take out the bins.",
+   "hint": "bins",
+   "gram": "<em>take out the bins / rubbish</em> = 쓰레기를 내다 버리다."
+  },
+  {
+   "id": "6mu10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "저는 다림질을 거의 안 해요.",
+   "en": "I hardly ever do the ironing.",
+   "hint": "hardly",
+   "gram": "<em>hardly ever</em> = 거의 ~ 않다. do the ironing / washing."
+  },
+  {
+   "id": "6mu11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "어릴 때 집안일을 도왔어요.",
+   "en": "I helped with the housework when I was a child.",
+   "hint": "helped",
+   "gram": "<em>help with</em> + 명사 = ~을 돕다."
+  },
+  {
+   "id": "6mu12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "집안일은 생각보다 시간이 오래 걸려요.",
+   "en": "Housework takes longer than you think.",
+   "hint": "takes",
+   "gram": "<em>take longer than</em> ~ = ~보다 오래 걸리다."
+  },
+  {
+   "id": "6mu13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "그건 당연히 저희 엄마 몫이라고 여겨졌어요.",
+   "en": "It was expected that my mum would do it.",
+   "hint": "expected",
+   "gram": "<em>It is expected that</em> + 문장 = ~하는 게 당연하게 여겨지다."
+  },
+  {
+   "id": "6mu14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "저는 가장 싫어하는 집안일이 설거지예요.",
+   "en": "My most hated chore is washing the dishes.",
+   "hint": "hated",
+   "gram": "<em>my most hated</em> ~ = 내가 제일 싫어하는 ~. wash the dishes = 설거지하다."
+  },
+  {
+   "id": "6mu15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "사람들의 생각을 바꾸는 건 쉽지 않아요.",
+   "en": "It isn't easy to change people's attitudes.",
+   "hint": "attitudes",
+   "gram": "<em>attitude</em> = 태도, 생각. change attitudes."
+  },
+  {
+   "id": "6mu16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    13
+   ],
+   "ko": "우리 가족은 잘 지내요.",
+   "en": "My family gets on well together.",
+   "hint": "gets",
+   "gram": "<em>get on well</em> = 사이좋게 지내다."
+  },
+  {
+   "id": "6mf01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "일기예보가 또 틀렸어요.",
+   "en": "The weather prediction was wrong again.",
+   "hint": "prediction",
+   "gram": "<em>prediction</em> = 예측. make a prediction."
+  },
+  {
+   "id": "6mf02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "그건 날씨에 따라 달라서 확실하지 않아요.",
+   "en": "It's conditional on the weather, so it's not certain.",
+   "hint": "conditional",
+   "gram": "<em>conditional (on)</em> ~ = ~에 따라 달라지는, 조건부의."
+  },
+  {
+   "id": "6mf03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "이 식당의 핵심은 가격이 싸다는 거예요.",
+   "en": "The thing about this restaurant is that it's cheap.",
+   "hint": "thing",
+   "gram": "<em>The thing about</em> ~ <em>is that</em> = ~의 핵심은 ~라는 거예요."
+  },
+  {
+   "id": "6mf04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "요즘 수면 패턴이 엉망이에요.",
+   "en": "My sleep pattern is out of whack these days.",
+   "hint": "whack",
+   "gram": "<em>out of whack</em> = 엉망인, 균형이 깨진."
+  },
+  {
+   "id": "6mf05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 대중교통 확대에 찬성해요.",
+   "en": "I'm pro-public transport.",
+   "hint": "pro",
+   "gram": "<em>pro-</em> + 명사 = ~에 찬성하는."
+  },
+  {
+   "id": "6mf06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "그 선택지는 고려 대상이 아니에요.",
+   "en": "That option isn't on the table.",
+   "hint": "table",
+   "gram": "<em>(not) on the table</em> = 고려 대상이다 / 아니다."
+  },
+  {
+   "id": "6mf07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "올여름은 역대 가장 더운 여름 중 하나예요.",
+   "en": "This summer is one of the hottest ever.",
+   "hint": "hottest",
+   "gram": "<em>one of the</em> + 최상급 + 복수: one of the hottest (summers) ever."
+  },
+  {
+   "id": "6mf08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "해마다 기온이 올라가고 있어요.",
+   "en": "Year after year, temperatures are going up.",
+   "hint": "Year",
+   "gram": "<em>year after year</em> = 해마다."
+  },
+  {
+   "id": "6mf09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "정말 찌는 듯이 더웠어요.",
+   "en": "It was a sweltering day.",
+   "hint": "sweltering",
+   "gram": "<em>sweltering</em> = 찌는 듯이 더운."
+  },
+  {
+   "id": "6mf10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "확실한 건 아무것도 없어요.",
+   "en": "Nothing is certain.",
+   "hint": "certain",
+   "gram": "<em>certain</em> = 확실한. Nothing is certain = 확실한 건 없다."
+  },
+  {
+   "id": "6mf11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "그건 다른 많은 요인에 달려 있어요.",
+   "en": "It depends on many other factors.",
+   "hint": "factors",
+   "gram": "<em>factor</em> = 요인. depend on ~."
+  },
+  {
+   "id": "6mf12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "구름은 기후에서 큰 역할을 해요.",
+   "en": "Clouds play a big part in the climate.",
+   "hint": "part",
+   "gram": "<em>play a big part in</em> ~ = ~에서 큰 역할을 하다."
+  },
+  {
+   "id": "6mf13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 더운 여름 하면 파란 하늘이 떠올라요.",
+   "en": "I associate hot summers with blue skies.",
+   "hint": "associate",
+   "gram": "<em>associate</em> A <em>with</em> B = A 하면 B를 떠올리다."
+  },
+  {
+   "id": "6mf14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "그건 장점과 단점이 둘 다 있어요.",
+   "en": "It has a dual effect.",
+   "hint": "dual",
+   "gram": "<em>dual</em> = 이중의, 두 가지의."
+  },
+  {
+   "id": "6mf15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "에너지를 아끼려면 불을 꺼야 해요.",
+   "en": "We should turn off the lights to save energy.",
+   "hint": "save",
+   "gram": "<em>save energy</em> = 에너지를 아끼다. turn off = 끄다."
+  },
+  {
+   "id": "6mf16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    14
+   ],
+   "ko": "잘 모르지만 C로 할게요.",
+   "en": "I'm not sure, but I'm going to go with C.",
+   "hint": "go",
+   "gram": "<em>I'm going to go with</em> ~ = ~로 할게요."
   }
  ],
  "part1": [],
  "part3": [],
  "noP2": true,
- "words": []
+ "words": [],
+ "podDaily": {
+  "start": "2026-11-09",
+  "order": [
+   3,
+   2,
+   1,
+   6,
+   5,
+   4,
+   10,
+   9,
+   8,
+   7,
+   11,
+   12,
+   13,
+   14
+  ]
+ }
 }
