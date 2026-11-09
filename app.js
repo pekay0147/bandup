@@ -260,13 +260,14 @@ function noticeBox(app){
     bt.onclick=()=>{ if(v==="go-pod"){ const P=podSel(); window.open(podUrl(P),"_blank","noopener"); } ans(v,l); }; row.append(bt); });
   b.append(row); app.append(b);
 }
-function todayPod(){ const P=D&&D.podDaily; if(!P||!P.order||!P.order.length||!D.sessions) return null; const t=today(); let n=0; while(addD(P.start,n)<t && n<4000) n++; if(t<P.start) n=0; const no=P.order[Math.min(n,P.order.length-1)]; return D.sessions.find(x=>x.no===no)||null; }
+function todayPod(){ if(D && D.dailyPod && (D.podSessions||[]).length){ const L=[...D.podSessions].sort((a,b)=>String(b.date).localeCompare(String(a.date))); const t=today(), st="2026-11-09"; let n=0; while(addD(st,n)<t && n<4000) n++; if(t<st) n=0; return L[Math.min(n,L.length-1)]; }
+  const P=D&&D.podDaily; if(!P||!P.order||!P.order.length||!D.sessions) return null; const t=today(); let n=0; while(addD(P.start,n)<t && n<4000) n++; if(t<P.start) n=0; const no=P.order[Math.min(n,P.order.length-1)]; return D.sessions.find(x=>x.no===no)||null; }
 function studyGuide(app){
   if(D.demo || (D.group==="ielts" && !D.showGuide)) return;
   const P=podSel(); const podTab=(D.group==="church"||D.group==="other")? "session" : ((D.podSessions||[]).length? "pod" : "session");
   const steps=[
     (()=>{ const TP=todayPod(); return TP? ["팟캐스트 듣기", `오늘은 6 Minute English ${TP.link.date} 편 \u201c${TP.link.title}\u201d을 끝까지 들어요`, null, TP.link.url] : ["팟캐스트 듣기", `${P.name||"오늘의 팟캐스트"} 한 편을 끝까지 들어요`, null, podUrl(P)]; })(),
-    ["큐카드 팟캐스트로 오늘 들은 팟캐스트 복습하기","큐카드 → 팟캐스트에서 오늘 날짜를 골라, 방금 들은 문장을 한국어만 보고 영어로 말해 봐요. 마지막 장의 단어는 단어장에 담아요",()=>{ cardMode=podTab; const TP=todayPod(); selSession=TP? TP.no : null; selPod=null; deckState=null; go("cards"); }],
+    ["큐카드 팟캐스트로 오늘 들은 팟캐스트 복습하기","큐카드 → 팟캐스트에서 오늘 날짜를 골라, 방금 들은 문장을 한국어만 보고 영어로 말해 봐요. 마지막 장의 단어는 단어장에 담아요",()=>{ cardMode=podTab; const TP=todayPod(); if(podTab==="pod"){ selPod=TP? TP.no : null; podPickOpen=false; } else { selSession=TP? TP.no : null; podPickOpen=false; } deckState=null; go("cards"); }],
     ["큐카드 매일 연습으로 일상 영어 공부하기","매일 바뀌는 생활 영어 문장 10개를 소리 내 말해 봐요",()=>{ cardMode="daily"; deckState=null; go("cards"); }],
     ["그 외","시간이 더 있으면 골라서 해요. 철자 탭에서 단어 듣고 쓰기, 아이디어 탭에서 Part 1·2·3 질문별 단어와 답변 재료 보기, 내 단어장 외우기, 오늘의 복습까지!",null,null,[["철자",()=>go("words")],["아이디어",()=>go("ideas")],["내 단어장",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); }],["오늘의 복습",()=>{ const due=dueCards().length; go("review",{extra:!due, ids:reviewQueue(!due)}); }]]]];
   const sec=el("section","sec sguide"); sec.append(secHead("오늘의 공부 순서","위에서부터 차례대로"));
@@ -759,7 +760,12 @@ function renderDecks(app){
     list=dyCards(); key="dy-"+dySrc+"-"+today(); empty= dySrc==="voc"? "내 단어장에 예문이 있는 단어가 아직 없어요. 단어를 추가하면 여기서 문장 연습을 할 수 있어요." : "카드가 없어요.";
     dyTranslate(list);
   } else if(cardMode==="pod"){
-    const PS=D.podSessions; if(selPod==null || !PS.some(x=>x.no===selPod)) selPod=PS[PS.length-1].no;
+    const PS=D.podSessions; const TPp= D.dailyPod? todayPod() : null; if(selPod==null || !PS.some(x=>x.no===selPod)) selPod= TPp? TPp.no : PS[PS.length-1].no;
+    if(TPp && selPod===TPp.no && !podPickOpen){
+      const a=el("a","eplink today"); a.href=TPp.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null,`오늘의 팟캐스트 · ${TPp.link.date}`), el("b",null,TPp.link.title||"에피소드"), el("i",null,"듣기 ›")); app.append(a);
+      const mb=el("button","linkbtn pickmore","다른 에피소드 보기 ▾"); mb.type="button"; mb.onclick=()=>{ podPickOpen=true; render(); }; app.append(mb);
+    } else {
+    if(TPp){ const back=el("button","linkbtn pickmore","★ 오늘의 팟캐스트로 돌아가기"); back.type="button"; back.onclick=()=>{ selPod=TPp.no; podPickOpen=false; deckState=null; render(); }; app.append(back); }
     const wrap=el("div","picker"); wrap.append(el("span","picker-lab","에피소드 선택")); const row=el("div","pchips");
     const srcs=[...new Set(PS.map(x=>x.link.src||""))], multi=srcs.length>1; let PSs=PS;
     if(multi){ const cs=(PS.find(x=>x.no===selPod)||PS[PS.length-1]).link.src||""; const sr=el("div","pchips srcchips"); sr.setAttribute("role","group"); sr.setAttribute("aria-label","팟캐스트 선택");
@@ -768,8 +774,9 @@ function renderDecks(app){
     const [mr,PSm]=monthRow(PSs,selPod,v=>{ selPod=v; render(); }); if(mr) wrap.append(mr); PSm.forEach(x=>{ const b=el("button",null,(x.link.date||(x.no+"회"))); b.type="button"; b.setAttribute("aria-pressed",String(selPod===x.no)); b.append(el("small",null,String(D.cards.filter(c=>(c.psessions||[]).includes(x.no)).length))); b.onclick=()=>{ selPod=x.no; render(); }; row.append(b); });
     wrap.append(row); app.append(wrap);
     const se=PS.find(x=>x.no===selPod); { const a=el("a","eplink"); a.href=se.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null,[se.link.date, se.link.src].filter(Boolean).join(" · ")), el("b",null,se.link.title||"에피소드"), el("i",null,"›")); app.append(a); }
+    }
     key="p"+selPod; list=D.cards.filter(c=>(c.psessions||[]).includes(selPod));
-    if((se.vocab||[]).length){ inlineDeck(app,key,list,empty,()=>vocabPage(se)); return; }
+    { const se=PS.find(x=>x.no===selPod); if(se && (se.vocab||[]).length){ inlineDeck(app,key,list,empty,()=>vocabPage(se)); return; } }
   } else if(cardMode==="wrong"){
     const all=D.cards.filter(isWrong); key="wrong"; list=[...all.filter(rep),...all.filter(c=>!rep(c))];
   } else if(cardMode==="random"){

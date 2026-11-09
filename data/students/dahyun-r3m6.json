@@ -1454,5 +1454,6 @@
  "podFiles": [
   "groups/other"
  ],
- "showGuide": true
+ "showGuide": true,
+ "dailyPod": true
 }
