@@ -3682,7 +3682,8 @@
  },
  "group": "ielts",
  "podFiles": [
-  "pods/ree-260911"
+  "pods/ree-260911",
+  "groups/other"
  ],
  "rvCards": [
   {
@@ -4004,5 +4005,6 @@
    "hint": "not a magic bullet",
    "gram": "<em>not a magic bullet</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
   }
- ]
+ ],
+ "podTodayUrl": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/260911"
 }

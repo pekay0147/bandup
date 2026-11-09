@@ -895,7 +895,7 @@
   }
  ],
  "podFiles": [
-  "pods/6min-261105"
+  "groups/other"
  ],
  "rvCards": [
   {
@@ -1063,5 +1063,6 @@
    "hint": "a -minute subway ride",
    "gram": "<em>a ~-minute subway ride</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
   }
- ]
+ ],
+ "podTodayUrl": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-261105"
 }
