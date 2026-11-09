@@ -759,7 +759,7 @@ function renderDecks(app){
   let key, list, empty="카드가 없어요.";
   if(cardMode==="session" && !hasLesson){ const e=el("div","empty"); e.append(el("p",null,"아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 회차별 큐카드로 생겨요.")); app.append(e); return; }
   if(cardMode==="session"){
-    if(selSession==null || !D.sessions.some(x=>x.no===selSession)){ const TP=todayPod(); selSession= TP? TP.no : D.common? D.sessions[0].no : D.sessions[D.sessions.length-1].no; }
+    if(selSession==null || !D.sessions.some(x=>x.no===selSession)){ const TP=(D.group==="other"||D.group==="church")? todayPod() : null; selSession= TP? TP.no : D.common? D.sessions[0].no : D.sessions[D.sessions.length-1].no; }
     const TP= (D.group==="other"||D.group==="church")? (todayPod() || (D.group==="church" && D.sessions.length? D.sessions[D.sessions.length-1] : null)) : null;
     const epLink=(se,lab)=>{ if(!(se && se.link && se.link.url)) return; const a=el("a","eplink"+(lab?" today":"")); a.href=se.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null, lab? `${lab} · ${se.link.date}` : [se.link.date, se.link.src].filter(Boolean).join(" · ")), el("b",null,se.link.title||"에피소드"), el("i",null,"듣기 ›")); app.append(a); };
     if(TP && selSession===TP.no && !podPickOpen){

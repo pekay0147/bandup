@@ -14,6 +14,12 @@
    "date": "2026-11-07",
    "title": "Speaking Matrix",
    "label": "스피킹 매트릭스 10회"
+  },
+  {
+   "no": 11,
+   "date": "2026-11-10",
+   "title": "Speaking Matrix",
+   "label": "스피킹 매트릭스 11회"
   }
  ],
  "types": [
@@ -653,6 +659,114 @@
    "en": "Defrost the meat before you cook it.",
    "hint": "defrost",
    "gram": "<em>defrost</em> = 해동하다, 성에를 제거하다 (defrosting = 해동). 내 단어장 단어로 만든 새 문장이에요."
+  },
+  {
+   "id": "sm11-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "하루는 점점 짧게 느껴졌고, 아침에 일어나기는 점점 힘들어졌어요.",
+   "en": "My days felt shorter and my mornings were getting harder.",
+   "hint": "shorter",
+   "gram": "<em>feel</em> + 비교급 = 더 ~하게 느껴지다. <em>be getting</em> + 비교급 = 점점 더 ~해지고 있었다(변화 진행)."
+  },
+  {
+   "id": "sm11-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "그러다 이 모든 게 자기 전에 몇 시간씩 휴대폰을 보기 시작하면서부터라는 걸 알게 됐어요.",
+   "en": "Then I noticed that it all started when I began spending hours on my phone before bed.",
+   "hint": "noticed",
+   "gram": "<em>notice that</em> + 문장 = ~라는 걸 알아차리다. <em>it all started when</em> ~ = 모든 건 ~할 때부터 시작됐다. <em>spend</em> 시간 <em>on</em> ~ = ~에 시간을 쓰다."
+  },
+  {
+   "id": "sm11-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "가장 큰 문제는 밤에 짧은 영상을 넘겨 보는 걸 멈출 수 없었다는 거예요.",
+   "en": "The main problem was that I couldn't stop scrolling through short videos at night.",
+   "hint": "scrolling",
+   "gram": "<em>The main problem was that</em> + 문장 = 가장 큰 문제는 ~였다. <em>stop</em> + -ing = ~하던 걸 멈추다. <em>scroll through</em> = 쭉 넘겨 보다."
+  },
+  {
+   "id": "sm11-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "그런데 나도 모르는 사이에 매일 밤 한두 시간씩 잠을 못 자고 있었어요.",
+   "en": "But before I knew it, I was losing one to two hours of sleep every night.",
+   "hint": "knew",
+   "gram": "<em>before I knew it</em> = 나도 모르는 사이에, 어느새. <em>lose sleep</em> = 잠을 설치다, 잠이 줄다. <em>one to two hours</em> = 한두 시간."
+  },
+  {
+   "id": "sm11-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "아침에 일어나면 기운이 하나도 없었고 제시간에 준비를 못 했어요.",
+   "en": "I started waking up feeling drained, and I could not get ready in time.",
+   "hint": "drained",
+   "gram": "<em>wake up feeling</em> + 형용사 = ~한 상태로 깨다. <em>drained</em> = 진이 빠진. <em>in time</em> = 제시간에(늦지 않게). waking ⭕ / walking ❌"
+  },
+  {
+   "id": "sm11-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "알림이 계속 일에 대한 제 집중을 빼앗았어요.",
+   "en": "Notifications kept pulling my attention away from work.",
+   "hint": "pulling",
+   "gram": "<em>keep</em> + -ing = 계속 ~하다. <em>pull</em> 사람's <em>attention away from</em> ~ = ~에서 주의를 빼앗다. 알림은 보통 복수 notifications."
+  },
+  {
+   "id": "sm11-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "휴대폰 덕분에 사람들과 연락하고, 정보를 바로 찾고, 일을 더 빨리 끝낼 수 있어요.",
+   "en": "They help us stay in touch with people, access information instantly, and get things done faster.",
+   "hint": "touch",
+   "gram": "<em>help</em> 사람 + 동사원형 = ~가 …하도록 돕다. <em>stay in touch with</em> = ~와 연락하고 지내다. <em>get things done</em> = 일을 해내다."
+  },
+  {
+   "id": "sm11-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "그때 뭔가 바뀌어야 하고, 이 문제를 진지하게 받아들여야 한다는 걸 알았어요.",
+   "en": "I knew then that something had to change and that I had to take the problem seriously.",
+   "hint": "seriously",
+   "gram": "<em>I knew then that</em> ~ = 그때 ~라는 걸 알았다. <em>had to</em> = ~해야 했다. <em>take</em> ~ <em>seriously</em> = ~을 진지하게 받아들이다."
+  },
+  {
+   "id": "sm11-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "문제는 분명했어요. 제가 아니라 휴대폰이 저를 조종하고 있었어요.",
+   "en": "The problem was clear: my phone was in control, not me.",
+   "hint": "control",
+   "gram": "<em>be in control</em> = 주도권을 쥐고 있다. <em>A, not B</em> = B가 아니라 A. 콜론(:) 뒤에 이유를 설명."
   }
  ],
  "part1": [],
