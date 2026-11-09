@@ -914,5 +914,6 @@
  "podFiles": [
   "groups/other",
   "groups/church"
- ]
+ ],
+ "podAuto": true
 }

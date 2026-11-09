@@ -1033,3 +1033,5 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .pickmore{justify-self:start;font-size:13px;margin:-4px 2px 0}
 .eplink.today{border:1.5px solid var(--blue)}
 .eplink i{font-size:14px;font-style:normal;font-weight:600;color:var(--blue);white-space:nowrap}
+
+.pdone{display:block;width:100%;margin:8px 0 0;font:inherit;font-size:14px;font-weight:700;color:var(--blue);background:var(--surface);border:1.5px dashed var(--blue);border-radius:12px;padding:10px 12px;cursor:pointer}

@@ -260,7 +260,10 @@ function noticeBox(app){
     bt.onclick=()=>{ if(v==="go-pod"){ const P=podSel(); window.open(podUrl(P),"_blank","noopener"); } ans(v,l); }; row.append(bt); });
   b.append(row); app.append(b);
 }
-function todayPod(){ if(D && D.podTodayUrl && (D.podSessions||[]).length){ const f=D.podSessions.find(x=>x.link && x.link.url===D.podTodayUrl); if(f) return f; }
+function podDoneList(){ return store.get(`bandup-poddone-${slug}`,[]); }
+function podDone(TP){ const L=podDoneList(); if(TP && TP.link && !L.includes(TP.link.url)){ L.push(TP.link.url); store.set(`bandup-poddone-${slug}`,L); } }
+function todayPod(){ if(D && D.podAuto && (D.podSessions||[]).length){ const done=podDoneList(); const L=[...D.podSessions].sort((a,b)=>String(b.date).localeCompare(String(a.date))); return L.find(x=>!done.includes(x.link.url)) || L[0]; }
+  if(D && D.podTodayUrl && (D.podSessions||[]).length){ const f=D.podSessions.find(x=>x.link && x.link.url===D.podTodayUrl); if(f) return f; }
   if(D && D.dailyPod && (D.podSessions||[]).length){ const L=[...D.podSessions].sort((a,b)=>String(b.date).localeCompare(String(a.date))); const t=today(), st="2026-11-09"; let n=0; while(addD(st,n)<t && n<4000) n++; if(t<st) n=0; return L[Math.min(n,L.length-1)]; }
   const P=D&&D.podDaily; if(!P||!P.order||!P.order.length||!D.sessions) return null; const t=today(); let n=0; while(addD(P.start,n)<t && n<4000) n++; if(t<P.start) n=0; const no=P.order[Math.min(n,P.order.length-1)]; return D.sessions.find(x=>x.no===no)||null; }
 function studyGuide(app){
@@ -310,7 +313,7 @@ function renderHome(app){
   // 학습
   const s2=el("section","sec"); s2.append(secHead("학습"));
   const list=el("div","box list2");
-  { const P=podSel(); const TP=todayPod(); const pr=TP? listRow(LIC.pod,"오늘의 팟캐스트",`${String(TP.link.src||"6 Minute English").replace(/^BBC /,"")} · ${TP.link.date} · ${TP.link.title}`,null,TP.link.url) : listRow(LIC.pod,"오늘의 팟캐스트",P.name,null,podUrl(P)); pr.classList.add("podrow"); const pw=el("div","podwrap"); const cb=el("button","podchg","바꾸기"); cb.type="button"; cb.onclick=()=>go("podpick"); pw.append(pr,cb); list.append(pw); }
+  { const P=podSel(); const TP=todayPod(); const pr=TP? listRow(LIC.pod,"오늘의 팟캐스트",`${String(TP.link.src||"6 Minute English").replace(/^BBC /,"")} · ${TP.link.date} · ${TP.link.title}`,null,TP.link.url) : listRow(LIC.pod,"오늘의 팟캐스트",P.name,null,podUrl(P)); pr.classList.add("podrow"); const pw=el("div","podwrap"); const cb= (D.podAuto && TP)? el("button","podchg","✓ 다 들었어요") : el("button","podchg","바꾸기"); cb.type="button"; cb.onclick= (D.podAuto && TP)? (e=>{ e.preventDefault(); e.stopPropagation(); podDone(TP); render(); }) : (()=>go("podpick")); pw.append(pr,cb); list.append(pw); }
   if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
   list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
@@ -761,9 +764,10 @@ function renderDecks(app){
     list=dyCards(); key="dy-"+dySrc+"-"+today(); empty= dySrc==="voc"? "내 단어장에 예문이 있는 단어가 아직 없어요. 단어를 추가하면 여기서 문장 연습을 할 수 있어요." : "카드가 없어요.";
     dyTranslate(list);
   } else if(cardMode==="pod"){
-    const PS=D.podSessions; const TPp= (D.dailyPod||D.podTodayUrl)? todayPod() : null; if(selPod==null || !PS.some(x=>x.no===selPod)) selPod= TPp? TPp.no : PS[PS.length-1].no;
+    const PS=D.podSessions; const TPp= (D.dailyPod||D.podTodayUrl||D.podAuto)? todayPod() : null; if(selPod==null || !PS.some(x=>x.no===selPod)) selPod= TPp? TPp.no : PS[PS.length-1].no;
     if(TPp && selPod===TPp.no && !podPickOpen){
       const a=el("a","eplink today"); a.href=TPp.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null,`오늘의 팟캐스트 · ${TPp.link.date}`), el("b",null,TPp.link.title||"에피소드"), el("i",null,"듣기 ›")); app.append(a);
+      if(D.podAuto){ const db=el("button","pdone","✓ 다 들었어요 · 다음 편으로"); db.type="button"; db.onclick=()=>{ podDone(TPp); selPod=null; deckState=null; podPickOpen=false; render(); }; app.append(db); }
       const mb=el("button","linkbtn pickmore","다른 에피소드 보기 ▾"); mb.type="button"; mb.onclick=()=>{ podPickOpen=true; render(); }; app.append(mb);
     } else {
     if(TPp){ const back=el("button","linkbtn pickmore","★ 오늘의 팟캐스트로 돌아가기"); back.type="button"; back.onclick=()=>{ selPod=TPp.no; podPickOpen=false; deckState=null; render(); }; app.append(back); }
