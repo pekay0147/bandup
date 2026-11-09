@@ -267,10 +267,13 @@ function studyGuide(app){
     ["팟캐스트 듣기", `${P.name||"오늘의 팟캐스트"} 한 편을 끝까지 들어요`, null, podUrl(P)],
     ["큐카드 팟캐스트로 오늘 들은 팟캐스트 복습하기","큐카드 → 팟캐스트에서 오늘 날짜를 골라, 방금 들은 문장을 한국어만 보고 영어로 말해 봐요. 마지막 장의 단어는 단어장에 담아요",()=>{ cardMode=podTab; selSession=null; selPod=null; deckState=null; go("cards"); }],
     ["큐카드 매일 연습으로 일상 영어 공부하기","매일 바뀌는 생활 영어 문장 10개를 소리 내 말해 봐요",()=>{ cardMode="daily"; deckState=null; go("cards"); }],
-    ["오늘의 복습으로 마무리하기","오늘 목표 개수만큼 복습해요",()=>{ const due=dueCards().length; go("review",{extra:!due, ids:reviewQueue(!due)}); }]];
+    ["그 외","시간이 더 있으면 골라서 해요. 철자 탭에서 단어 듣고 쓰기, 아이디어 탭에서 Part 1·2·3 질문별 단어와 답변 재료 보기, 내 단어장 외우기, 오늘의 복습까지!",null,null,[["철자",()=>go("words")],["아이디어",()=>go("ideas")],["내 단어장",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); }],["오늘의 복습",()=>{ const due=dueCards().length; go("review",{extra:!due, ids:reviewQueue(!due)}); }]]]];
   const sec=el("section","sec sguide"); sec.append(secHead("오늘의 공부 순서","위에서부터 차례대로"));
   const box=el("div","box list2");
-  steps.forEach(([title,sub,fn,href],i)=>{
+  steps.forEach(([title,sub,fn,href,chips],i)=>{
+    if(chips){ const r=el("div","lrow2 sg-row sg-more"); const t=el("span","lt"); t.append(el("b",null,title), el("span",null,sub));
+      const cr=el("span","sg-chips"); chips.forEach(([lab,f])=>{ const c=el("button","sg-chip",lab); c.type="button"; c.onclick=f; cr.append(c); }); t.append(cr);
+      r.append(el("span","sg-n",String(i+1)),t); box.append(r); return; }
     const r=el(href? "a":"button","lrow2 sg-row"); if(href){ r.href=href; r.target="_blank"; r.rel="noopener"; } else { r.type="button"; r.onclick=fn; }
     const t=el("span","lt"); t.append(el("b",null,title), el("span",null,sub));
     r.append(el("span","sg-n",String(i+1)),t,el("span","lchev","›")); box.append(r); });
