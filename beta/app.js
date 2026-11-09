@@ -287,8 +287,20 @@ function studyGuide(app){
     r.append(el("span","sg-n",String(i+1)),t,el("span","lchev","›")); box.append(r); });
   sec.append(box); app.append(sec);
 }
+let deferredInstall=null;
+window.addEventListener("beforeinstallprompt",e=>{ e.preventDefault(); deferredInstall=e; const h=document.querySelector(".instbar"); if(!h && typeof render==="function" && document.querySelector(".guidelink")) render(); });
+window.addEventListener("appinstalled",()=>{ deferredInstall=null; const h=document.querySelector(".instbar"); if(h) h.remove(); });
+function installBar(app){
+  if((window.matchMedia&&matchMedia("(display-mode: standalone)").matches) || navigator.standalone || D.demo) return;
+  const ua=navigator.userAgent||"";
+  if(/KAKAOTALK/i.test(ua)){ const b=el("div","instbar"); b.append(el("span",null,"카카오톡 안에서는 앱 설치가 안 돼요. 브라우저로 열어서 설치해 주세요."));
+    const a=el("a","instbtn","브라우저로 열기"); a.href="kakaotalk://web/openExternal?url="+encodeURIComponent(location.href); b.append(a); app.append(b); return; }
+  if(deferredInstall){ const b=el("div","instbar"); b.append(el("span",null,"밴드업을 홈 화면에 앱으로 설치할 수 있어요."));
+    const a=el("button","instbtn","앱 설치하기"); a.type="button"; a.onclick=async()=>{ const ev=deferredInstall; if(!ev) return; ev.prompt(); try{ await ev.userChoice; }catch(_){} deferredInstall=null; b.remove(); }; b.append(a); app.append(b); }
+}
 function renderHome(app){
   statFlush(false);
+  installBar(app);
   const due=dueCards().length;
   const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length;
   const goalDone = doneToday>=DAILY;
