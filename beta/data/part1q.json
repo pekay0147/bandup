@@ -50,7 +50,7 @@
     ],
     [
      "part-time",
-     "시간제의, 파트타임의",
+     "시간제의, 시간제로",
      "I work part-time at a café at weekends."
     ],
     [
@@ -60,7 +60,7 @@
     ],
     [
      "work overtime",
-     "야근하다",
+     "초과 근무하다, 시간 외 근무하다",
      "I sometimes work overtime on Fridays."
     ],
     [
@@ -85,12 +85,12 @@
     ],
     [
      "salary",
-     "월급, 급여",
+     "고정 급여(월급·연봉)",
      "My salary is not high, but it's fair."
     ],
     [
      "boss / manager",
-     "상사",
+     "상사 / 관리자, 매니저",
      "My boss is very kind and helpful."
     ],
     [
@@ -101,7 +101,7 @@
     [
      "meet a deadline",
      "마감을 맞추다",
-     "I always try to meet a deadline."
+     "I always try to meet my deadlines."
     ],
     [
      "burnout",
@@ -110,7 +110,7 @@
     ],
     [
      "flexible hours",
-     "유연 근무",
+     "유연한 근무시간",
      "My company offers flexible hours."
     ],
     [
@@ -136,7 +136,7 @@
     [
      "occupation",
      "직업",
-     "My occupation is a primary school teacher."
+     "The form asked for my name, age and occupation."
     ],
     [
      "career",
@@ -151,7 +151,7 @@
     [
      "skilled / unskilled",
      "숙련된 / 비숙련의",
-     "My job needs skilled workers."
+     "The company employs both skilled and unskilled workers."
     ],
     [
      "manual labour",
@@ -165,7 +165,7 @@
     ],
     [
      "revenue",
-     "수익",
+     "매출(액), 수익(비용 차감 전)",
      "Our company's revenue grew this year."
     ],
     [
@@ -180,7 +180,7 @@
     ],
     [
      "profit margin",
-     "이윤 폭",
+     "이익률, 매출액 대비 이익의 비율",
      "Our profit margin is quite small."
     ],
     [
@@ -254,11 +254,6 @@
      "I think a monopoly is bad for customers."
     ],
     [
-     "fiscal policy",
-     "재정 정책",
-     "I studied fiscal policy at university."
-    ],
-    [
      "CEO",
      "최고경영자",
      "Our CEO visits our office every month."
@@ -272,11 +267,6 @@
      "cash flow",
      "현금 흐름",
      "Cash flow is important for small companies."
-    ],
-    [
-     "market segmentation",
-     "시장 세분화",
-     "I do market segmentation in my job."
     ],
     [
      "competitive advantage",
@@ -307,6 +297,16 @@
      "salaried job",
      "월급을 받는 직장",
      "I prefer a salaried job for stability."
+    ],
+    [
+     "take a day off",
+     "하루 휴가를 내다",
+     "I usually take a day off on my birthday."
+    ],
+    [
+     "learn on the job",
+     "일하면서 실무를 배우다",
+     "I learnt most of my skills on the job."
     ]
    ]
   },
@@ -338,7 +338,7 @@
     ],
     [
      "pull an all-nighter",
-     "밤새 공부하다",
+     "밤을 새우다(공부나 일을 하느라)",
      "I pulled an all-nighter before the exam."
     ],
     [
@@ -368,8 +368,8 @@
     ],
     [
      "revise / review",
-     "복습하다",
-     "I revise my notes every evening."
+     "(시험을 위해) 복습하다: revise(영국식), review(미국식)",
+     "I revise for my exams every evening."
     ],
     [
      "lecture",
@@ -418,7 +418,7 @@
     ],
     [
      "challenging",
-     "어렵지만 해볼 만한",
+     "도전적인, 쉽지 않아 노력이 필요한",
      "My course is challenging but fun."
     ],
     [
@@ -433,7 +433,7 @@
     ],
     [
      "pursue",
-     "추구하다, 계속하다",
+     "추구하다, (학위·진로 등을) 목표로 공부하거나 노력하다",
      "I want to pursue a master's degree."
     ],
     [
@@ -454,7 +454,7 @@
     [
      "curriculum",
      "교육 과정",
-     "My school's curriculum is quite strict."
+     "My school's curriculum covers a wide range of subjects."
     ],
     [
      "institution",
@@ -474,7 +474,7 @@
     [
      "tuition",
      "수업료",
-     "My tuition is quite expensive."
+     "My tuition fees are quite high."
     ],
     [
      "enrol",
@@ -494,7 +494,7 @@
     [
      "aspirations",
      "포부",
-     "My aspirations are to become a doctor."
+     "My career aspirations include becoming a doctor and helping people in need."
     ],
     [
      "command",
@@ -540,6 +540,16 @@
      "pedagogy",
      "교육학, 교수법",
      "I'm interested in pedagogy and teaching."
+    ],
+    [
+     "keep up with coursework",
+     "수업 과제를 제때 따라가다",
+     "I make a weekly plan to keep up with my coursework."
+    ],
+    [
+     "meet the entry requirements",
+     "입학 요건을 충족하다",
+     "I'm studying English to meet the entry requirements for my course."
     ]
    ]
   },
@@ -562,12 +572,12 @@
     [
      "cramped",
      "비좁은",
-     "The old streets in my hometown are cramped."
+     "Some of the old houses in my hometown are cramped."
     ],
     [
      "move in / move out",
      "이사 들어오다 / 이사 나가다",
-     "I moved out of my hometown at twenty."
+     "I moved out of my parents' home when I was twenty."
     ],
     [
      "area",
@@ -601,7 +611,7 @@
     ],
     [
      "have easy access to",
-     "~에 쉽게 갈 수 있다",
+     "~에 쉽게 접근하거나 ~을 편리하게 이용할 수 있다",
      "In my hometown, we have easy access to the mountains."
     ],
     [
@@ -686,7 +696,7 @@
     ],
     [
      "high-rise",
-     "고층 건물",
+     "고층의, 고층 건물",
      "There are many high-rise buildings in my hometown."
     ],
     [
@@ -716,8 +726,18 @@
     ],
     [
      "nostalgic",
-     "향수를 불러일으키는",
+     "향수를 느끼는, 향수를 불러일으키는",
      "Visiting my hometown makes me feel nostalgic."
+    ],
+    [
+     "a strong sense of community",
+     "강한 공동체 의식",
+     "My hometown has a strong sense of community, and neighbours help each other."
+    ],
+    [
+     "a slower pace of life",
+     "더 여유로운 생활 속도",
+     "I like the slower pace of life in my hometown."
     ]
    ]
   },
@@ -784,7 +804,7 @@
     ],
     [
      "have easy access to",
-     "~에 쉽게 갈 수 있다",
+     "~에 쉽게 접근하거나 ~을 편리하게 이용할 수 있다",
      "I have easy access to the subway."
     ],
     [
@@ -815,7 +835,7 @@
     [
      "high-rise apartment",
      "고층 아파트",
-     "Most people in Seoul live in high-rise apartments."
+     "There are many high-rise apartments in my neighbourhood."
     ],
     [
      "convenient",
@@ -891,6 +911,16 @@
      "feel at home",
      "편안하게 느끼다",
      "I always feel at home in my room."
+    ],
+    [
+     "share a room",
+     "방을 함께 쓰다",
+     "I used to share a room with my sister."
+    ],
+    [
+     "make the most of the space",
+     "공간을 최대한 활용하다",
+     "I use shelves to make the most of the space in my small flat."
     ]
    ]
   },
@@ -951,7 +981,7 @@
     ],
     [
      "appreciate art",
-     "예술을 감상하다",
+     "예술의 가치를 이해하고 감상하다",
      "I've learned to appreciate art."
     ],
     [
@@ -1026,7 +1056,7 @@
     ],
     [
      "sketch",
-     "스케치",
+     "스케치, 스케치하다, 대략 그리다",
      "I often sketch in my notebook."
     ],
     [
@@ -1042,12 +1072,12 @@
     [
      "shade",
      "음영, 색조",
-     "I like the light shade of blue."
+     "I like light shades of blue."
     ],
     [
      "perspective",
      "원근법, 관점",
-     "Drawing perspective is hard for me."
+     "Drawing in perspective is hard for me."
     ],
     [
      "texture",
@@ -1081,7 +1111,7 @@
     ],
     [
      "motif",
-     "모티프, 주제",
+     "반복되는 소재·무늬·주제, 모티프",
      "Flowers are a common motif in my drawings."
     ],
     [
@@ -1118,6 +1148,16 @@
      "stillness",
      "고요함",
      "I love the stillness of a quiet gallery."
+    ],
+    [
+     "catch my eye",
+     "눈길을 끌다",
+     "Bright paintings always catch my eye when I visit a gallery."
+    ],
+    [
+     "express myself",
+     "내 생각이나 감정을 표현하다",
+     "Drawing helps me express myself when I can't find the right words."
     ]
    ]
   },
@@ -1164,11 +1204,11 @@
     [
      "accessible",
      "접근하기 쉬운, 이용하기 편한",
-     "Bike rental is very accessible in my city."
+     "Bike rental services are easily accessible in my city."
     ],
     [
      "affordable",
-     "가격이 싼",
+     "가격이 부담스럽지 않은, 감당할 수 있는",
      "Bikes are an affordable way to travel."
     ],
     [
@@ -1188,7 +1228,7 @@
     ],
     [
      "bike lane",
-     "자전거 도로",
+     "자전거 전용 차로",
      "There are bike lanes along the river."
     ],
     [
@@ -1258,13 +1298,13 @@
     ],
     [
      "uphill / downhill",
-     "오르막 / 내리막",
-     "I hate cycling uphill, but I love downhill."
+     "오르막으로 / 내리막으로",
+     "I hate cycling uphill, but I love cycling downhill."
     ],
     [
-     "take a ride",
-     "한 바퀴 타다",
-     "I take a ride along the river at weekends."
+     "go for a bike ride",
+     "자전거를 타러 가다",
+     "I go for a bike ride along the river at weekends."
     ],
     [
      "outdoor activity",
@@ -1280,6 +1320,16 @@
      "stay fit",
      "건강을 유지하다",
      "I cycle to stay fit."
+    ],
+    [
+     "pump up the tyres",
+     "타이어에 공기를 넣다",
+     "I pump up the tyres before a long bike ride."
+    ],
+    [
+     "lock up my bike",
+     "자전거에 자물쇠를 채워 두다",
+     "I always lock up my bike outside the station."
     ]
    ]
   },
@@ -1311,7 +1361,7 @@
     [
      "birthday wish",
      "생일 소원",
-     "My birthday wish was to pass IELTS."
+     "My birthday wish was to get my target IELTS band score."
     ],
     [
      "seaweed soup",
@@ -1386,12 +1436,22 @@
     [
      "special occasion",
      "특별한 날",
-     "Birthdays are a special occasion in my family."
+     "Birthdays are special occasions in my family."
     ],
     [
      "turn 30",
      "서른 살이 되다",
      "I'll turn 30 next year."
+    ],
+    [
+     "make someone feel special",
+     "누군가를 특별한 사람이라고 느끼게 하다",
+     "A handwritten card can make someone feel special on their birthday."
+    ],
+    [
+     "a small gathering",
+     "소규모 모임",
+     "I prefer a small gathering with close friends to a big birthday party."
     ]
    ]
   },
@@ -1422,7 +1482,7 @@
     ],
     [
      "used to",
-     "~하곤 했다",
+     "예전에는 ~하곤 했다 / ~한 상태였다(지금은 그렇지 않음)",
      "I used to play in the park every day."
     ],
     [
@@ -1457,7 +1517,7 @@
     ],
     [
      "naughty",
-     "장난꾸러기의",
+     "말썽을 부리는, 말을 잘 안 듣는",
      "I was quite naughty as a child."
     ],
     [
@@ -1468,7 +1528,7 @@
     [
      "childhood friend",
      "어릴 적 친구",
-     "I still meet my childhood friend."
+     "I still meet up with my childhood friend."
     ],
     [
      "fond memories",
@@ -1487,8 +1547,18 @@
     ],
     [
      "spoiled",
-     "버릇없는",
+     "응석받이로 자란, 버릇없는",
      "I was a bit spoiled as a child."
+    ],
+    [
+     "spend time outdoors",
+     "야외에서 시간을 보내다",
+     "I spent a lot of time outdoors when I was a child."
+    ],
+    [
+     "get up to mischief",
+     "장난을 치거나 말썽을 부리다",
+     "My brother and I often got up to mischief when we were little."
     ]
    ]
   },
@@ -1558,9 +1628,9 @@
      "Dark colours really suit me."
     ],
     [
-     "high quality",
-     "좋은 품질",
-     "I buy high quality shoes."
+     "high-quality",
+     "품질이 좋은",
+     "I buy high-quality shoes."
     ],
     [
      "poor quality",
@@ -1595,7 +1665,7 @@
     [
      "go out of fashion",
      "유행이 지나다",
-     "Skinny jeans have gone out of fashion."
+     "Some styles never go out of fashion."
     ],
     [
      "suit me",
@@ -1655,7 +1725,7 @@
     [
      "in fashion",
      "유행하는",
-     "Wide jeans are in fashion now."
+     "Wide-leg jeans are in fashion now."
     ],
     [
      "chic",
@@ -1689,7 +1759,7 @@
     ],
     [
      "tailored",
-     "맞춤 제작된",
+     "몸에 맞게 재단된, 맞춤 제작된",
      "I bought a tailored suit for work."
     ],
     [
@@ -1709,7 +1779,7 @@
     ],
     [
      "capsule wardrobe",
-     "꼭 필요한 옷만 갖춘 옷장",
+     "서로 조합해 입을 수 있는 소수의 옷으로 구성한 옷 모음",
      "I'm trying to build a capsule wardrobe."
     ],
     [
@@ -1724,7 +1794,7 @@
     ],
     [
      "couture",
-     "맞춤 의상",
+     "고급 맞춤 의상",
      "I love looking at couture dresses."
     ],
     [
@@ -1741,11 +1811,6 @@
      "ensemble",
      "한 벌 코디",
      "I wore a smart ensemble to the wedding."
-    ],
-    [
-     "embellishment",
-     "장식",
-     "I prefer clothes without much embellishment."
     ],
     [
      "bohemian",
@@ -1768,13 +1833,8 @@
      "My friend is very fashion-forward."
     ],
     [
-     "prêt-à-porter",
-     "기성복",
-     "I usually buy prêt-à-porter clothes."
-    ],
-    [
      "seamstress",
-     "재봉사",
+     "여성 재봉사",
      "My grandmother was a seamstress."
     ],
     [
@@ -1785,7 +1845,7 @@
     [
      "vogue",
      "유행",
-     "Big jackets are in vogue now."
+     "Oversized jackets are in vogue now."
     ],
     [
      "garment district",
@@ -1796,6 +1856,16 @@
      "style icon",
      "스타일 아이콘",
      "My style icon is my mum."
+    ],
+    [
+     "mix and match",
+     "서로 다른 옷을 다양하게 조합해 입다",
+     "I buy simple pieces that I can mix and match."
+    ],
+    [
+     "dress in layers",
+     "옷을 여러 겹 겹쳐 입다",
+     "I dress in layers because the weather changes a lot during the day."
     ]
    ]
   },
@@ -1861,7 +1931,7 @@
     ],
     [
      "scroll through social media",
-     "인터넷을 스크롤하다",
+     "SNS 게시물을 스크롤하며 훑어보다",
      "I scroll through social media before bed."
     ],
     [
@@ -1871,7 +1941,7 @@
     ],
     [
      "screen time",
-     "스크린 타임",
+     "전자기기 화면을 보는 시간",
      "I try to reduce my screen time."
     ],
     [
@@ -1892,7 +1962,7 @@
     [
      "be glued to my phone",
      "폰만 붙잡고 있다",
-     "I'm glued to my phone too much."
+     "I spend too much time glued to my phone."
     ],
     [
      "download",
@@ -1968,6 +2038,16 @@
      "digital",
      "디지털의",
      "I prefer digital books to paper ones."
+    ],
+    [
+     "back up my files",
+     "파일을 백업하다",
+     "I back up my files every week so I don't lose my assignments."
+    ],
+    [
+     "freeze",
+     "화면이나 프로그램이 멈추다",
+     "My laptop sometimes freezes when I have too many tabs open."
     ]
    ]
   },
@@ -2014,7 +2094,7 @@
     [
      "spontaneous",
      "즉흥적인",
-     "My weekends are quite spontaneous."
+     "I tend to be spontaneous at weekends."
     ],
     [
      "repetitive",
@@ -2028,12 +2108,12 @@
     ],
     [
      "the daily grind",
-     "반복되는 일상",
+     "지루하고 고된 반복적인 일상",
      "Weekends help me escape the daily grind."
     ],
     [
      "call it a day",
-     "하루를 끝내다",
+     "그날 하던 일을 마치다",
      "I usually call it a day at around six."
     ],
     [
@@ -2078,12 +2158,12 @@
     ],
     [
      "used to / be used to",
-     "~하곤 했다 / ~에 익숙하다",
-     "I'm used to getting up early."
+     "예전에는 ~하곤 했다(used to + 동사원형) / ~에 익숙하다(be used to + 명사·동명사)",
+     "I used to stay up late, but now I'm used to getting up early."
     ],
     [
      "wake up",
-     "일어나다",
+     "잠에서 깨다",
      "I wake up at seven every morning."
     ],
     [
@@ -2135,6 +2215,16 @@
      "productive",
      "생산적인",
      "I feel most productive in the morning."
+    ],
+    [
+     "get into a routine",
+     "규칙적인 생활 습관이 자리 잡다",
+     "It took me a few weeks to get into a routine at university."
+    ],
+    [
+     "set aside time for",
+     "~을 위해 시간을 따로 내다",
+     "I set aside time for exercise every evening."
     ]
    ]
   },
@@ -2247,6 +2337,16 @@
      "word list",
      "단어장",
      "I keep a word list in my notebook."
+    ],
+    [
+     "check the pronunciation",
+     "발음을 확인하다",
+     "I use an online dictionary to check the pronunciation of new words."
+    ],
+    [
+     "see a word in context",
+     "문맥 속에서 단어의 쓰임을 보다",
+     "Example sentences help me see a word in context."
     ]
    ]
   },
@@ -2343,7 +2443,7 @@
     [
      "deep sleep",
      "깊은 잠",
-     "I don't dream much when I'm in a deep sleep."
+     "After a long day, I usually fall into a deep sleep."
     ],
     [
      "light sleeper",
@@ -2359,6 +2459,16 @@
      "fall asleep",
      "잠들다",
      "I fall asleep quickly after a long day."
+    ],
+    [
+     "talk in my sleep",
+     "잠꼬대를 하다",
+     "My sister says I sometimes talk in my sleep."
+    ],
+    [
+     "fade from memory",
+     "기억에서 점차 희미해지다",
+     "My dreams usually fade from memory soon after I wake up."
     ]
    ]
   },
@@ -2379,7 +2489,7 @@
     ],
     [
      "stay hydrated",
-     "수분을 유지하다",
+     "몸에 수분이 부족하지 않게 하다",
      "I drink water to stay hydrated."
     ],
     [
@@ -2471,6 +2581,16 @@
      "sip",
      "홀짝이다",
      "I like to sip hot tea on cold days."
+    ],
+    [
+     "have it without sugar",
+     "설탕을 넣지 않고 마시다",
+     "I like green tea, and I usually have it without sugar."
+    ],
+    [
+     "a refill",
+     "음료를 다시 채워 주는 것, 리필",
+     "I usually ask for a refill of water when I eat out."
     ]
    ]
   },
@@ -2512,12 +2632,12 @@
     [
      "a hectic schedule",
      "바쁜 일정",
-     "After a hectic schedule, I just want to rest."
+     "With such a hectic schedule, I just want to rest in the evenings."
     ],
     [
      "spontaneous",
      "즉흥적인",
-     "My evenings with friends are often spontaneous."
+     "I often make spontaneous plans with friends in the evening."
     ],
     [
      "repetitive",
@@ -2531,12 +2651,12 @@
     ],
     [
      "the daily grind",
-     "반복되는 일상",
+     "지루하고 고된 반복적인 일상",
      "I relax in the evening after the daily grind."
     ],
     [
      "call it a day",
-     "하루를 끝내다",
+     "그날 하던 일을 마치다",
      "I usually call it a day at ten o'clock."
     ],
     [
@@ -2611,7 +2731,7 @@
     ],
     [
      "social life",
-     "사회생활, 친구 관계",
+     "사교 활동, 친구들과 어울리는 생활",
      "I don't have much of a social life on weekdays."
     ],
     [
@@ -2621,13 +2741,23 @@
     ],
     [
      "early night",
-     "일찍 자는 날",
+     "일찍 잠자리에 드는 것",
      "I have an early night before a busy day."
     ],
     [
      "routine",
      "일과",
      "My evening routine is very simple."
+    ],
+    [
+     "switch off",
+     "일이나 걱정에서 벗어나 머리를 식히다",
+     "Listening to music helps me switch off after work."
+    ],
+    [
+     "prepare for the next day",
+     "다음 날을 준비하다",
+     "I spend a few minutes preparing for the next day before bed."
     ]
    ]
   },
@@ -2653,7 +2783,7 @@
     ],
     [
      "generous",
-     "관대한",
+     "너그러운, 아낌없이 베푸는",
      "My grandmother is a very generous person."
     ],
     [
@@ -2733,7 +2863,7 @@
     ],
     [
      "short-tempered",
-     "성질이 급한",
+     "화를 잘 내는, 성미가 급한",
      "My uncle is a bit short-tempered."
     ],
     [
@@ -2783,7 +2913,7 @@
     ],
     [
      "take after",
-     "닮다",
+     "가족, 특히 부모를 외모나 성격에서 닮다",
      "I take after my dad."
     ],
     [
@@ -2798,8 +2928,8 @@
     ],
     [
      "drift apart",
-     "멀어지다",
-     "We drifted apart after school."
+     "사이가 점점 멀어지다",
+     "We drifted apart after we left school."
     ],
     [
      "siblings",
@@ -2813,7 +2943,7 @@
     ],
     [
      "extended family",
-     "대가족",
+     "조부모·삼촌·사촌 등을 포함한 가족과 친척",
      "My extended family gets together every New Year."
     ],
     [
@@ -2834,7 +2964,7 @@
     [
      "lose touch",
      "연락이 끊기다",
-     "I lose touch with some friends after school."
+     "I lost touch with some friends after I left school."
     ],
     [
      "family ties",
@@ -2863,7 +2993,7 @@
     ],
     [
      "offspring",
-     "자식",
+     "자녀, 자손(사람에게는 격식적·익살스러운 용법), 동물의 새끼",
      "My grandparents love spending time with their offspring."
     ],
     [
@@ -2898,7 +3028,7 @@
     ],
     [
      "reserved",
-     "내성적인",
+     "말수가 적고 감정을 잘 드러내지 않는",
      "I'm quite reserved when I meet new people."
     ],
     [
@@ -2933,7 +3063,7 @@
     ],
     [
      "tactful",
-     "눈치 있는, 요령 있는",
+     "상대의 기분을 배려해 말하거나 행동하는",
      "My friend is tactful when she gives advice."
     ],
     [
@@ -3029,7 +3159,7 @@
     [
      "zealous",
      "열성적인",
-     "My brother is zealous about football."
+     "My brother is a zealous supporter of our local football team."
     ],
     [
      "foster family",
@@ -3037,29 +3167,29 @@
      "My friend grew up with a foster family."
     ],
     [
-     "parentage",
-     "혈통, 부모",
-     "My friend's parentage is half Korean, half British."
-    ],
-    [
      "lineage",
      "혈통, 가계",
      "My family can trace its lineage back many generations."
     ],
     [
-     "matriarch",
-     "여자 가장",
-     "My grandmother is the matriarch of our family."
-    ],
-    [
      "patriarch",
-     "남자 가장",
+     "집안의 중심이 되는 연장자 남성",
      "My grandfather was the patriarch of our family."
     ],
     [
      "godparent",
      "대부·대모",
      "My godparent gave me a lovely present."
+    ],
+    [
+     "have a lot in common",
+     "공통점이 많다",
+     "My best friend and I have a lot in common, especially our taste in music."
+    ],
+    [
+     "be there for someone",
+     "누군가가 필요로 할 때 곁에서 힘이 되어 주다",
+     "My sister is always there for me when I'm having a hard time."
     ]
    ]
   },
@@ -3076,12 +3206,12 @@
     [
      "scenery",
      "경치",
-     "The scenery in Gangwon-do is stunning."
+     "The wildflowers make the spring scenery even more beautiful."
     ],
     [
      "fresh air",
      "맑은 공기",
-     "I go hiking for some fresh air."
+     "I enjoy the flowers and fresh air when I walk in the park."
     ],
     [
      "bouquet",
@@ -3091,7 +3221,7 @@
     [
      "bloom / blossom",
      "꽃이 피다",
-     "I love it when the flowers bloom in April."
+     "I love watching flowers bloom and fruit trees blossom in spring."
     ],
     [
      "cherry blossom",
@@ -3131,7 +3261,7 @@
     [
      "symbolise",
      "상징하다",
-     "In Korea, white flowers symbolise sadness."
+     "Red roses often symbolise love."
     ],
     [
      "anniversary",
@@ -3176,12 +3306,22 @@
     [
      "habitat",
      "서식지",
-     "Flowers provide a habitat for bees and butterflies."
+     "Gardens full of flowers provide a habitat for bees and butterflies."
     ],
     [
      "biodiversity",
      "생물 다양성",
-     "I think flowers help biodiversity in cities."
+     "Growing a variety of flowers can support biodiversity in cities."
+    ],
+    [
+     "brighten up a room",
+     "방을 더 밝고 생기 있게 만들다",
+     "Fresh flowers really brighten up a room."
+    ],
+    [
+     "in full bloom",
+     "활짝 핀",
+     "I love visiting the park when the cherry trees are in full bloom."
     ]
    ]
   },
@@ -3217,7 +3357,7 @@
     ],
     [
      "savoury",
-     "짭짤한, 감칠맛 나는",
+     "단맛이 나지 않는, 짭짤한",
      "I prefer savoury snacks to sweet ones."
     ],
     [
@@ -3288,7 +3428,7 @@
     [
      "skip meals",
      "끼니를 거르다",
-     "I sometimes skip breakfast."
+     "I try not to skip meals, even when I'm busy."
     ],
     [
      "comfort food",
@@ -3312,7 +3452,7 @@
     ],
     [
      "healthy",
-     "건강한",
+     "건강에 좋은, 건강한",
      "I try to eat healthy food every day."
     ],
     [
@@ -3321,13 +3461,13 @@
      "I eat junk food only at weekends."
     ],
     [
-     "delivery food",
-     "배달 음식",
-     "I order delivery food when I'm busy."
+     "food delivery",
+     "음식 배달",
+     "I use food delivery services when I'm busy."
     ],
     [
      "cuisine",
-     "요리, 음식",
+     "(특정 나라·지역의) 요리, 요리 방식",
      "My favourite cuisine is Italian."
     ],
     [
@@ -3338,7 +3478,7 @@
     [
      "generous portion",
      "넉넉한 양",
-     "My favourite restaurant serves a generous portion."
+     "My favourite restaurant serves generous portions."
     ],
     [
      "palate",
@@ -3408,7 +3548,7 @@
     [
      "plentiful",
      "풍부한",
-     "Food is plentiful at Korean family festivals."
+     "Food is plentiful at family gatherings in Korea."
     ],
     [
      "quench",
@@ -3421,18 +3561,13 @@
      "I chew my food well before I swallow it."
     ],
     [
-     "spoilage",
-     "부패",
-     "I keep food cold to prevent spoilage."
-    ],
-    [
      "mouldy",
      "곰팡이 핀",
      "I threw away some mouldy bread yesterday."
     ],
     [
      "freezer burn",
-     "냉동실 냉해(성에로 상한 것)",
+     "냉동 식품 표면의 수분 손실로 생기는 건조·변색",
      "My frozen meat had freezer burn."
     ],
     [
@@ -3456,11 +3591,6 @@
      "I stir my coffee with a spoon."
     ],
     [
-     "astringent",
-     "떫은",
-     "Unripe persimmons taste astringent to me."
-    ],
-    [
      "legumes",
      "콩류",
      "I eat legumes like beans and lentils."
@@ -3469,6 +3599,16 @@
      "grains",
      "곡물",
      "I try to eat whole grains every day."
+    ],
+    [
+     "try a new recipe",
+     "새로운 조리법으로 요리해 보다",
+     "I try a new recipe whenever I have a free evening."
+    ],
+    [
+     "an acquired taste",
+     "익숙해져야 좋아하게 되는 맛이나 음식",
+     "Blue cheese is an acquired taste, but I really enjoy it now."
     ]
    ]
   },
@@ -3518,9 +3658,9 @@
      "I rarely go clubbing these days."
     ],
     [
-     "karaoke / noraebang",
-     "노래방",
-     "I go to karaoke with my friends on Fridays."
+     "karaoke",
+     "카라오케, 반주에 맞춰 노래하기",
+     "I sing karaoke with my friends on Fridays."
     ],
     [
      "café hopping",
@@ -3581,6 +3721,16 @@
      "go for a drink",
      "한잔하러 가다",
      "I sometimes go for a drink after work."
+    ],
+    [
+     "make plans in advance",
+     "미리 계획을 세우다",
+     "I like to make plans in advance so my friends can keep the evening free."
+    ],
+    [
+     "stay out late",
+     "늦게까지 밖에 있다",
+     "I rarely stay out late because I have early classes."
     ]
    ]
   },
@@ -3686,13 +3836,23 @@
     ],
     [
      "well-being",
-     "행복, 안녕",
+     "건강과 행복, 심신의 안녕",
      "Exercise is good for my well-being."
     ],
     [
      "stress-free",
      "스트레스 없는",
      "I love having a stress-free weekend."
+    ],
+    [
+     "a sense of achievement",
+     "성취감",
+     "Finishing a difficult assignment gives me a sense of achievement."
+    ],
+    [
+     "something to look forward to",
+     "기대하며 기다릴 만한 일",
+     "Having a trip planned gives me something to look forward to."
     ]
    ]
   },
@@ -3788,7 +3948,7 @@
     ],
     [
      "a couch potato",
-     "집에서 뒹구는 사람",
+     "집에서 TV 등을 보며 비활동적으로 지내는 사람",
      "I'm a couch potato on rainy days."
     ],
     [
@@ -3820,6 +3980,16 @@
      "hobby",
      "취미",
      "My favourite hobby is taking photos."
+    ],
+    [
+     "make time for",
+     "~을 할 시간을 내다",
+     "I try to make time for painting, even when I'm busy."
+    ],
+    [
+     "learn at my own pace",
+     "내 속도에 맞춰 배우다",
+     "Online guitar lessons let me learn at my own pace."
     ]
    ]
   },
@@ -3841,7 +4011,7 @@
     [
      "time-saving",
      "시간을 절약하는",
-     "Online banking is really time-saving for me."
+     "Online banking is a time-saving way to pay my bills."
     ],
     [
      "portable",
@@ -3856,7 +4026,7 @@
     [
      "handy",
      "편리한",
-     "Maps apps are really handy when I travel."
+     "Map apps are really handy when I travel."
     ],
     [
      "user-friendly",
@@ -3880,7 +4050,7 @@
     ],
     [
      "scroll through social media",
-     "인터넷을 스크롤하다",
+     "SNS 게시물을 스크롤하며 훑어보다",
      "I scroll through social media on the bus."
     ],
     [
@@ -3890,7 +4060,7 @@
     ],
     [
      "screen time",
-     "스크린 타임",
+     "전자기기 화면을 보는 시간",
      "I try to reduce my screen time at night."
     ],
     [
@@ -3911,12 +4081,12 @@
     [
      "be glued to my phone",
      "폰만 붙잡고 있다",
-     "I'm glued to my phone too much."
+     "I spend too much time glued to my phone."
     ],
     [
      "social media",
      "SNS",
-     "I mostly use Instagram for social media."
+     "Instagram is the social media platform I use most."
     ],
     [
      "go online",
@@ -3950,7 +4120,7 @@
     ],
     [
      "go viral",
-     "입소문이 나다",
+     "인터넷에서 빠르게 널리 퍼지다",
      "I hope one of my videos will go viral."
     ],
     [
@@ -3967,6 +4137,16 @@
      "connected",
      "연결된",
      "The internet keeps me connected to my friends."
+    ],
+    [
+     "a stable connection",
+     "안정적인 인터넷 연결",
+     "I need a stable connection for my online classes."
+    ],
+    [
+     "lose track of time",
+     "시간 가는 줄 모르다",
+     "I sometimes lose track of time when I'm watching videos online."
     ]
    ]
   },
@@ -4002,7 +4182,7 @@
     ],
     [
      "accent",
-     "말투, 억양(악센트)",
+     "특정 지역·나라 사람의 발음이나 말투",
      "I like the British accent."
     ],
     [
@@ -4038,7 +4218,7 @@
     [
      "language exchange",
      "언어 교환",
-     "I joined a language exchange to practise English."
+     "I joined a language exchange group to practise English."
     ],
     [
      "make mistakes",
@@ -4053,7 +4233,7 @@
     [
      "improve",
      "향상시키다",
-     "I want to improve my English speaking."
+     "I want to improve my English speaking skills."
     ],
     [
      "communicate",
@@ -4079,6 +4259,16 @@
      "native speaker",
      "원어민",
      "I practise speaking with a native speaker."
+    ],
+    [
+     "get my point across",
+     "내가 하려는 말을 전달하다",
+     "I can usually get my point across in English, even if I make mistakes."
+    ],
+    [
+     "build my confidence",
+     "자신감을 키우다",
+     "Speaking English every day helps me build my confidence."
     ]
    ]
   },
@@ -4169,7 +4359,7 @@
     ],
     [
      "a couch potato",
-     "집에서 뒹구는 사람",
+     "집에서 TV 등을 보며 비활동적으로 지내는 사람",
      "I'm a couch potato on rainy days."
     ],
     [
@@ -4229,18 +4419,28 @@
     ],
     [
      "lazy day",
-     "게으른 날",
+     "아무것도 하지 않고 느긋하게 쉬는 날",
      "Sunday is usually a lazy day for me."
     ],
     [
      "staycation",
-     "집 근처에서 보내는 휴가",
+     "집이나 가까운 곳에서 보내는 휴가",
      "I had a staycation in Seoul last summer."
     ],
     [
      "leisurely",
      "느긋한",
      "I love a leisurely breakfast on Saturdays."
+    ],
+    [
+     "have some time to myself",
+     "혼자만의 시간을 갖다",
+     "I like to have some time to myself after a busy week."
+    ],
+    [
+     "take a break from",
+     "~을 잠시 쉬다",
+     "At weekends, I take a break from studying and spend time with friends."
     ]
    ]
   },
@@ -4355,9 +4555,9 @@
      "I find jazz very relaxing."
     ],
     [
-     "drum",
-     "드럼",
-     "I played the drum in a school band."
+     "drums",
+     "드럼 세트",
+     "I played the drums in a school band."
     ],
     [
      "flute",
@@ -4396,7 +4596,7 @@
     ],
     [
      "keyboard",
-     "건반",
+     "키보드, 전자 건반악기",
      "I play the keyboard in my free time."
     ],
     [
@@ -4405,19 +4605,9 @@
      "I've never played the accordion."
     ],
     [
-     "bagpipes",
-     "백파이프",
-     "I heard bagpipes once in Scotland."
-    ],
-    [
      "banjo",
      "밴조",
      "The banjo sounds bright and cheerful."
-    ],
-    [
-     "bassoon",
-     "바순",
-     "The bassoon is quite a rare instrument."
     ],
     [
      "clarinet",
@@ -4425,24 +4615,9 @@
      "My sister plays the clarinet."
     ],
     [
-     "clavichord",
-     "클라비코드",
-     "I saw a clavichord in a museum."
-    ],
-    [
      "cymbals",
      "심벌즈",
      "I played the cymbals in the school band."
-    ],
-    [
-     "didgeridoo",
-     "디저리두(호주 관악기)",
-     "I'd like to try the didgeridoo one day."
-    ],
-    [
-     "dulcimer",
-     "덜시머(현악기)",
-     "I'd never heard a dulcimer before."
     ],
     [
      "French horn",
@@ -4450,24 +4625,9 @@
      "The French horn is hard to play."
     ],
     [
-     "glockenspiel",
-     "글로켄슈필(철금)",
-     "I played the glockenspiel at primary school."
-    ],
-    [
      "harp",
      "하프",
      "I think the harp sounds beautiful."
-    ],
-    [
-     "harpsichord",
-     "하프시코드",
-     "The harpsichord sounds a bit like a piano."
-    ],
-    [
-     "kazoo",
-     "카주",
-     "I played the kazoo for fun as a child."
     ],
     [
      "lute",
@@ -4503,6 +4663,16 @@
      "trombone",
      "트롬본",
      "My friend plays the trombone in an orchestra."
+    ],
+    [
+     "sing along",
+     "노래를 따라 부르다",
+     "I like to sing along to my favourite songs when I'm cooking."
+    ],
+    [
+     "bring back memories",
+     "옛 기억을 떠올리게 하다",
+     "That song brings back memories of my school days."
     ]
    ]
   },
@@ -4589,7 +4759,7 @@
     [
      "get on well with",
      "~와 잘 지내다",
-     "I get on well with my sister."
+     "I get on well with my neighbours."
     ],
     [
      "hang out",
@@ -4603,7 +4773,7 @@
     ],
     [
      "next door",
-     "옆집",
+     "옆집에, 바로 옆에",
      "A young couple lives next door."
     ],
     [
@@ -4665,6 +4835,16 @@
      "borrow",
      "빌리다",
      "I once borrowed some sugar from my neighbour."
+    ],
+    [
+     "on friendly terms",
+     "사이가 좋은",
+     "I'm on friendly terms with my neighbours, although we don't meet often."
+    ],
+    [
+     "keep an eye on",
+     "~을 살펴봐 주다, 지켜보다",
+     "My neighbours keep an eye on my flat when I'm away."
     ]
    ]
   },
@@ -4765,7 +4945,7 @@
     ],
     [
      "read the news",
-     "뉴스를 보다",
+     "뉴스 기사를 읽다",
      "I read the news on the subway."
     ],
     [
@@ -4800,7 +4980,7 @@
     ],
     [
      "correspondent",
-     "특파원",
+     "특파원, 통신원",
      "I'd like to be a foreign correspondent."
     ],
     [
@@ -4829,11 +5009,6 @@
      "I admire investigative journalism."
     ],
     [
-     "byline",
-     "기자 이름 표기",
-     "I always check the byline of an article."
-    ],
-    [
      "circulation",
      "발행 부수",
      "Newspaper circulation is falling in Korea."
@@ -4842,11 +5017,6 @@
      "editorial",
      "사설",
      "I sometimes read the editorial in the morning."
-    ],
-    [
-     "broadsheet",
-     "대판 신문(정론지)",
-     "My dad prefers a broadsheet to a tabloid."
     ],
     [
      "feature",
@@ -4874,28 +5044,23 @@
      "My favourite columnist writes about food."
     ],
     [
-     "masthead",
-     "제호",
-     "The masthead is at the top of the page."
-    ],
-    [
      "caption",
      "사진 설명",
      "I always read the caption under a photo."
     ],
     [
      "investigative",
-     "탐사의, 조사의",
+     "(진상 규명을 위해) 조사하는, 탐사 보도의",
      "I enjoy investigative reports on TV."
     ],
     [
      "source",
      "취재원, 출처",
-     "Good journalists always check their source."
+     "Good journalists always check their sources."
     ],
     [
      "libel",
-     "명예훼손",
+     "문서·출판물 등에 의한 명예훼손",
      "Newspapers must be careful about libel."
     ],
     [
@@ -4914,12 +5079,7 @@
      "My friend works as a freelancer for magazines."
     ],
     [
-     "dateline",
-     "기사 작성지·날짜 표기",
-     "The dateline shows where a story was written."
-    ],
-    [
-     "banner",
+     "banner headline",
      "큰 헤드라인",
      "I saw the news in a huge banner headline."
     ],
@@ -4935,7 +5095,7 @@
     ],
     [
      "accusation",
-     "고발, 비난",
+     "혐의 제기, 비난",
      "I read about a serious accusation today."
     ],
     [
@@ -4946,11 +5106,11 @@
     [
      "assault",
      "폭행",
-     "I read about an assault near my area."
+     "I read about an assault in my neighbourhood."
     ],
     [
      "blackmail",
-     "협박",
+     "비밀 폭로 등을 빌미로 한 협박·갈취",
      "The news reported a blackmail case."
     ],
     [
@@ -4970,18 +5130,13 @@
     ],
     [
      "defendant",
-     "피고",
+     "피고, 피고인",
      "The defendant said he was innocent."
     ],
     [
      "embezzlement",
      "횡령",
      "The manager was arrested for embezzlement."
-    ],
-    [
-     "felony",
-     "중범죄",
-     "Robbery is a felony in many countries."
     ],
     [
      "fraud",
@@ -5020,7 +5175,7 @@
     ],
     [
      "manslaughter",
-     "과실치사",
+     "과실치사 등 고의가 없거나 책임이 감경되는 살인",
      "The driver was found guilty of manslaughter."
     ],
     [
@@ -5056,17 +5211,17 @@
     [
      "vandalism",
      "기물 파손",
-     "There was some vandalism in my park."
+     "There was some vandalism in the park near my home."
     ],
     [
      "legislation",
-     "법률 제정",
+     "법률·법규, 법률 제정",
      "I support new legislation on recycling."
     ],
     [
      "parliament",
      "의회",
-     "I watched a parliament debate on TV."
+     "I watched a debate in parliament on TV."
     ],
     [
      "constitution",
@@ -5080,7 +5235,7 @@
     ],
     [
      "bureaucracy",
-     "관료제",
+     "관료제, 관료주의·복잡한 행정 절차",
      "There's too much bureaucracy in my office."
     ],
     [
@@ -5154,11 +5309,6 @@
      "I visited the embassy for my visa."
     ],
     [
-     "autocracy",
-     "독재 정치",
-     "I would never want to live in an autocracy."
-    ],
-    [
      "coalition",
      "연합",
      "A coalition now runs the government."
@@ -5184,9 +5334,9 @@
      "The new leader has a strong mandate."
     ],
     [
-     "sanction",
+     "sanctions",
      "제재",
-     "The UN put a sanction on that country."
+     "I read that the UN had imposed sanctions on a country."
     ],
     [
      "treaty",
@@ -5199,14 +5349,19 @@
      "Scotland got more power through devolution."
     ],
     [
-     "plutocracy",
-     "금권 정치",
-     "I worry that rich people create a plutocracy."
-    ],
-    [
      "suffrage",
      "투표권",
      "Women fought hard for suffrage."
+    ],
+    [
+     "cross-check information",
+     "정보를 다른 출처와 대조해 확인하다",
+     "I cross-check information with another news source before I share it."
+    ],
+    [
+     "skim the headlines",
+     "기사 제목을 빠르게 훑어보다",
+     "I usually skim the headlines on my phone during breakfast."
     ]
    ]
   },
@@ -5319,6 +5474,16 @@
      "noise pollution",
      "소음 공해",
      "Noise pollution is a big problem in Seoul."
+    ],
+    [
+     "keep the noise down",
+     "소음을 줄이다, 조용히 하다",
+     "I try to keep the noise down when my family is asleep."
+    ],
+    [
+     "block out noise",
+     "소음을 차단하다",
+     "I wear earplugs to block out noise when I'm studying."
     ]
    ]
   },
@@ -5354,7 +5519,7 @@
     ],
     [
      "wait in line",
-     "줄을 서다",
+     "줄을 서서 기다리다",
      "I hate waiting in line at restaurants."
     ],
     [
@@ -5390,7 +5555,7 @@
     [
      "tolerant",
      "관대한",
-     "My mum is very tolerant with me."
+     "My mum is very tolerant of my mistakes."
     ],
     [
      "easily annoyed",
@@ -5426,6 +5591,16 @@
      "put up with",
      "참다",
      "I can't put up with rude people."
+    ],
+    [
+     "take a deep breath",
+     "심호흡하다",
+     "I take a deep breath when I start to feel impatient."
+    ],
+    [
+     "be worth the wait",
+     "기다릴 만한 가치가 있다",
+     "I don't mind waiting for fresh food if it's worth the wait."
     ]
    ]
   },
@@ -5442,7 +5617,7 @@
     [
      "pet owner",
      "반려동물 주인",
-     "More and more people own pets now."
+     "I'm a pet owner, so I spend a lot of time looking after my dog."
     ],
     [
      "adopt",
@@ -5450,7 +5625,7 @@
      "We adopted a dog from a shelter."
     ],
     [
-     "take for a walk",
+     "take a pet for a walk",
      "산책시키다",
      "I take my dog for a walk every day."
     ],
@@ -5461,7 +5636,7 @@
     ],
     [
      "companionship",
-     "곁에 있어 주는 존재, 교감",
+     "함께 지내며 느끼는 친밀감, 교감",
      "Pets give people companionship."
     ],
     [
@@ -5538,6 +5713,16 @@
      "pet-friendly",
      "반려동물 동반 가능한",
      "I love pet-friendly cafés."
+    ],
+    [
+     "house-trained",
+     "집 안에서 대소변을 가리도록 훈련된",
+     "My dog is house-trained, so we rarely have accidents indoors."
+    ],
+    [
+     "shed",
+     "털이 빠지다",
+     "My cat sheds a lot, so I have to vacuum quite often."
     ]
    ]
   },
@@ -5613,7 +5798,7 @@
     ],
     [
      "paperback",
-     "종이책(문고판)",
+     "종이 표지로 된 책(페이퍼백)",
      "I prefer a paperback to an e-book."
     ],
     [
@@ -5640,6 +5825,16 @@
      "read for pleasure",
      "재미로 읽다",
      "I read for pleasure before bed."
+    ],
+    [
+     "hard to put down",
+     "너무 재미있어서 읽기를 멈추기 힘든",
+     "I like mysteries that are hard to put down."
+    ],
+    [
+     "borrow a book",
+     "책을 빌리다",
+     "I often borrow a book from the library instead of buying one."
     ]
    ]
   },
@@ -5670,7 +5865,7 @@
     ],
     [
      "impulse buy",
-     "충동구매",
+     "충동적으로 산 물건",
      "That jacket was an impulse buy."
     ],
     [
@@ -5700,7 +5895,7 @@
     ],
     [
      "splash out on",
-     "~에 돈을 펑펑 쓰다",
+     "~에 큰돈을 쓰다, 아낌없이 쓰다",
      "I splashed out on a new laptop."
     ],
     [
@@ -5740,7 +5935,7 @@
     ],
     [
      "on a budget",
-     "예산이 빠듯한",
+     "한정된 예산으로 생활하거나 소비하는",
      "I'm a student, so I'm on a budget."
     ],
     [
@@ -5752,6 +5947,16 @@
      "window-shop",
      "구경만 하다",
      "I like to window-shop with friends."
+    ],
+    [
+     "compare prices",
+     "가격을 비교하다",
+     "I always compare prices online before buying something expensive."
+    ],
+    [
+     "return policy",
+     "반품 규정",
+     "I check the return policy before I buy clothes online."
     ]
    ]
   },
@@ -5842,7 +6047,7 @@
     ],
     [
      "energetic",
-     "활동적인",
+     "활력이 넘치는, 기운이 넘치는",
      "I feel energetic after exercise."
     ],
     [
@@ -5857,18 +6062,18 @@
     ],
     [
      "team spirit",
-     "단결심, 팀워크",
+     "팀의 단결심, 동료 의식",
      "Our team has great team spirit."
     ],
     [
      "wellness",
-     "건강",
-     "I go jogging for my wellness."
+     "몸과 마음의 건강",
+     "My gym offers a wellness programme that includes yoga."
     ],
     [
      "immunity",
      "면역력",
-     "Exercise helps my immunity."
+     "I read an article about the link between exercise and immunity."
     ],
     [
      "nutrition",
@@ -5888,7 +6093,17 @@
     [
      "vitality",
      "활력",
-     "Running gives me a lot of vitality."
+     "I feel full of vitality after a run."
+    ],
+    [
+     "warm up",
+     "준비 운동을 하다",
+     "I always warm up before I go for a run."
+    ],
+    [
+     "go for a jog",
+     "가볍게 달리기를 하러 가다",
+     "I go for a jog in the park a few times a week."
     ]
    ]
   },
@@ -5904,8 +6119,8 @@
    "vocab": [
     [
      "wellness",
-     "건강",
-     "I care a lot about my wellness."
+     "몸과 마음의 건강",
+     "Our university offers a wellness programme for students."
     ],
     [
      "ailment",
@@ -5920,7 +6135,7 @@
     [
      "vitality",
      "활력",
-     "Good sleep gives me vitality."
+     "A good night's sleep helps me regain my vitality."
     ],
     [
      "immunity",
@@ -5969,12 +6184,12 @@
     ],
     [
      "holistic",
-     "몸과 마음 전체를 보는",
+     "전체를 고려하는, 몸과 마음을 함께 돌보는",
      "I like a holistic approach to health."
     ],
     [
      "pandemic",
-     "세계적 유행병",
+     "감염병의 세계적 대유행",
      "The pandemic changed my daily life."
     ],
     [
@@ -5994,13 +6209,23 @@
     ],
     [
      "epidemic",
-     "유행병",
+     "질병이 특정 지역·집단에서 평소보다 많이 발생하는 유행",
      "There was a flu epidemic last winter."
     ],
     [
      "hypertension",
      "고혈압",
      "My grandfather has hypertension."
+    ],
+    [
+     "get a good night's sleep",
+     "밤에 충분히 잘 자다",
+     "I feel much better when I get a good night's sleep."
+    ],
+    [
+     "stay active",
+     "꾸준히 몸을 움직이며 지내다",
+     "I try to stay active by walking whenever I can."
     ]
    ]
   },
@@ -6146,7 +6371,7 @@
     ],
     [
      "antagonist",
-     "악역",
+     "주인공과 대립하는 인물",
      "The antagonist in that drama was really scary."
     ],
     [
@@ -6156,7 +6381,7 @@
     ],
     [
      "box office",
-     "흥행 성적",
+     "매표소, 영화의 흥행 수입·성적",
      "That film did really well at the box office."
     ],
     [
@@ -6171,13 +6396,13 @@
     ],
     [
      "character development",
-     "인물의 성장·변화",
+     "캐릭터를 입체적으로 발전시키는 과정, 인물의 성장·변화",
      "I enjoy shows with strong character development."
     ],
     [
      "editing",
      "편집",
-     "The editing made the film feel very fast."
+     "The editing made the film feel fast-paced."
     ],
     [
      "performance",
@@ -6203,6 +6428,16 @@
      "cinematic techniques",
      "영화 기법",
      "I find cinematic techniques in old films interesting."
+    ],
+    [
+     "catch up on a series",
+     "밀린 시리즈를 보다",
+     "I catch up on my favourite series at the weekend."
+    ],
+    [
+     "keep me hooked",
+     "계속 빠져들게 하다",
+     "The unexpected plot twists keep me hooked."
     ]
    ]
   },
@@ -6258,7 +6493,7 @@
     ],
     [
      "affordable",
-     "가격이 싼",
+     "가격이 부담스럽지 않은, 감당할 수 있는",
      "The subway is fast and affordable."
     ],
     [
@@ -6320,6 +6555,16 @@
      "subway",
      "지하철",
      "I take the subway to work every day."
+    ],
+    [
+     "change trains",
+     "열차를 갈아타다",
+     "I have to change trains once to get to university."
+    ],
+    [
+     "a direct route",
+     "우회하지 않고 바로 가는 경로, 직통 경로",
+     "I prefer the bus because it takes a direct route to my office."
     ]
    ]
   },
@@ -6365,7 +6610,7 @@
     ],
     [
      "rainy season",
-     "장마",
+     "우기, 장마철",
      "The rainy season starts in July."
     ],
     [
@@ -6452,6 +6697,16 @@
      "greenhouse effect",
      "온실 효과",
      "The greenhouse effect makes the Earth warmer."
+    ],
+    [
+     "clear up",
+     "날씨가 개다",
+     "If the weather clears up, I'll go for a walk."
+    ],
+    [
+     "unpredictable",
+     "예측하기 어려운",
+     "The weather here is unpredictable, so I usually carry an umbrella."
     ]
    ]
   },
@@ -6564,6 +6819,16 @@
      "childhood",
      "어린 시절",
      "I still have some toys from my childhood."
+    ],
+    [
+     "add to my collection",
+     "내 수집품에 새 물건을 보태다",
+     "I buy a postcard on each trip to add to my collection."
+    ],
+    [
+     "run out of space",
+     "공간이 부족해지다",
+     "I've stopped collecting mugs because I'm running out of space."
     ]
    ]
   },
@@ -6573,14 +6838,14 @@
    "qs": [
     "Have you ever lost your keys?",
     "Would you post on social media if you lost something?",
-    "Have you ever lost things?",
+    "Have you ever lost something?",
     "Do you report it to the police when you find something that someone else has lost? Why?",
     "What would you do if you found something that someone else had lost?"
    ],
    "vocab": [
     [
      "lose track of",
-     "(시간·흐름 등을) 놓치다",
+     "~의 상황·흐름을 놓치다, (시간이) 얼마나 지났는지 모르다",
      "I lost track of time while I was looking for my keys."
     ],
     [
@@ -6690,8 +6955,18 @@
     ],
     [
      "burglary",
-     "빈집털이",
-     "My neighbour's flat was hit by a burglary."
+     "절도 등을 목적으로 한 건물 무단 침입",
+     "There was a burglary at my neighbour's flat."
+    ],
+    [
+     "leave something behind",
+     "물건을 두고 오다",
+     "I once left my umbrella behind on a bus."
+    ],
+    [
+     "double-check",
+     "다시 한번 확인하다",
+     "I double-check that I have my phone before I leave a café."
     ]
    ]
   },
@@ -6804,6 +7079,16 @@
      "souvenir",
      "기념품",
      "I bought a small souvenir for my sister."
+    ],
+    [
+     "browse the stalls",
+     "노점을 둘러보다",
+     "I enjoy browsing the stalls even when I don't plan to buy anything."
+    ],
+    [
+     "pay in cash",
+     "현금으로 지불하다",
+     "I usually pay in cash at the street market near my home."
     ]
    ]
   },
@@ -6813,7 +7098,7 @@
    "qs": [
     "Do you carry paper and pens with you when you go out?",
     "Do people still keep handwritten letters today?",
-    "Do you still write physical letters?",
+    "Do you still write letters on paper?",
     "Have you made any crafts with paper?",
     "What did you like to do with paper as a child?"
    ],
@@ -6915,8 +7200,18 @@
     ],
     [
      "paper-based",
-     "종이로 된",
-     "I still prefer paper-based books to e-books."
+     "종이를 사용하는, 종이 기반의",
+     "I prefer paper-based tests to computer-based ones."
+    ],
+    [
+     "scrap paper",
+     "이면지, 메모 등에 쓰는 자투리 종이",
+     "I use scrap paper to make shopping lists."
+    ],
+    [
+     "a hard copy",
+     "인쇄된 종이 사본",
+     "I keep a hard copy of important documents at home."
     ]
    ]
   },
@@ -6952,7 +7247,7 @@
     ],
     [
      "savoury",
-     "짭짤한, 감칠맛 나는",
+     "단맛이 나지 않는, 짭짤한",
      "I prefer savoury snacks to sweet ones."
     ],
     [
@@ -7003,7 +7298,7 @@
     [
      "skip meals",
      "끼니를 거르다",
-     "I sometimes skip breakfast."
+     "I try not to skip meals, even when I'm busy."
     ],
     [
      "fresh produce",
@@ -7074,6 +7369,16 @@
      "picky eater",
      "편식하는 사람",
      "I was a picky eater when I was young."
+    ],
+    [
+     "get my five a day",
+     "하루에 과일과 채소 다섯 회분을 먹다(영국식 표현)",
+     "I add fruit to my breakfast to help me get my five a day."
+    ],
+    [
+     "go off",
+     "상하다",
+     "I buy small amounts of fruit so it doesn't go off before I eat it."
     ]
    ]
   },
@@ -7133,7 +7438,7 @@
     [
      "excuse me",
      "실례합니다",
-     "I say \"excuse me\" when I pass someone."
+     "I say \"excuse me\" when I need to get past someone."
     ],
     [
      "manners",
@@ -7147,12 +7452,12 @@
     ],
     [
      "casual",
-     "편한",
+     "격식을 차리지 않는, 편한",
      "I'm more casual with my close friends."
     ],
     [
      "elders",
-     "어른들",
+     "연장자, 어른들",
      "In Korea, we show respect to our elders."
     ],
     [
@@ -7212,7 +7517,7 @@
     ],
     [
      "roll your eyes",
-     "눈을 굴리다(무시하는 표정)",
+     "못마땅하거나 짜증 나서 눈을 위로 굴리다",
      "I think it's rude to roll your eyes at people."
     ],
     [
@@ -7224,11 +7529,6 @@
      "stance",
      "서 있는 자세, 입장",
      "I keep a relaxed stance when I give presentations."
-    ],
-    [
-     "gesticulate",
-     "손짓하며 말하다",
-     "I tend to gesticulate a lot when I'm excited."
     ],
     [
      "slouch",
@@ -7282,7 +7582,7 @@
     ],
     [
      "facepalm",
-     "이마를 짚다(어이없을 때)",
+     "당황하거나 어이없어 손바닥으로 얼굴을 감싸다",
      "I facepalmed when I realised my mistake."
     ],
     [
@@ -7292,7 +7592,7 @@
     ],
     [
      "lean in",
-     "몸을 기울이다(관심 표현)",
+     "상대 쪽으로 몸을 기울이다",
      "I lean in when someone tells me a secret."
     ],
     [
@@ -7306,7 +7606,7 @@
      "I clench my fist when I feel angry."
     ],
     [
-     "rub hands together",
+     "rub your hands together",
      "손을 비비다",
      "I rub my hands together when it's cold."
     ],
@@ -7319,6 +7619,16 @@
      "fold your hands",
      "손을 모으다",
      "I fold my hands when I'm listening carefully."
+    ],
+    [
+     "hold the door open",
+     "다른 사람을 위해 문을 잡고 기다려 주다",
+     "I hold the door open when someone is right behind me."
+    ],
+    [
+     "wait my turn",
+     "내 차례를 기다리다",
+     "My parents taught me to wait my turn instead of interrupting."
     ]
    ]
   },
@@ -7430,6 +7740,16 @@
      "exhausting",
      "몹시 지치게 하는",
      "My job can be really exhausting."
+    ],
+    [
+     "catch up on sleep",
+     "부족했던 잠을 보충하다",
+     "I try to catch up on sleep at the weekend."
+    ],
+    [
+     "have trouble staying awake",
+     "깨어 있기가 힘들다",
+     "I have trouble staying awake if I don't get enough sleep."
     ]
    ]
   },
@@ -7549,7 +7869,7 @@
     [
      "waste management",
      "쓰레기 관리",
-     "My city has good waste management."
+     "My city has an efficient waste management system."
     ],
     [
      "toxic waste",
@@ -7559,7 +7879,7 @@
     [
      "sewage",
      "하수",
-     "Sewage should never go into the sea."
+     "Untreated sewage can pollute the sea."
     ],
     [
      "sustainable",
@@ -7587,8 +7907,8 @@
      "Deforestation is destroying many animals' homes."
     ],
     [
-     "emission",
-     "배출",
+     "emissions",
+     "배출물, 배출가스",
      "Cars produce a lot of carbon emissions."
     ],
     [
@@ -7630,6 +7950,16 @@
      "wildlife",
      "야생 동물",
      "I love seeing wildlife in the countryside."
+    ],
+    [
+     "sort my rubbish",
+     "쓰레기를 종류별로 분리하다",
+     "I sort my rubbish into separate bins at home."
+    ],
+    [
+     "cut down on packaging",
+     "포장재 사용을 줄이다",
+     "I buy loose vegetables to cut down on packaging."
     ]
    ]
   },
@@ -7667,12 +7997,12 @@
     ],
     [
      "touristy",
-     "관광객이 많은",
+     "관광객이 많거나 관광객 위주로 상업화된(흔히 부정적)",
      "Myeongdong is a bit touristy."
     ],
     [
      "off the beaten track",
-     "잘 알려지지 않은 곳",
+     "사람들이 잘 찾지 않는, 외진",
      "I like places off the beaten track."
     ],
     [
@@ -7692,7 +8022,7 @@
     ],
     [
      "bucket list",
-     "버킷리스트",
+     "살면서 꼭 해 보고 싶은 일의 목록",
      "Iceland is on my bucket list."
     ],
     [
@@ -7774,11 +8104,21 @@
      "transport",
      "교통수단",
      "Public transport is the best way to travel there."
+    ],
+    [
+     "travel light",
+     "짐을 가볍게 해서 여행하다",
+     "I prefer to travel light, especially on short trips."
+    ],
+    [
+     "get a feel for",
+     "~의 분위기나 특징을 직접 느껴 보다",
+     "I like walking around to get a feel for a new city."
     ]
    ]
   },
   {
-   "en": "Advertisement",
+   "en": "Advertising",
    "ko": "광고",
    "qs": [
     "Do you often see advertisements when you are on your phone or computer?",
@@ -7846,7 +8186,7 @@
     [
      "celebrity",
      "유명인",
-     "Many ads in Korea use a famous celebrity."
+     "Many ads in Korea feature celebrities."
     ],
     [
      "misleading",
@@ -7910,12 +8250,12 @@
     ],
     [
      "target audience",
-     "목표 고객층",
+     "주요 대상층(광고·콘텐츠가 겨냥하는 사람들)",
      "Teenagers are the target audience for that ad."
     ],
     [
      "promotional offer",
-     "판촉 행사",
+     "판촉 혜택(할인·증정 등)",
      "I bought it because of a promotional offer."
     ],
     [
@@ -7961,7 +8301,7 @@
     [
      "sponsorship",
      "후원",
-     "That company gives sponsorship to my football team."
+     "My football team receives sponsorship from a local company."
     ],
     [
      "brand image",
@@ -7986,7 +8326,7 @@
     [
      "call to action",
      "행동 유도 문구(지금 구매하세요 등)",
-     "Every ad ends with a call to action."
+     "That ad ends with a clear call to action."
     ],
     [
      "advertising budget",
@@ -8026,7 +8366,17 @@
     [
      "ad placement",
      "광고 위치",
-     "Good ad placement helps people notice it."
+     "Good ad placement helps an advert get noticed."
+    ],
+    [
+     "catch my attention",
+     "내 주의를 끌다",
+     "Ads with humour are more likely to catch my attention."
+    ],
+    [
+     "be tempted to buy",
+     "사고 싶은 마음이 들다",
+     "I'm sometimes tempted to buy things I see in social media ads."
     ]
    ]
   },
@@ -8037,7 +8387,7 @@
     "Which do you prefer, fashionable shoes or comfortable shoes?",
     "How much money do you usually spend on shoes?",
     "Have you ever bought shoes online?",
-    "Do you like buying shoes? How often?"
+    "Do you like buying shoes? How often do you buy them?"
    ],
    "vocab": [
     [
@@ -8091,14 +8441,14 @@
      "These shoes go well with my jeans."
     ],
     [
-     "suit / fit someone",
+     "suit someone / fit someone",
      "잘 어울리다 / (치수가) 잘 맞다",
-     "Bright colours don't really suit me."
+     "These shoes fit me well, but the colour doesn't suit me."
     ],
     [
-     "high quality",
-     "좋은 품질",
-     "I prefer high quality shoes that last."
+     "high-quality",
+     "품질이 좋은",
+     "I prefer high-quality shoes that last."
     ],
     [
      "poor quality",
@@ -8118,7 +8468,7 @@
     [
      "go out of fashion",
      "유행이 지나다",
-     "Skinny jeans have gone out of fashion."
+     "I prefer simple shoes that don't go out of fashion."
     ],
     [
      "suit me",
@@ -8189,6 +8539,16 @@
      "style",
      "스타일",
      "I like a simple style of trainers."
+    ],
+    [
+     "break in a pair of shoes",
+     "새 신발을 신어서 발에 길들이다",
+     "It took me a few days to break in my new shoes."
+    ],
+    [
+     "give me blisters",
+     "내 발에 물집이 생기게 하다",
+     "I avoid stiff shoes because they give me blisters."
     ]
    ]
   }
