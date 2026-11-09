@@ -107,6 +107,685 @@
      "ex": "What do you mean by that?"
     }
    ]
+  },
+  {
+   "no": 2,
+   "date": "2026-11-06",
+   "title": "Real Easy English · 결혼식",
+   "link": {
+    "title": "Talking about weddings",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/261106",
+    "date": "6 Nov",
+    "src": "Real Easy English"
+   },
+   "label": "6 Nov",
+   "vocab": [
+    {
+     "w": "bridesmaid",
+     "ko": "신부 들러리",
+     "ex": "My best friend asked me to be her bridesmaid."
+    },
+    {
+     "w": "best man",
+     "ko": "신랑 들러리",
+     "ex": "I was the best man at my brother's wedding."
+    },
+    {
+     "w": "hen party",
+     "ko": "신부 결혼 전 파티",
+     "ex": "We had a hen party before her wedding."
+    },
+    {
+     "w": "traditional",
+     "ko": "전통적인",
+     "ex": "We had a traditional wedding."
+    },
+    {
+     "w": "low-key",
+     "ko": "조용하고 소박한",
+     "ex": "I'd like a low-key wedding."
+    },
+    {
+     "w": "coming up",
+     "ko": "곧 있을",
+     "ex": "I've got a wedding coming up soon."
+    },
+    {
+     "w": "for ages",
+     "ko": "오랫동안",
+     "ex": "I haven't been to a wedding for ages."
+    },
+    {
+     "w": "samey",
+     "ko": "비슷비슷한",
+     "ex": "It became a bit samey."
+    },
+    {
+     "w": "hidden costs",
+     "ko": "숨은 비용",
+     "ex": "There are quite a few hidden costs at weddings."
+    },
+    {
+     "w": "make a speech",
+     "ko": "연설하다",
+     "ex": "I had to make a speech in front of lots of people."
+    },
+    {
+     "w": "outfit",
+     "ko": "옷차림",
+     "ex": "Sometimes you have to buy a new outfit."
+    }
+   ]
+  },
+  {
+   "no": 3,
+   "date": "2026-10-30",
+   "title": "Real Easy English · 바다",
+   "link": {
+    "title": "Talking about the ocean",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/261030",
+    "date": "30 Oct",
+    "src": "Real Easy English"
+   },
+   "label": "30 Oct",
+   "vocab": [
+    {
+     "w": "octopus",
+     "ko": "문어",
+     "ex": "An octopus has eight tentacles."
+    },
+    {
+     "w": "threat",
+     "ko": "위협",
+     "ex": "Plastic is a big threat to the ocean."
+    },
+    {
+     "w": "pollution",
+     "ko": "오염",
+     "ex": "Air pollution is bad in my city."
+    },
+    {
+     "w": "single-use plastic",
+     "ko": "일회용 플라스틱",
+     "ex": "Plastic is a big threat to the ocean."
+    },
+    {
+     "w": "seaside",
+     "ko": "바닷가",
+     "ex": "I live near the seaside."
+    },
+    {
+     "w": "sea creature",
+     "ko": "바다 생물",
+     "ex": "My favourite sea creature is the dolphin."
+    },
+    {
+     "w": "intelligent",
+     "ko": "똑똑한",
+     "ex": "Dolphins are really intelligent."
+    },
+    {
+     "w": "hold on",
+     "ko": "잠깐만요",
+     "ex": "Air pollution is bad in my city."
+    },
+    {
+     "w": "end up",
+     "ko": "결국 ~하게 되다",
+     "ex": "That plastic ends up in the ocean."
+    },
+    {
+     "w": "in good condition",
+     "ko": "상태가 좋은",
+     "ex": "The oceans are not in good condition."
+    },
+    {
+     "w": "stuck",
+     "ko": "걸려서 꼼짝 못 하는",
+     "ex": "I saw a video of a turtle stuck in plastic."
+    }
+   ]
+  },
+  {
+   "no": 4,
+   "date": "2026-10-23",
+   "title": "Real Easy English · 면접",
+   "link": {
+    "title": "Talking about job interviews",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/261023",
+    "date": "23 Oct",
+    "src": "Real Easy English"
+   },
+   "label": "23 Oct",
+   "vocab": [
+    {
+     "w": "nervous",
+     "ko": "긴장한",
+     "ex": "I always feel nervous before an interview."
+    },
+    {
+     "w": "confident",
+     "ko": "자신 있는",
+     "ex": "I'm fairly confident about my English."
+    },
+    {
+     "w": "skills",
+     "ko": "능력",
+     "ex": "I have good communication skills."
+    },
+    {
+     "w": "examples",
+     "ko": "예시",
+     "ex": "It's good to give examples."
+    },
+    {
+     "w": "stressful",
+     "ko": "스트레스를 주는",
+     "ex": "Job interviews are a little bit stressful."
+    },
+    {
+     "w": "natural",
+     "ko": "자연스러운",
+     "ex": "It's natural to be nervous."
+    },
+    {
+     "w": "go well",
+     "ko": "잘 되다",
+     "ex": "I really want it to go well."
+    },
+    {
+     "w": "find a balance",
+     "ko": "균형을 찾다",
+     "ex": "It's hard to find a balance between being friendly and confident."
+    },
+    {
+     "w": "prepare",
+     "ko": "준비하다",
+     "ex": "You should prepare before the interview."
+    },
+    {
+     "w": "a good sign",
+     "ko": "좋은 신호",
+     "ex": "That's not a good sign."
+    },
+    {
+     "w": "experience",
+     "ko": "경험",
+     "ex": "I have some experience in this field."
+    }
+   ]
+  },
+  {
+   "no": 5,
+   "date": "2026-10-16",
+   "title": "Real Easy English · 영국 명소",
+   "link": {
+    "title": "Talking about British landmarks",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/261016",
+    "date": "16 Oct",
+    "src": "Real Easy English"
+   },
+   "label": "16 Oct",
+   "vocab": [
+    {
+     "w": "landmark",
+     "ko": "명소",
+     "ex": "Namsan Tower is a famous landmark in Seoul."
+    },
+    {
+     "w": "sightseeing",
+     "ko": "관광",
+     "ex": "I do a lot of sightseeing when I travel."
+    },
+    {
+     "w": "guided tour",
+     "ko": "가이드 투어",
+     "ex": "I went on a guided tour of the palace."
+    },
+    {
+     "w": "it's funny you should ask",
+     "ko": "마침 물어보시네요",
+     "ex": "It's funny you should ask, because I went last week."
+    },
+    {
+     "w": "historic",
+     "ko": "역사적인",
+     "ex": "I like visiting historic buildings."
+    },
+    {
+     "w": "crowded with",
+     "ko": "~로 붐비는",
+     "ex": "It's always crowded with tourists."
+    },
+    {
+     "w": "a must-see",
+     "ko": "꼭 봐야 할 곳",
+     "ex": "It's a must-see."
+    },
+    {
+     "w": "view",
+     "ko": "전망",
+     "ex": "The view was amazing."
+    },
+    {
+     "w": "take photos",
+     "ko": "사진을 찍다",
+     "ex": "I took lots of photos."
+    }
+   ]
+  },
+  {
+   "no": 6,
+   "date": "2026-10-09",
+   "title": "Real Easy English · 영화관",
+   "link": {
+    "title": "Talking about the cinema",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/261009",
+    "date": "9 Oct",
+    "src": "Real Easy English"
+   },
+   "label": "9 Oct",
+   "vocab": [
+    {
+     "w": "trailer",
+     "ko": "예고편",
+     "ex": "I like watching the trailers before the film."
+    },
+    {
+     "w": "popcorn",
+     "ko": "팝콘",
+     "ex": "I always get popcorn at the cinema."
+    },
+    {
+     "w": "spectacular",
+     "ko": "장관인",
+     "ex": "The action scenes were spectacular."
+    },
+    {
+     "w": "distraction",
+     "ko": "방해 요소",
+     "ex": "There are too many distractions at home."
+    },
+    {
+     "w": "on the big screen",
+     "ko": "큰 화면으로",
+     "ex": "The action scenes were spectacular."
+    },
+    {
+     "w": "annoy",
+     "ko": "짜증 나게 하다",
+     "ex": "People who check their phones during a film annoy me."
+    },
+    {
+     "w": "housemate",
+     "ko": "같이 사는 사람",
+     "ex": "I watched it on my sofa with my housemates."
+    },
+    {
+     "w": "a big fan of",
+     "ko": "~를 정말 좋아하는",
+     "ex": "I watched it on my sofa with my housemates."
+    },
+    {
+     "w": "credits",
+     "ko": "엔딩 크레딧",
+     "ex": "I stay until the end of the credits."
+    }
+   ]
+  },
+  {
+   "no": 7,
+   "date": "2026-10-02",
+   "title": "Real Easy English · 공항",
+   "link": {
+    "title": "Talking about airports",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/261002",
+    "date": "2 Oct",
+    "src": "Real Easy English"
+   },
+   "label": "2 Oct",
+   "vocab": [
+    {
+     "w": "check in",
+     "ko": "탑승 수속하다",
+     "ex": "I checked in two hours before my flight."
+    },
+    {
+     "w": "boarding pass",
+     "ko": "탑승권",
+     "ex": "I almost lost my boarding pass."
+    },
+    {
+     "w": "go through security",
+     "ko": "보안 검색을 통과하다",
+     "ex": "It took ages to go through security."
+    },
+    {
+     "w": "boarding gate",
+     "ko": "탑승구",
+     "ex": "I almost lost my boarding pass."
+    },
+    {
+     "w": "catch a flight",
+     "ko": "비행기를 타다",
+     "ex": "I checked in two hours before my flight."
+    },
+    {
+     "w": "miss a flight",
+     "ko": "비행기를 놓치다",
+     "ex": "I checked in two hours before my flight."
+    },
+    {
+     "w": "check a bag",
+     "ko": "짐을 부치다",
+     "ex": "I checked my bag."
+    },
+    {
+     "w": "delayed",
+     "ko": "지연된",
+     "ex": "My flight was delayed by an hour."
+    },
+    {
+     "w": "window seat",
+     "ko": "창가 좌석",
+     "ex": "I prefer a window seat."
+    },
+    {
+     "w": "duty-free",
+     "ko": "면세의",
+     "ex": "I enjoy looking around the duty-free shops."
+    }
+   ]
+  },
+  {
+   "no": 8,
+   "date": "2026-09-25",
+   "title": "Real Easy English · 가을",
+   "link": {
+    "title": "Talking about autumn",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/260925",
+    "date": "25 Sep",
+    "src": "Real Easy English"
+   },
+   "label": "25 Sep",
+   "vocab": [
+    {
+     "w": "cosy",
+     "ko": "아늑한",
+     "ex": "It feels cosy to stay at home on rainy days."
+    },
+    {
+     "w": "bonfire",
+     "ko": "모닥불",
+     "ex": "In the UK, people light bonfires in autumn."
+    },
+    {
+     "w": "fireworks",
+     "ko": "불꽃놀이",
+     "ex": "In the UK, people light bonfires in autumn."
+    },
+    {
+     "w": "crunchy",
+     "ko": "바삭바삭한",
+     "ex": "I love the sound of crunchy leaves."
+    },
+    {
+     "w": "autumnal",
+     "ko": "가을다운",
+     "ex": "In the UK, people light bonfires in autumn."
+    },
+    {
+     "w": "get cooler",
+     "ko": "선선해지다",
+     "ex": "The weather's getting a little bit cooler."
+    },
+    {
+     "w": "not anymore",
+     "ko": "더 이상 ~ 아닌",
+     "ex": "It's not summer anymore."
+    },
+    {
+     "w": "get out",
+     "ko": "꺼내다",
+     "ex": "I get out my thick jumpers in autumn."
+    }
+   ]
+  },
+  {
+   "no": 9,
+   "date": "2026-09-18",
+   "title": "Real Easy English · 힘든 일",
+   "link": {
+    "title": "Talking about hard jobs",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/260918",
+    "date": "18 Sep",
+    "src": "Real Easy English"
+   },
+   "label": "18 Sep",
+   "vocab": [
+    {
+     "w": "stressful",
+     "ko": "스트레스가 많은",
+     "ex": "My first job was really stressful."
+    },
+    {
+     "w": "exhausting",
+     "ko": "진이 빠지는",
+     "ex": "Standing all day is exhausting."
+    },
+    {
+     "w": "annoying",
+     "ko": "짜증 나는",
+     "ex": "My noisy neighbour is really annoying."
+    },
+    {
+     "w": "take it personally",
+     "ko": "개인적으로 받아들이다",
+     "ex": "Don't take it personally when customers get angry."
+    },
+    {
+     "w": "take it to heart",
+     "ko": "마음에 담아 두다",
+     "ex": "Don't take it to heart."
+    },
+    {
+     "w": "in particular",
+     "ko": "특히",
+     "ex": "There's one job in particular that I remember."
+    },
+    {
+     "w": "intriguing",
+     "ko": "흥미로운",
+     "ex": "That's intriguing!"
+    },
+    {
+     "w": "exhausted",
+     "ko": "녹초가 된",
+     "ex": "Standing all day is exhausting."
+    },
+    {
+     "w": "pay",
+     "ko": "급여",
+     "ex": "The pay was really low."
+    }
+   ]
+  },
+  {
+   "no": 10,
+   "date": "2026-09-04",
+   "title": "Real Easy English · 불만 제기",
+   "link": {
+    "title": "Talking about complaining",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/260904",
+    "date": "4 Sep",
+    "src": "Real Easy English"
+   },
+   "label": "4 Sep",
+   "vocab": [
+    {
+     "w": "complain",
+     "ko": "불평하다",
+     "ex": "I complained to the waiter because my food was cold."
+    },
+    {
+     "w": "complaint",
+     "ko": "항의, 불만",
+     "ex": "I complained to the waiter because my food was cold."
+    },
+    {
+     "w": "discount",
+     "ko": "할인",
+     "ex": "I got a student discount."
+    },
+    {
+     "w": "entitled",
+     "ko": "자격이 있는",
+     "ex": "I felt I was entitled to a refund."
+    },
+    {
+     "w": "review",
+     "ko": "후기",
+     "ex": "I always check the reviews before I go to a restaurant."
+    },
+    {
+     "w": "straight away",
+     "ko": "바로",
+     "ex": "If there's a problem, I tell someone straight away."
+    },
+    {
+     "w": "different from",
+     "ko": "~와 다른",
+     "ex": "The room looked completely different from the photos."
+    },
+    {
+     "w": "apologise",
+     "ko": "사과하다",
+     "ex": "They apologised politely."
+    },
+    {
+     "w": "good enough",
+     "ko": "충분히 좋은",
+     "ex": "The service wasn't good enough."
+    },
+    {
+     "w": "somewhere else",
+     "ko": "다른 곳",
+     "ex": "Next time, I'll go somewhere else."
+    }
+   ]
+  },
+  {
+   "no": 11,
+   "date": "2026-08-28",
+   "title": "Real Easy English · 집안일",
+   "link": {
+    "title": "Talking about housework",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/260828",
+    "date": "28 Aug",
+    "src": "Real Easy English"
+   },
+   "label": "28 Aug",
+   "vocab": [
+    {
+     "w": "housework",
+     "ko": "집안일",
+     "ex": "I do most of my housework at the weekend."
+    },
+    {
+     "w": "chore",
+     "ko": "집안일 하나",
+     "ex": "My least favourite chore is washing the dishes."
+    },
+    {
+     "w": "do the laundry",
+     "ko": "빨래하다",
+     "ex": "I do the laundry twice a week."
+    },
+    {
+     "w": "hoover",
+     "ko": "청소기로 밀다",
+     "ex": "I hoovered the living room."
+    },
+    {
+     "w": "sweep",
+     "ko": "쓸다",
+     "ex": "I swept the kitchen floor."
+    },
+    {
+     "w": "mop",
+     "ko": "대걸레로 닦다",
+     "ex": "Then I mop the floor."
+    },
+    {
+     "w": "put off",
+     "ko": "미루다",
+     "ex": "I keep putting off the ironing."
+    },
+    {
+     "w": "get ready",
+     "ko": "준비하다",
+     "ex": "We had to get the house ready."
+    },
+    {
+     "w": "keep tidy",
+     "ko": "깔끔하게 유지하다",
+     "ex": "I try to keep my home clean and tidy."
+    }
+   ]
+  },
+  {
+   "no": 12,
+   "date": "2026-08-21",
+   "title": "Real Easy English · 커피",
+   "link": {
+    "title": "Talking about coffee",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/260821",
+    "date": "21 Aug",
+    "src": "Real Easy English"
+   },
+   "label": "21 Aug",
+   "vocab": [
+    {
+     "w": "take your coffee white",
+     "ko": "커피를 우유 넣어 마시다",
+     "ex": "I take my coffee white."
+    },
+    {
+     "w": "caffeine",
+     "ko": "카페인",
+     "ex": "Coffee has a lot of caffeine."
+    },
+    {
+     "w": "decaf",
+     "ko": "디카페인",
+     "ex": "I drink decaf in the evening."
+    },
+    {
+     "w": "cut down on",
+     "ko": "줄이다",
+     "ex": "I'm trying to cut down on coffee."
+    },
+    {
+     "w": "get cool",
+     "ko": "식다",
+     "ex": "My coffee's got a bit cool."
+    },
+    {
+     "w": "stay alert",
+     "ko": "정신을 차리다",
+     "ex": "Coffee helps me stay alert."
+    },
+    {
+     "w": "all year round",
+     "ko": "일 년 내내",
+     "ex": "I drink iced coffee all year round."
+    },
+    {
+     "w": "that's a shame",
+     "ko": "아쉽네요",
+     "ex": "Oh, that's a shame."
+    }
+   ]
   }
  ],
  "cards": [
@@ -313,6 +992,1590 @@
    "en": "What do you mean by that?",
    "hint": "mean",
    "gram": "<em>What do you mean by</em> ~? = ~가 무슨 뜻이에요? 상대 말을 잘 못 알아들었을 때 써요. 예: What do you mean by 'pudding'?"
+  },
+  {
+   "id": "r261106-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "제 가장 친한 친구가 저에게 신부 들러리를 부탁했어요.",
+   "en": "My best friend asked me to be her bridesmaid.",
+   "hint": "bridesmaid",
+   "gram": "<em>bridesmaid</em> = 신부 들러리. maid of honour = 가장 중요한 들러리."
+  },
+  {
+   "id": "r261106-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 형 결혼식에서 신랑 들러리를 했어요.",
+   "en": "I was the best man at my brother's wedding.",
+   "hint": "best",
+   "gram": "<em>best man</em> = 신랑 들러리(축사도 해요)."
+  },
+  {
+   "id": "r261106-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "결혼 전에 친구들이랑 처녀 파티를 했어요.",
+   "en": "We had a hen party before her wedding.",
+   "hint": "hen",
+   "gram": "<em>hen party</em> = 신부의 결혼 전 파티, <em>stag party</em> = 신랑의 결혼 전 파티."
+  },
+  {
+   "id": "r261106-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "우리는 전통적인 결혼식을 했어요.",
+   "en": "We had a traditional wedding.",
+   "hint": "traditional",
+   "gram": "<em>traditional</em> = 전통적인, 다들 예상하는 방식의."
+  },
+  {
+   "id": "r261106-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 조용하고 소박한 결혼식이 좋아요.",
+   "en": "I'd like a low-key wedding.",
+   "hint": "low-key",
+   "gram": "<em>low-key</em> = 조용하고 소박한, 크게 안 하는."
+  },
+  {
+   "id": "r261106-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "곧 결혼식이 하나 있어요.",
+   "en": "I've got a wedding coming up soon.",
+   "hint": "coming",
+   "gram": "<em>have</em> ~ <em>coming up</em> = 곧 ~가 있다."
+  },
+  {
+   "id": "r261106-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "결혼식에 안 간 지 오래됐어요.",
+   "en": "I haven't been to a wedding for ages.",
+   "hint": "ages",
+   "gram": "<em>for ages</em> = 오랫동안. haven't been to ~ = ~에 안 가 봤다."
+  },
+  {
+   "id": "r261106-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "매번 비슷해서 좀 지루했어요.",
+   "en": "It became a bit samey.",
+   "hint": "samey",
+   "gram": "<em>samey</em> = 다 비슷비슷한(구어)."
+  },
+  {
+   "id": "r261106-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "결혼식에는 숨은 비용이 꽤 있어요.",
+   "en": "There are quite a few hidden costs at weddings.",
+   "hint": "hidden",
+   "gram": "<em>hidden costs</em> = 숨은 비용. quite a few = 꽤 많은."
+  },
+  {
+   "id": "r261106-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "저는 파티를 정말 좋아해요.",
+   "en": "I just enjoy a party.",
+   "hint": "party",
+   "gram": "<em>enjoy a party</em> = 파티를 즐기다. 사교 행사 좋아한다고 말할 때."
+  },
+  {
+   "id": "r261106-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "많은 사람 앞에서 축사를 해야 했어요.",
+   "en": "I had to make a speech in front of lots of people.",
+   "hint": "speech",
+   "gram": "<em>make a speech</em> = 연설·축사를 하다. in front of = ~ 앞에서."
+  },
+  {
+   "id": "r261106-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    2
+   ],
+   "ko": "새 옷을 사야 할 때도 있어요.",
+   "en": "Sometimes you have to buy a new outfit.",
+   "hint": "outfit",
+   "gram": "<em>outfit</em> = (한 벌의) 옷차림."
+  },
+  {
+   "id": "r261030-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "문어는 다리가 여덟 개예요.",
+   "en": "An octopus has eight tentacles.",
+   "hint": "octopus",
+   "gram": "<em>octopus</em> = 문어. <em>tentacle</em> = (문어 등의) 다리."
+  },
+  {
+   "id": "r261030-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "플라스틱은 바다에 큰 위협이에요.",
+   "en": "Plastic is a big threat to the ocean.",
+   "hint": "threat",
+   "gram": "<em>threat (to)</em> ~ = ~에 대한 위협."
+  },
+  {
+   "id": "r261030-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "우리 도시는 공기 오염이 심해요.",
+   "en": "Air pollution is bad in my city.",
+   "hint": "pollution",
+   "gram": "<em>pollution</em> = 오염(셀 수 없는 명사)."
+  },
+  {
+   "id": "r261030-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 일회용 플라스틱을 줄이려고 해요.",
+   "en": "I try to use less single-use plastic.",
+   "hint": "single-use",
+   "gram": "<em>single-use plastic</em> = 일회용 플라스틱."
+  },
+  {
+   "id": "r261030-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 바닷가 근처에 살아요.",
+   "en": "I live near the seaside.",
+   "hint": "seaside",
+   "gram": "<em>the seaside</em> = 바닷가."
+  },
+  {
+   "id": "r261030-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "제가 제일 좋아하는 바다 동물은 돌고래예요.",
+   "en": "My favourite sea creature is the dolphin.",
+   "hint": "creature",
+   "gram": "<em>sea creature</em> = 바다 생물."
+  },
+  {
+   "id": "r261030-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "돌고래는 정말 똑똑해요.",
+   "en": "Dolphins are really intelligent.",
+   "hint": "intelligent",
+   "gram": "<em>intelligent</em> = 똑똑한, 지능이 높은."
+  },
+  {
+   "id": "r261030-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "잠깐만요, 저는 동의 안 해요.",
+   "en": "Hold on, I don't think I agree.",
+   "hint": "Hold",
+   "gram": "<em>Hold on</em> = 잠깐만요. 부드럽게 반대할 때."
+  },
+  {
+   "id": "r261030-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "그 플라스틱은 결국 바다로 가요.",
+   "en": "That plastic ends up in the ocean.",
+   "hint": "ends",
+   "gram": "<em>end up</em> + 장소 = 결국 ~에 가게 되다."
+  },
+  {
+   "id": "r261030-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "바다 상태가 별로 안 좋아요.",
+   "en": "The oceans are not in good condition.",
+   "hint": "condition",
+   "gram": "<em>in good condition</em> = 상태가 좋은."
+  },
+  {
+   "id": "r261030-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "거북이가 플라스틱에 걸린 영상을 봤어요.",
+   "en": "I saw a video of a turtle stuck in plastic.",
+   "hint": "stuck",
+   "gram": "<em>stuck in</em> ~ = ~에 걸려서 꼼짝 못 하는."
+  },
+  {
+   "id": "r261030-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "그건 어려운 질문이에요.",
+   "en": "That's a difficult question for me to answer.",
+   "hint": "difficult",
+   "gram": "<em>a difficult question for me to answer</em> = 대답하기 어려운 질문. Part 1에서 시간 벌 때."
+  },
+  {
+   "id": "r261023-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "면접 전에는 항상 긴장돼요.",
+   "en": "I always feel nervous before an interview.",
+   "hint": "nervous",
+   "gram": "<em>nervous</em> = 긴장한, 걱정되는."
+  },
+  {
+   "id": "r261023-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 제 영어 실력에 꽤 자신 있어요.",
+   "en": "I'm fairly confident about my English.",
+   "hint": "confident",
+   "gram": "<em>confident</em> = 자신 있는. be confident about ~."
+  },
+  {
+   "id": "r261023-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 의사소통 능력이 좋아요.",
+   "en": "I have good communication skills.",
+   "hint": "skills",
+   "gram": "<em>skills</em> = 기술, 능력."
+  },
+  {
+   "id": "r261023-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "구체적인 예를 들어 설명하는 게 좋아요.",
+   "en": "It's good to give examples.",
+   "hint": "examples",
+   "gram": "<em>give examples</em> = 예를 들다. 면접·Part 2에서 근거로."
+  },
+  {
+   "id": "r261023-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "면접은 좀 스트레스받아요.",
+   "en": "Job interviews are a little bit stressful.",
+   "hint": "stressful",
+   "gram": "<em>stressful</em> = 스트레스를 주는."
+  },
+  {
+   "id": "r261023-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "긴장하는 건 자연스러운 거예요.",
+   "en": "It's natural to be nervous.",
+   "hint": "natural",
+   "gram": "<em>It's natural to</em> + 동사 = ~하는 건 자연스러워요."
+  },
+  {
+   "id": "r261023-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "걱정이 안 된다면 신경을 안 쓴다는 뜻이에요.",
+   "en": "If you're not worried, it means you don't care.",
+   "hint": "care",
+   "gram": "<em>care</em> = 신경 쓰다. it means ~ = ~라는 뜻이다."
+  },
+  {
+   "id": "r261023-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "잘 되길 정말 바라요.",
+   "en": "I really want it to go well.",
+   "hint": "go",
+   "gram": "<em>go well</em> = 잘 되다. want it to ~."
+  },
+  {
+   "id": "r261023-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "친절함과 자신감 사이 균형을 찾기 어려워요.",
+   "en": "It's hard to find a balance between being friendly and confident.",
+   "hint": "balance",
+   "gram": "<em>find a balance between</em> A <em>and</em> B = A와 B 사이 균형을 찾다."
+  },
+  {
+   "id": "r261023-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "미리 준비하는 게 좋아요.",
+   "en": "You should prepare before the interview.",
+   "hint": "prepare",
+   "gram": "<em>prepare</em> = 준비하다."
+  },
+  {
+   "id": "r261023-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "그건 좋은 신호가 아니에요.",
+   "en": "That's not a good sign.",
+   "hint": "sign",
+   "gram": "<em>a good sign</em> = 좋은 신호."
+  },
+  {
+   "id": "r261023-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 이 분야에 경험이 있어요.",
+   "en": "I have some experience in this field.",
+   "hint": "experience",
+   "gram": "<em>experience</em> = 경험(셀 수 없는 명사로 쓸 때 a 없이)."
+  },
+  {
+   "id": "r261016-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "남산타워는 서울의 유명한 명소예요.",
+   "en": "Namsan Tower is a famous landmark in Seoul.",
+   "hint": "landmark",
+   "gram": "<em>landmark</em> = 랜드마크, 유명한 장소."
+  },
+  {
+   "id": "r261016-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "저는 여행 가면 관광을 많이 해요.",
+   "en": "I do a lot of sightseeing when I travel.",
+   "hint": "sightseeing",
+   "gram": "<em>sightseeing</em> = 관광. go sightseeing = 관광하다."
+  },
+  {
+   "id": "r261016-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "저는 가이드 투어로 궁을 둘러봤어요.",
+   "en": "I went on a guided tour of the palace.",
+   "hint": "guided",
+   "gram": "<em>guided tour</em> = 가이드가 안내하는 투어."
+  },
+  {
+   "id": "r261016-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "마침 물어보시네요, 지난주에 갔어요.",
+   "en": "It's funny you should ask, because I went last week.",
+   "hint": "funny",
+   "gram": "<em>It's funny you should ask</em> = 마침 물어보시네요."
+  },
+  {
+   "id": "r261016-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "그곳은 모두가 아는 유명한 곳이에요.",
+   "en": "It's a really famous place that everyone knows.",
+   "hint": "famous",
+   "gram": "<em>a place that everyone knows</em> = 모두가 아는 곳."
+  },
+  {
+   "id": "r261016-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "저는 역사적인 건물을 좋아해요.",
+   "en": "I like visiting historic buildings.",
+   "hint": "historic",
+   "gram": "<em>historic</em> = 역사적으로 중요한."
+  },
+  {
+   "id": "r261016-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "그곳은 관광객이 너무 많아요.",
+   "en": "It's always crowded with tourists.",
+   "hint": "crowded",
+   "gram": "<em>crowded with</em> ~ = ~로 붐비는."
+  },
+  {
+   "id": "r261016-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "꼭 가 봐야 할 곳이에요.",
+   "en": "It's a must-see.",
+   "hint": "must-see",
+   "gram": "<em>a must-see</em> = 꼭 봐야 할 것."
+  },
+  {
+   "id": "r261016-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "콘서트홀에서 공연을 봤어요.",
+   "en": "I saw a concert at a famous concert hall.",
+   "hint": "concert",
+   "gram": "<em>concert hall</em> = 콘서트홀."
+  },
+  {
+   "id": "r261016-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "가이드가 역사를 설명해 줬어요.",
+   "en": "The guide told us about the history.",
+   "hint": "guide",
+   "gram": "<em>tell</em> 사람 <em>about</em> ~ = ~에 대해 말해 주다."
+  },
+  {
+   "id": "r261016-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "전망이 정말 멋졌어요.",
+   "en": "The view was amazing.",
+   "hint": "view",
+   "gram": "<em>view</em> = 경치, 전망."
+  },
+  {
+   "id": "r261016-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    5
+   ],
+   "ko": "저는 사진을 많이 찍었어요.",
+   "en": "I took lots of photos.",
+   "hint": "photos",
+   "gram": "<em>take photos</em> = 사진을 찍다."
+  },
+  {
+   "id": "r261009-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "저는 영화 시작 전 예고편 보는 걸 좋아해요.",
+   "en": "I like watching the trailers before the film.",
+   "hint": "trailers",
+   "gram": "<em>trailer</em> = (영화) 예고편."
+  },
+  {
+   "id": "r261009-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "영화관에서는 꼭 팝콘을 먹어요.",
+   "en": "I always get popcorn at the cinema.",
+   "hint": "popcorn",
+   "gram": "<em>popcorn</em> = 팝콘. get = 사다."
+  },
+  {
+   "id": "r261009-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "그 영화의 액션 장면은 정말 장관이었어요.",
+   "en": "The action scenes were spectacular.",
+   "hint": "spectacular",
+   "gram": "<em>spectacular</em> = 장관인, 엄청 볼 만한."
+  },
+  {
+   "id": "r261009-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "집에서는 방해 요소가 너무 많아요.",
+   "en": "There are too many distractions at home.",
+   "hint": "distractions",
+   "gram": "<em>distraction</em> = 집중을 방해하는 것."
+  },
+  {
+   "id": "r261009-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "저는 영화관에서 보는 게 더 좋아요.",
+   "en": "I prefer watching films at the cinema.",
+   "hint": "prefer",
+   "gram": "<em>prefer</em> + -ing. film(영국) = movie(미국)."
+  },
+  {
+   "id": "r261009-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "어젯밤에 집에서 정말 좋은 영화를 봤어요.",
+   "en": "I watched a really good film at home last night.",
+   "hint": "watched",
+   "gram": "과거 이야기는 과거형 watched."
+  },
+  {
+   "id": "r261009-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "큰 화면으로 보는 게 달라요.",
+   "en": "It's different on the big screen.",
+   "hint": "screen",
+   "gram": "<em>on the big screen</em> = 영화관 큰 화면으로."
+  },
+  {
+   "id": "r261009-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "영화 중에 휴대폰 보는 사람이 짜증 나요.",
+   "en": "People who check their phones during a film annoy me.",
+   "hint": "annoy",
+   "gram": "<em>annoy</em> = 짜증 나게 하다. during + 명사."
+  },
+  {
+   "id": "r261009-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "저는 룸메이트들이랑 소파에서 봤어요.",
+   "en": "I watched it on my sofa with my housemates.",
+   "hint": "housemates",
+   "gram": "<em>housemate</em> = 같이 사는 사람."
+  },
+  {
+   "id": "r261009-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "요즘 영화표가 꽤 비싸요.",
+   "en": "Cinema tickets are quite expensive these days.",
+   "hint": "tickets",
+   "gram": "<em>cinema tickets</em> = 영화표."
+  },
+  {
+   "id": "r261009-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "저는 액션 영화를 좋아해요.",
+   "en": "I'm a big fan of action films.",
+   "hint": "fan",
+   "gram": "<em>I'm a big fan of</em> ~ = ~를 정말 좋아해요."
+  },
+  {
+   "id": "r261009-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    6
+   ],
+   "ko": "영화 끝나고 크레딧까지 다 봐요.",
+   "en": "I stay until the end of the credits.",
+   "hint": "credits",
+   "gram": "<em>credits</em> = 엔딩 크레딧."
+  },
+  {
+   "id": "r261002-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "공항에 두 시간 전에 체크인했어요.",
+   "en": "I checked in two hours before my flight.",
+   "hint": "checked",
+   "gram": "<em>check in</em> = 탑승 수속을 하다."
+  },
+  {
+   "id": "r261002-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "탑승권을 잃어버릴 뻔했어요.",
+   "en": "I almost lost my boarding pass.",
+   "hint": "boarding",
+   "gram": "<em>boarding pass</em> = 탑승권."
+  },
+  {
+   "id": "r261002-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "보안 검색대 통과하는 데 오래 걸렸어요.",
+   "en": "It took ages to go through security.",
+   "hint": "security",
+   "gram": "<em>go through security</em> = 보안 검색대를 통과하다."
+  },
+  {
+   "id": "r261002-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "탑승구에서 기다렸어요.",
+   "en": "I waited at the boarding gate.",
+   "hint": "gate",
+   "gram": "<em>boarding gate</em> = 탑승구."
+  },
+  {
+   "id": "r261002-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "새벽 6시 비행기를 타야 했어요.",
+   "en": "I had to catch a 6 a.m. flight.",
+   "hint": "catch",
+   "gram": "<em>catch a flight</em> = 비행기를 타다(제때)."
+  },
+  {
+   "id": "r261002-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "늦어서 비행기를 놓친 적이 있어요.",
+   "en": "I once missed a flight because I was late.",
+   "hint": "missed",
+   "gram": "<em>miss a flight</em> = 비행기를 놓치다."
+  },
+  {
+   "id": "r261002-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "곧 여행이 하나 있어요.",
+   "en": "I've got a trip coming up soon.",
+   "hint": "trip",
+   "gram": "<em>have a trip coming up</em> = 곧 여행이 있다."
+  },
+  {
+   "id": "r261002-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "가방을 부쳤어요.",
+   "en": "I checked my bag.",
+   "hint": "bag",
+   "gram": "<em>check a bag</em> = 짐을 부치다."
+  },
+  {
+   "id": "r261002-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "공항에 일찍 가는 걸 좋아해요.",
+   "en": "I like getting to the airport early.",
+   "hint": "early",
+   "gram": "<em>get to</em> + 장소 = ~에 도착하다."
+  },
+  {
+   "id": "r261002-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "비행기가 한 시간 지연됐어요.",
+   "en": "My flight was delayed by an hour.",
+   "hint": "delayed",
+   "gram": "<em>be delayed</em> = 지연되다."
+  },
+  {
+   "id": "r261002-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "저는 창가 좌석이 좋아요.",
+   "en": "I prefer a window seat.",
+   "hint": "window",
+   "gram": "<em>window seat</em> = 창가 좌석, aisle seat = 통로 좌석."
+  },
+  {
+   "id": "r261002-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "공항에서 면세점 구경하는 게 재밌어요.",
+   "en": "I enjoy looking around the duty-free shops.",
+   "hint": "duty-free",
+   "gram": "<em>duty-free</em> = 면세의. look around = 둘러보다."
+  },
+  {
+   "id": "r260925-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "비 오는 날 집에 있으면 아늑해요.",
+   "en": "It feels cosy to stay at home on rainy days.",
+   "hint": "cosy",
+   "gram": "<em>cosy</em> = 아늑한."
+  },
+  {
+   "id": "r260925-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "영국에서는 가을에 모닥불을 피워요.",
+   "en": "In the UK, people light bonfires in autumn.",
+   "hint": "bonfires",
+   "gram": "<em>bonfire</em> = 야외 모닥불."
+  },
+  {
+   "id": "r260925-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "새해에 불꽃놀이를 봤어요.",
+   "en": "I watched the fireworks on New Year's Eve.",
+   "hint": "fireworks",
+   "gram": "<em>fireworks</em> = 불꽃놀이."
+  },
+  {
+   "id": "r260925-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "바삭바삭한 낙엽 밟는 소리가 좋아요.",
+   "en": "I love the sound of crunchy leaves.",
+   "hint": "crunchy",
+   "gram": "<em>crunchy</em> = 바삭바삭한."
+  },
+  {
+   "id": "r260925-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "요즘 날씨가 꽤 가을 같아요.",
+   "en": "The weather is quite autumnal these days.",
+   "hint": "autumnal",
+   "gram": "<em>autumnal</em> = 가을다운."
+  },
+  {
+   "id": "r260925-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "날씨가 조금씩 선선해지고 있어요.",
+   "en": "The weather's getting a little bit cooler.",
+   "hint": "cooler",
+   "gram": "<em>get cooler</em> = 선선해지다. get + 비교급."
+  },
+  {
+   "id": "r260925-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "나뭇잎이 떨어지기 시작했어요.",
+   "en": "The leaves are starting to fall from the trees.",
+   "hint": "leaves",
+   "gram": "<em>leaf</em>의 복수 <em>leaves</em>."
+  },
+  {
+   "id": "r260925-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "이제 여름이 아니에요.",
+   "en": "It's not summer anymore.",
+   "hint": "anymore",
+   "gram": "<em>not ~ anymore</em> = 더 이상 ~ 아니다."
+  },
+  {
+   "id": "r260925-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "가을이 제일 좋아하는 계절이에요.",
+   "en": "Autumn is my favourite season.",
+   "hint": "season",
+   "gram": "<em>favourite season</em> = 제일 좋아하는 계절."
+  },
+  {
+   "id": "r260925-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "따뜻한 차 한 잔이 생각나요.",
+   "en": "It makes me want a hot cup of tea.",
+   "hint": "want",
+   "gram": "<em>make</em> 사람 <em>want</em> ~ = ~하고 싶게 만들다."
+  },
+  {
+   "id": "r260925-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "가을엔 두꺼운 스웨터를 꺼내요.",
+   "en": "I get out my thick jumpers in autumn.",
+   "hint": "jumpers",
+   "gram": "<em>get out</em> = 꺼내다. jumper(영국) = sweater."
+  },
+  {
+   "id": "r260925-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    8
+   ],
+   "ko": "밤이 점점 길어져요.",
+   "en": "The nights are getting longer.",
+   "hint": "longer",
+   "gram": "<em>get longer</em> = 길어지다."
+  },
+  {
+   "id": "r260918-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "제 첫 직장은 정말 스트레스가 많았어요.",
+   "en": "My first job was really stressful.",
+   "hint": "stressful",
+   "gram": "<em>stressful</em> = 스트레스가 많은."
+  },
+  {
+   "id": "r260918-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "하루 종일 서 있는 건 정말 지쳐요.",
+   "en": "Standing all day is exhausting.",
+   "hint": "exhausting",
+   "gram": "<em>exhausting</em> = 진이 빠지는. 내가 지쳤다면 exhausted."
+  },
+  {
+   "id": "r260918-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "시끄러운 이웃이 짜증 나요.",
+   "en": "My noisy neighbour is really annoying.",
+   "hint": "annoying",
+   "gram": "<em>annoying</em> = 짜증 나는."
+  },
+  {
+   "id": "r260918-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "손님이 화내도 개인적으로 받아들이지 마세요.",
+   "en": "Don't take it personally when customers get angry.",
+   "hint": "personally",
+   "gram": "<em>take it personally</em> = 자기한테 하는 말로 받아들이다."
+  },
+  {
+   "id": "r260918-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "그 말을 너무 마음에 담아 두지 마세요.",
+   "en": "Don't take it to heart.",
+   "hint": "heart",
+   "gram": "<em>take it to heart</em> = 마음에 깊이 담아 두다."
+  },
+  {
+   "id": "r260918-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "힘들었던 일이 하나 특히 기억나요.",
+   "en": "There's one job in particular that I remember.",
+   "hint": "particular",
+   "gram": "<em>in particular</em> = 특히."
+  },
+  {
+   "id": "r260918-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "흥미롭네요, 더 듣고 싶어요.",
+   "en": "That's intriguing!",
+   "hint": "intriguing",
+   "gram": "<em>intriguing</em> = 흥미로운, 궁금하게 만드는."
+  },
+  {
+   "id": "r260918-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "그 일 때문에 오히려 돈을 잃었어요.",
+   "en": "That job actually made me lose money.",
+   "hint": "lose",
+   "gram": "<em>make</em> 사람 <em>lose</em> ~ = ~를 잃게 만들다."
+  },
+  {
+   "id": "r260918-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "일이 끝나면 완전히 녹초가 돼요.",
+   "en": "I'm completely exhausted after work.",
+   "hint": "exhausted",
+   "gram": "<em>exhausted</em> = (사람이) 녹초가 된."
+  },
+  {
+   "id": "r260918-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "월급이 너무 적었어요.",
+   "en": "The pay was really low.",
+   "hint": "pay",
+   "gram": "<em>pay</em> = 급여(명사). low pay = 낮은 급여."
+  },
+  {
+   "id": "r260918-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "그래도 거기서 많이 배웠어요.",
+   "en": "But I learnt a lot from it.",
+   "hint": "learnt",
+   "gram": "<em>learn a lot from</em> ~ = ~에서 많이 배우다. learnt(영국) = learned."
+  },
+  {
+   "id": "r260918-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "다시는 그 일 안 할 거예요.",
+   "en": "I'd never do that job again.",
+   "hint": "never",
+   "gram": "<em>I'd never</em> ~ <em>again</em> = 다시는 안 ~할 거예요."
+  },
+  {
+   "id": "r260904-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "음식이 차가워서 직원에게 불평했어요.",
+   "en": "I complained to the waiter because my food was cold.",
+   "hint": "complained",
+   "gram": "<em>complain (to</em> 사람<em>) about</em> ~ = ~에 대해 불평하다."
+  },
+  {
+   "id": "r260904-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "호텔에 정식으로 항의했어요.",
+   "en": "I made a complaint to the hotel.",
+   "hint": "complaint",
+   "gram": "<em>make a complaint</em> = 정식으로 항의하다. complaint는 명사."
+  },
+  {
+   "id": "r260904-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "학생 할인을 받았어요.",
+   "en": "I got a student discount.",
+   "hint": "discount",
+   "gram": "<em>get a discount</em> = 할인을 받다."
+  },
+  {
+   "id": "r260904-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "저는 환불받을 자격이 있다고 생각했어요.",
+   "en": "I felt I was entitled to a refund.",
+   "hint": "entitled",
+   "gram": "<em>be entitled to</em> ~ = ~를 받을 자격이 있다."
+  },
+  {
+   "id": "r260904-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "저는 식당 가기 전에 리뷰를 확인해요.",
+   "en": "I always check the reviews before I go to a restaurant.",
+   "hint": "reviews",
+   "gram": "<em>review</em> = 후기."
+  },
+  {
+   "id": "r260904-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "문제가 있으면 바로 말해요.",
+   "en": "If there's a problem, I tell someone straight away.",
+   "hint": "straight",
+   "gram": "<em>straight away</em> = 바로, 즉시."
+  },
+  {
+   "id": "r260904-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "저는 불평을 잘 안 하는 편이에요.",
+   "en": "I don't usually complain.",
+   "hint": "usually",
+   "gram": "<em>don't usually</em> + 동사 = 보통 ~하지 않는 편이다."
+  },
+  {
+   "id": "r260904-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "방이 사진이랑 완전히 달랐어요.",
+   "en": "The room looked completely different from the photos.",
+   "hint": "different",
+   "gram": "<em>different from</em> ~ = ~와 다른."
+  },
+  {
+   "id": "r260904-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "그들이 정중하게 사과했어요.",
+   "en": "They apologised politely.",
+   "hint": "apologised",
+   "gram": "<em>apologise</em> = 사과하다(영국 철자)."
+  },
+  {
+   "id": "r260904-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "서비스가 기대에 못 미쳤어요.",
+   "en": "The service wasn't good enough.",
+   "hint": "enough",
+   "gram": "<em>not good enough</em> = 충분히 좋지 않은, 기대에 못 미치는."
+  },
+  {
+   "id": "r260904-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "나쁜 리뷰를 보면 걱정돼요.",
+   "en": "Bad reviews make me worried.",
+   "hint": "worried",
+   "gram": "<em>make</em> 사람 + 형용사 = ~하게 만들다."
+  },
+  {
+   "id": "r260904-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "다음엔 다른 곳에 갈 거예요.",
+   "en": "Next time, I'll go somewhere else.",
+   "hint": "else",
+   "gram": "<em>somewhere else</em> = 다른 곳."
+  },
+  {
+   "id": "r260828-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "저는 주말에 집안일을 몰아서 해요.",
+   "en": "I do most of my housework at the weekend.",
+   "hint": "housework",
+   "gram": "<em>housework</em> = 집안일 전체(셀 수 없는 명사)."
+  },
+  {
+   "id": "r260828-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "제가 제일 싫어하는 집안일은 설거지예요.",
+   "en": "My least favourite chore is washing the dishes.",
+   "hint": "chore",
+   "gram": "<em>chore</em> = 집안일 하나하나. least favourite = 제일 싫어하는."
+  },
+  {
+   "id": "r260828-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "저는 일주일에 두 번 빨래를 해요.",
+   "en": "I do the laundry twice a week.",
+   "hint": "laundry",
+   "gram": "<em>do the laundry</em> = 빨래하다."
+  },
+  {
+   "id": "r260828-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "거실을 청소기로 밀었어요.",
+   "en": "I hoovered the living room.",
+   "hint": "hoovered",
+   "gram": "<em>hoover / vacuum</em> = 청소기로 밀다."
+  },
+  {
+   "id": "r260828-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "부엌 바닥을 쓸었어요.",
+   "en": "I swept the kitchen floor.",
+   "hint": "swept",
+   "gram": "<em>sweep</em> = 쓸다(과거 swept)."
+  },
+  {
+   "id": "r260828-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "그다음에 대걸레로 바닥을 닦아요.",
+   "en": "Then I mop the floor.",
+   "hint": "mop",
+   "gram": "<em>mop</em> = 대걸레로 닦다."
+  },
+  {
+   "id": "r260828-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "저는 다림질을 자꾸 미뤄요.",
+   "en": "I keep putting off the ironing.",
+   "hint": "putting",
+   "gram": "<em>put off</em> = 미루다. keep -ing = 계속 ~하다."
+  },
+  {
+   "id": "r260828-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "이번 주말에 할 일이 많았어요.",
+   "en": "I had a lot to do this weekend.",
+   "hint": "lot",
+   "gram": "<em>have a lot to do</em> = 할 일이 많다."
+  },
+  {
+   "id": "r260828-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "손님 오기 전에 집을 준비해야 했어요.",
+   "en": "We had to get the house ready.",
+   "hint": "ready",
+   "gram": "<em>get</em> ~ <em>ready</em> = ~을 준비시키다."
+  },
+  {
+   "id": "r260828-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "집을 깨끗하고 깔끔하게 유지하려고 해요.",
+   "en": "I try to keep my home clean and tidy.",
+   "hint": "tidy",
+   "gram": "<em>keep</em> + 명사 + 형용사: keep my home <em>tidy</em>."
+  },
+  {
+   "id": "r260828-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "조금 피곤하지만 괜찮아요.",
+   "en": "I'm a little bit tired, but I'm good.",
+   "hint": "tired",
+   "gram": "<em>a little bit</em> = 조금."
+  },
+  {
+   "id": "r260828-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "음악을 들으면서 청소해요.",
+   "en": "I listen to music while I clean.",
+   "hint": "while",
+   "gram": "<em>while</em> + 문장 = ~하는 동안."
+  },
+  {
+   "id": "r260821-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "저는 커피를 우유 넣어서 마셔요.",
+   "en": "I take my coffee white.",
+   "hint": "take",
+   "gram": "<em>take one's coffee white / black</em> = 커피를 우유 넣어서 / 블랙으로 마시다."
+  },
+  {
+   "id": "r260821-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "커피에 카페인이 많아요.",
+   "en": "Coffee has a lot of caffeine.",
+   "hint": "caffeine",
+   "gram": "<em>caffeine</em> = 카페인."
+  },
+  {
+   "id": "r260821-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "저녁에는 디카페인을 마셔요.",
+   "en": "I drink decaf in the evening.",
+   "hint": "decaf",
+   "gram": "<em>decaf / decaffeinated</em> = 카페인을 뺀."
+  },
+  {
+   "id": "r260821-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "커피를 줄이려고 해요.",
+   "en": "I'm trying to cut down on coffee.",
+   "hint": "cut",
+   "gram": "<em>cut down on / cut back on</em> ~ = ~을 줄이다."
+  },
+  {
+   "id": "r260821-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "저는 뜨거운 커피가 더 좋아요.",
+   "en": "I prefer my coffee hot.",
+   "hint": "prefer",
+   "gram": "<em>prefer</em> + 명사 + 형용사: prefer my coffee <em>hot</em>."
+  },
+  {
+   "id": "r260821-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "커피가 좀 식었어요.",
+   "en": "My coffee's got a bit cool.",
+   "hint": "cool",
+   "gram": "<em>get cool</em> = 식다. 's got = has got."
+  },
+  {
+   "id": "r260821-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "하루에 커피 두 잔을 마셔요.",
+   "en": "I have two cups of coffee a day.",
+   "hint": "cups",
+   "gram": "<em>cups of coffee</em>, <em>a day</em> = 하루에."
+  },
+  {
+   "id": "r260821-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "커피를 마시면 정신이 맑아져요.",
+   "en": "Coffee helps me stay alert.",
+   "hint": "alert",
+   "gram": "<em>stay alert</em> = 정신을 바짝 차리다."
+  },
+  {
+   "id": "r260821-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "두 번째 커피를 다 마시면 슬퍼요.",
+   "en": "It's a sad moment when I've finished my second coffee.",
+   "hint": "moment",
+   "gram": "<em>It's a sad moment when</em> ~ = ~할 때가 슬픈 순간이에요."
+  },
+  {
+   "id": "r260821-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "저는 아이스커피를 일 년 내내 마셔요.",
+   "en": "I drink iced coffee all year round.",
+   "hint": "round",
+   "gram": "<em>all year round</em> = 일 년 내내."
+  },
+  {
+   "id": "r260821-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "아침에 커피 없이는 못 일어나요.",
+   "en": "I can't wake up without coffee in the morning.",
+   "hint": "without",
+   "gram": "<em>can't</em> ~ <em>without</em> ~ = ~ 없이는 못 ~해요."
+  },
+  {
+   "id": "r260821-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "그거 아쉽네요.",
+   "en": "Oh, that's a shame.",
+   "hint": "shame",
+   "gram": "<em>That's a shame.</em> = 아쉽네요."
   }
  ]
 }
