@@ -267,7 +267,7 @@ function studyGuide(app){
   const P=podSel(); const podTab=(D.group==="church"||D.group==="other")? "session" : ((D.podSessions||[]).length? "pod" : "session");
   const steps=[
     ["팟캐스트 듣기", `${P.name||"오늘의 팟캐스트"} 한 편을 끝까지 들어요`, null, podUrl(P)],
-    ["큐카드로 문장·표현 공부하기","방금 들은 팟캐스트 문장을 한국어 보고 영어로 말해 봐요",()=>{ cardMode=podTab; selSession=null; selPod=null; deckState=null; go("cards"); }],
+    ["큐카드 팟캐스트로 오늘 들은 팟캐스트 복습하기","큐카드 → 팟캐스트에서 오늘 날짜를 골라, 방금 들은 문장을 한국어만 보고 영어로 말해 봐요. 마지막 장의 단어는 단어장에 담아요",()=>{ cardMode=podTab; selSession=null; selPod=null; deckState=null; go("cards"); }],
     ["큐카드 매일 연습으로 일상 영어 공부하기","매일 바뀌는 생활 영어 문장 10개를 소리 내 말해 봐요",()=>{ cardMode="daily"; deckState=null; go("cards"); }],
     ["오늘의 복습으로 마무리하기","오늘 목표 개수만큼 복습해요",()=>{ const due=dueCards().length; go("review",{extra:!due, ids:reviewQueue(!due)}); }]];
   const sec=el("section","sec sguide"); sec.append(secHead("오늘의 공부 순서","위에서부터 차례대로"));
