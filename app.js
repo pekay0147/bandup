@@ -1604,7 +1604,7 @@ function spFile(word){ return String(word).toLowerCase().replace(/[^a-z0-9]+/g,"
 function speak(word, slow){
   if(LS && spAll().some(w=>w[0]===word)){
     try{ speechSynthesis.cancel(); }catch(_){}
-    try{ if(spAudio) spAudio.pause(); spAudio=new Audio(`audio/spell/${spFile(word)}.mp3?v=gb`); spAudio.playbackRate= slow? .75 : 1; spAudio.play().catch(()=>ttsSpeak(word,slow)); return true; }catch(_){ }
+    try{ if(spAudio) spAudio.pause(); spAudio=new Audio(`audio/spell/${spFile(word)}.mp3?v=k1`); spAudio.playbackRate= slow? .75 : 1; spAudio.play().catch(()=>ttsSpeak(word,slow)); return true; }catch(_){ }
   }
   return ttsSpeak(word,slow);
 }
