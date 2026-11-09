@@ -741,6 +741,12 @@ function renderDecks(app){
   if(cardMode==="session" && !hasLesson){ const e=el("div","empty"); e.append(el("p",null,"아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 회차별 큐카드로 생겨요.")); app.append(e); return; }
   if(cardMode==="session"){
     if(selSession==null || !D.sessions.some(x=>x.no===selSession)){ const TP=todayPod(); selSession= TP? TP.no : D.common? D.sessions[0].no : D.sessions[D.sessions.length-1].no; }
+    { const TP= todayPod() || (D.group==="church" && D.sessions.length? D.sessions[D.sessions.length-1] : null);
+      if(TP && (D.group==="other"||D.group==="church")){ const on=selSession===TP.no; const tb=el("button","todaypod"+(on?" on":"")); tb.type="button";
+        const tt=el("span","tp-t"); tt.append(el("b",null,"오늘의 팟캐스트"), el("span",null,`${TP.link.date} · ${TP.link.title}`));
+        tb.append(el("span","tp-ic","★"), tt, el("span","tp-go", on? "지금 보는 중" : "이걸로 하기 ›"));
+        tb.onclick=()=>{ selSession=TP.no; deckState=null; render(); }; app.append(tb);
+        app.append(el("p","muted small tp-note","하루에 하나만이라도! 오늘의 팟캐스트를 듣고 이 카드를 끝까지 넘겨 보세요.")); } }
     app.append(sessionPicker(selSession, v=>{ selSession=v; render(); }, false));
     { const se=D.sessions.find(x=>x.no===selSession); if(se && se.link && se.link.url){ const a=el("a","eplink"); a.href=se.link.url; a.target="_blank"; a.rel="noopener"; a.innerHTML=SPEAK_ICON; a.append(el("span",null,[se.link.date, se.link.src].filter(Boolean).join(" · ")), el("b",null,se.link.title||"에피소드"), el("i",null,"›")); app.append(a); } }
     key="s"+selSession; list=D.cards.filter(c=>(c.sessions||[]).includes(selSession));
