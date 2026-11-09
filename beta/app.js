@@ -263,7 +263,7 @@ function noticeBox(app){
   b.append(row); app.append(b);
 }
 function studyGuide(app){
-  if(D.demo || D.group==="ielts") return;
+  if(D.demo || (D.group==="ielts" && !D.showGuide)) return;
   const P=podSel(); const podTab=(D.group==="church"||D.group==="other")? "session" : ((D.podSessions||[]).length? "pod" : "session");
   const steps=[
     ["팟캐스트 듣기", `${P.name||"오늘의 팟캐스트"} 한 편을 끝까지 들어요`, null, podUrl(P)],

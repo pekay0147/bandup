@@ -2154,5 +2154,6 @@
  "group": "ielts",
  "podFiles": [
   "groups/other"
- ]
+ ],
+ "showGuide": true
 }
