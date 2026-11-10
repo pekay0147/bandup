@@ -1943,18 +1943,6 @@
    "gram": "<em>my go-to food</em> = 내가 늘 찾는 음식. go-to snack / go-to restaurant도 같은 패턴."
   },
   {
-   "id": "n914",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    9
-   ],
-   "ko": "여름에 더운 날씨가 얼마나 불편하게 만드는지 몰라요.",
-   "en": "You don't know how uncomfortable the hot weather can make you feel in summer.",
-   "hint": "uncomfortable",
-   "gram": "<em>how</em> + 형용사 + 주어 + 동사 = 얼마나 ~한지. make + 사람 + feel + 형용사."
-  },
-  {
    "id": "n915",
    "kind": "ko",
    "type": "표현",
@@ -1965,18 +1953,6 @@
    "en": "We got a power cut because of the storm.",
    "hint": "power",
    "gram": "<em>have / get a power cut</em> = 정전이 되다."
-  },
-  {
-   "id": "n916",
-   "kind": "ko",
-   "type": "단어 선택",
-   "sessions": [
-    9
-   ],
-   "ko": "그분은 이 분야의 전문가예요.",
-   "en": "She is an expert in this field.",
-   "hint": "expert",
-   "gram": "<em>expert</em> = 전문가(사람), <em>expertise</em> = 전문 지식(셀 수 없는 명사)."
   },
   {
    "id": "n9x6",
