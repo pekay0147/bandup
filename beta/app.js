@@ -1228,7 +1228,10 @@ async function vocLookup(w){
   await loadDict(); const loc=vocLocal(w); if(loc.src==="d" || (loc.ko && loc.ex)) return loc;
   const u="https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&dt=bd&dt=ex&q="+encodeURIComponent(w);
   const r=await fetch(u).then(x=>x.ok? x.json():null).catch(()=>null);
-  if(!r) return loc;
+  if(!r){ let ko=loc.ko, ex=loc.ex;
+    if(!ko){ try{ const mm=await fetch("https://api.mymemory.translated.net/get?langpair=en|ko&q="+encodeURIComponent(w)).then(x=>x.ok? x.json():null); const t=mm&&mm.responseData&&String(mm.responseData.translatedText||"").trim(); if(t && !/[A-Za-z]{3}/.test(t)) ko=t; }catch(_){ } }
+    if(!ex){ try{ const dj=await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/"+encodeURIComponent(w.toLowerCase())).then(x=>x.ok? x.json():null); const xs=[]; (dj||[]).forEach(e=>(e.meanings||[]).forEach(m=>(m.definitions||[]).forEach(d=>{ const s=String(d.example||"").trim(); if(s.split(" ").length>=4 && s.length<=100) xs.push(s); }))); xs.sort((a,b)=>a.length-b.length); if(xs[0]) ex=xs[0].charAt(0).toUpperCase()+xs[0].slice(1)+(/[.!?]$/.test(xs[0])?"":"."); }catch(_){ } }
+    return {ko,ex}; }
   let ko=loc.ko, ex=loc.ex;
   if(!ko){ const ms=[]; const add=s=>{ s=(s||"").trim(); if(s && s.toLowerCase()!==w.toLowerCase() && !ms.includes(s)) ms.push(s); };
     try{ add(r[0][0][0]); }catch(_){ } try{ (r[1]||[]).forEach(p=>(p[1]||[]).slice(0,2).forEach(add)); }catch(_){ }
@@ -1245,9 +1248,9 @@ let vcFill=false;
 function vocBackfill(){
   if(vcFill) return;
   if(!DICT){ loadDict().then(()=>{ if(view.tab==="vocab") render(); }); return; }
-  { const m=store.get(`bandup-myvoc-${slug}`,[]); let ch=false; for(const y of m){ const e=DICT[String(y.w).toLowerCase()]; if(e && y.src!=="d"){ y.ko=e.ko||y.ko; y.ex=e.ex||y.ex; y.src="d"; y.tried=1; delete y.lk; ch=true; } } if(ch){ store.set(`bandup-myvoc-${slug}`,m); if(view.tab==="vocab") setTimeout(render,0); return; } } const mine=store.get(`bandup-myvoc-${slug}`,[]); const need=mine.filter(x=>!x.ko || (!x.ex && !x.tried)); if(!need.length) return;
+  { const m=store.get(`bandup-myvoc-${slug}`,[]); let ch=false; for(const y of m){ const e=DICT[String(y.w).toLowerCase()]; if(e && y.src!=="d"){ y.ko=e.ko||y.ko; y.ex=e.ex||y.ex; y.src="d"; y.tried=1; delete y.lk; ch=true; } } if(ch){ store.set(`bandup-myvoc-${slug}`,m); if(view.tab==="vocab") setTimeout(render,0); return; } } const mine=store.get(`bandup-myvoc-${slug}`,[]); const need=mine.filter(x=>(!x.ko || !x.ex) && x.tried!==today()); if(!need.length) return;
   vcFill=true;
-  (async()=>{ let changed=false; for(const x of need){ const r=await vocLookup(x.w); if(!r.ko && !r.ex) continue; const m=store.get(`bandup-myvoc-${slug}`,[]); const y=m.find(z=>z.t===x.t); if(!y) continue; if(!y.ko) y.ko=r.ko; if(!y.ex) y.ex=r.ex; y.tried=1; if(y.ko) delete y.lk; store.set(`bandup-myvoc-${slug}`,m); changed=true; }
+  (async()=>{ let changed=false; for(const x of need){ const r=await vocLookup(x.w); if(!r.ko && !r.ex){ const m0=store.get(`bandup-myvoc-${slug}`,[]); const y0=m0.find(z=>z.t===x.t); if(y0){ y0.tried=today(); store.set(`bandup-myvoc-${slug}`,m0); } continue; } const m=store.get(`bandup-myvoc-${slug}`,[]); const y=m.find(z=>z.t===x.t); if(!y) continue; if(!y.ko) y.ko=r.ko; if(!y.ex) y.ex=r.ex; y.tried=today(); if(y.ko) delete y.lk; store.set(`bandup-myvoc-${slug}`,m); changed=true; }
     vcFill=false; if(changed && view.tab==="vocab") render(); })();
 }
 function vocForm(app){
