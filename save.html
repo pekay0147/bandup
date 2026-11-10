@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>밴드업에 저장</title>
+<style>
+body{margin:0;font:15px/1.5 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif;background:#f5f4fa;color:#1d1d24;display:grid;place-items:center;min-height:100vh}
+.box{background:#fff;border-radius:16px;padding:18px 20px;box-shadow:0 6px 24px rgba(40,40,90,.12);max-width:300px;text-align:center}
+b{display:block;font-size:16px;margin-bottom:6px}
+.t{color:#4457e8;font-weight:700;word-break:break-word}
+.err{color:#d33}
+</style>
+</head>
+<body>
+<div class="box"><b id="h">저장하는 중…</b><div class="t" id="x"></div></div>
+<script>
+(async()=>{
+  const SB="https://qbqttaqipapmeutdrvdc.supabase.co", K="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFicXR0YXFpcGFwbWV1dGRydmRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQyNjEyNTEsImV4cCI6MjEwOTgzNzI1MX0.5Cd_ytAu7Vz4PNCEoXxkXkEL_aOmvrBYcLm5uYxgRwU";
+  const p=new URLSearchParams(location.hash.slice(1)||location.search.slice(1));
+  const t=p.get("t"), x=(p.get("x")||"").trim();
+  const h=document.getElementById("h"), xe=document.getElementById("x");
+  xe.textContent=x;
+  if(!t||!x){ h.textContent="저장할 단어가 없어요"; h.className="err"; return; }
+  try{
+    const r=await fetch(SB+"/rest/v1/rpc/bu_add",{method:"POST",headers:{apikey:K,Authorization:"Bearer "+K,"Content-Type":"application/json"},body:JSON.stringify({p_token:t,p_txt:x})});
+    if(!r.ok) throw new Error(r.status);
+    h.textContent="✓ 밴드업에 저장했어요";
+    setTimeout(()=>{ try{ window.close(); }catch(_){} },1400);
+  }catch(e){ h.textContent="저장하지 못했어요. 다시 시도해 주세요."; h.className="err"; }
+})();
+</script>
+</body>
+</html>

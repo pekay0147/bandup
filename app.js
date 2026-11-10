@@ -182,6 +182,7 @@ function render(){
   if(view.tab==="podpick") renderPodPick(app);
   if(view.tab==="vocab") renderVocab(app);
   if(view.tab==="transfer") renderTransfer(app);
+  if(view.tab==="inbox") renderInbox(app);
   updateTabs();
   document.body.classList.toggle("lesson", !!app.querySelector(".lbar"));
 }
@@ -1306,7 +1307,7 @@ function renderVocab(app){
   pageHead(app,"내 단어장",`단어 ${W.length}개`);
   const adds=el("div","vcadds");
   const b1=el("button","vcaddbtn","+ 직접 추가"); b1.type="button"; b1.onclick=()=>{ vcAdd=true; vcOcr=null; vcMode="list"; render(); };
-  adds.append(b1); app.append(adds);
+  adds.append(b1); if(D.inbox){ const b2=el("button","vcaddbtn","🔗 어디서든 바로 저장"); b2.type="button"; b2.onclick=()=>go("inbox"); adds.append(b2); } app.append(adds);
   if(vcAdd){ vocForm(app); return; }
   vocBackfill();
   if(!W.length){ app.append(el("p","muted small","아직 단어가 없어요. 큐카드에서 모르는 단어를 눌러 '+ 내 단어장에 추가'를 누르거나, 위의 '+ 직접 추가'로 모아 보세요.")); return; }
@@ -1423,6 +1424,36 @@ function renderCloud(app){
     del.disabled=true; try{ await sbRest("rpc/delete_my_account",{method:"POST",body:"{}"}); try{ localStorage.removeItem(SB_AUTH); }catch(_){ } st.textContent="계정을 삭제했어요. 이 폰의 기록은 그대로 남아 있어요."; setTimeout(render,1500); }
     catch(e){ st.textContent="삭제하지 못했어요. 잠시 후 다시 시도해 주세요."; del.disabled=false; } };
   p.append(del); app.append(p);
+}
+/* ---------- 어디서든 저장 (inbox) ---------- */
+let inboxBusy=false, inboxLast=0;
+async function inboxPull(){ if(!D || !D.inbox || inboxBusy) return; inboxBusy=true; inboxLast=Date.now(); let rows=null;
+  try{ const r=await fetch(SB_URL+"/rest/v1/rpc/bu_take",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_token:D.inbox})}); if(r.ok) rows=await r.json(); }catch(_){ }
+  if(!rows || !rows.length){ inboxBusy=false; return; }
+  const key=`bandup-myvoc-${slug}`; const mine=store.get(key,[]); const have=new Set(vocAll().map(x=>String(x.w).toLowerCase())); const added=[];
+  rows.sort((a,b)=>String(a.created_at)<String(b.created_at)?-1:1).forEach((r,i)=>{ const w=String(r.txt||"").replace(/\s+/g," ").trim().replace(/^["“‘']+|["”’']+$/g,""); if(!w || !/[A-Za-z]/.test(w) || have.has(w.toLowerCase())) return;
+    const it={w,ko:"",ex: w.split(" ").length>=5? w : "",t:Date.now()+i,inbox:1}; mine.push(it); added.push(it); have.add(w.toLowerCase()); });
+  store.set(key,mine);
+  if(added.length){ toast(`📥 밖에서 저장한 ${added.length}개를 단어장에 담았어요`,true); if(view.tab==="vocab"||view.tab==="home") render(); }
+  for(const it of added){ const r=await vocLookup(it.w); const m=store.get(key,[]); const y=m.find(z=>z.t===it.t); if(!y) continue; y.ko=r.ko||y.ko; if(!y.ex) y.ex=r.ex||""; if(r.src==="d") y.src="d"; y.tried=today(); store.set(key,m); }
+  inboxBusy=false; if(added.length && view.tab==="vocab") render(); }
+function inboxBookmarklet(){ return "javascript:(function(){var s=String(window.getSelection()).trim();if(!s){s=prompt('밴드업에 저장할 영어 단어나 문장');}if(!s)return;window.open('https://pekay0147.github.io/bandup/save.html#t="+D.inbox+"&x='+encodeURIComponent(s),'bandup','width=380,height=220');})();"; }
+function copyRow(label,val){ const r=el("div","ibrow"); r.append(el("span","small muted",label)); const v=el("code","ibval",val); const b=el("button","vcx","복사"); b.type="button"; b.onclick=async()=>{ try{ await navigator.clipboard.writeText(val); b.textContent="복사됨"; }catch(_){ const g=document.createRange(); g.selectNodeContents(v); const s=getSelection(); s.removeAllRanges(); s.addRange(g); b.textContent="선택됨 · 복사하세요"; } setTimeout(()=>{ b.textContent="복사"; },1800); }; const w=el("div","ibline"); w.append(v,b); r.append(w); return r; }
+function renderInbox(app){
+  const back=el("button","back","‹ 내 단어장"); back.type="button"; back.onclick=()=>go("vocab"); app.append(back);
+  pageHead(app,"어디서든 바로 저장","유튜브·기사·책을 보다가 모르는 단어나 문장을 그 자리에서 밴드업 단어장에 저장해요. 다음에 앱을 열면 뜻과 예문이 채워져서 들어와 있어요.");
+  const p1=el("div","panel txbox"); p1.append(el("b",null,"💻 컴퓨터 (크롬·사파리·엣지)"));
+  const ol=el("ol","ibsteps"); for(const t of ["아래 코드를 복사해요.","브라우저 북마크바에서 오른쪽 클릭 → 페이지 추가(새 북마크). 이름은 '밴드업 저장', URL 칸에 복사한 코드를 붙여 넣어요.","이제 영어 사이트에서 단어나 문장을 드래그로 선택하고 북마크바의 '밴드업 저장'을 누르면 끝! 작은 창이 떴다가 저장되고 닫혀요.","유튜브는 영상 아래 '…더보기 → 스크립트 표시'를 열면 자막을 드래그할 수 있어요."]) ol.append(el("li",null,t));
+  p1.append(ol, copyRow("북마크 URL에 넣을 코드", inboxBookmarklet())); app.append(p1);
+  const p2=el("div","panel txbox"); p2.append(el("b",null,"📱 아이폰 (단축어 앱, 처음 한 번만 설정)"));
+  const ol2=el("ol","ibsteps"); for(const t of ["'단축어' 앱 → 오른쪽 위 + → 이름을 '밴드업 저장'으로 정해요.","아래쪽 ⓘ(정보) → '공유 시트에서 보기'를 켜요. 받을 항목은 '텍스트'만 남겨요.","동작 추가에서 'URL 콘텐츠 가져오기'를 넣고, 아래 URL을 붙여 넣어요.","그 동작을 펼쳐서 방법: POST, 헤더 2개(apikey, Authorization)를 아래 값으로 추가해요.","요청 본문: JSON → 필드 2개 추가: p_token(텍스트) = 아래 토큰, p_txt(텍스트) = '단축어 입력'(변수).","끝! 이제 어떤 앱에서든 단어를 선택 → 공유 → '밴드업 저장'을 누르면 앱을 열지 않고 바로 저장돼요."]) ol2.append(el("li",null,t));
+  p2.append(ol2, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_add"), copyRow("헤더 apikey", SB_KEY), copyRow("헤더 Authorization", "Bearer "+SB_KEY), copyRow("p_token", D.inbox)); app.append(p2);
+  const p3=el("div","panel txbox"); p3.append(el("b",null,"🧪 잘 되는지 시험해 보기"));
+  const ti=el("input","txin"); ti.placeholder="예: burnout"; const tb=el("button","btn primary","보내 보기"); tb.type="button"; const tm=el("p","small txmsg","");
+  tb.onclick=async()=>{ const v=ti.value.trim(); if(!v) return; tb.disabled=true; tm.textContent="보내는 중…";
+    try{ const r=await fetch(SB_URL+"/rest/v1/rpc/bu_add",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_token:D.inbox,p_txt:v})}); if(!r.ok) throw 0; tm.textContent="보냈어요! 단어장으로 가져오는 중…"; await inboxPull(); tm.textContent="✓ 단어장에 들어갔어요."; ti.value=""; }
+    catch(_){ tm.textContent="보내지 못했어요. 인터넷 연결을 확인해 주세요."; } tb.disabled=false; };
+  p3.append(ti,tb,tm); app.append(p3);
 }
 let txState=null;
 function renderTransfer(app){
@@ -1889,7 +1920,7 @@ window.addEventListener("hashchange",()=>{ if(window.BANDUP_SLUG) return; const 
 if("serviceWorker" in navigator && location.protocol==="https:" && !/claude|claudeusercontent/.test(location.hostname)){
   navigator.serviceWorker.register("sw.js").catch(()=>{});
 }
-setTimeout(function waitD(){ if(typeof D!=="undefined" && D && D.slug){ cloudBoot(); } else setTimeout(waitD,500); },800);
+setTimeout(function waitD(){ if(typeof D!=="undefined" && D && D.slug){ cloudBoot(); inboxPull(); document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible" && Date.now()-inboxLast>15000) inboxPull(); }); } else setTimeout(waitD,500); },800);
 (function autoUpdate(){
   const cur=((document.querySelector('script[src*="app.js?v="]')||{}).src||"").split("v=")[1]; if(!cur) return; let last=0; const day0=today();
   const check=()=>{ if(document.visibilityState!=="visible") return; if(today()!==day0){ const a=document.activeElement; if(!(a && /INPUT|TEXTAREA/.test(a.tagName))){ location.reload(); return; } } if(Date.now()-last<60000) return; last=Date.now();
