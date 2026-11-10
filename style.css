@@ -1052,3 +1052,7 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .vcadds{display:grid;gap:8px}
 .ibsteps{margin:0;padding-left:20px;display:grid;gap:6px;font-size:14px;line-height:1.5}
 .ibrow{display:grid;gap:4px}.ibline{display:flex;gap:8px;align-items:flex-start}.ibval{flex:1;min-width:0;font:12px/1.4 ui-monospace,monospace;background:var(--sunk,#f2f2f0);border:1px solid var(--line);border-radius:8px;padding:8px;word-break:break-all;max-height:84px;overflow:auto;-webkit-user-select:all;user-select:all}
+.scrbox{display:grid;gap:10px}.scrhd{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.scrline{margin:0;font-size:16px;line-height:2.1}
+.scrw{font:inherit;background:none;border:0;padding:1px 2px;border-radius:6px;color:inherit;cursor:pointer;border-bottom:1px dashed var(--line)}.scrw.on{background:var(--blue);color:#fff;border-color:transparent}
+.scrs{font:inherit;font-size:12px;font-weight:700;color:var(--blue);background:none;border:1px solid var(--blue);border-radius:999px;padding:1px 8px;margin-left:4px;cursor:pointer}

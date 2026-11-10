@@ -185,6 +185,7 @@ function render(){
   if(view.tab==="vocab") renderVocab(app);
   if(view.tab==="transfer") renderTransfer(app);
   if(view.tab==="inbox") renderInbox(app);
+  if(view.tab==="screens") renderScreens(app);
   updateTabs();
   document.body.classList.toggle("lesson", !!app.querySelector(".lbar"));
 }
@@ -335,6 +336,7 @@ function renderHome(app){
   if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
   if(D.group==="ielts" || D.group==="common" || D.demo || D.keepMock) list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
+  if(D.inbox){ const sc=store.get(`bandup-screens-${slug}`,[]); if(sc.length) list.append(listRow(LIC.voc,"📸 화면에서 가져온 글",`${sc.length}개 · 모르는 단어를 눌러 담아요`,()=>go("screens"))); }
   list.append(listRow(LIC.bm,"북마크",`${cbmList().filter(id=>getCard(id)).length+qbmList().length}개`,()=>go("bm")));
   if(D.cloud){ const se=cloudSess(); list.append(listRow(LIC.cloud,"계정 · 기록 저장", se? `${se.email} · 자동 저장 중` : "로그인하면 폰을 바꿔도 기록이 이어져요",()=>go("transfer"))); }
   s2.append(list); app.append(s2);
@@ -1434,6 +1436,9 @@ async function inboxPull(force){ if(!D || !D.inbox || inboxBusy || (!IS_MOBILE &
   try{ const r=await fetch(SB_URL+"/rest/v1/rpc/bu_take",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_token:D.inbox})}); if(r.ok) rows=await r.json(); }catch(_){ }
   if(!rows || !rows.length){ inboxBusy=false; return; }
   const key=`bandup-myvoc-${slug}`; const mine=store.get(key,[]); const have=new Set(vocAll().map(x=>String(x.w).toLowerCase())); const added=[];
+  const scr=store.get(`bandup-screens-${slug}`,[]); let nscr=0;
+  rows=rows.filter(r=>{ const t=String(r.txt||""); if(/\n/.test(t.trim()) || t.trim().split(/\s+/).length>25){ scr.push({id:Date.now()+Math.random(),at:r.created_at,text:t}); nscr++; return false; } return true; });
+  if(nscr){ store.set(`bandup-screens-${slug}`,scr); toast(`📸 화면 ${nscr}개를 가져왔어요. 모르는 단어를 골라 보세요`,true); if(view.tab==="home") render(); }
   rows.sort((a,b)=>String(a.created_at)<String(b.created_at)?-1:1).forEach((r,i)=>{ let w=String(r.txt||"").replace(/\s+/g," ").trim().replace(/^["“‘']+|["”’']+$/g,""); if(w.split(" ").length<5){ w=w.replace(/^[^A-Za-z]+|[^A-Za-z]+$/g,""); if(!/\s/.test(w) && /^[A-Z][a-z'’-]+$/.test(w)) w=w.toLowerCase(); } if(!w || !/[A-Za-z]/.test(w) || have.has(w.toLowerCase())) return;
     const it={w,ko:"",ex: w.split(" ").length>=5? w : "",t:Date.now()+i,inbox:1}; mine.push(it); added.push(it); have.add(w.toLowerCase()); });
   store.set(key,mine);
@@ -1455,6 +1460,27 @@ async function openMini(){
   doc.getElementById("pb").onclick=async()=>{ try{ const t=await w.navigator.clipboard.readText(); if(!t.trim()){ save(""); return; } save(t); }catch(_){ const li=doc.createElement("li"); li.className="no"; li.textContent="복사한 내용을 읽지 못했어요. 끌어다 놓거나 직접 입력해 주세요."; ls.prepend(li); } };
   const ti=doc.getElementById("ti"); ti.onkeydown=e=>{ if(e.key==="Enter"){ save(ti.value); ti.value=""; } };
 }
+function vocQuickAdd(w,sent){ w=String(w).replace(/\s+/g," ").trim(); if(!w) return false; const key=`bandup-myvoc-${slug}`; if(vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase())) return false;
+  const it={w,ko:"",ex: sent? w : "",t:Date.now()}; const m=store.get(key,[]); m.push(it); store.set(key,m);
+  vocLookup(w).then(r=>{ const mm=store.get(key,[]); const y=mm.find(z=>z.t===it.t); if(!y) return; y.ko=r.ko||y.ko; if(!y.ex) y.ex=r.ex||""; if(r.src==="d") y.src="d"; y.tried=today(); store.set(key,mm); }); return true; }
+function renderScreens(app){
+  const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
+  const key=`bandup-screens-${slug}`; const list=store.get(key,[]).slice().reverse();
+  pageHead(app,"화면에서 가져온 글","모르는 단어를 누르면 단어장에 담겨요. 문장 전체는 줄 끝의 ＋문장을 누르세요.");
+  if(!list.length){ app.append(el("p","muted small","가져온 화면이 없어요.")); return; }
+  const have=()=>new Set(vocAll().map(x=>String(x.w).toLowerCase()));
+  for(const sc of list){ const p=el("div","panel scrbox"); const hd=el("div","scrhd"); hd.append(el("span","small muted", sc.at? new Date(sc.at).toLocaleString("ko-KR",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"}) : ""));
+    const del=el("button","vcx","다 했어요 · 지우기"); del.type="button"; del.onclick=()=>{ store.set(key,store.get(key,[]).filter(x=>x.id!==sc.id)); render(); }; hd.append(del); p.append(hd);
+    const H=have();
+    for(const line of String(sc.text).split(/\n+/).map(x=>x.trim()).filter(x=>/[A-Za-z]{2}/.test(x))){ const row=el("p","scrline");
+      for(const tok of line.split(/\s+/)){ const m=tok.match(/^([^A-Za-z]*)([A-Za-z][A-Za-z'’-]*[A-Za-z]|[A-Za-z])([^A-Za-z]*)$/); if(!m){ row.append(document.createTextNode(tok+" ")); continue; }
+        const word=m[2].replace(/’/g,"'"); const b=el("button","scrw"+(H.has(word.toLowerCase())?" on":""),word); b.type="button";
+        b.onclick=()=>{ if(b.classList.contains("on")) return; if(vocQuickAdd(word.toLowerCase()===word? word : (/^[A-Z][a-z'-]+$/.test(word)? word.toLowerCase() : word))){ b.classList.add("on"); toast("✓ "+word,true); } else b.classList.add("on"); };
+        row.append(document.createTextNode(m[1]), b, document.createTextNode(m[3]+" ")); }
+      if(line.split(/\s+/).length>=4){ const sb=el("button","scrs","＋문장"); sb.type="button"; sb.onclick=()=>{ if(vocQuickAdd(line,true)){ sb.textContent="✓ 담음"; sb.disabled=true; } }; row.append(sb); }
+      p.append(row); }
+    app.append(p); }
+}
 function copyRow(label,val){ const r=el("div","ibrow"); r.append(el("span","small muted",label)); const v=el("code","ibval",val); const b=el("button","vcx","복사"); b.type="button"; b.onclick=async()=>{ try{ await navigator.clipboard.writeText(val); b.textContent="복사됨"; }catch(_){ const g=document.createRange(); g.selectNodeContents(v); const s=getSelection(); s.removeAllRanges(); s.addRange(g); b.textContent="선택됨 · 복사하세요"; } setTimeout(()=>{ b.textContent="복사"; },1800); }; const w=el("div","ibline"); w.append(v,b); r.append(w); return r; }
 function renderInbox(app){
   const back=el("button","back","‹ 내 단어장"); back.type="button"; back.onclick=()=>go("vocab"); app.append(back);
@@ -1464,8 +1490,8 @@ function renderInbox(app){
   p1.append(ol, copyRow("북마크 URL에 넣을 코드", inboxBookmarklet()));
   if(!IS_MOBILE){ const mb=el("button","btn primary","🪟 작은 밴드업 창 띄우기"); mb.type="button"; mb.onclick=openMini; p1.append(el("p","small muted","또는 아래 버튼을 누르면 유튜브·기사 위에 항상 떠 있는 작은 창이 생겨요. 단어를 드래그해서 창에 끌어다 놓거나, 복사한 뒤 창의 버튼을 누르면 저장돼요. (크롬·엣지에서 가장 잘 돼요)"), mb); }
   app.append(p1);
-  const pb=el("div","panel txbox"); pb.append(el("b",null,"📱 아이폰 뒷면 두 번 톡톡 → 화면 속 단어 저장"), el("p","small muted","유튜브·기사를 보다가 폰 뒷면을 두 번 치면, 지금 화면의 영어 단어 목록이 떠요. 모르는 단어만 체크하면 밴드업 단어장으로 들어가요. 처음 한 번만 아래처럼 만들어 두세요."));
-  const olb=el("ol","ibsteps"); for(const t of ["'단축어' 앱 → 오른쪽 위 + → 이름을 '밴드업 화면 단어'로 정해요.","동작 추가: '스크린샷 찍기'","동작 추가: '이미지에서 텍스트 추출' (입력: 스크린샷)","동작 추가: '텍스트 분할' → 분할 기준을 '공백'으로 바꿔요.","동작 추가: '목록에서 선택' → 펼쳐서 '여러 개 선택'을 켜요.","동작 추가: '각 항목을 반복' → 그 안에 'URL 콘텐츠 가져오기'를 넣고 아래 URL·헤더를 넣어요. 요청 본문은 JSON: p_token = 아래 토큰, p_txt = '반복 항목'(변수).","반복 끝난 다음에 '알림 보기' → '밴드업에 저장했어요'.","마지막으로 아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭 → '밴드업 화면 단어'를 골라요. 끝!"]) olb.append(el("li",null,t));
+  const pb=el("div","panel txbox"); pb.append(el("b",null,"📱 아이폰: 뒷면 두 번 톡톡 = 지금 화면 저장"), el("p","small muted","보던 화면 그대로 폰 뒷면을 두 번 치면 화면 속 글이 밴드업으로 들어가요. 나중에 밴드업을 열고 모르는 단어만 톡톡 누르면 끝."));
+  const olb=el("ol","ibsteps"); for(const t of ["단축어 앱 → + → 동작 3개만 넣어요: ① 스크린샷 찍기 ② 이미지에서 텍스트 추출 ③ URL 콘텐츠 가져오기","③에 아래 URL을 넣고, 방법 POST · 헤더 2개 · 본문 JSON(p_token = 아래 토큰, p_txt = '이미지에서 텍스트 추출' 결과)을 넣어요.","아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭 → 방금 만든 단축어 선택. 끝!"]) olb.append(el("li",null,t));
   pb.append(olb, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_add"), copyRow("헤더 apikey", SB_KEY), copyRow("헤더 Authorization", "Bearer "+SB_KEY), copyRow("p_token", D.inbox)); app.append(pb);
   const p2=el("div","panel txbox"); p2.append(el("b",null,"📱 아이폰 (단축어 앱, 처음 한 번만 설정)"));
   const ol2=el("ol","ibsteps"); for(const t of ["'단축어' 앱 → 오른쪽 위 + → 이름을 '밴드업 저장'으로 정해요.","아래쪽 ⓘ(정보) → '공유 시트에서 보기'를 켜요. 받을 항목은 '텍스트'만 남겨요.","동작 추가에서 'URL 콘텐츠 가져오기'를 넣고, 아래 URL을 붙여 넣어요.","그 동작을 펼쳐서 방법: POST, 헤더 2개(apikey, Authorization)를 아래 값으로 추가해요.","요청 본문: JSON → 필드 2개 추가: p_token(텍스트) = 아래 토큰, p_txt(텍스트) = '단축어 입력'(변수).","끝! 이제 어떤 앱에서든 단어를 선택 → 공유 → '밴드업 저장'을 누르면 앱을 열지 않고 바로 저장돼요."]) ol2.append(el("li",null,t));
