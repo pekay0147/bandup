@@ -756,7 +756,7 @@ function renderDecks(app){
   if(cardMode!=="session" && cardMode!=="pod" && !(cardMode==="daily"&&hasDaily)) cardMode= hasLesson? "session" : "pod";
   const lessonTab=hasLesson || (D.group==="ielts" && !D.common && !D.demo);
   if(cardMode==="session" && !lessonTab) cardMode="pod"; if(cardMode==="pod" && !hasPod) cardMode="session";
-  const modes=[...(lessonTab?[["session",D.common?"주제별":(D.group==="other"||D.group==="church")?"팟캐스트":(D.group==="self"? "스피킹 매트릭스" : hasPod?"수업 회차별":"회차별"),(D.group==="other"||D.group==="church")? `에피소드 ${D.sessions.length}편` : (D.sessions.length? `1~${D.sessions[D.sessions.length-1].no}회차` : "수업 기록")]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","오늘의 문장 10개"]]:[])];
+  const modes=[...(lessonTab?[["session",D.common?"주제별":(D.group==="other"||D.group==="church")?"팟캐스트":(D.sessTab? D.sessTab : D.group==="self"? "스피킹 매트릭스" : hasPod?"수업 회차별":"회차별"),(D.group==="other"||D.group==="church")? `에피소드 ${D.sessions.length}편` : (D.sessions.length? `1~${D.sessions[D.sessions.length-1].no}회차` : "수업 기록")]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","오늘의 문장 10개"]]:[])];
   for(const [k,label,sub] of modes){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(cardMode===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; openKey=null; render(); }; seg.append(b);
@@ -779,7 +779,7 @@ function renderDecks(app){
     key="s"+selSession; list=D.cards.filter(c=>(c.sessions||[]).includes(selSession));
     { const se=D.sessions.find(x=>x.no===selSession); if(se && (se.vocab||[]).length){ inlineDeck(app,key,list,empty,()=>vocabPage(se)); return; } }
   } else if(cardMode==="daily" && D.dailyFrom==="sessions"){
-    const pool=D.cards.filter(c=>(c.sessions||[]).length && D.sessions.some(x=>(c.sessions||[]).includes(x.no)));
+    const pool=D.cards.filter(c=>(c.sessions||[]).length && D.sessions.some(x=>x.title==="Speaking Matrix" && (c.sessions||[]).includes(x.no)));
     app.append(el("p","muted small dy-note", `지금까지 배운 문장 ${pool.length}개 중에서 매일 10개를 랜덤으로 골라요.`));
     list=dyPick(pool,10,today()+slug+"sm"); key="dys-"+today(); empty="아직 배운 문장이 없어요.";
   } else if(cardMode==="daily"){
