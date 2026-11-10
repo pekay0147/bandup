@@ -1429,31 +1429,51 @@ function renderCloud(app){
 }
 /* ---------- 어디서든 저장 (inbox) ---------- */
 let inboxBusy=false, inboxLast=0;
-async function inboxPull(){ if(!D || !D.inbox || inboxBusy) return; inboxBusy=true; inboxLast=Date.now(); let rows=null;
+const IS_MOBILE=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent||"") || (navigator.maxTouchPoints>1 && /Macintosh/.test(navigator.userAgent||""));
+async function inboxPull(force){ if(!D || !D.inbox || inboxBusy || (!IS_MOBILE && !force)) return; inboxBusy=true; inboxLast=Date.now(); let rows=null;
   try{ const r=await fetch(SB_URL+"/rest/v1/rpc/bu_take",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_token:D.inbox})}); if(r.ok) rows=await r.json(); }catch(_){ }
   if(!rows || !rows.length){ inboxBusy=false; return; }
   const key=`bandup-myvoc-${slug}`; const mine=store.get(key,[]); const have=new Set(vocAll().map(x=>String(x.w).toLowerCase())); const added=[];
-  rows.sort((a,b)=>String(a.created_at)<String(b.created_at)?-1:1).forEach((r,i)=>{ const w=String(r.txt||"").replace(/\s+/g," ").trim().replace(/^["“‘']+|["”’']+$/g,""); if(!w || !/[A-Za-z]/.test(w) || have.has(w.toLowerCase())) return;
+  rows.sort((a,b)=>String(a.created_at)<String(b.created_at)?-1:1).forEach((r,i)=>{ let w=String(r.txt||"").replace(/\s+/g," ").trim().replace(/^["“‘']+|["”’']+$/g,""); if(w.split(" ").length<5){ w=w.replace(/^[^A-Za-z]+|[^A-Za-z]+$/g,""); if(!/\s/.test(w) && /^[A-Z][a-z'’-]+$/.test(w)) w=w.toLowerCase(); } if(!w || !/[A-Za-z]/.test(w) || have.has(w.toLowerCase())) return;
     const it={w,ko:"",ex: w.split(" ").length>=5? w : "",t:Date.now()+i,inbox:1}; mine.push(it); added.push(it); have.add(w.toLowerCase()); });
   store.set(key,mine);
   if(added.length){ toast(`📥 밖에서 저장한 ${added.length}개를 단어장에 담았어요`,true); if(view.tab==="vocab"||view.tab==="home") render(); }
   for(const it of added){ const r=await vocLookup(it.w); const m=store.get(key,[]); const y=m.find(z=>z.t===it.t); if(!y) continue; y.ko=r.ko||y.ko; if(!y.ex) y.ex=r.ex||""; if(r.src==="d") y.src="d"; y.tried=today(); store.set(key,m); }
   inboxBusy=false; if(added.length && view.tab==="vocab") render(); }
 function inboxBookmarklet(){ return "javascript:(function(){var s=String(window.getSelection()).trim();if(!s){s=prompt('밴드업에 저장할 영어 단어나 문장');}if(!s)return;window.open('https://pekay0147.github.io/bandup/save.html#t="+D.inbox+"&x='+encodeURIComponent(s),'bandup','width=380,height=220');})();"; }
+async function inboxSend(txt){ const r=await fetch(SB_URL+"/rest/v1/rpc/bu_add",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_token:D.inbox,p_txt:txt})}); if(!r.ok) throw new Error(r.status); }
+async function openMini(){
+  let w=null; try{ if(window.documentPictureInPicture) w=await documentPictureInPicture.requestWindow({width:300,height:380}); }catch(_){ w=null; }
+  if(!w) w=window.open("","bandupmini","width=320,height=420"); if(!w){ toast("팝업이 막혔어요. 주소창 오른쪽에서 팝업을 허용해 주세요.",false); return; }
+  const doc=w.document; doc.title="밴드업";
+  doc.head.innerHTML='<meta charset="utf-8"><title>밴드업</title><style>body{margin:0;font:14px/1.45 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;background:#f5f4fa;color:#1d1d24;padding:12px;display:grid;gap:10px}.dz{border:2px dashed #4457e8;border-radius:14px;background:#fff;padding:18px 10px;text-align:center;display:grid;gap:4px}.dz.on{background:#eef0ff}.dz b{font-size:15px}.dz span{color:#777;font-size:12px}button{font:inherit;font-weight:700;border:0;border-radius:12px;padding:11px;background:#4457e8;color:#fff;cursor:pointer}input{font:inherit;padding:10px;border:1px solid #ddd;border-radius:10px}ul{margin:0;padding:0;list-style:none;display:grid;gap:4px;max-height:140px;overflow:auto}li{background:#fff;border-radius:8px;padding:6px 10px;font-size:13px}li.no{color:#d33}.h{font-weight:800;color:#4457e8}</style>';
+  doc.body.innerHTML='<div class="h">Band<sup>up</sup> 단어 저장</div><div class="dz" id="dz"><b>📥 여기로 끌어다 놓기</b><span>영어 단어나 문장을 드래그해서 놓으면 저장돼요</span></div><button id="pb">📋 복사한 단어 저장</button><input id="ti" placeholder="직접 입력 후 Enter"><ul id="ls"></ul>';
+  const ls=doc.getElementById("ls"), dz=doc.getElementById("dz");
+  const save=async t=>{ t=String(t||"").replace(/\s+/g," ").trim(); if(!t || !/[A-Za-z]/.test(t)) return; const li=doc.createElement("li"); li.textContent="… "+t; ls.prepend(li); try{ await inboxSend(t); li.textContent="✓ "+t; }catch(_){ li.textContent="✕ "+t+" (다시 시도)"; li.className="no"; } };
+  dz.addEventListener("dragover",e=>{ e.preventDefault(); dz.classList.add("on"); }); dz.addEventListener("dragleave",()=>dz.classList.remove("on"));
+  dz.addEventListener("drop",e=>{ e.preventDefault(); dz.classList.remove("on"); save(e.dataTransfer.getData("text/plain")||e.dataTransfer.getData("text")); });
+  doc.getElementById("pb").onclick=async()=>{ try{ const t=await w.navigator.clipboard.readText(); if(!t.trim()){ save(""); return; } save(t); }catch(_){ const li=doc.createElement("li"); li.className="no"; li.textContent="복사한 내용을 읽지 못했어요. 끌어다 놓거나 직접 입력해 주세요."; ls.prepend(li); } };
+  const ti=doc.getElementById("ti"); ti.onkeydown=e=>{ if(e.key==="Enter"){ save(ti.value); ti.value=""; } };
+}
 function copyRow(label,val){ const r=el("div","ibrow"); r.append(el("span","small muted",label)); const v=el("code","ibval",val); const b=el("button","vcx","복사"); b.type="button"; b.onclick=async()=>{ try{ await navigator.clipboard.writeText(val); b.textContent="복사됨"; }catch(_){ const g=document.createRange(); g.selectNodeContents(v); const s=getSelection(); s.removeAllRanges(); s.addRange(g); b.textContent="선택됨 · 복사하세요"; } setTimeout(()=>{ b.textContent="복사"; },1800); }; const w=el("div","ibline"); w.append(v,b); r.append(w); return r; }
 function renderInbox(app){
   const back=el("button","back","‹ 내 단어장"); back.type="button"; back.onclick=()=>go("vocab"); app.append(back);
   pageHead(app,"어디서든 바로 저장","유튜브·기사·책을 보다가 모르는 단어나 문장을 그 자리에서 밴드업 단어장에 저장해요. 다음에 앱을 열면 뜻과 예문이 채워져서 들어와 있어요.");
   const p1=el("div","panel txbox"); p1.append(el("b",null,"💻 컴퓨터 (크롬·사파리·엣지)"));
   const ol=el("ol","ibsteps"); for(const t of ["아래 코드를 복사해요.","브라우저 북마크바에서 오른쪽 클릭 → 페이지 추가(새 북마크). 이름은 '밴드업 저장', URL 칸에 복사한 코드를 붙여 넣어요.","이제 영어 사이트에서 단어나 문장을 드래그로 선택하고 북마크바의 '밴드업 저장'을 누르면 끝! 작은 창이 떴다가 저장되고 닫혀요.","유튜브는 영상 아래 '…더보기 → 스크립트 표시'를 열면 자막을 드래그할 수 있어요."]) ol.append(el("li",null,t));
-  p1.append(ol, copyRow("북마크 URL에 넣을 코드", inboxBookmarklet())); app.append(p1);
+  p1.append(ol, copyRow("북마크 URL에 넣을 코드", inboxBookmarklet()));
+  if(!IS_MOBILE){ const mb=el("button","btn primary","🪟 작은 밴드업 창 띄우기"); mb.type="button"; mb.onclick=openMini; p1.append(el("p","small muted","또는 아래 버튼을 누르면 유튜브·기사 위에 항상 떠 있는 작은 창이 생겨요. 단어를 드래그해서 창에 끌어다 놓거나, 복사한 뒤 창의 버튼을 누르면 저장돼요. (크롬·엣지에서 가장 잘 돼요)"), mb); }
+  app.append(p1);
+  const pb=el("div","panel txbox"); pb.append(el("b",null,"📱 아이폰 뒷면 두 번 톡톡 → 화면 속 단어 저장"), el("p","small muted","유튜브·기사를 보다가 폰 뒷면을 두 번 치면, 지금 화면의 영어 단어 목록이 떠요. 모르는 단어만 체크하면 밴드업 단어장으로 들어가요. 처음 한 번만 아래처럼 만들어 두세요."));
+  const olb=el("ol","ibsteps"); for(const t of ["'단축어' 앱 → 오른쪽 위 + → 이름을 '밴드업 화면 단어'로 정해요.","동작 추가: '스크린샷 찍기'","동작 추가: '이미지에서 텍스트 추출' (입력: 스크린샷)","동작 추가: '텍스트 분할' → 분할 기준을 '공백'으로 바꿔요.","동작 추가: '목록에서 선택' → 펼쳐서 '여러 개 선택'을 켜요.","동작 추가: '각 항목을 반복' → 그 안에 'URL 콘텐츠 가져오기'를 넣고 아래 URL·헤더를 넣어요. 요청 본문은 JSON: p_token = 아래 토큰, p_txt = '반복 항목'(변수).","반복 끝난 다음에 '알림 보기' → '밴드업에 저장했어요'.","마지막으로 아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭 → '밴드업 화면 단어'를 골라요. 끝!"]) olb.append(el("li",null,t));
+  pb.append(olb, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_add"), copyRow("헤더 apikey", SB_KEY), copyRow("헤더 Authorization", "Bearer "+SB_KEY), copyRow("p_token", D.inbox)); app.append(pb);
   const p2=el("div","panel txbox"); p2.append(el("b",null,"📱 아이폰 (단축어 앱, 처음 한 번만 설정)"));
   const ol2=el("ol","ibsteps"); for(const t of ["'단축어' 앱 → 오른쪽 위 + → 이름을 '밴드업 저장'으로 정해요.","아래쪽 ⓘ(정보) → '공유 시트에서 보기'를 켜요. 받을 항목은 '텍스트'만 남겨요.","동작 추가에서 'URL 콘텐츠 가져오기'를 넣고, 아래 URL을 붙여 넣어요.","그 동작을 펼쳐서 방법: POST, 헤더 2개(apikey, Authorization)를 아래 값으로 추가해요.","요청 본문: JSON → 필드 2개 추가: p_token(텍스트) = 아래 토큰, p_txt(텍스트) = '단축어 입력'(변수).","끝! 이제 어떤 앱에서든 단어를 선택 → 공유 → '밴드업 저장'을 누르면 앱을 열지 않고 바로 저장돼요."]) ol2.append(el("li",null,t));
   p2.append(ol2, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_add"), copyRow("헤더 apikey", SB_KEY), copyRow("헤더 Authorization", "Bearer "+SB_KEY), copyRow("p_token", D.inbox)); app.append(p2);
   const p3=el("div","panel txbox"); p3.append(el("b",null,"🧪 잘 되는지 시험해 보기"));
   const ti=el("input","txin"); ti.placeholder="예: burnout"; const tb=el("button","btn primary","보내 보기"); tb.type="button"; const tm=el("p","small txmsg","");
   tb.onclick=async()=>{ const v=ti.value.trim(); if(!v) return; tb.disabled=true; tm.textContent="보내는 중…";
-    try{ const r=await fetch(SB_URL+"/rest/v1/rpc/bu_add",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_token:D.inbox,p_txt:v})}); if(!r.ok) throw 0; tm.textContent="보냈어요! 단어장으로 가져오는 중…"; await inboxPull(); tm.textContent="✓ 단어장에 들어갔어요."; ti.value=""; }
+    try{ const r=await fetch(SB_URL+"/rest/v1/rpc/bu_add",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_token:D.inbox,p_txt:v})}); if(!r.ok) throw 0; tm.textContent="보냈어요! 단어장으로 가져오는 중…"; await inboxPull(true); tm.textContent="✓ 단어장에 들어갔어요."; ti.value=""; }
     catch(_){ tm.textContent="보내지 못했어요. 인터넷 연결을 확인해 주세요."; } tb.disabled=false; };
   p3.append(ti,tb,tm); app.append(p3);
 }
