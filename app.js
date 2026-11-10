@@ -136,6 +136,7 @@ function consentSheet(){
 const ICONS={
   home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/></svg>',
   cards:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 4h12a2 2 0 0 1 2 2v11"/></svg>',
+  cloud:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.2 9.1 4.5 4.5 0 0 0 7 18z"/></svg>',
   bm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>',
   review:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>',
   wordsOld:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20a2 2 0 0 0 2 2h13v-4"/><path d="M8 7h7M8 11h5"/></svg>',
@@ -332,13 +333,14 @@ function renderHome(app){
   list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
   list.append(listRow(LIC.bm,"북마크",`${cbmList().filter(id=>getCard(id)).length+qbmList().length}개`,()=>go("bm")));
+  if(D.cloud){ const se=cloudSess(); list.append(listRow(LIC.cloud,"계정 · 기록 저장", se? `${se.email} · 자동 저장 중` : "로그인하면 폰을 바꿔도 기록이 이어져요",()=>go("transfer"))); }
   s2.append(list); app.append(s2);
   // 이번 주
   const st=streak(); const s3=el("section","sec"); const h3=secHead("이번 달"); if(st){ const fl=el("span","streak"); fl.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path class="f-out" d="M12 2c.5 3.2 3 4.6 4.4 7 1.3 2.2 1.6 4.6.8 6.8A6 6 0 0 1 6 14.6c0-2.2 1-3.6 2.3-4.8.2 1.5.9 2.6 2 3.1-.6-3.5.4-7.6 1.7-10.9z" fill="#ff7a1a"/><path class="f-in" d="M12.2 11.5c1.3 1.4 2.3 2.7 2.3 4.4a2.5 2.5 0 0 1-5 0c0-1.3.7-2.3 1.6-3 .1.8.5 1.3 1.1 1.5-.3-1-.3-1.9 0-2.9z" fill="#ffc94a"/></svg>'; fl.append(document.createTextNode(`${st}일 연속`)); h3.append(fl); } s3.append(h3); s3.append(weekCard()); app.append(s3);
   if(D.common && PROFILE){ const pe=el("button","guidelink","내 정보 (이름·시험 날짜·목표) 고치기 ›"); pe.type="button"; pe.style.cssText="border:0;background:none;width:100%;cursor:pointer;font:inherit;font-size:13px"; pe.onclick=()=>go("profile"); app.append(pe); }
   if(D.form && D.form.url && !D.demo) app.append(el("p","muted small sharenote","공부 기록과 내 단어장은 선생님께 전달돼요. 수업 준비에만 써요."));
   if(D.group==="church"||D.group==="other"){ const mg=el("a","guidelink","앱 사용 설명서 ›"); mg.href="guide/"+D.group+".html"; app.append(mg); }
-  if(D.cloud){ const se=cloudSess(); const tb=el("button","guidelink", se? `☁️ ${se.email} · 공부 기록이 자동 저장돼요 ›` : "☁️ 로그인하고 공부 기록 저장하기 ›"); tb.type="button"; tb.onclick=()=>go("transfer"); app.append(tb); }
+  if(D.cloud){}
   else if(D.backup){ const tb=el("button","guidelink","📲 폰 바꿀 때 · 공부 기록 옮기기 ›"); tb.type="button"; tb.onclick=()=>go("transfer"); app.append(tb); }
   if(!(window.matchMedia&&matchMedia("(display-mode: standalone)").matches) && !navigator.standalone){ const g=el("a","guidelink","홈 화면에 앱으로 추가하는 법 ›"); g.href="guide/"; app.append(g); }
 }
