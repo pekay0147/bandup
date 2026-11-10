@@ -1943,18 +1943,6 @@
    "gram": "<em>my go-to food</em> = 내가 늘 찾는 음식. go-to snack / go-to restaurant도 같은 패턴."
   },
   {
-   "id": "n915",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    9
-   ],
-   "ko": "태풍 때문에 정전이 됐어요.",
-   "en": "We got a power cut because of the storm.",
-   "hint": "power",
-   "gram": "<em>have / get a power cut</em> = 정전이 되다."
-  },
-  {
    "id": "n9x6",
    "kind": "ko",
    "type": "표현",
