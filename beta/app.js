@@ -277,7 +277,7 @@ function studyGuide(app){
   const steps=[
     (()=>{ const TP=todayPod(); return TP? ["팟캐스트 듣기", `오늘은 ${String(TP.link.src||"6 Minute English").replace(/^BBC /,"")} ${TP.link.date} 편 \u201c${TP.link.title}\u201d을 끝까지 들어요`, null, TP.link.url] : ["팟캐스트 듣기", `${P.name||"오늘의 팟캐스트"} 한 편을 끝까지 들어요`, null, podUrl(P)]; })(),
     ["큐카드 팟캐스트로 오늘 들은 팟캐스트 복습하기","큐카드 → 팟캐스트에서 오늘 날짜를 골라, 방금 들은 문장을 한국어만 보고 영어로 말해 봐요. 마지막 장의 단어는 단어장에 담아요",()=>{ cardMode=podTab; const TP=todayPod(); if(podTab==="pod"){ selPod=TP? TP.no : null; podPickOpen=false; } else { selSession=TP? TP.no : null; podPickOpen=false; } deckState=null; go("cards"); }],
-    ["큐카드 매일 연습으로 일상 영어 공부하기","매일 바뀌는 생활 영어 문장 10개를 소리 내 말해 봐요",()=>{ cardMode="daily"; deckState=null; go("cards"); }],
+    [D.dailyFrom==="sessions"? "큐카드 매일 연습으로 배운 문장 복습하기" : "큐카드 매일 연습으로 일상 영어 공부하기", D.dailyFrom==="sessions"? "지금까지 배운 스피킹 매트릭스 문장 중 매일 10개를 랜덤으로 소리 내 말해 봐요" : "매일 바뀌는 생활 영어 문장 10개를 소리 내 말해 봐요",()=>{ cardMode="daily"; deckState=null; go("cards"); }],
     ["그 외","시간이 더 있으면 골라서 해요. 철자 탭에서 단어 듣고 쓰기, 아이디어 탭에서 Part 1·2·3 질문별 단어와 답변 재료 보기, 내 단어장 외우기, 오늘의 복습까지!",null,null,[["철자",()=>go("words")],["아이디어",()=>go("ideas")],["내 단어장",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); }],["오늘의 복습",()=>{ const due=dueCards().length; go("review",{extra:!due, ids:reviewQueue(!due)}); }]]]];
   const sec=el("section","sec sguide"); sec.append(secHead("오늘의 공부 순서","위에서부터 차례대로"));
   const box=el("div","box list2");
@@ -751,7 +751,7 @@ function renderDecks(app){
   pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : D.group==="other"? "팟캐스트 표현과 매일 연습 문장을 한국어 보고 영어로 말해 보세요." : D.group==="church"? "묵상 문장과 매일 연습 문장을 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
   const hasLesson=D.sessions.length && D.cards.some(c=>(c.sessions||[]).length), hasPod=(D.podSessions||[]).length>0;
   if(!hasLesson && !hasPod){ const e=el("div","empty"); e.append(el("p",null, D.common? "수업을 들으면 수업에서 내가 틀린 문장이 여기에 큐카드로 생겨요." : "아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
-  const hasDaily=D.group==="other"||D.group==="ielts"||D.group==="church";
+  const hasDaily=D.group==="other"||D.group==="ielts"||D.group==="church"||D.dailyFrom==="sessions";
   const seg=el("div","modeseg"+((+!!hasPod + +!!hasLesson + +hasDaily)>2?"":" two")); seg.setAttribute("role","tablist");
   if(cardMode!=="session" && cardMode!=="pod" && !(cardMode==="daily"&&hasDaily)) cardMode= hasLesson? "session" : "pod";
   const lessonTab=hasLesson || (D.group==="ielts" && !D.common && !D.demo);
@@ -778,6 +778,10 @@ function renderDecks(app){
     }
     key="s"+selSession; list=D.cards.filter(c=>(c.sessions||[]).includes(selSession));
     { const se=D.sessions.find(x=>x.no===selSession); if(se && (se.vocab||[]).length){ inlineDeck(app,key,list,empty,()=>vocabPage(se)); return; } }
+  } else if(cardMode==="daily" && D.dailyFrom==="sessions"){
+    const pool=D.cards.filter(c=>(c.sessions||[]).length && D.sessions.some(x=>(c.sessions||[]).includes(x.no)));
+    app.append(el("p","muted small dy-note", `지금까지 배운 문장 ${pool.length}개 중에서 매일 10개를 랜덤으로 골라요.`));
+    list=dyPick(pool,10,today()+slug+"sm"); key="dys-"+today(); empty="아직 배운 문장이 없어요.";
   } else if(cardMode==="daily"){
     app.append(el("p","muted small dy-note", "매일 바뀌는 생활 영어 문장 10개예요."));
     dySrc="mix";

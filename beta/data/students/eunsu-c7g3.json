@@ -1107,5 +1107,6 @@
   "groups/other",
   "groups/church"
  ],
- "podAuto": true
+ "podAuto": true,
+ "dailyFrom": "sessions"
 }
