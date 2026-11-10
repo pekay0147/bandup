@@ -1464,9 +1464,16 @@ function vocQuickAdd(w,sent){ w=String(w).replace(/\s+/g," ").trim(); if(!w) ret
   const it={w,ko:"",ex: sent? w : "",t:Date.now()}; const m=store.get(key,[]); m.push(it); store.set(key,m);
   vocLookup(w).then(r=>{ const mm=store.get(key,[]); const y=mm.find(z=>z.t===it.t); if(!y) return; y.ko=r.ko||y.ko; if(!y.ex) y.ex=r.ex||""; if(r.src==="d") y.src="d"; y.tried=today(); store.set(key,mm); }); return true; }
 let scrSel=[], scrTrQueue=[], scrTrBusy=false;
+function scrParas(text){ const lines=String(text).split(/\n+/).map(x=>x.trim()).filter(x=>/[A-Za-z]{2}/.test(x)); const out=[];
+  for(const ln of lines){ const prev=out[out.length-1]; const words=ln.split(/\s+/).length;
+    if(prev && !/[.!?:]["”’']?$/.test(prev) && prev.split(/\s+/).length>=4 && (words>=2) && (/^[a-z(“"'‘]/.test(ln) || /[,;\-–—]$/.test(prev) || prev.length>35)) out[out.length-1]=prev+" "+ln;
+    else out.push(ln); }
+  return out; }
 async function scrTranslate(){ if(scrTrBusy) return; scrTrBusy=true; const TR=store.get("bandup-tr",{});
   while(scrTrQueue.length){ const [line,elx]=scrTrQueue.shift(); if(!elx.isConnected) continue; if(TR[line]){ elx.textContent=TR[line]; continue; }
-    try{ const r=await fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q="+encodeURIComponent(line)).then(x=>x.ok? x.json():null); const t=r&&r[0]? r[0].map(x=>x[0]).join("").trim() : ""; if(t){ TR[line]=t; store.set("bandup-tr",TR); elx.textContent=t; } }catch(_){ } }
+    let t=""; try{ const r=await fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q="+encodeURIComponent(line)).then(x=>x.ok? x.json():null); t=r&&r[0]? r[0].map(x=>x[0]).join("").trim() : ""; }catch(_){ }
+    if(!t){ try{ const mm=await fetch("https://api.mymemory.translated.net/get?langpair=en|ko&q="+encodeURIComponent(line.slice(0,480))).then(x=>x.ok? x.json():null); t=mm&&mm.responseData&&String(mm.responseData.translatedText||"").trim()||""; if(/MYMEMORY WARNING/i.test(t)) t=""; }catch(_){ } }
+    if(t){ TR[line]=t; store.set("bandup-tr",TR); elx.textContent=t; } else elx.textContent="(번역을 불러오지 못했어요)"; }
   scrTrBusy=false; }
 function renderScreens(app){
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>{ scrSel=[]; go("home"); }; app.append(back);
@@ -1481,7 +1488,7 @@ function renderScreens(app){
   bb.onclick=()=>{ let n=0; for(const g of scrGroups()){ const w= (!/\s/.test(g) && /^[A-Z][a-z'-]+$/.test(g))? g.toLowerCase() : g; if(vocQuickAdd(w, w.split(" ").length>=5)){ n++; } } scrSel.forEach(s=>{ const e=document.querySelector(`.scrw[data-k="${s.k}"]`); if(e) e.classList.add("on"); }); scrSel=[]; paint(); toast(n? `✓ ${n}개 담았어요` : "이미 단어장에 있어요",!!n); };
   list.forEach((sc,si)=>{ const p=el("div","panel scrbox"); const hd=el("div","scrhd"); hd.append(el("span","small muted", sc.at? new Date(sc.at).toLocaleString("ko-KR",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"}) : ""));
     const del=el("button","vcx","다 했어요 · 지우기"); del.type="button"; del.onclick=()=>{ store.set(key,store.get(key,[]).filter(x=>x.id!==sc.id)); scrSel=[]; render(); }; hd.append(del); p.append(hd);
-    String(sc.text).split(/\n+/).map(x=>x.trim()).filter(x=>/[A-Za-z]{2}/.test(x)).forEach((line,li)=>{ const row=el("p","scrline"); const lk=si+"-"+li; let wi=0;
+    scrParas(sc.text).forEach((line,li)=>{ const row=el("p","scrline"); const lk=si+"-"+li; let wi=0;
       for(const tok of line.split(/\s+/)){ const m=tok.match(/^([^A-Za-z]*)([A-Za-z][A-Za-z'’-]*[A-Za-z]|[A-Za-z])([^A-Za-z]*)$/); const i=wi++;
         if(!m){ row.append(el("span","scrw plain",tok)); continue; }
         const word=m[2].replace(/’/g,"'"), k=lk+"-"+i; const b=el("button","scrw"+(H.has(word.toLowerCase())?" on":""),tok); b.type="button"; b.dataset.k=k; b.dataset.i=i;
@@ -1489,7 +1496,8 @@ function renderScreens(app){
         row.append(b); }
       const wrap=el("div","scrpara"); wrap.append(row);
       if(line.split(/\s+/).length>=3){ const tr=el("p","scrtr",""); const TR=store.get("bandup-tr",{}); if(TR[line]) tr.textContent=TR[line]; else scrTrQueue.push([line,tr]); wrap.append(tr);
-        const sb=el("button","scrs","＋ 문장 통째로 담기"); sb.type="button"; sb.onclick=()=>{ if(vocQuickAdd(line,true)){ sb.textContent="✓ 담았어요"; sb.disabled=true; } else { sb.textContent="이미 있어요"; } }; wrap.append(sb); }
+        const sents=line.match(/[^.!?]+[.!?]+["”’']?|[^.!?]+$/g).map(x=>x.trim()).filter(x=>x.split(/\s+/).length>=3);
+        const sb=el("button","scrs", sents.length>1? `＋ 문장 ${sents.length}개 통째로 담기` : "＋ 문장 통째로 담기"); sb.type="button"; sb.onclick=()=>{ let n=0; for(const x of (sents.length? sents : [line])) if(vocQuickAdd(x,true)) n++; sb.textContent= n? `✓ ${n}개 담았어요` : "이미 있어요"; sb.disabled=!!n; }; wrap.append(sb); }
       p.append(wrap); });
     app.append(p); });
   app.append(el("div","scrspace"), bar); setTimeout(paint,0); scrTranslate();
