@@ -854,6 +854,102 @@
    "en": "I try to spend quality time with my family.",
    "hint": "quality",
    "gram": "<em>quality time</em> = (짧아도) 알찬 시간. quality sleep = 양질의 잠."
+  },
+  {
+   "id": "gw01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "식물을 키우려면 적절한 물, 햇빛, 온도가 필요해요.",
+   "en": "To grow plants, you need the right amount of water, sunlight, and the right temperature.",
+   "hint": "sunlight",
+   "gram": "<em>To</em> + 동사원형, = ~하려면(목적). <em>the right amount of</em> ~ = 적절한 양의 ~. sunlight(햇빛), temperature(온도)."
+  },
+  {
+   "id": "gw02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "시간이 날 때마다 저는 식물에 물을 줘요.",
+   "en": "Whenever I have time, I water my plants.",
+   "hint": "Whenever",
+   "gram": "<em>Whenever</em> + 문장 = ~할 때마다."
+  },
+  {
+   "id": "gw03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "피곤할 때마다 저는 커피를 마셔요.",
+   "en": "Whenever I feel tired, I drink coffee.",
+   "hint": "Whenever",
+   "gram": "<em>Whenever I feel</em> + 형용사 = ~할 때마다."
+  },
+  {
+   "id": "gw04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "비가 올 때마다 저는 집에 있는 게 좋아요.",
+   "en": "Whenever it rains, I like staying at home.",
+   "hint": "Whenever",
+   "gram": "날씨는 <em>it</em>으로: Whenever <em>it rains</em>. like staying (like stay ❌)."
+  },
+  {
+   "id": "gw05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "친구들을 만날 때마다 우리는 카페에 가요.",
+   "en": "Whenever I meet my friends, we go to a café.",
+   "hint": "Whenever",
+   "gram": "<em>Whenever</em> 다음 현재형 = 습관."
+  },
+  {
+   "id": "gw06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "잠이 안 올 때마다 저는 책을 읽어요.",
+   "en": "Whenever I can't fall asleep, I read a book.",
+   "hint": "Whenever",
+   "gram": "fall asleep = 잠들다. <em>Whenever I can't</em> ~ = ~하지 못할 때마다."
+  },
+  {
+   "id": "gw07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "환자들이 회복하는 걸 볼 때마다 뿌듯해요.",
+   "en": "Whenever I see my patients recover, I feel proud.",
+   "hint": "Whenever",
+   "gram": "see + 사람 + 동사원형 = ~가 …하는 것을 보다. feel proud = 뿌듯하다."
+  },
+  {
+   "id": "gw08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "어렸을 때 저는 할머니 댁에 갈 때마다 꽃을 심었어요.",
+   "en": "When I was young, whenever I visited my grandma, I planted flowers.",
+   "hint": "whenever",
+   "gram": "과거 습관은 과거형으로: whenever I <em>visited</em>, I <em>planted</em> (시제 맞추기!)."
   }
  ],
  "part1": [
