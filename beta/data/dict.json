@@ -238,5 +238,41 @@
 "procrastinate": {
 "ko": "(할 일을) 미루다",
 "ex": "I tend to procrastinate when I'm tired."
+},
+"cope": {
+"ko": "대처하다, 잘 견뎌내다",
+"ex": "I cope with stress by going for a walk."
+},
+"do its job": {
+"ko": "제 역할을 하다, 제구실을 하다",
+"ex": "This old laptop is slow, but it does its job."
+},
+"downside": {
+"ko": "단점, 불리한 면",
+"ex": "The only downside is the long commute."
+},
+"go-to": {
+"ko": "늘 찾는, 믿고 의지하는 (것·사람)",
+"ex": "Pasta is my go-to meal when I'm busy."
+},
+"hands-on": {
+"ko": "직접 해 보는, 실습 위주의",
+"ex": "I prefer hands-on learning to reading textbooks."
+},
+"make a wild guess": {
+"ko": "대충 짐작해 보다, 막 찍어 보다",
+"ex": "I have no idea, but let me make a wild guess."
+},
+"vicious": {
+"ko": "악랄한, 사나운, 심한",
+"ex": "The dog looked friendly, but it was vicious."
+},
+"vicious cycle": {
+"ko": "악순환",
+"ex": "Stress and poor sleep can become a vicious cycle."
+},
+"you're not alone": {
+"ko": "너만 그런 게 아니야, 혼자가 아니야",
+"ex": "If you hate mornings, you're not alone."
 }
 }
