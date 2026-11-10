@@ -1101,3 +1101,5 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .scrtr{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
 .scrs{justify-self:start;font:inherit;font-size:12.5px;font-weight:700;color:var(--blue);background:none;border:0;padding:0;cursor:pointer}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .scrw{background:#2a2a30}:root:not([data-theme="light"]) .scrw.on{background:#2b3366;color:#aab6ff}}
+.vbase{margin-left:8px;font-size:12px;font-weight:600;color:var(--blue);background:#eef0ff;border-radius:6px;padding:1px 6px;vertical-align:2px}
+.vbase2{margin:4px 0 0;font-size:14px;color:var(--blue);font-weight:700}

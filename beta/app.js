@@ -1227,7 +1227,26 @@ function vocLocal(w){
   if(!ko && G[k] && G[k][1]) ko=G[k][1];
   return {ko,ex};
 }
-async function vocLookup(w){
+const IRREG={"arose":["arise","과거형"],"arisen":["arise","과거분사"],"awoke":["awake","과거형"],"awoken":["awake","과거분사"],"was":["be","과거형"],"were":["be","과거형"],"been":["be","과거분사"],"bore":["bear","과거형"],"born":["bear","과거분사"],"beaten":["beat","과거분사"],"became":["become","과거형"],"began":["begin","과거형"],"begun":["begin","과거분사"],"bent":["bend","과거형·과거분사"],"bit":["bite","과거형"],"bitten":["bite","과거분사"],"bled":["bleed","과거형·과거분사"],"blew":["blow","과거형"],"blown":["blow","과거분사"],"broke":["break","과거형"],"broken":["break","과거분사"],"bred":["breed","과거형·과거분사"],"brought":["bring","과거형·과거분사"],"built":["build","과거형·과거분사"],"burnt":["burn","과거형·과거분사"],"bought":["buy","과거형·과거분사"],"caught":["catch","과거형·과거분사"],"chose":["choose","과거형"],"chosen":["choose","과거분사"],"clung":["cling","과거형·과거분사"],"came":["come","과거형"],"crept":["creep","과거형·과거분사"],"dealt":["deal","과거형·과거분사"],"dug":["dig","과거형·과거분사"],"did":["do","과거형"],"done":["do","과거분사"],"drew":["draw","과거형"],"drawn":["draw","과거분사"],"dreamt":["dream","과거형·과거분사"],"drank":["drink","과거형"],"drunk":["drink","과거분사"],"drove":["drive","과거형"],"driven":["drive","과거분사"],"ate":["eat","과거형"],"eaten":["eat","과거분사"],"fell":["fall","과거형"],"fallen":["fall","과거분사"],"fed":["feed","과거형·과거분사"],"felt":["feel","과거형·과거분사"],"fought":["fight","과거형·과거분사"],"fled":["flee","과거형·과거분사"],"flew":["fly","과거형"],"flown":["fly","과거분사"],"forbade":["forbid","과거형"],"forbidden":["forbid","과거분사"],"forgot":["forget","과거형"],"forgotten":["forget","과거분사"],"forgave":["forgive","과거형"],"forgiven":["forgive","과거분사"],"froze":["freeze","과거형"],"frozen":["freeze","과거분사"],"got":["get","과거형"],"gotten":["get","과거분사"],"gave":["give","과거형"],"given":["give","과거분사"],"went":["go","과거형"],"gone":["go","과거분사"],"grew":["grow","과거형"],"grown":["grow","과거분사"],"hung":["hang","과거형·과거분사"],"had":["have","과거형·과거분사"],"heard":["hear","과거형·과거분사"],"hid":["hide","과거형"],"hidden":["hide","과거분사"],"held":["hold","과거형·과거분사"],"kept":["keep","과거형·과거분사"],"knelt":["kneel","과거형·과거분사"],"knew":["know","과거형"],"known":["know","과거분사"],"laid":["lay","과거형·과거분사"],"led":["lead","과거형·과거분사"],"leant":["lean","과거형·과거분사"],"leapt":["leap","과거형·과거분사"],"learnt":["learn","과거형·과거분사"],"lent":["lend","과거형·과거분사"],"lost":["lose","과거형·과거분사"],"made":["make","과거형·과거분사"],"meant":["mean","과거형·과거분사"],"met":["meet","과거형·과거분사"],"overcame":["overcome","과거형"],"paid":["pay","과거형·과거분사"],"rode":["ride","과거형"],"ridden":["ride","과거분사"],"rang":["ring","과거형"],"rung":["ring","과거분사"],"rose":["rise","과거형"],"risen":["rise","과거분사"],"ran":["run","과거형"],"said":["say","과거형·과거분사"],"seen":["see","과거분사"],"sought":["seek","과거형·과거분사"],"sold":["sell","과거형·과거분사"],"sent":["send","과거형·과거분사"],"shook":["shake","과거형"],"shaken":["shake","과거분사"],"shone":["shine","과거형·과거분사"],"shot":["shoot","과거형·과거분사"],"showed":["show","과거형"],"shown":["show","과거분사"],"shrank":["shrink","과거형"],"shrunk":["shrink","과거분사"],"sang":["sing","과거형"],"sung":["sing","과거분사"],"sank":["sink","과거형"],"sunk":["sink","과거분사"],"sat":["sit","과거형·과거분사"],"slept":["sleep","과거형·과거분사"],"slid":["slide","과거형·과거분사"],"spoke":["speak","과거형"],"spoken":["speak","과거분사"],"spent":["spend","과거형·과거분사"],"spilt":["spill","과거형·과거분사"],"spun":["spin","과거형·과거분사"],"stood":["stand","과거형·과거분사"],"stole":["steal","과거형"],"stolen":["steal","과거분사"],"stuck":["stick","과거형·과거분사"],"stung":["sting","과거형·과거분사"],"struck":["strike","과거형·과거분사"],"strove":["strive","과거형"],"striven":["strive","과거분사"],"swore":["swear","과거형"],"sworn":["swear","과거분사"],"swept":["sweep","과거형·과거분사"],"swam":["swim","과거형"],"swum":["swim","과거분사"],"swung":["swing","과거형·과거분사"],"took":["take","과거형"],"taken":["take","과거분사"],"taught":["teach","과거형·과거분사"],"tore":["tear","과거형"],"torn":["tear","과거분사"],"told":["tell","과거형·과거분사"],"thought":["think","과거형·과거분사"],"threw":["throw","과거형"],"thrown":["throw","과거분사"],"understood":["understand","과거형·과거분사"],"undertook":["undertake","과거형"],"undertaken":["undertake","과거분사"],"woke":["wake","과거형"],"woken":["wake","과거분사"],"wore":["wear","과거형"],"worn":["wear","과거분사"],"wept":["weep","과거형·과거분사"],"won":["win","과거형·과거분사"],"withdrew":["withdraw","과거형"],"withdrawn":["withdraw","과거분사"],"wrote":["write","과거형"],"written":["write","과거분사"]};
+async function vocLookup(w){ const [r,lm]=await Promise.all([vocLookup0(w), vocLemma(w).catch(()=>null)]); return lm? {...r, base:lm.base, form:lm.form} : r; }
+async function vocLemma(w){
+  const k=String(w).toLowerCase().trim(); if(!/^[a-z][a-z'-]*$/.test(k) || k.length<4) return null;
+  if(IRREG[k]) return {base:IRREG[k][0], form:IRREG[k][1]};
+  await loadDict(); const L=new Set([...Object.keys(G||{}), ...Object.keys(DICT||{}), ...((D&&D.words)||[]).map(x=>String(x.w).toLowerCase())]); if(P1Q && P1Q.topics) for(const t of P1Q.topics) for(const v of (t.vocab||[])) L.add(String(v[0]).toLowerCase());
+  const C=[]; const add=(b,f)=>{ if(b && b.length>=2 && b!==k) C.push([b,f]); };
+  if(/ied$/.test(k)) add(k.slice(0,-3)+"y","과거형·과거분사");
+  else if(/ed$/.test(k)){ if(k[k.length-3]===k[k.length-4]) add(k.slice(0,-3),"과거형·과거분사"); add(k.slice(0,-1),"과거형·과거분사"); add(k.slice(0,-2),"과거형·과거분사"); }
+  if(/ying$/.test(k)) add(k.slice(0,-4)+"ie","-ing형");
+  if(/ing$/.test(k)){ if(k[k.length-4]===k[k.length-5]) add(k.slice(0,-4),"-ing형"); add(k.slice(0,-3)+"e","-ing형"); add(k.slice(0,-3),"-ing형"); }
+  if(/ies$/.test(k)) add(k.slice(0,-3)+"y","3인칭 단수·복수형");
+  else if(/(ches|shes|sses|xes|zes|oes)$/.test(k)) add(k.slice(0,-2),"3인칭 단수·복수형");
+  else if(/[^s]s$/.test(k)) add(k.slice(0,-1),"3인칭 단수·복수형");
+  if(!C.length) return null;
+  for(const [b,f] of C) if(L.has(b)) return {base:b, form:f};
+  try{ const r=await fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=bd&q="+encodeURIComponent(k)).then(x=>x.ok? x.json():null); const b=r&&r[1]&&r[1][0]&&r[1][0][3]; if(b && String(b).toLowerCase()!==k){ const bb=String(b).toLowerCase(); const hit=C.find(c=>c[0]===bb); return {base:bb, form: hit? hit[1] : (/ed$/.test(k)? "과거형·과거분사" : /ing$/.test(k)? "-ing형" : "변화형")}; } }catch(_){ }
+  for(const [b,f] of C.slice(0,3)){ try{ const ok=await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/"+encodeURIComponent(b)).then(x=>x.ok); if(ok) return {base:b, form:f}; }catch(_){ } }
+  return null; }
+async function vocLookup0(w){
   await loadDict(); const loc=vocLocal(w); if(loc.src==="d" || (loc.ko && loc.ex)) return loc;
   const u="https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&dt=bd&dt=ex&q="+encodeURIComponent(w);
   const r=await fetch(u).then(x=>x.ok? x.json():null).catch(()=>null);
@@ -1251,9 +1270,9 @@ let vcFill=false;
 function vocBackfill(){
   if(vcFill) return;
   if(!DICT){ loadDict().then(()=>{ if(view.tab==="vocab") render(); }); return; }
-  { const m=store.get(`bandup-myvoc-${slug}`,[]); let ch=false; for(const y of m){ const e=DICT[String(y.w).toLowerCase()]; if(e && y.src!=="d"){ y.ko=e.ko||y.ko; y.ex=e.ex||y.ex; y.src="d"; y.tried=1; delete y.lk; ch=true; } } if(ch){ store.set(`bandup-myvoc-${slug}`,m); if(view.tab==="vocab") setTimeout(render,0); return; } } const mine=store.get(`bandup-myvoc-${slug}`,[]); const need=mine.filter(x=>(!x.ko || !x.ex) && x.tried!==today()); if(!need.length) return;
+  { const m=store.get(`bandup-myvoc-${slug}`,[]); let ch=false; for(const y of m){ const e=DICT[String(y.w).toLowerCase()]; if(e && y.src!=="d"){ y.ko=e.ko||y.ko; y.ex=e.ex||y.ex; y.src="d"; y.tried=1; delete y.lk; ch=true; } } if(ch){ store.set(`bandup-myvoc-${slug}`,m); if(view.tab==="vocab") setTimeout(render,0); return; } } const mine=store.get(`bandup-myvoc-${slug}`,[]); const need=mine.filter(x=>((!x.ko || !x.ex) && x.tried!==today()) || (!x.lm && !/\s/.test(String(x.w)))); if(!need.length) return;
   vcFill=true;
-  (async()=>{ let changed=false; for(const x of need){ const r=await vocLookup(x.w); if(!r.ko && !r.ex){ const m0=store.get(`bandup-myvoc-${slug}`,[]); const y0=m0.find(z=>z.t===x.t); if(y0){ y0.tried=today(); store.set(`bandup-myvoc-${slug}`,m0); } continue; } const m=store.get(`bandup-myvoc-${slug}`,[]); const y=m.find(z=>z.t===x.t); if(!y) continue; if(!y.ko) y.ko=r.ko; if(!y.ex) y.ex=r.ex; y.tried=today(); if(y.ko) delete y.lk; store.set(`bandup-myvoc-${slug}`,m); changed=true; }
+  (async()=>{ let changed=false; for(const x of need){ const r=await vocLookup(x.w); if(!r.ko && !r.ex){ const m0=store.get(`bandup-myvoc-${slug}`,[]); const y0=m0.find(z=>z.t===x.t); if(y0){ y0.tried=today(); y0.lm=1; store.set(`bandup-myvoc-${slug}`,m0); } continue; } const m=store.get(`bandup-myvoc-${slug}`,[]); const y=m.find(z=>z.t===x.t); if(!y) continue; if(!y.ko) y.ko=r.ko; if(!y.ex) y.ex=r.ex; if(r.base&&!y.base){ y.base=r.base; y.form=r.form; } y.lm=1; y.tried=today(); if(y.ko) delete y.lk; store.set(`bandup-myvoc-${slug}`,m); changed=true; }
     vcFill=false; if(changed && view.tab==="vocab") render(); })();
 }
 function vocForm(app){
@@ -1270,7 +1289,7 @@ function vocForm(app){
     if(vocAll().some(x=>x.w.toLowerCase()===w.toLowerCase())){ msg.textContent="이미 단어장에 있는 단어예요."; return; }
     save.disabled=true; iw.disabled=true; msg.textContent="뜻과 예문을 찾는 중…";
     const r=await vocLookup(w);
-    const mine=store.get(`bandup-myvoc-${slug}`,[]); const it={w,ko:r.ko||"",ex:r.ex||"",t:Date.now(),tried:1}; if(r.src==="d") it.src="d"; if(!r.ko) it.lk=0; mine.push(it); store.set(`bandup-myvoc-${slug}`,mine);
+    const mine=store.get(`bandup-myvoc-${slug}`,[]); const it={w,ko:r.ko||"",ex:r.ex||"",t:Date.now(),tried:1}; if(r.base){ it.base=r.base; it.form=r.form; } if(r.src==="d") it.src="d"; if(!r.ko) it.lk=0; mine.push(it); store.set(`bandup-myvoc-${slug}`,mine);
     vcAdd=false; vcState=null; vcQuery=""; render(); };
   save.onclick=go; iw.onkeydown=e=>{ if(e.key==="Enter"){ e.preventDefault(); go(); } };
   row.append(cancel,save); f.append(msg,row); app.append(f);
@@ -1325,7 +1344,7 @@ function renderVocab(app){
     const filt=()=>{ vcQuery=sq.value; const q=sq.value.trim().toLowerCase(); let n=0; wrap.querySelectorAll(".idrow").forEach(r=>{ const hit=!q || r.dataset.k.includes(q); r.hidden=!hit; if(hit) n++; }); none.hidden=n>0; };
     sq.oninput=filt; app.append(sq);
     W.forEach((w,i)=>{ const key=(w.mine?"m":"c")+(w.t||w.w); const r=el("div","idrow"); r.setAttribute("role","button"); r.tabIndex=0; r.dataset.k=(w.w+" "+w.ko+" "+(w.ex||"")).toLowerCase(); const open=vcOpen.has(key);
-      const t=el("div","idt"); const hd=el("b",null,w.w); t.append(hd, el("span","idko",w.ko||(w.lk===0||w.tried? "뜻을 준비 중이에요 · 곧 채워 드려요" : "뜻 찾는 중…")));
+      const t=el("div","idt"); const hd=el("b",null,w.w); if(w.base) hd.append(el("span","vbase",`← ${w.base} · ${w.form||"변화형"}`)); t.append(hd, el("span","idko",w.ko||(w.lk===0||w.tried? "뜻을 준비 중이에요 · 곧 채워 드려요" : "뜻 찾는 중…")));
       const more=el("div","vcmore"); more.hidden=!open; if(w.ex) more.append(el("p","idex",w.ex));
       const del=el("button","vcx","삭제"); del.type="button"; del.setAttribute("aria-label",w.w+" 삭제");
       del.onclick=e=>{ e.stopPropagation(); if(!del.classList.contains("sure")){ del.classList.add("sure"); del.textContent="삭제할까요?"; setTimeout(()=>{ if(del.isConnected){ del.classList.remove("sure"); del.textContent="삭제"; } },3000); return; }
@@ -1345,7 +1364,7 @@ function renderVocab(app){
   const bar=el("div","bar"); const bi=el("i"); bi.style.width=((S.i+1)/S.ids.length*100)+"%"; bar.append(bi); app.append(bar);
   const c=el("button","idcard"); c.type="button";
   const top=el("div","idc-top"); top.append(el("b",null, w.ko)); c.append(top);
-  if(S.show){ c.append(el("p","idc-ko",w.w)); if(w.ex) c.append(el("p","idc-ex",w.ex)); } else c.append(el("p","idc-hint","영어로 뭐였을까요? 눌러서 확인"));
+  if(S.show){ c.append(el("p","idc-ko",w.w)); if(w.base) c.append(el("p","vbase2",`원형 ${w.base} · ${w.form||"변화형"}`)); if(w.ex) c.append(el("p","idc-ex",w.ex)); } else c.append(el("p","idc-hint","영어로 뭐였을까요? 눌러서 확인"));
   c.onclick=()=>{ S.show=!S.show; render(); }; app.append(c);
   const mv=d=>{ S.i=Math.max(0,Math.min(S.ids.length-1,S.i+d)); S.show=false; render(); };
   const acts=el("div","acts arrows");
@@ -1443,7 +1462,7 @@ async function inboxPull(force){ if(!D || !D.inbox || inboxBusy || (!IS_MOBILE &
     const it={w,ko:"",ex: w.split(" ").length>=5? w : "",t:Date.now()+i,inbox:1}; mine.push(it); added.push(it); have.add(w.toLowerCase()); });
   store.set(key,mine);
   if(added.length){ toast(`📥 밖에서 저장한 ${added.length}개를 단어장에 담았어요`,true); if(view.tab==="vocab"||view.tab==="home") render(); }
-  for(const it of added){ const r=await vocLookup(it.w); const m=store.get(key,[]); const y=m.find(z=>z.t===it.t); if(!y) continue; y.ko=r.ko||y.ko; if(!y.ex) y.ex=r.ex||""; if(r.src==="d") y.src="d"; y.tried=today(); store.set(key,m); }
+  for(const it of added){ const r=await vocLookup(it.w); const m=store.get(key,[]); const y=m.find(z=>z.t===it.t); if(!y) continue; y.ko=r.ko||y.ko; if(!y.ex) y.ex=r.ex||""; if(r.base){ y.base=r.base; y.form=r.form; } if(r.src==="d") y.src="d"; y.tried=today(); store.set(key,m); }
   inboxBusy=false; if(added.length && view.tab==="vocab") render(); }
 function inboxBookmarklet(){ return "javascript:(function(){var s=String(window.getSelection()).trim();if(!s){s=prompt('밴드업에 저장할 영어 단어나 문장');}if(!s)return;window.open('https://pekay0147.github.io/bandup/save.html#t="+D.inbox+"&x='+encodeURIComponent(s),'bandup','width=380,height=220');})();"; }
 async function inboxSend(txt){ const r=await fetch(SB_URL+"/rest/v1/rpc/bu_add",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_token:D.inbox,p_txt:txt})}); if(!r.ok) throw new Error(r.status); }
@@ -1462,7 +1481,7 @@ async function openMini(){
 }
 function vocQuickAdd(w,sent){ w=String(w).replace(/\s+/g," ").trim(); if(!w) return false; const key=`bandup-myvoc-${slug}`; if(vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase())) return false;
   const it={w,ko:"",ex: sent? w : "",t:Date.now()}; const m=store.get(key,[]); m.push(it); store.set(key,m);
-  vocLookup(w).then(r=>{ const mm=store.get(key,[]); const y=mm.find(z=>z.t===it.t); if(!y) return; y.ko=r.ko||y.ko; if(!y.ex) y.ex=r.ex||""; if(r.src==="d") y.src="d"; y.tried=today(); store.set(key,mm); }); return true; }
+  vocLookup(w).then(r=>{ const mm=store.get(key,[]); const y=mm.find(z=>z.t===it.t); if(!y) return; y.ko=r.ko||y.ko; if(!y.ex) y.ex=r.ex||""; if(r.base){ y.base=r.base; y.form=r.form; } if(r.src==="d") y.src="d"; y.tried=today(); store.set(key,mm); }); return true; }
 let scrSel=[], scrTrQueue=[], scrTrBusy=false;
 function scrParas(text){ const lines=String(text).split(/\n+/).map(x=>x.trim()).filter(x=>/[A-Za-z]{2}/.test(x)); const out=[];
   for(const ln of lines){ const prev=out[out.length-1]; const words=ln.split(/\s+/).length;
