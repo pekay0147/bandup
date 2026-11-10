@@ -503,6 +503,80 @@
      "ex": "We begin the perfect, sinless, never-ending marveling at the greatest marvel."
     }
    ]
+  },
+  {
+   "no": 7,
+   "date": "2026-11-10",
+   "title": "Solid Joys · 두려움을 닦아 내라",
+   "link": {
+    "title": "Wipe Your Fears Away",
+    "url": "https://www.desiringgod.org/solid-joys/wipe-your-fears-away",
+    "date": "10 Nov",
+    "src": "Solid Joys"
+   },
+   "label": "10 Nov",
+   "vocab": [
+    {
+     "w": "put one's trust in",
+     "ko": "~를 의지하다",
+     "ex": "When I am afraid, I put my trust in you."
+    },
+    {
+     "w": "deal with",
+     "ko": "~을 다루다",
+     "ex": "I have to deal with feelings of anxiety almost every day."
+    },
+    {
+     "w": "inadequate",
+     "ko": "부족한, 불충분한",
+     "ex": "I feel like my faith in God's grace must be totally inadequate."
+    },
+    {
+     "w": "lose sight of",
+     "ko": "~을 놓치다",
+     "ex": "The fact that you temporarily lose sight of your goal and start to swerve does not mean that you are going to quit the race."
+    },
+    {
+     "w": "swerve",
+     "ko": "방향을 홱 틀다, 비틀거리다",
+     "ex": "The fact that you temporarily lose sight of your goal and start to swerve does not mean that you are going to quit the race."
+    },
+    {
+     "w": "windshield wipers",
+     "ko": "자동차 와이퍼",
+     "ex": "What it means is that you should turn on your windshield wipers."
+    },
+    {
+     "w": "adversary",
+     "ko": "적, 상대",
+     "ex": "Otherwise, your competitor — your adversary — wouldn't bother you at all."
+    },
+    {
+     "w": "sputter",
+     "ko": "털털거리다, 흔들리다",
+     "ex": "At first blow, our belief in God's promises may sputter and swerve."
+    },
+    {
+     "w": "strike",
+     "ko": "(나쁜 일이) 닥치다",
+     "ex": "Fear strikes, and the battle begins."
+    },
+    {
+     "w": "assume",
+     "ko": "가정하다, 당연히 여기다",
+     "ex": "The Bible does not assume that true believers will have no anxieties."
+    },
+    {
+     "w": "faithless",
+     "ko": "믿음이 없는",
+     "ex": "This does not mean that we are faithless."
+    },
+    {
+     "w": "struggle with",
+     "ko": "~와 씨름하다",
+     "ex": "Notice: it does not say, “I never struggle with fear.”"
+    }
+   ]
   }
  ],
  "types": [
@@ -1334,6 +1408,150 @@
    "en": "We begin the perfect, sinless, never-ending marveling at the greatest marvel.",
    "hint": "never-ending",
    "gram": "형용사를 여러 개 나열: perfect, sinless, <em>never-ending</em>(끝없는). <em>marvel</em>은 명사로 '경이'. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s7-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "내가 두려워하는 날에는 주를 의지하리이다. (시편 56:3)",
+   "en": "When I am afraid, I put my trust in you.",
+   "hint": "trust",
+   "gram": "<em>put one's trust in</em> ~ = ~를 의지하다, 신뢰하다. <em>When I am afraid,</em> = 두려울 때. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s7-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "저는 거의 매일 불안한 감정을 다뤄야 해요.",
+   "en": "I have to deal with feelings of anxiety almost every day.",
+   "hint": "deal",
+   "gram": "<em>deal with</em> ~ = ~을 다루다, 처리하다. <em>feelings of anxiety</em> = 불안한 감정. <em>almost every day</em> = 거의 매일. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s7-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "그래서 하나님의 은혜에 대한 제 믿음이 완전히 부족한 게 틀림없다고 느껴요.",
+   "en": "I feel like my faith in God's grace must be totally inadequate.",
+   "hint": "inadequate",
+   "gram": "<em>I feel like</em> + 문장 = ~인 것 같다고 느끼다. <em>must be</em> = ~임에 틀림없다(추측). <em>inadequate</em> = 부족한, 불충분한. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s7-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "당신이 잠시 목표를 놓치고 비틀거리기 시작한다고 해서 경주를 그만둔다는 뜻은 아닙니다.",
+   "en": "The fact that you temporarily lose sight of your goal and start to swerve does not mean that you are going to quit the race.",
+   "hint": "swerve",
+   "gram": "<em>The fact that</em> ~ <em>does not mean that</em> ~ = ~라는 사실이 …라는 뜻은 아니다. <em>lose sight of</em> = ~을 놓치다. <em>swerve</em> = 방향을 홱 틀다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s7-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "당신이 해야 할 일은 와이퍼를 켜는 것입니다.",
+   "en": "What it means is that you should turn on your windshield wipers.",
+   "hint": "wipers",
+   "gram": "<em>What it means is that</em> ~ = 그것이 의미하는 건 ~이다. <em>turn on</em> = 켜다. <em>windshield wipers</em> = 자동차 와이퍼. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s7-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "그것은 우리의 믿음이 공격받고 있다는 뜻입니다.",
+   "en": "It means our faith is being attacked.",
+   "hint": "attacked",
+   "gram": "<em>is being</em> + p.p. = ~되고 있는 중이다(현재진행 수동). <em>It means</em> + 문장 = ~라는 뜻이다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s7-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "처음 타격을 받으면 하나님의 약속에 대한 우리의 믿음이 흔들릴 수 있습니다.",
+   "en": "At first blow, our belief in God's promises may sputter and swerve.",
+   "hint": "sputter",
+   "gram": "<em>At first blow</em> = 처음 타격을 받으면. <em>may</em> = ~할 수도 있다. <em>sputter</em> = (엔진이) 털털거리다, 흔들리다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s7-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "보세요, 이 구절은 '나는 결코 두려움과 씨름하지 않는다'고 말하지 않습니다.",
+   "en": "Notice: it does not say, “I never struggle with fear.”",
+   "hint": "struggle",
+   "gram": "<em>struggle with</em> ~ = ~와 씨름하다, ~로 힘들어하다. <em>Notice:</em> = 주목하세요(강조하며 시작). <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s7-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "두려움이 닥치면 싸움이 시작됩니다.",
+   "en": "Fear strikes, and the battle begins.",
+   "hint": "strikes",
+   "gram": "<em>strike</em> = (나쁜 일이) 갑자기 닥치다. 짧은 두 문장을 and로 연결해 긴장감을 줘요. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s7-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "성경은 참된 신자에게 불안이 전혀 없을 거라고 가정하지 않습니다.",
+   "en": "The Bible does not assume that true believers will have no anxieties.",
+   "hint": "assume",
+   "gram": "<em>assume that</em> + 문장 = ~라고 가정하다, 당연히 여기다. <em>true believers</em> = 참된 신자들. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s7-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "대신 성경은 불안이 닥칠 때 어떻게 싸워야 하는지 알려 줍니다.",
+   "en": "Instead, the Bible tells us how to fight when they strike.",
+   "hint": "Instead",
+   "gram": "<em>Instead,</em> = 대신에(앞 내용과 대조). <em>tell</em> 사람 <em>how to</em> + 동사 = ~에게 …하는 법을 알려 주다. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s7-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    7
+   ],
+   "ko": "그것은 우리가 믿음이 없다는 뜻이 아닙니다.",
+   "en": "This does not mean that we are faithless.",
+   "hint": "faithless",
+   "gram": "<em>does not mean that</em> ~ = ~라는 뜻은 아니다. <em>faithless</em> = 믿음이 없는. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
   }
  ],
  "part1": [],
