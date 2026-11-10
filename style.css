@@ -1042,3 +1042,7 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .vcform textarea{font:inherit;font-size:16px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--surface,#fff);color:inherit;resize:vertical}
 .vctools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.vctools .linkbtn{font-size:13px}
 .vcbtns{display:flex;flex-direction:column;gap:6px;flex:none;align-self:flex-start}
+.txbox{display:grid;gap:10px}.txbox p{margin:0}
+.txcode{width:100%;box-sizing:border-box;font:12px/1.4 ui-monospace,monospace;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--surface,#fff);color:inherit;resize:vertical;word-break:break-all}
+.txmsg{color:var(--blue);font-weight:600}
+button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px;cursor:pointer}

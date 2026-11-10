@@ -1029,5 +1029,6 @@
   "groups/other",
   "groups/church"
  ],
- "podAuto": true
+ "podAuto": true,
+ "backup": true
 }

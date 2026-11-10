@@ -183,6 +183,7 @@ function render(){
   if(view.tab==="idioms") renderIdioms(app);
   if(view.tab==="podpick") renderPodPick(app);
   if(view.tab==="vocab") renderVocab(app);
+  if(view.tab==="transfer") renderTransfer(app);
   updateTabs();
   document.body.classList.toggle("lesson", !!app.querySelector(".lbar"));
 }
@@ -339,6 +340,7 @@ function renderHome(app){
   if(D.common && PROFILE){ const pe=el("button","guidelink","내 정보 (이름·시험 날짜·목표) 고치기 ›"); pe.type="button"; pe.style.cssText="border:0;background:none;width:100%;cursor:pointer;font:inherit;font-size:13px"; pe.onclick=()=>go("profile"); app.append(pe); }
   if(D.form && D.form.url && !D.demo) app.append(el("p","muted small sharenote","공부 기록과 내 단어장은 선생님께 전달돼요. 수업 준비에만 써요."));
   if(D.group==="church"||D.group==="other"){ const mg=el("a","guidelink","앱 사용 설명서 ›"); mg.href="guide/"+D.group+".html"; app.append(mg); }
+  if(D.backup){ const tb=el("button","guidelink","📲 폰 바꿀 때 · 공부 기록 옮기기 ›"); tb.type="button"; tb.onclick=()=>go("transfer"); app.append(tb); }
   if(!(window.matchMedia&&matchMedia("(display-mode: standalone)").matches) && !navigator.standalone){ const g=el("a","guidelink","홈 화면에 앱으로 추가하는 법 ›"); g.href="guide/"; app.append(g); }
 }
 
@@ -1337,6 +1339,50 @@ function renderVocab(app){
   const prev=el("button","nav","‹ 이전"); prev.type="button"; prev.disabled=S.i===0; prev.onclick=()=>mv(-1);
   const next=el("button","nav","다음 ›"); next.type="button"; next.disabled=S.i>=S.ids.length-1; next.onclick=()=>mv(1);
   acts.append(prev,next); app.append(acts);
+}
+
+/* ---------- 공부 기록 옮기기 (계정 없이 새 폰으로) ---------- */
+const TX_MERGE={myvoc:"voc", days:"set", cbm:"set", qbm:"qbm", vochide:"set", poddone:"set", mycards:"arr"};
+function txKeys(){ const out=[]; try{ for(let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if(k && k.startsWith("bandup-") && k.endsWith("-"+slug) && !k.startsWith("bandup-stat-")) out.push(k); } }catch(_){ } return out; }
+async function txPack(){ const data={}; for(const k of txKeys()) data[k.slice(7,-(slug.length+1))]=store.get(k,null);
+  const json=JSON.stringify({v:1,slug,at:Date.now(),data}); let bytes=new TextEncoder().encode(json), z="0";
+  try{ if(window.CompressionStream){ bytes=new Uint8Array(await new Response(new Blob([bytes]).stream().pipeThrough(new CompressionStream("gzip"))).arrayBuffer()); z="1"; } }catch(_){ }
+  let bin=""; for(let i=0;i<bytes.length;i+=8192) bin+=String.fromCharCode.apply(null,bytes.subarray(i,i+8192)); return "BANDUP"+z+":"+btoa(bin); }
+async function txUnpack(code){ const m=String(code||"").replace(/\s+/g,"").match(/BANDUP([01]):([A-Za-z0-9+/=]+)/); if(!m) throw new Error("코드 형식이 달라요");
+  const bin=atob(m[2]); let bytes=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+  if(m[1]==="1") bytes=new Uint8Array(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"))).arrayBuffer());
+  return JSON.parse(new TextDecoder().decode(bytes)); }
+function txMerge(pack){ let n=0; for(const [name,val] of Object.entries(pack.data||{})){ if(val==null) continue; const k=`bandup-${name}-${slug}`; const cur=store.get(k,null); const mode=TX_MERGE[name]; let out;
+    if(cur==null) out=val;
+    else if(mode==="voc"){ const seen=new Set(cur.map(x=>String(x.w).toLowerCase())); out=[...cur]; for(const x of val) if(!seen.has(String(x.w).toLowerCase())){ out.push(x); seen.add(String(x.w).toLowerCase()); } }
+    else if(mode==="set"||mode==="arr"){ const key=x=>typeof x==="object"? JSON.stringify(x) : String(x); const seen=new Set(cur.map(key)); out=[...cur]; for(const x of val) if(!seen.has(key(x))){ out.push(x); seen.add(key(x)); } if(name==="days") out.sort(); }
+    else if(mode==="qbm"){ const seen=new Set(cur.map(x=>x.q)); out=[...cur, ...val.filter(x=>!seen.has(x.q))]; }
+    else if(cur && val && typeof cur==="object" && typeof val==="object" && !Array.isArray(cur)){ out={...cur}; for(const [kk,vv] of Object.entries(val)){ const c=out[kk]; const t=x=>x&&typeof x==="object"? String(x.last||x.at||x.t||x.d||"")+"|"+String(1e6+(x.reviews||0)) : ""; if(c==null || t(vv)>t(c)) out[kk]=vv; } }
+    else out=val;
+    store.set(k,out); n++; } return n; }
+let txState=null;
+function renderTransfer(app){
+  const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>{ txState=null; go("home"); }; app.append(back);
+  pageHead(app,"공부 기록 옮기기","폰을 바꾸거나 앱을 다시 설치할 때 쓰세요. 단어장, 복습 일정, 북마크, 공부한 날이 그대로 옮겨져요.");
+  const S=txState||(txState={});
+  const p1=el("div","panel txbox"); p1.append(el("b",null,"1. 지금 쓰던 폰에서"), el("p","small muted","아래 버튼을 눌러 기록 코드를 복사한 뒤, 카카오톡 '나와의 채팅' 등에 붙여 넣어 두세요."));
+  const mk=el("button","btn primary","기록 코드 복사하기"); mk.type="button"; const st1=el("p","small txmsg",S.msg1||"");
+  mk.onclick=async()=>{ mk.disabled=true; st1.textContent="만드는 중…"; try{ const code=await txPack(); S.code=code; let ok=false;
+      try{ await navigator.clipboard.writeText(code); ok=true; }catch(_){ }
+      if(!ok && navigator.share){ try{ await navigator.share({text:code}); ok=true; }catch(_){ } }
+      S.msg1= ok? `복사했어요 (단어 ${store.get(`bandup-myvoc-${slug}`,[]).length}개 포함). 새 폰 앱에서 붙여 넣으세요.` : "아래 코드를 길게 눌러 전체 복사해 주세요.";
+      render(); }catch(e){ st1.textContent="코드를 만들지 못했어요."; mk.disabled=false; } };
+  p1.append(mk, st1);
+  if(S.code){ const ta=el("textarea","txcode"); ta.readOnly=true; ta.value=S.code; ta.rows=3; ta.onclick=()=>ta.select(); p1.append(ta); }
+  app.append(p1);
+  const p2=el("div","panel txbox"); p2.append(el("b",null,"2. 새 폰에서"), el("p","small muted","새 폰에서 내 밴드업 앱을 열고 여기로 와서, 복사해 둔 코드를 붙여 넣으세요. 새 폰에 있던 기록은 지워지지 않고 합쳐져요."));
+  const ta2=el("textarea","txcode"); ta2.placeholder="BANDUP으로 시작하는 코드를 붙여 넣으세요"; ta2.rows=3; const st2=el("p","small txmsg",S.msg2||"");
+  const im=el("button","btn primary","기록 가져오기"); im.type="button";
+  im.onclick=async()=>{ const v=ta2.value.trim(); if(!v){ st2.textContent="코드를 붙여 넣어 주세요."; return; } im.disabled=true; st2.textContent="가져오는 중…";
+    try{ const pk=await txUnpack(v); if(pk.slug && pk.slug!==slug){ st2.textContent="다른 사람 앱의 코드예요. 내 앱에서 만든 코드를 넣어 주세요."; im.disabled=false; return; }
+      txMerge(pk); S.msg2=`가져왔어요! 단어장 ${store.get(`bandup-myvoc-${slug}`,[]).length}개, 공부한 날 ${store.get(`bandup-days-${slug}`,[]).length}일.`; location.hash=""; setTimeout(()=>location.reload(),1200); st2.textContent=S.msg2; }
+    catch(e){ st2.textContent="코드를 읽지 못했어요. 처음부터 끝까지 전부 붙여 넣었는지 확인해 주세요."; im.disabled=false; } };
+  p2.append(ta2, im, st2); app.append(p2);
 }
 
 /* ---------- deck (browse by session) ---------- */
