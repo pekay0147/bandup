@@ -1835,5 +1835,12 @@ window.addEventListener("hashchange",()=>{ if(window.BANDUP_SLUG) return; const 
 if("serviceWorker" in navigator && location.protocol==="https:" && !/claude|claudeusercontent/.test(location.hostname)){
   navigator.serviceWorker.register("sw.js").catch(()=>{});
 }
+(function autoUpdate(){
+  const cur=((document.querySelector('script[src*="app.js?v="]')||{}).src||"").split("v=")[1]; if(!cur) return; let last=0;
+  const check=()=>{ if(document.visibilityState!=="visible" || Date.now()-last<60000) return; last=Date.now();
+    fetch(location.pathname+"?u="+Date.now(),{cache:"no-store"}).then(r=>r.ok? r.text():"").then(t=>{ const m=t.match(/app\.js\?v=(\d+)/); if(!m || m[1]===cur) return;
+      const a=document.activeElement; if(a && /INPUT|TEXTAREA/.test(a.tagName)) return; location.reload(); }).catch(()=>{}); };
+  document.addEventListener("visibilitychange",check); setInterval(check,10*60*1000);
+})();
 boot();
 })();
