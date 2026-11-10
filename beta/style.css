@@ -1072,3 +1072,6 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 .backtoday{justify-self:start;align-self:flex-start;font:inherit;font-size:13.5px;font-weight:700;color:var(--blue);background:var(--surface);border:1.5px solid var(--blue);border-radius:999px;padding:6px 14px;cursor:pointer}
 .instbar{display:flex;align-items:center;gap:10px;justify-content:space-between;background:var(--surface);border:1.5px solid var(--blue);border-radius:14px;padding:10px 12px;font-size:13px;line-height:1.4}.instbar span{min-width:0}
 .instbtn{flex:none;font:inherit;font-size:13px;font-weight:700;color:#fff;background:var(--blue);border:0;border-radius:999px;padding:7px 12px;text-decoration:none;cursor:pointer}
+.vcform textarea{font:inherit;font-size:16px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--surface,#fff);color:inherit;resize:vertical}
+.vctools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.vctools .linkbtn{font-size:13px}
+.vcbtns{display:flex;flex-direction:column;gap:6px;flex:none;align-self:flex-start}

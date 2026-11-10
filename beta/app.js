@@ -1221,6 +1221,9 @@ async function vocLookup(w){
     ko=ms.slice(0,3).join(", "); }
   if(!ex){ try{ const xs=(r[13]&&r[13][0]||[]).map(e=>String(e[0]||"").replace(/<\/?b>/g,"").trim()).filter(s=>s.split(" ").length>=4 && s.length<=90);
       xs.sort((a,b)=>a.length-b.length); const s=xs[0]||""; if(s) ex=s.charAt(0).toUpperCase()+s.slice(1)+(/[.!?]$/.test(s)?"":"."); }catch(_){ } }
+  if(!ex){ try{ const dj=await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/"+encodeURIComponent(w.toLowerCase())).then(x=>x.ok? x.json():null).catch(()=>null);
+      const xs=[]; (dj||[]).forEach(e=>(e.meanings||[]).forEach(m=>(m.definitions||[]).forEach(d=>{ const s=String(d.example||"").trim(); if(s.split(" ").length>=4 && s.length<=100) xs.push(s); })));
+      xs.sort((a,b)=>a.length-b.length); const s=xs[0]||""; if(s) ex=s.charAt(0).toUpperCase()+s.slice(1)+(/[.!?]$/.test(s)?"":"."); }catch(_){ } }
   if(!ex){ const re=new RegExp("\\b"+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b","i"); const c=(D.cards||[]).find(c=>c.en && re.test(c.en)); if(c) ex=c.en; }
   return {ko,ex};
 }
@@ -1231,25 +1234,42 @@ function vocBackfill(){
   (async()=>{ let changed=false; for(const x of need){ const r=await vocLookup(x.w); if(!r.ko && !r.ex) continue; const m=store.get(`bandup-myvoc-${slug}`,[]); const y=m.find(z=>z.t===x.t); if(!y) continue; if(!y.ko) y.ko=r.ko; if(!y.ex) y.ex=r.ex; y.tried=1; if(y.ko) delete y.lk; store.set(`bandup-myvoc-${slug}`,m); changed=true; }
     vcFill=false; if(changed && view.tab==="vocab") render(); })();
 }
+let vcEdit=null;
 function vocForm(app){
-  const f=el("div","mineform vcform");
-  const iw=el("input"); iw.id="v-w"; iw.placeholder="예: resilient, give up"; iw.autocomplete="off"; iw.autocapitalize="off"; iw.setAttribute("autocorrect","off"); iw.spellcheck=false;
-  const l=el("label",null); l.append(el("span","small muted","영어 단어나 표현"), iw); f.append(l);
-  f.append(el("p","small muted","뜻과 예문은 자동으로 찾아서 넣어 드려요."));
+  const E=vcEdit; const f=el("div","mineform vcform");
+  if(E) f.append(el("b",null,"단어 고치기"));
+  const mk=(id,lab,ph,val,area)=>{ const i=el(area?"textarea":"input"); i.id=id; i.placeholder=ph; i.value=val||""; i.autocomplete="off"; if(area) i.rows=2; const l=el("label",null); l.append(el("span","small muted",lab), i); f.append(l); return i; };
+  const iw=mk("v-w","영어 단어나 표현","예: resilient, give up",E&&E.w); iw.autocapitalize="off"; iw.setAttribute("autocorrect","off"); iw.spellcheck=false;
+  const ik=mk("v-ko","뜻","단어를 적으면 자동으로 채워져요. 직접 고쳐도 돼요",E&&E.ko);
+  const ie=mk("v-ex","예문 (선택)","예: She is very resilient.",E&&E.ex,true);
+  const tools=el("div","vctools"); const fb=el("button","linkbtn","↻ 뜻·예문 다시 찾기"); fb.type="button"; const st=el("span","small muted",""); tools.append(fb,st); f.append(tools);
   const msg=el("p","small vcmsg","");
+  let touchedK=!!(E&&E.ko), touchedE=!!(E&&E.ex), seq=0;
+  ik.oninput=()=>{ touchedK=!!ik.value.trim(); }; ie.oninput=()=>{ touchedE=!!ie.value.trim(); };
+  const look=async force=>{ const w=iw.value.trim().replace(/\s+/g," "); if(!w || !/[A-Za-z]/.test(w)) return; const my=++seq; st.textContent="찾는 중…";
+    const r=await vocLookup(w); if(my!==seq) return;
+    if((force||!touchedK) && r.ko){ ik.value=r.ko; touchedK=false; } if((force||!touchedE) && r.ex){ ie.value=r.ex; touchedE=false; }
+    st.textContent= (r.ko||r.ex)? "자동으로 채웠어요. 틀리면 고쳐 주세요." : "못 찾았어요. 직접 적어 주세요."; };
+  let tm=null; iw.oninput=()=>{ clearTimeout(tm); tm=setTimeout(()=>look(false),700); };
+  fb.onclick=()=>look(true);
   const row=el("div","acts arrows");
-  const cancel=el("button","nav","취소"); cancel.type="button"; cancel.onclick=()=>{ vcAdd=false; render(); };
+  const cancel=el("button","nav","취소"); cancel.type="button"; cancel.onclick=()=>{ vcAdd=false; vcEdit=null; render(); };
   const save=el("button","btn primary","저장"); save.type="button";
   const go=async()=>{ const w=iw.value.trim().replace(/\s+/g," "); if(!w){ msg.textContent="영어 단어를 적어 주세요."; iw.focus(); return; }
     if(!/[A-Za-z]/.test(w)){ msg.textContent="영어로 적어 주세요."; iw.focus(); return; }
-    if(vocAll().some(x=>x.w.toLowerCase()===w.toLowerCase())){ msg.textContent="이미 단어장에 있는 단어예요."; return; }
-    save.disabled=true; iw.disabled=true; msg.textContent="뜻과 예문을 찾는 중…";
-    const r=await vocLookup(w);
-    const mine=store.get(`bandup-myvoc-${slug}`,[]); const it={w,ko:r.ko||"",ex:r.ex||"",t:Date.now(),tried:1}; if(!r.ko) it.lk=0; mine.push(it); store.set(`bandup-myvoc-${slug}`,mine);
-    vcAdd=false; vcState=null; vcQuery=""; render(); };
-  save.onclick=go; iw.onkeydown=e=>{ if(e.key==="Enter"){ e.preventDefault(); go(); } };
+    const same=x=>x.w.toLowerCase()===w.toLowerCase();
+    if(vocAll().some(x=>same(x) && !(E && (E.mine? x.t===E.t : !x.mine && x.w===E.w)))){ msg.textContent="이미 단어장에 있는 단어예요."; return; }
+    let ko=ik.value.trim(), ex=ie.value.trim();
+    if(!ko && !ex){ save.disabled=true; msg.textContent="뜻과 예문을 찾는 중…"; const r=await vocLookup(w); ko=r.ko||""; ex=r.ex||""; save.disabled=false; }
+    const mine=store.get(`bandup-myvoc-${slug}`,[]);
+    if(E && E.mine){ const y=mine.find(z=>z.t===E.t); if(y){ y.w=w; y.ko=ko; y.ex=ex; y.tried=1; delete y.lk; } }
+    else { if(E && !E.mine){ const h=store.get(`bandup-vochide-${slug}`,[]); h.push(E.w.toLowerCase()); store.set(`bandup-vochide-${slug}`,h); }
+      const it={w,ko,ex,t:Date.now(),tried:1}; if(!ko) it.lk=0; mine.push(it); }
+    store.set(`bandup-myvoc-${slug}`,mine);
+    vcAdd=false; vcEdit=null; vcState=null; vcQuery=""; render(); };
+  save.onclick=go; iw.onkeydown=e=>{ if(e.key==="Enter"){ e.preventDefault(); ik.focus(); } };
   row.append(cancel,save); f.append(msg,row); app.append(f);
-  setTimeout(()=>iw.focus(),50);
+  setTimeout(()=>(E? ik : iw).focus(),50);
 }
 function exLine(line,word){
   const segs=line.split(/\s*[—–|•·]\s*|\s+-\s+/).map(x=>x.replace(/[^\x20-\x7E’“”]/g," ").replace(/^[^A-Za-z]+/,"").replace(/\s+/g," ").trim()).filter(x=>x.toLowerCase().includes(word.toLowerCase()) && x.split(" ").length>=3);
@@ -1285,7 +1305,7 @@ function renderVocab(app){
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>{ vcAdd=false; vcOcr=null; go("home"); }; app.append(back);
   pageHead(app,"내 단어장",`단어 ${W.length}개`);
   const adds=el("div","vcadds");
-  const b1=el("button","vcaddbtn","+ 직접 추가"); b1.type="button"; b1.onclick=()=>{ vcAdd=true; vcOcr=null; vcMode="list"; render(); };
+  const b1=el("button","vcaddbtn","+ 직접 추가"); b1.type="button"; b1.onclick=()=>{ vcAdd=true; vcEdit=null; vcOcr=null; vcMode="list"; render(); };
   adds.append(b1); app.append(adds);
   if(vcAdd){ vocForm(app); return; }
   vocBackfill();
@@ -1300,15 +1320,16 @@ function renderVocab(app){
     const filt=()=>{ vcQuery=sq.value; const q=sq.value.trim().toLowerCase(); let n=0; wrap.querySelectorAll(".idrow").forEach(r=>{ const hit=!q || r.dataset.k.includes(q); r.hidden=!hit; if(hit) n++; }); none.hidden=n>0; };
     sq.oninput=filt; app.append(sq);
     W.forEach((w,i)=>{ const key=(w.mine?"m":"c")+(w.t||w.w); const r=el("div","idrow"); r.setAttribute("role","button"); r.tabIndex=0; r.dataset.k=(w.w+" "+w.ko+" "+(w.ex||"")).toLowerCase(); const open=vcOpen.has(key);
-      const t=el("div","idt"); const hd=el("b",null,w.w); if(w.mine) hd.append(el("span","vcmine","내가 추가")); t.append(hd, el("span","idko",w.ko||"뜻 찾는 중…"));
+      const t=el("div","idt"); const hd=el("b",null,w.w); if(w.mine) hd.append(el("span","vcmine","내가 추가")); t.append(hd, el("span","idko",w.ko||(w.lk===0||w.tried? "뜻 없음 · 수정을 눌러 적어 주세요" : "뜻 찾는 중…")));
       const more=el("div","vcmore"); more.hidden=!open; if(w.ex) more.append(el("p","idex",w.ex));
       const del=el("button","vcx","삭제"); del.type="button"; del.setAttribute("aria-label",w.w+" 삭제");
       del.onclick=e=>{ e.stopPropagation(); if(!del.classList.contains("sure")){ del.classList.add("sure"); del.textContent="삭제할까요?"; setTimeout(()=>{ if(del.isConnected){ del.classList.remove("sure"); del.textContent="삭제"; } },3000); return; }
         if(w.mine){ store.set(`bandup-myvoc-${slug}`, store.get(`bandup-myvoc-${slug}`,[]).filter(x=>x.t!==w.t)); }
         else { const h=store.get(`bandup-vochide-${slug}`,[]); h.push(w.w.toLowerCase()); store.set(`bandup-vochide-${slug}`,h); }
         vcState=null; render(); };
-      t.append(more); const has=w.ex||w.mine;
-      r.append(t, del, el("span","idchev", has? (open?"▴":"▾") : ""));
+      const ed=el("button","vcx","수정"); ed.type="button"; ed.setAttribute("aria-label",w.w+" 수정"); ed.onclick=e=>{ e.stopPropagation(); vcEdit={...w}; vcAdd=true; vcOcr=null; render(); window.scrollTo(0,0); };
+      t.append(more); const has=w.ex||w.mine; const bx=el("div","vcbtns"); bx.append(ed,del);
+      r.append(t, bx, el("span","idchev", has? (open?"▴":"▾") : ""));
       const tog=()=>{ if(!has) return; if(vcOpen.has(key)) vcOpen.delete(key); else vcOpen.add(key); more.hidden=!vcOpen.has(key); r.querySelector(".idchev").textContent=vcOpen.has(key)?"▴":"▾"; };
       r.onclick=tog; r.onkeydown=e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); tog(); } };
       box.append(r); });
