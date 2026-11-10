@@ -20,6 +20,12 @@
    "date": "2026-11-10",
    "title": "Speaking Matrix",
    "label": "스피킹 매트릭스 11회"
+  },
+  {
+   "no": 12,
+   "date": "2026-11-10",
+   "title": "Speaking Matrix",
+   "label": "스피킹 매트릭스 12회"
   }
  ],
  "types": [
@@ -767,6 +773,78 @@
    "en": "The problem was clear: my phone was in control, not me.",
    "hint": "control",
    "gram": "<em>be in control</em> = 주도권을 쥐고 있다. <em>A, not B</em> = B가 아니라 A. 콜론(:) 뒤에 이유를 설명."
+  },
+  {
+   "id": "sm12-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "한꺼번에 다 바꾸려고 하기보다는 작게 시작하기로 했어요.",
+   "en": "I decided to start small rather than trying to change everything at once.",
+   "hint": "small",
+   "gram": "<em>decide to</em> + 동사 = ~하기로 결심하다. <em>start small</em> = 작게 시작하다. <em>rather than</em> -ing = ~하기보다는. <em>at once</em> = 한꺼번에."
+  },
+  {
+   "id": "sm12-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "제 목표는 휴대폰이 제가 잘 시간을 정하게 두지 않는 거였어요.",
+   "en": "My goal was to stop letting my phone decide when I went to bed.",
+   "hint": "letting",
+   "gram": "<em>My goal was to</em> + 동사 = 내 목표는 ~하는 것이었다. <em>stop</em> -ing = ~하는 것을 그만두다. <em>let</em> + 목적어 + 동사원형 = ~가 …하게 두다."
+  },
+  {
+   "id": "sm12-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "먼저 침대에서 휴대폰에 손이 가지 않도록 거실에 두는 것부터 시작했어요.",
+   "en": "I started by leaving it in the living room so I would not reach for my phone in bed.",
+   "hint": "leaving",
+   "gram": "<em>start by</em> -ing = ~하는 것부터 시작하다. <em>so</em> (that) + 주어 + would not = ~하지 않도록. <em>reach for</em> = ~에 손을 뻗다."
+  },
+  {
+   "id": "sm12-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "SNS 사용 시간 제한을 하루 30분으로 설정했어요.",
+   "en": "I set my social media screen time limit to 30 minutes a day.",
+   "hint": "limit",
+   "gram": "<em>set</em> A <em>to</em> B = A를 B로 설정하다(set-set-set, 과거도 set). <em>screen time limit</em> = 화면 사용 시간 제한. <em>a day</em> = 하루에."
+  },
+  {
+   "id": "sm12-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "어떤 사람들이 휴대폰과 떨어져 있는 걸 불안해하는 건 이해할 만해요.",
+   "en": "It is understandable that some people feel anxious about being away from their phones.",
+   "hint": "understandable",
+   "gram": "<em>It is understandable that</em> + 문장 = ~하는 건 이해할 만하다. <em>feel anxious about</em> -ing = ~하는 게 불안하다. <em>be away from</em> = ~와 떨어져 있다."
+  },
+  {
+   "id": "sm12-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "작은 변화들 덕분에 제가 올바른 방향으로 가고 있다는 걸 알 수 있었어요.",
+   "en": "The small changes showed me I was moving in the right direction.",
+   "hint": "direction",
+   "gram": "<em>show</em> 사람 + (that) 문장 = ~에게 …라는 걸 보여 주다. <em>move in the right direction</em> = 올바른 방향으로 나아가다."
   }
  ],
  "part1": [],
