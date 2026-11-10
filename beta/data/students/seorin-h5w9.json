@@ -700,6 +700,18 @@
    "gram": "식물은 <em>grow</em>. ❌ grow up plants (grow up = 사람이 자라다)."
   },
   {
+   "id": "g05u",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 부산에서 자랐어요.",
+   "en": "I grew up in Busan.",
+   "hint": "grew",
+   "gram": "<em>grow up</em> = (사람이) 자라다, 성장하다 → 과거 <em>grew up</em>. 식물을 키울 땐 <em>grow</em> plants (grow up ❌)."
+  },
+  {
    "id": "g06",
    "kind": "ko",
    "type": "표현",

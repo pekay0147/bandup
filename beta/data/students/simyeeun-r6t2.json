@@ -1727,6 +1727,18 @@
    "gram": "❌ mom like grow up plants → ✅ My mom <em>likes growing</em> plants. 3인칭 -s, like + -ing, 식물은 grow (grow up ❌)."
   },
   {
+   "id": "n906u",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "저는 작은 도시에서 자랐어요.",
+   "en": "I grew up in a small town.",
+   "hint": "grew",
+   "gram": "<em>grow up</em> = (사람이) 자라다, 성장하다 → 과거 <em>grew up</em>. 식물을 키울 땐 <em>grow</em> plants (grow up ❌)."
+  },
+  {
    "id": "n907",
    "kind": "ko",
    "type": "단어 선택",
@@ -1787,6 +1799,42 @@
    "gram": "<em>as well</em> = ~도(문장 끝). too와 같은 뜻, 조금 더 자연스럽고 영국식."
   },
   {
+   "id": "n9x1",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "저는 커피를 좋아하고, 차도 좋아해요.",
+   "en": "I like coffee, and I like tea as well.",
+   "hint": "well",
+   "gram": "<em>as well</em> = ~도. 문장 맨 끝에 붙여요."
+  },
+  {
+   "id": "n9x2",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "제 여동생도 영어를 공부해요.",
+   "en": "My sister studies English as well.",
+   "hint": "well",
+   "gram": "'~도'를 문장 끝 <em>as well</em>로. 3인칭 studies 주의."
+  },
+  {
+   "id": "n9x3",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "저는 식물을 키우고, 강아지도 키워요.",
+   "en": "I grow plants, and I have a dog as well.",
+   "hint": "well",
+   "gram": "A, and B <em>as well</em> = A하고 B도 해요."
+  },
+  {
    "id": "n912",
    "kind": "ko",
    "type": "표현",
@@ -1809,6 +1857,30 @@
    "en": "Air conditioning has become the first go-to solution for the heat.",
    "hint": "go-to",
    "gram": "<em>go-to</em> = 가장 먼저 찾는, 단골. my go-to snack / my go-to café."
+  },
+  {
+   "id": "n9x4",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "여름에 제가 늘 먹는 간식은 아이스크림이에요.",
+   "en": "Ice cream is my go-to snack in summer.",
+   "hint": "go-to",
+   "gram": "<em>my go-to</em> + 명사 = 내가 늘 찾는 ~, 단골 ~."
+  },
+  {
+   "id": "n9x5",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "스트레스 받을 때 늘 듣는 노래가 있어요.",
+   "en": "I have a go-to song when I'm stressed.",
+   "hint": "go-to",
+   "gram": "<em>a go-to song / café / restaurant</em> = 늘 찾는 노래·카페·식당."
   },
   {
    "id": "n914",
@@ -1845,6 +1917,30 @@
    "en": "She is an expert in this field.",
    "hint": "expert",
    "gram": "<em>expert</em> = 전문가(사람), <em>expertise</em> = 전문 지식(셀 수 없는 명사)."
+  },
+  {
+   "id": "n9x6",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "답을 몰라서 그냥 대충 찍었어요.",
+   "en": "I didn't know the answer, so I made a wild guess.",
+   "hint": "wild",
+   "gram": "<em>make a wild guess</em> = 대충 찍다, 어림짐작하다."
+  },
+  {
+   "id": "n9x7",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    9
+   ],
+   "ko": "대충 짐작해 보면, 한 시간쯤 걸릴 것 같아요.",
+   "en": "If I had to make a wild guess, I'd say it takes about an hour.",
+   "hint": "wild",
+   "gram": "<em>If I had to make a wild guess,</em> = 대충 짐작해 보자면. Part 1·3에서 모를 때 시간 벌기 좋아요."
   }
  ],
  "part1": [
