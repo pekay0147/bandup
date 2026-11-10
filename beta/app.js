@@ -1322,7 +1322,7 @@ function renderVocab(app){
     const filt=()=>{ vcQuery=sq.value; const q=sq.value.trim().toLowerCase(); let n=0; wrap.querySelectorAll(".idrow").forEach(r=>{ const hit=!q || r.dataset.k.includes(q); r.hidden=!hit; if(hit) n++; }); none.hidden=n>0; };
     sq.oninput=filt; app.append(sq);
     W.forEach((w,i)=>{ const key=(w.mine?"m":"c")+(w.t||w.w); const r=el("div","idrow"); r.setAttribute("role","button"); r.tabIndex=0; r.dataset.k=(w.w+" "+w.ko+" "+(w.ex||"")).toLowerCase(); const open=vcOpen.has(key);
-      const t=el("div","idt"); const hd=el("b",null,w.w); if(w.mine) hd.append(el("span","vcmine","내가 추가")); t.append(hd, el("span","idko",w.ko||(w.lk===0||w.tried? "뜻을 준비 중이에요 · 곧 채워 드려요" : "뜻 찾는 중…")));
+      const t=el("div","idt"); const hd=el("b",null,w.w); t.append(hd, el("span","idko",w.ko||(w.lk===0||w.tried? "뜻을 준비 중이에요 · 곧 채워 드려요" : "뜻 찾는 중…")));
       const more=el("div","vcmore"); more.hidden=!open; if(w.ex) more.append(el("p","idex",w.ex));
       const del=el("button","vcx","삭제"); del.type="button"; del.setAttribute("aria-label",w.w+" 삭제");
       del.onclick=e=>{ e.stopPropagation(); if(!del.classList.contains("sure")){ del.classList.add("sure"); del.textContent="삭제할까요?"; setTimeout(()=>{ if(del.isConnected){ del.classList.remove("sure"); del.textContent="삭제"; } },3000); return; }
