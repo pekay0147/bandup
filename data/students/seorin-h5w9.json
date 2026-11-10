@@ -15,6 +15,11 @@
    "no": 2,
    "date": "2026-11-07",
    "title": "Helping someone"
+  },
+  {
+   "no": 3,
+   "date": "2026-11-10",
+   "title": "A healthy habit"
   }
  ],
  "types": [
@@ -633,6 +638,222 @@
    "en": "I'm not a picky eater.",
    "hint": "picky",
    "gram": "<em>picky eater</em> = 편식하는 사람. Food 질문에 바로 쓰세요."
+  },
+  {
+   "id": "g01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "우리 도시는 아이를 키우기 좋은 곳이에요.",
+   "en": "My city is a good place for bringing up children.",
+   "hint": "bringing",
+   "gram": "<em>a good place for</em> -ing = <em>a good place to</em> + 동사원형. bring up = (아이를) 키우다."
+  },
+  {
+   "id": "g02",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    3
+   ],
+   "ko": "우리 도시에는 병원이 많아요.",
+   "en": "There are many hospitals in my city.",
+   "hint": "hospitals",
+   "gram": "❌ many hospital → ✅ many <em>hospitals</em>. many 뒤에는 꼭 복수형!"
+  },
+  {
+   "id": "g03",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 큰 도시에 사는 걸 더 좋아해요.",
+   "en": "I prefer living in a big city.",
+   "hint": "living",
+   "gram": "❌ prefer live → ✅ <em>prefer living</em>. prefer 뒤에는 -ing (또는 to live)."
+  },
+  {
+   "id": "g04",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 이 도시에서 5년째 살고 있어요.",
+   "en": "I have been living in this city for five years.",
+   "hint": "living",
+   "gram": "<em>have been</em> -ing = 지금까지 쭉 ~하고 있다. 꿀팁: have been = am으로 생각! I am living이 되니까 I have been living도 OK."
+  },
+  {
+   "id": "g05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 집에서 식물을 키워요.",
+   "en": "I grow plants at home.",
+   "hint": "grow",
+   "gram": "식물은 <em>grow</em>. ❌ grow up plants (grow up = 사람이 자라다)."
+  },
+  {
+   "id": "g06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 강아지를 한 마리 키워요.",
+   "en": "I have a dog.",
+   "hint": "dog",
+   "gram": "동물을 키운다 = <em>have</em> a dog (raise a dog도 가능)."
+  },
+  {
+   "id": "g07",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    3
+   ],
+   "ko": "지난주에 식물이 죽어서, 지금은 죽어 있어요.",
+   "en": "My plant died last week, so now it's dead.",
+   "hint": "died",
+   "gram": "<em>die</em> = 죽다(동사) / <em>dead</em> = 죽은(형용사). it's died ❌ → it's <em>dead</em>."
+  },
+  {
+   "id": "g08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 일주일에 두 번 식물에 물을 줘요.",
+   "en": "I water my plants twice a week.",
+   "hint": "water",
+   "gram": "<em>water</em> = 물을 주다(동사로도 써요)."
+  },
+  {
+   "id": "g09",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    3
+   ],
+   "ko": "이 꽃은 향기가 정말 좋아요.",
+   "en": "This flower has a lovely scent.",
+   "hint": "scent",
+   "gram": "<em>scent / fragrance</em> = 좋은 향기. smell보다 고급스러운 말."
+  },
+  {
+   "id": "g10",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 주말에 쇼핑하러 가요.",
+   "en": "I go shopping at the weekend.",
+   "hint": "shopping",
+   "gram": "❌ go to shopping → ✅ <em>go shopping</em>. go swimming, go hiking도 같은 패턴!"
+  },
+  {
+   "id": "g11",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 집에 있는 걸 정말 좋아해요.",
+   "en": "I really like staying at home.",
+   "hint": "staying",
+   "gram": "❌ like stay → ✅ like <em>staying</em> (또는 like to stay)."
+  },
+  {
+   "id": "g12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "온라인 쇼핑의 장점은 편리하다는 거예요.",
+   "en": "The benefit of shopping online is that it's convenient.",
+   "hint": "benefit",
+   "gram": "<em>The benefit of</em> -ing <em>is that</em> ~ = ~의 장점은 …라는 거예요. 복수로 말하면 The benefits … <em>are</em>."
+  },
+  {
+   "id": "g13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "스트레스를 받을 때마다 저는 산책을 해요.",
+   "en": "Whenever I feel stressed, I go for a walk.",
+   "hint": "Whenever",
+   "gram": "<em>Whenever</em> + 문장 = ~할 때마다."
+  },
+  {
+   "id": "g14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "야간 근무가 끝날 때마다 저는 녹초가 돼요.",
+   "en": "Whenever I finish a night shift, I feel exhausted.",
+   "hint": "Whenever",
+   "gram": "<em>Whenever</em> + 문장, 결과 문장. exhausted = 녹초가 된."
+  },
+  {
+   "id": "g15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "제가 집에 갈 때마다 엄마가 맛있는 걸 해 주세요.",
+   "en": "Whenever I go home, my mom cooks something delicious for me.",
+   "hint": "Whenever",
+   "gram": "<em>Whenever</em> 다음은 현재형(습관). cook something for 사람 = ~에게 뭔가 요리해 주다."
+  },
+  {
+   "id": "g16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "야간 근무는 제 잠에 큰 영향을 줘요.",
+   "en": "Night shifts have a big impact on my sleep.",
+   "hint": "impact",
+   "gram": "<em>have an impact on</em> ~ = ~에 영향을 주다 (= affect, affect on ❌)."
+  },
+  {
+   "id": "g17",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "야간 근무 후에는 잠들기가 어려워요.",
+   "en": "I find it hard to fall asleep after a night shift.",
+   "hint": "find",
+   "gram": "<em>find it hard to</em> + 동사원형 = ~하는 게 어렵다."
+  },
+  {
+   "id": "g18",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    3
+   ],
+   "ko": "저는 가족과 좋은 시간을 보내려고 해요.",
+   "en": "I try to spend quality time with my family.",
+   "hint": "quality",
+   "gram": "<em>quality time</em> = (짧아도) 알찬 시간. quality sleep = 양질의 잠."
   }
  ],
  "part1": [
@@ -892,6 +1113,78 @@
    "ko": "예전에 ~했다 / ~에 익숙하다",
    "ex": "I'm used to working night shifts.",
    "s": 2
+  },
+  {
+   "w": "be associated with",
+   "ko": "~와 관련이 있다",
+   "ex": "A healthy diet is associated with better sleep at night.",
+   "s": 3
+  },
+  {
+   "w": "have an impact on",
+   "ko": "~에 영향을 주다",
+   "ex": "Night shifts have a big impact on my sleep.",
+   "s": 3
+  },
+  {
+   "w": "find it hard to",
+   "ko": "~하는 게 어렵다",
+   "ex": "I find it hard to fall asleep after a night shift.",
+   "s": 3
+  },
+  {
+   "w": "less about A, more about B",
+   "ko": "A보다 B가 중요",
+   "ex": "Good sleep is less about one food and more about your whole diet.",
+   "s": 3
+  },
+  {
+   "w": "high in / low in",
+   "ko": "~ 함량이 높은 / 낮은",
+   "ex": "I try to eat food that is high in protein and low in sugar.",
+   "s": 3
+  },
+  {
+   "w": "quality sleep",
+   "ko": "양질의 잠",
+   "ex": "Quality sleep is more important than long sleep.",
+   "s": 3
+  },
+  {
+   "w": "quality time",
+   "ko": "알찬 시간",
+   "ex": "I try to spend quality time with my family.",
+   "s": 3
+  },
+  {
+   "w": "magic bullet / silver bullet",
+   "ko": "만능 해결책",
+   "ex": "There's no magic bullet for good sleep.",
+   "s": 3
+  },
+  {
+   "w": "water",
+   "ko": "(식물에) 물을 주다",
+   "ex": "I water my plants twice a week.",
+   "s": 3
+  },
+  {
+   "w": "scent / fragrance",
+   "ko": "좋은 향기",
+   "ex": "This flower has a lovely scent.",
+   "s": 3
+  },
+  {
+   "w": "raise",
+   "ko": "(아이·동물을) 키우다",
+   "ex": "My city is a great place to raise children.",
+   "s": 3
+  },
+  {
+   "w": "whenever",
+   "ko": "~할 때마다",
+   "ex": "Whenever I feel stressed, I go for a walk.",
+   "s": 3
   }
  ],
  "podFiles": [
