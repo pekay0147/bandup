@@ -1048,3 +1048,4 @@ button.calcard{width:100%;text-align:left;font:inherit;color:inherit;cursor:poin
 button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px;cursor:pointer}
 .txin{font:inherit;font-size:16px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--surface,#fff);color:inherit;width:100%;box-sizing:border-box}
 .txdel{justify-self:start;color:var(--muted);font-size:12.5px;font-weight:600}.txdel.sure{color:#d33}
+.podwrap>.lrow2 .lt{padding-right:92px;min-width:0}.podwrap>.lrow2 .lt>span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
