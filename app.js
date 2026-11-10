@@ -1461,23 +1461,29 @@ async function openMini(){
 function vocQuickAdd(w,sent){ w=String(w).replace(/\s+/g," ").trim(); if(!w) return false; const key=`bandup-myvoc-${slug}`; if(vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase())) return false;
   const it={w,ko:"",ex: sent? w : "",t:Date.now()}; const m=store.get(key,[]); m.push(it); store.set(key,m);
   vocLookup(w).then(r=>{ const mm=store.get(key,[]); const y=mm.find(z=>z.t===it.t); if(!y) return; y.ko=r.ko||y.ko; if(!y.ex) y.ex=r.ex||""; if(r.src==="d") y.src="d"; y.tried=today(); store.set(key,mm); }); return true; }
+let scrSel=[];
 function renderScreens(app){
-  const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
+  const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>{ scrSel=[]; go("home"); }; app.append(back);
   const key=`bandup-screens-${slug}`; const list=store.get(key,[]).slice().reverse();
-  pageHead(app,"화면에서 가져온 글","모르는 단어를 누르면 단어장에 담겨요. 문장 전체는 줄 끝의 ＋문장을 누르세요.");
+  pageHead(app,"화면에서 가져온 글","모르는 단어를 누르면 노랗게 골라져요. 붙어 있는 단어 여러 개를 고르면 표현(예: take for granted)으로 담겨요. 다 고르고 아래 '단어장에 담기'를 누르세요.");
   if(!list.length){ app.append(el("p","muted small","가져온 화면이 없어요.")); return; }
-  const have=()=>new Set(vocAll().map(x=>String(x.w).toLowerCase()));
-  for(const sc of list){ const p=el("div","panel scrbox"); const hd=el("div","scrhd"); hd.append(el("span","small muted", sc.at? new Date(sc.at).toLocaleString("ko-KR",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"}) : ""));
-    const del=el("button","vcx","다 했어요 · 지우기"); del.type="button"; del.onclick=()=>{ store.set(key,store.get(key,[]).filter(x=>x.id!==sc.id)); render(); }; hd.append(del); p.append(hd);
-    const H=have();
-    for(const line of String(sc.text).split(/\n+/).map(x=>x.trim()).filter(x=>/[A-Za-z]{2}/.test(x))){ const row=el("p","scrline");
-      for(const tok of line.split(/\s+/)){ const m=tok.match(/^([^A-Za-z]*)([A-Za-z][A-Za-z'’-]*[A-Za-z]|[A-Za-z])([^A-Za-z]*)$/); if(!m){ row.append(document.createTextNode(tok+" ")); continue; }
-        const word=m[2].replace(/’/g,"'"); const b=el("button","scrw"+(H.has(word.toLowerCase())?" on":""),word); b.type="button";
-        b.onclick=()=>{ if(b.classList.contains("on")) return; if(vocQuickAdd(word.toLowerCase()===word? word : (/^[A-Z][a-z'-]+$/.test(word)? word.toLowerCase() : word))){ b.classList.add("on"); toast("✓ "+word,true); } else b.classList.add("on"); };
+  const H=new Set(vocAll().map(x=>String(x.w).toLowerCase()));
+  const bar=el("div","scrbar"); const bt=el("span","scrbt",""); const bb=el("button","btn primary","단어장에 담기"); bb.type="button"; const bc=el("button","nav","취소"); bc.type="button"; bar.append(bt,bc,bb);
+  const paint=()=>{ document.querySelectorAll(".scrw.sel").forEach(x=>x.classList.remove("sel")); scrSel.forEach(s=>{ const e=document.querySelector(`.scrw[data-k="${s.k}"]`); if(e) e.classList.add("sel"); }); const g=scrGroups(); bt.textContent= g.length? g.join(" · ") : ""; bar.classList.toggle("on", scrSel.length>0); };
+  const scrGroups=()=>{ const by={}; for(const s of scrSel){ (by[s.line]=by[s.line]||[]).push(s); } const out=[]; for(const ln of Object.keys(by)){ const arr=by[ln].sort((a,b)=>a.i-b.i); let cur=[arr[0]]; for(let j=1;j<arr.length;j++){ if(arr[j].i===cur[cur.length-1].i+1) cur.push(arr[j]); else { out.push(cur.map(x=>x.w).join(" ")); cur=[arr[j]]; } } out.push(cur.map(x=>x.w).join(" ")); } return out; };
+  bc.onclick=()=>{ scrSel=[]; paint(); };
+  bb.onclick=()=>{ let n=0; for(const g of scrGroups()){ const w= (!/\s/.test(g) && /^[A-Z][a-z'-]+$/.test(g))? g.toLowerCase() : g; if(vocQuickAdd(w, w.split(" ").length>=5)){ n++; } } scrSel.forEach(s=>{ const e=document.querySelector(`.scrw[data-k="${s.k}"]`); if(e) e.classList.add("on"); }); scrSel=[]; paint(); toast(n? `✓ ${n}개 담았어요` : "이미 단어장에 있어요",!!n); };
+  list.forEach((sc,si)=>{ const p=el("div","panel scrbox"); const hd=el("div","scrhd"); hd.append(el("span","small muted", sc.at? new Date(sc.at).toLocaleString("ko-KR",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"}) : ""));
+    const del=el("button","vcx","다 했어요 · 지우기"); del.type="button"; del.onclick=()=>{ store.set(key,store.get(key,[]).filter(x=>x.id!==sc.id)); scrSel=[]; render(); }; hd.append(del); p.append(hd);
+    String(sc.text).split(/\n+/).map(x=>x.trim()).filter(x=>/[A-Za-z]{2}/.test(x)).forEach((line,li)=>{ const row=el("p","scrline"); const lk=si+"-"+li; let wi=0;
+      for(const tok of line.split(/\s+/)){ const m=tok.match(/^([^A-Za-z]*)([A-Za-z][A-Za-z'’-]*[A-Za-z]|[A-Za-z])([^A-Za-z]*)$/); if(!m){ row.append(document.createTextNode(tok+" ")); wi++; continue; }
+        const word=m[2].replace(/’/g,"'"), i=wi++, k=lk+"-"+i; const b=el("button","scrw"+(H.has(word.toLowerCase())?" on":""),word); b.type="button"; b.dataset.k=k;
+        b.onclick=()=>{ const at=scrSel.findIndex(x=>x.k===k); if(at>=0) scrSel.splice(at,1); else scrSel.push({k,line:lk,i,w:word}); paint(); };
         row.append(document.createTextNode(m[1]), b, document.createTextNode(m[3]+" ")); }
-      if(line.split(/\s+/).length>=4){ const sb=el("button","scrs","＋문장"); sb.type="button"; sb.onclick=()=>{ if(vocQuickAdd(line,true)){ sb.textContent="✓ 담음"; sb.disabled=true; } }; row.append(sb); }
-      p.append(row); }
-    app.append(p); }
+      if(line.split(/\s+/).length>=4){ const sb=el("button","scrs","＋문장"); sb.type="button"; sb.onclick=()=>{ if(vocQuickAdd(line,true)){ sb.textContent="✓ 담음"; sb.disabled=true; } else { sb.textContent="이미 있음"; } }; row.append(sb); }
+      p.append(row); });
+    app.append(p); });
+  app.append(el("div","scrspace"), bar); setTimeout(paint,0);
 }
 function copyRow(label,val){ const r=el("div","ibrow"); r.append(el("span","small muted",label)); const v=el("code","ibval",val); const b=el("button","vcx","복사"); b.type="button"; b.onclick=async()=>{ try{ await navigator.clipboard.writeText(val); b.textContent="복사됨"; }catch(_){ const g=document.createRange(); g.selectNodeContents(v); const s=getSelection(); s.removeAllRanges(); s.addRange(g); b.textContent="선택됨 · 복사하세요"; } setTimeout(()=>{ b.textContent="복사"; },1800); }; const w=el("div","ibline"); w.append(v,b); r.append(w); return r; }
 function renderInbox(app){
