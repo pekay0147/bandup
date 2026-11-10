@@ -1461,7 +1461,11 @@ async function openMini(){
 function vocQuickAdd(w,sent){ w=String(w).replace(/\s+/g," ").trim(); if(!w) return false; const key=`bandup-myvoc-${slug}`; if(vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase())) return false;
   const it={w,ko:"",ex: sent? w : "",t:Date.now()}; const m=store.get(key,[]); m.push(it); store.set(key,m);
   vocLookup(w).then(r=>{ const mm=store.get(key,[]); const y=mm.find(z=>z.t===it.t); if(!y) return; y.ko=r.ko||y.ko; if(!y.ex) y.ex=r.ex||""; if(r.src==="d") y.src="d"; y.tried=today(); store.set(key,mm); }); return true; }
-let scrSel=[];
+let scrSel=[], scrTrQueue=[], scrTrBusy=false;
+async function scrTranslate(){ if(scrTrBusy) return; scrTrBusy=true; const TR=store.get("bandup-tr",{});
+  while(scrTrQueue.length){ const [line,elx]=scrTrQueue.shift(); if(!elx.isConnected) continue; if(TR[line]){ elx.textContent=TR[line]; continue; }
+    try{ const r=await fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q="+encodeURIComponent(line)).then(x=>x.ok? x.json():null); const t=r&&r[0]? r[0].map(x=>x[0]).join("").trim() : ""; if(t){ TR[line]=t; store.set("bandup-tr",TR); elx.textContent=t; } }catch(_){ } }
+  scrTrBusy=false; }
 function renderScreens(app){
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>{ scrSel=[]; go("home"); }; app.append(back);
   const key=`bandup-screens-${slug}`; const list=store.get(key,[]).slice().reverse();
@@ -1469,21 +1473,24 @@ function renderScreens(app){
   if(!list.length){ app.append(el("p","muted small","가져온 화면이 없어요.")); return; }
   const H=new Set(vocAll().map(x=>String(x.w).toLowerCase()));
   const bar=el("div","scrbar"); const bt=el("span","scrbt",""); const bb=el("button","btn primary","단어장에 담기"); bb.type="button"; const bc=el("button","nav","취소"); bc.type="button"; bar.append(bt,bc,bb);
-  const paint=()=>{ document.querySelectorAll(".scrw.sel").forEach(x=>x.classList.remove("sel")); scrSel.forEach(s=>{ const e=document.querySelector(`.scrw[data-k="${s.k}"]`); if(e) e.classList.add("sel"); }); const g=scrGroups(); bt.textContent= g.length? g.join(" · ") : ""; bar.classList.toggle("on", scrSel.length>0); };
+  const paint=()=>{ document.querySelectorAll(".scrw.sel,.scrw.selL,.scrw.selR").forEach(x=>x.classList.remove("sel","selL","selR")); const ks=new Set(scrSel.map(x=>x.k)); scrSel.forEach(s=>{ const e=document.querySelector(`.scrw[data-k="${s.k}"]`); if(!e) return; e.classList.add("sel"); if(ks.has(s.line+"-"+(s.i-1))) e.classList.add("selL"); if(ks.has(s.line+"-"+(s.i+1))) e.classList.add("selR"); }); const g=scrGroups(); bt.textContent= g.length? g.join(" · ") : ""; bar.classList.toggle("on", scrSel.length>0); };
   const scrGroups=()=>{ const by={}; for(const s of scrSel){ (by[s.line]=by[s.line]||[]).push(s); } const out=[]; for(const ln of Object.keys(by)){ const arr=by[ln].sort((a,b)=>a.i-b.i); let cur=[arr[0]]; for(let j=1;j<arr.length;j++){ if(arr[j].i===cur[cur.length-1].i+1) cur.push(arr[j]); else { out.push(cur.map(x=>x.w).join(" ")); cur=[arr[j]]; } } out.push(cur.map(x=>x.w).join(" ")); } return out; };
   bc.onclick=()=>{ scrSel=[]; paint(); };
   bb.onclick=()=>{ let n=0; for(const g of scrGroups()){ const w= (!/\s/.test(g) && /^[A-Z][a-z'-]+$/.test(g))? g.toLowerCase() : g; if(vocQuickAdd(w, w.split(" ").length>=5)){ n++; } } scrSel.forEach(s=>{ const e=document.querySelector(`.scrw[data-k="${s.k}"]`); if(e) e.classList.add("on"); }); scrSel=[]; paint(); toast(n? `✓ ${n}개 담았어요` : "이미 단어장에 있어요",!!n); };
   list.forEach((sc,si)=>{ const p=el("div","panel scrbox"); const hd=el("div","scrhd"); hd.append(el("span","small muted", sc.at? new Date(sc.at).toLocaleString("ko-KR",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"}) : ""));
     const del=el("button","vcx","다 했어요 · 지우기"); del.type="button"; del.onclick=()=>{ store.set(key,store.get(key,[]).filter(x=>x.id!==sc.id)); scrSel=[]; render(); }; hd.append(del); p.append(hd);
     String(sc.text).split(/\n+/).map(x=>x.trim()).filter(x=>/[A-Za-z]{2}/.test(x)).forEach((line,li)=>{ const row=el("p","scrline"); const lk=si+"-"+li; let wi=0;
-      for(const tok of line.split(/\s+/)){ const m=tok.match(/^([^A-Za-z]*)([A-Za-z][A-Za-z'’-]*[A-Za-z]|[A-Za-z])([^A-Za-z]*)$/); if(!m){ row.append(document.createTextNode(tok+" ")); wi++; continue; }
-        const word=m[2].replace(/’/g,"'"), i=wi++, k=lk+"-"+i; const b=el("button","scrw"+(H.has(word.toLowerCase())?" on":""),word); b.type="button"; b.dataset.k=k;
+      for(const tok of line.split(/\s+/)){ const m=tok.match(/^([^A-Za-z]*)([A-Za-z][A-Za-z'’-]*[A-Za-z]|[A-Za-z])([^A-Za-z]*)$/); const i=wi++;
+        if(!m){ row.append(el("span","scrw plain",tok)); continue; }
+        const word=m[2].replace(/’/g,"'"), k=lk+"-"+i; const b=el("button","scrw"+(H.has(word.toLowerCase())?" on":""),tok); b.type="button"; b.dataset.k=k; b.dataset.i=i;
         b.onclick=()=>{ const at=scrSel.findIndex(x=>x.k===k); if(at>=0) scrSel.splice(at,1); else scrSel.push({k,line:lk,i,w:word}); paint(); };
-        row.append(document.createTextNode(m[1]), b, document.createTextNode(m[3]+" ")); }
-      if(line.split(/\s+/).length>=4){ const sb=el("button","scrs","＋문장"); sb.type="button"; sb.onclick=()=>{ if(vocQuickAdd(line,true)){ sb.textContent="✓ 담음"; sb.disabled=true; } else { sb.textContent="이미 있음"; } }; row.append(sb); }
-      p.append(row); });
+        row.append(b); }
+      const wrap=el("div","scrpara"); wrap.append(row);
+      if(line.split(/\s+/).length>=3){ const tr=el("p","scrtr",""); const TR=store.get("bandup-tr",{}); if(TR[line]) tr.textContent=TR[line]; else scrTrQueue.push([line,tr]); wrap.append(tr);
+        const sb=el("button","scrs","＋ 문장 통째로 담기"); sb.type="button"; sb.onclick=()=>{ if(vocQuickAdd(line,true)){ sb.textContent="✓ 담았어요"; sb.disabled=true; } else { sb.textContent="이미 있어요"; } }; wrap.append(sb); }
+      p.append(wrap); });
     app.append(p); });
-  app.append(el("div","scrspace"), bar); setTimeout(paint,0);
+  app.append(el("div","scrspace"), bar); setTimeout(paint,0); scrTranslate();
 }
 function copyRow(label,val){ const r=el("div","ibrow"); r.append(el("span","small muted",label)); const v=el("code","ibval",val); const b=el("button","vcx","복사"); b.type="button"; b.onclick=async()=>{ try{ await navigator.clipboard.writeText(val); b.textContent="복사됨"; }catch(_){ const g=document.createRange(); g.selectNodeContents(v); const s=getSelection(); s.removeAllRanges(); s.addRange(g); b.textContent="선택됨 · 복사하세요"; } setTimeout(()=>{ b.textContent="복사"; },1800); }; const w=el("div","ibline"); w.append(v,b); r.append(w); return r; }
 function renderInbox(app){
