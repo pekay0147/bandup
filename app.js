@@ -34,6 +34,7 @@ async function boot(){
     const [s,g]=await Promise.all([fetch(`data/students/${slug}.json`,{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
                                    fetch("data/glossary.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({}))]);
     if(s.group==="church" || s.group==="other"){ const gr=await fetch("data/groups/"+s.group+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null); if(gr) for(const k of Object.keys(gr)) if(!["slug","name","form","group"].includes(k)) s[k]=gr[k]; }
+    if(s.group==="church" && s.sessions){ const td=today(); const hide=new Set(s.sessions.filter(x=>x.date && x.date>td).map(x=>x.no)); if(hide.size){ s.sessions=s.sessions.filter(x=>!hide.has(x.no)); s.cards=(s.cards||[]).filter(c=>!(c.sessions||[]).length || (c.sessions||[]).some(n=>!hide.has(n))); } }
     D=s; G=g||{};
     D.podSessions=[];
     if(s.rvCards) D.cards.push(...s.rvCards);
@@ -44,7 +45,7 @@ async function boot(){
       const docs=await Promise.all(files.map(p=>fetch("data/"+p+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
       let n=0; const all=[];
       docs.forEach((pg,fi)=>{ if(!pg || !pg.cards || !pg.sessions) return; const map={};
-        pg.sessions.filter(x=>x.link).forEach(x=>{ n++; map[x.no]=n; all.push({...x, no:n, date:x.date||""}); });
+        pg.sessions.filter(x=>x.link && !(x.date && x.date>today())).forEach(x=>{ n++; map[x.no]=n; all.push({...x, no:n, date:x.date||""}); });
         for(const c of pg.cards){ const ps=(c.sessions||[]).map(k=>map[k]).filter(Boolean); if(!ps.length) continue; const se=all.find(x=>x.no===ps[0]);
           D.cards.push({...c, id:(fi? "pd"+fi+"-" : "pd-")+c.id, sessions:[], psessions:ps, plabel:(se.link.src||"팟캐스트")+" · "+(se.link.date||"")}); } });
       all.sort((a,b)=>String(a.date).localeCompare(String(b.date))); D.podSessions=all; D.podName=[...new Set(all.map(x=>x.link.src).filter(Boolean))].join(" · "); }
@@ -1776,8 +1777,8 @@ if("serviceWorker" in navigator && location.protocol==="https:" && !/claude|clau
   navigator.serviceWorker.register("sw.js").catch(()=>{});
 }
 (function autoUpdate(){
-  const cur=((document.querySelector('script[src*="app.js?v="]')||{}).src||"").split("v=")[1]; if(!cur) return; let last=0;
-  const check=()=>{ if(document.visibilityState!=="visible" || Date.now()-last<60000) return; last=Date.now();
+  const cur=((document.querySelector('script[src*="app.js?v="]')||{}).src||"").split("v=")[1]; if(!cur) return; let last=0; const day0=today();
+  const check=()=>{ if(document.visibilityState!=="visible") return; if(today()!==day0){ const a=document.activeElement; if(!(a && /INPUT|TEXTAREA/.test(a.tagName))){ location.reload(); return; } } if(Date.now()-last<60000) return; last=Date.now();
     fetch(location.pathname+"?u="+Date.now(),{cache:"no-store"}).then(r=>r.ok? r.text():"").then(t=>{ const m=t.match(/app\.js\?v=(\d+)/); if(!m || m[1]===cur) return;
       const a=document.activeElement; if(a && /INPUT|TEXTAREA/.test(a.tagName)) return; location.reload(); }).catch(()=>{}); };
   document.addEventListener("visibilitychange",check); setInterval(check,10*60*1000);
