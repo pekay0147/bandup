@@ -1030,5 +1030,6 @@
   "groups/church"
  ],
  "podAuto": true,
- "backup": true
+ "backup": true,
+ "cloud": true
 }

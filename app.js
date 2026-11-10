@@ -11,7 +11,7 @@ const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth
 const addD=(s,n)=>{const [y,m,d]=s.split("-").map(Number);const t=new Date(y,m-1,d+n);return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0");};
 const mmdd=s=>s? s.slice(5).replace("-","/") : "";
 const store={ get(k,f){ try{ const v=localStorage.getItem(k); return v==null? f : JSON.parse(v);}catch(_){ return f; } },
-              set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(_){} } };
+              set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(_){} if(window.__bsSet) window.__bsSet(k); } };
 
 let NOTICE=null;
 const GSTOP=new Set(["a", "about", "after", "all", "also", "am", "an", "and", "another", "any", "are", "aren't", "as", "at", "be", "been", "before", "being", "both", "but", "by", "can", "can't", "could", "did", "didn't", "do", "does", "doesn't", "don't", "done", "each", "eight", "either", "every", "first", "five", "for", "four", "from", "had", "has", "have", "having", "he", "he's", "her", "here", "hers", "him", "his", "how", "i", "i'd", "i'll", "i'm", "i've", "if", "in", "into", "is", "isn't", "it", "it's", "its", "just", "last", "let", "let's", "lets", "many", "may", "me", "might", "mine", "more", "most", "much", "must", "my", "neither", "nine", "no", "not", "of", "on", "one", "or", "other", "our", "over", "own", "quite", "really", "same", "second", "seven", "shall", "she", "she's", "should", "six", "so", "some", "such", "ten", "than", "that", "that's", "the", "their", "them", "then", "there", "there's", "these", "they", "they're", "this", "those", "three", "to", "too", "two", "up", "us", "very", "was", "wasn't", "we", "we're", "were", "weren't", "what", "what's", "when", "where", "which", "who", "whom", "why", "will", "with", "won't", "would", "yes", "you", "you're", "your", "yours"]);
@@ -338,7 +338,8 @@ function renderHome(app){
   if(D.common && PROFILE){ const pe=el("button","guidelink","내 정보 (이름·시험 날짜·목표) 고치기 ›"); pe.type="button"; pe.style.cssText="border:0;background:none;width:100%;cursor:pointer;font:inherit;font-size:13px"; pe.onclick=()=>go("profile"); app.append(pe); }
   if(D.form && D.form.url && !D.demo) app.append(el("p","muted small sharenote","공부 기록과 내 단어장은 선생님께 전달돼요. 수업 준비에만 써요."));
   if(D.group==="church"||D.group==="other"){ const mg=el("a","guidelink","앱 사용 설명서 ›"); mg.href="guide/"+D.group+".html"; app.append(mg); }
-  if(D.backup){ const tb=el("button","guidelink","📲 폰 바꿀 때 · 공부 기록 옮기기 ›"); tb.type="button"; tb.onclick=()=>go("transfer"); app.append(tb); }
+  if(D.cloud){ const se=cloudSess(); const tb=el("button","guidelink", se? `☁️ ${se.email} · 공부 기록이 자동 저장돼요 ›` : "☁️ 로그인하고 공부 기록 저장하기 ›"); tb.type="button"; tb.onclick=()=>go("transfer"); app.append(tb); }
+  else if(D.backup){ const tb=el("button","guidelink","📲 폰 바꿀 때 · 공부 기록 옮기기 ›"); tb.type="button"; tb.onclick=()=>go("transfer"); app.append(tb); }
   if(!(window.matchMedia&&matchMedia("(display-mode: standalone)").matches) && !navigator.standalone){ const g=el("a","guidelink","홈 화면에 앱으로 추가하는 법 ›"); g.href="guide/"; app.append(g); }
 }
 
@@ -1358,10 +1359,67 @@ function txMerge(pack){ let n=0; for(const [name,val] of Object.entries(pack.dat
     else if(cur && val && typeof cur==="object" && typeof val==="object" && !Array.isArray(cur)){ out={...cur}; for(const [kk,vv] of Object.entries(val)){ const c=out[kk]; const t=x=>x&&typeof x==="object"? String(x.last||x.at||x.t||x.d||"")+"|"+String(1e6+(x.reviews||0)) : ""; if(c==null || t(vv)>t(c)) out[kk]=vv; } }
     else out=val;
     store.set(k,out); n++; } return n; }
+/* ---------- 계정 · 클라우드 저장 (Supabase) ---------- */
+const SB_URL="https://qbqttaqipapmeutdrvdc.supabase.co", SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFicXR0YXFpcGFwbWV1dGRydmRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQyNjEyNTEsImV4cCI6MjEwOTgzNzI1MX0.5Cd_ytAu7Vz4PNCEoXxkXkEL_aOmvrBYcLm5uYxgRwU";
+const SB_AUTH="bandup-auth";
+function cloudSess(){ return store.get(SB_AUTH,null); }
+function cloudSave(r){ const se={at:r.access_token, rt:r.refresh_token, exp:Date.now()+((r.expires_in||3600)-60)*1000, uid:r.user&&r.user.id, email:r.user&&r.user.email}; try{ localStorage.setItem(SB_AUTH,JSON.stringify(se)); }catch(_){ } return se; }
+async function sbAuth(path,body){ const r=await fetch(SB_URL+"/auth/v1/"+path,{method:"POST",headers:{apikey:SB_KEY,"Content-Type":"application/json"},body:JSON.stringify(body)}); const j=await r.json().catch(()=>({})); if(!r.ok) throw new Error(j.msg||j.error_description||j.message||("오류 "+r.status)); return j; }
+async function cloudToken(){ let se=cloudSess(); if(!se) return null; if(Date.now()>se.exp){ try{ se=cloudSave(await sbAuth("token?grant_type=refresh_token",{refresh_token:se.rt})); }catch(e){ return null; } } return se; }
+async function sbRest(path,opt){ const se=await cloudToken(); if(!se) throw new Error("로그인이 필요해요"); const r=await fetch(SB_URL+"/rest/v1/"+path,{...opt,headers:{apikey:SB_KEY,Authorization:"Bearer "+se.at,"Content-Type":"application/json",...((opt||{}).headers||{})}}); if(!r.ok){ const t=await r.text(); throw new Error(t||("오류 "+r.status)); } const t=await r.text(); return t? JSON.parse(t) : null; }
+const cloudDirty=new Set(); let cloudTimer=null, cloudBusy=false, cloudPulling=false, cloudLast=0, cloudErr="";
+function cloudKeyOk(k){ return D && D.cloud && k && k.startsWith("bandup-") && k.endsWith("-"+slug) && !k.startsWith("bandup-stat-"); }
+window.__bsSet=k=>{ if(cloudPulling || !cloudKeyOk(k) || !cloudSess()) return; cloudDirty.add(k); clearTimeout(cloudTimer); cloudTimer=setTimeout(cloudPush,2500); };
+async function cloudPush(){ if(cloudBusy || !cloudDirty.size) return; const se=cloudSess(); if(!se) return; cloudBusy=true; const ks=[...cloudDirty]; cloudDirty.clear();
+  try{ const now=new Date().toISOString(); await sbRest("progress?on_conflict=user_id,k",{method:"POST",headers:{Prefer:"resolution=merge-duplicates,return=minimal"},body:JSON.stringify(ks.map(k=>({user_id:se.uid,k,v:store.get(k,null),updated_at:now})))}); cloudLast=Date.now(); cloudErr=""; }
+  catch(e){ ks.forEach(k=>cloudDirty.add(k)); cloudErr="저장하지 못했어요. 인터넷 연결을 확인해 주세요."; }
+  cloudBusy=false; if(cloudDirty.size){ clearTimeout(cloudTimer); cloudTimer=setTimeout(cloudPush,5000); } }
+async function cloudSync(full){ if(!D || !D.cloud || !cloudSess()) return false; let changed=false;
+  try{ const rows=await sbRest("progress?select=k,v&k=like.*-"+encodeURIComponent(slug),{method:"GET"}); const data={};
+    for(const r of rows||[]) if(cloudKeyOk(r.k)) data[r.k.slice(7,-(slug.length+1))]=r.v;
+    const before=txKeys().map(k=>localStorage.getItem(k)).join("|");
+    cloudPulling=true; try{ txMerge({data}); } finally{ cloudPulling=false; }
+    changed=before!==txKeys().map(k=>localStorage.getItem(k)).join("|");
+    const have=new Set(Object.keys(data).map(n=>`bandup-${n}-${slug}`)); for(const k of txKeys()){ if(full || changed || !have.has(k)) cloudDirty.add(k); }
+    await cloudPush(); cloudLast=Date.now(); cloudErr=""; }
+  catch(e){ cloudErr="동기화하지 못했어요. 잠시 후 다시 시도해 주세요."; }
+  return changed; }
+function cloudBoot(){ if(!D || !D.cloud || !cloudSess()) return; cloudSync(false).then(ch=>{ if(ch){ try{ srs=store.get(`bandup-srs-${slug}`,srs); }catch(_){ } location.reload(); } });
+  let lastPull=Date.now(); document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="hidden"){ cloudPush(); return; } if(Date.now()-lastPull<60000) return; lastPull=Date.now(); cloudSync(false).then(ch=>{ if(ch) location.reload(); }); }); }
+function renderCloud(app){
+  const se=cloudSess(); const p=el("div","panel txbox");
+  if(!se){
+    p.append(el("b",null,"이메일로 로그인"), el("p","small muted","로그인하면 단어장, 복습 일정, 북마크, 공부한 날이 자동으로 저장돼요. 폰을 바꿔도 같은 이메일로 로그인하면 그대로 이어져요."));
+    const ie=el("input","txin"); ie.type="email"; ie.placeholder="이메일"; ie.autocomplete="email"; ie.autocapitalize="off";
+    const ip=el("input","txin"); ip.type="password"; ip.placeholder="비밀번호 (6자 이상)"; ip.autocomplete="current-password";
+    const msg=el("p","small txmsg",""); const row=el("div","acts arrows");
+    const bIn=el("button","btn primary","로그인"); bIn.type="button"; const bUp=el("button","nav","처음이에요 · 가입"); bUp.type="button";
+    const act=async up=>{ const em=ie.value.trim(), pw=ip.value; if(!/^\S+@\S+\.\S+$/.test(em)){ msg.textContent="이메일을 확인해 주세요."; return; } if(pw.length<6){ msg.textContent="비밀번호는 6자 이상이에요."; return; }
+      bIn.disabled=bUp.disabled=true; msg.textContent= up? "가입하는 중…" : "로그인하는 중…";
+      try{ const r= up? await sbAuth("signup",{email:em,password:pw}) : await sbAuth("token?grant_type=password",{email:em,password:pw});
+        if(!r.access_token){ msg.textContent="가입 확인 메일을 확인해 주세요."; bIn.disabled=bUp.disabled=false; return; }
+        cloudSave(r); msg.textContent="기록을 맞추는 중…"; await cloudSync(true); location.reload(); }
+      catch(e){ const t=String(e.message||""); msg.textContent= /Invalid login/i.test(t)? "이메일이나 비밀번호가 맞지 않아요." : /already registered/i.test(t)? "이미 가입된 이메일이에요. 로그인을 눌러 주세요." : ("문제가 생겼어요: "+t); bIn.disabled=bUp.disabled=false; } };
+    bIn.onclick=()=>act(false); bUp.onclick=()=>act(true); ip.onkeydown=e=>{ if(e.key==="Enter") act(false); };
+    row.append(bUp,bIn); p.append(ie,ip,row,msg); app.append(p); return;
+  }
+  p.append(el("b",null,"☁️ 자동 저장 중"), el("p","small muted",`${se.email} 계정에 공부 기록이 자동으로 저장돼요. 다른 폰에서도 같은 이메일로 로그인하면 이어서 공부할 수 있어요.`));
+  const st=el("p","small txmsg", cloudErr || (cloudLast? `마지막 저장: ${new Date(cloudLast).toLocaleTimeString("ko-KR",{hour:"2-digit",minute:"2-digit"})}` : ""));
+  const row=el("div","acts arrows"); const bS=el("button","btn primary","지금 동기화"); bS.type="button";
+  bS.onclick=async()=>{ bS.disabled=true; st.textContent="동기화하는 중…"; const ch=await cloudSync(true); if(ch){ location.reload(); return; } st.textContent= cloudErr || "최신 상태예요."; bS.disabled=false; };
+  const bO=el("button","nav","로그아웃"); bO.type="button"; bO.onclick=async()=>{ await cloudPush(); try{ await fetch(SB_URL+"/auth/v1/logout",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+se.at}}); }catch(_){ } try{ localStorage.removeItem(SB_AUTH); }catch(_){ } render(); };
+  row.append(bO,bS); p.append(row,st);
+  const del=el("button","linkbtn txdel","계정 삭제"); del.type="button";
+  del.onclick=async()=>{ if(!del.classList.contains("sure")){ del.classList.add("sure"); del.textContent="정말 삭제할까요? 서버에 저장된 기록이 모두 지워져요. 한 번 더 누르면 삭제돼요."; return; }
+    del.disabled=true; try{ await sbRest("rpc/delete_my_account",{method:"POST",body:"{}"}); try{ localStorage.removeItem(SB_AUTH); }catch(_){ } st.textContent="계정을 삭제했어요. 이 폰의 기록은 그대로 남아 있어요."; setTimeout(render,1500); }
+    catch(e){ st.textContent="삭제하지 못했어요. 잠시 후 다시 시도해 주세요."; del.disabled=false; } };
+  p.append(del); app.append(p);
+}
 let txState=null;
 function renderTransfer(app){
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>{ txState=null; go("home"); }; app.append(back);
-  pageHead(app,"공부 기록 옮기기","폰을 바꾸거나 앱을 다시 설치할 때 쓰세요. 단어장, 복습 일정, 북마크, 공부한 날이 그대로 옮겨져요.");
+  if(D.cloud){ pageHead(app,"계정 · 기록 저장","공부 기록을 계정에 안전하게 보관해요."); renderCloud(app); app.append(el("h2","sec-t","로그인 없이 옮기기 (백업 코드)")); }
+  else pageHead(app,"공부 기록 옮기기","폰을 바꾸거나 앱을 다시 설치할 때 쓰세요. 단어장, 복습 일정, 북마크, 공부한 날이 그대로 옮겨져요.");
   const S=txState||(txState={});
   const p1=el("div","panel txbox"); p1.append(el("b",null,"1. 지금 쓰던 폰에서"), el("p","small muted","아래 버튼을 눌러 기록 코드를 복사한 뒤, 카카오톡 '나와의 채팅' 등에 붙여 넣어 두세요."));
   const mk=el("button","btn primary","기록 코드 복사하기"); mk.type="button"; const st1=el("p","small txmsg",S.msg1||"");
@@ -1822,6 +1880,7 @@ window.addEventListener("hashchange",()=>{ if(window.BANDUP_SLUG) return; const 
 if("serviceWorker" in navigator && location.protocol==="https:" && !/claude|claudeusercontent/.test(location.hostname)){
   navigator.serviceWorker.register("sw.js").catch(()=>{});
 }
+setTimeout(function waitD(){ if(typeof D!=="undefined" && D && D.slug){ cloudBoot(); } else setTimeout(waitD,500); },800);
 (function autoUpdate(){
   const cur=((document.querySelector('script[src*="app.js?v="]')||{}).src||"").split("v=")[1]; if(!cur) return; let last=0; const day0=today();
   const check=()=>{ if(document.visibilityState!=="visible") return; if(today()!==day0){ const a=document.activeElement; if(!(a && /INPUT|TEXTAREA/.test(a.tagName))){ location.reload(); return; } } if(Date.now()-last<60000) return; last=Date.now();
