@@ -712,18 +712,6 @@
    "gram": "동물을 키운다 = <em>have</em> a dog (raise a dog도 가능)."
   },
   {
-   "id": "g07",
-   "kind": "ko",
-   "type": "단어 선택",
-   "sessions": [
-    3
-   ],
-   "ko": "지난주에 식물이 죽어서, 지금은 죽어 있어요.",
-   "en": "My plant died last week, so now it's dead.",
-   "hint": "died",
-   "gram": "<em>die</em> = 죽다(동사) / <em>dead</em> = 죽은(형용사). it's died ❌ → it's <em>dead</em>."
-  },
-  {
    "id": "g08",
    "kind": "ko",
    "type": "표현",
