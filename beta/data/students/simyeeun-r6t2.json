@@ -1667,6 +1667,66 @@
    "gram": "<em>step out of my comfort zone</em> = 익숙한 데서 벗어나다. 내 단어장 단어로 만든 새 문장이에요."
   },
   {
+   "id": "n9m1",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    9
+   ],
+   "ko": "저는 주말에는 은행에 안 가요.",
+   "en": "I don't go to the bank at the weekend.",
+   "hint": "bank",
+   "gram": "❌ go bank → ✅ go <em>to the</em> bank. 장소 앞에는 to + the."
+  },
+  {
+   "id": "n9m2",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    9
+   ],
+   "ko": "어제 더 일찍 잘 걸 그랬어요.",
+   "en": "I should have gone to bed earlier last night.",
+   "hint": "gone",
+   "gram": "<em>should have</em> + p.p. = ~할 걸 그랬다(후회). go → went → <em>gone</em>."
+  },
+  {
+   "id": "n9m3",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    9
+   ],
+   "ko": "대부분의 사람들은 휴대폰을 너무 많이 써요.",
+   "en": "Most people use their phones too much.",
+   "hint": "Most",
+   "gram": "❌ almost people → ✅ <em>most</em> people. almost는 '거의'(부사)라 명사 앞에 못 와요."
+  },
+  {
+   "id": "n9m4",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    9
+   ],
+   "ko": "그 수업 듣고 나서 저는 더 자신감이 생겼어요.",
+   "en": "I became more confident after the class.",
+   "hint": "confident",
+   "gram": "<em>become</em> + 형용사 = ~해지다 (2형식). became more confident."
+  },
+  {
+   "id": "n9m5",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    9
+   ],
+   "ko": "저는 새로운 일을 성공적으로 끝냈어요.",
+   "en": "I successfully finished a new project.",
+   "hint": "successfully",
+   "gram": "❌ successful + 동사 → ✅ <em>successfully</em>(부사) + 동사."
+  },
+  {
    "id": "n901",
    "kind": "ko",
    "type": "단어 선택",
@@ -1709,10 +1769,10 @@
    "sessions": [
     9
    ],
-   "ko": "저는 어제 이 가방을 골랐어요.",
-   "en": "I chose this bag yesterday.",
+   "ko": "가볍고 가격도 괜찮아서 이 가방을 골랐어요.",
+   "en": "I chose this bag because it is portable and affordable.",
    "hint": "chose",
-   "gram": "<em>choose</em>(고르다, 현재) → <em>chose</em>(골랐다, 과거) → chosen(과거분사). 발음: 추즈 / 초우즈."
+   "gram": "<em>choose</em>(고르다) → <em>chose</em>(골랐다) → chosen. <em>portable</em> = 들고 다니기 편한, <em>affordable</em> = 가격이 적당한."
   },
   {
    "id": "n906",
