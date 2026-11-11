@@ -274,5 +274,17 @@
 "you're not alone": {
 "ko": "너만 그런 게 아니야, 혼자가 아니야",
 "ex": "If you hate mornings, you're not alone."
+},
+"can't always": {
+"ko": "항상 ~할 수는 없다",
+"ex": "You can't always get what you want."
+},
+"hit an all-time high": {
+"ko": "사상 최고치를 찍다",
+"ex": "House prices hit an all-time high last year."
+},
+"what's the point of": {
+"ko": "~하는 게 무슨 소용이 있어?",
+"ex": "What's the point of studying if you don't sleep?"
 }
 }
