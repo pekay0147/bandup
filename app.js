@@ -1456,6 +1456,7 @@ function renderCloud(app){
 /* ---------- 어디서든 저장 (inbox) ---------- */
 let inboxBusy=false, inboxLast=0;
 const IS_MOBILE=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent||"") || (navigator.maxTouchPoints>1 && /Macintosh/.test(navigator.userAgent||""));
+function capJump(kind,id){ if(["cards","review","mock","words","profile"].includes(view.tab)) return; setTimeout(()=>{ if(kind==="screen"){ scrSel=[]; go("screens"); } else { ytStop(); ytState={clip:id}; go("yt"); } window.scrollTo(0,0); },250); }
 async function inboxPull(force){ if(!D || !D.inbox || inboxBusy || (!IS_MOBILE && !force)) return; inboxBusy=true; inboxLast=Date.now(); let rows=null;
   try{ const r=await fetch(SB_URL+"/rest/v1/rpc/bu_take",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_token:D.inbox})}); if(r.ok) rows=await r.json(); }catch(_){ }
   if(!rows || !rows.length){ inboxBusy=false; return; }
@@ -1463,18 +1464,18 @@ async function inboxPull(force){ if(!D || !D.inbox || inboxBusy || (!IS_MOBILE &
   { const yv=[]; rows=rows.filter(r=>{ const t=String(r.txt||"").trim(); const id=/youtu\.?be/i.test(t) && t.split(/\s+/).length<=12? ytId(t) : null; if(id){ yv.push(id); return false; } return true; });
     if(yv.length){ const last=yv[yv.length-1]; yv.forEach(id=>{ if(!ytVids().some(x=>x.vid===id)) ytSave({vid:id,title:"유튜브 영상",at:Date.now(),lines:[]}); }); toast("🎬 공유한 영상을 열어요",true); setTimeout(()=>ytOpen(last),300); } }
   const scr=store.get(`bandup-screens-${slug}`,[]); let nscr=0, nsent=0;
-  { let ni=0; rows=rows.filter(r=>{ const t=String(r.txt||""); const g=/\n/.test(t.trim())? igScreen(t) : null; if(g){ sceneAdd({src:"인스타 릴스",acct:g.acct,text:ocrClean(t).split("\n").filter(x=>!g.acct || x.replace(/^@/,"").toLowerCase()!==g.acct.toLowerCase()).join("\n"),at:r.created_at}); ni++; return false; } return true; });
-    if(ni){ toast(`📸 릴스 장면 ${ni}개를 내 클립에 저장했어요`,true); if(view.tab==="home" || (view.tab==="yt" && !(ytState&&(ytState.vid||ytState.clip)))) render(); } }
+  let lastScene=null; { let ni=0; rows=rows.filter(r=>{ const t=String(r.txt||""); const g=/\n/.test(t.trim())? igScreen(t) : null; if(g){ lastScene=sceneAdd({src:"인스타 릴스",acct:g.acct,text:ocrClean(t).split("\n").filter(x=>!g.acct || x.replace(/^@/,"").toLowerCase()!==g.acct.toLowerCase()).join("\n"),at:r.created_at}); ni++; return false; } return true; });
+    if(ni){ toast(`📸 릴스 장면 ${ni}개를 내 클립에 저장했어요`,true); if(lastScene) capJump("clip",lastScene.id); } }
   const yts=[]; rows=rows.filter(r=>{ const t=String(r.txt||""); const ys=/\n/.test(t.trim())? ytScreen(t) : null; if(ys){ yts.push({...ys, r}); return false; } return true; });
   if(yts.length){ toast(`✂️ 유튜브 클립 ${yts.length}개 저장하는 중…`,true);
-    (async()=>{ const cache={}; let ok=0, miss=0, noTime=0;
+    (async()=>{ const cache={}; let ok=0, miss=0, noTime=0, lastC=null;
       for(const y of yts){ const f= cache[y.q]!==undefined? cache[y.q] : (cache[y.q]=await ytSearch(y.q));
-        if(f && f.id){ if(!ytVids().some(x=>x.vid===f.id)) ytSave({vid:f.id,title:f.title||y.q,at:Date.now(),lines:[]}); clipAdd({vid:f.id,title:f.title||y.q,t:y.start,at:y.r.created_at,text:ytSceneText(String(y.r.txt||""),[f.title,y.q])}); ok++; if(!y.start) noTime++; }
-        else { sceneAdd({src:"유튜브",text:ocrClean(String(y.r.txt||"")),at:y.r.created_at}); miss++; } }
+        if(f && f.id){ if(!ytVids().some(x=>x.vid===f.id)) ytSave({vid:f.id,title:f.title||y.q,at:Date.now(),lines:[]}); lastC=clipAdd({vid:f.id,title:f.title||y.q,t:y.start,at:y.r.created_at,text:ytSceneText(String(y.r.txt||""),[f.title,y.q])}); ok++; if(!y.start) noTime++; }
+        else { lastC=sceneAdd({src:"유튜브",text:ocrClean(String(y.r.txt||"")),at:y.r.created_at}); miss++; } }
       if(ok) toast(`✂️ 클립 ${ok}개 저장했어요`+(noTime? ` (${noTime}개는 시간을 못 읽어서 처음부터)` : "")+" · 🎬 영상으로 공부",true); if(miss) toast(`영상은 못 찾아서 화면 글만 ${miss}개 저장했어요`,false);
-      if(view.tab==="home" || (view.tab==="yt" && !(ytState&&ytState.vid) && !(ytState&&ytState.clip))) render(); })(); }
+      if(lastC) capJump("clip",lastC.id); })(); }
   rows=rows.filter(r=>{ const t=String(r.txt||""); if(/\n/.test(t.trim()) || t.trim().split(/\s+/).length>25){ scr.push({id:Date.now()+Math.random(),at:r.created_at,text:t}); nscr++; return false; } return true; });
-  if(nscr){ store.set(`bandup-screens-${slug}`,scr); toast(`📸 화면 ${nscr}개를 가져왔어요. 모르는 단어를 골라 보세요`,true); if(view.tab==="home") render(); }
+  if(nscr){ store.set(`bandup-screens-${slug}`,scr); toast(`📸 화면 ${nscr}개를 가져왔어요. 모르는 단어를 골라 보세요`,true); capJump("screen"); }
   rows.sort((a,b)=>String(a.created_at)<String(b.created_at)?-1:1).forEach((r,i)=>{ let w=String(r.txt||"").replace(/\s+/g," ").trim().replace(/^["“‘']+|["”’']+$/g,""); if(w.split(" ").length<5){ w=w.replace(/^[^A-Za-z]+|[^A-Za-z]+$/g,""); if(!/\s/.test(w) && /^[A-Z][a-z'’-]+$/.test(w)) w=w.toLowerCase(); } if(!w || !/[A-Za-z]/.test(w) || have.has(w.toLowerCase())) return;
     const it={w,ko:"",ex: w.split(" ").length>=5? w : "",t:Date.now()+i,inbox:1}; mine.push(it); added.push(it); have.add(w.toLowerCase()); });
   store.set(key,mine);
@@ -1669,8 +1670,8 @@ function renderYt(app){
   const V=ytVids().slice().sort((a,b)=>b.at-a.at);
   if(V.length){ app.append(el("h2","sec-t","최근 본 영상")); const box=el("div","box ytlist"); V.slice(0,10).forEach(v=>box.append(thumbRow(v.vid,v.title,"",()=>{ ytState={vid:v.vid}; render(); window.scrollTo(0,0); }))); app.append(box); }
   if(D.inbox){ const sh=el("details","ytmore ytset"); sh.append(el("summary",null,"뒷면 톡톡 설정 방법"));
-    const ol=el("ol","ibsteps"); for(const t of ["어제 만든 '화면 저장' 단축어를 그대로 써요. (없으면 단축어 앱 → ＋ → ① 스크린샷 찍기 ② 이미지에서 텍스트 추출 ③ URL 콘텐츠 가져오기: 아래 URL, 방법 POST, JSON 필드 p_txt = '이미지에서 추출한 텍스트')","설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭이나 삼중 탭 → 그 단축어","유튜브는 영상 아래 제목과 재생 바가 보일 때, 릴스는 자막이 화면에 떠 있을 때 치세요."]) ol.append(el("li",null,t));
-    sh.append(ol, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_save?apikey="+SB_KEY)); app.append(sh); }
+    const ol=el("ol","ibsteps"); for(const t of ["어제 만든 '화면 저장' 단축어를 그대로 써요. (없으면 단축어 앱 → ＋ → ① 스크린샷 찍기 ② 이미지에서 텍스트 추출 ③ URL 콘텐츠 가져오기: 아래 URL, 방법 POST, JSON 필드 p_txt = '이미지에서 추출한 텍스트')","설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭이나 삼중 탭 → 그 단축어","치고 나서 밴드업이 바로 열리게 하려면: 단축어 맨 아래에 동작 'URL 열기' 추가 → 아래 '밴드업 주소' 붙여 넣기. (사파리로 열려요)","유튜브는 영상 아래 제목과 재생 바가 보일 때, 릴스는 자막이 화면에 떠 있을 때 치세요."]) ol.append(el("li",null,t));
+    sh.append(ol, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_save?apikey="+SB_KEY), copyRow("밴드업 주소", location.href.split("#")[0].split("?")[0])); app.append(sh); }
 }
 function renderYtPlayer(app,v){
   const S=ytState; S.i=S.i??-1; S.loop=null; S.ko=S.ko??true; S.rate=S.rate||1;
@@ -2258,7 +2259,7 @@ window.addEventListener("hashchange",()=>{ if(window.BANDUP_SLUG) return; const 
 if("serviceWorker" in navigator && location.protocol==="https:" && !/claude|claudeusercontent/.test(location.hostname)){
   navigator.serviceWorker.register("sw.js").catch(()=>{});
 }
-setTimeout(function waitD(){ if(typeof D!=="undefined" && D && D.slug){ cloudBoot(); inboxPull(); document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible" && Date.now()-inboxLast>15000) inboxPull(); }); } else setTimeout(waitD,500); },800);
+setTimeout(function waitD(){ if(typeof D!=="undefined" && D && D.slug){ cloudBoot(); inboxPull(); document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible" && Date.now()-inboxLast>3000) inboxPull(); }); } else setTimeout(waitD,500); },800);
 (function autoUpdate(){
   const cur=((document.querySelector('script[src*="app.js?v="]')||{}).src||"").split("v=")[1]; if(!cur) return; let last=0; const day0=today();
   const check=()=>{ if(document.visibilityState!=="visible") return; if(today()!==day0){ const a=document.activeElement; if(!(a && /INPUT|TEXTAREA/.test(a.tagName))){ location.reload(); return; } } if(Date.now()-last<60000) return; last=Date.now();
