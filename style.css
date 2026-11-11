@@ -1070,3 +1070,24 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .scrw{background:#2a2a30}:root:not([data-theme="light"]) .scrw.on{background:#2b3366;color:#aab6ff}}
 .vbase{margin-left:8px;font-size:12px;font-weight:600;color:var(--blue);background:#eef0ff;border-radius:6px;padding:1px 6px;vertical-align:2px}
 .vbase2{margin:4px 0 0;font-size:14px;color:var(--blue);font-weight:700}
+
+/* 내가 담은 문장 · 듣기 */
+.spk.slow{font-size:17px;line-height:1}
+.labrow{display:flex;align-items:center;gap:8px}.labrow .lab{flex:1}.labrow .spk{width:34px;height:34px;border-radius:10px}.labrow .spk svg{width:17px;height:17px}
+.lsnrow{display:flex;justify-content:center;align-items:center;gap:12px;margin:14px 0 6px}
+.lsnbig{display:flex;align-items:center;gap:8px;font:inherit;font-weight:800;font-size:18px;padding:14px 26px;border-radius:999px;border:0;background:var(--blue);color:#fff;cursor:pointer}
+.lsnbig svg{width:24px;height:24px}
+.lsnko{justify-self:center;font:inherit;font-size:14px;color:var(--muted);background:none;border:1px dashed var(--line);border-radius:10px;padding:6px 12px;cursor:pointer;margin-top:6px}
+.lsnko.on{border-style:solid;color:var(--ink,inherit)}
+.lsnkob{margin:6px 0 0;font-size:14px;color:var(--muted)}
+.scrsl{display:grid;gap:6px}
+.scrsr{display:flex;align-items:center;gap:8px}.scrsr .spk{width:34px;height:34px;border-radius:10px;flex:none}.scrsr .spk svg{width:17px;height:17px}
+.scrst{flex:1;min-width:0;font-size:13.5px;line-height:1.35}.scrst.one{color:var(--muted)}
+.scradd{flex:none;font:inherit;font-size:12.5px;font-weight:700;color:var(--blue);background:var(--blue-soft);border:0;border-radius:999px;padding:7px 11px;cursor:pointer}
+.scradd.done{color:var(--muted);background:none}
+.msbtns{display:grid;gap:8px}
+.msadd{display:grid;gap:8px}.msinp{font:inherit;font-size:15px;width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface);color:inherit;resize:vertical}
+.mslist{display:grid}
+.msrow{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-top:1px solid var(--line)}.msrow:first-child{border-top:0}
+.mst{flex:1;min-width:0;display:grid;gap:3px}.mst b{font-size:16px;line-height:1.35}.mst span{font-size:13.5px;color:var(--muted)}
+.msctl{display:flex;flex-direction:column;align-items:center;gap:6px;flex:none}.msctl .spk{width:36px;height:36px}
