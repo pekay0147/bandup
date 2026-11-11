@@ -1134,3 +1134,8 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .clfoot{display:flex;gap:8px;align-items:center;justify-content:space-between}
 .ytrow .go{color:var(--muted);font-size:20px}
 .ytstick.nostick{position:static}
+.clframe{border-radius:14px}
+.clhead{display:grid;gap:2px}.cltitle{font-size:17px;line-height:1.35}
+.clctl{display:flex;flex-wrap:wrap;gap:6px}.clctl .ytadd{margin-left:0}
+.clrng{display:grid;gap:8px}.clrng>b{font-size:15px;font-variant-numeric:tabular-nums}.clrng p{margin:0}
+.clg{display:flex;align-items:center;gap:6px}.clg>span{font-size:14px;color:var(--muted);min-width:30px}.clg .ytb{height:34px;padding:0 12px;font-size:14px}
