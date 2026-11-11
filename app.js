@@ -33,7 +33,7 @@ async function boot(){
   try{
     const [s,g]=await Promise.all([fetch(`data/students/${slug}.json`,{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
                                    fetch("data/glossary.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({}))]);
-    if(s.group==="church" || s.group==="other"){ const gr=await fetch("data/groups/"+s.group+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null); if(gr) for(const k of Object.keys(gr)) if(!["slug","name","form","group"].includes(k)) s[k]=gr[k]; }
+    if(s.group==="church" || s.group==="other"){ const gr=await fetch("data/groups/"+s.group+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null); if(gr) for(const k of Object.keys(gr)) if(!["slug","name","form","group"].includes(k) && !(k==="words" && s.words && s.words.length)) s[k]=gr[k]; }
     if(s.group==="church" && s.sessions){ const td=today(); const hide=new Set(s.sessions.filter(x=>x.date && x.date>td).map(x=>x.no)); if(hide.size){ s.sessions=s.sessions.filter(x=>!hide.has(x.no)); s.cards=(s.cards||[]).filter(c=>!(c.sessions||[]).length || (c.sessions||[]).some(n=>!hide.has(n))); } }
     D=s; G=g||{};
     D.podSessions=[];
@@ -142,11 +142,14 @@ const ICONS={
   words:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="5" height="7" rx="2"/><rect x="16" y="14" width="5" height="7" rx="2"/></svg>',
   listen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="5" height="7" rx="2"/><rect x="16" y="14" width="5" height="7" rx="2"/></svg>',
   ideas:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg>',
+  jelly:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17c0-6 3.6-11 8-11s8 5 8 11c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3z"/><circle cx="9.5" cy="13" r=".8" fill="currentColor"/><circle cx="14.5" cy="13" r=".8" fill="currentColor"/><path d="M10.5 16c.8.6 2.2.6 3 0"/></svg>',
   notes:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h5"/></svg>'
 };
 function buildTabs(){
   const nav=$("#tabs nav"); nav.textContent="";
-  for(const [k,label] of [["home","홈"],["cards","큐카드"],["ideas","아이디어"],["words","철자"]]){
+  const TABS= (typeof D!=="undefined" && D && D.jelly)? [["home","홈"],["jelly","젤리"],["cards","큐카드"]] : [["home","홈"],["cards","큐카드"],["ideas","아이디어"],["words","철자"]];
+  nav.classList.toggle("three", TABS.length===3);
+  for(const [k,label] of TABS){
     const b=el("button"); b.type="button"; b.dataset.tab=k; b.innerHTML=ICONS[k]; b.append(el("span",null,label));
     if(k==="review"){ const bd=el("span","badge"); bd.id="dueBadge"; b.append(bd); }
     b.onclick=()=>{ go(k); };
@@ -185,6 +188,7 @@ function render(){
   if(view.tab==="inbox") renderInbox(app);
   if(view.tab==="screens") renderScreens(app);
   if(view.tab==="yt") renderYt(app);
+  if(view.tab==="jelly") renderJelly(app);
   updateTabs();
   document.body.classList.toggle("lesson", !!app.querySelector(".lbar"));
 }
@@ -305,6 +309,7 @@ function installBar(app){
 function renderHome(app){
   statFlush(false);
   installBar(app);
+  if(D.jelly) jellyHome(app);
   const due=dueCards().length;
   const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length;
   const goalDone = doneToday>=DAILY;
@@ -1729,6 +1734,70 @@ function renderYtPlayer(app,v){
       if(S.loop!=null && L[S.loop]){ const end=L[S.loop+1]? L[S.loop+1].t : L[S.loop].t+6; if(t>=end-.05 || t<L[S.loop].t-1){ try{ ytP.seekTo(Math.max(0,L[S.loop].t-.15),true); }catch(_){ } return; } }
       const i=idxAt(t); if(i!==S.i) setI(i,true); },200); });
 }
+
+/* ---------- 젤리 로비 (담은 단어·북마크로 하는 퀴즈 놀이) ---------- */
+const JK=()=>`bandup-jelly-${slug}`;
+const J_COLORS=["#ffb3c7","#ffd59e","#b8e6b0","#a8d8ff","#d4b8ff","#ffc4a3","#9fe6dc","#ffe08a"];
+const J_GAP=[1,3,7,14,30,60];
+function jState(){ const s=store.get(JK(),null); return s&&s.m? s : {m:{}}; }
+function jPool(){ const out=[], seen=new Set();
+  for(const id of cbmList()){ const c=getCard(id); if(!c || !c.en || !c.ko || c.kind==="fix") continue; const k="s:"+id; if(seen.has(k)) continue; seen.add(k); out.push({k, en:c.en, ko:c.ko, kind:"s"}); }
+  for(const w of vocAll()){ if(!w.w || !w.ko || !/[A-Za-z]/.test(w.w)) continue; const k="w:"+String(w.w).toLowerCase(); if(seen.has(k)) continue; seen.add(k); out.push({k, en:w.w, ko:String(w.ko).replace(/\s+/g," ").trim(), kind: String(w.w).split(" ").length>=5? "s" : "w"}); }
+  return out; }
+function jRoaming(max){ const st=jState(), t=today(); const pool=jPool(); const due=[], fresh=[];
+  for(const it of pool){ const m=st.m[it.k]; if(!m) fresh.push(it); else if(m.d<=t) due.push(it); }
+  return [...due, ...fresh].slice(0, max||12); }
+function jMerged(){ const st=jState(), t=today(); return Object.values(st.m).filter(m=>m.d>t).length; }
+function jTotal(){ return Object.keys(jState().m).length; }
+function jMark(it,ok){ const st=jState(); const m=st.m[it.k]||{n:0}; if(ok){ m.n=Math.min((m.n||0)+1,J_GAP.length); m.d=addD(today(),J_GAP[m.n-1]); st.m[it.k]=m; st.ok=(st.ok||0)+1; } else { st.miss=(st.miss||0)+1; } store.set(JK(),st); }
+function jOptions(it){ const pool=jPool().filter(x=>x.k!==it.k && x.kind===it.kind && x.en.toLowerCase()!==it.en.toLowerCase());
+  let extra= it.kind==="s"? (D.cards||[]).filter(c=>c.en && c.en!==it.en).map(c=>({en:c.en})) : Object.keys(G||{}).filter(w=>w.length>3 && w!==it.en.toLowerCase()).map(w=>({en:w}));
+  const pick=a=>a.sort(()=>Math.random()-.5); const opts=pick(pool).slice(0,3).map(x=>x.en);
+  for(const x of pick(extra)){ if(opts.length>=3) break; if(!opts.includes(x.en)) opts.push(x.en); }
+  return pick([it.en, ...opts]); }
+function jBlob(it,size){ const b=el("button","jel"+(it.kind==="s"?" js":"")); b.type="button"; b.style.setProperty("--jc",J_COLORS[Math.abs([...it.k].reduce((a,c)=>a*31+c.charCodeAt(0)|0,7))%J_COLORS.length]); if(size) b.style.setProperty("--js",size+"px");
+  b.setAttribute("aria-label","젤리 잡기"); b.innerHTML='<i class="jeye"></i><i class="jeye r"></i><i class="jmouth"></i><i class="jblush"></i><i class="jblush r"></i>'+(it.kind==="s"?'<i class="jtag">💬</i>':""); return b; }
+// 떠다니는 젤리 판 (field 안에서 튕겨 다님). onCatch(it, el) 로 퀴즈를 띄워요.
+function jField(field, items, onCatch, size){ const J=[]; const W=()=>field.clientWidth, H=()=>field.clientHeight; let paused=null;
+  items.forEach((it,i)=>{ const e=jBlob(it,size); field.append(e); const sz=size||(it.kind==="s"?64:54); const o={it,e,sz,x:Math.random()*Math.max(1,W()-sz),y:Math.random()*Math.max(1,H()-sz),vx:(Math.random()-.5)*1.2,vy:(Math.random()-.5)*1.2,boost:0,alive:true};
+    e.onclick=ev=>{ ev.stopPropagation(); if(!o.alive || paused) return; paused=o; e.classList.add("caught"); onCatch(o); }; J.push(o); });
+  const avoid=field.querySelector(".jbig");
+  const step=()=>{ if(!field.isConnected) return; const w=W(), h=H(); const c=avoid? {x:w/2,y:h/2,r:avoid.offsetWidth/2+10} : null;
+    for(const o of J){ if(!o.alive || o===paused) continue; const sp=1+o.boost; o.boost*=.97; o.x+=o.vx*sp; o.y+=o.vy*sp;
+      if(o.x<0){o.x=0;o.vx=Math.abs(o.vx);} if(o.x>w-o.sz){o.x=w-o.sz;o.vx=-Math.abs(o.vx);} if(o.y<0){o.y=0;o.vy=Math.abs(o.vy);} if(o.y>h-o.sz){o.y=h-o.sz;o.vy=-Math.abs(o.vy);}
+      if(c){ const dx=o.x+o.sz/2-c.x, dy=o.y+o.sz/2-c.y, d=Math.hypot(dx,dy)||1; if(d<c.r+o.sz/2){ o.vx=dx/d*Math.hypot(o.vx,o.vy); o.vy=dy/d*Math.hypot(o.vx,o.vy); o.x+=dx/d*2; o.y+=dy/d*2; } }
+      if(Math.random()<.008){ o.vx+=(Math.random()-.5)*.4; o.vy+=(Math.random()-.5)*.4; const v=Math.hypot(o.vx,o.vy); if(v>1.4){ o.vx*=1.4/v; o.vy*=1.4/v; } if(v<.3){ o.vx*=2; o.vy*=2; } }
+      o.e.style.transform=`translate(${o.x}px,${o.y}px)`; }
+    requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+  return { J, release(o,ok){ paused=null; o.e.classList.remove("caught"); if(!ok){ o.boost=3; o.e.classList.add("sad"); setTimeout(()=>o.e.classList.remove("sad"),2500); } },
+    merge(o,tx,ty,done){ paused=null; o.alive=false; o.e.classList.add("merge"); o.e.style.transform=`translate(${tx-o.sz/2}px,${ty-o.sz/2}px) scale(.2)`; setTimeout(()=>{ o.e.remove(); done&&done(); },650); },
+    left(){ return J.filter(o=>o.alive).length; } }; }
+function jQuiz(it, done){ const old=document.querySelector(".jsheet"); if(old) old.remove();
+  const sh=el("div","jsheet"); const card=el("div","jcard"); sh.append(card); document.body.append(sh);
+  card.append(el("span","jq", it.kind==="s"? "이 문장을 영어로?" : "이 뜻의 영어는?"), el("p","jko",it.ko));
+  const ops=el("div","jops"+(it.kind==="s"?" long":"")); let answered=false;
+  jOptions(it).forEach(o=>{ const b=el("button","jop",o); b.type="button"; b.onclick=()=>{ if(answered) return; answered=true; const ok=o===it.en;
+      b.classList.add(ok?"ok":"no"); if(!ok) [...ops.children].forEach(x=>{ if(x.textContent===it.en) x.classList.add("ok"); }); jMark(it,ok); if(ok) speak(it.en);
+      setTimeout(()=>{ sh.remove(); done(ok); }, ok? 450 : 1300); }; ops.append(b); });
+  const x=el("button","jx","나중에"); x.type="button"; x.onclick=()=>{ if(answered) return; answered=true; sh.remove(); done(null); };
+  card.append(ops,x); }
+function jBigPaint(big){ const n=jTotal(); const sz=Math.min(200,110+n*3); big.style.setProperty("--bs",sz+"px"); big.querySelector(".jbn").textContent=String(jMerged()); }
+function renderJelly(app){
+  const pool=jPool(); const R=jRoaming(12);
+  const hd=el("div","jhead"); const t=el("div"); t.append(el("h1",null,"젤리 로비"), el("p","lead","돌아다니는 젤리를 눌러서 맞히면 가운데 큰 젤리에 합체돼요.")); hd.append(t); app.append(hd);
+  const field=el("div","jfield"); const big=el("div","jbig"); big.innerHTML='<i class="jeye"></i><i class="jeye r"></i><i class="jmouth"></i><i class="jblush"></i><i class="jblush r"></i><b class="jbn">0</b>'; field.append(big); app.append(field);
+  const info=el("p","jinfo",""); app.append(info);
+  const paintInfo=left=>{ info.textContent= left? `남은 젤리 ${left}마리 · 합체 ${jMerged()}마리` : (pool.length? "🎉 모두 합체 완료! 복습할 때가 되면 젤리가 다시 나타나요." : "단어장에 단어를 담거나 큐카드를 북마크(☆)하면 젤리가 생겨요."); };
+  jBigPaint(big);
+  if(!R.length){ paintInfo(0); big.classList.add("happy"); return; }
+  const F=jField(field, R, o=>{ jQuiz(o.it, ok=>{ if(ok){ F.merge(o, field.clientWidth/2, field.clientHeight/2, ()=>{ big.classList.remove("boing"); void big.offsetWidth; big.classList.add("boing"); jBigPaint(big); const l=F.left(); paintInfo(l); if(!l) big.classList.add("happy"); }); } else F.release(o,false); }); });
+  paintInfo(R.length);
+}
+function jellyHome(app){ const R=jRoaming(3); if(!R.length) return;
+  const box=el("div","panel jhome"); const top=el("div","jhtop"); top.append(el("b",null,`🍬 젤리 ${jRoaming(99).length}마리가 돌아다녀요`)); const go2=el("button","cllink","로비 ›"); go2.type="button"; go2.onclick=()=>go("jelly"); top.append(go2);
+  const field=el("div","jfield mini"); box.append(top,field); app.append(box);
+  const F=jField(field, R, o=>{ jQuiz(o.it, ok=>{ if(ok){ F.merge(o, field.clientWidth-20, 10, ()=>{ if(!F.left()) box.remove(); }); } else F.release(o,false); }); }, 44); }
 function vocQuickAdd(w,sent){ w=String(w).replace(/\s+/g," ").trim(); if(!w) return false; const key=`bandup-myvoc-${slug}`; if(vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase())) return false;
   const it={w,ko:"",ex: sent? w : "",t:Date.now()}; const m=store.get(key,[]); m.push(it); store.set(key,m);
   vocLookup(w).then(r=>{ const mm=store.get(key,[]); const y=mm.find(z=>z.t===it.t); if(!y) return; y.ko=r.ko||y.ko; if(!y.ex) y.ex=r.ex||""; if(r.base){ y.base=r.base; y.form=r.form; } if(r.src==="d") y.src="d"; y.tried=today(); store.set(key,mm); }); return true; }

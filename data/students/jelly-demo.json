@@ -1,0 +1,154 @@
+{
+ "slug": "jelly-demo",
+ "name": "젤리 데모",
+ "course": "IELTS Speaking",
+ "form": 1,
+ "group": "church",
+ "jelly": true,
+ "words": [
+  {
+   "w": "anxiety",
+   "ko": "불안, 걱정",
+   "ex": "The root of anxiety is inadequate faith.",
+   "s": 1
+  },
+  {
+   "w": "inadequate",
+   "ko": "부족한, 불충분한",
+   "ex": "The root of anxiety is inadequate faith.",
+   "s": 1
+  },
+  {
+   "w": "discouraging",
+   "ko": "낙담하게 하는",
+   "ex": "In fact, it was quite discouraging to learn that.",
+   "s": 1
+  },
+  {
+   "w": "mere",
+   "ko": "단순한, ~에 불과한",
+   "ex": "It's not a mere struggle; it's a far deeper one.",
+   "s": 1
+  },
+  {
+   "w": "emphatically",
+   "ko": "단호하게, 힘주어",
+   "ex": "He said no, emphatically.",
+   "s": 1
+  },
+  {
+   "w": "routine visit",
+   "ko": "정기 검진",
+   "ex": "After a routine visit, the doctor found the real problem.",
+   "s": 1
+  },
+  {
+   "w": "treatable",
+   "ko": "치료할 수 있는",
+   "ex": "I'm so glad it was discovered while it's still treatable.",
+   "s": 1
+  },
+  {
+   "w": "to no avail",
+   "ko": "소용없이, 헛되이",
+   "ex": "I tried all kinds of medicines and diets, to no avail.",
+   "s": 1
+  },
+  {
+   "w": "unbelief",
+   "ko": "불신, 믿음 없음",
+   "ex": "I believe; help my unbelief!",
+   "s": 1
+  },
+  {
+   "w": "root",
+   "ko": "근원, 뿌리",
+   "ex": "The root of anxiety is inadequate faith.",
+   "s": 1
+  },
+  {
+   "w": "greatness",
+   "ko": "위대함",
+   "ex": "Is there a sense of greatness in your mind about your salvation?",
+   "s": 2
+  },
+  {
+   "w": "salvation",
+   "ko": "구원",
+   "ex": "Is there a sense of greatness in your mind about your salvation?",
+   "s": 2
+  },
+  {
+   "w": "neglect",
+   "ko": "소홀히 하다",
+   "ex": "Don't neglect being loved by God.",
+   "s": 2
+  },
+  {
+   "w": "file drawer",
+   "ko": "서류 서랍",
+   "ex": "You signed it once and it is in a file drawer somewhere.",
+   "s": 2
+  },
+  {
+   "w": "treasure",
+   "ko": "보물, 귀하게 여기다",
+   "ex": "Don't neglect the inexhaustible treasure of God's promises.",
+   "s": 2
+  },
+  {
+   "w": "inexhaustible",
+   "ko": "무궁무진한",
+   "ex": "Don't neglect the inexhaustible treasure of God's promises.",
+   "s": 2
+  },
+  {
+   "w": "blood-earnest",
+   "ko": "목숨 걸 만큼 진지한",
+   "ex": "We should be blood-earnest about being happy in our great salvation.",
+   "s": 2
+  },
+  {
+   "w": "rarely",
+   "ko": "좀처럼 ~않는",
+   "ex": "You rarely think about it.",
+   "s": 2
+  },
+  {
+   "w": "begrudgingly",
+   "ko": "마지못해",
+   "ex": "On the contrary, loving acts are genuine to the degree that they are not done begrudgingly.",
+   "s": 3
+  },
+  {
+   "w": "dutifully",
+   "ko": "의무감으로",
+   "ex": "The good alternative to begrudgingly is not neutrally or dutifully, but gladly.",
+   "s": 3
+  },
+  {
+   "w": "neutrally",
+   "ko": "덤덤하게, 중립적으로",
+   "ex": "The good alternative to begrudgingly is not neutrally or dutifully, but gladly.",
+   "s": 3
+  },
+  {
+   "w": "burdensome",
+   "ko": "부담스러운",
+   "ex": "His commandments are not burdensome.",
+   "s": 3
+  },
+  {
+   "w": "burden",
+   "ko": "짐, 부담",
+   "ex": "His commandments are not burdensome.",
+   "s": 3
+  },
+  {
+   "w": "humbly",
+   "ko": "겸손히",
+   "ex": "What does the Lord require of you but to do justice, and to love kindness, and to walk humbly with your God?",
+   "s": 3
+  }
+ ]
+}
