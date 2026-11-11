@@ -1460,18 +1460,18 @@ async function inboxPull(force){ if(!D || !D.inbox || inboxBusy || (!IS_MOBILE &
   try{ const r=await fetch(SB_URL+"/rest/v1/rpc/bu_take",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_token:D.inbox})}); if(r.ok) rows=await r.json(); }catch(_){ }
   if(!rows || !rows.length){ inboxBusy=false; return; }
   const key=`bandup-myvoc-${slug}`; const mine=store.get(key,[]); const have=new Set(vocAll().map(x=>String(x.w).toLowerCase())); const added=[];
-  { const iv=[]; rows=rows.filter(r=>{ const t=String(r.txt||"").trim(); const id=/instagram\.com/i.test(t) && t.split(/\s+/).length<=12? igId(t) : null; if(id){ iv.push(id); return false; } return true; });
-    if(iv.length){ let last=null; iv.forEach(code=>{ last=igAdd(code); }); toast(iv.length>1? `📸 릴스 ${iv.length}개를 내 클립에 넣었어요` : "📸 릴스를 내 클립에 넣었어요",true); setTimeout(()=>{ ytStop(); ytState={clip:last.id}; go("yt"); },300); } }
   { const yv=[]; rows=rows.filter(r=>{ const t=String(r.txt||"").trim(); const id=/youtu\.?be/i.test(t) && t.split(/\s+/).length<=12? ytId(t) : null; if(id){ yv.push(id); return false; } return true; });
     if(yv.length){ const last=yv[yv.length-1]; yv.forEach(id=>{ if(!ytVids().some(x=>x.vid===id)) ytSave({vid:id,title:"유튜브 영상",at:Date.now(),lines:[]}); }); toast("🎬 공유한 영상을 열어요",true); setTimeout(()=>ytOpen(last),300); } }
   const scr=store.get(`bandup-screens-${slug}`,[]); let nscr=0, nsent=0;
+  { let ni=0; rows=rows.filter(r=>{ const t=String(r.txt||""); const g=/\n/.test(t.trim())? igScreen(t) : null; if(g){ sceneAdd({src:"인스타 릴스",acct:g.acct,text:ocrClean(t).split("\n").filter(x=>!g.acct || x.replace(/^@/,"").toLowerCase()!==g.acct.toLowerCase()).join("\n"),at:r.created_at}); ni++; return false; } return true; });
+    if(ni){ toast(`📸 릴스 장면 ${ni}개를 내 클립에 저장했어요`,true); if(view.tab==="home" || (view.tab==="yt" && !(ytState&&(ytState.vid||ytState.clip)))) render(); } }
   const yts=[]; rows=rows.filter(r=>{ const t=String(r.txt||""); const ys=/\n/.test(t.trim())? ytScreen(t) : null; if(ys){ yts.push({...ys, r}); return false; } return true; });
   if(yts.length){ toast(`✂️ 유튜브 클립 ${yts.length}개 저장하는 중…`,true);
     (async()=>{ const cache={}; let ok=0, miss=0, noTime=0;
       for(const y of yts){ const f= cache[y.q]!==undefined? cache[y.q] : (cache[y.q]=await ytSearch(y.q));
-        if(f && f.id){ if(!ytVids().some(x=>x.vid===f.id)) ytSave({vid:f.id,title:f.title||y.q,at:Date.now(),lines:[]}); clipAdd({vid:f.id,title:f.title||y.q,t:y.start,at:y.r.created_at}); ok++; if(!y.start) noTime++; }
-        else { const sc2=store.get(`bandup-screens-${slug}`,[]); sc2.push({id:Date.now()+Math.random(),at:y.r.created_at,text:String(y.r.txt||"")}); store.set(`bandup-screens-${slug}`,sc2); miss++; } }
-      if(ok) toast(`✂️ 클립 ${ok}개 저장했어요`+(noTime? ` (${noTime}개는 시간을 못 읽어서 처음부터)` : "")+" · 🎬 영상으로 공부",true); else if(miss) toast("영상을 찾지 못했어요. 영상 아래 제목이 보일 때 쳐 주세요",false);
+        if(f && f.id){ if(!ytVids().some(x=>x.vid===f.id)) ytSave({vid:f.id,title:f.title||y.q,at:Date.now(),lines:[]}); clipAdd({vid:f.id,title:f.title||y.q,t:y.start,at:y.r.created_at,text:ytSceneText(String(y.r.txt||""),[f.title,y.q])}); ok++; if(!y.start) noTime++; }
+        else { sceneAdd({src:"유튜브",text:ocrClean(String(y.r.txt||"")),at:y.r.created_at}); miss++; } }
+      if(ok) toast(`✂️ 클립 ${ok}개 저장했어요`+(noTime? ` (${noTime}개는 시간을 못 읽어서 처음부터)` : "")+" · 🎬 영상으로 공부",true); if(miss) toast(`영상은 못 찾아서 화면 글만 ${miss}개 저장했어요`,false);
       if(view.tab==="home" || (view.tab==="yt" && !(ytState&&ytState.vid) && !(ytState&&ytState.clip))) render(); })(); }
   rows=rows.filter(r=>{ const t=String(r.txt||""); if(/\n/.test(t.trim()) || t.trim().split(/\s+/).length>25){ scr.push({id:Date.now()+Math.random(),at:r.created_at,text:t}); nscr++; return false; } return true; });
   if(nscr){ store.set(`bandup-screens-${slug}`,scr); toast(`📸 화면 ${nscr}개를 가져왔어요. 모르는 단어를 골라 보세요`,true); if(view.tab==="home") render(); }
@@ -1546,7 +1546,7 @@ async function ytSearch(q){ const qq=encodeURIComponent(q);
   return null; }
 const CLK=()=>`bandup-clips-${slug}`;
 function clips(){ return store.get(CLK(),[]); }
-function clipAdd(o){ const t=o.t||0; const c={id:Date.now()*1000+Math.floor(Math.random()*1000), vid:o.vid, title:o.title||"유튜브 영상", s:Math.max(0,t-10), e:t? t+2 : 15, at:o.at||new Date().toISOString(), note:"", noTime:!t}; const L=clips(); L.push(c); store.set(CLK(),L); return c; }
+function clipAdd(o){ const t=o.t||0; const c={id:Date.now()*1000+Math.floor(Math.random()*1000), vid:o.vid, text:o.text||"", title:o.title||"유튜브 영상", s:Math.max(0,t-10), e:t? t+2 : 15, at:o.at||new Date().toISOString(), note:"", noTime:!t}; const L=clips(); L.push(c); store.set(CLK(),L); return c; }
 function clipSave(c){ const L=clips(); const i=L.findIndex(x=>x.id===c.id); if(i>=0){ L[i]=c; store.set(CLK(),L); } }
 function renderClip(app,c){
   const S=ytState; S.rate=S.rate||1;
@@ -1558,7 +1558,7 @@ function renderClip(app,c){
   app.append(tm,track);
   const ctl=el("div","clctl"); const bPlay=el("button","btn primary clplay","▶ 재생"); bPlay.type="button"; const bRate=el("button","ytb clrate",S.rate+"x"); bRate.type="button"; ctl.append(bPlay,bRate); app.append(ctl);
   const foot=el("div","clfoot"); const full=el("button","cllink","전체 영상 보기"); full.type="button"; full.onclick=()=>{ ytStop(); ytOpen(c.vid,c.s+2); };
-  const del=el("button","cllink","지우기"); del.type="button"; del.onclick=()=>{ store.set(CLK(),clips().filter(x=>x.id!==c.id)); if(isF) fdel(c.fid).catch(()=>{}); ytStop(); ytState=null; render(); }; foot.append(isF? el("span") : full,del); app.append(foot);
+  const del=el("button","cllink","지우기"); del.type="button"; del.onclick=()=>{ store.set(CLK(),clips().filter(x=>x.id!==c.id)); if(isF) fdel(c.fid).catch(()=>{}); ytStop(); ytState=null; render(); }; foot.append(isF? el("span") : full,del); app.append(foot); if(c.text) app.append(sceneText(c.text));
   let dur=0, W={a:0,b:1}, drag=null, lastSeek=0, playing=false;
   const win=()=>{ const pad=Math.max(15,(c.e-c.s)); W.a=Math.max(0,c.s-pad); W.b=dur? Math.min(dur,c.e+pad) : c.e+pad; };
   const pct=t=>Math.max(0,Math.min(100,(t-W.a)/(W.b-W.a)*100));
@@ -1609,16 +1609,36 @@ async function clipImport(file){ if(!file) return; toast("영상 불러오는 �
     const d=new Date(); const c={id:Date.now()*1000+Math.floor(Math.random()*1000), kind:"file", fid, title:`화면 녹화 · ${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`, s:0, e:m.dur||15, dur:m.dur||0, thumb:m.thumb, port:m.h>m.w, at:d.toISOString()};
     const L=clips(); L.push(c); store.set(CLK(),L); ytState={clip:c.id}; go("yt"); }
   catch(_){ toast("영상을 저장하지 못했어요. 폰 저장 공간을 확인해 주세요",false); } }
-function igId(u){ const m=String(u||"").match(/instagram\.com\/(?:[\w.]+\/)?(reel|reels|p|tv)\/([A-Za-z0-9_-]{5,})/i); return m? m[2] : null; }
-function igAdd(code){ const L=clips(); const old=L.find(x=>x.kind==="ig" && x.code===code); if(old) return old; const d=new Date();
-  const c={id:Date.now()*1000+Math.floor(Math.random()*1000), kind:"ig", code, vid:"", title:`인스타 릴스 · ${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`, s:0, e:0, at:d.toISOString()}; L.push(c); store.set(CLK(),L); return c; }
-function renderIg(app,c){
+const OCR_UI=/^(좋아요|싫어요|댓글|공유|리믹스|저장|오프라인 저장|클립|감사|구독|구독중|구독함|팔로우|팔로잉|메시지|원본 오디오|홈|쇼츠|Shorts|릴스|Reels|검색|탐색|프로필|나|Home|Subscribe|Subscribed|Follow|Following|Like|Dislike|Comments?|Share|Remix|Save|Download|Thanks|Original audio|Search|Explore|Profile|You|Send|더보기|more|LIVE|Sponsored|광고)$/i;
+function ocrClean(t){ return String(t||"").split(/\n+/).map(x=>x.trim()).filter(x=>x.length>=2 && /[A-Za-z]{2}/.test(x) && !OCR_UI.test(x) && !/^[\d\s:.,%/·•|]+[천만억KMB]?(\s*(회|views?|likes?|comments?))?$/i.test(x) && !/^(\d{1,2}:\d{2})(\s|$)/.test(x) && !/^[\d.,]+\s*[천만억KMB]?$/.test(x) && !/(LTE|5G|Wi-?Fi)$/i.test(x)).map(x=>x.replace(/\s*(…|\.\.\.)\s*(더보기|more)\s*$/i,"").trim()).filter(Boolean).join("\n"); }
+function ytSceneText(raw,drop){ const L=String(raw).split(/\n+/).map(x=>x.trim()); const vi=L.findIndex(x=>/조회수\s*[\d.,]+|[\d.,]+\s*[천만억KMB]?\s*(회|views)\b/i.test(x)); const skip=new Set((drop||[]).filter(Boolean).map(x=>x.toLowerCase()));
+  const keep=L.filter((x,i)=>!(vi>=0 && (i===vi || i===vi+1)) && !skip.has(x.toLowerCase())); return ocrClean(keep.join("\n")); }
+function igScreen(t){ t=String(t||""); if(/조회수|구독|subscribe|\bviews\b/i.test(t)) return null; const hits=new Set((t.match(/팔로우|follow|원본 오디오|original audio|릴스|reels|좋아요|댓글|공유|리믹스|instagram/gi)||[]).map(x=>x.toLowerCase())).size; if(hits<2) return null;
+  const lines=t.split(/\n+/).map(x=>x.trim()); let acct=""; for(let i=0;i<lines.length;i++){ const m=lines[i].match(/^@?([a-z0-9._]{3,30})\s*[•·]?\s*(팔로우|Follow)?$/i); if(m && /[a-z]/.test(m[1]) && !OCR_UI.test(m[1]) && (m[2] || /팔로우|follow/i.test(lines[i+1]||"") || /[._\d]/.test(m[1]))){ acct=m[1]; break; } }
+  return {acct}; }
+function sceneAdd(o){ const d=new Date(); const c={id:Date.now()*1000+Math.floor(Math.random()*1000), kind:"scene", src:o.src||"화면", acct:o.acct||"", vid:"", title:"", text:o.text||"", s:0, e:0, at:o.at||d.toISOString()};
+  const first=(c.text.split("\n").find(x=>x.split(/\s+/).length>=3)||c.text.split("\n")[0]||"").slice(0,80); c.title=first||`${c.src} 장면`; const L=clips(); L.push(c); store.set(CLK(),L); return c; }
+function sceneText(text){ const box=el("div","panel sctext"); box.append(el("b","sch","화면 속 영어"), el("p","small muted","모르는 단어를 누르세요. 붙어 있는 단어를 이어서 누르면 표현으로 찾아 줘요."));
+  const paras=scrParas(text); if(!paras.length){ box.append(el("p","muted small","읽힌 영어가 없어요.")); return box; }
+  paras.forEach(line=>{ const wrap=el("div","scpara"); const row=el("p","scrline"); const toks=line.split(/\s+/); let sel=[]; const btns=[];
+    const mbox=el("div","ytwbox"); const tr=el("p","scrtr","");
+    const show=async()=>{ const words=sel.map(i=>btns[i].dataset.w); btns.forEach((b,i)=>{ if(b) b.classList.toggle("sel",sel.includes(i)); }); if(!words.length){ mbox.classList.remove("on"); return; } const w=words.join(" ");
+      mbox.textContent=""; const hd=el("div","ytwh"); hd.append(el("b",null,w), speakBtn(w)); const mean=el("span","small muted","뜻 찾는 중…"); mbox.append(hd,mean); mbox.classList.add("on");
+      const has=vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase()); const ab=el("button","scradd"+(has?" done":""), has? "✓ 단어장에 있어요" : "+ 단어장"); ab.type="button"; ab.disabled=has; ab.onclick=()=>{ if(vocQuickAdd(w, w.split(" ").length>=5)){ ab.textContent="✓ 담았어요"; ab.disabled=true; ab.classList.add("done"); } }; hd.append(ab);
+      const r=await vocLookup(w).catch(()=>({})); if(sel.map(i=>btns[i].dataset.w).join(" ")===w) mean.textContent=(r&&r.ko)||"뜻을 찾지 못했어요"; };
+    toks.forEach(tok=>{ const m=tok.match(/^([^A-Za-z]*)([A-Za-z][A-Za-z'’-]*[A-Za-z]|[A-Za-z])([^A-Za-z]*)$/); if(!m){ row.append(el("span","scrw plain",tok)); btns.push(null); return; }
+      const i=btns.length; const b=el("button","scrw",tok); b.type="button"; b.dataset.w=m[2].replace(/’/g,"'"); btns.push(b);
+      b.onclick=()=>{ if(sel.includes(i)){ sel= (i===sel[0]||i===sel[sel.length-1])? sel.filter(x=>x!==i) : [i]; } else if(sel.length && (i===sel[0]-1 || i===sel[sel.length-1]+1)){ sel.push(i); sel.sort((a,b)=>a-b); } else sel=[i]; show(); };
+      row.append(b); });
+    wrap.append(row,tr,mbox); if(line.split(/\s+/).length>=2){ const TR=store.get("bandup-tr",{}); if(TR[line]) tr.textContent=TR[line]; else trOne(line).then(k=>{ tr.textContent=k||""; }); }
+    box.append(wrap); });
+  return box; }
+function renderScene(app,c){
   const back=el("button","back","‹ 내 클립"); back.type="button"; back.onclick=()=>{ ytState=null; render(); }; app.append(back);
-  const fr=el("div","igframe"); const ifr=el("iframe"); ifr.src=`https://www.instagram.com/reel/${c.code}/embed/`; ifr.setAttribute("allow","autoplay; encrypted-media; picture-in-picture"); ifr.setAttribute("allowfullscreen",""); ifr.loading="eager"; ifr.title="인스타 릴스"; fr.append(ifr); app.append(fr);
-  app.append(el("p","cltitle",c.title));
-  const foot=el("div","clfoot"); const op=el("a","cllink","인스타에서 열기"); op.href=`https://www.instagram.com/reel/${c.code}/`; op.target="_blank"; op.rel="noopener";
-  const del=el("button","cllink","지우기"); del.type="button"; del.onclick=()=>{ store.set(CLK(),clips().filter(x=>x.id!==c.id)); ytState=null; render(); }; foot.append(op,del); app.append(foot);
-}
+  const hd=el("div","schead"); hd.append(el("span","scsrc",`📸 ${c.src}${c.acct? " · @"+c.acct : ""}`), el("span","small muted",new Date(c.at).toLocaleString("ko-KR",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"}))); app.append(hd);
+  app.append(sceneText(c.text));
+  const foot=el("div","clfoot"); const op=el("a","cllink", c.acct? "인스타에서 계정 열기" : ""); if(c.acct){ op.href=`https://www.instagram.com/${c.acct}/`; op.target="_blank"; op.rel="noopener"; }
+  const del=el("button","cllink","지우기"); del.type="button"; del.onclick=()=>{ store.set(CLK(),clips().filter(x=>x.id!==c.id)); ytState=null; render(); }; foot.append(op,del); app.append(foot); }
 function ytStop(){ clearInterval(ytTimer); ytTimer=null; try{ if(ytP) ytP.destroy(); }catch(_){ } ytP=null; }
 function ytClip(c){ if(!c || !c.v) return; ytApi().then(()=>{
     if(!clipWrap){ clipWrap=el("div","clipwrap"); const x=el("button","clipx","✕"); x.type="button"; x.setAttribute("aria-label","닫기"); x.onclick=()=>{ try{ clipP.pauseVideo(); }catch(_){ } clipWrap.classList.remove("on"); }; const host=el("div"); host.id="cliphost"; clipWrap.append(host,x); document.body.append(clipWrap); }
@@ -1629,7 +1649,7 @@ function ytClip(c){ if(!c || !c.v) return; ytApi().then(()=>{
     clearInterval(clipTimer); clipTimer=setInterval(()=>{ try{ if(clipP && clipP.getCurrentTime && clipP.getCurrentTime()>=clipEnd+.25){ clipP.pauseVideo(); clearInterval(clipTimer); } }catch(_){ } },150); }); }
 function renderYt(app){
   ytStop();
-  if(ytState && ytState.clip){ const c=clips().find(x=>x.id===ytState.clip); if(c) return c.kind==="ig"? renderIg(app,c) : renderClip(app,c); ytState=null; }
+  if(ytState && ytState.clip){ const c=clips().find(x=>x.id===ytState.clip); if(c) return c.kind==="scene"? renderScene(app,c) : renderClip(app,c); ytState=null; }
   if(ytState && ytState.vid){ const v=ytVids().find(x=>x.vid===ytState.vid); if(v) return renderYtPlayer(app,v); ytState=null; }
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
   pageHead(app,"영상으로 공부",null);
@@ -1644,18 +1664,12 @@ function renderYt(app){
   const thumbRow=(vid,title,sub,on,thumb)=>{ const r=el("div","ytrow"); const im=el("img","ytthumb"); im.src= thumb!==undefined? (thumb||"icons/icon-192.png") : `https://i.ytimg.com/vi/${vid}/mqdefault.jpg`; im.alt=""; im.loading="lazy"; const t=el("div","mst"); t.append(el("b",null,title), el("span",null,sub)); r.append(im,t); r.onclick=on; return r; };
   const C=clips().slice().reverse();
   app.append(el("h2","sec-t",`✂️ 내 클립`));
-  if(C.length){ const box=el("div","box ytlist"); C.forEach(c=>box.append(thumbRow(c.vid,c.title,c.kind==="ig"? "📸 인스타 릴스" : `${ytFmt(c.s)} – ${ytFmt(c.e)}`,()=>{ ytState={clip:c.id}; render(); window.scrollTo(0,0); }, c.kind==="file"? (c.thumb||"") : c.kind==="ig"? "" : undefined))); app.append(box); }
-  else app.append(el("p","muted small ytempty", D.inbox? "유튜브는 뒷면 톡톡, 릴스는 공유 → 밴드업으로 여기 저장돼요." : "영상에서 ✂️를 누르면 그 장면이 여기 저장돼요."));
-  const qb=el("button","btn ytopen","📋 복사한 링크 열기 (유튜브·릴스)"); qb.type="button"; const qm=el("p","small txmsg","");
-  qb.onclick=async()=>{ let t=""; try{ t=await navigator.clipboard.readText(); }catch(_){ } const ig=igId(t); if(ig){ const c=igAdd(ig); ytState={clip:c.id}; render(); window.scrollTo(0,0); return; } const id=ytId(t); if(id){ ytOpen(id); return; } qm.textContent="유튜브나 인스타에서 '공유 → 링크 복사'를 먼저 눌러 주세요."; };
-  app.append(qb,qm);
+  if(C.length){ const box=el("div","box ytlist"); C.forEach(c=>box.append(thumbRow(c.vid,c.title,c.kind==="scene"? `📸 ${c.src||"화면"}${c.acct? " · @"+c.acct : ""}` : `${ytFmt(c.s)} – ${ytFmt(c.e)}`,()=>{ ytState={clip:c.id}; render(); window.scrollTo(0,0); }, c.kind==="file"? (c.thumb||"") : c.kind==="scene"? "" : undefined))); app.append(box); }
+  else app.append(el("p","muted small ytempty", D.inbox? "유튜브나 릴스를 보다가 폰 뒷면을 톡톡 치면 그 장면이 여기 저장돼요." : "영상에서 ✂️를 누르면 그 장면이 여기 저장돼요."));
   const V=ytVids().slice().sort((a,b)=>b.at-a.at);
   if(V.length){ app.append(el("h2","sec-t","최근 본 영상")); const box=el("div","box ytlist"); V.slice(0,10).forEach(v=>box.append(thumbRow(v.vid,v.title,"",()=>{ ytState={vid:v.vid}; render(); window.scrollTo(0,0); }))); app.append(box); }
-  if(D.inbox){ const sg=el("details","ytmore ytset"); sg.append(el("summary",null,"릴스 → 밴드업 설정 방법 (한 번만)"));
-    const ol2=el("ol","ibsteps"); for(const t of ["단축어 앱 → 오른쪽 위 ＋ → 맨 위 이름을 '밴드업'으로","아래 ⓘ(정보) → '공유 시트에서 보기' 켜기","동작 'URL 콘텐츠 가져오기' 추가 → 파란 URL에 아래 URL 붙여 넣기 → 펼쳐서 방법 POST → 요청 본문 JSON에 텍스트 필드 1개: 키 p_txt, 값은 파란 '단축어 입력'","끝! 릴스 보다가 종이비행기(공유) → 맨 아래 줄 오른쪽 끝 '공유하기…'(또는 ⋯) → 밴드업 → 밴드업을 열면 그 릴스가 바로 나와요. 유튜브 공유에서도 똑같이 돼요."]) ol2.append(el("li",null,t));
-    sg.append(ol2, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_save?apikey="+SB_KEY)); app.append(sg); }
-  if(D.inbox){ const sh=el("details","ytmore ytset"); sh.append(el("summary",null,"유튜브 뒷면 톡톡 설정 방법"));
-    const ol=el("ol","ibsteps"); for(const t of ["어제 만든 '화면 저장' 단축어를 그대로 써요. (없으면 단축어 앱 → ＋ → ① 스크린샷 찍기 ② 이미지에서 텍스트 추출 ③ URL 콘텐츠 가져오기: 아래 URL, 방법 POST, JSON 필드 p_txt = '이미지에서 추출한 텍스트')","설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭이나 삼중 탭 → 그 단축어","유튜브 볼 때 영상 아래 제목과 재생 바가 보이는 상태에서 치세요."]) ol.append(el("li",null,t));
+  if(D.inbox){ const sh=el("details","ytmore ytset"); sh.append(el("summary",null,"뒷면 톡톡 설정 방법"));
+    const ol=el("ol","ibsteps"); for(const t of ["어제 만든 '화면 저장' 단축어를 그대로 써요. (없으면 단축어 앱 → ＋ → ① 스크린샷 찍기 ② 이미지에서 텍스트 추출 ③ URL 콘텐츠 가져오기: 아래 URL, 방법 POST, JSON 필드 p_txt = '이미지에서 추출한 텍스트')","설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭이나 삼중 탭 → 그 단축어","유튜브는 영상 아래 제목과 재생 바가 보일 때, 릴스는 자막이 화면에 떠 있을 때 치세요."]) ol.append(el("li",null,t));
     sh.append(ol, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_save?apikey="+SB_KEY)); app.append(sh); }
 }
 function renderYtPlayer(app,v){

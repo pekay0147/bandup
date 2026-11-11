@@ -1167,3 +1167,8 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .ytset{margin-top:10px}
 .ytsearch{display:flex;gap:8px;margin-bottom:6px}.ytsearch .txin{flex:1;min-width:0}.ytsearch .btn{width:auto;padding:0 16px}
 .ytres{max-height:60vh;overflow:auto}
+
+/* 장면 글 */
+.sctext{display:grid;gap:8px;margin-top:12px}.sctext .sch{font-size:16px}.sctext>p{margin:0}
+.scpara{display:grid;gap:6px;padding:6px 0 10px;border-bottom:1px solid var(--line)}.scpara:last-child{border-bottom:0}
+.schead{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:4px}.scsrc{font-weight:800;font-size:16px}
