@@ -1124,3 +1124,13 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .ytquick{display:grid;gap:8px}.ytbig{font-size:17px;padding:16px}
 .ytnew.ytmore summary{color:var(--ink)}
 .ytback{display:grid;gap:6px;padding-bottom:12px;margin-bottom:4px;border-bottom:1px solid var(--line)}.ytback b{font-size:16px}
+
+/* 내 클립 */
+.clrng{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}.clrng>b{font-size:15px;font-variant-numeric:tabular-nums;width:100%}
+.clg{display:flex;align-items:center;gap:4px}.clg .ytb{min-width:0;height:32px;padding:0 9px;font-size:13px}
+.ytb.rec{background:#ffe3e3;border-color:#e5484d;color:#c92a2a}
+.clrec{display:grid}.clrecp{display:grid;gap:6px}.clrecp audio{width:100%}.cldot{color:#c92a2a}
+.clnote{display:grid;gap:8px}
+.clfoot{display:flex;gap:8px;align-items:center;justify-content:space-between}
+.ytrow .go{color:var(--muted);font-size:20px}
+.ytstick.nostick{position:static}
