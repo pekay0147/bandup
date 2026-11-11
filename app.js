@@ -1457,7 +1457,9 @@ function renderCloud(app){
 /* ---------- 어디서든 저장 (inbox) ---------- */
 let inboxBusy=false, inboxLast=0;
 const IS_MOBILE=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent||"") || (navigator.maxTouchPoints>1 && /Macintosh/.test(navigator.userAgent||""));
-function capJump(kind,id){ if(["cards","review","mock","words","profile"].includes(view.tab)) return; setTimeout(()=>{ if(kind==="screen"){ scrSel=[]; go("screens"); } else { ytStop(); ytState={clip:id}; go("yt"); } window.scrollTo(0,0); },250); }
+function capGo(kind,id){ if(kind==="screen"){ scrSel=[]; go("screens"); } else { if(!clips().some(x=>x.id===id)) return; ytStop(); ytState={clip:id}; go("yt"); } window.scrollTo(0,0); }
+function capPending(){ try{ const j=JSON.parse(sessionStorage.getItem("bandup-jump")||"null"); sessionStorage.removeItem("bandup-jump"); if(j && Date.now()-j.t<20000) capGo(j.kind,j.id); }catch(_){ } }
+function capJump(kind,id){ if(["cards","review","mock","words","profile"].includes(view.tab)) return; try{ sessionStorage.setItem("bandup-jump",JSON.stringify({kind,id,t:Date.now()})); }catch(_){ } setTimeout(()=>{ if(kind==="screen"){ scrSel=[]; go("screens"); } else { ytStop(); ytState={clip:id}; go("yt"); } window.scrollTo(0,0); },250); }
 async function inboxPull(force){ if(!D || !D.inbox || inboxBusy || (!IS_MOBILE && !force)) return; inboxBusy=true; inboxLast=Date.now(); let rows=null;
   try{ const r=await fetch(SB_URL+"/rest/v1/rpc/bu_take",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_token:D.inbox})}); if(r.ok) rows=await r.json(); }catch(_){ }
   if(!rows || !rows.length){ inboxBusy=false; return; }
@@ -2260,7 +2262,7 @@ window.addEventListener("hashchange",()=>{ if(window.BANDUP_SLUG) return; const 
 if("serviceWorker" in navigator && location.protocol==="https:" && !/claude|claudeusercontent/.test(location.hostname)){
   navigator.serviceWorker.register("sw.js").catch(()=>{});
 }
-setTimeout(function waitD(){ if(typeof D!=="undefined" && D && D.slug){ cloudBoot(); inboxPull(); document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible" && Date.now()-inboxLast>3000) inboxPull(); }); } else setTimeout(waitD,500); },800);
+setTimeout(function waitD(){ if(typeof D!=="undefined" && D && D.slug){ capPending(); inboxPull(); cloudBoot(); document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible" && Date.now()-inboxLast>3000) inboxPull(); }); } else setTimeout(waitD,150); },150);
 (function autoUpdate(){
   const cur=((document.querySelector('script[src*="app.js?v="]')||{}).src||"").split("v=")[1]; if(!cur) return; let last=0; const day0=today();
   const check=()=>{ if(document.visibilityState!=="visible") return; if(today()!==day0){ const a=document.activeElement; if(!(a && /INPUT|TEXTAREA/.test(a.tagName))){ location.reload(); return; } } if(Date.now()-last<60000) return; last=Date.now();
