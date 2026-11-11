@@ -309,7 +309,6 @@ function installBar(app){
 function renderHome(app){
   statFlush(false);
   installBar(app);
-  if(D.jelly) jellyHome(app);
   const due=dueCards().length;
   const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length;
   const goalDone = doneToday>=DAILY;
@@ -1737,7 +1736,30 @@ function renderYtPlayer(app,v){
 
 /* ---------- 젤리 로비 (담은 단어·북마크로 하는 퀴즈 놀이) ---------- */
 const JK=()=>`bandup-jelly-${slug}`;
-const J_COLORS=["#ffb3c7","#ffd59e","#b8e6b0","#a8d8ff","#d4b8ff","#ffc4a3","#9fe6dc","#ffe08a"];
+const J_FLAV=[["#ffc2d6","#ff4f8b"],["#ffd9a0","#ff8a2a"],["#fff1a6","#ffbf1f"],["#cdf7a6","#3fbf5f"],["#b4e1ff","#2e8cff"],["#e2c9ff","#9450ff"],["#ffd6c2","#ff6f52"],["#b8f6e8","#14bf9c"]];
+const J_SHAPE={
+  bear:{d:'<circle cx="31" cy="20" r="10"/><circle cx="69" cy="20" r="10"/><ellipse cx="50" cy="34" rx="23" ry="19"/><ellipse cx="50" cy="69" rx="26" ry="25"/><ellipse cx="25" cy="58" rx="9" ry="12" transform="rotate(25 25 58)"/><ellipse cx="75" cy="58" rx="9" ry="12" transform="rotate(-25 75 58)"/><ellipse cx="36" cy="91" rx="11" ry="7"/><ellipse cx="64" cy="91" rx="11" ry="7"/>', sp:[37,26], rim:false},
+  heart:{d:'<path d="M50 89C22 68 7 52 7 34 7 19 18 9 31 9c9 0 15 5 19 12 4-7 10-12 19-12 13 0 24 10 24 25 0 18-15 34-43 55z"/>', sp:[30,26], rim:true},
+  star:{d:'<path d="M50 9l11 23 25 3-18 18 5 25-23-12-23 12 5-25-18-18 25-3z" stroke-linejoin="round" stroke-width="12" stroke="currentColor"/>', sp:[40,30], rim:false},
+  ring:{d:'<path fill-rule="evenodd" d="M50 10a40 40 0 1 1 0 80 40 40 0 0 1 0-80zm0 24a16 16 0 1 0 0 32 16 16 0 0 0 0-32z"/>', sp:[30,26], rim:true},
+  drop:{d:'<path d="M13 76c0-36 16-62 37-62s37 26 37 62c0 9-6 14-15 14H28c-9 0-15-5-15-14z"/>', sp:[33,32], rim:true, ridge:true},
+  bean:{d:'<path d="M24 22c14-12 40-10 54 6s16 42 2 54-40 10-54-6-16-42-2-54z"/>', sp:[32,28], rim:true}
+};
+let jUid=0;
+function jSvg(shape,flav,opts){ const S=J_SHAPE[shape]||J_SHAPE.drop, [lt,dk]=flav, u="jg"+(++jUid), o=opts||{};
+  const fillD=S.d.replace(/stroke="currentColor"/,`stroke="url(#${u}a)"`);
+  const hiD=S.d.replace(/stroke="currentColor"/,`stroke="url(#${u}b)"`);
+  return `<svg viewBox="0 0 100 100" aria-hidden="true"><defs>
+<linearGradient id="${u}a" gradientUnits="userSpaceOnUse" x1="30" y1="6" x2="70" y2="98"><stop offset="0" stop-color="${lt}"/><stop offset=".55" stop-color="${dk}" stop-opacity=".92"/><stop offset="1" stop-color="${dk}"/></linearGradient>
+<radialGradient id="${u}b" gradientUnits="userSpaceOnUse" cx="${S.sp[0]}" cy="${S.sp[1]}" r="60"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset=".35" stop-color="#fff" stop-opacity=".18"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+<radialGradient id="${u}c" gradientUnits="userSpaceOnUse" cx="50" cy="40" r="62"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="${dk}" stop-opacity=".55"/></radialGradient>
+<filter id="${u}f" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.4"/></filter></defs>
+<g opacity="${o.op||.94}" fill="url(#${u}a)">${fillD}</g><g fill="url(#${u}c)">${fillD}</g><g fill="url(#${u}b)">${hiD}</g>
+${S.ridge? `<path d="M30 30c-4 12-6 30-6 46M50 16v64M70 30c4 12 6 30 6 46" stroke="#fff" stroke-opacity=".22" stroke-width="3" fill="none" stroke-linecap="round"/>` : ""}
+${S.rim? `<g fill="none" stroke="#fff" stroke-opacity=".4" stroke-width="1.6">${S.d}</g>` : ""}
+<ellipse cx="${S.sp[0]}" cy="${S.sp[1]}" rx="8" ry="4.5" transform="rotate(-32 ${S.sp[0]} ${S.sp[1]})" fill="#fff" opacity=".9" filter="url(#${u}f)"/>
+<circle cx="${S.sp[0]+11}" cy="${S.sp[1]-5}" r="2" fill="#fff" opacity=".95"/></svg>`; }
+function jPick(it){ const h=Math.abs([...it.k].reduce((a,c)=>a*31+c.charCodeAt(0)|0,7)); const shapes= it.kind==="s"? ["bear"] : ["heart","star","ring","drop","bean"]; return {shape:shapes[h%shapes.length], flav:J_FLAV[(h>>3)%J_FLAV.length]}; }
 const J_GAP=[1,3,7,14,30,60];
 function jState(){ const s=store.get(JK(),null); return s&&s.m? s : {m:{}}; }
 function jPool(){ const out=[], seen=new Set();
@@ -1755,8 +1777,8 @@ function jOptions(it){ const pool=jPool().filter(x=>x.k!==it.k && x.kind===it.ki
   const pick=a=>a.sort(()=>Math.random()-.5); const opts=pick(pool).slice(0,3).map(x=>x.en);
   for(const x of pick(extra)){ if(opts.length>=3) break; if(!opts.includes(x.en)) opts.push(x.en); }
   return pick([it.en, ...opts]); }
-function jBlob(it,size){ const b=el("button","jel"+(it.kind==="s"?" js":"")); b.type="button"; b.style.setProperty("--jc",J_COLORS[Math.abs([...it.k].reduce((a,c)=>a*31+c.charCodeAt(0)|0,7))%J_COLORS.length]); if(size) b.style.setProperty("--js",size+"px");
-  b.setAttribute("aria-label","젤리 잡기"); b.innerHTML='<i class="jeye"></i><i class="jeye r"></i><i class="jmouth"></i><i class="jblush"></i><i class="jblush r"></i>'+(it.kind==="s"?'<i class="jtag">💬</i>':""); return b; }
+function jBlob(it,size){ const b=el("button","jel"+(it.kind==="s"?" js":"")); b.type="button"; if(size) b.style.setProperty("--js",size+"px"); const pk=jPick(it); b.style.setProperty("--jsh",pk.flav[1]+"66");
+  b.setAttribute("aria-label","젤리 잡기"); const w=el("span","jw"); w.style.animationDelay=(-Math.random()*2).toFixed(2)+"s"; w.innerHTML=jSvg(pk.shape,pk.flav); b.append(w); return b; }
 // 떠다니는 젤리 판 (field 안에서 튕겨 다님). onCatch(it, el) 로 퀴즈를 띄워요.
 function jField(field, items, onCatch, size){ const J=[]; const W=()=>field.clientWidth, H=()=>field.clientHeight; let paused=null;
   items.forEach((it,i)=>{ const e=jBlob(it,size); field.append(e); const sz=size||(it.kind==="s"?64:54); const o={it,e,sz,x:Math.random()*Math.max(1,W()-sz),y:Math.random()*Math.max(1,H()-sz),vx:(Math.random()-.5)*1.2,vy:(Math.random()-.5)*1.2,boost:0,alive:true};
@@ -1782,11 +1804,13 @@ function jQuiz(it, done){ const old=document.querySelector(".jsheet"); if(old) o
       setTimeout(()=>{ sh.remove(); done(ok); }, ok? 450 : 1300); }; ops.append(b); });
   const x=el("button","jx","나중에"); x.type="button"; x.onclick=()=>{ if(answered) return; answered=true; sh.remove(); done(null); };
   card.append(ops,x); }
-function jBigPaint(big){ const n=jTotal(); const sz=Math.min(200,110+n*3); big.style.setProperty("--bs",sz+"px"); big.querySelector(".jbn").textContent=String(jMerged()); }
+function jBigPaint(big){ const n=jTotal(); big.style.setProperty("--bs",Math.min(190,120+n*2.2)+"px"); big.querySelector(".jbn").textContent=String(jMerged());
+  const box=big.querySelector(".jin"); const st=jState(); const keys=Object.keys(st.m).slice(-36); box.textContent="";
+  keys.forEach((k,i)=>{ const pk=jPick({k,kind:k.startsWith("s:")?"s":"w"}); const m=el("i","jmini"); const a=i*2.399, r=Math.sqrt((i+.5)/Math.max(keys.length,1)); m.style.left=(50+Math.cos(a)*r*30)+"%"; m.style.top=(60+Math.sin(a)*r*20)+"%"; m.style.transform=`translate(-50%,-50%) rotate(${(i*47)%360}deg)`; m.innerHTML=jSvg(pk.shape,pk.flav,{op:.85}); box.append(m); }); }
 function renderJelly(app){
   const pool=jPool(); const R=jRoaming(12);
   const hd=el("div","jhead"); const t=el("div"); t.append(el("h1",null,"젤리 로비"), el("p","lead","돌아다니는 젤리를 눌러서 맞히면 가운데 큰 젤리에 합체돼요.")); hd.append(t); app.append(hd);
-  const field=el("div","jfield"); const big=el("div","jbig"); big.innerHTML='<i class="jeye"></i><i class="jeye r"></i><i class="jmouth"></i><i class="jblush"></i><i class="jblush r"></i><b class="jbn">0</b>'; field.append(big); app.append(field);
+  const field=el("div","jfield"); const big=el("div","jbig"); big.innerHTML='<div class="jmold">'+jSvg("drop",["#f3e8ff","#c39bff"],{op:.55})+'<div class="jin"></div></div><b class="jbn">0</b>'; field.append(big); app.append(field);
   const info=el("p","jinfo",""); app.append(info);
   const paintInfo=left=>{ info.textContent= left? `남은 젤리 ${left}마리 · 합체 ${jMerged()}마리` : (pool.length? "🎉 모두 합체 완료! 복습할 때가 되면 젤리가 다시 나타나요." : "단어장에 단어를 담거나 큐카드를 북마크(☆)하면 젤리가 생겨요."); };
   jBigPaint(big);
@@ -1794,10 +1818,6 @@ function renderJelly(app){
   const F=jField(field, R, o=>{ jQuiz(o.it, ok=>{ if(ok){ F.merge(o, field.clientWidth/2, field.clientHeight/2, ()=>{ big.classList.remove("boing"); void big.offsetWidth; big.classList.add("boing"); jBigPaint(big); const l=F.left(); paintInfo(l); if(!l) big.classList.add("happy"); }); } else F.release(o,false); }); });
   paintInfo(R.length);
 }
-function jellyHome(app){ const R=jRoaming(3); if(!R.length) return;
-  const box=el("div","panel jhome"); const top=el("div","jhtop"); top.append(el("b",null,`🍬 젤리 ${jRoaming(99).length}마리가 돌아다녀요`)); const go2=el("button","cllink","로비 ›"); go2.type="button"; go2.onclick=()=>go("jelly"); top.append(go2);
-  const field=el("div","jfield mini"); box.append(top,field); app.append(box);
-  const F=jField(field, R, o=>{ jQuiz(o.it, ok=>{ if(ok){ F.merge(o, field.clientWidth-20, 10, ()=>{ if(!F.left()) box.remove(); }); } else F.release(o,false); }); }, 44); }
 function vocQuickAdd(w,sent){ w=String(w).replace(/\s+/g," ").trim(); if(!w) return false; const key=`bandup-myvoc-${slug}`; if(vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase())) return false;
   const it={w,ko:"",ex: sent? w : "",t:Date.now()}; const m=store.get(key,[]); m.push(it); store.set(key,m);
   vocLookup(w).then(r=>{ const mm=store.get(key,[]); const y=mm.find(z=>z.t===it.t); if(!y) return; y.ko=r.ko||y.ko; if(!y.ex) y.ex=r.ex||""; if(r.base){ y.base=r.base; y.form=r.form; } if(r.src==="d") y.src="d"; y.tried=today(); store.set(key,mm); }); return true; }
