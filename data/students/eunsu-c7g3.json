@@ -44,6 +44,12 @@
    "date": "2026-11-10",
    "title": "내가 받는 과외",
    "label": "과외 6차시"
+  },
+  {
+   "no": 16,
+   "date": "2026-11-11",
+   "title": "Speaking Matrix",
+   "label": "스피킹 매트릭스 13회"
   }
  ],
  "types": [
@@ -1367,6 +1373,222 @@
    "en": "I'm a bit of a geek.",
    "hint": "geek",
    "gram": "<em>geek / nerd / dork</em> = 덕후, 공부벌레, 괴짜(친한 사이 농담)."
+  },
+  {
+   "id": "sm13-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "이런 변화를 몇 주 동안 실천하고 나니, 일상에서 실제로 달라진 점들이 눈에 띄기 시작했어요.",
+   "en": "After a few weeks of making these changes, I started to notice real differences in my daily life.",
+   "hint": "notice",
+   "gram": "<em>after a few weeks of</em> -ing = ~한 지 몇 주 후에. <em>start to</em> + 동사 = ~하기 시작하다. <em>notice</em> = 알아차리다. <em>difference</em>의 복수형 <em>differences</em>."
+  },
+  {
+   "id": "sm13-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "생각했던 것보다 빨리 상황이 나아지기 시작했어요.",
+   "en": "Things started to improve sooner than I expected.",
+   "hint": "sooner",
+   "gram": "<em>things</em> = 상황, 일들. <em>improve</em> = 나아지다. <em>sooner than I expected</em> = 예상보다 빨리 (soon의 비교급 sooner)."
+  },
+  {
+   "id": "sm13-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "잠도 더 잘 자고, 하루하루 덜 버겁게 느껴졌어요.",
+   "en": "I was sleeping better and feeling less overwhelmed each day.",
+   "hint": "overwhelmed",
+   "gram": "<em>was</em> -ing = ~하고 있었다(과거진행, 그 시기의 변화). <em>less</em> + 형용사 = 덜 ~한. <em>overwhelmed</em> = 압도된, 버거운. <em>each day</em> = 매일."
+  },
+  {
+   "id": "sm13-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "여전히 습관적으로 휴대폰을 집어 들었다가 시간 가는 줄 모르는 밤도 있었어요.",
+   "en": "There were still nights when I picked up my phone out of habit and lost track of time.",
+   "hint": "habit",
+   "gram": "<em>There were nights when</em> + 문장 = ~하는 밤들이 있었다(when = 관계부사). <em>out of habit</em> = 습관적으로. <em>lose track of time</em> = 시간 가는 줄 모르다(lose-lost-lost)."
+  },
+  {
+   "id": "sm13-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "휴대폰을 다시 내려놓는 게 조금 더 쉬워졌어요.",
+   "en": "It became a little easier to put my phone back down.",
+   "hint": "easier",
+   "gram": "<em>It became</em> + 형용사 + <em>to</em> 동사 = ~하는 게 …해졌다(It = 가주어). <em>a little easier</em> = 조금 더 쉬운. <em>put</em> A <em>back down</em> = A를 다시 내려놓다."
+  },
+  {
+   "id": "sm13-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "변화가 하룻밤 사이에 일어나지 않고 결과도 사람마다 다르다는 건 사실이에요.",
+   "en": "It is true that change does not happen overnight and results vary from person to person.",
+   "hint": "overnight",
+   "gram": "<em>It is true that</em> + 문장 = ~라는 건 사실이다. <em>overnight</em> = 하룻밤 사이에. <em>vary</em> = 다르다. <em>from person to person</em> = 사람마다."
+  },
+  {
+   "id": "sm13-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "저도 좌절할 때가 있었고, 아무것도 달라지지 않은 것 같은 날들도 있었어요.",
+   "en": "I also had setbacks and days when nothing seemed different.",
+   "hint": "setbacks",
+   "gram": "<em>setback</em> = 좌절, 후퇴. <em>days when</em> + 문장 = ~한 날들. <em>nothing seemed</em> + 형용사 = 아무것도 ~해 보이지 않았다."
+  },
+  {
+   "id": "sm13-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "차분한 아침이 하루의 나머지 분위기를 더 좋게 만들어 줬어요.",
+   "en": "A calmer morning set a better tone for the rest of my day.",
+   "hint": "tone",
+   "gram": "<em>calmer</em> = 더 차분한(calm의 비교급). <em>set the tone for</em> = ~의 분위기를 정하다(set-set-set). <em>the rest of</em> = ~의 나머지."
+  },
+  {
+   "id": "sm13-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "저를 놀라게 한 건 상황이 얼마나 빨리 나아졌는지였어요.",
+   "en": "What surprised me was how quickly things improved.",
+   "hint": "surprised",
+   "gram": "<b>what/how 절</b> <em>What</em> + 동사 = ~한 것(주어 자리). <em>how</em> + 부사 + 주어 + 동사 = 얼마나 ~하게 …했는지. 의문문 순서(did things…)가 아니라 평서문 순서!"
+  },
+  {
+   "id": "sm13-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "가장 도움이 된 건 휴대폰을 거실에 두는 거였어요.",
+   "en": "What helped me most was leaving my phone in the living room.",
+   "hint": "helped",
+   "gram": "<b>what 절</b> <em>What helped me most</em> = 나에게 가장 도움이 된 것. what 절이 주어면 동사는 단수(<em>was</em>)."
+  },
+  {
+   "id": "sm13-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "제가 휴대폰에 얼마나 많은 시간을 쓰고 있는지 몰랐어요.",
+   "en": "I didn't realize how much time I was spending on my phone.",
+   "hint": "realize",
+   "gram": "<b>how 절</b> <em>how much time</em> + 주어 + 동사 = 얼마나 많은 시간을 ~하는지. <em>spend</em> 시간 <em>on</em> ~ = ~에 시간을 쓰다."
+  },
+  {
+   "id": "sm13-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "아침에 제가 얼마나 더 차분해졌는지 느낄 수 있었어요.",
+   "en": "I could feel how much calmer I was in the morning.",
+   "hint": "calmer",
+   "gram": "<b>how 절</b> <em>how much</em> + 비교급 + 주어 + 동사 = 얼마나 더 ~한지. (X) how much calmer was I"
+  },
+  {
+   "id": "sm13-13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "휴대폰으로 뭘 보고 있었는지 기억도 안 나요.",
+   "en": "I can't even remember what I was looking at on my phone.",
+   "hint": "remember",
+   "gram": "<b>what 절</b> <em>what</em> + 주어 + 동사 = 무엇을 ~하는지(목적어 자리). <em>look at</em>의 at이 끝에 남아요. (X) what was I looking at"
+  },
+  {
+   "id": "sm13-14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "자기가 시간을 어떻게 쓰는지 생각해 보는 게 중요해요.",
+   "en": "It is important to think about how you use your time.",
+   "hint": "important",
+   "gram": "<b>how 절</b> <em>how</em> + 주어 + 동사 = 어떻게 ~하는지. 전치사(<em>about</em>) 뒤에도 how 절이 올 수 있어요."
+  },
+  {
+   "id": "sm13-15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "결과는 매일 무엇을 하느냐에 달려 있어요.",
+   "en": "Results depend on what you do every day.",
+   "hint": "depend",
+   "gram": "<b>what 절</b> <em>depend on</em> + what 절 = 무엇을 ~하느냐에 달려 있다. (X) what do you do"
+  },
+  {
+   "id": "sm13-16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "작은 변화가 하루하루 기분에 영향을 줄 수 있어요.",
+   "en": "Small changes can affect how you feel each day.",
+   "hint": "affect",
+   "gram": "<b>how 절</b> <em>how you feel</em> = 네가 어떻게 느끼는지 → 기분. <em>affect</em> = ~에 영향을 주다."
+  },
+  {
+   "id": "sm13-17",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "중요한 건 얼마나 빨리 바뀌느냐가 아니라 계속하는 거예요.",
+   "en": "What matters is not how fast you change but that you keep going.",
+   "hint": "matters",
+   "gram": "<b>what/how 절</b> <em>What matters</em> = 중요한 것. <em>not A but B</em> = A가 아니라 B. <em>how fast you change</em> = 얼마나 빨리 바뀌는지. <em>keep going</em> = 계속하다."
+  },
+  {
+   "id": "sm13-18",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    16
+   ],
+   "ko": "이번 경험에서 배운 것을 나누고 싶어요.",
+   "en": "I want to share what I learned from this experience.",
+   "hint": "share",
+   "gram": "<b>what 절</b> <em>what I learned</em> = 내가 배운 것(목적어 자리). <em>learn from</em> = ~에서 배우다."
   }
  ],
  "part1": [],
