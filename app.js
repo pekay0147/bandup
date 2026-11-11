@@ -1378,7 +1378,7 @@ function renderVocab(app){
 }
 
 /* ---------- 공부 기록 옮기기 (계정 없이 새 폰으로) ---------- */
-const TX_MERGE={myvoc:"voc", days:"set", cbm:"set", qbm:"qbm", vochide:"set", poddone:"set", mycards:"arr"};
+const TX_MERGE={myvoc:"voc", days:"set", cbm:"set", qbm:"qbm", vochide:"set", poddone:"set", mycards:"arr", clips:"byid", screens:"byid", yt:"byvid"};
 function txKeys(){ const out=[]; try{ for(let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if(k && k.startsWith("bandup-") && k.endsWith("-"+slug) && !k.startsWith("bandup-stat-")) out.push(k); } }catch(_){ } return out; }
 async function txPack(){ const data={}; for(const k of txKeys()) data[k.slice(7,-(slug.length+1))]=store.get(k,null);
   const json=JSON.stringify({v:1,slug,at:Date.now(),data}); let bytes=new TextEncoder().encode(json), z="0";
@@ -1393,6 +1393,7 @@ function txMerge(pack){ let n=0; for(const [name,val] of Object.entries(pack.dat
     else if(mode==="voc"){ const seen=new Set(cur.map(x=>String(x.w).toLowerCase())); out=[...cur]; for(const x of val) if(!seen.has(String(x.w).toLowerCase())){ out.push(x); seen.add(String(x.w).toLowerCase()); } }
     else if(mode==="set"||mode==="arr"){ const key=x=>typeof x==="object"? JSON.stringify(x) : String(x); const seen=new Set(cur.map(key)); out=[...cur]; for(const x of val) if(!seen.has(key(x))){ out.push(x); seen.add(key(x)); } if(name==="days") out.sort(); }
     else if(mode==="sent"){ const seen=new Set(cur.map(x=>String(x.en).toLowerCase())); out=[...cur, ...val.filter(x=>!seen.has(String(x.en).toLowerCase()))]; }
+    else if(mode==="byid"||mode==="byvid"){ const k= mode==="byid"? (x=>String(x&&x.id)) : (x=>String(x&&x.vid)); const m=new Map(cur.map(x=>[k(x),x])); for(const x of (Array.isArray(val)?val:[])) m.set(k(x),x); out=[...m.values()]; if(mode==="byid") out.sort((a,b)=>(a.id>b.id)-(a.id<b.id)); }
     else if(mode==="qbm"){ const seen=new Set(cur.map(x=>x.q)); out=[...cur, ...val.filter(x=>!seen.has(x.q))]; }
     else if(cur && val && typeof cur==="object" && typeof val==="object" && !Array.isArray(cur)){ out={...cur}; for(const [kk,vv] of Object.entries(val)){ const c=out[kk]; const t=x=>x&&typeof x==="object"? String(x.last||x.at||x.t||x.d||"")+"|"+String(1e6+(x.reviews||0)) : ""; if(c==null || t(vv)>t(c)) out[kk]=vv; } }
     else out=val;
