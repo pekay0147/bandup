@@ -1152,3 +1152,12 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .trmarks{display:grid;grid-template-columns:1fr 1fr;gap:6px}.trmarks .ytb{height:40px}
 .trzoom{display:flex;align-items:center;gap:5px;flex-wrap:wrap}.trzoom .ytb{height:32px;min-width:0;padding:0 10px;font-size:13px}
 .trim p{margin:0}
+
+/* 클립 간단 버전 */
+.cltitle{margin:2px 0 0;font-size:14px;color:var(--muted);line-height:1.4}
+.cltime{margin:14px 0 6px;text-align:center;font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+.trtrack{margin:0 12px}
+.clctl{display:flex;gap:8px;margin-top:18px}.clplay{flex:1;font-size:17px;padding:14px}.clrate{height:auto;min-width:64px;font-size:16px}
+.clfoot{display:flex;justify-content:space-between;margin-top:10px}.cllink{font:inherit;font-size:14px;color:var(--muted);background:none;border:0;padding:8px 2px;cursor:pointer}
+.ytopen{margin-top:14px}.ytempty{margin:4px 2px 0}.ytset{margin-top:18px}.ytset summary{color:var(--muted);font-weight:600}
+.txmsg:empty{display:none}

@@ -1573,59 +1573,36 @@ function clips(){ return store.get(CLK(),[]); }
 function clipAdd(o){ const t=o.t||0; const c={id:Date.now()*1000+Math.floor(Math.random()*1000), vid:o.vid, title:o.title||"유튜브 영상", s:Math.max(0,t-10), e:t? t+2 : 15, at:o.at||new Date().toISOString(), note:"", noTime:!t}; const L=clips(); L.push(c); store.set(CLK(),L); return c; }
 function clipSave(c){ const L=clips(); const i=L.findIndex(x=>x.id===c.id); if(i>=0){ L[i]=c; store.set(CLK(),L); } }
 function renderClip(app,c){
-  const S=ytState; S.rep=S.rep??true; S.rate=S.rate||1; S.ko=S.ko??false; S.pad=S.pad||20;
+  const S=ytState; S.rate=S.rate||1;
   const back=el("button","back","‹ 내 클립"); back.type="button"; back.onclick=()=>{ ytStop(); ytState=null; render(); }; app.append(back);
   const fr=el("div","ytframe clframe"); const host=el("div"); host.id="ytplayer"; fr.append(host); app.append(fr);
-  const head=el("div","clhead"); head.append(el("b","cltitle",c.title)); app.append(head);
-  // trim editor
-  const ed=el("div","panel trim"); const rt=el("div","trtop"); const rtt=el("b",null,""); rt.append(rtt); ed.append(rt);
-  const track=el("div","trtrack"); const sel=el("div","trsel"); const h1=el("div","trh trs"); const h2=el("div","trh tre"); const ph=el("div","trph");
-  h1.setAttribute("aria-label","시작 손잡이"); h2.setAttribute("aria-label","끝 손잡이"); track.append(sel,ph,h1,h2); ed.append(track);
-  const lab=el("div","trlab"); const la=el("span",null,""), lb=el("span",null,""); lab.append(la,lb); ed.append(lab);
-  const B=(t,lab2,cls)=>{ const x=el("button","ytb"+(cls?" "+cls:""),t); x.type="button"; x.setAttribute("aria-label",lab2); return x; };
-  const marks=el("div","trmarks"); const mS=B("[ 지금을 시작으로","지금 위치를 시작으로"), mE=B("지금을 끝으로 ]","지금 위치를 끝으로"); marks.append(mS,mE); ed.append(marks);
-  const zoom=el("div","trzoom"); zoom.append(el("span","small muted","보기")); const Z=[[20,"±20초"],[60,"±1분"],[180,"±3분"],[1e9,"전체"]]; const zb=Z.map(([v,t])=>{ const x=B(t,"타임라인 범위 "+t); x.onclick=()=>{ S.pad=v; win(); paint(); zb.forEach((y,i)=>y.classList.toggle("on",Z[i][0]===v)); }; x.classList.toggle("on",S.pad===v); zoom.append(x); return x; }); ed.append(zoom);
-  ed.append(el("p","small muted","손잡이를 끌어서 원하는 부분만 남기세요. 줄을 누르면 그 장면이 미리 보여요." + (c.noTime? " (재생 시간을 못 읽어서 처음 15초로 잡아 뒀어요.)" : "")));
-  app.append(ed);
-  const ctl=el("div","clctl"); const bPlay=el("button","ytadd","▶ 클립 재생"); bPlay.type="button"; const bPause=B("⏸","일시정지");
-  const bRep=B("🔁 반복","구간 반복"), bRate=B(S.rate+"x","재생 속도"), bKo=B("한글 자막","한국어 자막 켜기/끄기");
-  bRep.classList.toggle("on",S.rep); bKo.classList.toggle("on",S.ko); ctl.append(bPlay,bPause,bRep,bRate,bKo); app.insertBefore(ctl, ed);
-  const row=el("div","clfoot"); const full=el("button","btn","🎬 전체 영상 보기"); full.type="button"; full.onclick=()=>{ ytStop(); ytOpen(c.vid,c.s+2); };
-  const del=el("button","vcx","클립 지우기"); del.type="button"; del.onclick=()=>{ store.set(CLK(),clips().filter(x=>x.id!==c.id)); ytStop(); ytState=null; render(); }; row.append(full,del); app.append(row);
-  let dur=0, W={a:0,b:1}, drag=null, lastSeek=0, previewing=false;
-  const r1=x=>Math.round(x*10)/10;
-  const win=()=>{ const D=dur||Math.max(c.e+60,120); W.a=Math.max(0,c.s-S.pad); W.b=Math.min(D,c.e+S.pad); if(W.b-W.a<4) W.b=W.a+4; };
+  app.append(el("p","cltitle",c.title));
+  const tm=el("p","cltime",""); const track=el("div","trtrack"); const sel=el("div","trsel"); const h1=el("div","trh"); const h2=el("div","trh"); const ph=el("div","trph"); track.append(sel,ph,h1,h2);
+  app.append(tm,track);
+  const ctl=el("div","clctl"); const bPlay=el("button","btn primary clplay","▶ 재생"); bPlay.type="button"; const bRate=el("button","ytb clrate",S.rate+"x"); bRate.type="button"; ctl.append(bPlay,bRate); app.append(ctl);
+  const foot=el("div","clfoot"); const full=el("button","cllink","전체 영상 보기"); full.type="button"; full.onclick=()=>{ ytStop(); ytOpen(c.vid,c.s+2); };
+  const del=el("button","cllink","지우기"); del.type="button"; del.onclick=()=>{ store.set(CLK(),clips().filter(x=>x.id!==c.id)); ytStop(); ytState=null; render(); }; foot.append(full,del); app.append(foot);
+  let dur=0, W={a:0,b:1}, drag=null, lastSeek=0, playing=false;
+  const win=()=>{ const pad=Math.max(15,(c.e-c.s)); W.a=Math.max(0,c.s-pad); W.b=dur? Math.min(dur,c.e+pad) : c.e+pad; };
   const pct=t=>Math.max(0,Math.min(100,(t-W.a)/(W.b-W.a)*100));
-  const fmt=t=>{ const m=Math.floor(t/60), x=t-m*60; return m+":"+(x<10?"0":"")+x.toFixed(1); };
-  const paint=()=>{ sel.style.left=pct(c.s)+"%"; sel.style.width=(pct(c.e)-pct(c.s))+"%"; h1.style.left=pct(c.s)+"%"; h2.style.left=pct(c.e)+"%"; la.textContent=ytFmt(W.a); lb.textContent=ytFmt(W.b);
-    rtt.textContent=`${fmt(c.s)} – ${fmt(c.e)} · ${r1(c.e-c.s)}초`; };
-  const curT=()=>{ try{ return ytP.getCurrentTime()||0; }catch(_){ return 0; } };
-  const seek=(t,final)=>{ try{ ytP.seekTo(t, !!final); }catch(_){ } };
-  const tAt=ev=>{ const r=track.getBoundingClientRect(); const x=Math.max(0,Math.min(r.width,ev.clientX-r.left)); return W.a+x/r.width*(W.b-W.a); };
-  const save=()=>{ c.s=r1(c.s); c.e=r1(c.e); c.noTime=false; clipSave(c); paint(); };
-  const startDrag=(k,ev)=>{ ev.preventDefault(); ev.stopPropagation(); drag=k; try{ ytP.pauseVideo(); }catch(_){ } track.setPointerCapture(ev.pointerId); };
-  h1.onpointerdown=ev=>startDrag("s",ev); h2.onpointerdown=ev=>startDrag("e",ev);
-  track.onpointerdown=ev=>{ if(drag) return; const t=tAt(ev); const ds=Math.abs(pct(t)-pct(c.s)), de=Math.abs(pct(t)-pct(c.e)); if(Math.min(ds,de)<4){ startDrag(ds<de?"s":"e",ev); return; } previewing=true; seek(t,true); try{ ytP.playVideo(); }catch(_){ } ph.style.left=pct(t)+"%"; };
-  track.onpointermove=ev=>{ if(!drag) return; const t=tAt(ev); if(drag==="s") c.s=Math.max(0,Math.min(t,c.e-1)); else c.e=Math.min(dur||1e9,Math.max(t,c.s+1)); paint(); const now=Date.now(); if(now-lastSeek>120){ lastSeek=now; seek(drag==="s"? c.s : c.e,false); } ph.style.left=pct(drag==="s"? c.s : c.e)+"%"; };
-  const endDrag=()=>{ if(!drag) return; const k=drag; drag=null; save(); if(k==="s"){ seek(c.s,true); try{ ytP.playVideo(); }catch(_){ } } else { seek(Math.max(c.s,c.e-3),true); try{ ytP.playVideo(); }catch(_){ } } };
-  track.onpointerup=endDrag; track.onpointercancel=endDrag;
-  mS.onclick=()=>{ const t=curT(); if(t>=c.e-1){ c.e=t+5; } c.s=t; save(); win(); paint(); toast(`시작 ${fmt(c.s)}`,true); };
-  mE.onclick=()=>{ const t=curT(); if(t<=c.s+1){ toast("시작보다 뒤에서 눌러 주세요",false); return; } c.e=t; save(); win(); paint(); toast(`끝 ${fmt(c.e)}`,true); };
-  const cc=()=>{ try{ ytP.loadModule && ytP.loadModule("captions"); ytP.setOption("captions","track", S.ko? {languageCode:"en", translationLanguage:{languageCode:"ko"}} : {languageCode:"en"}); }catch(_){ } };
-  bPlay.onclick=()=>{ previewing=false; seek(c.s,true); try{ ytP.playVideo(); }catch(_){ } };
-  bPause.onclick=()=>{ try{ const st=ytP.getPlayerState(); if(st===1) ytP.pauseVideo(); else ytP.playVideo(); }catch(_){ } };
-  bRep.onclick=()=>{ S.rep=!S.rep; bRep.classList.toggle("on",S.rep); };
+  const paint=()=>{ sel.style.left=pct(c.s)+"%"; sel.style.width=(pct(c.e)-pct(c.s))+"%"; h1.style.left=pct(c.s)+"%"; h2.style.left=pct(c.e)+"%"; tm.textContent=`${ytFmt(c.s)} – ${ytFmt(c.e)}`; };
+  const seek=(t,f)=>{ try{ ytP.seekTo(t,!!f); }catch(_){ } };
+  const play=()=>{ seek(c.s,true); try{ ytP.playVideo(); }catch(_){ } };
+  const tAt=ev=>{ const r=track.getBoundingClientRect(); return W.a+Math.max(0,Math.min(r.width,ev.clientX-r.left))/r.width*(W.b-W.a); };
+  track.onpointerdown=ev=>{ ev.preventDefault(); const t=tAt(ev); drag= Math.abs(t-c.s)<=Math.abs(t-c.e)? "s" : "e"; try{ ytP.pauseVideo(); }catch(_){ } track.setPointerCapture(ev.pointerId); track.onpointermove(ev); };
+  track.onpointermove=ev=>{ if(!drag) return; const t=tAt(ev); if(drag==="s") c.s=Math.max(0,Math.min(t,c.e-1)); else c.e=Math.max(t,c.s+1); paint(); ph.style.left=pct(drag==="s"?c.s:c.e)+"%"; const n=Date.now(); if(n-lastSeek>120){ lastSeek=n; seek(drag==="s"?c.s:c.e,false); } };
+  const up=()=>{ if(!drag) return; const k=drag; drag=null; c.s=Math.round(c.s*10)/10; c.e=Math.round(c.e*10)/10; c.noTime=false; clipSave(c); win(); paint(); if(k==="s") play(); else { seek(Math.max(c.s,c.e-3),true); try{ ytP.playVideo(); }catch(_){ } } };
+  track.onpointerup=up; track.onpointercancel=up;
+  bPlay.onclick=()=>{ if(playing){ try{ ytP.pauseVideo(); }catch(_){ } } else play(); };
   bRate.onclick=()=>{ S.rate= S.rate===1? .75 : S.rate===.75? .5 : 1; bRate.textContent=S.rate+"x"; try{ ytP.setPlaybackRate(S.rate); }catch(_){ } };
-  bKo.onclick=()=>{ S.ko=!S.ko; bKo.classList.toggle("on",S.ko); cc(); };
   win(); paint();
   ytApi().then(()=>{ if(view.tab!=="yt" || !document.getElementById("ytplayer")) return;
-    ytP=new YT.Player("ytplayer",{width:"100%",height:"100%",videoId:c.vid,playerVars:{start:Math.floor(c.s),controls:0,disablekb:1,playsinline:1,rel:0,modestbranding:1,cc_load_policy:1,cc_lang_pref:"en",hl:"en",iv_load_policy:3,fs:0},
-      events:{ onReady:e=>{ try{ e.target.setPlaybackRate(S.rate); dur=e.target.getDuration()||0; win(); paint(); }catch(_){ } }, onStateChange:e=>{ if(e.data===1){ if(!dur){ try{ dur=ytP.getDuration()||0; win(); paint(); }catch(_){ } } if(!S.cc){ S.cc=1; cc(); } } bPause.textContent= e.data===1? "⏸" : "▶"; },
-        onError:e=>{ fr.textContent=""; fr.append(el("p","yterr", e.data===101||e.data===150? "이 영상은 올린 사람이 다른 곳에서 재생하지 못하게 막아 두었어요." : "영상을 불러오지 못했어요.")); } }});
-    ytTimer=setInterval(()=>{ if(view.tab!=="yt" || !(ytState&&ytState.clip)){ ytStop(); return; } if(!ytP || !ytP.getCurrentTime || drag) return; const t=ytP.getCurrentTime(); const st=ytP.getPlayerState? ytP.getPlayerState() : 1;
-      ph.style.left=pct(t)+"%"; ph.classList.toggle("out", t<c.s-.3 || t>c.e+.3);
-      if(st===1 && !previewing && t>=c.e){ if(S.rep) ytP.seekTo(c.s,true); else ytP.pauseVideo(); }
-      if(st===1 && previewing && t>=W.b){ ytP.pauseVideo(); } },100); });
+    ytP=new YT.Player("ytplayer",{width:"100%",height:"100%",videoId:c.vid,playerVars:{start:Math.floor(c.s),controls:0,disablekb:1,fs:0,playsinline:1,rel:0,modestbranding:1,cc_load_policy:1,cc_lang_pref:"en",hl:"en",iv_load_policy:3},
+      events:{ onReady:e=>{ try{ e.target.setPlaybackRate(S.rate); dur=e.target.getDuration()||0; win(); paint(); }catch(_){ } },
+        onStateChange:e=>{ playing= e.data===1; bPlay.textContent= playing? "⏸ 멈춤" : "▶ 재생"; if(playing && !dur){ try{ dur=ytP.getDuration()||0; win(); paint(); }catch(_){ } } },
+        onError:e=>{ fr.textContent=""; fr.append(el("p","yterr", e.data===101||e.data===150? "이 영상은 다른 곳에서 재생이 막혀 있어요." : "영상을 불러오지 못했어요.")); } }});
+    ytTimer=setInterval(()=>{ if(view.tab!=="yt" || !(ytState&&ytState.clip)){ ytStop(); return; } if(!ytP || !ytP.getCurrentTime || drag) return; const t=ytP.getCurrentTime();
+      ph.style.left=pct(t)+"%"; if(playing && (t>=c.e || t<c.s-1)) seek(c.s,true); },100); });
 }
 function ytOpen(vid,start){ const old=ytVids().find(x=>x.vid===vid); const v={vid, title:(old&&old.title)||"유튜브 영상", at:Date.now(), lines: old? old.lines : []}; ytSave(v); ytState={vid, start:start||0}; go("yt");
   if(!old || old.title==="유튜브 영상") fetch("https://noembed.com/embed?url="+encodeURIComponent("https://www.youtube.com/watch?v="+vid)).then(r=>r.json()).then(j=>{ if(j && j.title){ const L=ytVids(); const y=L.find(x=>x.vid===vid); if(y){ y.title=j.title; store.set(YTK(),L); const h=document.querySelector(".yttitle"); if(h) h.textContent=j.title; } } }).catch(()=>{}); }
@@ -1643,34 +1620,20 @@ function renderYt(app){
   if(ytState && ytState.clip){ const c=clips().find(x=>x.id===ytState.clip); if(c) return renderClip(app,c); ytState=null; }
   if(ytState && ytState.vid){ const v=ytVids().find(x=>x.vid===ytState.vid); if(v) return renderYtPlayer(app,v); ytState=null; }
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
-  pageHead(app,"영상으로 공부","보고 싶은 유튜브 영상을 밴드업에서 열면 자막을 보면서 안 들린 문장을 담을 수 있어요.");
-  const q=el("div","panel ytquick"); const qb=el("button","btn primary ytbig","📋 복사한 유튜브 링크로 바로 보기"); qb.type="button"; const qm=el("p","small txmsg","");
-  qb.onclick=async()=>{ let t=""; try{ t=await navigator.clipboard.readText(); }catch(_){ } const id=ytId(t); if(id){ ytOpen(id); return; } qm.textContent= t? "복사된 게 유튜브 링크가 아니에요. 유튜브 앱에서 '공유 → 링크 복사'를 먼저 눌러 주세요." : "붙여넣기를 허용해 주세요. 유튜브 앱에서 '공유 → 링크 복사'를 누른 뒤 다시 눌러 보세요."; };
-  q.append(qb, el("p","small muted","유튜브 앱 → 영상 아래 '공유' → '링크 복사' → 밴드업에서 이 버튼 한 번. 끝!"), qm);
-  if(D.inbox){ const bt=el("div","ytback"); bt.append(el("b",null,"✂️ 유튜브 보다가 뒷면 톡톡 → 클립 저장"), el("p","small muted","다시 듣고 싶은 장면에서 폰 뒷면을 치면 방금 지나간 10초가 '내 클립'에 저장돼요. 유튜브는 계속 보다가, 나중에 밴드업에서 꺼내 쉐도잉하면 돼요."), el("p","small muted","💡 영상 아래 제목과 재생 바(3:21 / 12:05)가 화면에 보일 때 쳐야 정확해요."));
-    const sh=el("details","ytmore"); sh.append(el("summary",null,"처음 한 번만 설정하기"));
-    const ol=el("ol","ibsteps"); for(const t of ["단축어 앱 → 오른쪽 위 ＋ → 동작 3개를 차례로 넣어요: ① 스크린샷 찍기 ② 이미지에서 텍스트 추출 ③ URL 콘텐츠 가져오기","③의 파란 'URL'에 아래 URL을 붙여 넣고, 펼쳐서 방법 POST → 요청 본문 JSON에 텍스트 필드 1개: 키 p_txt, 값은 키보드 위 파란 '이미지에서 추출한 텍스트'.","아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 삼중 탭 → 방금 만든 단축어. (두 번 탭은 지금처럼 스크린샷으로 둬도 돼요)","유튜브가 아닌 화면에서 세 번 치면 그 화면 글이 '📸 화면에서 가져온 글'로 들어가요. 단축어 하나로 둘 다 돼요."]) ol.append(el("li",null,t));
-    sh.append(ol, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_save?apikey="+SB_KEY)); bt.append(sh); q.prepend(bt); }
-  app.append(q);
-  const p=el("details","panel ytnew ytmore"); p.append(el("summary",null,"직접 입력 · 영어 스크립트 같이 넣기"));
-  const iu=el("input","txin"); iu.placeholder="https://youtu.be/… 또는 유튜브 주소"; iu.inputMode="url"; p.append(iu);
-  const how=el("p","small muted","스크립트(선택): 컴퓨터 유튜브 '…더보기 → 스크립트 표시'를 시간까지 복사해 붙여 넣으면 문장별 번역·반복·담기가 돼요. 없어도 영상 안 영어 자막으로 볼 수 있어요."); p.append(how);
-  const ta=el("textarea","msinp ytta"); ta.rows=5; ta.placeholder="0:00\nHey guys, welcome back to my channel.\n0:03\nToday we're going to talk about…"; p.append(ta);
-  const msg=el("p","small txmsg",""); const ob=el("button","btn","🎬 영상 열기"); ob.type="button";
-  ob.onclick=()=>{ const vid=ytId(iu.value); if(!vid){ msg.textContent="유튜브 링크를 확인해 주세요."; return; } const segs=ytParse(ta.value); if(ta.value.trim() && !segs.length){ msg.textContent="자막에서 시간(0:05 같은)을 찾지 못했어요. 시간이 같이 복사됐는지 확인해 주세요."; return; }
-    if(segs.length){ const old=ytVids().find(x=>x.vid===vid); ytSave({vid, title:(old&&old.title)||"유튜브 영상", at:Date.now(), lines:ytMerge(segs)}); } ytOpen(vid); };
-  p.append(ob,msg); app.append(p);
-  { const C=clips().slice().reverse(); if(C.length){ const h=el("h2","sec-t",`✂️ 내 클립 · ${C.length}개`); const box=el("div","box ytlist");
-      C.forEach(c=>{ const r=el("div","ytrow"); const im=el("img","ytthumb"); im.src=`https://i.ytimg.com/vi/${c.vid}/mqdefault.jpg`; im.alt=""; im.loading="lazy"; const t=el("div","mst");
-        t.append(el("b",null,c.title), el("span",null,`${ytFmt(c.s)} – ${ytFmt(c.e)} · ${new Date(c.at).toLocaleDateString("ko-KR",{month:"numeric",day:"numeric"})} 저장`));
-        r.append(im,t,el("span","go","›")); r.onclick=()=>{ ytState={clip:c.id}; render(); window.scrollTo(0,0); }; box.append(r); });
-      app.insertBefore(box, app.querySelector(".ytnew")); app.insertBefore(h, box); } }
-  const L=ytVids().slice().sort((a,b)=>b.at-a.at);
-  if(L.length){ app.append(el("h2","sec-t","내 영상")); const box=el("div","box ytlist");
-    L.forEach(v=>{ const r=el("div","ytrow"); const im=el("img","ytthumb"); im.src=`https://i.ytimg.com/vi/${v.vid}/mqdefault.jpg`; im.alt=""; im.loading="lazy"; const t=el("div","mst"); t.append(el("b",null,v.title), el("span",null, v.lines.length? `문장 ${v.lines.length}개` : "자막 없음"));
-      r.append(im,t); r.onclick=()=>{ ytState={vid:v.vid}; render(); window.scrollTo(0,0); };
-      const del=el("button","vcx","지우기"); del.type="button"; del.onclick=e=>{ e.stopPropagation(); store.set(YTK(),ytVids().filter(x=>x.vid!==v.vid)); render(); }; r.append(del); box.append(r); });
-    app.append(box); }
+  pageHead(app,"영상으로 공부",null);
+  const thumbRow=(vid,title,sub,on)=>{ const r=el("div","ytrow"); const im=el("img","ytthumb"); im.src=`https://i.ytimg.com/vi/${vid}/mqdefault.jpg`; im.alt=""; im.loading="lazy"; const t=el("div","mst"); t.append(el("b",null,title), el("span",null,sub)); r.append(im,t); r.onclick=on; return r; };
+  const C=clips().slice().reverse();
+  app.append(el("h2","sec-t",`✂️ 내 클립`));
+  if(C.length){ const box=el("div","box ytlist"); C.forEach(c=>box.append(thumbRow(c.vid,c.title,`${ytFmt(c.s)} – ${ytFmt(c.e)}`,()=>{ ytState={clip:c.id}; render(); window.scrollTo(0,0); }))); app.append(box); }
+  else app.append(el("p","muted small ytempty", D.inbox? "유튜브 보다가 폰 뒷면을 톡톡 치면 그 장면이 여기 저장돼요." : "영상에서 ✂️를 누르면 그 장면이 여기 저장돼요."));
+  const qb=el("button","btn ytopen","📋 복사한 유튜브 링크 열기"); qb.type="button"; const qm=el("p","small txmsg","");
+  qb.onclick=async()=>{ let t=""; try{ t=await navigator.clipboard.readText(); }catch(_){ } const id=ytId(t); if(id){ ytOpen(id); return; } qm.textContent="유튜브에서 '공유 → 링크 복사'를 먼저 눌러 주세요."; };
+  app.append(qb,qm);
+  const V=ytVids().slice().sort((a,b)=>b.at-a.at);
+  if(V.length){ app.append(el("h2","sec-t","최근 본 영상")); const box=el("div","box ytlist"); V.slice(0,10).forEach(v=>box.append(thumbRow(v.vid,v.title,"",()=>{ ytState={vid:v.vid}; render(); window.scrollTo(0,0); }))); app.append(box); }
+  if(D.inbox){ const sh=el("details","ytmore ytset"); sh.append(el("summary",null,"뒷면 톡톡 설정 방법"));
+    const ol=el("ol","ibsteps"); for(const t of ["어제 만든 '화면 저장' 단축어를 그대로 써요. (없으면 단축어 앱 → ＋ → ① 스크린샷 찍기 ② 이미지에서 텍스트 추출 ③ URL 콘텐츠 가져오기: 아래 URL, 방법 POST, JSON 필드 p_txt = '이미지에서 추출한 텍스트')","설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭이나 삼중 탭 → 그 단축어","유튜브 볼 때 영상 아래 제목과 재생 바가 보이는 상태에서 치세요."]) ol.append(el("li",null,t));
+    sh.append(ol, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_save?apikey="+SB_KEY)); app.append(sh); }
 }
 function renderYtPlayer(app,v){
   const S=ytState; S.i=S.i??-1; S.loop=null; S.ko=S.ko??true; S.rate=S.rate||1;
