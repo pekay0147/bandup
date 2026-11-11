@@ -1979,10 +1979,10 @@
    "sessions": [
     10
    ],
-   "ko": "제 친구는 큰 아파트에 살아요.",
-   "en": "My friend lives in a big apartment.",
+   "ko": "제 친구는 큰 공원 근처 아파트에 살아서, 주말에는 거기서 산책하면서 시간을 보내요.",
+   "en": "My friend lives in an apartment near a big park, so she spends time walking there at the weekend.",
    "hint": "apartment",
-   "gram": "❌ live a apt → ✅ live <em>in a</em> big apartment. 사는 곳 앞엔 in."
+   "gram": "live <em>in an</em> apartment (9회차: ❌ live a apt). <em>near</em> + 장소 = ~ 근처에 (7회차: near vs nearby). <em>spend time</em> + -ing (10회차). <em>at the weekend</em> = on weekends (7회차)."
   },
   {
    "id": "n10m2",
@@ -1991,10 +1991,10 @@
    "sessions": [
     10
    ],
-   "ko": "아빠는 아침에 걷는 걸 좋아하세요.",
-   "en": "My dad likes walking in the morning.",
-   "hint": "walking",
-   "gram": "3인칭(my dad) → like<em>s</em>. like 뒤 동사는 <em>-ing</em>."
+   "ko": "아빠는 아침에 걷는 걸 좋아하시는데, 요즘은 일찍 일어나는 게 익숙해지셔서 더 건강해 보이세요.",
+   "en": "My dad likes walking in the morning, and now that he's used to getting up early, he seems healthier.",
+   "hint": "used",
+   "gram": "my dad → like<em>s</em> + -ing (9회차). <em>be used to</em> + -ing = ~하는 게 익숙하다 (8회차: used to와 구별). <em>seem</em> + 형용사 = ~해 보이다 (8회차). <em>now that</em> = 이제 ~하니까."
   },
   {
    "id": "n10m3",
