@@ -1066,7 +1066,6 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .scrw.selR{border-top-right-radius:0;border-bottom-right-radius:0;margin-right:-4px;padding-right:11px}
 .scrw.selL{border-top-left-radius:0;border-bottom-left-radius:0}
 .scrtr{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
-.scrs{justify-self:start;font:inherit;font-size:12.5px;font-weight:700;color:var(--blue);background:none;border:0;padding:0;cursor:pointer}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .scrw{background:#2a2a30}:root:not([data-theme="light"]) .scrw.on{background:#2b3366;color:#aab6ff}}
 .vbase{margin-left:8px;font-size:12px;font-weight:600;color:var(--blue);background:#eef0ff;border-radius:6px;padding:1px 6px;vertical-align:2px}
 .vbase2{margin:4px 0 0;font-size:14px;color:var(--blue);font-weight:700}
@@ -1074,23 +1073,12 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 /* 내가 담은 문장 · 듣기 */
 .spk.slow{font-size:17px;line-height:1}
 .labrow{display:flex;align-items:center;gap:8px}.labrow .lab{flex:1}.labrow .spk{width:34px;height:34px;border-radius:10px}.labrow .spk svg{width:17px;height:17px}
-.lsnrow{display:flex;justify-content:center;align-items:center;gap:12px;margin:14px 0 6px}
-.lsnbig{display:flex;align-items:center;gap:8px;font:inherit;font-weight:800;font-size:18px;padding:14px 26px;border-radius:999px;border:0;background:var(--blue);color:#fff;cursor:pointer}
-.lsnbig svg{width:24px;height:24px}
-.lsnko{justify-self:center;font:inherit;font-size:14px;color:var(--muted);background:none;border:1px dashed var(--line);border-radius:10px;padding:6px 12px;cursor:pointer;margin-top:6px}
-.lsnko.on{border-style:solid;color:var(--ink,inherit)}
-.lsnkob{margin:6px 0 0;font-size:14px;color:var(--muted)}
 .scrsl{display:grid;gap:6px}
 .scrsr{display:flex;align-items:center;gap:8px}.scrsr .spk{width:34px;height:34px;border-radius:10px;flex:none}.scrsr .spk svg{width:17px;height:17px}
 .scrst{flex:1;min-width:0;font-size:13.5px;line-height:1.35}.scrst.one{color:var(--muted)}
 .scradd{flex:none;font:inherit;font-size:12.5px;font-weight:700;color:var(--blue);background:var(--blue-soft);border:0;border-radius:999px;padding:7px 11px;cursor:pointer}
-.scradd.done{color:var(--muted);background:none}
-.msbtns{display:grid;gap:8px}
-.msadd{display:grid;gap:8px}.msinp{font:inherit;font-size:15px;width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface);color:inherit;resize:vertical}
-.mslist{display:grid}
-.msrow{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-top:1px solid var(--line)}.msrow:first-child{border-top:0}
+.scradd.done{color:var(--muted);background:none}.msinp{font:inherit;font-size:15px;width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface);color:inherit;resize:vertical}
 .mst{flex:1;min-width:0;display:grid;gap:3px}.mst b{font-size:16px;line-height:1.35}.mst span{font-size:13.5px;color:var(--muted)}
-.msctl{display:flex;flex-direction:column;align-items:center;gap:6px;flex:none}.msctl .spk{width:36px;height:36px}
 
 /* 영상으로 공부 */
 .ytnew{display:grid;gap:8px}.ytta{font-size:14px;font-family:ui-monospace,Menlo,monospace}
@@ -1118,27 +1106,16 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .ytrowl .scradd{padding:6px 10px}
 .ytmore{margin-top:4px}.ytmore summary{cursor:pointer;font-size:14px;font-weight:700;color:var(--blue);padding:6px 0}.ytmore[open]{display:grid;gap:8px}
 .spk.clip{font-size:17px}
-.clipwrap{position:fixed;right:12px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:60;width:220px;height:124px;border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.3);background:#000;display:none}.clipwrap.on{display:block}
-.clipwrap iframe{width:100%;height:100%}
-.clipx{position:absolute;top:4px;right:4px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:13px;cursor:pointer}
 .ytquick{display:grid;gap:8px}.ytbig{font-size:17px;padding:16px}
 .ytnew.ytmore summary{color:var(--ink)}
 .ytback{display:grid;gap:6px;padding-bottom:12px;margin-bottom:4px;border-bottom:1px solid var(--line)}.ytback b{font-size:16px}
-
-/* 내 클립 */
-.clrng{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}.clrng>b{font-size:15px;font-variant-numeric:tabular-nums;width:100%}
-.clg{display:flex;align-items:center;gap:4px}.clg .ytb{min-width:0;height:32px;padding:0 9px;font-size:13px}
 .ytb.rec{background:#ffe3e3;border-color:#e5484d;color:#c92a2a}
-.clrec{display:grid}.clrecp{display:grid;gap:6px}.clrecp audio{width:100%}.cldot{color:#c92a2a}
-.clnote{display:grid;gap:8px}
 .clfoot{display:flex;gap:8px;align-items:center;justify-content:space-between}
 .ytrow .go{color:var(--muted);font-size:20px}
 .ytstick.nostick{position:static}
 .clframe{border-radius:14px}
 .clhead{display:grid;gap:2px}.cltitle{font-size:17px;line-height:1.35}
 .clctl{display:flex;flex-wrap:wrap;gap:6px}.clctl .ytadd{margin-left:0}
-.clrng{display:grid;gap:8px}.clrng>b{font-size:15px;font-variant-numeric:tabular-nums}.clrng p{margin:0}
-.clg{display:flex;align-items:center;gap:6px}.clg>span{font-size:14px;color:var(--muted);min-width:30px}.clg .ytb{height:34px;padding:0 12px;font-size:14px}
 
 /* 클립 자르기 */
 .trim{display:grid;gap:10px}
@@ -1162,8 +1139,6 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .ytopen{margin-top:14px}.ytempty{margin:4px 2px 0}.ytset{margin-top:18px}.ytset summary{color:var(--muted);font-weight:600}
 .txmsg:empty{display:none}
 .clframe.port{aspect-ratio:auto;height:min(58vh,520px)}.clframe video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
-.ythow{margin-top:6px}.ythow summary{color:var(--muted);font-weight:600;font-size:13.5px}
-.igframe{width:100%;max-width:420px;margin:0 auto;height:min(78vh,720px);border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line)}.igframe iframe{width:100%;height:100%;border:0}
 .ytset{margin-top:10px}
 .ytsearch{display:flex;gap:8px;margin-bottom:6px}.ytsearch .txin{flex:1;min-width:0}.ytsearch .btn{width:auto;padding:0 16px}
 .ytres{max-height:60vh;overflow:auto}
