@@ -50,6 +50,11 @@
    "no": 9,
    "date": "2026-11-10",
    "title": "Somewhere very hot"
+  },
+  {
+   "no": 10,
+   "date": "2026-11-11",
+   "title": "Got up early"
   }
  ],
  "types": [
@@ -71,7 +76,8 @@
  "focus": {
   "6": "having said that, on top of that, I have to admit 같은 연결어를 Part 3 답에 꼭 한 번씩 넣어보기!",
   "7": "usually만 반복하지 말고 more often than not, on a regular basis로 바꿔 말해보기!",
-  "8": "Part 2 서론 정확하게 암기하기! be·seem·feel 뒤에는 형용사(happy, calm) 쓰기."
+  "8": "Part 2 서론 정확하게 암기하기! be·seem·feel 뒤에는 형용사(happy, calm) 쓰기.",
+  "10": "Part 2에서 off the top of my head 뒤에 '무슨 때인지' 바로 설명하기! To begin with 대신 First of all."
  },
  "compare": [
   [
@@ -1965,6 +1971,294 @@
    "en": "If I had to make a wild guess, I'd say it takes about an hour.",
    "hint": "wild",
    "gram": "<em>If I had to make a wild guess,</em> = 대충 짐작해 보자면. Part 1·3에서 모를 때 시간 벌기 좋아요."
+  },
+  {
+   "id": "n10m1",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    10
+   ],
+   "ko": "제 친구는 큰 아파트에 살아요.",
+   "en": "My friend lives in a big apartment.",
+   "hint": "apartment",
+   "gram": "❌ live a apt → ✅ live <em>in a</em> big apartment. 사는 곳 앞엔 in."
+  },
+  {
+   "id": "n10m2",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    10
+   ],
+   "ko": "아빠는 아침에 걷는 걸 좋아하세요.",
+   "en": "My dad likes walking in the morning.",
+   "hint": "walking",
+   "gram": "3인칭(my dad) → like<em>s</em>. like 뒤 동사는 <em>-ing</em>."
+  },
+  {
+   "id": "n10m3",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    10
+   ],
+   "ko": "여름은 너무 습하지만, 장점은 다양한 야외 활동을 즐길 수 있다는 거예요.",
+   "en": "Summer is humid, but the bright side is that we can enjoy outdoor activities.",
+   "hint": "bright",
+   "gram": "<em>humid</em>는 형용사. <em>the bright side is that</em> + 문장 = 좋은 점은 ~라는 거예요. bright는 형용사라 s가 안 붙어요."
+  },
+  {
+   "id": "n10m4",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    10
+   ],
+   "ko": "저는 보통 걸어서 집에 가요.",
+   "en": "I usually walk home.",
+   "hint": "home",
+   "gram": "❌ walk to home → ✅ walk <em>home</em>. home · outdoors · online 앞에는 to를 안 써요."
+  },
+  {
+   "id": "n10m5",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "저는 밖에서보다 온라인에서 시간을 더 많이 보내요.",
+   "en": "I spend more time online than outdoors.",
+   "hint": "outdoors",
+   "gram": "<em>spend more time A than B</em> = B보다 A에서 시간을 더 보내다. online · outdoors 앞엔 전치사 없이."
+  },
+  {
+   "id": "n10m6",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    10
+   ],
+   "ko": "어제 친구한테 선물을 줬어요.",
+   "en": "I gave my friend a present yesterday.",
+   "hint": "gave",
+   "gram": "<em>give</em> + 사람 + 물건 = I gave my friend a present. (= I gave a present to my friend.)"
+  },
+  {
+   "id": "n1001",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    10
+   ],
+   "ko": "여름의 좋은 점은 야외 활동을 즐길 수 있다는 거예요.",
+   "en": "The bright side of summer is that we can enjoy outdoor activities.",
+   "hint": "bright",
+   "gram": "❌ the summer bright side → ✅ <em>the bright side of summer</em> is that ~. 'A의 좋은 점' = the bright side of A."
+  },
+  {
+   "id": "n1002",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    10
+   ],
+   "ko": "물을 마실 때는 천천히 마시는 게 좋아요.",
+   "en": "When you drink water, it's better to drink slowly.",
+   "hint": "drink",
+   "gram": "❌ when you drinking → ✅ when you <em>drink</em>. when + 주어 + 동사(현재형). be 없이 -ing만 쓰면 안 돼요."
+  },
+  {
+   "id": "n1003",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    10
+   ],
+   "ko": "저는 보통 유튜브를 보면서 시간을 보내요.",
+   "en": "I usually spend time watching YouTube.",
+   "hint": "time",
+   "gram": "❌ I usually spend watching → ✅ I usually <em>spend time</em> watching. spend 뒤에 time(시간)을 꼭 넣어요: spend time + -ing."
+  },
+  {
+   "id": "n1004",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    10
+   ],
+   "ko": "학생이었을 때 저는 매일 아침 일찍 일어났어요.",
+   "en": "When I was a student, I got up early every morning.",
+   "hint": "student",
+   "gram": "❌ when I was student → ✅ when I was <em>a</em> student. 사람·직업 앞에 a."
+  },
+  {
+   "id": "n1005",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "저는 소화가 잘 안돼서 채소를 먼저 먹어요.",
+   "en": "I have a problem with digestion, so I eat vegetables first.",
+   "hint": "digestion",
+   "gram": "<em>have a problem with</em> ~ = ~에 문제가 있다. <em>digestion</em> 소화. Part 1 답에 지금 내 상황을 자연스럽게 녹이기!"
+  },
+  {
+   "id": "n1006",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "요즘 아이엘츠 공부를 하고 있어서 아침 일찍 일어나요.",
+   "en": "I'm studying for IELTS these days, so I get up early.",
+   "hint": "IELTS",
+   "gram": "Part 1 아이디어는 지금 내 상황에서! <em>I'm studying for</em> ~ <em>these days</em> = 요즘 ~ 공부하고 있어요."
+  },
+  {
+   "id": "n1007",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "딱 떠오르는 때가 있는데, 시험 전날 아침 일찍 일어났던 때예요.",
+   "en": "I can think of a time off the top of my head. It was when I got up early before an exam.",
+   "hint": "top",
+   "gram": "<em>off the top of my head</em> 뒤에 <b>무슨 때인지 바로 설명</b>하기: It was when ~."
+  },
+  {
+   "id": "n1008",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    10
+   ],
+   "ko": "우선, 저는 아침형 인간이에요.",
+   "en": "First of all, I'm a morning person.",
+   "hint": "First",
+   "gram": "To begin with는 글에서 쓰는 느낌. 말할 땐 <em>First of all</em> / <em>For starters</em>가 자연스러워요."
+  },
+  {
+   "id": "n1009",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "저는 다음 달에 여행 가요.",
+   "en": "I'm going on a trip next month.",
+   "hint": "trip",
+   "gram": "<em>go on a trip</em> = <em>go travelling</em>. ❌ go to travel."
+  },
+  {
+   "id": "n1010",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    10
+   ],
+   "ko": "이 반지는 금으로 만들어졌어요.",
+   "en": "This ring is made of gold.",
+   "hint": "made",
+   "gram": "<em>made of</em> = 재료가 그대로 보일 때 (금 반지, 나무 탁자)."
+  },
+  {
+   "id": "n1011",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    10
+   ],
+   "ko": "와인은 포도로 만들어요.",
+   "en": "Wine is made from grapes.",
+   "hint": "from",
+   "gram": "<em>made from</em> = 재료가 변해서 원래 모습이 안 보일 때 (포도 → 와인)."
+  },
+  {
+   "id": "n1012",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    10
+   ],
+   "ko": "이 휴대폰은 삼성이 만들었어요.",
+   "en": "This phone is made by Samsung.",
+   "hint": "by",
+   "gram": "<em>made by</em> + 사람·회사 = 누가 만들었는지."
+  },
+  {
+   "id": "n1013",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    10
+   ],
+   "ko": "이 가방은 이탈리아에서 만들어졌어요.",
+   "en": "This bag is made in Italy.",
+   "hint": "in",
+   "gram": "<em>made in</em> + 장소 = 어디서 만들었는지."
+  },
+  {
+   "id": "n1014",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    10
+   ],
+   "ko": "우리는 수천 년 동안 금을 써 왔어요.",
+   "en": "We have been using gold for thousands of years.",
+   "hint": "years",
+   "gram": "<em>have been</em> + -ing + for 기간 = (지금까지) 계속 ~해 왔다. <em>thousands of years</em> 복수형!"
+  },
+  {
+   "id": "n1015",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "그는 맨땅에서 사업을 시작했어요.",
+   "en": "He started his business from scratch.",
+   "hint": "scratch",
+   "gram": "<em>from scratch</em> = 맨 처음부터, 아무것도 없이. (= made it out of thin air: 무에서 만들어냈다)"
+  },
+  {
+   "id": "n1016",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "비트코인은 디지털일 뿐이지만, 금은 실체가 있어요.",
+   "en": "Bitcoin is just digital, whereas gold is something solid.",
+   "hint": "whereas",
+   "gram": "<em>whereas</em> = 반면에. <em>solid</em> = 실체가 있는, 단단한, 믿을 만한."
+  },
+  {
+   "id": "n1017",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "요즘 떡볶이가 너무 당겨요.",
+   "en": "I have a hankering for tteokbokki these days.",
+   "hint": "hankering",
+   "gram": "<em>have a hankering for</em> ~ = ~가 몹시 당기다, 먹고 싶다."
+  },
+  {
+   "id": "n1018",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    10
+   ],
+   "ko": "저는 아이스 아메리카노로 할게요.",
+   "en": "I'll go with an iced americano.",
+   "hint": "go",
+   "gram": "<em>I'll go with</em> ~ = (고를 때) ~로 할게요."
   }
  ],
  "part1": [
@@ -2641,6 +2935,78 @@
    "ko": "~도 (문장 끝)",
    "ex": "I enjoy cooking as well.",
    "s": 9
+  },
+  {
+   "w": "made of / from / by / in",
+   "ko": "재료 그대로 / 재료가 변함 / 만든 사람·회사 / 만든 장소",
+   "ex": "This table is made of wood. Wine is made from grapes.",
+   "s": 10
+  },
+  {
+   "w": "neutral",
+   "ko": "중립의",
+   "ex": "I'm neutral on that question.",
+   "s": 10
+  },
+  {
+   "w": "out of thin air",
+   "ko": "무에서, 갑자기 없던 데서",
+   "ex": "He made the company out of thin air.",
+   "s": 10
+  },
+  {
+   "w": "from scratch",
+   "ko": "맨 처음부터",
+   "ex": "She started her business from scratch.",
+   "s": 10
+  },
+  {
+   "w": "early 2026",
+   "ko": "2026년 초",
+   "ex": "I'll take the test in early 2026.",
+   "s": 10
+  },
+  {
+   "w": "solid",
+   "ko": "실체가 있는, 단단한, 믿을 만한",
+   "ex": "Gold is something solid.",
+   "s": 10
+  },
+  {
+   "w": "whereas",
+   "ko": "반면에",
+   "ex": "I like coffee, whereas my sister likes tea.",
+   "s": 10
+  },
+  {
+   "w": "have a hankering for",
+   "ko": "~가 몹시 당기다",
+   "ex": "I have a hankering for pizza.",
+   "s": 10
+  },
+  {
+   "w": "go with",
+   "ko": "(고를 때) ~로 하다",
+   "ex": "I'll go with the blue one.",
+   "s": 10
+  },
+  {
+   "w": "digestion",
+   "ko": "소화",
+   "ex": "I have a problem with digestion.",
+   "s": 10
+  },
+  {
+   "w": "go on a trip / go travelling",
+   "ko": "여행 가다",
+   "ex": "We're going on a trip next week.",
+   "s": 10
+  },
+  {
+   "w": "first of all",
+   "ko": "우선 (말할 때)",
+   "ex": "First of all, I'm a morning person.",
+   "s": 10
   }
  ],
  "group": "ielts",
