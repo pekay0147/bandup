@@ -2554,19 +2554,6 @@
    "hint": "neighbours"
   },
   {
-   "id": "r12-m2",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "문장 구조",
-   "ko": "저는 어제 그를 우연히 만났어요.",
-   "en": "I ran into him yesterday.",
-   "mine": "I came across he.",
-   "gram": "동사 뒤 사람은 목적격! he → <em>him</em>, she → <em>her</em>. run into = come across.",
-   "hint": "him"
-  },
-  {
    "id": "r12-m3",
    "kind": "ko",
    "sessions": [
@@ -2578,30 +2565,6 @@
    "mine": "I don't have time exercise.",
    "gram": "<em>have time to</em> + 동사원형 = ~할 시간이 있다.",
    "hint": "time"
-  },
-  {
-   "id": "r12-m4",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "주어-동사",
-   "ko": "누군가 문을 두드리고 있어요.",
-   "en": "Someone is knocking on the door.",
-   "gram": "<em>someone</em>은 단수 → is.",
-   "hint": "Someone"
-  },
-  {
-   "id": "r12-m5",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "품사",
-   "ko": "회의가 너무 지루해서 지루했어요.",
-   "en": "The meeting was boring, so I felt bored.",
-   "gram": "<em>boring</em> = (그게) 지루하게 만드는 / <em>bored</em> = (내가) 지루함을 느끼는. annoying / annoyed도 똑같아요.",
-   "hint": "bored"
   },
   {
    "id": "r12-01",
@@ -2767,42 +2730,6 @@
    "hint": "There"
   },
   {
-   "id": "r12-14",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "문장 구조",
-   "ko": "오늘 밖에 비가 와요.",
-   "en": "It's raining outside today.",
-   "gram": "날씨·시간·거리를 말할 땐 주어를 <em>it</em>으로: It's raining. It's 3 o'clock.",
-   "hint": "raining"
-  },
-  {
-   "id": "r12-15",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "문장 구조",
-   "ko": "우리 집에서 역까지 걸어서 10분 걸려요.",
-   "en": "It takes 10 minutes to walk from my home to the station.",
-   "gram": "걸리는 시간은 <em>It takes</em> + 시간 + to 동사. (= It's a 10-minute walk.)",
-   "hint": "takes"
-  },
-  {
-   "id": "r12-16",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "표현",
-   "ko": "저는 초콜릿을 좋아하고, 케이크도 좋아해요.",
-   "en": "I like chocolate, and I like cake as well.",
-   "gram": "<em>as well</em> = ~도 (문장 끝에).",
-   "hint": "well"
-  },
-  {
    "id": "r12-17",
    "kind": "ko",
    "sessions": [
@@ -2813,66 +2740,6 @@
    "en": "My friend has a sweet tooth as well.",
    "gram": "<em>have a sweet tooth</em> = 단 걸 좋아하다 + <em>as well</em>(~도).",
    "hint": "sweet"
-  },
-  {
-   "id": "r12-18",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "표현",
-   "ko": "저는 단 걸 엄청 좋아해요.",
-   "en": "I have a big sweet tooth.",
-   "gram": "<em>have a (big) sweet tooth</em>. ❌ I like sweet tooth.",
-   "hint": "sweet"
-  },
-  {
-   "id": "r12-19",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "표현",
-   "ko": "저는 초콜릿파예요.",
-   "en": "I'm a chocolate person.",
-   "gram": "<em>a + 명사 + person</em> = ~파, ~를 좋아하는 사람 (a morning person, a cat person).",
-   "hint": "person"
-  },
-  {
-   "id": "r12-20",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "표현",
-   "ko": "점심 먹고 나면 단 게 엄청 당겨요.",
-   "en": "I get strong sugar cravings after lunch.",
-   "gram": "<em>sugar cravings</em> = 단 것이 당기는 것. get cravings = 당기다.",
-   "hint": "cravings"
-  },
-  {
-   "id": "r12-21",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "표현",
-   "ko": "그건 너무 배부르지 않아요.",
-   "en": "It doesn't feel too filling.",
-   "gram": "<em>filling</em> = 배부르게 하는, 든든한.",
-   "hint": "filling"
-  },
-  {
-   "id": "r12-22",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "표현",
-   "ko": "그건 최고예요.",
-   "en": "You can't beat it.",
-   "gram": "<em>You can't beat it</em> = 그걸 이길 건 없다 → 최고다.",
-   "hint": "beat"
   },
   {
    "id": "r12-23",
