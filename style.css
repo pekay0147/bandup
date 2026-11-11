@@ -1161,3 +1161,5 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .clfoot{display:flex;justify-content:space-between;margin-top:10px}.cllink{font:inherit;font-size:14px;color:var(--muted);background:none;border:0;padding:8px 2px;cursor:pointer}
 .ytopen{margin-top:14px}.ytempty{margin:4px 2px 0}.ytset{margin-top:18px}.ytset summary{color:var(--muted);font-weight:600}
 .txmsg:empty{display:none}
+.clframe.port{aspect-ratio:auto;height:min(58vh,520px)}.clframe video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+.ythow{margin-top:6px}.ythow summary{color:var(--muted);font-weight:600;font-size:13.5px}
