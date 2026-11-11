@@ -1123,3 +1123,4 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .clipx{position:absolute;top:4px;right:4px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:13px;cursor:pointer}
 .ytquick{display:grid;gap:8px}.ytbig{font-size:17px;padding:16px}
 .ytnew.ytmore summary{color:var(--ink)}
+.ytback{display:grid;gap:6px;padding-bottom:12px;margin-bottom:4px;border-bottom:1px solid var(--line)}.ytback b{font-size:16px}

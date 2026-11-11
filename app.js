@@ -1466,6 +1466,10 @@ async function inboxPull(force){ if(!D || !D.inbox || inboxBusy || (!IS_MOBILE &
   { const yv=[]; rows=rows.filter(r=>{ const t=String(r.txt||"").trim(); const id=/youtu\.?be/i.test(t) && t.split(/\s+/).length<=12? ytId(t) : null; if(id){ yv.push(id); return false; } return true; });
     if(yv.length){ const last=yv[yv.length-1]; yv.forEach(id=>{ if(!ytVids().some(x=>x.vid===id)) ytSave({vid:id,title:"유튜브 영상",at:Date.now(),lines:[]}); }); toast("🎬 공유한 영상을 열어요",true); setTimeout(()=>ytOpen(last),300); } }
   const scr=store.get(`bandup-screens-${slug}`,[]); let nscr=0, nsent=0;
+  const yts=[]; rows=rows.filter(r=>{ const t=String(r.txt||""); const ys=/\n/.test(t.trim())? ytScreen(t) : null; if(ys){ yts.push({...ys, r}); return false; } return true; });
+  if(yts.length){ const y=yts[yts.length-1]; toast("🎬 보던 유튜브 영상을 찾는 중…",true);
+    ytSearch(y.q).then(f=>{ if(f && f.id){ if(!ytVids().some(x=>x.vid===f.id)) ytSave({vid:f.id,title:f.title||"유튜브 영상",at:Date.now(),lines:[]}); ytOpen(f.id,y.start); }
+      else { const sc2=store.get(`bandup-screens-${slug}`,[]); sc2.push({id:Date.now()+Math.random(),at:y.r.created_at,text:String(y.r.txt||"")}); store.set(`bandup-screens-${slug}`,sc2); toast("영상을 찾지 못했어요. 유튜브 '공유 → 링크 복사'로 열어 주세요",false); if(view.tab==="home") render(); } }); }
   rows=rows.filter(r=>{ const t=String(r.txt||""); if(/\n/.test(t.trim()) || t.trim().split(/\s+/).length>25){ scr.push({id:Date.now()+Math.random(),at:r.created_at,text:t}); nscr++; return false; } return true; });
   if(nscr){ store.set(`bandup-screens-${slug}`,scr); toast(`📸 화면 ${nscr}개를 가져왔어요. 모르는 단어를 골라 보세요`,true); if(view.tab==="home") render(); }
   rows.sort((a,b)=>String(a.created_at)<String(b.created_at)?-1:1).forEach((r,i)=>{ let w=String(r.txt||"").replace(/\s+/g," ").trim().replace(/^["“‘']+|["”’']+$/g,""); if(w.split(" ").length<5){ w=w.replace(/^[^A-Za-z]+|[^A-Za-z]+$/g,""); if(!/\s/.test(w) && /^[A-Z][a-z'’-]+$/.test(w)) w=w.toLowerCase(); } if(!w || !/[A-Za-z]/.test(w) || have.has(w.toLowerCase())) return;
@@ -1543,7 +1547,24 @@ function ytMerge(segs){ const punct=segs.filter(x=>/[.!?]["”’']?$/.test(x.te
     if(end || wc>=26){ out.push(cur); cur={...x}; } else cur.text+=" "+x.text; }
   if(cur) out.push(cur); return out; }
 function ytVids(){ return store.get(YTK(),[]); }
-function ytOpen(vid){ const old=ytVids().find(x=>x.vid===vid); const v={vid, title:(old&&old.title)||"유튜브 영상", at:Date.now(), lines: old? old.lines : []}; ytSave(v); ytState={vid}; go("yt");
+/* 뒷면 탭으로 찍은 유튜브 화면 → 제목으로 영상 찾기 */
+const YT_UI=/조회수|views|구독|subscribe|쇼츠|shorts|댓글|comments|좋아요|공유|share|리믹스|remix|저장|save|오프라인|download|클립|clip|감사|thanks/gi;
+function ytScreen(t){ t=String(t||""); const hits=new Set((t.match(YT_UI)||[]).map(x=>x.toLowerCase())).size; if(hits<3) return null;
+  const lines=t.split(/\n+/).map(x=>x.trim()).filter(Boolean); const isUI=x=>/^(조회수|구독|좋아요|싫어요|공유|리믹스|저장|오프라인 저장|클립|감사|댓글|홈|Shorts|구독함|나|Home|Subscriptions|You|Share|Remix|Save|Download|Clip|Thanks|Comments)\b/i.test(x) || /^[\d.,]+\s*[천만억KMB]?$/.test(x) || /^\d{1,2}:\d{2}/.test(x) || x.length<4;
+  let title=""; const vi=lines.findIndex(x=>/조회수\s*[\d.,]+|[\d.,]+\s*[천만억KMB]?\s*(회|views)\b/i.test(x));
+  if(vi>=0){ const pre=lines[vi].split(/조회수|[\d.,]+\s*[천만억KMB]?\s*(?:회|views)/i)[0].trim(); if(pre.length>=8) title=pre;
+    else if(vi>0 && !isUI(lines[vi-1])){ title=lines[vi-1]; if(vi>1 && !isUI(lines[vi-2]) && lines[vi-1].length<25 && lines[vi-2].length>8) title=lines[vi-2]+" "+title; } }
+  if(!title){ const c=lines.filter(x=>!isUI(x) && x.split(/\s+/).length>=3 && !/@|#|http/.test(x)); title=c.sort((a,b)=>b.length-a.length)[0]||""; }
+  title=title.replace(/\s*(…|\.\.\.)?\s*(더보기|more)$/i,"").trim(); if(title.length<4) return null;
+  const tm=t.match(/(\d{1,2}:\d{2}(?::\d{2})?)\s*\/\s*(\d{1,2}:\d{2}(?::\d{2})?)/); const start=tm? tm[1].split(":").map(Number).reduce((a,b)=>a*60+b,0) : 0;
+  return {q:title, start}; }
+async function ytSearch(q){ const qq=encodeURIComponent(q);
+  const EP=[[`https://pipedapi.kavin.rocks/search?q=${qq}&filter=videos`,"p"],[`https://api.piped.private.coffee/search?q=${qq}&filter=videos`,"p"],[`https://pipedapi.adminforge.de/search?q=${qq}&filter=videos`,"p"],[`https://inv.nadeko.net/api/v1/search?q=${qq}&type=video`,"i"],[`https://yewtu.be/api/v1/search?q=${qq}&type=video`,"i"],[`https://invidious.nerdvpn.de/api/v1/search?q=${qq}&type=video`,"i"]];
+  for(const [u,k] of EP){ try{ const ac=new AbortController(); const tid=setTimeout(()=>ac.abort(),6000); const j=await fetch(u,{signal:ac.signal}).then(r=>r.ok? r.json():null); clearTimeout(tid); if(!j) continue;
+      if(k==="p"){ const it=(j.items||[]).find(x=>/[?&]v=/.test(x.url||"")); if(it) return {id:ytId(it.url), title:it.title}; }
+      else { const it=(Array.isArray(j)? j : []).find(x=>x.videoId); if(it) return {id:it.videoId, title:it.title}; } }catch(_){ } }
+  return null; }
+function ytOpen(vid,start){ const old=ytVids().find(x=>x.vid===vid); const v={vid, title:(old&&old.title)||"유튜브 영상", at:Date.now(), lines: old? old.lines : []}; ytSave(v); ytState={vid, start:start||0}; go("yt");
   if(!old || old.title==="유튜브 영상") fetch("https://noembed.com/embed?url="+encodeURIComponent("https://www.youtube.com/watch?v="+vid)).then(r=>r.json()).then(j=>{ if(j && j.title){ const L=ytVids(); const y=L.find(x=>x.vid===vid); if(y){ y.title=j.title; store.set(YTK(),L); const h=document.querySelector(".yttitle"); if(h) h.textContent=j.title; } } }).catch(()=>{}); }
 function ytSave(v){ const L=ytVids().filter(x=>x.vid!==v.vid); L.push(v); store.set(YTK(),L); }
 function ytStop(){ clearInterval(ytTimer); ytTimer=null; try{ if(ytP) ytP.destroy(); }catch(_){ } ytP=null; }
@@ -1562,9 +1583,10 @@ function renderYt(app){
   const q=el("div","panel ytquick"); const qb=el("button","btn primary ytbig","📋 복사한 유튜브 링크로 바로 보기"); qb.type="button"; const qm=el("p","small txmsg","");
   qb.onclick=async()=>{ let t=""; try{ t=await navigator.clipboard.readText(); }catch(_){ } const id=ytId(t); if(id){ ytOpen(id); return; } qm.textContent= t? "복사된 게 유튜브 링크가 아니에요. 유튜브 앱에서 '공유 → 링크 복사'를 먼저 눌러 주세요." : "붙여넣기를 허용해 주세요. 유튜브 앱에서 '공유 → 링크 복사'를 누른 뒤 다시 눌러 보세요."; };
   q.append(qb, el("p","small muted","유튜브 앱 → 영상 아래 '공유' → '링크 복사' → 밴드업에서 이 버튼 한 번. 끝!"), qm);
-  if(D.inbox){ const sh=el("details","ytmore"); sh.append(el("summary",null,"더 빠르게: 유튜브 공유 버튼에 '밴드업' 넣기 (한 번만 설정)"));
-    const ol=el("ol","ibsteps"); for(const t of ["단축어 앱 → ＋ → 이름 '밴드업' → 아래 ⓘ → '공유 시트에서 보기' 켜기. 받을 항목은 URL과 텍스트.","동작 'URL 콘텐츠 가져오기' 추가 → 아래 URL 붙여 넣기 → 방법 POST → 요청 본문 JSON에 텍스트 필드 1개: 키 p_txt, 값은 파란 '단축어 입력'.","이제 유튜브 앱에서 공유 → '밴드업'을 누르고, 밴드업 앱을 열면 그 영상이 바로 나와요."]) ol.append(el("li",null,t));
-    sh.append(ol, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_save?apikey="+SB_KEY)); q.append(sh); }
+  if(D.inbox){ const bt=el("div","ytback"); bt.append(el("b",null,"✨ 가장 쉬운 방법: 보던 영상에서 폰 뒷면 세 번 톡톡"), el("p","small muted","유튜브 앱에서 영상을 보다가 폰 뒷면을 세 번 치고 밴드업을 열면, 그 영상을 찾아서 보던 시간부터 바로 틀어 줘요. 영상 아래 제목이 화면에 보일 때 치세요."));
+    const sh=el("details","ytmore"); sh.append(el("summary",null,"처음 한 번만 설정하기"));
+    const ol=el("ol","ibsteps"); for(const t of ["단축어 앱 → 오른쪽 위 ＋ → 동작 3개를 차례로 넣어요: ① 스크린샷 찍기 ② 이미지에서 텍스트 추출 ③ URL 콘텐츠 가져오기","③의 파란 'URL'에 아래 URL을 붙여 넣고, 펼쳐서 방법 POST → 요청 본문 JSON에 텍스트 필드 1개: 키 p_txt, 값은 키보드 위 파란 '이미지에서 추출한 텍스트'.","아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 삼중 탭 → 방금 만든 단축어. (두 번 탭은 지금처럼 스크린샷으로 둬도 돼요)","유튜브가 아닌 화면에서 세 번 치면 그 화면 글이 '📸 화면에서 가져온 글'로 들어가요. 단축어 하나로 둘 다 돼요."]) ol.append(el("li",null,t));
+    sh.append(ol, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_save?apikey="+SB_KEY)); bt.append(sh); q.prepend(bt); }
   app.append(q);
   const p=el("details","panel ytnew ytmore"); p.append(el("summary",null,"직접 입력 · 영어 스크립트 같이 넣기"));
   const iu=el("input","txin"); iu.placeholder="https://youtu.be/… 또는 유튜브 주소"; iu.inputMode="url"; p.append(iu);
@@ -1629,7 +1651,8 @@ function renderYtPlayer(app,v){
   more.append(ta,sb,sm); app.append(more);
   paintCur(); paintAdd();
   ytApi().then(()=>{ if(view.tab!=="yt" || !document.getElementById("ytplayer")) return;
-    ytP=new YT.Player("ytplayer",{width:"100%",height:"100%",videoId:v.vid,playerVars:{playsinline:1,rel:0,modestbranding:1,cc_load_policy:L.length?0:1,cc_lang_pref:"en",hl:"en",iv_load_policy:3},
+    const st0=Math.max(0,Math.floor((S.start||0)-2)); S.start=0;
+    ytP=new YT.Player("ytplayer",{width:"100%",height:"100%",videoId:v.vid,playerVars:{start:st0,playsinline:1,rel:0,modestbranding:1,cc_load_policy:L.length?0:1,cc_lang_pref:"en",hl:"en",iv_load_policy:3},
       events:{ onReady:e=>{ try{ e.target.setPlaybackRate(S.rate); }catch(_){ } },
         onStateChange:e=>{ if(e.data===1 && !L.length && !S.cc){ S.cc=1; ccSet(); } },
         onError:e=>{ const c=e.data; fr.textContent=""; fr.append(el("p","yterr", c===101||c===150? "이 영상은 올린 사람이 다른 곳에서 재생하지 못하게 막아 두었어요. 다른 영상을 골라 주세요." : "영상을 불러오지 못했어요. 링크를 확인해 주세요.")); } }});
