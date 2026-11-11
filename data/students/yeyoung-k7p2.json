@@ -2798,6 +2798,18 @@
    "en": "I'm not a fan of sour or bitter flavours, so I usually go for something savoury or a rich chocolate cake.",
    "gram": "맛 형용사: <em>sour</em> 신 · <em>bitter</em> 쓴 · <em>savoury</em> 짭짤한, 감칠맛 나는(단맛의 반대) · <em>rich</em> 진한, 깊은. <em>I'm not a fan of</em> ~ = ~는 별로예요. <em>go for</em> = 고르다.",
    "hint": "savoury"
+  },
+  {
+   "id": "r12-32",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "그냥 산책하려고 나갔는데, 결국 쇼핑몰에 가게 됐어요.",
+   "en": "I just went out for a walk, but I ended up at the mall.",
+   "gram": "<em>end up at</em> + 장소 = 결국 ~에 가게 되다. 동작이 오면 end up + -ing (ended up shopping).",
+   "hint": "mall"
   }
  ],
  "part1": [
