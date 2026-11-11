@@ -1573,33 +1573,59 @@ function clips(){ return store.get(CLK(),[]); }
 function clipAdd(o){ const t=o.t||0; const c={id:Date.now()*1000+Math.floor(Math.random()*1000), vid:o.vid, title:o.title||"유튜브 영상", s:Math.max(0,t-10), e:t? t+2 : 15, at:o.at||new Date().toISOString(), note:"", noTime:!t}; const L=clips(); L.push(c); store.set(CLK(),L); return c; }
 function clipSave(c){ const L=clips(); const i=L.findIndex(x=>x.id===c.id); if(i>=0){ L[i]=c; store.set(CLK(),L); } }
 function renderClip(app,c){
-  const S=ytState; S.rep=S.rep??true; S.rate=S.rate||1; S.ko=S.ko??false;
+  const S=ytState; S.rep=S.rep??true; S.rate=S.rate||1; S.ko=S.ko??false; S.pad=S.pad||20;
   const back=el("button","back","‹ 내 클립"); back.type="button"; back.onclick=()=>{ ytStop(); ytState=null; render(); }; app.append(back);
   const fr=el("div","ytframe clframe"); const host=el("div"); host.id="ytplayer"; fr.append(host); app.append(fr);
-  const head=el("div","clhead"); head.append(el("b","cltitle",c.title), el("span","small muted",`${new Date(c.at).toLocaleDateString("ko-KR",{month:"long",day:"numeric"})}에 저장`)); app.append(head);
-  const B=(t,lab,cls)=>{ const b=el("button","ytb"+(cls?" "+cls:""),t); b.type="button"; b.setAttribute("aria-label",lab); return b; };
-  const ctl=el("div","clctl"); const bPlay=el("button","ytadd","▶ 다시 듣기"); bPlay.type="button";
+  const head=el("div","clhead"); head.append(el("b","cltitle",c.title)); app.append(head);
+  // trim editor
+  const ed=el("div","panel trim"); const rt=el("div","trtop"); const rtt=el("b",null,""); rt.append(rtt); ed.append(rt);
+  const track=el("div","trtrack"); const sel=el("div","trsel"); const h1=el("div","trh trs"); const h2=el("div","trh tre"); const ph=el("div","trph");
+  h1.setAttribute("aria-label","시작 손잡이"); h2.setAttribute("aria-label","끝 손잡이"); track.append(sel,ph,h1,h2); ed.append(track);
+  const lab=el("div","trlab"); const la=el("span",null,""), lb=el("span",null,""); lab.append(la,lb); ed.append(lab);
+  const B=(t,lab2,cls)=>{ const x=el("button","ytb"+(cls?" "+cls:""),t); x.type="button"; x.setAttribute("aria-label",lab2); return x; };
+  const marks=el("div","trmarks"); const mS=B("[ 지금을 시작으로","지금 위치를 시작으로"), mE=B("지금을 끝으로 ]","지금 위치를 끝으로"); marks.append(mS,mE); ed.append(marks);
+  const zoom=el("div","trzoom"); zoom.append(el("span","small muted","보기")); const Z=[[20,"±20초"],[60,"±1분"],[180,"±3분"],[1e9,"전체"]]; const zb=Z.map(([v,t])=>{ const x=B(t,"타임라인 범위 "+t); x.onclick=()=>{ S.pad=v; win(); paint(); zb.forEach((y,i)=>y.classList.toggle("on",Z[i][0]===v)); }; x.classList.toggle("on",S.pad===v); zoom.append(x); return x; }); ed.append(zoom);
+  ed.append(el("p","small muted","손잡이를 끌어서 원하는 부분만 남기세요. 줄을 누르면 그 장면이 미리 보여요." + (c.noTime? " (재생 시간을 못 읽어서 처음 15초로 잡아 뒀어요.)" : "")));
+  app.append(ed);
+  const ctl=el("div","clctl"); const bPlay=el("button","ytadd","▶ 클립 재생"); bPlay.type="button"; const bPause=B("⏸","일시정지");
   const bRep=B("🔁 반복","구간 반복"), bRate=B(S.rate+"x","재생 속도"), bKo=B("한글 자막","한국어 자막 켜기/끄기");
-  bRep.classList.toggle("on",S.rep); bKo.classList.toggle("on",S.ko); ctl.append(bPlay,bRep,bRate,bKo); app.append(ctl);
-  const rng=el("div","panel clrng"); const rt=el("b",null,""); const paintR=()=>{ rt.textContent=`구간 ${ytFmt(c.s)} – ${ytFmt(c.e)} (${Math.round(c.e-c.s)}초)`; };
-  const bS1=B("−3초","시작을 3초 앞당기기"), bS2=B("+3초","시작을 3초 늦추기"), bE1=B("−3초","끝을 3초 앞당기기"), bE2=B("+3초","끝을 3초 늘리기");
-  const g1=el("div","clg"); g1.append(el("span",null,"시작"),bS1,bS2); const g2=el("div","clg"); g2.append(el("span",null,"끝"),bE1,bE2);
-  rng.append(rt,g1,g2, el("p","small muted", c.noTime? "재생 시간을 읽지 못해서 영상 첫 15초로 잡았어요. 원하는 장면에 맞게 시작과 끝을 옮겨 주세요." : "원하는 문장만 남도록 시작과 끝을 3초씩 옮길 수 있어요.")); paintR(); app.append(rng);
-  const row=el("div","clfoot"); const full=el("button","btn","🎬 이 장면부터 전체 영상 보기"); full.type="button"; full.onclick=()=>{ ytStop(); ytOpen(c.vid,c.s+2); };
+  bRep.classList.toggle("on",S.rep); bKo.classList.toggle("on",S.ko); ctl.append(bPlay,bPause,bRep,bRate,bKo); app.insertBefore(ctl, ed);
+  const row=el("div","clfoot"); const full=el("button","btn","🎬 전체 영상 보기"); full.type="button"; full.onclick=()=>{ ytStop(); ytOpen(c.vid,c.s+2); };
   const del=el("button","vcx","클립 지우기"); del.type="button"; del.onclick=()=>{ store.set(CLK(),clips().filter(x=>x.id!==c.id)); ytStop(); ytState=null; render(); }; row.append(full,del); app.append(row);
-  const playFrom=()=>{ try{ ytP.seekTo(c.s,true); ytP.playVideo(); }catch(_){ } };
-  const adj=(k,d)=>{ if(k==="s") c.s=Math.max(0,Math.min(c.e-2,c.s+d)); else c.e=Math.max(c.s+2,c.e+d); clipSave(c); paintR(); if(k==="s") playFrom(); else { try{ ytP.seekTo(Math.max(c.s,c.e-4),true); ytP.playVideo(); }catch(_){ } } };
-  bS1.onclick=()=>adj("s",-3); bS2.onclick=()=>adj("s",3); bE1.onclick=()=>adj("e",-3); bE2.onclick=()=>adj("e",3);
+  let dur=0, W={a:0,b:1}, drag=null, lastSeek=0, previewing=false;
+  const r1=x=>Math.round(x*10)/10;
+  const win=()=>{ const D=dur||Math.max(c.e+60,120); W.a=Math.max(0,c.s-S.pad); W.b=Math.min(D,c.e+S.pad); if(W.b-W.a<4) W.b=W.a+4; };
+  const pct=t=>Math.max(0,Math.min(100,(t-W.a)/(W.b-W.a)*100));
+  const fmt=t=>{ const m=Math.floor(t/60), x=t-m*60; return m+":"+(x<10?"0":"")+x.toFixed(1); };
+  const paint=()=>{ sel.style.left=pct(c.s)+"%"; sel.style.width=(pct(c.e)-pct(c.s))+"%"; h1.style.left=pct(c.s)+"%"; h2.style.left=pct(c.e)+"%"; la.textContent=ytFmt(W.a); lb.textContent=ytFmt(W.b);
+    rtt.textContent=`${fmt(c.s)} – ${fmt(c.e)} · ${r1(c.e-c.s)}초`; };
+  const curT=()=>{ try{ return ytP.getCurrentTime()||0; }catch(_){ return 0; } };
+  const seek=(t,final)=>{ try{ ytP.seekTo(t, !!final); }catch(_){ } };
+  const tAt=ev=>{ const r=track.getBoundingClientRect(); const x=Math.max(0,Math.min(r.width,ev.clientX-r.left)); return W.a+x/r.width*(W.b-W.a); };
+  const save=()=>{ c.s=r1(c.s); c.e=r1(c.e); c.noTime=false; clipSave(c); paint(); };
+  const startDrag=(k,ev)=>{ ev.preventDefault(); ev.stopPropagation(); drag=k; try{ ytP.pauseVideo(); }catch(_){ } track.setPointerCapture(ev.pointerId); };
+  h1.onpointerdown=ev=>startDrag("s",ev); h2.onpointerdown=ev=>startDrag("e",ev);
+  track.onpointerdown=ev=>{ if(drag) return; const t=tAt(ev); const ds=Math.abs(pct(t)-pct(c.s)), de=Math.abs(pct(t)-pct(c.e)); if(Math.min(ds,de)<4){ startDrag(ds<de?"s":"e",ev); return; } previewing=true; seek(t,true); try{ ytP.playVideo(); }catch(_){ } ph.style.left=pct(t)+"%"; };
+  track.onpointermove=ev=>{ if(!drag) return; const t=tAt(ev); if(drag==="s") c.s=Math.max(0,Math.min(t,c.e-1)); else c.e=Math.min(dur||1e9,Math.max(t,c.s+1)); paint(); const now=Date.now(); if(now-lastSeek>120){ lastSeek=now; seek(drag==="s"? c.s : c.e,false); } ph.style.left=pct(drag==="s"? c.s : c.e)+"%"; };
+  const endDrag=()=>{ if(!drag) return; const k=drag; drag=null; save(); if(k==="s"){ seek(c.s,true); try{ ytP.playVideo(); }catch(_){ } } else { seek(Math.max(c.s,c.e-3),true); try{ ytP.playVideo(); }catch(_){ } } };
+  track.onpointerup=endDrag; track.onpointercancel=endDrag;
+  mS.onclick=()=>{ const t=curT(); if(t>=c.e-1){ c.e=t+5; } c.s=t; save(); win(); paint(); toast(`시작 ${fmt(c.s)}`,true); };
+  mE.onclick=()=>{ const t=curT(); if(t<=c.s+1){ toast("시작보다 뒤에서 눌러 주세요",false); return; } c.e=t; save(); win(); paint(); toast(`끝 ${fmt(c.e)}`,true); };
   const cc=()=>{ try{ ytP.loadModule && ytP.loadModule("captions"); ytP.setOption("captions","track", S.ko? {languageCode:"en", translationLanguage:{languageCode:"ko"}} : {languageCode:"en"}); }catch(_){ } };
-  bPlay.onclick=playFrom; bRep.onclick=()=>{ S.rep=!S.rep; bRep.classList.toggle("on",S.rep); };
+  bPlay.onclick=()=>{ previewing=false; seek(c.s,true); try{ ytP.playVideo(); }catch(_){ } };
+  bPause.onclick=()=>{ try{ const st=ytP.getPlayerState(); if(st===1) ytP.pauseVideo(); else ytP.playVideo(); }catch(_){ } };
+  bRep.onclick=()=>{ S.rep=!S.rep; bRep.classList.toggle("on",S.rep); };
   bRate.onclick=()=>{ S.rate= S.rate===1? .75 : S.rate===.75? .5 : 1; bRate.textContent=S.rate+"x"; try{ ytP.setPlaybackRate(S.rate); }catch(_){ } };
   bKo.onclick=()=>{ S.ko=!S.ko; bKo.classList.toggle("on",S.ko); cc(); };
+  win(); paint();
   ytApi().then(()=>{ if(view.tab!=="yt" || !document.getElementById("ytplayer")) return;
-    ytP=new YT.Player("ytplayer",{width:"100%",height:"100%",videoId:c.vid,playerVars:{start:Math.floor(c.s),playsinline:1,rel:0,modestbranding:1,cc_load_policy:1,cc_lang_pref:"en",hl:"en",iv_load_policy:3},
-      events:{ onReady:e=>{ try{ e.target.setPlaybackRate(S.rate); }catch(_){ } }, onStateChange:e=>{ if(e.data===1 && !S.cc){ S.cc=1; cc(); } },
+    ytP=new YT.Player("ytplayer",{width:"100%",height:"100%",videoId:c.vid,playerVars:{start:Math.floor(c.s),controls:0,disablekb:1,playsinline:1,rel:0,modestbranding:1,cc_load_policy:1,cc_lang_pref:"en",hl:"en",iv_load_policy:3,fs:0},
+      events:{ onReady:e=>{ try{ e.target.setPlaybackRate(S.rate); dur=e.target.getDuration()||0; win(); paint(); }catch(_){ } }, onStateChange:e=>{ if(e.data===1){ if(!dur){ try{ dur=ytP.getDuration()||0; win(); paint(); }catch(_){ } } if(!S.cc){ S.cc=1; cc(); } } bPause.textContent= e.data===1? "⏸" : "▶"; },
         onError:e=>{ fr.textContent=""; fr.append(el("p","yterr", e.data===101||e.data===150? "이 영상은 올린 사람이 다른 곳에서 재생하지 못하게 막아 두었어요." : "영상을 불러오지 못했어요.")); } }});
-    ytTimer=setInterval(()=>{ if(view.tab!=="yt" || !(ytState&&ytState.clip)){ ytStop(); return; } if(!ytP || !ytP.getCurrentTime) return; const t=ytP.getCurrentTime(); const st=ytP.getPlayerState? ytP.getPlayerState() : 1;
-      if(st===1 && t>=c.e){ if(S.rep) ytP.seekTo(c.s,true); else ytP.pauseVideo(); } },150); });
+    ytTimer=setInterval(()=>{ if(view.tab!=="yt" || !(ytState&&ytState.clip)){ ytStop(); return; } if(!ytP || !ytP.getCurrentTime || drag) return; const t=ytP.getCurrentTime(); const st=ytP.getPlayerState? ytP.getPlayerState() : 1;
+      ph.style.left=pct(t)+"%"; ph.classList.toggle("out", t<c.s-.3 || t>c.e+.3);
+      if(st===1 && !previewing && t>=c.e){ if(S.rep) ytP.seekTo(c.s,true); else ytP.pauseVideo(); }
+      if(st===1 && previewing && t>=W.b){ ytP.pauseVideo(); } },100); });
 }
 function ytOpen(vid,start){ const old=ytVids().find(x=>x.vid===vid); const v={vid, title:(old&&old.title)||"유튜브 영상", at:Date.now(), lines: old? old.lines : []}; ytSave(v); ytState={vid, start:start||0}; go("yt");
   if(!old || old.title==="유튜브 영상") fetch("https://noembed.com/embed?url="+encodeURIComponent("https://www.youtube.com/watch?v="+vid)).then(r=>r.json()).then(j=>{ if(j && j.title){ const L=ytVids(); const y=L.find(x=>x.vid===vid); if(y){ y.title=j.title; store.set(YTK(),L); const h=document.querySelector(".yttitle"); if(h) h.textContent=j.title; } } }).catch(()=>{}); }
@@ -1653,7 +1679,8 @@ function renderYtPlayer(app,v){
   const cur=el("div","ytcur"); const cen=el("p","ytcen",""); const cko=el("p","ytcko",""); const wbox=el("div","ytwbox"); cur.append(cen,cko,wbox);
   const ctl=el("div","ytctl"); const B=(t,lab)=>{ const b=el("button","ytb",t); b.type="button"; b.setAttribute("aria-label",lab); return b; };
   const bPrev=B("⏮","이전 문장"), bLoop=B("🔁","이 문장 반복"), bNext=B("⏭","다음 문장"), bRate=B(S.rate===1?"1x":S.rate+"x","속도"), bKo=B("한글","한국어 자막 켜기/끄기"), bAdd=el("button","ytadd","＋ 담기"); bAdd.type="button";
-  bKo.classList.toggle("on",S.ko); ctl.append(bPrev,bLoop,bNext,bRate,bKo,bAdd); stick.append(cur,ctl); app.append(stick);
+  const bClip=B("✂️","여기서 클립 만들기"); bClip.onclick=()=>{ let t=0; try{ t=ytP.getCurrentTime()||0; }catch(_){ } const cl=clipAdd({vid:v.vid,title:v.title,t:Math.max(t,1)}); try{ ytP.pauseVideo(); }catch(_){ } ytStop(); ytState={clip:cl.id}; render(); window.scrollTo(0,0); };
+  bKo.classList.toggle("on",S.ko); ctl.append(bPrev,bLoop,bNext,bRate,bKo,bClip,bAdd); stick.append(cur,ctl); app.append(stick);
   app.append(el("p","yttitle",v.title));
   const L=v.lines; const rows=[];
   const hasMS=en=>store.get(MSK(),[]).some(y=>y.en.toLowerCase()===en.toLowerCase());
@@ -1679,7 +1706,7 @@ function renderYtPlayer(app,v){
   bLoop.onclick=()=>{ if(S.i<0) return; S.loop= S.loop===S.i? null : S.i; bLoop.classList.toggle("on",S.loop!=null); if(S.loop!=null) seekI(S.loop); toast(S.loop!=null? "🔁 이 문장을 계속 반복해요" : "반복 끔",true); };
   bRate.onclick=()=>{ S.rate= S.rate===1? .75 : S.rate===.75? .5 : 1; bRate.textContent=S.rate+"x"; try{ ytP.setPlaybackRate(S.rate); }catch(_){ } };
   const ccSet=()=>{ if(L.length || !ytP || !ytP.setOption) return; try{ ytP.loadModule && ytP.loadModule("captions"); ytP.setOption("captions","track", S.ko? {languageCode:"en", translationLanguage:{languageCode:"ko"}} : {languageCode:"en"}); }catch(_){ } };
-  if(!L.length){ S.ko=false; bKo.classList.remove("on"); [bPrev,bLoop,bNext,bAdd].forEach(b=>b.style.display="none"); }
+  if(!L.length){ S.ko=false; bKo.classList.remove("on"); [bPrev,bLoop,bNext,bAdd].forEach(b=>b.style.display="none"); bClip.textContent="✂️ 여기서 클립"; }
   bKo.onclick=()=>{ S.ko=!S.ko; ccSet(); bKo.classList.toggle("on",S.ko); paintCur(); document.querySelectorAll(".ytko").forEach(x=>x.classList.toggle("off",!S.ko)); };
   bAdd.onclick=()=>addLine(S.i);
   let lst=null;

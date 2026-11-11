@@ -1139,3 +1139,16 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .clctl{display:flex;flex-wrap:wrap;gap:6px}.clctl .ytadd{margin-left:0}
 .clrng{display:grid;gap:8px}.clrng>b{font-size:15px;font-variant-numeric:tabular-nums}.clrng p{margin:0}
 .clg{display:flex;align-items:center;gap:6px}.clg>span{font-size:14px;color:var(--muted);min-width:30px}.clg .ytb{height:34px;padding:0 12px;font-size:14px}
+
+/* 클립 자르기 */
+.trim{display:grid;gap:10px}
+.trtop b{font-size:16px;font-variant-numeric:tabular-nums}
+.trtrack{position:relative;height:44px;border-radius:10px;background:repeating-linear-gradient(90deg,var(--sunk) 0 6px,var(--line) 6px 7px);touch-action:none;cursor:pointer;margin:0 10px}
+.trsel{position:absolute;top:0;bottom:0;background:rgba(68,87,232,.22);border-top:3px solid var(--blue);border-bottom:3px solid var(--blue)}
+.trh{position:absolute;top:-4px;bottom:-4px;width:20px;margin-left:-10px;border-radius:7px;background:var(--blue);touch-action:none;cursor:ew-resize;box-shadow:0 2px 6px rgba(30,30,80,.25)}
+.trh::after{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:4px;border-radius:2px;background:rgba(255,255,255,.85)}
+.trph{position:absolute;top:-6px;bottom:-6px;width:2px;margin-left:-1px;background:#e5484d;pointer-events:none}.trph.out{background:var(--muted)}
+.trlab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;margin:-4px 10px 0}
+.trmarks{display:grid;grid-template-columns:1fr 1fr;gap:6px}.trmarks .ytb{height:40px}
+.trzoom{display:flex;align-items:center;gap:5px;flex-wrap:wrap}.trzoom .ytb{height:32px;min-width:0;padding:0 10px;font-size:13px}
+.trim p{margin:0}
