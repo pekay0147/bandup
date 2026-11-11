@@ -28,24 +28,6 @@
    "label": "스피킹 매트릭스 12회"
   },
   {
-   "no": 13,
-   "date": "2026-11-10",
-   "title": "내가 받는 과외",
-   "label": "과외 2차시"
-  },
-  {
-   "no": 14,
-   "date": "2026-11-10",
-   "title": "내가 받는 과외",
-   "label": "과외 3차시"
-  },
-  {
-   "no": 15,
-   "date": "2026-11-10",
-   "title": "내가 받는 과외",
-   "label": "과외 6차시"
-  },
-  {
    "no": 16,
    "date": "2026-11-11",
    "title": "Speaking Matrix",
@@ -871,510 +853,6 @@
    "gram": "<em>show</em> 사람 + (that) 문장 = ~에게 …라는 걸 보여 주다. <em>move in the right direction</em> = 올바른 방향으로 나아가다."
   },
   {
-   "id": "tu13-01",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    13
-   ],
-   "ko": "AI가 도입된 이후로 많은 사람들이 그것을 쓰고 있어요.",
-   "en": "Since AI was introduced, a lot of people have been using it.",
-   "hint": "introduced",
-   "gram": "<em>Since</em> + 과거, 주어 + <em>have been</em> -ing = ~ 이후로 계속 ~하고 있다(현재완료진행)."
-  },
-  {
-   "id": "tu13-02",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    13
-   ],
-   "ko": "저는 영어를 매일 써요, 수업 시간이든 아니든요.",
-   "en": "I use English on the daily, in class or out of class.",
-   "hint": "daily",
-   "gram": "<em>on the daily / on the regular</em> = 매일, 꾸준히(구어). <em>in class or out of class</em> = 수업 중이든 밖이든."
-  },
-  {
-   "id": "tu13-03",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    13
-   ],
-   "ko": "저는 집에 돌아가는 중이에요.",
-   "en": "I'm going back home.",
-   "hint": "home",
-   "gram": "<em>go back home</em> (home 앞에 to 없음) = <em>go back to my house</em>."
-  },
-  {
-   "id": "tu13-04",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    13
-   ],
-   "ko": "그 사람은 말할 때 특유의 버릇이 있어요.",
-   "en": "He has a funny mannerism when he talks.",
-   "hint": "mannerism",
-   "gram": "<em>mannerism</em> = 특유의 버릇, 몸짓."
-  },
-  {
-   "id": "tu13-05",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    13
-   ],
-   "ko": "걔는 유명 배우랑 닮은 사람이에요.",
-   "en": "She is a look-alike of a famous actress.",
-   "hint": "look-alike",
-   "gram": "<em>look-alike</em> = 닮은 사람. a <em>look-alike</em> of ~ ."
-  },
-  {
-   "id": "tu13-06",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    13
-   ],
-   "ko": "하늘에 계신 아버지, 예수님의 이름으로 기도합니다. 아멘.",
-   "en": "Heavenly Father, in Jesus' name we pray. Amen.",
-   "hint": "Heavenly",
-   "gram": "<em>Heavenly Father</em> = 하늘에 계신 아버지. <em>in Jesus' name we pray</em> = 예수님의 이름으로 기도합니다."
-  },
-  {
-   "id": "tu14-01",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "그들은 자기 삶에 만족할 거예요.",
-   "en": "They would be satisfied with their life.",
-   "hint": "satisfied",
-   "gram": "<em>be satisfied with</em> ~ = ~에 만족하다. <em>would</em> = ~일 것이다(추측)."
-  },
-  {
-   "id": "tu14-02",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "그러다 결국 번아웃이 와요.",
-   "en": "They end up burned out.",
-   "hint": "burned",
-   "gram": "<em>end up</em> + 형용사/-ing = 결국 ~하게 되다. <em>burned out</em> = 완전히 지친."
-  },
-  {
-   "id": "tu14-03",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "저는 우선순위를 정해야 해요.",
-   "en": "I should prioritize.",
-   "hint": "prioritize",
-   "gram": "<em>prioritize</em> = 우선순위를 정하다(pri-OR-i-tize)."
-  },
-  {
-   "id": "tu14-04",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "숫자를 한 번 더 교차 확인해 볼게요.",
-   "en": "Let me cross-check the numbers.",
-   "hint": "cross-check",
-   "gram": "<em>cross-check</em> = 다른 자료와 대조해 확인하다."
-  },
-  {
-   "id": "tu14-05",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "저 오늘 걔네랑 놀러 나가요.",
-   "en": "I'm going out with them.",
-   "hint": "going",
-   "gram": "<em>be going out with</em> 사람 = ~와 놀러 나가다(사귀다는 뜻도 있음)."
-  },
-  {
-   "id": "tu14-06",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "깜짝 놀라게 해 줄게요.",
-   "en": "I will blow you away.",
-   "hint": "blow",
-   "gram": "<em>blow</em> 사람 <em>away</em> = ~를 깜짝 놀라게 하다, 감동시키다."
-  },
-  {
-   "id": "tu14-07",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "엄마한테 걔 일렀어요.",
-   "en": "I told on her to my mom.",
-   "hint": "told",
-   "gram": "<em>tell on</em> 사람 = ~를 고자질하다, 이르다."
-  },
-  {
-   "id": "tu14-08",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "발가락을 찧었어요.",
-   "en": "I stubbed my toe.",
-   "hint": "stubbed",
-   "gram": "<em>stub one's toe</em> = 발가락을 (어디에) 찧다."
-  },
-  {
-   "id": "tu14-09",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "책상에 무릎을 부딪쳤어요.",
-   "en": "I hit my knee against the desk.",
-   "hint": "knee",
-   "gram": "<em>hit</em> A <em>against</em> B = A를 B에 부딪치다."
-  },
-  {
-   "id": "tu14-10",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "저는 소규모 그룹에 있는 게 좋아요.",
-   "en": "I like being in small groups.",
-   "hint": "groups",
-   "gram": "<em>being in</em> ~ = ~에 속해 있는 것. 'in side of' 대신 <em>in</em>."
-  },
-  {
-   "id": "tu14-11",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "새로운 걸 해 보면서 분위기를 살펴보고 싶어요.",
-   "en": "I want to test the waters.",
-   "hint": "waters",
-   "gram": "<em>test the waters</em> = (본격적으로 하기 전에) 반응을 떠보다, 시험 삼아 해 보다."
-  },
-  {
-   "id": "tu14-12",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "그 노래는 기분을 북돋아 줘요.",
-   "en": "That song is really uplifting.",
-   "hint": "uplifting",
-   "gram": "<em>uplifting</em> = 기분을 북돋우는, 희망을 주는."
-  },
-  {
-   "id": "tu14-13",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "저는 일찍 일어나는 데 익숙해요.",
-   "en": "I'm accustomed to waking up early.",
-   "hint": "accustomed",
-   "gram": "<em>be accustomed to</em> + 명사/-ing = ~에 익숙하다(= be used to -ing)."
-  },
-  {
-   "id": "tu14-14",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "시험 전에는 완전히 집중 모드예요.",
-   "en": "I'm locked in before exams.",
-   "hint": "locked",
-   "gram": "<em>locked in</em> = 완전히 집중한 상태(구어)."
-  },
-  {
-   "id": "tu14-15",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "그 선수는 진짜 최고예요.",
-   "en": "That player is goated.",
-   "hint": "goated",
-   "gram": "<em>goated</em> = 최고인(GOAT: greatest of all time, 슬랭)."
-  },
-  {
-   "id": "tu14-16",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    14
-   ],
-   "ko": "그 도시는 아주 번영했어요.",
-   "en": "The city was very prosperous.",
-   "hint": "prosperous",
-   "gram": "<em>prosperous</em> = 번영한, 부유한."
-  },
-  {
-   "id": "tu15-01",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "만날 가능성이 점점 줄어들고 있어요.",
-   "en": "The chances of meeting are getting smaller.",
-   "hint": "chances",
-   "gram": "<em>the chances of</em> -ing = ~할 가능성. <em>be getting</em> + 비교급 = 점점 ~해지다."
-  },
-  {
-   "id": "tu15-02",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "우리는 점점 덜 만나요.",
-   "en": "We meet less and less.",
-   "hint": "less",
-   "gram": "<em>less and less</em> = 점점 덜. 'less less' ❌"
-  },
-  {
-   "id": "tu15-03",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "그럼에도 불구하고 저는 계속했어요.",
-   "en": "Despite that, I kept going.",
-   "hint": "Despite",
-   "gram": "<em>Despite</em> + 명사 = ~에도 불구하고. 문장 연결어로 However, ... 도 써 보기."
-  },
-  {
-   "id": "tu15-04",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "근거를 하나 들어 볼게요.",
-   "en": "Let me give you some evidence.",
-   "hint": "evidence",
-   "gram": "<em>evidence</em> = 증거, 근거(셀 수 없는 명사)."
-  },
-  {
-   "id": "tu15-05",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "다시 원래 요점으로 연결할게요.",
-   "en": "Let me link back to my main point.",
-   "hint": "link",
-   "gram": "<em>link back to</em> ~ = (이야기를) ~로 다시 연결하다. Part 3 답변 마무리에."
-  },
-  {
-   "id": "tu15-06",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "그 단어는 의미를 잃어 가고 있어요.",
-   "en": "That word is losing its meaning.",
-   "hint": "its",
-   "gram": "<em>its</em> = 그것의(소유격). <em>it's</em> = it is ❗"
-  },
-  {
-   "id": "tu15-07",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "제 생각이 좀 뒤죽박죽이었어요.",
-   "en": "My thoughts were a bit muddled.",
-   "hint": "muddled",
-   "gram": "<em>muddled</em> = 뒤죽박죽인, 혼란스러운. <em>muddy</em> = 진흙투성이의."
-  },
-  {
-   "id": "tu15-08",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "준비 없이 즉흥으로 말했어요.",
-   "en": "I had to improvise.",
-   "hint": "improvise",
-   "gram": "<em>improvise</em> = 즉흥으로 하다. <em>improv / improvisation</em> = 즉흥(연기)."
-  },
-  {
-   "id": "tu15-09",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "이 앱은 말하기 실력을 높여 줘요.",
-   "en": "This app enhances my speaking skills.",
-   "hint": "enhances",
-   "gram": "<em>enhance</em> = 향상시키다, 높이다."
-  },
-  {
-   "id": "tu15-10",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "제 노트북이 또 말썽이에요.",
-   "en": "My laptop is acting up again.",
-   "hint": "acting",
-   "gram": "<em>act up</em> = (기계가) 말썽 부리다, (아이가) 버릇없이 굴다."
-  },
-  {
-   "id": "tu15-11",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "재채기가 나고 코가 막혔어요.",
-   "en": "I keep sneezing and I have a stuffy nose.",
-   "hint": "stuffy",
-   "gram": "<em>sneeze</em> = 재채기하다. <em>a stuffy nose</em> = 막힌 코."
-  },
-  {
-   "id": "tu15-12",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "장난치지 마, 진심이야?",
-   "en": "Be for real.",
-   "hint": "real",
-   "gram": "<em>Be for real.</em> = 장난치지 마, 진지하게 말해(구어)."
-  },
-  {
-   "id": "tu15-13",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "그 경치는 비교할 수 없을 만큼 멋졌어요.",
-   "en": "The view was incomparable.",
-   "hint": "incomparable",
-   "gram": "<em>incomparable</em> = 비교할 수 없는, 비할 데 없는."
-  },
-  {
-   "id": "tu15-14",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "그 말에 자존심이 좀 상했어요.",
-   "en": "That hurt my pride a little.",
-   "hint": "pride",
-   "gram": "<em>hurt / bruise one's pride</em> = 자존심을 상하게 하다."
-  },
-  {
-   "id": "tu15-15",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "그 팀이 상대를 완전히 박살 냈어요.",
-   "en": "That team annihilated the other team.",
-   "hint": "annihilated",
-   "gram": "<em>annihilate</em> = 전멸시키다, 완패시키다."
-  },
-  {
-   "id": "tu15-16",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "와인은 이 음식과 잘 어울리는 보완물이에요.",
-   "en": "This wine is a perfect complement to the food.",
-   "hint": "complement",
-   "gram": "<em>complement</em> = 보완물. compliment(칭찬)와 철자 구분!"
-  },
-  {
-   "id": "tu15-17",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "그 사람은 말투가 좀 거들먹거려요.",
-   "en": "He sounds a bit condescending.",
-   "hint": "condescending",
-   "gram": "<em>condescending</em> = 거들먹거리는, 깔보는."
-  },
-  {
-   "id": "tu15-18",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "그 계획은 언제 세웠어요?",
-   "en": "When did you make the plan?",
-   "hint": "plan",
-   "gram": "<em>make a plan</em> = 계획을 세우다. 과거 질문은 <em>did</em> + 동사원형."
-  },
-  {
-   "id": "tu15-19",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "그 문제는 스트레스에서 비롯돼요.",
-   "en": "The problem stems from stress.",
-   "hint": "stems",
-   "gram": "<em>stem from</em> ~ = ~에서 비롯되다."
-  },
-  {
-   "id": "tu15-20",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    15
-   ],
-   "ko": "저는 공부 덕후예요.",
-   "en": "I'm a bit of a geek.",
-   "hint": "geek",
-   "gram": "<em>geek / nerd / dork</em> = 덕후, 공부벌레, 괴짜(친한 사이 농담)."
-  },
-  {
    "id": "sm13-01",
    "kind": "ko",
    "type": "표현",
@@ -2079,6 +1557,54 @@
    "ko": "~에서 비롯되다",
    "ex": "The problem stems from stress.",
    "s": 15
+  },
+  {
+   "w": "be satisfied with",
+   "ko": "~에 만족하다",
+   "ex": "They would be satisfied with their life.",
+   "s": 14
+  },
+  {
+   "w": "end up",
+   "ko": "결국 ~하게 되다",
+   "ex": "They end up burned out.",
+   "s": 14
+  },
+  {
+   "w": "go out with",
+   "ko": "~와 놀러 나가다",
+   "ex": "I'm going out with them.",
+   "s": 14
+  },
+  {
+   "w": "hit A against B",
+   "ko": "A를 B에 부딪히다",
+   "ex": "I hit my knee against the desk.",
+   "s": 14
+  },
+  {
+   "w": "the chances of",
+   "ko": "~할 가능성",
+   "ex": "The chances of meeting are getting smaller.",
+   "s": 15
+  },
+  {
+   "w": "sneeze",
+   "ko": "재채기하다",
+   "ex": "I keep sneezing and I have a stuffy nose.",
+   "s": 15
+  },
+  {
+   "w": "make a plan",
+   "ko": "계획을 세우다",
+   "ex": "When did you make the plan?",
+   "s": 15
+  },
+  {
+   "w": "Heavenly Father",
+   "ko": "하나님 아버지",
+   "ex": "Heavenly Father, in Jesus' name we pray. Amen.",
+   "s": 13
   }
  ],
  "pod": {
