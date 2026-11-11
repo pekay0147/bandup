@@ -39,7 +39,6 @@ async function boot(){
     D.podSessions=[];
     if(s.rvCards) D.cards.push(...s.rvCards);
     if(!s.common && !s.demo){ const TR=store.get("bandup-tr",{}); for(const w of store.get(`bandup-myvoc-${s.slug}`,[])){ if(!w.ex || !/[A-Za-z]/.test(w.ex)) continue; D.cards.push({id:"rvm-"+w.t, kind:"ko", type:"표현", sessions:[], plabel:"단어장 복습 · "+w.w, en:w.ex, hint:w.w, ko: TR[w.ex] || `'${w.ko||w.w}' 표현을 넣어 영어로 말해 보세요`, gram:`<em>${String(w.w).replace(/[<>&]/g,"")}</em> = ${String(w.ko||"").replace(/[<>&]/g,"")}`}); }
-      for(const x of store.get(`bandup-mysent-${s.slug}`,[])) D.cards.push(msCard(x));
       const miss=D.cards.filter(c=>c.id.startsWith("rvm-") && !TR[c.en]); if(miss.length) setTimeout(()=>dyTranslate(miss),1500); }
     if(s.group==="ielts" || s.podFiles){ const pv=store.get(`bandup-podsel-${s.slug}`,null); const pu=((pv&&pv.url)||(!pv&&s.pod&&s.pod.url)||"");
       const files= s.podFiles || [s.podFile || ("groups/"+(/solid-joys/i.test(pu)? "church" : "other"))];
@@ -185,7 +184,6 @@ function render(){
   if(view.tab==="transfer") renderTransfer(app);
   if(view.tab==="inbox") renderInbox(app);
   if(view.tab==="screens") renderScreens(app);
-  if(view.tab==="mysent") renderMysent(app);
   if(view.tab==="yt") renderYt(app);
   updateTabs();
   document.body.classList.toggle("lesson", !!app.querySelector(".lbar"));
@@ -339,7 +337,6 @@ function renderHome(app){
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
   if(D.inbox){ const sc=store.get(`bandup-screens-${slug}`,[]); if(sc.length) list.append(listRow(LIC.voc,"📸 화면에서 가져온 글",`${sc.length}개 · 모르는 단어를 눌러 담아요`,()=>go("screens"))); }
   if(D.inbox){ const nv=store.get(`bandup-yt-${slug}`,[]).length; list.append(listRow(LIC.pod,"🎬 영상으로 공부", (()=>{ const nc=store.get(`bandup-clips-${slug}`,[]).length; return nc? `클립 ${nc}개 · 쉐도잉하러 가기` : nv? `영상 ${nv}개 · 이중자막으로 보고 안 들린 문장 담기` : "유튜브 보다가 뒷면 톡톡으로 클립 저장"; })(),()=>{ ytState=null; go("yt"); })); }
-  { const ms=store.get(`bandup-mysent-${slug}`,[]); if(D.inbox || ms.length) list.append(listRow(LIC.pod,"🎧 내가 담은 문장", ms.length? `${ms.length}개 · 듣고 따라 말하기` : "안 들린 문장을 담아 두고 다시 들어요",()=>go("mysent"))); }
   list.append(listRow(LIC.bm,"북마크",`${cbmList().filter(id=>getCard(id)).length+qbmList().length}개`,()=>go("bm")));
   if(D.cloud){ const se=cloudSess(); list.append(listRow(LIC.cloud,"계정 · 기록 저장", se? `${se.email} · 자동 저장 중` : "로그인하면 폰을 바꿔도 기록이 이어져요",()=>go("transfer"))); }
   s2.append(list); app.append(s2);
@@ -1381,7 +1378,7 @@ function renderVocab(app){
 }
 
 /* ---------- 공부 기록 옮기기 (계정 없이 새 폰으로) ---------- */
-const TX_MERGE={myvoc:"voc", days:"set", cbm:"set", qbm:"qbm", vochide:"set", poddone:"set", mycards:"arr", mysent:"sent"};
+const TX_MERGE={myvoc:"voc", days:"set", cbm:"set", qbm:"qbm", vochide:"set", poddone:"set", mycards:"arr"};
 function txKeys(){ const out=[]; try{ for(let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if(k && k.startsWith("bandup-") && k.endsWith("-"+slug) && !k.startsWith("bandup-stat-")) out.push(k); } }catch(_){ } return out; }
 async function txPack(){ const data={}; for(const k of txKeys()) data[k.slice(7,-(slug.length+1))]=store.get(k,null);
   const json=JSON.stringify({v:1,slug,at:Date.now(),data}); let bytes=new TextEncoder().encode(json), z="0";
@@ -1477,10 +1474,8 @@ async function inboxPull(force){ if(!D || !D.inbox || inboxBusy || (!IS_MOBILE &
   rows=rows.filter(r=>{ const t=String(r.txt||""); if(/\n/.test(t.trim()) || t.trim().split(/\s+/).length>25){ scr.push({id:Date.now()+Math.random(),at:r.created_at,text:t}); nscr++; return false; } return true; });
   if(nscr){ store.set(`bandup-screens-${slug}`,scr); toast(`📸 화면 ${nscr}개를 가져왔어요. 모르는 단어를 골라 보세요`,true); if(view.tab==="home") render(); }
   rows.sort((a,b)=>String(a.created_at)<String(b.created_at)?-1:1).forEach((r,i)=>{ let w=String(r.txt||"").replace(/\s+/g," ").trim().replace(/^["“‘']+|["”’']+$/g,""); if(w.split(" ").length<5){ w=w.replace(/^[^A-Za-z]+|[^A-Za-z]+$/g,""); if(!/\s/.test(w) && /^[A-Z][a-z'’-]+$/.test(w)) w=w.toLowerCase(); } if(!w || !/[A-Za-z]/.test(w) || have.has(w.toLowerCase())) return;
-    if(w.split(" ").length>=5){ if(sentAdd(w,"저장")) nsent++; return; }
-    const it={w,ko:"",ex:"",t:Date.now()+i,inbox:1}; mine.push(it); added.push(it); have.add(w.toLowerCase()); });
+    const it={w,ko:"",ex: w.split(" ").length>=5? w : "",t:Date.now()+i,inbox:1}; mine.push(it); added.push(it); have.add(w.toLowerCase()); });
   store.set(key,mine);
-  if(nsent){ toast(`🎧 문장 ${nsent}개를 '내가 담은 문장'에 넣었어요`,true); if(view.tab==="mysent"||view.tab==="home") render(); }
   if(added.length){ toast(`📥 밖에서 저장한 ${added.length}개를 단어장에 담았어요`,true); if(view.tab==="vocab"||view.tab==="home") render(); }
   for(const it of added){ const r=await vocLookup(it.w); const m=store.get(key,[]); const y=m.find(z=>z.t===it.t); if(!y) continue; y.ko=r.ko||y.ko; if(!y.ex) y.ex=r.ex||""; if(r.base){ y.base=r.base; y.form=r.form; } if(r.src==="d") y.src="d"; y.tried=today(); store.set(key,m); }
   inboxBusy=false; if(added.length && view.tab==="vocab") render(); }
@@ -1499,36 +1494,7 @@ async function openMini(){
   doc.getElementById("pb").onclick=async()=>{ try{ const t=await w.navigator.clipboard.readText(); if(!t.trim()){ save(""); return; } save(t); }catch(_){ const li=doc.createElement("li"); li.className="no"; li.textContent="복사한 내용을 읽지 못했어요. 끌어다 놓거나 직접 입력해 주세요."; ls.prepend(li); } };
   const ti=doc.getElementById("ti"); ti.onkeydown=e=>{ if(e.key==="Enter"){ save(ti.value); ti.value=""; } };
 }
-/* ---------- 내가 담은 문장 (안 들린 문장 듣기 연습) ---------- */
-const MSK=()=>`bandup-mysent-${slug}`;
-function msCard(x){ const TR=store.get("bandup-tr",{}); return {id:"ms-"+x.t, kind:"ko", type:"표현", sessions:[], listen:true, yt:x.yt||null, plabel:"🎧 담은 문장", en:x.en, ko:x.ko||TR[x.en]||"", hint:"", gram:"안 들렸던 문장이에요. 🔊로 여러 번 듣고, 소리 내서 똑같이 따라 말해 보세요(섀도잉)."}; }
-function sentAdd(en,src,yt){ en=String(en).replace(/\s+/g," ").trim().replace(/^["“‘']+|["”’']+$/g,""); if(!en || !/[A-Za-z]/.test(en)) return false;
-  const m=store.get(MSK(),[]); if(m.some(x=>x.en.toLowerCase()===en.toLowerCase())) return false;
-  const TR=store.get("bandup-tr",{}); const it={en, ko:TR[en]||"", t:Date.now()*1000+Math.floor(Math.random()*1000), src:src||""}; if(yt) it.yt=yt; m.push(it); store.set(MSK(),m); if(D && D.cards) D.cards.push(msCard(it));
-  if(!it.ko) msFillOne(it); return true; }
-async function msFillOne(it){ const k=await trOne(it.en); if(!k) return; const mm=store.get(MSK(),[]); const y=mm.find(z=>z.t===it.t); if(y){ y.ko=k; store.set(MSK(),mm); } const c=getCard("ms-"+it.t); if(c) c.ko=k; if(view.tab==="mysent") render(); }
-let msFilled=false;
 function slowBtn(text){ const b=el("button","spk slow","🐢"); b.type="button"; b.setAttribute("aria-label","천천히 듣기"); b.onclick=e=>{ e.stopPropagation(); speak(text,true); }; return b; }
-function msPlayAll(list){ if(!canSpeak()) return; try{ speechSynthesis.cancel(); list.forEach(x=>{ const u=new SpeechSynthesisUtterance(x.en); u.lang="en-GB"; if(enVoice) u.voice=enVoice; u.rate=.85; speechSynthesis.speak(u); }); }catch(_){ } }
-function renderMysent(app){
-  const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>{ try{ speechSynthesis.cancel(); }catch(_){ } go("home"); }; app.append(back);
-  const L=store.get(MSK(),[]).slice().reverse();
-  pageHead(app,"내가 담은 문장","릴스나 영상에서 안 들렸던 문장을 모아 두는 곳이에요. 🔊로 듣고 똑같이 따라 말해 보세요. 카드 연습에서는 소리만 듣고 무슨 말인지 맞혀 봐요.");
-  if(!msFilled){ msFilled=true; L.filter(x=>!x.ko).slice(0,15).reduce((p,x)=>p.then(()=>msFillOne(x)),Promise.resolve()); }
-  if(L.length){ const top=el("div","msbtns"); const g1=el("button","btn primary",`🎧 듣기 카드로 연습하기 · ${Math.min(L.length,20)}장`); g1.type="button";
-    g1.onclick=()=>{ const ids=L.map(x=>"ms-"+x.t).filter(id=>getCard(id)).sort(()=>Math.random()-.5).slice(0,20); go("review",{ids}); };
-    const g2=el("button","btn","▶ 전체 이어 듣기"); g2.type="button"; g2.onclick=()=>msPlayAll(L.slice().reverse()); top.append(g1,g2); app.append(top); }
-  const add=el("div","panel msadd"); const inp=el("textarea","msinp"); inp.rows=2; inp.placeholder="안 들린 영어 문장을 직접 붙여 넣어도 돼요";
-  const ab=el("button","btn","＋ 문장 담기"); ab.type="button"; ab.onclick=()=>{ const v=inp.value.trim(); if(!v) return; const ss=(v.match(/[^.!?]+[.!?]+["”’']?|[^.!?]+$/g)||[v]).map(x=>x.trim()).filter(x=>/[A-Za-z]/.test(x)); let n=0; ss.forEach(x=>{ if(sentAdd(x,"직접")) n++; }); toast(n? `✓ ${n}문장 담았어요` : "이미 있는 문장이에요",!!n); render(); };
-  add.append(inp,ab); app.append(add);
-  if(!L.length){ app.append(el("p","muted small", D.inbox? "아직 담은 문장이 없어요. 릴스 자막이 보일 때 폰 뒷면을 톡톡 쳐서 화면 글을 가져온 뒤, '📸 화면에서 가져온 글'에서 '＋ 문장 담기'를 눌러 보세요." : "아직 담은 문장이 없어요.")); return; }
-  const box=el("div","box mslist");
-  L.forEach(x=>{ const r=el("div","msrow"); const t=el("div","mst"); t.append(el("b",null,x.en), el("span",null,x.ko||"번역 불러오는 중…"));
-    const ctl=el("div","msctl"); if(x.yt){ const ob=el("button","spk clip","🎬"); ob.type="button"; ob.setAttribute("aria-label","영상 원래 소리로 듣기"); ob.onclick=()=>ytClip(x.yt); ctl.append(ob); ytApi(); } ctl.append(speakBtn(x.en,"듣기"), slowBtn(x.en));
-    const del=el("button","vcx","지우기"); del.type="button"; del.onclick=()=>{ store.set(MSK(),store.get(MSK(),[]).filter(y=>y.t!==x.t)); D.cards=D.cards.filter(c=>c.id!=="ms-"+x.t); render(); }; ctl.append(del);
-    r.append(t,ctl); box.append(r); });
-  app.append(box);
-}
 
 /* ---------- 영상으로 공부 (유튜브 이중자막 플레이어) ---------- */
 const YTK=()=>`bandup-yt-${slug}`;
@@ -1641,15 +1607,11 @@ function renderYtPlayer(app,v){
   const stick=el("div","ytstick"); const fr=el("div","ytframe"); const host=el("div"); host.id="ytplayer"; fr.append(host); stick.append(fr);
   const cur=el("div","ytcur"); const cen=el("p","ytcen",""); const cko=el("p","ytcko",""); const wbox=el("div","ytwbox"); cur.append(cen,cko,wbox);
   const ctl=el("div","ytctl"); const B=(t,lab)=>{ const b=el("button","ytb",t); b.type="button"; b.setAttribute("aria-label",lab); return b; };
-  const bPrev=B("⏮","이전 문장"), bLoop=B("🔁","이 문장 반복"), bNext=B("⏭","다음 문장"), bRate=B(S.rate===1?"1x":S.rate+"x","속도"), bKo=B("한글","한국어 자막 켜기/끄기"), bAdd=el("button","ytadd","＋ 담기"); bAdd.type="button";
+  const bPrev=B("⏮","이전 문장"), bLoop=B("🔁","이 문장 반복"), bNext=B("⏭","다음 문장"), bRate=B(S.rate===1?"1x":S.rate+"x","속도"), bKo=B("한글","한국어 자막 켜기/끄기")
   const bClip=B("✂️","여기서 클립 만들기"); bClip.onclick=()=>{ let t=0; try{ t=ytP.getCurrentTime()||0; }catch(_){ } const cl=clipAdd({vid:v.vid,title:v.title,t:Math.max(t,1)}); try{ ytP.pauseVideo(); }catch(_){ } ytStop(); ytState={clip:cl.id}; render(); window.scrollTo(0,0); };
-  bKo.classList.toggle("on",S.ko); ctl.append(bPrev,bLoop,bNext,bRate,bKo,bClip,bAdd); stick.append(cur,ctl); app.append(stick);
+  bKo.classList.toggle("on",S.ko); ctl.append(bPrev,bLoop,bNext,bRate,bKo,bClip); stick.append(cur,ctl); app.append(stick);
   app.append(el("p","yttitle",v.title));
   const L=v.lines; const rows=[];
-  const hasMS=en=>store.get(MSK(),[]).some(y=>y.en.toLowerCase()===en.toLowerCase());
-  const clipOf=i=>({v:v.vid, s:L[i].t, e:(L[i+1]? L[i+1].t : L[i].t+6)});
-  const addLine=i=>{ if(i<0 || !L[i]) return false; const ok=sentAdd(L[i].text,"영상",clipOf(i)); if(ok){ toast("🎧 '내가 담은 문장'에 넣었어요",true); const r=rows[i]; if(r){ const a=r.querySelector(".scradd"); if(a){ a.textContent="✓"; a.classList.add("done"); a.disabled=true; } } } else toast("이미 담은 문장이에요",false); paintAdd(); return ok; };
-  const paintAdd=()=>{ const ok=S.i>=0 && L[S.i] && !hasMS(L[S.i].text); bAdd.disabled=!ok; bAdd.textContent= S.i>=0 && L[S.i] && !ok? "✓ 담음" : "＋ 담기"; };
   const trQ=[]; let trBusy=false; const trPump=async()=>{ if(trBusy) return; trBusy=true; while(trQ.length){ const i=trQ.shift(); if(L[i].ko) continue; const k=await trOne(L[i].text); if(k){ L[i].ko=k; const r=rows[i]; if(r) r.querySelector(".ytko").textContent=k; if(i===S.i) cko.textContent=S.ko? k : ""; } } trBusy=false; };
   const want=i=>{ if(i<0||!L[i]) return; const TR=store.get("bandup-tr",{}); if(TR[L[i].text]){ L[i].ko=TR[L[i].text]; return; } if(!trQ.includes(i)) trQ.push(i); trPump(); };
   const showWord=async w=>{ wbox.textContent=""; const hd=el("div","ytwh"); hd.append(el("b",null,w), speakBtn(w)); const mean=el("span","small muted","뜻 찾는 중…"); wbox.append(hd,mean); wbox.classList.add("on");
@@ -1661,7 +1623,7 @@ function renderYtPlayer(app,v){
     for(const tok of ln.text.split(" ")){ const m=tok.match(/^([^A-Za-z]*)([A-Za-z][A-Za-z'’-]*[A-Za-z]|[A-Za-z])([^A-Za-z]*)$/); if(!m){ cen.append(document.createTextNode(tok+" ")); continue; }
       const b=el("button","ytw",tok); b.type="button"; b.onclick=()=>{ try{ ytP.pauseVideo(); }catch(_){ } showWord(m[2].replace(/’/g,"'")); }; cen.append(b, document.createTextNode(" ")); }
     cko.textContent= S.ko? (ln.ko||"") : ""; want(S.i); want(S.i+1); want(S.i+2); };
-  const setI=(i,scroll)=>{ if(i===S.i) return; if(rows[S.i]) rows[S.i].classList.remove("on"); S.i=i; if(rows[i]){ rows[i].classList.add("on"); if(scroll && lst){ const r=rows[i]; const top=r.offsetTop-lst.offsetTop-lst.clientHeight/3; lst.scrollTo({top, behavior:"smooth"}); } } paintCur(); paintAdd(); bLoop.classList.toggle("on", S.loop!=null && S.loop===i); };
+  const setI=(i,scroll)=>{ if(i===S.i) return; if(rows[S.i]) rows[S.i].classList.remove("on"); S.i=i; if(rows[i]){ rows[i].classList.add("on"); if(scroll && lst){ const r=rows[i]; const top=r.offsetTop-lst.offsetTop-lst.clientHeight/3; lst.scrollTo({top, behavior:"smooth"}); } } paintCur(); bLoop.classList.toggle("on", S.loop!=null && S.loop===i); };
   const idxAt=t=>{ let lo=0, hi=L.length-1, ans=-1; while(lo<=hi){ const m=(lo+hi)>>1; if(L[m].t<=t+.15){ ans=m; lo=m+1; } else hi=m-1; } return ans; };
   const seekI=i=>{ if(!L[i] || !ytP) return; try{ ytP.seekTo(Math.max(0,L[i].t-.15),true); ytP.playVideo(); }catch(_){ } setI(i,true); };
   bPrev.onclick=()=>{ if(!L.length) return; const t=ytP&&ytP.getCurrentTime? ytP.getCurrentTime() : 0; let i=S.i; if(i>=0 && t-L[i].t<1.2) i--; seekI(Math.max(0,i)); };
@@ -1669,20 +1631,18 @@ function renderYtPlayer(app,v){
   bLoop.onclick=()=>{ if(S.i<0) return; S.loop= S.loop===S.i? null : S.i; bLoop.classList.toggle("on",S.loop!=null); if(S.loop!=null) seekI(S.loop); toast(S.loop!=null? "🔁 이 문장을 계속 반복해요" : "반복 끔",true); };
   bRate.onclick=()=>{ S.rate= S.rate===1? .75 : S.rate===.75? .5 : 1; bRate.textContent=S.rate+"x"; try{ ytP.setPlaybackRate(S.rate); }catch(_){ } };
   const ccSet=()=>{ if(L.length || !ytP || !ytP.setOption) return; try{ ytP.loadModule && ytP.loadModule("captions"); ytP.setOption("captions","track", S.ko? {languageCode:"en", translationLanguage:{languageCode:"ko"}} : {languageCode:"en"}); }catch(_){ } };
-  if(!L.length){ S.ko=false; bKo.classList.remove("on"); [bPrev,bLoop,bNext,bAdd].forEach(b=>b.style.display="none"); bClip.textContent="✂️ 여기서 클립"; }
+  if(!L.length){ S.ko=false; bKo.classList.remove("on"); [bPrev,bLoop,bNext].forEach(b=>b.style.display="none"); bClip.textContent="✂️ 여기서 클립"; }
   bKo.onclick=()=>{ S.ko=!S.ko; ccSet(); bKo.classList.toggle("on",S.ko); paintCur(); document.querySelectorAll(".ytko").forEach(x=>x.classList.toggle("off",!S.ko)); };
-  bAdd.onclick=()=>addLine(S.i);
   let lst=null;
   if(L.length){ lst=el("div","ytlst"); const io=("IntersectionObserver" in window)? new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) want(+e.target.dataset.i); }),{root:lst}) : null;
     const TR=store.get("bandup-tr",{});
     L.forEach((ln,i)=>{ if(!ln.ko && TR[ln.text]) ln.ko=TR[ln.text]; const r=el("div","ytrowl"); r.dataset.i=i; const tm=el("span","yttm",ytFmt(ln.t)); const tx=el("div","yttx"); tx.append(el("span","yten",ln.text), el("span","ytko"+(S.ko?"":" off"),ln.ko||""));
-      const a=el("button","scradd"+(hasMS(ln.text)?" done":""), hasMS(ln.text)? "✓" : "＋"); a.type="button"; a.disabled=hasMS(ln.text); a.setAttribute("aria-label","이 문장 담기"); a.onclick=e=>{ e.stopPropagation(); addLine(i); };
-      r.append(tm,tx,a); r.onclick=()=>seekI(i); rows.push(r); lst.append(r); if(io) io.observe(r); });
+      r.append(tm,tx); r.onclick=()=>seekI(i); rows.push(r); lst.append(r); if(io) io.observe(r); });
     app.append(lst); }
   const more=el("details","ytmore"); more.append(el("summary",null, L.length? "자막 다시 붙여 넣기" : "📋 자막(스크립트) 붙여 넣기")); const ta=el("textarea","msinp ytta"); ta.rows=5; ta.placeholder="0:00\nHey guys…"; const sb=el("button","btn","자막 넣기"); sb.type="button"; const sm=el("p","small txmsg","");
   sb.onclick=()=>{ const segs=ytParse(ta.value); if(!segs.length){ sm.textContent="시간(0:05 같은)이 있는 스크립트를 붙여 넣어 주세요."; return; } v.lines=ytMerge(segs); ytSave(v); S.i=-1; render(); };
   more.append(ta,sb,sm); app.append(more);
-  paintCur(); paintAdd();
+  paintCur();
   ytApi().then(()=>{ if(view.tab!=="yt" || !document.getElementById("ytplayer")) return;
     const st0=Math.max(0,Math.floor((S.start||0)-2)); S.start=0;
     ytP=new YT.Player("ytplayer",{width:"100%",height:"100%",videoId:v.vid,playerVars:{start:st0,playsinline:1,rel:0,modestbranding:1,cc_load_policy:L.length?0:1,cc_lang_pref:"en",hl:"en",iv_load_policy:3},
@@ -1720,7 +1680,7 @@ function renderScreens(app){
   const paint=()=>{ document.querySelectorAll(".scrw.sel,.scrw.selL,.scrw.selR").forEach(x=>x.classList.remove("sel","selL","selR")); const ks=new Set(scrSel.map(x=>x.k)); scrSel.forEach(s=>{ const e=document.querySelector(`.scrw[data-k="${s.k}"]`); if(!e) return; e.classList.add("sel"); if(ks.has(s.line+"-"+(s.i-1))) e.classList.add("selL"); if(ks.has(s.line+"-"+(s.i+1))) e.classList.add("selR"); }); const g=scrGroups(); bt.textContent= g.length? g.join(" · ") : ""; bar.classList.toggle("on", scrSel.length>0); };
   const scrGroups=()=>{ const by={}; for(const s of scrSel){ (by[s.line]=by[s.line]||[]).push(s); } const out=[]; for(const ln of Object.keys(by)){ const arr=by[ln].sort((a,b)=>a.i-b.i); let cur=[arr[0]]; for(let j=1;j<arr.length;j++){ if(arr[j].i===cur[cur.length-1].i+1) cur.push(arr[j]); else { out.push(cur.map(x=>x.w).join(" ")); cur=[arr[j]]; } } out.push(cur.map(x=>x.w).join(" ")); } return out; };
   bc.onclick=()=>{ scrSel=[]; paint(); };
-  bb.onclick=()=>{ let n=0; for(const g of scrGroups()){ const w= (!/\s/.test(g) && /^[A-Z][a-z'-]+$/.test(g))? g.toLowerCase() : g; if(w.split(" ").length>=5? sentAdd(w,"화면") : vocQuickAdd(w,false)){ n++; } } scrSel.forEach(s=>{ const e=document.querySelector(`.scrw[data-k="${s.k}"]`); if(e) e.classList.add("on"); }); scrSel=[]; paint(); toast(n? `✓ ${n}개 담았어요` : "이미 단어장에 있어요",!!n); };
+  bb.onclick=()=>{ let n=0; for(const g of scrGroups()){ const w= (!/\s/.test(g) && /^[A-Z][a-z'-]+$/.test(g))? g.toLowerCase() : g; if(vocQuickAdd(w, w.split(" ").length>=5)){ n++; } } scrSel.forEach(s=>{ const e=document.querySelector(`.scrw[data-k="${s.k}"]`); if(e) e.classList.add("on"); }); scrSel=[]; paint(); toast(n? `✓ ${n}개 담았어요` : "이미 단어장에 있어요",!!n); };
   list.forEach((sc,si)=>{ const p=el("div","panel scrbox"); const hd=el("div","scrhd"); hd.append(el("span","small muted", sc.at? new Date(sc.at).toLocaleString("ko-KR",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"}) : ""));
     const del=el("button","vcx","다 했어요 · 지우기"); del.type="button"; del.onclick=()=>{ store.set(key,store.get(key,[]).filter(x=>x.id!==sc.id)); scrSel=[]; render(); }; hd.append(del); p.append(hd);
     scrParas(sc.text).forEach((line,li)=>{ const row=el("p","scrline"); const lk=si+"-"+li; let wi=0;
@@ -1734,8 +1694,7 @@ function renderScreens(app){
         const sents=line.match(/[^.!?]+[.!?]+["”’']?|[^.!?]+$/g).map(x=>x.trim()).filter(x=>x.split(/\s+/).length>=3);
         const sl=el("div","scrsl"); const many=sents.length>1;
         (sents.length? sents : [line]).forEach(x=>{ const r=el("div","scrsr"); r.append(speakBtn(x,"이 문장 듣기"), slowBtn(x)); r.append(el("span","scrst"+(many?"":" one"), many? x : "이 문장 듣기"));
-          const has=()=>store.get(`bandup-mysent-${slug}`,[]).some(y=>y.en.toLowerCase()===x.toLowerCase()); const ab=el("button","scradd"+(has()?" done":""), has()? "✓ 담음" : "＋ 문장 담기"); ab.type="button"; ab.disabled=has();
-          ab.onclick=()=>{ if(sentAdd(x,"화면")){ ab.textContent="✓ 담음"; ab.disabled=true; ab.classList.add("done"); toast("🎧 '내가 담은 문장'에 넣었어요",true); } }; r.append(ab); sl.append(r); });
+          sl.append(r); });
         wrap.append(sl); }
       p.append(wrap); });
     app.append(p); });
@@ -1834,7 +1793,7 @@ function reviewQueue(extra){
   let pool = extra ? D.cards.filter(c=>isWriting(c) && ((srs[c.id]||{}).box||0)<MASTER) : dueCards();
   pool.sort((a,b)=>(rep(b)-rep(a)) || (((srs[a.id]||{}).box||0)-((srs[b.id]||{}).box||0)) || (marks[b.id]==="again")-(marks[a.id]==="again") || Math.random()-.5);
   if(extra) return pool.slice(0,10).map(c=>c.id);
-  const isV=c=>/^(rv-|rvm-|bv-|ms-)/.test(c.id);
+  const isV=c=>/^(rv-|rvm-|bv-)/.test(c.id);
   const voc=pool.filter(isV), cue=pool.filter(c=>!isV(c));
   const p1=(P1Q&&!D.common&&!D.demo)? reviewP1(5).filter(c=>!((srs[c.id]||{}).due>today())) : [];
   const out=[...p1.slice(0,5), ...voc.slice(0,5)]; for(const c of cue){ if(out.length>=DAILY) break; out.push(c); }
