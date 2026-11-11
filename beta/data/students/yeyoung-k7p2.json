@@ -2764,6 +2764,78 @@
    "en": "It doesn't matter if you prefer octopuses or dolphins.",
    "gram": "<em>It doesn't matter if</em> + 문장 = ~든 상관없다.",
    "hint": "matter"
+  },
+  {
+   "id": "r12-25",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "내일은 비가 안 올 것 같아요.",
+   "en": "I don't think it will rain tomorrow.",
+   "gram": "<em>I don't think</em> + 문장 = ~할 것 같지 않아요. ❌ I think it won't rain보다 자연스러워요.",
+   "hint": "think"
+  },
+  {
+   "id": "r12-26",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "그건 좋은 생각이 아닌 것 같아요.",
+   "en": "I don't think that's a good idea.",
+   "gram": "부드럽게 반대할 때: <em>I don't think</em> that's a good idea.",
+   "hint": "think"
+  },
+  {
+   "id": "r12-27",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "오늘 밤엔 그걸 끝낼 수 없을 것 같아요.",
+   "en": "I don't think I can finish it tonight.",
+   "gram": "<em>I don't think I can</em> ~ = ~ 못 할 것 같아요.",
+   "hint": "think"
+  },
+  {
+   "id": "r12-28",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "잠깐 쉬려고 했는데 결국 두 시간 동안 잤어요.",
+   "en": "I was going to take a short break, but I ended up sleeping for two hours.",
+   "gram": "<em>end up</em> + -ing = (계획과 달리) 결국 ~하게 되다.",
+   "hint": "ended"
+  },
+  {
+   "id": "r12-29",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "원래 집에 있으려고 했는데 결국 친구들이랑 나갔어요.",
+   "en": "I was planning to stay home, but I ended up going out with my friends.",
+   "gram": "<em>was planning to</em> ~, but <em>ended up</em> -ing = ~하려 했는데 결국 …했다.",
+   "hint": "ended"
+  },
+  {
+   "id": "r12-30",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "우리는 결국 그 식당에서 저녁을 먹게 됐어요.",
+   "en": "We ended up having dinner at that restaurant.",
+   "gram": "<em>end up</em> + -ing. 장소가 오면 end up <em>at/in</em> ~도 가능: We ended up at a café.",
+   "hint": "ended"
   }
  ],
  "part1": [
