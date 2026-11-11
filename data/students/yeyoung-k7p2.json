@@ -2786,6 +2786,18 @@
    "en": "We ended up having dinner at that restaurant.",
    "gram": "<em>end up</em> + -ing. 장소가 오면 end up <em>at/in</em> ~도 가능: We ended up at a café.",
    "hint": "ended"
+  },
+  {
+   "id": "r12-31",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "단어 선택",
+   "ko": "저는 시거나 쓴 맛은 별로라서, 보통 짭짤한 음식이나 진한 초콜릿 케이크를 골라요.",
+   "en": "I'm not a fan of sour or bitter flavours, so I usually go for something savoury or a rich chocolate cake.",
+   "gram": "맛 형용사: <em>sour</em> 신 · <em>bitter</em> 쓴 · <em>savoury</em> 짭짤한, 감칠맛 나는(단맛의 반대) · <em>rich</em> 진한, 깊은. <em>I'm not a fan of</em> ~ = ~는 별로예요. <em>go for</em> = 고르다.",
+   "hint": "savoury"
   }
  ],
  "part1": [
