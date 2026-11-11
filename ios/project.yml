@@ -1,0 +1,27 @@
+name: Bandup
+options:
+  bundleIdPrefix: com.bandup
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+targets:
+  Bandup:
+    type: application
+    platform: iOS
+    sources:
+      - path: Bandup
+    settings:
+      base:
+        # 무료 애플 ID로 설치할 땐 남과 겹치지 않게 바꿔 주세요 (예: com.tim.bandup)
+        PRODUCT_BUNDLE_IDENTIFIER: com.ieltstim.bandup
+        PRODUCT_NAME: Bandup
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: Bandup/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        SWIFT_VERSION: "5.0"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ""

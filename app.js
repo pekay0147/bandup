@@ -2262,7 +2262,7 @@ window.addEventListener("hashchange",()=>{ if(window.BANDUP_SLUG) return; const 
 if("serviceWorker" in navigator && location.protocol==="https:" && !/claude|claudeusercontent/.test(location.hostname)){
   navigator.serviceWorker.register("sw.js").catch(()=>{});
 }
-setTimeout(function waitD(){ if(typeof D!=="undefined" && D && D.slug){ capPending(); inboxPull(); cloudBoot(); document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible" && Date.now()-inboxLast>3000) inboxPull(); }); } else setTimeout(waitD,150); },150);
+setTimeout(function waitD(){ if(typeof D!=="undefined" && D && D.slug){ capPending(); inboxPull(); cloudBoot(); document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible" && Date.now()-inboxLast>3000) inboxPull(); }); window.addEventListener("bandup-open",()=>{ if(Date.now()-inboxLast>1500) inboxPull(); }); } else setTimeout(waitD,150); },150);
 (function autoUpdate(){
   const cur=((document.querySelector('script[src*="app.js?v="]')||{}).src||"").split("v=")[1]; if(!cur) return; let last=0; const day0=today();
   const check=()=>{ if(document.visibilityState!=="visible") return; if(today()!==day0){ const a=document.activeElement; if(!(a && /INPUT|TEXTAREA/.test(a.tagName))){ location.reload(); return; } } if(Date.now()-last<60000) return; last=Date.now();
