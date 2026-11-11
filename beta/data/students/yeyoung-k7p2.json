@@ -2692,18 +2692,6 @@
    "hint": "even"
   },
   {
-   "id": "r12-13",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "문장 구조",
-   "ko": "우리 동네에 큰 공원이 있어요. 그 공원은 정말 조용해요.",
-   "en": "There is a big park in my neighbourhood. It is really quiet.",
-   "gram": "처음 소개할 땐 <em>There is</em> a ~ / 이미 말한 걸 다시 말할 땐 <em>It</em>.",
-   "hint": "There"
-  },
-  {
    "id": "r12-17",
    "kind": "ko",
    "sessions": [
