@@ -2541,32 +2541,6 @@
    "gram": "<em>work overtime</em> = 야근하다. 내 단어장 단어로 만든 새 문장이에요."
   },
   {
-   "id": "r12-m1",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "단·복수",
-   "ko": "제 이웃들은 좋은 사람들이에요.",
-   "en": "My neighbours are nice people.",
-   "mine": "My neighbour is good people.",
-   "gram": "people은 복수 → 주어도 <em>neighbours</em>, 동사도 <em>are</em>.",
-   "hint": "neighbours"
-  },
-  {
-   "id": "r12-m3",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "문장 구조",
-   "ko": "저는 운동할 시간이 없어요.",
-   "en": "I don't have time to exercise.",
-   "mine": "I don't have time exercise.",
-   "gram": "<em>have time to</em> + 동사원형 = ~할 시간이 있다.",
-   "hint": "time"
-  },
-  {
    "id": "r12-01",
    "kind": "ko",
    "sessions": [
@@ -2740,30 +2714,6 @@
    "en": "My friend has a sweet tooth as well.",
    "gram": "<em>have a sweet tooth</em> = 단 걸 좋아하다 + <em>as well</em>(~도).",
    "hint": "sweet"
-  },
-  {
-   "id": "r12-23",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "단어 선택",
-   "ko": "일회용 플라스틱은 바다에 큰 위협이에요.",
-   "en": "Single-use plastic is a major threat to the ocean.",
-   "gram": "<em>single-use</em> = 일회용. <em>a threat to</em> ~ = ~에 대한 위협.",
-   "hint": "threat"
-  },
-  {
-   "id": "r12-24",
-   "kind": "ko",
-   "sessions": [
-    12
-   ],
-   "type": "표현",
-   "ko": "문어를 좋아하든 돌고래를 좋아하든 상관없어요.",
-   "en": "It doesn't matter if you prefer octopuses or dolphins.",
-   "gram": "<em>It doesn't matter if</em> + 문장 = ~든 상관없다.",
-   "hint": "matter"
   },
   {
    "id": "r12-25",
