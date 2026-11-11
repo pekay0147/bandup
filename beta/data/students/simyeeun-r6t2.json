@@ -2033,18 +2033,6 @@
    "gram": "<em>spend more time A than B</em> = B보다 A에서 시간을 더 보내다. online · outdoors 앞엔 전치사 없이."
   },
   {
-   "id": "n10m6",
-   "kind": "ko",
-   "type": "문장 구조",
-   "sessions": [
-    10
-   ],
-   "ko": "어제 친구한테 선물을 줬어요.",
-   "en": "I gave my friend a present yesterday.",
-   "hint": "gave",
-   "gram": "<em>give</em> + 사람 + 물건 = I gave my friend a present. (= I gave a present to my friend.)"
-  },
-  {
    "id": "n1001",
    "kind": "ko",
    "type": "문장 구조",
@@ -2103,42 +2091,6 @@
    "en": "I have a problem with digestion, so I eat vegetables first.",
    "hint": "digestion",
    "gram": "<em>have a problem with</em> ~ = ~에 문제가 있다. <em>digestion</em> 소화. Part 1 답에 지금 내 상황을 자연스럽게 녹이기!"
-  },
-  {
-   "id": "n1006",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    10
-   ],
-   "ko": "요즘 아이엘츠 공부를 하고 있어서 아침 일찍 일어나요.",
-   "en": "I'm studying for IELTS these days, so I get up early.",
-   "hint": "IELTS",
-   "gram": "Part 1 아이디어는 지금 내 상황에서! <em>I'm studying for</em> ~ <em>these days</em> = 요즘 ~ 공부하고 있어요."
-  },
-  {
-   "id": "n1007",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    10
-   ],
-   "ko": "딱 떠오르는 때가 있는데, 시험 전날 아침 일찍 일어났던 때예요.",
-   "en": "I can think of a time off the top of my head. It was when I got up early before an exam.",
-   "hint": "top",
-   "gram": "<em>off the top of my head</em> 뒤에 <b>무슨 때인지 바로 설명</b>하기: It was when ~."
-  },
-  {
-   "id": "n1008",
-   "kind": "ko",
-   "type": "단어 선택",
-   "sessions": [
-    10
-   ],
-   "ko": "우선, 저는 아침형 인간이에요.",
-   "en": "First of all, I'm a morning person.",
-   "hint": "First",
-   "gram": "To begin with는 글에서 쓰는 느낌. 말할 땐 <em>First of all</em> / <em>For starters</em>가 자연스러워요."
   },
   {
    "id": "n1009",
