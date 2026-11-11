@@ -60,6 +60,11 @@
    "no": 11,
    "date": "2026-11-04",
    "title": "Sleep · Neighbours · Gifts · Time"
+  },
+  {
+   "no": 12,
+   "date": "2026-11-11",
+   "title": "Transport · Shopping · Routine · Art"
   }
  ],
  "types": [
@@ -84,7 +89,8 @@
  },
  "focus": {
   "10": "과거 질문엔 끝까지 과거형! 장소 앞 관사(the beach)와 전치사(on holiday) 챙기기.",
-  "11": "동명사 주어(Making a list, Being punctual)는 단수 동사! annoying(그게 주는 느낌) vs annoyed(내 기분) 구분하기."
+  "11": "동명사 주어(Making a list, Being punctual)는 단수 동사! annoying(그게 주는 느낌) vs annoyed(내 기분) 구분하기.",
+  "12": "처음 소개할 땐 There is a ~, 다시 말할 땐 It! 동명사 주어(Drinking water, Having a routine)는 단수 동사."
  },
  "compare": [
   [
@@ -2533,6 +2539,364 @@
    "en": "I worked overtime yesterday.",
    "hint": "work overtime",
    "gram": "<em>work overtime</em> = 야근하다. 내 단어장 단어로 만든 새 문장이에요."
+  },
+  {
+   "id": "r12-m1",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "단·복수",
+   "ko": "제 이웃들은 좋은 사람들이에요.",
+   "en": "My neighbours are nice people.",
+   "mine": "My neighbour is good people.",
+   "gram": "people은 복수 → 주어도 <em>neighbours</em>, 동사도 <em>are</em>.",
+   "hint": "neighbours"
+  },
+  {
+   "id": "r12-m2",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "문장 구조",
+   "ko": "저는 어제 그를 우연히 만났어요.",
+   "en": "I ran into him yesterday.",
+   "mine": "I came across he.",
+   "gram": "동사 뒤 사람은 목적격! he → <em>him</em>, she → <em>her</em>. run into = come across.",
+   "hint": "him"
+  },
+  {
+   "id": "r12-m3",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "문장 구조",
+   "ko": "저는 운동할 시간이 없어요.",
+   "en": "I don't have time to exercise.",
+   "mine": "I don't have time exercise.",
+   "gram": "<em>have time to</em> + 동사원형 = ~할 시간이 있다.",
+   "hint": "time"
+  },
+  {
+   "id": "r12-m4",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "주어-동사",
+   "ko": "누군가 문을 두드리고 있어요.",
+   "en": "Someone is knocking on the door.",
+   "gram": "<em>someone</em>은 단수 → is.",
+   "hint": "Someone"
+  },
+  {
+   "id": "r12-m5",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "품사",
+   "ko": "회의가 너무 지루해서 지루했어요.",
+   "en": "The meeting was boring, so I felt bored.",
+   "gram": "<em>boring</em> = (그게) 지루하게 만드는 / <em>bored</em> = (내가) 지루함을 느끼는. annoying / annoyed도 똑같아요.",
+   "hint": "bored"
+  },
+  {
+   "id": "r12-01",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "문장 구조",
+   "ko": "그건 제 영어 실력을 늘리는 데 도움이 돼요.",
+   "en": "It helps me improve my English.",
+   "mine": "It is help me improving English.",
+   "gram": "is와 help를 같이 쓰지 않기(동사는 하나!). <em>help</em> + 사람 + 동사원형 = ~가 …하도록 돕다.",
+   "hint": "helps"
+  },
+  {
+   "id": "r12-02",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "동사·시제",
+   "ko": "저는 팟캐스트를 들으면서 강아지 산책을 시켜요.",
+   "en": "I walk my dog while I listen to the podcast.",
+   "mine": "I walking a dog while I listening the podcast.",
+   "gram": "주어 뒤엔 동사(현재형): I <em>walk</em>, I <em>listen</em>. 듣다는 <em>listen to</em>. walk my dog = 강아지를 산책시키다.",
+   "hint": "walk"
+  },
+  {
+   "id": "r12-03",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "문장 구조",
+   "ko": "하루 루틴이 있으면 제 삶이 더 풍요롭고 활기차져요.",
+   "en": "Having a daily routine makes my life richer and more active.",
+   "mine": "Daily routine makes my life more active life.",
+   "gram": "동명사 주어 <em>Having a daily routine</em> + makes(단수). <em>make</em> + 목적어 + 형용사 = ~를 …하게 만들다. life를 두 번 쓰지 않기.",
+   "hint": "routine"
+  },
+  {
+   "id": "r12-04",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "저는 저녁에 저만의 시간을 가져요.",
+   "en": "I have some time to myself in the evening.",
+   "gram": "<em>time to myself</em> = 나만의 시간. (I have my personal time도 OK)",
+   "hint": "myself"
+  },
+  {
+   "id": "r12-05",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "관사·전치사",
+   "ko": "물을 마시는 건 제 몸에 좋아요.",
+   "en": "Drinking water is good for my body.",
+   "mine": "Drinking water is helpful by body.",
+   "gram": "<em>good for</em> / <em>helpful for</em> + 대상. 또는 Drinking water <em>helps my body</em> function well.",
+   "hint": "good"
+  },
+  {
+   "id": "r12-06",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "문장 구조",
+   "ko": "우리 집 근처에 버스 정류장이 있어요.",
+   "en": "There is a bus stop near my home.",
+   "mine": "Bus stop is nearby my home.",
+   "gram": "처음 꺼낼 땐 <em>There is a</em> ~. <em>near</em> + 장소 / nearby는 혼자(There's a bus stop nearby).",
+   "hint": "There"
+  },
+  {
+   "id": "r12-07",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "문장 구조",
+   "ko": "맛있는 샌드위치로 유명한 가게가 있어요.",
+   "en": "There is a shop known for its delicious sandwiches.",
+   "mine": "There is known as sandwich.",
+   "gram": "<em>There is</em> 뒤엔 먼저 명사(a shop)! <em>known for</em> ~ = ~로 유명한. <em>its</em>(그것의) ≠ it's(it is).",
+   "hint": "known"
+  },
+  {
+   "id": "r12-08",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "당신 말에 동의하지 않는 것 같아요.",
+   "en": "I don't think I agree with you.",
+   "gram": "영어는 부정을 앞으로: <em>I don't think</em> + 문장 = ~인 것 같지 않아요.",
+   "hint": "think"
+  },
+  {
+   "id": "r12-09",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "결국 케이크를 너무 많이 사게 됐어요.",
+   "en": "I ended up buying too much cake.",
+   "gram": "<em>end up</em> + -ing = 결국 ~하게 되다. cake는 덩어리로 말할 땐 much.",
+   "hint": "ended"
+  },
+  {
+   "id": "r12-10",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "단어 선택",
+   "ko": "이미 케이크가 많았는데, 케이크를 더 샀어요.",
+   "en": "We already had a lot of cake, but I bought even more cake.",
+   "mine": "I even bought a lot of cake.",
+   "gram": "<em>even more</em> = 훨씬 더. I even bought ~은 '~까지 샀다'(산 사실 강조)라는 느낌이에요.",
+   "hint": "even"
+  },
+  {
+   "id": "r12-11",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "단어 선택",
+   "ko": "비가 오는데도 우리는 산책을 했어요.",
+   "en": "Even though it was raining, we went for a walk.",
+   "gram": "<em>even though</em> + 문장 = 비록 ~지만. even은 혼자 '~조차, ~까지'.",
+   "hint": "though"
+  },
+  {
+   "id": "r12-12",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "단어 선택",
+   "ko": "그는 주말에도 일해요.",
+   "en": "He works even at the weekend.",
+   "gram": "<em>even</em> = ~조차, ~까지도 (단어 앞에). 문장을 붙일 땐 even though.",
+   "hint": "even"
+  },
+  {
+   "id": "r12-13",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "문장 구조",
+   "ko": "우리 동네에 큰 공원이 있어요. 그 공원은 정말 조용해요.",
+   "en": "There is a big park in my neighbourhood. It is really quiet.",
+   "gram": "처음 소개할 땐 <em>There is</em> a ~ / 이미 말한 걸 다시 말할 땐 <em>It</em>.",
+   "hint": "There"
+  },
+  {
+   "id": "r12-14",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "문장 구조",
+   "ko": "오늘 밖에 비가 와요.",
+   "en": "It's raining outside today.",
+   "gram": "날씨·시간·거리를 말할 땐 주어를 <em>it</em>으로: It's raining. It's 3 o'clock.",
+   "hint": "raining"
+  },
+  {
+   "id": "r12-15",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "문장 구조",
+   "ko": "우리 집에서 역까지 걸어서 10분 걸려요.",
+   "en": "It takes 10 minutes to walk from my home to the station.",
+   "gram": "걸리는 시간은 <em>It takes</em> + 시간 + to 동사. (= It's a 10-minute walk.)",
+   "hint": "takes"
+  },
+  {
+   "id": "r12-16",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "저는 초콜릿을 좋아하고, 케이크도 좋아해요.",
+   "en": "I like chocolate, and I like cake as well.",
+   "gram": "<em>as well</em> = ~도 (문장 끝에).",
+   "hint": "well"
+  },
+  {
+   "id": "r12-17",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "제 친구도 단 걸 정말 좋아해요.",
+   "en": "My friend has a sweet tooth as well.",
+   "gram": "<em>have a sweet tooth</em> = 단 걸 좋아하다 + <em>as well</em>(~도).",
+   "hint": "sweet"
+  },
+  {
+   "id": "r12-18",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "저는 단 걸 엄청 좋아해요.",
+   "en": "I have a big sweet tooth.",
+   "gram": "<em>have a (big) sweet tooth</em>. ❌ I like sweet tooth.",
+   "hint": "sweet"
+  },
+  {
+   "id": "r12-19",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "저는 초콜릿파예요.",
+   "en": "I'm a chocolate person.",
+   "gram": "<em>a + 명사 + person</em> = ~파, ~를 좋아하는 사람 (a morning person, a cat person).",
+   "hint": "person"
+  },
+  {
+   "id": "r12-20",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "점심 먹고 나면 단 게 엄청 당겨요.",
+   "en": "I get strong sugar cravings after lunch.",
+   "gram": "<em>sugar cravings</em> = 단 것이 당기는 것. get cravings = 당기다.",
+   "hint": "cravings"
+  },
+  {
+   "id": "r12-21",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "그건 너무 배부르지 않아요.",
+   "en": "It doesn't feel too filling.",
+   "gram": "<em>filling</em> = 배부르게 하는, 든든한.",
+   "hint": "filling"
+  },
+  {
+   "id": "r12-22",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "그건 최고예요.",
+   "en": "You can't beat it.",
+   "gram": "<em>You can't beat it</em> = 그걸 이길 건 없다 → 최고다.",
+   "hint": "beat"
+  },
+  {
+   "id": "r12-23",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "단어 선택",
+   "ko": "일회용 플라스틱은 바다에 큰 위협이에요.",
+   "en": "Single-use plastic is a major threat to the ocean.",
+   "gram": "<em>single-use</em> = 일회용. <em>a threat to</em> ~ = ~에 대한 위협.",
+   "hint": "threat"
+  },
+  {
+   "id": "r12-24",
+   "kind": "ko",
+   "sessions": [
+    12
+   ],
+   "type": "표현",
+   "ko": "문어를 좋아하든 돌고래를 좋아하든 상관없어요.",
+   "en": "It doesn't matter if you prefer octopuses or dolphins.",
+   "gram": "<em>It doesn't matter if</em> + 문장 = ~든 상관없다.",
+   "hint": "matter"
   }
  ],
  "part1": [
@@ -3673,6 +4037,78 @@
    "ko": "야근하다",
    "ex": "I worked overtime today.",
    "s": 11
+  },
+  {
+   "w": "have a sweet tooth",
+   "ko": "단 걸 좋아하다",
+   "ex": "I have a big sweet tooth.",
+   "s": 12
+  },
+  {
+   "w": "sour / bitter",
+   "ko": "신 / 쓴",
+   "ex": "Lemons are sour, and dark chocolate is a bit bitter.",
+   "s": 12
+  },
+  {
+   "w": "a chocolate person",
+   "ko": "초콜릿파",
+   "ex": "I'm a chocolate person.",
+   "s": 12
+  },
+  {
+   "w": "filling",
+   "ko": "배부르게 하는, 든든한",
+   "ex": "Rice is very filling.",
+   "s": 12
+  },
+  {
+   "w": "you can't beat it",
+   "ko": "최고야(그걸 이길 건 없어)",
+   "ex": "Fresh bread in the morning — you can't beat it.",
+   "s": 12
+  },
+  {
+   "w": "sugar cravings",
+   "ko": "단 게 당기는 것",
+   "ex": "I get strong sugar cravings after lunch.",
+   "s": 12
+  },
+  {
+   "w": "savoury",
+   "ko": "짭짤한, 감칠맛 나는 (단 맛의 반대)",
+   "ex": "I prefer savoury snacks to sweet ones.",
+   "s": 12
+  },
+  {
+   "w": "rich",
+   "ko": "(맛이) 진한, 깊은",
+   "ex": "This chocolate cake is really rich.",
+   "s": 12
+  },
+  {
+   "w": "tentacles",
+   "ko": "(문어 등의) 다리, 촉수",
+   "ex": "An octopus has eight tentacles.",
+   "s": 12
+  },
+  {
+   "w": "it doesn't matter if",
+   "ko": "~든 상관없다",
+   "ex": "It doesn't matter if it rains.",
+   "s": 12
+  },
+  {
+   "w": "single-use plastic",
+   "ko": "일회용 플라스틱",
+   "ex": "Single-use plastic is a major threat to the ocean.",
+   "s": 12
+  },
+  {
+   "w": "end up -ing",
+   "ko": "결국 ~하게 되다",
+   "ex": "I ended up staying home.",
+   "s": 12
   }
  ],
  "pod": {
