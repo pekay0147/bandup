@@ -1463,6 +1463,8 @@ async function inboxPull(force){ if(!D || !D.inbox || inboxBusy || (!IS_MOBILE &
   try{ const r=await fetch(SB_URL+"/rest/v1/rpc/bu_take",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_token:D.inbox})}); if(r.ok) rows=await r.json(); }catch(_){ }
   if(!rows || !rows.length){ inboxBusy=false; return; }
   const key=`bandup-myvoc-${slug}`; const mine=store.get(key,[]); const have=new Set(vocAll().map(x=>String(x.w).toLowerCase())); const added=[];
+  { const yv=[]; rows=rows.filter(r=>{ const t=String(r.txt||"").trim(); const id=/youtu\.?be/i.test(t) && t.split(/\s+/).length<=12? ytId(t) : null; if(id){ yv.push(id); return false; } return true; });
+    if(yv.length){ const last=yv[yv.length-1]; yv.forEach(id=>{ if(!ytVids().some(x=>x.vid===id)) ytSave({vid:id,title:"유튜브 영상",at:Date.now(),lines:[]}); }); toast("🎬 공유한 영상을 열어요",true); setTimeout(()=>ytOpen(last),300); } }
   const scr=store.get(`bandup-screens-${slug}`,[]); let nscr=0, nsent=0;
   rows=rows.filter(r=>{ const t=String(r.txt||""); if(/\n/.test(t.trim()) || t.trim().split(/\s+/).length>25){ scr.push({id:Date.now()+Math.random(),at:r.created_at,text:t}); nscr++; return false; } return true; });
   if(nscr){ store.set(`bandup-screens-${slug}`,scr); toast(`📸 화면 ${nscr}개를 가져왔어요. 모르는 단어를 골라 보세요`,true); if(view.tab==="home") render(); }
@@ -1541,6 +1543,8 @@ function ytMerge(segs){ const punct=segs.filter(x=>/[.!?]["”’']?$/.test(x.te
     if(end || wc>=26){ out.push(cur); cur={...x}; } else cur.text+=" "+x.text; }
   if(cur) out.push(cur); return out; }
 function ytVids(){ return store.get(YTK(),[]); }
+function ytOpen(vid){ const old=ytVids().find(x=>x.vid===vid); const v={vid, title:(old&&old.title)||"유튜브 영상", at:Date.now(), lines: old? old.lines : []}; ytSave(v); ytState={vid}; go("yt");
+  if(!old || old.title==="유튜브 영상") fetch("https://noembed.com/embed?url="+encodeURIComponent("https://www.youtube.com/watch?v="+vid)).then(r=>r.json()).then(j=>{ if(j && j.title){ const L=ytVids(); const y=L.find(x=>x.vid===vid); if(y){ y.title=j.title; store.set(YTK(),L); const h=document.querySelector(".yttitle"); if(h) h.textContent=j.title; } } }).catch(()=>{}); }
 function ytSave(v){ const L=ytVids().filter(x=>x.vid!==v.vid); L.push(v); store.set(YTK(),L); }
 function ytStop(){ clearInterval(ytTimer); ytTimer=null; try{ if(ytP) ytP.destroy(); }catch(_){ } ytP=null; }
 function ytClip(c){ if(!c || !c.v) return; ytApi().then(()=>{
@@ -1554,16 +1558,21 @@ function renderYt(app){
   ytStop();
   if(ytState && ytState.vid){ const v=ytVids().find(x=>x.vid===ytState.vid); if(v) return renderYtPlayer(app,v); ytState=null; }
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
-  pageHead(app,"영상으로 공부","유튜브 영상을 밴드업 안에서 틀고, 영어·한국어 자막을 같이 보면서 안 들린 문장을 담아요. 담은 문장은 그 장면의 원래 소리로 다시 들을 수 있어요.");
-  const p=el("div","panel ytnew"); p.append(el("b",null,"1. 유튜브 링크"));
+  pageHead(app,"영상으로 공부","보고 싶은 유튜브 영상을 밴드업에서 열면 자막을 보면서 안 들린 문장을 담을 수 있어요.");
+  const q=el("div","panel ytquick"); const qb=el("button","btn primary ytbig","📋 복사한 유튜브 링크로 바로 보기"); qb.type="button"; const qm=el("p","small txmsg","");
+  qb.onclick=async()=>{ let t=""; try{ t=await navigator.clipboard.readText(); }catch(_){ } const id=ytId(t); if(id){ ytOpen(id); return; } qm.textContent= t? "복사된 게 유튜브 링크가 아니에요. 유튜브 앱에서 '공유 → 링크 복사'를 먼저 눌러 주세요." : "붙여넣기를 허용해 주세요. 유튜브 앱에서 '공유 → 링크 복사'를 누른 뒤 다시 눌러 보세요."; };
+  q.append(qb, el("p","small muted","유튜브 앱 → 영상 아래 '공유' → '링크 복사' → 밴드업에서 이 버튼 한 번. 끝!"), qm);
+  if(D.inbox){ const sh=el("details","ytmore"); sh.append(el("summary",null,"더 빠르게: 유튜브 공유 버튼에 '밴드업' 넣기 (한 번만 설정)"));
+    const ol=el("ol","ibsteps"); for(const t of ["단축어 앱 → ＋ → 이름 '밴드업' → 아래 ⓘ → '공유 시트에서 보기' 켜기. 받을 항목은 URL과 텍스트.","동작 'URL 콘텐츠 가져오기' 추가 → 아래 URL 붙여 넣기 → 방법 POST → 요청 본문 JSON에 텍스트 필드 1개: 키 p_txt, 값은 파란 '단축어 입력'.","이제 유튜브 앱에서 공유 → '밴드업'을 누르고, 밴드업 앱을 열면 그 영상이 바로 나와요."]) ol.append(el("li",null,t));
+    sh.append(ol, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_save?apikey="+SB_KEY)); q.append(sh); }
+  app.append(q);
+  const p=el("details","panel ytnew ytmore"); p.append(el("summary",null,"직접 입력 · 영어 스크립트 같이 넣기"));
   const iu=el("input","txin"); iu.placeholder="https://youtu.be/… 또는 유튜브 주소"; iu.inputMode="url"; p.append(iu);
-  p.append(el("b",null,"2. 영어 자막(스크립트) 붙여 넣기"));
-  const how=el("p","small muted","컴퓨터 유튜브: 영상 아래 '…더보기' → '스크립트 표시' → 스크립트 전체를 드래그해서 복사 → 여기에 붙여 넣기. 시간(0:05)이 같이 복사돼야 영상과 맞춰져요. 자막 파일(.srt·.vtt) 내용을 붙여 넣어도 돼요. 자막은 나중에 넣어도 괜찮아요."); p.append(how);
+  const how=el("p","small muted","스크립트(선택): 컴퓨터 유튜브 '…더보기 → 스크립트 표시'를 시간까지 복사해 붙여 넣으면 문장별 번역·반복·담기가 돼요. 없어도 영상 안 영어 자막으로 볼 수 있어요."); p.append(how);
   const ta=el("textarea","msinp ytta"); ta.rows=5; ta.placeholder="0:00\nHey guys, welcome back to my channel.\n0:03\nToday we're going to talk about…"; p.append(ta);
-  const msg=el("p","small txmsg",""); const ob=el("button","btn primary","🎬 영상 열기"); ob.type="button";
-  ob.onclick=async()=>{ const vid=ytId(iu.value); if(!vid){ msg.textContent="유튜브 링크를 확인해 주세요."; return; } const segs=ytParse(ta.value); if(ta.value.trim() && !segs.length){ msg.textContent="자막에서 시간(0:05 같은)을 찾지 못했어요. 시간이 같이 복사됐는지 확인해 주세요."; return; }
-    const old=ytVids().find(x=>x.vid===vid); const v={vid, title:(old&&old.title)||"유튜브 영상", at:Date.now(), lines: segs.length? ytMerge(segs) : (old? old.lines : [])}; ytSave(v); ytState={vid}; render();
-    if(!old || old.title==="유튜브 영상") fetch("https://noembed.com/embed?url="+encodeURIComponent("https://www.youtube.com/watch?v="+vid)).then(r=>r.json()).then(j=>{ if(j && j.title){ const L=ytVids(); const y=L.find(x=>x.vid===vid); if(y){ y.title=j.title; store.set(YTK(),L); const h=document.querySelector(".yttitle"); if(h) h.textContent=j.title; } } }).catch(()=>{}); };
+  const msg=el("p","small txmsg",""); const ob=el("button","btn","🎬 영상 열기"); ob.type="button";
+  ob.onclick=()=>{ const vid=ytId(iu.value); if(!vid){ msg.textContent="유튜브 링크를 확인해 주세요."; return; } const segs=ytParse(ta.value); if(ta.value.trim() && !segs.length){ msg.textContent="자막에서 시간(0:05 같은)을 찾지 못했어요. 시간이 같이 복사됐는지 확인해 주세요."; return; }
+    if(segs.length){ const old=ytVids().find(x=>x.vid===vid); ytSave({vid, title:(old&&old.title)||"유튜브 영상", at:Date.now(), lines:ytMerge(segs)}); } ytOpen(vid); };
   p.append(ob,msg); app.append(p);
   const L=ytVids().slice().sort((a,b)=>b.at-a.at);
   if(L.length){ app.append(el("h2","sec-t","내 영상")); const box=el("div","box ytlist");
@@ -1592,7 +1601,7 @@ function renderYtPlayer(app,v){
     const r=await vocLookup(w).catch(()=>({})); mean.textContent=(r&&r.ko)||"뜻을 찾지 못했어요";
     const has=vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase()); const ab=el("button","scradd"+(has?" done":""), has? "✓ 단어장에 있어요" : "+ 단어장"); ab.type="button"; ab.disabled=has; ab.onclick=()=>{ if(vocQuickAdd(w,false)){ ab.textContent="✓ 담았어요"; ab.disabled=true; ab.classList.add("done"); } }; hd.append(ab); };
   const paintCur=()=>{ const ln=L[S.i]; cen.textContent=""; wbox.textContent=""; wbox.classList.remove("on");
-    if(!L.length){ cen.append(el("span","small muted","자막이 없어요. 아래에 스크립트를 붙여 넣으면 문장별로 볼 수 있어요.")); cko.textContent=""; return; }
+    if(!L.length){ cen.append(el("span","small muted","영상 안에 영어 자막이 나와요. '한글'을 누르면 한국어 자막으로 바뀌어요. 스크립트를 넣으면 문장별 번역·반복·담기도 돼요.")); cko.textContent=""; return; }
     if(!ln){ cen.append(el("span","small muted","▶ 재생하면 자막이 여기 나와요")); cko.textContent=""; return; }
     for(const tok of ln.text.split(" ")){ const m=tok.match(/^([^A-Za-z]*)([A-Za-z][A-Za-z'’-]*[A-Za-z]|[A-Za-z])([^A-Za-z]*)$/); if(!m){ cen.append(document.createTextNode(tok+" ")); continue; }
       const b=el("button","ytw",tok); b.type="button"; b.onclick=()=>{ try{ ytP.pauseVideo(); }catch(_){ } showWord(m[2].replace(/’/g,"'")); }; cen.append(b, document.createTextNode(" ")); }
@@ -1604,7 +1613,9 @@ function renderYtPlayer(app,v){
   bNext.onclick=()=>{ if(L.length) seekI(Math.min(L.length-1,S.i+1)); };
   bLoop.onclick=()=>{ if(S.i<0) return; S.loop= S.loop===S.i? null : S.i; bLoop.classList.toggle("on",S.loop!=null); if(S.loop!=null) seekI(S.loop); toast(S.loop!=null? "🔁 이 문장을 계속 반복해요" : "반복 끔",true); };
   bRate.onclick=()=>{ S.rate= S.rate===1? .75 : S.rate===.75? .5 : 1; bRate.textContent=S.rate+"x"; try{ ytP.setPlaybackRate(S.rate); }catch(_){ } };
-  bKo.onclick=()=>{ S.ko=!S.ko; bKo.classList.toggle("on",S.ko); paintCur(); document.querySelectorAll(".ytko").forEach(x=>x.classList.toggle("off",!S.ko)); };
+  const ccSet=()=>{ if(L.length || !ytP || !ytP.setOption) return; try{ ytP.loadModule && ytP.loadModule("captions"); ytP.setOption("captions","track", S.ko? {languageCode:"en", translationLanguage:{languageCode:"ko"}} : {languageCode:"en"}); }catch(_){ } };
+  if(!L.length){ S.ko=false; bKo.classList.remove("on"); [bPrev,bLoop,bNext,bAdd].forEach(b=>b.style.display="none"); }
+  bKo.onclick=()=>{ S.ko=!S.ko; ccSet(); bKo.classList.toggle("on",S.ko); paintCur(); document.querySelectorAll(".ytko").forEach(x=>x.classList.toggle("off",!S.ko)); };
   bAdd.onclick=()=>addLine(S.i);
   let lst=null;
   if(L.length){ lst=el("div","ytlst"); const io=("IntersectionObserver" in window)? new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) want(+e.target.dataset.i); }),{root:lst}) : null;
@@ -1615,11 +1626,12 @@ function renderYtPlayer(app,v){
     app.append(lst); }
   const more=el("details","ytmore"); more.append(el("summary",null, L.length? "자막 다시 붙여 넣기" : "📋 자막(스크립트) 붙여 넣기")); const ta=el("textarea","msinp ytta"); ta.rows=5; ta.placeholder="0:00\nHey guys…"; const sb=el("button","btn","자막 넣기"); sb.type="button"; const sm=el("p","small txmsg","");
   sb.onclick=()=>{ const segs=ytParse(ta.value); if(!segs.length){ sm.textContent="시간(0:05 같은)이 있는 스크립트를 붙여 넣어 주세요."; return; } v.lines=ytMerge(segs); ytSave(v); S.i=-1; render(); };
-  more.append(ta,sb,sm); if(!L.length) more.open=true; app.append(more);
+  more.append(ta,sb,sm); app.append(more);
   paintCur(); paintAdd();
   ytApi().then(()=>{ if(view.tab!=="yt" || !document.getElementById("ytplayer")) return;
-    ytP=new YT.Player("ytplayer",{width:"100%",height:"100%",videoId:v.vid,playerVars:{playsinline:1,rel:0,modestbranding:1,cc_load_policy:0,iv_load_policy:3},
+    ytP=new YT.Player("ytplayer",{width:"100%",height:"100%",videoId:v.vid,playerVars:{playsinline:1,rel:0,modestbranding:1,cc_load_policy:L.length?0:1,cc_lang_pref:"en",hl:"en",iv_load_policy:3},
       events:{ onReady:e=>{ try{ e.target.setPlaybackRate(S.rate); }catch(_){ } },
+        onStateChange:e=>{ if(e.data===1 && !L.length && !S.cc){ S.cc=1; ccSet(); } },
         onError:e=>{ const c=e.data; fr.textContent=""; fr.append(el("p","yterr", c===101||c===150? "이 영상은 올린 사람이 다른 곳에서 재생하지 못하게 막아 두었어요. 다른 영상을 골라 주세요." : "영상을 불러오지 못했어요. 링크를 확인해 주세요.")); } }});
     ytTimer=setInterval(()=>{ if(view.tab!=="yt" || !document.getElementById("ytplayer") && !document.querySelector(".ytframe iframe")){ ytStop(); return; }
       if(!ytP || !ytP.getCurrentTime || !L.length) return; const t=ytP.getCurrentTime();

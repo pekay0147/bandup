@@ -1121,3 +1121,5 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .clipwrap{position:fixed;right:12px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:60;width:220px;height:124px;border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.3);background:#000;display:none}.clipwrap.on{display:block}
 .clipwrap iframe{width:100%;height:100%}
 .clipx{position:absolute;top:4px;right:4px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:13px;cursor:pointer}
+.ytquick{display:grid;gap:8px}.ytbig{font-size:17px;padding:16px}
+.ytnew.ytmore summary{color:var(--ink)}
