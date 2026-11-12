@@ -286,5 +286,33 @@
 "what's the point of": {
 "ko": "~하는 게 무슨 소용이 있어?",
 "ex": "What's the point of studying if you don't sleep?"
+},
+"took": {
+"ko": "(시간이) 걸렸다, 가져갔다 (take의 과거형)",
+"ex": "It took me an hour to get home."
+},
+"thought": {
+"ko": "생각; 생각했다 (think의 과거형)",
+"ex": "I thought the exam would be harder."
+},
+"out of thin air": {
+"ko": "난데없이, 아무것도 없는 데서",
+"ex": "The idea came to me out of thin air."
+},
+"go up and down": {
+"ko": "오르락내리락하다, 변동하다",
+"ex": "Prices go up and down every season."
+},
+"haute couture": {
+"ko": "고급 맞춤 의상, 오트 쿠튀르",
+"ex": "Haute couture is far too expensive for most people."
+},
+"splash out on": {
+"ko": "~에 큰돈을 쓰다, 아낌없이 쓰다",
+"ex": "I sometimes splash out on a nice dinner."
+},
+"have some time to myself": {
+"ko": "혼자만의 시간을 갖다",
+"ex": "On weekends, I like to have some time to myself."
 }
 }
