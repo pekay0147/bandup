@@ -311,7 +311,7 @@ function renderHome(app){
   if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
   if(D.group==="ielts" || D.group==="common" || D.demo || D.keepMock) list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
-  if(D.inbox){ const sc=store.get(`bandup-screens-${slug}`,[]); if(sc.length) list.append(listRow(LIC.voc,"📸 화면에서 가져온 글",`${sc.length}개 · 모르는 단어를 눌러 담아요`,()=>go("screens"))); }
+  if(D.inbox){ const sc=store.get(`bandup-screens-${slug}`,[]); if(sc.length) list.append(listRow(LIC.voc,"📸 캡쳐한 글",`${sc.length}개 · 모르는 단어를 눌러 담아요`,()=>go("screens"))); }
   if(D.inbox && D.yt){ const nv=store.get(`bandup-yt-${slug}`,[]).length; list.append(listRow(LIC.pod,"🎬 영상으로 공부", (()=>{ const nc=store.get(`bandup-clips-${slug}`,[]).length; return nc? `클립 ${nc}개 · 쉐도잉하러 가기` : nv? `영상 ${nv}개 · 이중자막으로 보고 안 들린 문장 담기` : "유튜브 보다가 뒷면 톡톡으로 클립 저장"; })(),()=>{ ytState=null; go("yt"); })); }
   list.append(listRow(LIC.bm,"북마크",`${cbmList().filter(id=>getCard(id)).length+qbmList().length}개`,()=>go("bm")));
   if(D.cloud){ const se=cloudSess(); list.append(listRow(LIC.cloud,"계정 · 기록 저장", se? `${se.email} · 자동 저장 중` : "로그인하면 폰을 바꿔도 기록이 이어져요",()=>go("transfer"))); }
@@ -1510,7 +1510,7 @@ async function scrTranslate(){ if(scrTrBusy) return; scrTrBusy=true;
 function renderScreens(app){
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>{ scrSel=[]; go("home"); }; app.append(back);
   const key=`bandup-screens-${slug}`; const list=store.get(key,[]).slice().reverse();
-  pageHead(app,"화면에서 가져온 글","모르는 단어를 누르면 노랗게 골라져요. 붙어 있는 단어 여러 개를 고르면 표현(예: take for granted)으로 담겨요. 다 고르고 아래 '단어장에 담기'를 누르세요.");
+  pageHead(app,"캡쳐한 글","모르는 단어를 누르면 노랗게 골라져요. 붙어 있는 단어 여러 개를 고르면 표현(예: take for granted)으로 담겨요. 다 고르고 아래 '단어장에 담기'를 누르세요.");
   if(!list.length){ app.append(el("p","muted small","가져온 화면이 없어요.")); return; }
   const H=new Set(vocAll().map(x=>String(x.w).toLowerCase()));
   const bar=el("div","scrbar"); const bt=el("span","scrbt",""); const bb=el("button","btn primary","단어장에 담기"); bb.type="button"; const bc=el("button","nav","취소"); bc.type="button"; bar.append(bt,bc,bb);
