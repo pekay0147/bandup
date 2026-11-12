@@ -312,7 +312,7 @@ function renderHome(app){
   if(D.group==="ielts" || D.group==="common" || D.demo || D.keepMock) list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
   if(D.inbox){ const sc=store.get(`bandup-screens-${slug}`,[]); if(sc.length) list.append(listRow(LIC.voc,"📸 화면에서 가져온 글",`${sc.length}개 · 모르는 단어를 눌러 담아요`,()=>go("screens"))); }
-  if(D.inbox){ const nv=store.get(`bandup-yt-${slug}`,[]).length; list.append(listRow(LIC.pod,"🎬 영상으로 공부", (()=>{ const nc=store.get(`bandup-clips-${slug}`,[]).length; return nc? `클립 ${nc}개 · 쉐도잉하러 가기` : nv? `영상 ${nv}개 · 이중자막으로 보고 안 들린 문장 담기` : "유튜브 보다가 뒷면 톡톡으로 클립 저장"; })(),()=>{ ytState=null; go("yt"); })); }
+  if(D.inbox && D.yt){ const nv=store.get(`bandup-yt-${slug}`,[]).length; list.append(listRow(LIC.pod,"🎬 영상으로 공부", (()=>{ const nc=store.get(`bandup-clips-${slug}`,[]).length; return nc? `클립 ${nc}개 · 쉐도잉하러 가기` : nv? `영상 ${nv}개 · 이중자막으로 보고 안 들린 문장 담기` : "유튜브 보다가 뒷면 톡톡으로 클립 저장"; })(),()=>{ ytState=null; go("yt"); })); }
   list.append(listRow(LIC.bm,"북마크",`${cbmList().filter(id=>getCard(id)).length+qbmList().length}개`,()=>go("bm")));
   if(D.cloud){ const se=cloudSess(); list.append(listRow(LIC.cloud,"계정 · 기록 저장", se? `${se.email} · 자동 저장 중` : "로그인하면 폰을 바꿔도 기록이 이어져요",()=>go("transfer"))); }
   s2.append(list); app.append(s2);
@@ -1171,12 +1171,12 @@ async function inboxPull(force){ if(!D || !D.inbox || inboxBusy || (!IS_MOBILE &
   try{ const r=await fetch(SB_URL+"/rest/v1/rpc/bu_take",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_token:D.inbox})}); if(r.ok) rows=await r.json(); }catch(_){ }
   if(!rows || !rows.length){ inboxBusy=false; return; }
   const key=`bandup-myvoc-${slug}`; const mine=store.get(key,[]); const have=new Set(vocAll().map(x=>String(x.w).toLowerCase())); const added=[];
-  { const yv=[]; rows=rows.filter(r=>{ const t=String(r.txt||"").trim(); const id=/youtu\.?be/i.test(t) && t.split(/\s+/).length<=12? ytId(t) : null; if(id){ yv.push(id); return false; } return true; });
+  { const yv=[]; rows=rows.filter(r=>{ const t=String(r.txt||"").trim(); const id=D.yt && /youtu\.?be/i.test(t) && t.split(/\s+/).length<=12? ytId(t) : null; if(id){ yv.push(id); return false; } return true; });
     if(yv.length){ const last=yv[yv.length-1]; yv.forEach(id=>{ if(!ytVids().some(x=>x.vid===id)) ytSave({vid:id,title:"유튜브 영상",at:Date.now(),lines:[]}); }); toast("🎬 공유한 영상을 열어요",true); setTimeout(()=>ytOpen(last),300); } }
   const scr=store.get(`bandup-screens-${slug}`,[]); let nscr=0, nsent=0;
-  let lastScene=null; { let ni=0; rows=rows.filter(r=>{ const t=String(r.txt||""); const g=/\n/.test(t.trim())? igScreen(t) : null; if(g){ lastScene=sceneAdd({src:"인스타 릴스",acct:g.acct,text:ocrClean(t).split("\n").filter(x=>!g.acct || x.replace(/^@/,"").toLowerCase()!==g.acct.toLowerCase()).join("\n"),at:r.created_at}); ni++; return false; } return true; });
+  let lastScene=null; { let ni=0; rows=rows.filter(r=>{ const t=String(r.txt||""); const g=D.yt && /\n/.test(t.trim())? igScreen(t) : null; if(g){ lastScene=sceneAdd({src:"인스타 릴스",acct:g.acct,text:ocrClean(t).split("\n").filter(x=>!g.acct || x.replace(/^@/,"").toLowerCase()!==g.acct.toLowerCase()).join("\n"),at:r.created_at}); ni++; return false; } return true; });
     if(ni){ toast(`📸 릴스 장면 ${ni}개를 내 클립에 저장했어요`,true); if(lastScene) capJump("clip",lastScene.id); } }
-  const yts=[]; rows=rows.filter(r=>{ const t=String(r.txt||""); const ys=/\n/.test(t.trim())? ytScreen(t) : null; if(ys){ yts.push({...ys, r}); return false; } return true; });
+  const yts=[]; rows=rows.filter(r=>{ const t=String(r.txt||""); const ys=D.yt && /\n/.test(t.trim())? ytScreen(t) : null; if(ys){ yts.push({...ys, r}); return false; } return true; });
   if(yts.length){ toast(`✂️ 유튜브 클립 ${yts.length}개 저장하는 중…`,true);
     (async()=>{ const cache={}; let ok=0, miss=0, noTime=0, lastC=null;
       for(const y of yts){ const f= cache[y.q]!==undefined? cache[y.q] : (cache[y.q]=await ytSearch(y.q));
