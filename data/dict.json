@@ -314,5 +314,69 @@
 "have some time to myself": {
 "ko": "혼자만의 시간을 갖다",
 "ex": "On weekends, I like to have some time to myself."
+},
+"appetite": {
+"ko": "식욕, 입맛",
+"ex": "I lost my appetite after hearing the bad news."
+},
+"spoil my appetite": {
+"ko": "입맛을 떨어뜨리다 (spoil one's appetite)",
+"ex": "Don't eat snacks now, or they'll spoil your appetite."
+},
+"it is expected that": {
+"ko": "~하는 것이 당연시되다, ~할 것으로 기대되다",
+"ex": "It is expected that young people will move out after university."
+},
+"perjury": {
+"ko": "위증(죄)",
+"ex": "Lying under oath in court is called perjury."
+},
+"the norm": {
+"ko": "일반적인 것, 흔한 일",
+"ex": "Working from home has become the norm for many people."
+},
+"sober": {
+"ko": "술 취하지 않은, 술을 안 마시는",
+"ex": "He has stayed sober for over a year now."
+},
+"self-optimisation content": {
+"ko": "자기계발 콘텐츠, 자기 최적화 콘텐츠",
+"ex": "I watch too much self-optimisation content on my phone."
+},
+"tout": {
+"ko": "(장점을) 떠들썩하게 홍보하다, 내세우다",
+"ex": "The company touts this app as the best way to study."
+},
+"pushback": {
+"ko": "반발, 저항",
+"ex": "The new rule got a lot of pushback from students."
+},
+"cut down on": {
+"ko": "~을 줄이다",
+"ex": "I'm trying to cut down on sugar these days."
+},
+"weird glances": {
+"ko": "이상하다는 눈빛, 이상한 시선",
+"ex": "I got weird glances when I ordered water at the bar."
+},
+"step away from": {
+"ko": "~에서 (잠시) 물러나다, 거리를 두다",
+"ex": "Sometimes you need to step away from your phone."
+},
+"moving forward": {
+"ko": "앞으로는, 향후에",
+"ex": "Moving forward, I'll plan my study time more carefully."
+},
+"up to the individual": {
+"ko": "개인이 결정할 일인, 각자에게 달린",
+"ex": "Whether to drink or not is up to the individual."
+},
+"it's all about": {
+"ko": "결국 ~가 핵심이다, 가장 중요한 건 ~이다",
+"ex": "Learning a language, it's all about practice."
+},
+"give it away": {
+"ko": "(답·비밀을) 말해 버리다, 누설하다",
+"ex": "Don't tell me the ending. You'll give it away!"
 }
 }
