@@ -55,6 +55,11 @@
    "no": 10,
    "date": "2026-11-11",
    "title": "Got up early"
+  },
+  {
+   "no": 11,
+   "date": "2026-11-13",
+   "title": "Quiet place"
   }
  ],
  "types": [
@@ -77,7 +82,8 @@
   "6": "having said that, on top of that, I have to admit 같은 연결어를 Part 3 답에 꼭 한 번씩 넣어보기!",
   "7": "usually만 반복하지 말고 more often than not, on a regular basis로 바꿔 말해보기!",
   "8": "Part 2 서론 정확하게 암기하기! be·seem·feel 뒤에는 형용사(happy, calm) 쓰기.",
-  "10": "Part 2에서 off the top of my head 뒤에 '무슨 때인지' 바로 설명하기! To begin with 대신 First of all."
+  "10": "Part 2에서 off the top of my head 뒤에 '무슨 때인지' 바로 설명하기! To begin with 대신 First of all.",
+  "11": "There are(~가 있다) vs These are(이것들이 ~이다)! another + 단수, different + 복수. Part 2 본론은 오늘의 2배로!"
  },
  "compare": [
   [
@@ -2211,6 +2217,210 @@
    "en": "I'll go with an iced americano.",
    "hint": "go",
    "gram": "<em>I'll go with</em> ~ = (고를 때) ~로 할게요."
+  },
+  {
+   "id": "n11m1",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    11
+   ],
+   "ko": "술을 줄였을 때 좋은 점은 아침에 훨씬 개운하다는 거예요.",
+   "en": "The bright side of cutting down on alcohol is that I feel much fresher in the morning.",
+   "hint": "bright",
+   "gram": "<em>the bright side of</em> A <em>is that</em> ~ (A의 좋은 점은 ~). <em>cut down on</em> = ~을 줄이다 → of 뒤라서 cutting."
+  },
+  {
+   "id": "n11m2",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    11
+   ],
+   "ko": "학생이었을 때 저는 술을 마셔야 한다는 사회적 압박을 느끼곤 했어요.",
+   "en": "When I was a student, I used to feel a lot of social pressure to drink.",
+   "hint": "pressure",
+   "gram": "when I was <em>a</em> student. <em>used to</em> + 동사원형 = ~하곤 했다. <em>social pressure</em> (= societal pressure) 사회적 압박."
+  },
+  {
+   "id": "n11m3",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "저는 소화가 잘 안돼서 술에서 한 발 물러나기로 했어요.",
+   "en": "I have a problem with digestion, so I decided to step away from drinking.",
+   "hint": "step",
+   "gram": "<em>have a problem with</em> ~ = ~에 문제가 있다. <em>step away from</em> -ing = ~에서 한 발 물러나다."
+  },
+  {
+   "id": "n11m4",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "다음 달에 여행 가는데, 여행 중에도 술은 안 마실 거예요.",
+   "en": "I'm going on a trip next month, but I'm going to stay sober during the trip.",
+   "hint": "sober",
+   "gram": "<em>go on a trip</em> = 여행 가다. <em>stay sober</em> = 술을 안 마신 상태로 있다."
+  },
+  {
+   "id": "n11m5",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    11
+   ],
+   "ko": "회식 자리의 사회적 압박에도 불구하고, 저는 요즘 술을 줄이고 있어요.",
+   "en": "Even with the social pressure at work dinners, I'm cutting down on alcohol these days.",
+   "hint": "cutting",
+   "gram": "<em>even with</em> ~ = ~에도 불구하고. <em>cut down on</em> = 줄이다 (지금 하는 중이라 I'm cutting)."
+  },
+  {
+   "id": "n1101",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    11
+   ],
+   "ko": "저는 다음 달에 여행 갈 거예요.",
+   "en": "I will go on a trip next month.",
+   "hint": "trip",
+   "gram": "❌ go to the travel → ✅ <em>go on a trip</em> / go travelling. travel은 동사라 the travel이라고 하지 않아요."
+  },
+  {
+   "id": "n1102",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    11
+   ],
+   "ko": "제가 그렇게 생각하는 이유들은 이거예요.",
+   "en": "These are the reasons why I think so.",
+   "hint": "These",
+   "gram": "❌ there are reasons why I think → ✅ <em>These are</em> the reasons why I think so. <em>There are</em> = ~가 있다(존재) / <em>These are</em> = 이것들이 ~이다(가리키기)."
+  },
+  {
+   "id": "n1103",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    11
+   ],
+   "ko": "거기엔 사람이 많지 않아요.",
+   "en": "There are not many people there.",
+   "hint": "many",
+   "gram": "❌ they don't have people → ✅ <em>There are not many people</em> there. / There are <em>only a few</em> people there. 장소에 뭐가 있다/없다는 There is/are."
+  },
+  {
+   "id": "n1104",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    11
+   ],
+   "ko": "우리는 살기 위해 물이 필요해요. / 살려면 물을 마셔야 해요.",
+   "en": "We need water to live. / We need to drink water to live.",
+   "hint": "need",
+   "gram": "<em>need</em> + 명사 = ~이 필요하다 / <em>need to</em> + 동사 = ~해야 한다."
+  },
+  {
+   "id": "n1105",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    11
+   ],
+   "ko": "많은 사람들이 조용한 곳을 좋아해요.",
+   "en": "Many people like quiet places.",
+   "hint": "people",
+   "gram": "❌ peoples → ✅ <em>people</em>. people은 이미 복수(사람들)라 s를 안 붙여요."
+  },
+  {
+   "id": "n1106",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    11
+   ],
+   "ko": "사람들은 여러 다른 곳으로 여행 가고 싶어 해요.",
+   "en": "People want to travel to different places.",
+   "hint": "different",
+   "gram": "❌ another places → ✅ <em>different</em> places / <em>other</em> places. another는 단수 앞에만: another place."
+  },
+  {
+   "id": "n1107",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    11
+   ],
+   "ko": "영어를 공부하는 건 어려워요.",
+   "en": "It is hard to study English.",
+   "hint": "hard",
+   "gram": "<em>It is</em> + 형용사 + <em>to</em> 동사 = ~하는 것은 …하다. (= Studying English is hard.)"
+  },
+  {
+   "id": "n1108",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    11
+   ],
+   "ko": "도시는 조용한 공간을 더 많이 만들어야 해요.",
+   "en": "Cities should create more quiet spaces.",
+   "hint": "should",
+   "gram": "❌ City improve the quite places → ✅ Cities <em>should create</em> more <em>quiet</em> spaces. should + 동사원형. <em>quiet</em> 조용한 ≠ <em>quite</em> 꽤."
+  },
+  {
+   "id": "n1109",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    11
+   ],
+   "ko": "저는 보통 저녁에 책을 읽으면서 시간을 보내요.",
+   "en": "I usually spend my evenings reading.",
+   "hint": "spend",
+   "gram": "<em>spend</em> + 시간 + -ing = ~하면서 시간을 보내다. ❌ spend to read."
+  },
+  {
+   "id": "n1110",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    11
+   ],
+   "ko": "사람들은 휴대폰을 보면서 너무 많은 시간을 보내요.",
+   "en": "People spend too much time looking at their phones.",
+   "hint": "time",
+   "gram": "<em>spend too much time</em> + -ing. time을 빼먹지 않기!"
+  },
+  {
+   "id": "n1111",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    11
+   ],
+   "ko": "어제 오후 내내 방 청소를 했어요.",
+   "en": "I spent the whole afternoon cleaning my room.",
+   "hint": "spent",
+   "gram": "spend-<em>spent</em>-spent. <em>the whole afternoon</em> = 오후 내내."
+  },
+  {
+   "id": "n1112",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    11
+   ],
+   "ko": "저는 이번 달에 옷 사는 데 돈을 너무 많이 썼어요.",
+   "en": "I spent too much money on clothes this month.",
+   "hint": "money",
+   "gram": "돈은 <em>spend</em> + 돈 + <em>on</em> + 물건."
   }
  ],
  "part1": [
@@ -2953,6 +3163,72 @@
    "ko": "여행 가다",
    "ex": "We're going on a trip next week.",
    "s": 10
+  },
+  {
+   "w": "sober",
+   "ko": "술을 안 마시는",
+   "ex": "I've been sober for three years.",
+   "s": 11
+  },
+  {
+   "w": "societal pressure",
+   "ko": "사회적 압박 (= social pressure)",
+   "ex": "In Korea, there's societal pressure to drink at work dinners.",
+   "s": 11
+  },
+  {
+   "w": "the norm",
+   "ko": "흔한 일, 당연한 것",
+   "ex": "Drinking less is becoming the norm.",
+   "s": 11
+  },
+  {
+   "w": "cut down on",
+   "ko": "~을 줄이다",
+   "ex": "I'm trying to cut down on alcohol.",
+   "s": 11
+  },
+  {
+   "w": "give up",
+   "ko": "끊다",
+   "ex": "I've decided to give up alcohol this year.",
+   "s": 11
+  },
+  {
+   "w": "tout",
+   "ko": "떠들썩하게 홍보하다",
+   "ex": "Influencers tout this diet as the best way to lose weight.",
+   "s": 11
+  },
+  {
+   "w": "pushback",
+   "ko": "반발",
+   "ex": "There was a lot of pushback against the new rule.",
+   "s": 11
+  },
+  {
+   "w": "weird glances",
+   "ko": "이상하다는 눈빛",
+   "ex": "You might get a few weird glances if you don't drink.",
+   "s": 11
+  },
+  {
+   "w": "step away from",
+   "ko": "~에서 한 발 물러나다",
+   "ex": "I stepped away from drinking during Covid.",
+   "s": 11
+  },
+  {
+   "w": "moving forward",
+   "ko": "앞으로는 (= from now on)",
+   "ex": "It's not something I want to do moving forward.",
+   "s": 11
+  },
+  {
+   "w": "up to the individual",
+   "ko": "개인이 결정할 일",
+   "ex": "Whether you drink or not is up to the individual.",
+   "s": 11
   }
  ],
  "group": "ielts",
