@@ -40,6 +40,11 @@
    "no": 7,
    "date": "2026-11-08",
    "title": "Holidays · Weather · Memory · Sugar"
+  },
+  {
+   "no": 8,
+   "date": "2026-11-15",
+   "title": "Itch · Cafés · Books"
   }
  ],
  "types": [
@@ -61,7 +66,8 @@
   "발음·철자": "argue → argument(e가 빠져요). 헷갈리는 철자는 써 보며 외우기."
  },
  "focus": {
-  "7": "prefer·like 같은 일반동사 앞에 I'm 붙이지 않기! used to + 동사원형(예전에) vs be used to + -ing(익숙하다)."
+  "7": "prefer·like 같은 일반동사 앞에 I'm 붙이지 않기! used to + 동사원형(예전에) vs be used to + -ing(익숙하다).",
+  "8": "일반동사 앞에 I'm 붙이지 않기 (I usually order)! call + 사람 (with ✕). 나라 이름 앞엔 a ✕ (in Korea)."
  },
  "compare": [
   [
@@ -1704,6 +1710,194 @@
    "en": "Then you'll get a member's discount on everything on the menu.",
    "hint": "discount",
    "gram": "<em>get a discount on</em> ~ = ~에서 할인을 받다. everything on the menu = 메뉴 전부."
+  },
+  {
+   "id": "m22",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "동사·시제",
+   "ko": "저는 수영하는 걸 안 좋아해요. 걷는 게 더 좋아요.",
+   "en": "I don't like swimming. I prefer walking.",
+   "hint": "prefer",
+   "gram": "일반동사 prefer 앞에 I'm ✕ → <em>I prefer</em> + -ing.",
+   "mine": "I'm prefer …"
+  },
+  {
+   "id": "m23",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "동사·시제",
+   "ko": "휴가 갔을 때 모기에 물려서 계속 긁었더니 엄마한테 혼났어요.",
+   "en": "When I was on holiday, I got bitten by mosquitoes and kept scratching, so my mom told me off.",
+   "hint": "scratching",
+   "gram": "<em>on holiday</em> = 휴가 중. <em>keep</em> -ing = 계속 ~하다. <em>tell</em> 사람 <em>off</em> = 혼내다 (told me off)."
+  },
+  {
+   "id": "m24",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "문장 구조",
+   "ko": "저는 단 것에 푹 빠져 있어요. 중독된 것 같아요.",
+   "en": "I'm really into sweets. I think I'm addicted to them.",
+   "hint": "into",
+   "gram": "<em>be into</em> = ~에 빠져 있다 (I'm 꼭!). <em>be addicted to</em> = ~에 중독되다. sweet things → <em>sweets</em>.",
+   "mine": "I really in to …"
+  },
+  {
+   "id": "m25",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "표현",
+   "ko": "저 지금 통화 중이에요. 이제 끊어야 해요.",
+   "en": "I'm on the phone right now. I have to hang up.",
+   "hint": "hang up",
+   "gram": "<em>be on the phone</em> = 통화 중이다. <em>hang up</em> = 전화를 끊다."
+  },
+  {
+   "id": "m26",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "동사·시제",
+   "ko": "예전에는 버스 타고 출근했는데, 이제는 걸어서 출근하는 게 익숙해요.",
+   "en": "I used to go to work by bus, but now I'm used to going to work on foot.",
+   "hint": "used to",
+   "gram": "<em>used to</em> + 동사원형 = 예전에 ~했다 / <em>be used to</em> + -ing = ~에 익숙하다. 걸어서는 <em>on foot</em>.",
+   "mine": "by foot"
+  },
+  {
+   "id": "m27",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "표현",
+   "ko": "사실, 제가 할 줄 아는 요리는 라면뿐이에요.",
+   "en": "In fact, the only thing I can cook is ramyeon.",
+   "hint": "only thing",
+   "gram": "<em>In fact</em> = 사실은. <em>The only thing</em> (that) I can ~ <em>is</em> … = 내가 ~할 수 있는 건 …뿐이다."
+  },
+  {
+   "id": "m28",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "표현",
+   "ko": "크리스마스가 다가오는데, 제가 정말 원하는 건 푹 쉬는 거예요.",
+   "en": "Christmas is coming, and all I really want is a good rest.",
+   "hint": "all I really want",
+   "gram": "<em>be coming</em> = 다가오고 있다. <em>All I really want is</em> ~ = 내가 정말 원하는 건 ~뿐이야. (All I Want for Christmas Is You!)"
+  },
+  {
+   "id": "m29",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "표현",
+   "ko": "메뉴를 훑어보고 제일 맛있어 보이는 케이크를 골랐어요.",
+   "en": "I went through the menu and picked out the best-looking cake.",
+   "hint": "picked out",
+   "gram": "<em>go through</em> = 훑어보다 (go-went-gone). <em>pick out</em> = 고르다 (pick up = 집어 들다)."
+  },
+  {
+   "id": "e66",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "동사·시제",
+   "ko": "저는 보통 라떼를 주문해요.",
+   "en": "I usually order a latte.",
+   "hint": "usually order",
+   "gram": "일반동사 앞에 I'm ✕ → <em>I usually order</em>.",
+   "mine": "I'm usually order …"
+  },
+  {
+   "id": "e67",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "품사",
+   "ko": "큰 차이가 있어요.",
+   "en": "There is a big difference.",
+   "hint": "difference",
+   "gram": "different는 형용사(다른), <em>difference</em>는 명사(차이). a big 뒤에는 명사!",
+   "mine": "There is a big different."
+  },
+  {
+   "id": "e68",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "관사·전치사",
+   "ko": "저는 매일 엄마한테 전화해요.",
+   "en": "I call my mom every day.",
+   "hint": "call my mom",
+   "gram": "<em>call</em> + 사람 (with ✕). 매일은 <em>every day</em> (띄어 쓰기).",
+   "mine": "I call with my mom everyday."
+  },
+  {
+   "id": "e69",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "관사·전치사",
+   "ko": "한국에 있을 때 저는 버스를 많이 탔어요.",
+   "en": "When I was in Korea, I took the bus a lot.",
+   "hint": "in Korea",
+   "gram": "나라 이름 앞에는 a ✕ → <em>in Korea</em>.",
+   "mine": "when I was in a Korea"
+  },
+  {
+   "id": "e70",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "표현",
+   "ko": "평소처럼 저는 일찍 일어났어요.",
+   "en": "As usual, I got up early.",
+   "hint": "As usual",
+   "gram": "평소처럼은 <em>as usual</em>.",
+   "mine": "just usually"
+  },
+  {
+   "id": "e71",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "표현",
+   "ko": "9시까지 오셔야 해요.",
+   "en": "You're supposed to be here at nine.",
+   "hint": "supposed to",
+   "gram": "<em>be supposed to</em> + 동사원형 = (원래) ~하기로 되어 있다. = You're meant to be here at nine."
+  },
+  {
+   "id": "e72",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "단어 선택",
+   "ko": "가장 큰 장점은 싸다는 거고, 단점은 시간이 오래 걸린다는 거예요.",
+   "en": "The biggest upside is that it's cheap, and the downside is that it takes a long time.",
+   "hint": "downside",
+   "gram": "<em>upside</em> ↔ <em>downside</em> / benefit ↔ drawback / advantage ↔ disadvantage / pros and cons = 장단점."
   }
  ],
  "part1": [
@@ -2361,6 +2555,96 @@
    "ko": "혹시",
    "ex": "Do you have a pen, by any chance?",
    "s": 7
+  },
+  {
+   "w": "itchy",
+   "ko": "가려운",
+   "ex": "I'm actually wearing quite an itchy jumper at the moment.",
+   "s": 8
+  },
+  {
+   "w": "scratch",
+   "ko": "긁다",
+   "ex": "It's making me want to scratch my skin.",
+   "s": 8
+  },
+  {
+   "w": "funny you should ask",
+   "ko": "마침 그걸 물어보시네요",
+   "ex": "Well, funny you should ask.",
+   "s": 8
+  },
+  {
+   "w": "catch",
+   "ko": "옮다 (catch a cold)",
+   "ex": "You can catch a scratch.",
+   "s": 8
+  },
+  {
+   "w": "spot on",
+   "ko": "딱 맞는, 정확한",
+   "ex": "Your answer was spot on.",
+   "s": 8
+  },
+  {
+   "w": "no longer",
+   "ko": "더 이상 ~않다",
+   "ex": "It can no longer damage the skin.",
+   "s": 8
+  },
+  {
+   "w": "in fact",
+   "ko": "사실은",
+   "ex": "In fact, the only thing I can cook is ramyeon.",
+   "s": 8
+  },
+  {
+   "w": "the only thing",
+   "ko": "유일한 것",
+   "ex": "The only thing that tipped me off was his wish list.",
+   "s": 8
+  },
+  {
+   "w": "tip someone off",
+   "ko": "~에게 귀띔해 주다",
+   "ex": "My manager tipped me off about the new menu.",
+   "s": 8
+  },
+  {
+   "w": "put something up",
+   "ko": "붙이다, 걸다",
+   "ex": "I put my shopping list up on the fridge.",
+   "s": 8
+  },
+  {
+   "w": "All I really want is ~",
+   "ko": "내가 정말 원하는 건 ~뿐이야",
+   "ex": "All I really want is a good rest.",
+   "s": 8
+  },
+  {
+   "w": "go through",
+   "ko": "훑어보다 / (힘든 일을) 겪다",
+   "ex": "I went through the menu.",
+   "s": 8
+  },
+  {
+   "w": "pick out",
+   "ko": "고르다",
+   "ex": "I picked out the best-looking cake.",
+   "s": 8
+  },
+  {
+   "w": "be supposed to",
+   "ko": "~하기로 되어 있다 (= be meant to)",
+   "ex": "You're supposed to be here at nine.",
+   "s": 8
+  },
+  {
+   "w": "upside / downside",
+   "ko": "긍정적인 면 / 부정적인 면 (benefit ↔ drawback, advantage ↔ disadvantage, pros and cons)",
+   "ex": "The downside is that it takes a long time.",
+   "s": 8
   }
  ],
  "group": "ielts",
