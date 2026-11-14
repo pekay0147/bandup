@@ -1885,6 +1885,30 @@
    "en": "The biggest upside is that it's cheap, and the downside is that it takes a long time.",
    "hint": "downside",
    "gram": "<em>upside</em> ↔ <em>downside</em> / benefit ↔ drawback / advantage ↔ disadvantage / pros and cons = 장단점."
+  },
+  {
+   "id": "e73",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "표현",
+   "ko": "저는 오늘 악어 농장에 가기로 되어 있었어요.",
+   "en": "I was meant to go to the crocodile farm today.",
+   "hint": "meant to",
+   "gram": "<em>was meant to</em> + 동사원형 = ~하기로 되어 있었다 (그런데 결국 못 갔다는 느낌). = I <em>was supposed to</em> go…"
+  },
+  {
+   "id": "e74",
+   "kind": "ko",
+   "sessions": [
+    8
+   ],
+   "type": "동사·시제",
+   "ko": "저는 오늘 악어 농장에 갈 거예요.",
+   "en": "I'm going to the crocodile farm today.",
+   "hint": "going to",
+   "gram": "이미 정해진 계획은 <em>be going to</em> / 현재진행형(I'm going to the farm). 위 문장(was meant to = 가기로 했었는데 못 감)과 비교!"
   }
  ],
  "part1": [
