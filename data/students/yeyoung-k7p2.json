@@ -3005,6 +3005,246 @@
    "en": "The movie was scary, so I was scared.",
    "gram": "무섭게 만드는 것은 <em>scary</em> (그 영화가 무서운). 내가 느끼는 기분은 <em>scared</em> (겁먹은).",
    "hint": "scary"
+  },
+  {
+   "id": "r13-s01",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "저는 보통 저녁에 책을 읽으면서 시간을 보내요.",
+   "en": "I usually spend my evenings reading.",
+   "gram": "<em>spend</em> + 시간 + <em>-ing</em> = ~하면서 시간을 보내다.",
+   "hint": "reading"
+  },
+  {
+   "id": "r13-s02",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "저는 주말을 대부분 가족과 보내요.",
+   "en": "I spend most of my weekends with my family.",
+   "gram": "<em>spend</em> + 시간 + <em>with</em> 사람 = ~와 시간을 보내다.",
+   "hint": "with"
+  },
+  {
+   "id": "r13-s03",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "저는 매일 출퇴근하면서 한 시간을 보내요.",
+   "en": "I spend an hour commuting every day.",
+   "gram": "<em>spend</em> + 시간 + <em>-ing</em> = ~하면서 시간을 보내다.",
+   "hint": "commuting"
+  },
+  {
+   "id": "r13-s04",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "저는 하루에 두 시간씩 영어 공부를 해요.",
+   "en": "I spend two hours a day studying English.",
+   "gram": "<em>spend</em> + 시간 + <em>-ing</em> = ~하면서 시간을 보내다.",
+   "hint": "studying"
+  },
+  {
+   "id": "r13-s05",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "어제 오후 내내 방 청소를 했어요.",
+   "en": "I spent the whole afternoon cleaning my room.",
+   "gram": "<em>spend</em> + 시간 + <em>-ing</em> = ~하면서 시간을 보내다. spend-<em>spent</em>-spent.",
+   "hint": "cleaning"
+  },
+  {
+   "id": "r13-s06",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "사람들은 휴대폰을 보면서 너무 많은 시간을 보내요.",
+   "en": "People spend too much time looking at their phones.",
+   "gram": "<em>spend</em> + 시간 + <em>-ing</em> = ~하면서 시간을 보내다.",
+   "hint": "looking"
+  },
+  {
+   "id": "r13-s07",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "저는 시험 준비하느라 몇 주를 보냈어요.",
+   "en": "I spent weeks preparing for the exam.",
+   "gram": "<em>spend</em> + 시간 + <em>-ing</em> = ~하면서 시간을 보내다. spend-<em>spent</em>-spent.",
+   "hint": "preparing"
+  },
+  {
+   "id": "r13-s08",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "저는 휴일에 친구들과 수다 떨면서 시간을 보내는 걸 좋아해요.",
+   "en": "I love spending time chatting with my friends on holidays.",
+   "gram": "<em>spend</em> + 시간 + <em>-ing</em> = ~하면서 시간을 보내다.",
+   "hint": "chatting"
+  },
+  {
+   "id": "r13-s09",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "아이들은 밖에서 노는 데 시간을 더 써야 해요.",
+   "en": "Children should spend more time playing outside.",
+   "gram": "<em>spend</em> + 시간 + <em>-ing</em> = ~하면서 시간을 보내다.",
+   "hint": "playing"
+  },
+  {
+   "id": "r13-s10",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "저는 이번 달에 옷 사는 데 돈을 너무 많이 썼어요.",
+   "en": "I spent too much money on clothes this month.",
+   "gram": "돈은 <em>spend</em> + 돈 + <em>on</em> + 물건. spend-<em>spent</em>-spent.",
+   "hint": "on"
+  },
+  {
+   "id": "r13-k01",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "일 때문에 운동을 못 해요.",
+   "en": "My job keeps me from exercising.",
+   "gram": "<em>keep</em> + 대상 + <em>from -ing</em> = (주어) 때문에 대상이 ~하지 못하다. from 뒤엔 -ing!",
+   "hint": "exercising"
+  },
+  {
+   "id": "r13-k02",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "소음 때문에 잠을 잘 못 자요.",
+   "en": "The noise keeps me from sleeping well.",
+   "gram": "<em>keep</em> + 대상 + <em>from -ing</em> = (주어) 때문에 대상이 ~하지 못하다. from 뒤엔 -ing!",
+   "hint": "sleeping"
+  },
+  {
+   "id": "r13-k03",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "바쁜 일정 때문에 친구들을 못 만나요.",
+   "en": "My busy schedule keeps me from seeing my friends.",
+   "gram": "<em>keep</em> + 대상 + <em>from -ing</em> = (주어) 때문에 대상이 ~하지 못하다. from 뒤엔 -ing!",
+   "hint": "seeing"
+  },
+  {
+   "id": "r13-k04",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "두려움 때문에 사람들은 새로운 걸 시도하지 못해요.",
+   "en": "Fear stops people from trying new things.",
+   "gram": "<em>stop</em> + 대상 + <em>from -ing</em> = (주어) 때문에 대상이 ~하지 못하다. from 뒤엔 -ing!",
+   "hint": "trying"
+  },
+  {
+   "id": "r13-k05",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "완벽해질 때까지 기다리다 보면 시작조차 못 할 수 있어요.",
+   "en": "Waiting for perfection can stop us from starting.",
+   "gram": "<em>stop</em> + 대상 + <em>from -ing</em> = (주어) 때문에 대상이 ~하지 못하다. from 뒤엔 -ing!",
+   "hint": "starting"
+  },
+  {
+   "id": "r13-k06",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "휴대폰 때문에 공부에 집중하지 못할 수 있어요.",
+   "en": "Phones can stop us from focusing on our studies.",
+   "gram": "<em>stop</em> + 대상 + <em>from -ing</em> = (주어) 때문에 대상이 ~하지 못하다. from 뒤엔 -ing!",
+   "hint": "focusing"
+  },
+  {
+   "id": "r13-k07",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "비 때문에 소풍을 못 갔어요.",
+   "en": "The rain stopped us from going on a picnic.",
+   "gram": "<em>stop</em> + 대상 + <em>from -ing</em> = (주어) 때문에 대상이 ~하지 못하다. from 뒤엔 -ing!",
+   "hint": "going"
+  },
+  {
+   "id": "r13-h01",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "실수했을지도 몰라요.",
+   "en": "I might have made a mistake.",
+   "gram": "<em>might have</em> p.p. = ~했을지도 모른다 (실제로 했는지 불확실).",
+   "hint": "might have"
+  },
+  {
+   "id": "r13-h02",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "실수할 수도 있었어요.",
+   "en": "I could have made a mistake.",
+   "gram": "<em>could have</em> p.p. = ~할 수도 있었다 (그럴 가능성이 있었다).",
+   "hint": "could have"
+  },
+  {
+   "id": "r13-h03",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "확인했어야 했는데.",
+   "en": "I should have checked.",
+   "gram": "<em>should have</em> p.p. = ~했어야 했는데 (안 한 것에 대한 후회).",
+   "hint": "should have"
   }
  ],
  "part1": [
