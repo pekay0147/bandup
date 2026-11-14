@@ -378,5 +378,41 @@
 "give it away": {
 "ko": "(답·비밀을) 말해 버리다, 누설하다",
 "ex": "Don't tell me the ending. You'll give it away!"
+},
+"wait my turn": {
+"ko": "내 차례를 기다리다",
+"ex": "I always wait my turn patiently at the bank."
+},
+"interrupting": {
+"ko": "(말을) 끊는, 방해하는 (interrupt의 -ing형)",
+"ex": "Sorry for interrupting, but can I ask a quick question?"
+},
+"on purpose": {
+"ko": "일부러, 고의로",
+"ex": "I don't think he broke the vase on purpose."
+},
+"a bit of an": {
+"ko": "좀 ~한 (a bit of a(n) + 명사)",
+"ex": "My brother is a bit of an introvert."
+},
+"bargain hunter": {
+"ko": "알뜰 쇼핑족, 싼 물건을 찾아다니는 사람",
+"ex": "As a bargain hunter, I love weekend flea markets."
+},
+"correspondent": {
+"ko": "특파원, 통신원",
+"ex": "She works as a foreign correspondent for a newspaper."
+},
+"it's a -minute walk": {
+"ko": "걸어서 ~분 거리예요 (It's a ten-minute walk)",
+"ex": "The station is close; it's a five-minute walk from my flat."
+},
+"the daily grind": {
+"ko": "지루하고 고된 일상, 매일 반복되는 일",
+"ex": "Weekend hikes help me escape the daily grind."
+},
+"grind": {
+"ko": "고되고 단조로운 일",
+"ex": "Studying for exams every night can be a real grind."
 }
 }
