@@ -1850,19 +1850,6 @@
    "mine": "I call with my mom everyday."
   },
   {
-   "id": "e69",
-   "kind": "ko",
-   "sessions": [
-    8
-   ],
-   "type": "관사·전치사",
-   "ko": "한국에 있을 때 저는 버스를 많이 탔어요.",
-   "en": "When I was in Korea, I took the bus a lot.",
-   "hint": "in Korea",
-   "gram": "나라 이름 앞에는 a ✕ → <em>in Korea</em>.",
-   "mine": "when I was in a Korea"
-  },
-  {
    "id": "e70",
    "kind": "ko",
    "sessions": [
