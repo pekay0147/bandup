@@ -1875,18 +1875,6 @@
    "gram": "<em>be supposed to</em> + 동사원형 = (원래) ~하기로 되어 있다. = You're meant to be here at nine."
   },
   {
-   "id": "e72",
-   "kind": "ko",
-   "sessions": [
-    8
-   ],
-   "type": "단어 선택",
-   "ko": "가장 큰 장점은 싸다는 거고, 단점은 시간이 오래 걸린다는 거예요.",
-   "en": "The biggest upside is that it's cheap, and the downside is that it takes a long time.",
-   "hint": "downside",
-   "gram": "<em>upside</em> ↔ <em>downside</em> / benefit ↔ drawback / advantage ↔ disadvantage / pros and cons = 장단점."
-  },
-  {
    "id": "e73",
    "kind": "ko",
    "sessions": [
