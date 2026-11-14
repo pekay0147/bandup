@@ -65,6 +65,11 @@
    "no": 12,
    "date": "2026-11-11",
    "title": "Transport · Shopping · Routine · Art"
+  },
+  {
+   "no": 13,
+   "date": "2026-11-14",
+   "title": "Communication · Cafés · Exercise · Books"
   }
  ],
  "types": [
@@ -90,7 +95,8 @@
  "focus": {
   "10": "과거 질문엔 끝까지 과거형! 장소 앞 관사(the beach)와 전치사(on holiday) 챙기기.",
   "11": "동명사 주어(Making a list, Being punctual)는 단수 동사! annoying(그게 주는 느낌) vs annoyed(내 기분) 구분하기.",
-  "12": "처음 소개할 땐 There is a ~, 다시 말할 땐 It! 동명사 주어(Drinking water, Having a routine)는 단수 동사."
+  "12": "처음 소개할 땐 There is a ~, 다시 말할 땐 It! 동명사 주어(Drinking water, Having a routine)는 단수 동사.",
+  "13": "help + 사람 + 동사원형 (is help ✕)! go to + 장소, similar to. 동사를 꾸밀 땐 부사(more easily)."
  },
  "compare": [
   [
@@ -2798,6 +2804,219 @@
    "en": "I just went out for a walk, but I ended up at the mall.",
    "gram": "<em>end up at</em> + 장소 = 결국 ~에 가게 되다. 동작이 오면 end up + -ing (ended up shopping).",
    "hint": "mall"
+  },
+  {
+   "id": "r13-m1",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "팟캐스트를 듣는 것은 제 영어에 도움이 돼요.",
+   "en": "Listening to podcasts helps me improve my English.",
+   "gram": "동명사 주어 <em>Listening to podcasts</em> + helps(단수). <em>help</em> + 사람 + 동사원형.",
+   "hint": "helps"
+  },
+  {
+   "id": "r13-m2",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "단어 선택",
+   "ko": "이 가게는 짭짤하고 바삭한 샌드위치로 잘 알려져 있어요.",
+   "en": "This shop is well known for its savoury, crispy sandwiches.",
+   "gram": "<em>be well known for</em> + 명사 = ~로 잘 알려져 있다. its = 그 가게의. <em>savoury</em> 짭짤한 / <em>crispy</em> 바삭한.",
+   "hint": "known"
+  },
+  {
+   "id": "r13-m3",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "단·복수",
+   "ko": "우리 집 근처에 카페가 꽤 많고, 그 카페들의 커피는 맛이 깊어요.",
+   "en": "There are quite a few cafés near my home, and their coffee is rich.",
+   "gram": "There <em>are</em> + 복수 + near + 장소. <em>quite a few</em> = 꽤 많은. coffee(음료)는 셀 수 없어서 their coffee <em>is</em>. <em>rich</em> = (맛이) 진한, 깊은.",
+   "hint": "quite a few"
+  },
+  {
+   "id": "r13-m4",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "표현",
+   "ko": "면접 전에 긴장했어요. 그건 당연해요.",
+   "en": "I was nervous before the interview. It's natural.",
+   "gram": "<em>nervous</em> = 긴장한. <em>It's natural</em> (to be nervous) = 그건 당연해요.",
+   "hint": "natural"
+  },
+  {
+   "id": "r13-m5",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "피곤했지만, 괜찮은 척했어요.",
+   "en": "Even though I was tired, I pretended to be fine.",
+   "gram": "<em>even though</em> + 주어 + 동사 = 비록 ~이지만. <em>pretend to</em> + 동사원형 = ~인 척하다.",
+   "hint": "pretended"
+  },
+  {
+   "id": "r13-m6",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "표현",
+   "ko": "드디어 시험이 끝났어요. 정말 오래 기다렸어요.",
+   "en": "The exam is finally over. It was a long time coming.",
+   "gram": "<em>a long time coming</em> = 오래 걸려 드디어 이뤄진 일.",
+   "hint": "coming"
+  },
+  {
+   "id": "r13-01",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "관사·전치사",
+   "ko": "저는 제가 제일 좋아하는 카페에 갔어요.",
+   "en": "I went to my favourite café.",
+   "mine": "I went my cafe.",
+   "gram": "장소에 가다는 <em>go to</em> + 장소 (went <em>to</em>). my cafe(내 카페)라고 하면 내가 주인인 카페 → <em>my favourite café</em>.",
+   "hint": "went to"
+  },
+  {
+   "id": "r13-02",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "표현",
+   "ko": "저는 친구를 우연히 마주쳤어요.",
+   "en": "I ran into my friend.",
+   "gram": "⭐ 잘 쓴 표현! <em>run into</em> = 우연히 마주치다 (run-ran-run). = come across.",
+   "hint": "ran into"
+  },
+  {
+   "id": "r13-03",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "차 향기는 저를 편안하게 해 줘요.",
+   "en": "The smell of tea makes me feel relaxed.",
+   "mine": "tea smell",
+   "gram": "<em>the smell of</em> + 명사 = ~의 향기. <em>make</em> + 사람 + feel + 형용사. 내 기분은 relax<em>ed</em>.",
+   "hint": "smell"
+  },
+  {
+   "id": "r13-04",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "단어 선택",
+   "ko": "그 빵 이름이 기억이 안 나요.",
+   "en": "I can't remember the name of the bread.",
+   "mine": "bread name",
+   "gram": "~의 이름은 <em>the name of</em> + 명사. bread name보다 자연스러워요.",
+   "hint": "name"
+  },
+  {
+   "id": "r13-05",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "품사",
+   "ko": "둘은 별로 다르지 않아요.",
+   "en": "They're not very different.",
+   "mine": "They don't have many different.",
+   "gram": "<em>different</em>는 형용사라 have 뒤에 못 와요. → They're not (very) <em>different</em>. / They don't have many <em>differences</em>(명사).",
+   "hint": "different"
+  },
+  {
+   "id": "r13-06",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "관사·전치사",
+   "ko": "캐나다 물가는 한국 물가와 비슷해요.",
+   "en": "Prices in Canada are similar to those in Korea.",
+   "mine": "The price in Canada is similar with Korea.",
+   "gram": "<em>similar to</em> (with ✕). 물가는 물가끼리 비교 → <em>those</em> in Korea (= the prices). 물가 전반은 prices(복수) + are.",
+   "hint": "similar to"
+  },
+  {
+   "id": "r13-07",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "품사",
+   "ko": "성경은 한국어보다 영어로 읽을 때 더 쉽게 이해돼요.",
+   "en": "I can understand the Bible more easily when I read it in English than in Korean.",
+   "mine": "I can understand more easier contents.",
+   "gram": "동사(understand)를 꾸미는 건 부사 → <em>more easily</em>. contents 대신 the Bible / it. 성경은 대문자 <em>Bible</em>.",
+   "hint": "easily"
+  },
+  {
+   "id": "r13-08",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "그 책은 제가 소중한 사람이라고 느끼게 해 줘요.",
+   "en": "The book makes me feel that I am precious.",
+   "mine": "The book makes my precious.",
+   "gram": "<em>make</em> + 사람(me) + <em>feel</em> + that 주어+동사. my(내)가 아니라 me(나를)!",
+   "hint": "feel"
+  },
+  {
+   "id": "r13-09",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "동사·시제",
+   "ko": "우리 강아지는 항상 더 걷고 싶어 해요.",
+   "en": "My dog always wants to walk more.",
+   "mine": "My dog always wants to more walk.",
+   "gram": "more는 동사 뒤: <em>walk more</em>. My dog은 3인칭 단수라 want<em>s</em>.",
+   "hint": "walk more"
+  },
+  {
+   "id": "r13-10",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "문장 구조",
+   "ko": "그건 제 스트레스를 줄이는 데 도움이 돼요.",
+   "en": "It helps me reduce my stress.",
+   "mine": "It is help me reduce stress.",
+   "gram": "is와 help를 같이 쓰지 않기(동사는 하나!). <em>help</em> + 사람 + 동사원형.",
+   "hint": "helps"
+  },
+  {
+   "id": "r13-11",
+   "kind": "ko",
+   "sessions": [
+    13
+   ],
+   "type": "품사",
+   "ko": "그 영화는 무서웠어요. 그래서 저는 겁이 났어요.",
+   "en": "The movie was scary, so I was scared.",
+   "gram": "무섭게 만드는 것은 <em>scary</em> (그 영화가 무서운). 내가 느끼는 기분은 <em>scared</em> (겁먹은).",
+   "hint": "scary"
   }
  ],
  "part1": [
@@ -4010,6 +4229,96 @@
    "ko": "결국 ~하게 되다",
    "ex": "I ended up staying home.",
    "s": 12
+  },
+  {
+   "w": "a long time coming",
+   "ko": "오래 걸려 드디어 이뤄진 일",
+   "ex": "This moment has been quite a long time coming.",
+   "s": 13
+  },
+  {
+   "w": "false dawn",
+   "ko": "좋아지는 듯했지만 아닌 상황",
+   "ex": "There's been some false dawns in cancer vaccines.",
+   "s": 13
+  },
+  {
+   "w": "breakthrough",
+   "ko": "돌파구, 획기적 진전",
+   "ex": "It's very exciting that there's this breakthrough.",
+   "s": 13
+  },
+  {
+   "w": "prime",
+   "ko": "~할 준비를 시키다",
+   "ex": "Vaccines prime your body to fight diseases.",
+   "s": 13
+  },
+  {
+   "w": "show promise",
+   "ko": "가능성을 보이다",
+   "ex": "This new treatment shows a lot of promise.",
+   "s": 13
+  },
+  {
+   "w": "loads of",
+   "ko": "엄청 많은",
+   "ex": "I've had loads of injections since I was a child.",
+   "s": 13
+  },
+  {
+   "w": "side effects",
+   "ko": "부작용",
+   "ex": "Radiotherapy and chemotherapy have quite a few side effects.",
+   "s": 13
+  },
+  {
+   "w": "work out",
+   "ko": "알아내다, 풀다",
+   "ex": "I worked out the answer on my own.",
+   "s": 13
+  },
+  {
+   "w": "quite a few",
+   "ko": "꽤 많은",
+   "ex": "I made quite a few mistakes in the test.",
+   "s": 13
+  },
+  {
+   "w": "confident",
+   "ko": "자신 있는",
+   "ex": "I'm fairly confident about my English.",
+   "s": 13
+  },
+  {
+   "w": "natural",
+   "ko": "자연스러운, 당연한",
+   "ex": "It's natural to be nervous.",
+   "s": 13
+  },
+  {
+   "w": "go well",
+   "ko": "잘 되다",
+   "ex": "I really want it to go well.",
+   "s": 13
+  },
+  {
+   "w": "find a balance",
+   "ko": "균형을 찾다",
+   "ex": "It's hard to find a balance between being friendly and confident.",
+   "s": 13
+  },
+  {
+   "w": "pretend to",
+   "ko": "~인 척하다",
+   "ex": "I pretended to be fine.",
+   "s": 13
+  },
+  {
+   "w": "similar to",
+   "ko": "~와 비슷한",
+   "ex": "Prices in Canada are similar to those in Korea.",
+   "s": 13
   }
  ],
  "pod": {
