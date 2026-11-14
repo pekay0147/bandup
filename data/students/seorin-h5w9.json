@@ -1071,6 +1071,78 @@
    "en": "We should take information from the internet with a pinch of salt.",
    "hint": "pinch of salt",
    "gram": "<em>take</em> A <em>with a pinch of salt</em> = A를 걸러 듣다. = Information from the internet should be taken with a pinch of salt."
+  },
+  {
+   "id": "s4s1",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 하루 대부분을 환자들을 돌보면서 보내요.",
+   "en": "I spend most of my day taking care of patients.",
+   "hint": "spend",
+   "gram": "<em>spend</em> + 시간 + <em>-ing</em> = ~하면서 시간을 보내다."
+  },
+  {
+   "id": "s4s2",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    4
+   ],
+   "ko": "어제 오후 내내 방 청소를 했어요.",
+   "en": "I spent the whole afternoon cleaning my room.",
+   "hint": "spent",
+   "gram": "<em>spend</em> + 시간 + -ing. 과거는 spend-<em>spent</em>-spent. the whole afternoon = 오후 내내."
+  },
+  {
+   "id": "s4k1",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    4
+   ],
+   "ko": "소음 때문에 잠을 잘 못 자요.",
+   "en": "The noise keeps me from sleeping well.",
+   "hint": "keeps",
+   "gram": "<em>keep</em> + 대상 + <em>from -ing</em> = (주어) 때문에 대상이 ~하지 못하다. 주어가 원인!"
+  },
+  {
+   "id": "s4k2",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    4
+   ],
+   "ko": "바쁜 일정 때문에 친구들을 못 만나요.",
+   "en": "My busy schedule stops me from seeing my friends.",
+   "hint": "stops",
+   "gram": "<em>stop</em> + 대상 + <em>from -ing</em>도 같은 뜻. from 뒤엔 -ing!"
+  },
+  {
+   "id": "s4a1",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    4
+   ],
+   "ko": "가격이 작년보다 두 배 높아요.",
+   "en": "The price is twice as high as it was last year.",
+   "hint": "twice",
+   "gram": "배수 + <em>as</em> 형용사 <em>as</em> = ~보다 몇 배 …한. twice(두 배) / half(절반) / three times(세 배)."
+  },
+  {
+   "id": "s4a2",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 예전만큼 커피를 많이 마시지 않아요.",
+   "en": "I don't drink as much coffee as I used to.",
+   "hint": "as much",
+   "gram": "not <em>as much</em> + 명사 + <em>as</em> = ~만큼 많이 …하지 않다. 셀 수 없는 coffee라 much."
   }
  ],
  "part1": [
