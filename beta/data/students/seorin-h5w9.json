@@ -20,6 +20,11 @@
    "no": 3,
    "date": "2026-11-10",
    "title": "A healthy habit"
+  },
+  {
+   "no": 4,
+   "date": "2026-11-14",
+   "title": "Giving advice"
   }
  ],
  "types": [
@@ -40,7 +45,8 @@
  },
  "focus": {
   "1": "Part 1 Study·Hometown 질문은 3줄씩 말할 수 있게 연습하기!",
-  "2": "used to + 동사원형(예전에 ~했다) vs be used to + -ing(~에 익숙하다) 구분! 거리는 It takes 20 minutes on foot / It's a 20-minute walk 두 가지로."
+  "2": "used to + 동사원형(예전에 ~했다) vs be used to + -ing(~에 익숙하다) 구분! 거리는 It takes 20 minutes on foot / It's a 20-minute walk 두 가지로.",
+  "4": "Part 3는 주어를 '나'보다 People / Many people로! Part 2는 직접화법 대신 told me (that) / suggested (that). 과거 이야기는 hung처럼 과거형으로."
  },
  "compare": [
   [
@@ -950,6 +956,170 @@
    "en": "When I was young, whenever I visited my grandma, I planted flowers.",
    "hint": "whenever",
    "gram": "과거 습관은 과거형으로: whenever I <em>visited</em>, I <em>planted</em> (시제 맞추기!)."
+  },
+  {
+   "id": "s4m1",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 요즘 집에 있는 걸 정말 좋아해요. 휴대폰에 중독된 것 같아요.",
+   "en": "I really like staying at home these days. I think I'm addicted to my phone.",
+   "hint": "staying",
+   "gram": "<em>like</em> + -ing (like stay ✕). <em>be addicted to</em> + 명사 = ~에 중독되다.",
+   "mine": "I really like stay at home."
+  },
+  {
+   "id": "s4m2",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "스트레스 받을 때마다 저는 쇼핑하러 가요. 하지만 그게 만능 해결책은 아니에요.",
+   "en": "Whenever I feel stressed, I go shopping. But it's not a magic bullet.",
+   "hint": "shopping",
+   "gram": "<em>whenever</em> + 주어 + 동사 = ~할 때마다. 쇼핑하러 가다는 <em>go shopping</em> (to ✕). <em>magic bullet</em> = 만능 해결책.",
+   "mine": "go to shopping"
+  },
+  {
+   "id": "s4m3",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    4
+   ],
+   "ko": "첫 야간 근무 후에는 잠들기가 어려웠어요.",
+   "en": "I found it hard to fall asleep after my first night shift.",
+   "hint": "found",
+   "gram": "<em>find it</em> + 형용사 + <em>to</em> 동사 = ~하는 게 …하다고 느끼다. 과거라서 <em>found</em>."
+  },
+  {
+   "id": "s4m4",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 식물을 키워요. 물을 안 주면 죽어요.",
+   "en": "I grow plants. If I don't water them, they die.",
+   "hint": "grow",
+   "gram": "식물을 키우다는 <em>grow</em> plants (grow up ✕ = 사람이 자라다). <em>water</em> = 물을 주다. <em>die</em>(동사) / dead(형용사).",
+   "mine": "I don't grow up plants."
+  },
+  {
+   "id": "s4m5",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 큰 도시에 사는 걸 더 좋아해요. 친구들과 좋은 시간을 보내기 쉽거든요.",
+   "en": "I prefer living in a big city because it's easy to spend quality time with my friends.",
+   "hint": "living",
+   "gram": "<em>prefer</em> + -ing (prefer live ✕). <em>spend quality time with</em> = ~와 의미 있는 시간을 보내다.",
+   "mine": "I prefer live in a big city."
+  },
+  {
+   "id": "s4m6",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    4
+   ],
+   "ko": "온라인 쇼핑의 장점은 말 그대로 언제든 할 수 있다는 거예요.",
+   "en": "The benefit of shopping online is that I can literally do it anytime.",
+   "hint": "benefit",
+   "gram": "<em>The benefit of</em> A <em>is that</em> + 주어 + 동사 = A의 장점은 ~라는 것. <em>literally</em> = 말 그대로, 진짜로.",
+   "mine": "online shopping benefits"
+  },
+  {
+   "id": "s401",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    4
+   ],
+   "ko": "어제 친구들이랑 놀았어요.",
+   "en": "I hung out with my friends yesterday.",
+   "hint": "hung",
+   "gram": "yesterday면 과거형! hang-<em>hung</em>-hung. <em>hang out with</em> = ~와 어울려 놀다.",
+   "mine": "I hang out with my friends yesterday."
+  },
+  {
+   "id": "s402",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 꽤 자주 야근해요.",
+   "en": "More often than not, I work late.",
+   "hint": "more often than",
+   "gram": "often 대신 <em>more often than not</em> = 대개, 꽤 자주."
+  },
+  {
+   "id": "s403",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 가끔 친구들을 만나요.",
+   "en": "I meet my friends from time to time.",
+   "hint": "from time to time",
+   "gram": "sometimes 대신 <em>from time to time</em> / <em>every now and then</em> / <em>on and off</em> = 가끔."
+  },
+  {
+   "id": "s404",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 매일 운동하려고 해요.",
+   "en": "I try to exercise on a daily basis.",
+   "hint": "basis",
+   "gram": "every day 대신 <em>on a daily basis</em> = 매일. <em>on a regular basis</em> = 꾸준히."
+  },
+  {
+   "id": "s405",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    4
+   ],
+   "ko": "그녀가 피곤하다고 해서, 저는 일찍 집에 가라고 했어요.",
+   "en": "She told me she was tired, so I suggested she go home early.",
+   "hint": "told me",
+   "gram": "Part 2에서는 직접화법보다 간접화법! <em>told me (that)</em> + 주어 + 과거동사 / <em>suggested (that)</em> + 주어 + 동사원형.",
+   "mine": "She said, \"I'm so tired,\" and I said, \"Go home early.\""
+  },
+  {
+   "id": "s406",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    4
+   ],
+   "ko": "저는 제 자신이 자랑스러워요.",
+   "en": "I'm proud of myself.",
+   "hint": "proud of",
+   "gram": "proud는 형용사라 be동사가 필요해요: <em>I'm proud of</em> + 대상.",
+   "mine": "I proud myself."
+  },
+  {
+   "id": "s407",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    4
+   ],
+   "ko": "인터넷 정보는 걸러서 들어야 해요.",
+   "en": "We should take information from the internet with a pinch of salt.",
+   "hint": "pinch of salt",
+   "gram": "<em>take</em> A <em>with a pinch of salt</em> = A를 걸러 듣다. = Information from the internet should be taken with a pinch of salt."
   }
  ],
  "part1": [
@@ -1281,6 +1451,66 @@
    "ko": "~할 때마다",
    "ex": "Whenever I feel stressed, I go for a walk.",
    "s": 3
+  },
+  {
+   "w": "addicted to",
+   "ko": "~에 중독된",
+   "ex": "Nature gave us these systems to be addicted to each other for reproduction and protection.",
+   "s": 4
+  },
+  {
+   "w": "oriented toward",
+   "ko": "~를 향한, ~에 초점을 둔",
+   "ex": "It is a survival system oriented completely toward the other person, much like hunger or thirst.",
+   "s": 4
+  },
+  {
+   "w": "longevity",
+   "ko": "장수, 수명",
+   "ex": "It is the number one predictor of longevity.",
+   "s": 4
+  },
+  {
+   "w": "literal / literally",
+   "ko": "문자 그대로의 / 말 그대로, 진짜로",
+   "ex": "There's literal pain in your brain.",
+   "s": 4
+  },
+  {
+   "w": "actually / basically / genuinely / technically",
+   "ko": "사실은 / 기본적으로 / 진심으로 / 엄밀히 말하면",
+   "ex": "Technically, I'm off today, but I still have to answer calls.",
+   "s": 4
+  },
+  {
+   "w": "more often than not",
+   "ko": "대개, 꽤 자주",
+   "ex": "More often than not, I work late.",
+   "s": 4
+  },
+  {
+   "w": "from time to time / every now and then / on and off",
+   "ko": "가끔",
+   "ex": "I meet my friends from time to time.",
+   "s": 4
+  },
+  {
+   "w": "on a daily basis / on a regular basis",
+   "ko": "매일 / 꾸준히",
+   "ex": "I try to exercise on a regular basis.",
+   "s": 4
+  },
+  {
+   "w": "take with a pinch of salt",
+   "ko": "걸러 듣다",
+   "ex": "We should take information from the internet with a pinch of salt.",
+   "s": 4
+  },
+  {
+   "w": "hang out with",
+   "ko": "~와 어울려 놀다 (hang-hung-hung)",
+   "ex": "I hung out with my friends yesterday.",
+   "s": 4
   }
  ],
  "podFiles": [
