@@ -1048,55 +1048,6 @@
    "mine": "I hang out with my friends yesterday."
   },
   {
-   "id": "s402",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    4
-   ],
-   "ko": "저는 꽤 자주 야근해요.",
-   "en": "More often than not, I work late.",
-   "hint": "more often than",
-   "gram": "often 대신 <em>more often than not</em> = 대개, 꽤 자주."
-  },
-  {
-   "id": "s403",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    4
-   ],
-   "ko": "저는 가끔 친구들을 만나요.",
-   "en": "I meet my friends from time to time.",
-   "hint": "from time to time",
-   "gram": "sometimes 대신 <em>from time to time</em> / <em>every now and then</em> / <em>on and off</em> = 가끔."
-  },
-  {
-   "id": "s404",
-   "kind": "ko",
-   "type": "표현",
-   "sessions": [
-    4
-   ],
-   "ko": "저는 매일 운동하려고 해요.",
-   "en": "I try to exercise on a daily basis.",
-   "hint": "basis",
-   "gram": "every day 대신 <em>on a daily basis</em> = 매일. <em>on a regular basis</em> = 꾸준히."
-  },
-  {
-   "id": "s405",
-   "kind": "ko",
-   "type": "문장 구조",
-   "sessions": [
-    4
-   ],
-   "ko": "그녀가 피곤하다고 해서, 저는 일찍 집에 가라고 했어요.",
-   "en": "She told me she was tired, so I suggested she go home early.",
-   "hint": "told me",
-   "gram": "Part 2에서는 직접화법보다 간접화법! <em>told me (that)</em> + 주어 + 과거동사 / <em>suggested (that)</em> + 주어 + 동사원형.",
-   "mine": "She said, \"I'm so tired,\" and I said, \"Go home early.\""
-  },
-  {
    "id": "s406",
    "kind": "ko",
    "type": "문장 구조",
