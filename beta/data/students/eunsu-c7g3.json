@@ -38,6 +38,12 @@
    "date": "2026-11-12",
    "title": "Speaking Matrix",
    "label": "스피킹 매트릭스 14회"
+  },
+  {
+   "no": 18,
+   "date": "2026-11-14",
+   "title": "Speaking Matrix",
+   "label": "스피킹 매트릭스 15회"
   }
  ],
  "types": [
@@ -1217,6 +1223,102 @@
    "en": "Your high standards are keeping you from seeing someone.",
    "hint": "standards",
    "gram": "<em>keep</em> + 사람 + <em>from</em> -ing = ~ 때문에 …를 못 하다 (지금 그렇다는 느낌이라 are keeping). <em>high standards</em> = 높은 기준, 눈이 높음. <em>see someone</em> = 누군가를 만나다, 사귀다."
+  },
+  {
+   "id": "sm15-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    18
+   ],
+   "ko": "제 일과 건강에 대한 생각을 바꿔 놓은 이야기를 하나 나누고 싶어요.",
+   "en": "I want to share a story that changed the way I think about work and health.",
+   "hint": "the way",
+   "gram": "<em>the way</em> + 주어 + 동사 = ~하는 방식. <em>a story that</em> changed ~ = ~를 바꾼 이야기 (that = 관계대명사)."
+  },
+  {
+   "id": "sm15-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    18
+   ],
+   "ko": "작년에 저는 번아웃을 겪고 있었는데, 이유를 몰랐어요.",
+   "en": "Last year, I was dealing with burnout and didn't understand why.",
+   "hint": "dealing",
+   "gram": "<em>deal with</em> = (힘든 일을) 겪다, 대처하다. 과거진행 <em>was dealing</em> = 한동안 계속 겪고 있었다. <em>burnout</em>은 셀 수 없는 명사라 a 없이."
+  },
+  {
+   "id": "sm15-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    18
+   ],
+   "ko": "아무리 오래 자도 매일 아침 진이 빠진 채로 일어났어요.",
+   "en": "I was waking up feeling drained every morning, no matter how long I slept.",
+   "hint": "drained",
+   "gram": "<em>wake up feeling</em> + 형용사 = ~한 기분으로 일어나다. <em>drained</em> = 진이 빠진. <em>no matter how</em> + 형용사/부사 + 주어 + 동사 = 아무리 ~해도."
+  },
+  {
+   "id": "sm15-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    18
+   ],
+   "ko": "저는 밤늦게까지 휴대폰 스크롤을 하고 있었어요.",
+   "en": "I had been scrolling late into the night.",
+   "hint": "into",
+   "gram": "과거완료진행 <em>had been</em> -ing = (그 전부터) 계속 ~하고 있었다. <em>late into the night</em> = 밤늦게까지."
+  },
+  {
+   "id": "sm15-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    18
+   ],
+   "ko": "밤늦게 스크롤하던 걸 독서와 가벼운 스트레칭으로 바꾸기 시작했어요.",
+   "en": "I started replacing late-night scrolling with reading and light stretching.",
+   "hint": "replacing",
+   "gram": "<em>replace</em> A <em>with</em> B = A를 B로 바꾸다. <em>start</em> -ing = ~하기 시작하다. <em>late-night</em>(형용사) 하이픈 주의."
+  },
+  {
+   "id": "sm15-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    18
+   ],
+   "ko": "오래 지속할 수 있고 저에게 맞는 하루 리듬을 찾았어요.",
+   "en": "I found a daily rhythm that felt sustainable and right for me.",
+   "hint": "sustainable",
+   "gram": "<em>a daily rhythm that felt</em> ~ = ~하게 느껴지는 하루 리듬. <em>feel</em> + 형용사. <em>sustainable</em> = 지속 가능한, 무리 없이 계속할 수 있는."
+  },
+  {
+   "id": "sm15-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    18
+   ],
+   "ko": "저는 힘들어도 밀고 나가는 게 진짜 강함을 만든다고 믿어요.",
+   "en": "I believe pushing through builds real strength.",
+   "hint": "pushing",
+   "gram": "동명사 주어 <em>pushing through</em>(힘들어도 버티고 해내는 것) + builds(단수 동사). <em>build strength</em> = 힘을 기르다."
+  },
+  {
+   "id": "sm15-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    18
+   ],
+   "ko": "그들은 절대 속도를 늦추지 않고 늘 계속 나아갈 방법을 찾는 사람들을 존경해요.",
+   "en": "They admire those who never slow down and always find a way to keep going.",
+   "hint": "those",
+   "gram": "<em>those who</em> + 동사 = ~하는 사람들. <em>slow down</em> = 속도를 늦추다. <em>find a way to</em> + 동사 = ~할 방법을 찾다. <em>keep going</em> = 계속 나아가다."
   }
  ],
  "part1": [],
