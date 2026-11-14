@@ -1560,6 +1560,150 @@
    "en": "Do you have a pen, by any chance?",
    "hint": "chance",
    "gram": "<em>by any chance</em> = 혹시. 공손하게 물어볼 때 끝에 붙여요."
+  },
+  {
+   "id": "mn01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "manual": true,
+   "plabel": "주문 매뉴얼",
+   "ko": "안녕하세요, 오늘 어떠세요?",
+   "en": "Hi, how are you today?",
+   "hint": "how are you",
+   "gram": "손님 맞이 첫 인사."
+  },
+  {
+   "id": "mn02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "manual": true,
+   "plabel": "주문 매뉴얼",
+   "ko": "저희 멤버십이 새로 바뀌었어요. 예전 멤버십은 만료됐어요.",
+   "en": "We have a new membership. The old one has expired.",
+   "hint": "expired",
+   "gram": "<em>has expired</em> = 만료됐다 (현재완료). the old one = 예전 멤버십."
+  },
+  {
+   "id": "mn03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "manual": true,
+   "plabel": "주문 매뉴얼",
+   "ko": "전화번호 알려 주시겠어요?",
+   "en": "Can I have your phone number, please?",
+   "hint": "phone number",
+   "gram": "<em>Can I have</em> ~, please? = ~ 주시겠어요? 손님에게 정중하게 물을 때."
+  },
+  {
+   "id": "mn04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "manual": true,
+   "plabel": "주문 매뉴얼",
+   "ko": "설정하실 수 있게 문자를 보내 드릴게요.",
+   "en": "We'll send you a text so you can set it up.",
+   "hint": "set it up",
+   "gram": "<em>so (that)</em> + 주어 + can = ~할 수 있게. <em>set it up</em> = (계정 등을) 설정하다. it이 가운데!"
+  },
+  {
+   "id": "mn05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "manual": true,
+   "plabel": "주문 매뉴얼",
+   "ko": "예전에 저희 앱을 쓰셨으니까, 첫해는 무료예요.",
+   "en": "You used to have our app, so your first year is free.",
+   "hint": "used to",
+   "gram": "<em>used to</em> + 동사원형 = 예전에 ~했다. (be used to와 헷갈리지 않기!)"
+  },
+  {
+   "id": "mn06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "manual": true,
+   "plabel": "주문 매뉴얼",
+   "ko": "첫해 이후에는 3달러예요.",
+   "en": "After the first year, it's three dollars.",
+   "hint": "after",
+   "gram": "After + 기간, it's + 가격."
+  },
+  {
+   "id": "mn07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "manual": true,
+   "plabel": "주문 매뉴얼",
+   "ko": "자리에 앉으시면 문자를 확인해 주세요.",
+   "en": "When you sit down, please check your messages.",
+   "hint": "check",
+   "gram": "When + 주어 + 동사, please + 동사원형. text = message."
+  },
+  {
+   "id": "mn08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "manual": true,
+   "plabel": "주문 매뉴얼",
+   "ko": "링크를 누르고 정보를 입력하시면 돼요.",
+   "en": "Just tap the link and fill out your details.",
+   "hint": "fill out",
+   "gram": "<em>Just</em> + 동사원형 = ~하시면 돼요. <em>fill out</em> = (양식을) 작성하다. details = 개인 정보."
+  },
+  {
+   "id": "mn09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "manual": true,
+   "plabel": "주문 매뉴얼",
+   "ko": "그다음 바코드를 애플이나 구글 월렛에 추가하세요.",
+   "en": "Then, add the barcode to your Apple or Google Wallet.",
+   "hint": "add",
+   "gram": "<em>add</em> A <em>to</em> B = A를 B에 추가하다."
+  },
+  {
+   "id": "mn10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "manual": true,
+   "plabel": "주문 매뉴얼",
+   "ko": "잘 안 되면, 바코드를 스크린샷 찍어 두세요.",
+   "en": "If it doesn't work, just take a screenshot of the barcode.",
+   "hint": "screenshot",
+   "gram": "If it doesn't work = 잘 안 되면. <em>take a screenshot of</em> ~ = ~을 캡처하다."
+  },
+  {
+   "id": "mn11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "manual": true,
+   "plabel": "주문 매뉴얼",
+   "ko": "오실 때 바코드를 보여 주시면 저희가 스캔해 드릴게요.",
+   "en": "Show us the barcode when you come in, and we'll scan it.",
+   "hint": "scan",
+   "gram": "<em>show</em> + 사람 + 물건 = ~에게 …을 보여 주다. come in = 가게에 들어오다."
+  },
+  {
+   "id": "mn12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [],
+   "manual": true,
+   "plabel": "주문 매뉴얼",
+   "ko": "그러면 모든 메뉴에서 회원 할인을 받으실 수 있어요.",
+   "en": "Then you'll get a member's discount on everything on the menu.",
+   "hint": "discount",
+   "gram": "<em>get a discount on</em> ~ = ~에서 할인을 받다. everything on the menu = 메뉴 전부."
   }
  ],
  "part1": [
@@ -2223,5 +2367,9 @@
  "podFiles": [
   "groups/other"
  ],
- "podTodayUrl": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-260924"
+ "podTodayUrl": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-260924",
+ "manual": {
+  "title": "주문 매뉴얼",
+  "sub": "멤버십 안내 12장"
+ }
 }

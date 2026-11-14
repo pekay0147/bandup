@@ -552,11 +552,13 @@ function renderDecks(app){
   const hasLesson=D.sessions.length && D.cards.some(c=>(c.sessions||[]).length), hasPod=(D.podSessions||[]).length>0;
   if(!hasLesson && !hasPod){ const e=el("div","empty"); e.append(el("p",null, D.common? "수업을 들으면 수업에서 내가 틀린 문장이 여기에 큐카드로 생겨요." : "아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
   const hasDaily=D.group==="other"||D.group==="ielts"||D.group==="church"||D.dailyFrom==="sessions";
-  const seg=el("div","modeseg"+((+!!hasPod + +!!hasLesson + +hasDaily)>2?"":" two")); seg.setAttribute("role","tablist");
-  if(cardMode!=="session" && cardMode!=="pod" && !(cardMode==="daily"&&hasDaily)) cardMode= hasLesson? "session" : "pod";
+  const hasManual=!!(D.manual && D.cards.some(c=>c.manual));
+  const nSeg=+!!hasPod + +!!hasLesson + +hasDaily + +hasManual;
+  const seg=el("div","modeseg"+(nSeg===4?" four":nSeg>2?"":" two")); seg.setAttribute("role","tablist");
+  if(cardMode!=="session" && cardMode!=="pod" && !(cardMode==="daily"&&hasDaily) && !(cardMode==="manual"&&hasManual)) cardMode= hasLesson? "session" : "pod";
   const lessonTab=hasLesson || (D.group==="ielts" && !D.common && !D.demo);
   if(cardMode==="session" && !lessonTab) cardMode="pod"; if(cardMode==="pod" && !hasPod) cardMode="session";
-  const modes=[...(lessonTab?[["session",D.common?"주제별":(D.group==="other"||D.group==="church")?"팟캐스트":(D.sessTab? D.sessTab : D.group==="self"? "스피킹 매트릭스" : hasPod?"수업 회차별":"회차별"),(D.group==="other"||D.group==="church")? `에피소드 ${D.sessions.length}편` : (D.sessions.length? `1~${D.sessions[D.sessions.length-1].no}회차` : "수업 기록")]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","오늘의 문장 10개"]]:[])];
+  const modes=[...(lessonTab?[["session",D.common?"주제별":(D.group==="other"||D.group==="church")?"팟캐스트":(D.sessTab? D.sessTab : D.group==="self"? "스피킹 매트릭스" : hasPod?"수업 회차별":"회차별"),(D.group==="other"||D.group==="church")? `에피소드 ${D.sessions.length}편` : (D.sessions.length? `1~${D.sessions[D.sessions.length-1].no}회차` : "수업 기록")]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","오늘의 문장 10개"]]:[]), ...(hasManual?[["manual",D.manual.title||"매뉴얼",D.manual.sub||`${D.cards.filter(c=>c.manual).length}장`]]:[])];
   for(const [k,label,sub] of modes){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(cardMode===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; openKey=null; render(); }; seg.append(b);
@@ -606,6 +608,8 @@ function renderDecks(app){
     }
     key="p"+selPod; list=D.cards.filter(c=>(c.psessions||[]).includes(selPod));
     { const se=PS.find(x=>x.no===selPod); if(se && (se.vocab||[]).length){ inlineDeck(app,key,list,empty,()=>vocabPage(se)); return; } }
+  } else if(cardMode==="manual"){
+    key="manual"; list=D.cards.filter(c=>c.manual); empty="매뉴얼 카드가 없어요.";
   } else if(cardMode==="wrong"){
     const all=D.cards.filter(isWrong); key="wrong"; list=[...all.filter(rep),...all.filter(c=>!rep(c))];
   } else if(cardMode==="random"){

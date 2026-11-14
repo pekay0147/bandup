@@ -284,7 +284,7 @@ button.quote:active{transform:scale(.99)}
 .front .hint-tag{font:12px var(--cute);font-weight:400;background:var(--sun);color:#1f1b3a;border-radius:6px;padding:1px 7px}
 
 /* listening */
-.modeseg.two{grid-template-columns:1fr 1fr}
+.modeseg.two,.modeseg.four{grid-template-columns:1fr 1fr}
 .lrow{display:grid;grid-template-columns:40px 1fr;gap:10px;align-items:start;padding:10px 0;border-top:1px solid var(--line)}
 .lrow:first-of-type{border-top:0}
 .spk{width:40px;height:40px;border-radius:12px;border:0;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center;cursor:pointer}
