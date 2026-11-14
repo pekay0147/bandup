@@ -2891,18 +2891,6 @@
    "hint": "went to"
   },
   {
-   "id": "r13-02",
-   "kind": "ko",
-   "sessions": [
-    13
-   ],
-   "type": "표현",
-   "ko": "저는 친구를 우연히 마주쳤어요.",
-   "en": "I ran into my friend.",
-   "gram": "⭐ 잘 쓴 표현! <em>run into</em> = 우연히 마주치다 (run-ran-run). = come across.",
-   "hint": "ran into"
-  },
-  {
    "id": "r13-03",
    "kind": "ko",
    "sessions": [
