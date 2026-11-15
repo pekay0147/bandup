@@ -1807,11 +1807,17 @@ let lsPart="Part 1", lsCat=null, LD=null;
 const SPEAK_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
 const canSpeak = ()=> "speechSynthesis" in window && typeof SpeechSynthesisUtterance!=="undefined";
 let enVoice=null;
-function pickVoice(){ try{ const vs=speechSynthesis.getVoices(); enVoice = vs.find(v=>/en-GB/i.test(v.lang)) || vs.find(v=>/^en/i.test(v.lang)) || null; }catch(_){} }
+function pickVoice(){ try{ const vs=speechSynthesis.getVoices(); const good=v=>/natural|premium|enhanced|neural|siri/i.test(v.name+" "+(v.voiceURI||"")); const gb=vs.filter(v=>/en[-_]GB/i.test(v.lang)), en=vs.filter(v=>/^en/i.test(v.lang)); enVoice = gb.find(good) || en.find(good) || gb.find(v=>/google/i.test(v.name)) || gb[0] || en[0] || null; }catch(_){} }
 if(canSpeak()){ pickVoice(); try{ speechSynthesis.onvoiceschanged=pickVoice; }catch(_){} }
 let spAudio=null;
 function spFile(word){ return String(word).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""); }
+let SAY=null; fetch("audio/say/index.json").then(r=>r.ok? r.json():[]).then(a=>{ SAY=new Set(a); }).catch(()=>{});
+function sayKey(t){ const s=String(t).replace(/\u2019/g,"'").trim().split(/\s+/).join(" "); let x=0x811c9dc5; for(let i=0;i<s.length;i++){ x^=s.charCodeAt(i); x=Math.imul(x,0x01000193)>>>0; } return x.toString(16).padStart(8,"0"); }
 function speak(word, slow){
+  if(SAY && SAY.has(sayKey(word))){
+    try{ speechSynthesis.cancel(); }catch(_){}
+    try{ if(spAudio) spAudio.pause(); spAudio=new Audio(`audio/say/${sayKey(word)}.mp3`); spAudio.playbackRate= slow? .75 : 1; spAudio.play().catch(()=>ttsSpeak(word,slow)); return true; }catch(_){ }
+  }
   if(LS && spAll().some(w=>w[0]===word)){
     try{ speechSynthesis.cancel(); }catch(_){}
     try{ if(spAudio) spAudio.pause(); spAudio=new Audio(`audio/spell/${spFile(word)}.mp3?v=k1`); spAudio.playbackRate= slow? .75 : 1; spAudio.play().catch(()=>ttsSpeak(word,slow)); return true; }catch(_){ }
