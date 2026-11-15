@@ -311,7 +311,7 @@ function renderHome(app){
   if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
   if(D.group==="ielts" || D.group==="common" || D.demo || D.keepMock) list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
-  if(D.inbox){ const sc=store.get(`bandup-screens-${slug}`,[]); if(sc.length) list.append(listRow(LIC.voc,"📸 캡쳐한 글",`${sc.length}개 · 모르는 단어를 눌러 담아요`,()=>go("screens"))); }
+  if(D.inbox){ const sc=store.get(`bandup-screens-${slug}`,[]); if(sc.length) list.append(listRow(LIC.voc,"📸 캡쳐한 글",`${sc.length}개 · 모르는 단어를 눌러 담아요`,()=>go("screens"))); else if(/iPhone|iPad/i.test(navigator.userAgent||"")) list.append(listRow(LIC.voc,"📸 뒷면 톡톡 캡쳐","보던 화면의 단어를 바로 담기 · 설정 1분",()=>go("inbox"))); }
   if(D.inbox && D.yt){ const nv=store.get(`bandup-yt-${slug}`,[]).length; list.append(listRow(LIC.pod,"🎬 영상으로 공부", (()=>{ const nc=store.get(`bandup-clips-${slug}`,[]).length; return nc? `클립 ${nc}개 · 쉐도잉하러 가기` : nv? `영상 ${nv}개 · 이중자막으로 보고 안 들린 문장 담기` : "유튜브 보다가 뒷면 톡톡으로 클립 저장"; })(),()=>{ ytState=null; go("yt"); })); }
   list.append(listRow(LIC.bm,"북마크",`${cbmList().filter(id=>getCard(id)).length+qbmList().length}개`,()=>go("bm")));
   if(D.cloud){ const se=cloudSess(); list.append(listRow(LIC.cloud,"계정 · 기록 저장", se? `${se.email} · 자동 저장 중` : "로그인하면 폰을 바꿔도 기록이 이어져요",()=>go("transfer"))); }
@@ -1110,6 +1110,7 @@ function txMerge(pack){ let n=0; for(const [name,val] of Object.entries(pack.dat
     else out=val;
     store.set(k,out); n++; } return n; }
 /* ---------- 계정 · 클라우드 저장 (Supabase) ---------- */
+const CAP_LINK="";
 const SB_URL="https://qbqttaqipapmeutdrvdc.supabase.co", SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFicXR0YXFpcGFwbWV1dGRydmRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQyNjEyNTEsImV4cCI6MjEwOTgzNzI1MX0.5Cd_ytAu7Vz4PNCEoXxkXkEL_aOmvrBYcLm5uYxgRwU";
 const SB_AUTH="bandup-auth";
 function cloudSess(){ return store.get(SB_AUTH,null); }
@@ -1549,10 +1550,14 @@ function renderInbox(app){
   const ol=el("ol","ibsteps"); for(const t of ["아래 코드를 복사해요.","브라우저 북마크바에서 오른쪽 클릭 → 페이지 추가(새 북마크). 이름은 '밴드업 저장', URL 칸에 복사한 코드를 붙여 넣어요.","이제 영어 사이트에서 단어나 문장을 드래그로 선택하고 북마크바의 '밴드업 저장'을 누르면 끝! 작은 창이 떴다가 저장되고 닫혀요.","유튜브는 영상 아래 '…더보기 → 스크립트 표시'를 열면 자막을 드래그할 수 있어요."]) ol.append(el("li",null,t));
   p1.append(ol, copyRow("북마크 URL에 넣을 코드", inboxBookmarklet()));
   if(!IS_MOBILE){ const mb=el("button","btn primary","🪟 작은 밴드업 창 띄우기"); mb.type="button"; mb.onclick=openMini; p1.append(el("p","small muted","또는 아래 버튼을 누르면 유튜브·기사 위에 항상 떠 있는 작은 창이 생겨요. 단어를 드래그해서 창에 끌어다 놓거나, 복사한 뒤 창의 버튼을 누르면 저장돼요. (크롬·엣지에서 가장 잘 돼요)"), mb); }
-  app.append(p1);
-  const pb=el("div","panel txbox"); pb.append(el("b",null,"📱 아이폰: 뒷면 두 번 톡톡 = 지금 화면 저장"), el("p","small muted","보던 화면 그대로 폰 뒷면을 두 번 치면 화면 속 글이 밴드업으로 들어가요. 나중에 밴드업을 열고 모르는 단어만 톡톡 누르면 끝."));
-  const olb=el("ol","ibsteps"); for(const t of ["단축어 앱 → 오른쪽 위 ＋ → 아래 검색창에서 동작 3개를 차례로 눌러 넣어요: ① 스크린샷 찍기 ② 이미지에서 텍스트 추출 ③ URL 콘텐츠 가져오기","③의 파란 'URL'을 눌러 아래 URL을 붙여 넣어요.","③을 펼쳐서 방법 GET → POST. 요청 본문 JSON에서 '새로운 필드 추가 → 텍스트' 딱 1번: 키에 p_txt, 값에는 키보드 위 파란 '이미지에서 추출한 텍스트'를 눌러 넣기 → 완료","아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭 → 방금 만든 단축어. 끝!"]) olb.append(el("li",null,t));
-  pb.append(olb, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_save?apikey="+SB_KEY)); app.append(pb);
+  if(!IS_MOBILE) app.append(p1);
+  const pb=el("div","panel txbox"); pb.append(el("b",null,"📱 아이폰: 뒷면 두 번 톡톡 = 지금 화면 저장"), el("p","small muted","보던 화면 그대로 폰 뒷면을 두 번 치면 화면 속 글이 밴드업으로 들어가요. 나중에 밴드업을 열고 모르는 단어만 톡톡 누르면 끝. 처음 한 번만 설정해요 (1분)."));
+  const olb=el("ol","ibsteps");
+  if(CAP_LINK){ for(const t of ["아래 '내 코드'를 복사해요.","'단축어 받기'를 누르고 → '단축어 추가'. 코드를 묻는 칸이 나오면 붙여 넣어요.","아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭 → '밴드업 캡쳐'를 골라요.","아무 화면에서 폰 뒷면을 톡톡! 처음에 '허용하시겠습니까?'가 뜨면 '항상 허용'을 눌러요. 그다음부터는 안 물어봐요."]) olb.append(el("li",null,t));
+    const gb=el("a","btn primary","⬇️ 단축어 받기"); gb.href=CAP_LINK; gb.target="_blank"; gb.rel="noopener"; pb.append(olb, copyRow("내 코드", D.inbox), gb); }
+  else { for(const t of ["단축어 앱 → 오른쪽 위 ＋ → 아래 검색창에서 동작 3개를 차례로 눌러 넣어요: ① 스크린샷 찍기 ② 이미지에서 텍스트 추출 ③ URL 콘텐츠 가져오기","③의 파란 'URL'을 눌러 아래 URL을 붙여 넣어요.","③을 펼쳐서 방법 GET → POST. 요청 본문 JSON에서 '새로운 필드 추가 → 텍스트'를 2번: 키 p_token, 값은 아래 '내 코드' / 키 p_txt, 값은 키보드 위 파란 '이미지에서 추출한 텍스트' → 완료","아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭 → 방금 만든 단축어.","처음 칠 때 '허용하시겠습니까?'가 뜨면 '항상 허용'. 끝!"]) olb.append(el("li",null,t));
+    pb.append(olb, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_save?apikey="+SB_KEY), copyRow("내 코드", D.inbox)); }
+  app.append(pb); if(IS_MOBILE) app.append(p1);
   const p2=el("div","panel txbox"); p2.append(el("b",null,"📱 아이폰 (단축어 앱, 처음 한 번만 설정)"));
   const ol2=el("ol","ibsteps"); for(const t of ["'단축어' 앱 → 오른쪽 위 + → 이름을 '밴드업 저장'으로 정해요.","아래쪽 ⓘ(정보) → '공유 시트에서 보기'를 켜요. 받을 항목은 '텍스트'만 남겨요.","동작 추가에서 'URL 콘텐츠 가져오기'를 넣고, 아래 URL을 붙여 넣어요.","그 동작을 펼쳐서 방법: POST, 헤더 2개(apikey, Authorization)를 아래 값으로 추가해요.","요청 본문: JSON → 필드 2개 추가: p_token(텍스트) = 아래 토큰, p_txt(텍스트) = '단축어 입력'(변수).","끝! 이제 어떤 앱에서든 단어를 선택 → 공유 → '밴드업 저장'을 누르면 앱을 열지 않고 바로 저장돼요."]) ol2.append(el("li",null,t));
   p2.append(ol2, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_add"), copyRow("헤더 apikey", SB_KEY), copyRow("헤더 Authorization", "Bearer "+SB_KEY), copyRow("p_token", D.inbox)); app.append(p2);
