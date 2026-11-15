@@ -34,6 +34,10 @@ def walk(o,what):
 docs=[json.load(open(f)) for f in sorted(glob.glob('data/**/*.json',recursive=True))]
 for what in ('cards','rest'):
     for d in docs: walk(d,what)
+for line in open('app.js',encoding='utf-8'):  # app.js 안에 직접 적힌 이디엄 목록 ["표현","뜻","예문"]
+    m=re.match(r'^\s*(\["[^"]+","[^"]*[가-힣][^"]*","[^"]*"\]),?\s*$',line)
+    if m:
+        w,_,ex=json.loads(m.group(1)); add(w); add(ex)
 os.makedirs('audio/say',exist_ok=True)
 def save():
     have=sorted(k for k in S if os.path.exists(f'audio/say/{k}.mp3'))
