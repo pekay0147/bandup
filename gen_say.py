@@ -19,7 +19,9 @@ def tts_text(t):  # 읽을 때만 바꾸는 표기 (파일 이름은 원문 기�
     return t
 KO=re.compile('[가-힣]')
 S={}  # hash -> text, 카드 문장부터 (먼저 만들 것부터)
+SKIP={'ough','oo','eight + h','ex'}  # 철자 조각은 읽지 않음
 def add(t):
+    if isinstance(t,str) and (t.strip() in SKIP or (len(t.strip())<10 and (t.strip().startswith('-') or t.strip().endswith('-')))): return
     if isinstance(t,str) and t.strip() and not KO.search(t) and re.search('[A-Za-z]',t): S.setdefault(h(norm(t)),norm(t))
 def walk(o,what):
     if isinstance(o,dict):
