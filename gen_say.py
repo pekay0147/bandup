@@ -12,6 +12,11 @@ def h(s):  # app.js sayKey 와 같은 해시 (FNV-1a, UTF-16 단위)
 def norm(s): return ' '.join(s.replace('’',"'").split())
 import re
 VOICES=['bf_emma','bf_isabella','bm_george']
+def tts_text(t):  # 읽을 때만 바꾸는 표기 (파일 이름은 원문 기준)
+    t=t.replace(' / ',', ').replace('~','').replace(' = ',', ').replace(' + ',' ').replace('IELTS','I-ELTS')
+    t=re.sub(r'(?<=[A-Za-z])/(?=[A-Za-z])',' or ',t)
+    t=re.sub(r'\bsb\b','somebody',t); t=re.sub(r'\bsth\b','something',t)
+    return t
 KO=re.compile('[가-힣]')
 S={}  # hash -> text, 카드 문장부터 (먼저 만들 것부터)
 def add(t):
@@ -29,7 +34,9 @@ def walk(o,what):
                 if isinstance(v,dict) and 'ko' in v and 'ex' in v: add(k)
         for v in o.values(): walk(v,what)
     elif isinstance(o,list):
-        if what=='rest' and len(o)==3 and all(isinstance(x,str) for x in o) and KO.search(o[1]): add(o[0]); add(o[2])
+        if what=='rest' and len(o)==3 and all(isinstance(x,str) for x in o) and KO.search(o[1]):
+            add(o[0])
+            if o[2].replace('-','')!=o[0].replace('-',''): add(o[2])  # 세 번째가 음절 표시(lab-o-ra-to-ry)면 읽지 않음
         for v in o: walk(v,what)
 docs=[json.load(open(f)) for f in sorted(glob.glob('data/**/*.json',recursive=True))]
 for what in ('cards','rest'):
@@ -51,7 +58,7 @@ if todo:
     tts=Kokoro(d+'kokoro-v1.0.onnx',d+'voices-v1.0.bin')
     tmp=tempfile.mktemp(suffix='.wav')
     for n,k in enumerate(todo,1):
-        try: a,sr=tts.create(S[k].replace(' / ',', ').replace('~','').replace(' = ',', '),voice=VOICES[int(k,16)%3],speed=1.0,lang='en-gb')
+        try: a,sr=tts.create(tts_text(S[k]),voice=VOICES[int(k,16)%3],speed=1.0,lang='en-gb')
         except Exception as e: print('FAIL',S[k],e,flush=True); continue
         sf.write(tmp,a,sr)
         subprocess.run(['ffmpeg','-loglevel','error','-y','-i',tmp,'-ac','1','-b:a','40k',f'audio/say/{k}.part.mp3'],check=True)
