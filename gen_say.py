@@ -1,5 +1,5 @@
 # 큐카드 문장 음성(mp3) 만들기: python3 gen_say.py <kokoro 모델 폴더>
-# 모델: github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/kokoro-multi-lang-v1_0.tar.bz2  (pip install sherpa-onnx soundfile)
+# 모델: github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/ 의 kokoro-v1.0.onnx, voices-v1.0.bin  (pip install kokoro-onnx soundfile)
 # 목소리는 문장마다 Emma·Isabella·George 중 하나로 고정(해시로 고름).
 # data/ 안의 카드 문장, 단어, 예문, 질문을 audio/say/<hash>.mp3 로 만들고(이미 있으면 건너뜀) audio/say/index.json 에 목록을 써요.
 import json,glob,os,sys,subprocess,tempfile
@@ -11,7 +11,7 @@ def h(s):  # app.js sayKey 와 같은 해시 (FNV-1a, UTF-16 단위)
     return format(x,'08x')
 def norm(s): return ' '.join(s.replace('’',"'").split())
 import re
-VOICES=[21,22,26]  # bf_emma, bf_isabella, bm_george
+VOICES=['bf_emma','bf_isabella','bm_george']
 KO=re.compile('[가-힣]')
 S={}  # hash -> text, 카드 문장부터 (먼저 만들 것부터)
 def add(t):
@@ -41,14 +41,15 @@ def save():
 todo=[k for k in S if not os.path.exists(f'audio/say/{k}.mp3')]
 print(len(S),'texts,',len(todo),'to make',flush=True)
 if todo:
-    import sherpa_onnx, soundfile as sf
+    from kokoro_onnx import Kokoro
+    import soundfile as sf
     d=sys.argv[1].rstrip('/')+'/'
-    tts=sherpa_onnx.OfflineTts(sherpa_onnx.OfflineTtsConfig(model=sherpa_onnx.OfflineTtsModelConfig(kokoro=sherpa_onnx.OfflineTtsKokoroModelConfig(model=d+'model.onnx',voices=d+'voices.bin',tokens=d+'tokens.txt',data_dir=d+'espeak-ng-data',lexicon=d+'lexicon-gb-en.txt'),num_threads=2)))
+    tts=Kokoro(d+'kokoro-v1.0.onnx',d+'voices-v1.0.bin')
     tmp=tempfile.mktemp(suffix='.wav')
     for n,k in enumerate(todo,1):
-        a=tts.generate(S[k].replace('/',', ').replace('~','').replace('=',','),sid=VOICES[int(k,16)%3],speed=1.0)
-        if not len(a.samples): print('FAIL',S[k],flush=True); continue
-        sf.write(tmp,a.samples,a.sample_rate)
+        try: a,sr=tts.create(S[k].replace(' / ',', ').replace('~','').replace(' = ',', '),voice=VOICES[int(k,16)%3],speed=1.0,lang='en-gb')
+        except Exception as e: print('FAIL',S[k],e,flush=True); continue
+        sf.write(tmp,a,sr)
         subprocess.run(['ffmpeg','-loglevel','error','-y','-i',tmp,'-ac','1','-b:a','40k',f'audio/say/{k}.part.mp3'],check=True)
         os.replace(f'audio/say/{k}.part.mp3',f'audio/say/{k}.mp3')
         if n%200==0: print(n,'/',len(todo),'index',save(),flush=True)
