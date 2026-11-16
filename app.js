@@ -991,13 +991,13 @@ async function vocLemma(w){
   for(const [b,f] of C.slice(0,3)){ try{ const ok=await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/"+encodeURIComponent(b)).then(x=>x.ok); if(ok) return {base:b, form:f}; }catch(_){ } }
   return null; }
 async function vocLookup0(w){
-  await loadDict(); const loc=vocLocal(w); if(loc.src==="d" || (loc.ko && loc.ex)) return loc;
+  await loadDict(); const loc=vocLocal(w); if(loc.ko && loc.ex) return loc; const SRC=loc.src? {src:loc.src} : {};
   const u="https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&dt=bd&dt=ex&q="+encodeURIComponent(w);
   const r=await fetch(u).then(x=>x.ok? x.json():null).catch(()=>null);
   if(!r){ let ko=loc.ko, ex=loc.ex;
     if(!ko){ try{ const mm=await fetch("https://api.mymemory.translated.net/get?langpair=en|ko&q="+encodeURIComponent(w)).then(x=>x.ok? x.json():null); const t=mm&&mm.responseData&&String(mm.responseData.translatedText||"").trim(); if(t && !/[A-Za-z]{3}/.test(t)) ko=t; }catch(_){ } }
     if(!ex){ try{ const dj=await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/"+encodeURIComponent(w.toLowerCase())).then(x=>x.ok? x.json():null); const xs=[]; (dj||[]).forEach(e=>(e.meanings||[]).forEach(m=>(m.definitions||[]).forEach(d=>{ const s=String(d.example||"").trim(); if(s.split(" ").length>=4 && s.length<=100) xs.push(s); }))); xs.sort((a,b)=>a.length-b.length); if(xs[0]) ex=xs[0].charAt(0).toUpperCase()+xs[0].slice(1)+(/[.!?]$/.test(xs[0])?"":"."); }catch(_){ } }
-    return {ko,ex}; }
+    return {ko,ex,...SRC}; }
   let ko=loc.ko, ex=loc.ex;
   if(!ko){ const ms=[]; const add=s=>{ s=(s||"").trim(); if(s && s.toLowerCase()!==w.toLowerCase() && !ms.includes(s)) ms.push(s); };
     try{ add(r[0][0][0]); }catch(_){ } try{ (r[1]||[]).forEach(p=>(p[1]||[]).slice(0,2).forEach(add)); }catch(_){ }
@@ -1008,7 +1008,7 @@ async function vocLookup0(w){
       const xs=[]; (dj||[]).forEach(e=>(e.meanings||[]).forEach(m=>(m.definitions||[]).forEach(d=>{ const s=String(d.example||"").trim(); if(s.split(" ").length>=4 && s.length<=100) xs.push(s); })));
       xs.sort((a,b)=>a.length-b.length); const s=xs[0]||""; if(s) ex=s.charAt(0).toUpperCase()+s.slice(1)+(/[.!?]$/.test(s)?"":"."); }catch(_){ } }
   if(!ex){ const re=new RegExp("\\b"+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b","i"); const c=(D.cards||[]).find(c=>c.en && re.test(c.en)); if(c) ex=c.en; }
-  return {ko,ex};
+  return {ko,ex,...SRC};
 }
 let vcFill=false;
 function vocBackfill(){
