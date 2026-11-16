@@ -1553,7 +1553,9 @@ function renderInbox(app){
   if(!IS_MOBILE) app.append(p1);
   const pb=el("div","panel txbox"); pb.append(el("b",null,"📱 아이폰: 뒷면 두 번 톡톡 = 지금 화면 저장"), el("p","small muted","보던 화면 그대로 폰 뒷면을 두 번 치면 화면 속 글이 밴드업으로 들어가요. 나중에 밴드업을 열고 모르는 단어만 톡톡 누르면 끝. 처음 한 번만 설정해요 (1분)."));
   const olb=el("ol","ibsteps");
-  if(CAP_LINK){ for(const t of ["아래 '내 코드'를 복사해요.","'단축어 받기'를 누르고 → '단축어 추가'. 코드를 묻는 칸이 나오면 붙여 넣어요.","아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭 → '밴드업 캡쳐'를 골라요.","아무 화면에서 폰 뒷면을 톡톡! 처음에 '허용하시겠습니까?'가 뜨면 '항상 허용'을 눌러요. 그다음부터는 안 물어봐요."]) olb.append(el("li",null,t));
+  if(D.capLink){ for(const t of ["아래 '단축어 받기'를 누르고 → '단축어 추가'를 눌러요.","아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭 → 방금 받은 단축어를 골라요.","아무 화면에서 폰 뒷면을 톡톡! 처음에 '허용하시겠습니까?'가 뜨면 '항상 허용'을 눌러요. 그다음부터는 안 물어봐요."]) olb.append(el("li",null,t));
+    const gb=el("a","btn primary","⬇️ 단축어 받기"); gb.href=D.capLink; gb.target="_blank"; gb.rel="noopener"; pb.append(olb, gb); }
+  else if(CAP_LINK){ for(const t of ["아래 '내 코드'를 복사해요.","'단축어 받기'를 누르고 → '단축어 추가'. 코드를 묻는 칸이 나오면 붙여 넣어요.","아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭 → '밴드업 캡쳐'를 골라요.","아무 화면에서 폰 뒷면을 톡톡! 처음에 '허용하시겠습니까?'가 뜨면 '항상 허용'을 눌러요. 그다음부터는 안 물어봐요."]) olb.append(el("li",null,t));
     const gb=el("a","btn primary","⬇️ 단축어 받기"); gb.href=CAP_LINK; gb.target="_blank"; gb.rel="noopener"; pb.append(olb, copyRow("내 코드", D.inbox), gb); }
   else { for(const t of ["단축어 앱 → 오른쪽 위 ＋ → 아래 검색창에서 동작 3개를 차례로 눌러 넣어요: ① 스크린샷 찍기 ② 이미지에서 텍스트 추출 ③ URL 콘텐츠 가져오기","③의 파란 'URL'을 눌러 아래 URL을 붙여 넣어요.","③을 펼쳐서 방법 GET → POST. 요청 본문 JSON에서 '새로운 필드 추가 → 텍스트'를 2번: 키 p_token, 값은 아래 '내 코드' / 키 p_txt, 값은 키보드 위 파란 '이미지에서 추출한 텍스트' → 완료","아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭 → 방금 만든 단축어.","처음 칠 때 '허용하시겠습니까?'가 뜨면 '항상 허용'. 끝!"]) olb.append(el("li",null,t));
     pb.append(olb, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_save?apikey="+SB_KEY), copyRow("내 코드", D.inbox)); }
