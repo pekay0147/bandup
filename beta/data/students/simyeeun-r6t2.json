@@ -2583,45 +2583,6 @@
    "hint": "workplace",
    "gram": "<em>when they work</em> = 그들이 일할 때. <em>at their workplace</em> = 직장에서.",
    "mine": null
-  },
-  {
-   "id": "n1207",
-   "kind": "ko",
-   "type": "단어 선택",
-   "sessions": [
-    12
-   ],
-   "ko": "어렸을 때 저는 겨울 야외 활동을 좋아했어요.",
-   "en": "I liked winter outdoor activities when I was a child.",
-   "hint": "outdoor",
-   "gram": "썰매(sledding) 같은 단어가 안 떠오르면 더 큰 범주로 말하기: <em>winter outdoor activities</em>.",
-   "mine": null
-  },
-  {
-   "id": "n1208",
-   "kind": "ko",
-   "type": "동사·시제",
-   "sessions": [
-    12
-   ],
-   "ko": "제가 부자라면 차를 살 텐데요.",
-   "en": "If I were rich, I would buy a car.",
-   "hint": "were",
-   "gram": "가정법 과거(지금 사실이 아닌 일): <em>If I were</em> ~, I <em>would</em> + 동사원형.",
-   "mine": null
-  },
-  {
-   "id": "n1209",
-   "kind": "ko",
-   "type": "동사·시제",
-   "sessions": [
-    12
-   ],
-   "ko": "공부를 더 했더라면 시험에 합격했을 텐데요.",
-   "en": "If I had studied more, I would have passed the exam.",
-   "hint": "had",
-   "gram": "가정법 과거완료(과거에 못 한 일): <em>If I had</em> + p.p., I <em>would have</em> + p.p.",
-   "mine": null
   }
  ],
  "part1": [
