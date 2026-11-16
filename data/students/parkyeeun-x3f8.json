@@ -142,10 +142,10 @@
     4
    ],
    "ko": "저는 예푼에 살고 있었어요.",
-   "en": "I was living in Yepoon.",
-   "mine": "I was living in a Yepoon.",
-   "gram": "도시·지역 이름 앞에는 a를 붙이지 않아요: in Yepoon, in Seoul, in Sydney.",
-   "hint": "Yepoon"
+   "en": "I was living in Yeppoon.",
+   "mine": "I was living in a Yeppoon.",
+   "gram": "도시·지역 이름 앞에는 a를 붙이지 않아요: in Yeppoon, in Seoul, in Sydney.",
+   "hint": "Yeppoon"
   },
   {
    "id": "m04",
@@ -1550,7 +1550,7 @@
    "sessions": [
     7
    ],
-   "ko": "차에 타고 버스에 올라탔어요.",
+   "ko": "차에 탔고, 그다음에는 버스에 탔어요.",
    "en": "I got in the car, and then I got on the bus.",
    "hint": "got",
    "gram": "작은 차·택시는 <em>get in</em>, 버스·기차·비행기는 <em>get on</em>."

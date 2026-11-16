@@ -237,7 +237,7 @@
    "sessions": [
     2
    ],
-   "ko": "우리 동네는 조용해요. 이웃들도 친절해요.",
+   "ko": "우리 동네는 조용하고, 이웃들도 친절해요.",
    "en": "My neighbourhood is quiet, and my neighbours are friendly.",
    "hint": "neighbourhood",
    "gram": "<em>neighbourhood</em> = 동네, <em>neighbour</em> = 이웃 사람."
@@ -481,7 +481,7 @@
    "sessions": [
     6
    ],
-   "ko": "저는 그 질문에 바로 답할게요. 저는 동의해요.",
+   "ko": "바로 답하자면, 저는 동의해요.",
    "en": "To answer directly, I agree.",
    "hint": "directly",
    "gram": "Part 3는 돌려 말하지 말고 <em>straightforward</em>하게: 먼저 답 → 이유 → 예시."
