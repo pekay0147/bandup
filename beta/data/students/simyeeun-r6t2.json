@@ -60,6 +60,11 @@
    "no": 11,
    "date": "2026-11-13",
    "title": "Quiet place"
+  },
+  {
+   "no": 12,
+   "date": "2026-11-16",
+   "title": "Something useful"
   }
  ],
  "types": [
@@ -83,7 +88,8 @@
   "7": "usually만 반복하지 말고 more often than not, on a regular basis로 바꿔 말해보기!",
   "8": "Part 2 서론 정확하게 암기하기! be·seem·feel 뒤에는 형용사(happy, calm) 쓰기.",
   "10": "Part 2에서 off the top of my head 뒤에 '무슨 때인지' 바로 설명하기! To begin with 대신 First of all.",
-  "11": "There are(~가 있다) vs These are(이것들이 ~이다)! another + 단수, different + 복수. Part 2 본론은 오늘의 2배로!"
+  "11": "There are(~가 있다) vs These are(이것들이 ~이다)! another + 단수, different + 복수. Part 2 본론은 오늘의 2배로!",
+  "12": "like + 명사 (I like sunny days)! 시간(evening)은 주어가 못 돼요 → I enjoy ~ in the evening. 단어가 안 떠오르면 더 큰 범주로 말하기. 가정법 공부해오기!"
  },
  "compare": [
   [
@@ -2421,6 +2427,201 @@
    "en": "I spent too much money on clothes this month.",
    "hint": "money",
    "gram": "돈은 <em>spend</em> + 돈 + <em>on</em> + 물건."
+  },
+  {
+   "id": "n12m1",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "그녀가 다음 달에 여행 간다고 소문으로 들었어요.",
+   "en": "I heard on the grapevine that she's going on a trip next month.",
+   "hint": "grapevine",
+   "gram": "<em>hear on(through) the grapevine</em> = 소문으로 듣다. <em>go on a trip</em> = 여행 가다.",
+   "mine": null
+  },
+  {
+   "id": "n12m2",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "제 동료들은 개성이 강하고, 저는 그들과 수다 떨면서 시간을 보내요.",
+   "en": "My colleagues are big characters, and I spend time chatting with them.",
+   "hint": "characters",
+   "gram": "<em>a big character</em> = 개성이 강한 사람. <em>spend time</em> + -ing = ~하면서 시간을 보내다.",
+   "mine": null
+  },
+  {
+   "id": "n12m3",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    12
+   ],
+   "ko": "운동이 만능 해결책은 아니지만, 스트레스 받는 걸 막아 줘요.",
+   "en": "Exercise isn't a magic bullet, but it keeps me from feeling stressed.",
+   "hint": "keeps",
+   "gram": "<em>a magic bullet</em> (= a silver bullet) = 만능 해결책. <em>keep</em> + 사람 + <em>from</em> -ing = ~하지 못하게 하다.",
+   "mine": null
+  },
+  {
+   "id": "n12m4",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    12
+   ],
+   "ko": "이것들이 제가 옷 사는 데 돈을 너무 많이 쓴 이유예요.",
+   "en": "These are the reasons why I spent too much money buying clothes.",
+   "hint": "These",
+   "gram": "❌ There are the reasons → ✅ <em>These are</em> the reasons why ~. <em>spend</em> + 돈 + -ing = ~하는 데 돈을 쓰다.",
+   "mine": null
+  },
+  {
+   "id": "n12m5",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    12
+   ],
+   "ko": "우리 할머니는 아이들만큼 활기차세요.",
+   "en": "My grandma is as lively as children.",
+   "hint": "lively",
+   "gram": "<em>as</em> + 형용사 원형 + <em>as</em> = ~만큼 …한. <em>lively</em> = 활기찬.",
+   "mine": null
+  },
+  {
+   "id": "n12m6",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    12
+   ],
+   "ko": "영국 물가는 한국 물가보다 2배 비싸요.",
+   "en": "Prices in the UK are twice as high as those in Korea.",
+   "hint": "twice",
+   "gram": "<em>twice as</em> 형용사 <em>as</em> = 2배 ~한. 물가는 <em>prices are high</em> (expensive ❌). double을 쓰면: Prices in the UK are <em>double those</em> in Korea.",
+   "mine": null
+  },
+  {
+   "id": "n1201",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    12
+   ],
+   "ko": "저는 맑은 날을 좋아해요.",
+   "en": "I like sunny days.",
+   "hint": "sunny",
+   "gram": "❌ I like to sunny days → ✅ I <em>like</em> sunny days. like + 명사 / like <em>to</em> + 동사 (I like to walk on sunny days).",
+   "mine": "I like to sunny days"
+  },
+  {
+   "id": "n1202",
+   "kind": "ko",
+   "type": "주어-동사",
+   "sessions": [
+    12
+   ],
+   "ko": "저는 저녁에 책 읽는 걸 즐겨요.",
+   "en": "I enjoy reading in the evening.",
+   "hint": "enjoy",
+   "gram": "❌ evening enjoy → ✅ <em>I enjoy</em> reading <em>in the evening</em>. 시간(evening)은 주어가 될 수 없어요. 주어는 사람!",
+   "mine": "evening enjoy …"
+  },
+  {
+   "id": "n1203",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    12
+   ],
+   "ko": "그건 항상 저를 궁금하게 해요.",
+   "en": "It always makes me curious.",
+   "hint": "makes",
+   "gram": "❌ it curious me → ✅ It always <em>makes me curious</em>. make + 사람 + 형용사. 주어가 it이라 make<em>s</em>.",
+   "mine": "it curious me"
+  },
+  {
+   "id": "n1204",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    12
+   ],
+   "ko": "독서는 즐거운 취미예요.",
+   "en": "Reading is an enjoyable hobby.",
+   "hint": "enjoyable",
+   "gram": "<em>enjoyable</em> = 즐거운 (형용사). enjoy는 동사: I enjoy reading.",
+   "mine": null
+  },
+  {
+   "id": "n1205",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    12
+   ],
+   "ko": "휴대폰이 없으면 저는 아무것도 못 해요.",
+   "en": "If I don't have my cellphone, I can do nothing.",
+   "hint": "nothing",
+   "gram": "<em>If I don't have</em> ~, I can do <em>nothing</em>. (= I can't do anything.)",
+   "mine": null
+  },
+  {
+   "id": "n1206",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    12
+   ],
+   "ko": "많은 사람들이 일할 때 직장에서 컴퓨터를 써요.",
+   "en": "Many people use computers at their workplace when they work.",
+   "hint": "workplace",
+   "gram": "<em>when they work</em> = 그들이 일할 때. <em>at their workplace</em> = 직장에서.",
+   "mine": null
+  },
+  {
+   "id": "n1207",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    12
+   ],
+   "ko": "어렸을 때 저는 겨울 야외 활동을 좋아했어요.",
+   "en": "I liked winter outdoor activities when I was a child.",
+   "hint": "outdoor",
+   "gram": "썰매(sledding) 같은 단어가 안 떠오르면 더 큰 범주로 말하기: <em>winter outdoor activities</em>.",
+   "mine": null
+  },
+  {
+   "id": "n1208",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    12
+   ],
+   "ko": "제가 부자라면 차를 살 텐데요.",
+   "en": "If I were rich, I would buy a car.",
+   "hint": "were",
+   "gram": "가정법 과거(지금 사실이 아닌 일): <em>If I were</em> ~, I <em>would</em> + 동사원형.",
+   "mine": null
+  },
+  {
+   "id": "n1209",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    12
+   ],
+   "ko": "공부를 더 했더라면 시험에 합격했을 텐데요.",
+   "en": "If I had studied more, I would have passed the exam.",
+   "hint": "had",
+   "gram": "가정법 과거완료(과거에 못 한 일): <em>If I had</em> + p.p., I <em>would have</em> + p.p.",
+   "mine": null
   }
  ],
  "part1": [
@@ -3229,6 +3430,72 @@
    "ko": "개인이 결정할 일",
    "ex": "Whether you drink or not is up to the individual.",
    "s": 11
+  },
+  {
+   "w": "fill a void",
+   "ko": "허전함을 채우다",
+   "ex": "Getting involved in the nursery has helped him fill a void.",
+   "s": 12
+  },
+  {
+   "w": "a big hole to fill",
+   "ko": "채워야 할 큰 빈자리",
+   "ex": "After my wife died last year, it seemed I had a big hole to fill.",
+   "s": 12
+  },
+  {
+   "w": "such and such",
+   "ko": "이러이러한",
+   "ex": "We're doing such and such a thing.",
+   "s": 12
+  },
+  {
+   "w": "a big character",
+   "ko": "개성이 강한 사람",
+   "ex": "The older people in my choir are big characters.",
+   "s": 12
+  },
+  {
+   "w": "I'm afraid",
+   "ko": "유감스럽게도",
+   "ex": "I'm afraid the answer was B.",
+   "s": 12
+  },
+  {
+   "w": "hear on the grapevine",
+   "ko": "소문으로 듣다 (= hear through the grapevine)",
+   "ex": "I heard on the grapevine that Ian had been teaching the children.",
+   "s": 12
+  },
+  {
+   "w": "by word of mouth",
+   "ko": "입소문으로",
+   "ex": "I heard it by word of mouth.",
+   "s": 12
+  },
+  {
+   "w": "word gets around",
+   "ko": "소문이 퍼지다",
+   "ex": "Word gets around quickly in a small town.",
+   "s": 12
+  },
+  {
+   "w": "spill the beans",
+   "ko": "비밀을 누설하다",
+   "ex": "Don't spill the beans about the surprise party.",
+   "s": 12
+  },
+  {
+   "w": "lively",
+   "ko": "활기찬",
+   "ex": "Your first thought would be how lively and energetic young children can be.",
+   "s": 12
+  },
+  {
+   "w": "enjoyable",
+   "ko": "즐거운",
+   "ex": "Reading is an enjoyable hobby.",
+   "s": 12
   }
  ],
  "group": "ielts",
