@@ -311,7 +311,7 @@ function renderHome(app){
   if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
   if(D.group==="ielts" || D.group==="common" || D.demo || D.keepMock) list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
-  if(D.inbox){ const sc=store.get(`bandup-screens-${slug}`,[]); if(sc.length) list.append(listRow(LIC.voc,"📸 캡쳐한 글",`${sc.length}개 · 모르는 단어를 눌러 담아요`,()=>go("screens"))); else if(/iPhone|iPad/i.test(navigator.userAgent||"")) list.append(listRow(LIC.voc,"📸 뒷면 톡톡 캡쳐","보던 화면의 단어를 바로 담기 · 설정 1분",()=>go("inbox"))); }
+  if(D.inbox){ const sc=store.get(`bandup-screens-${slug}`,[]); if(sc.length) list.append(listRow(LIC.voc,"📸 캡쳐한 글",`${sc.length}개 · 모르는 단어를 눌러 담아요`,()=>go("screens"))); else if(D.capLink && /iPhone|iPad/i.test(navigator.userAgent||"")) list.append(listRow(LIC.voc,"📸 뒷면 톡톡 캡쳐","보던 화면의 단어를 바로 담기 · 설정 1분",()=>go("inbox"))); }
   if(D.inbox && D.yt){ const nv=store.get(`bandup-yt-${slug}`,[]).length; list.append(listRow(LIC.pod,"🎬 영상으로 공부", (()=>{ const nc=store.get(`bandup-clips-${slug}`,[]).length; return nc? `클립 ${nc}개 · 쉐도잉하러 가기` : nv? `영상 ${nv}개 · 이중자막으로 보고 안 들린 문장 담기` : "유튜브 보다가 뒷면 톡톡으로 클립 저장"; })(),()=>{ ytState=null; go("yt"); })); }
   list.append(listRow(LIC.bm,"북마크",`${cbmList().filter(id=>getCard(id)).length+qbmList().length}개`,()=>go("bm")));
   if(D.cloud){ const se=cloudSess(); list.append(listRow(LIC.cloud,"계정 · 기록 저장", se? `${se.email} · 자동 저장 중` : "로그인하면 폰을 바꿔도 기록이 이어져요",()=>go("transfer"))); }
@@ -1045,7 +1045,7 @@ function renderVocab(app){
   pageHead(app,"내 단어장",`단어 ${W.length}개`);
   const adds=el("div","vcadds");
   const b1=el("button","vcaddbtn","+ 직접 추가"); b1.type="button"; b1.onclick=()=>{ vcAdd=true; vcOcr=null; vcMode="list"; render(); };
-  adds.append(b1); if(D.inbox){ const b2=el("button","vcaddbtn","🔗 어디서든 바로 저장"); b2.type="button"; b2.onclick=()=>go("inbox"); adds.append(b2); } app.append(adds);
+  adds.append(b1); if(D.inbox && (D.capLink || D.capOn)){ const b2=el("button","vcaddbtn","🔗 어디서든 바로 저장"); b2.type="button"; b2.onclick=()=>go("inbox"); adds.append(b2); } app.append(adds);
   if(vcAdd){ vocForm(app); return; }
   vocBackfill();
   if(!W.length){ app.append(el("p","muted small","아직 단어가 없어요. 큐카드에서 모르는 단어를 눌러 '+ 내 단어장에 추가'를 누르거나, 위의 '+ 직접 추가'로 모아 보세요.")); return; }
