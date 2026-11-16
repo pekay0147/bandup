@@ -526,9 +526,9 @@
     4
    ],
    "ko": "이 음료는 카페인이 많아요.",
-   "en": "This drink has a high amount of caffeine.",
+   "en": "This drink is high in caffeine.",
    "hint": "caffeine",
-   "gram": "high caffeine ❌ → <em>a high amount of caffeine</em>.",
+   "gram": "high caffeine ❌ → <em>high in caffeine</em> (= a high amount of caffeine).",
    "mine": "… high caffeine"
   },
   {
@@ -563,8 +563,8 @@
    "sessions": [
     4
    ],
-   "ko": "실내 운동은 실내에서 해요.",
-   "en": "I do indoor exercise indoors.",
+   "ko": "저는 실내에서 운동해요.",
+   "en": "I exercise indoors.",
    "hint": "indoors",
    "gram": "<em>indoor</em> 형용사(실내의) + 명사 · <em>indoors</em> 부사(실내에서)."
   },

@@ -230,9 +230,9 @@
     2
    ],
    "ko": "비빔밥이라고 불리는 음식이에요.",
-   "en": "It's a dish which is called bibimbap.",
+   "en": "It's a dish called bibimbap.",
    "hint": "called",
-   "gram": "영어 이름이 없을 때: <em>which is called</em> ~. 이름이 기억 안 나면 <em>What's it called?</em>"
+   "gram": "영어 이름이 없을 때: <em>a dish called</em> ~ (which is called에서 which is를 생략). 이름이 기억 안 나면 <em>What's it called?</em>"
   },
   {
    "id": "g10",
