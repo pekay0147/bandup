@@ -438,5 +438,9 @@
 "spontaneously": {
 "ko": "즉흥적으로, 자연스럽게 (시키지 않았는데)",
 "ex": "We spontaneously decided to go to the beach."
+},
+"pretext": {
+"ko": "구실, 핑계",
+"ex": "He left early on the pretext of feeling sick."
 }
 }
