@@ -1110,7 +1110,7 @@ function txMerge(pack){ let n=0; for(const [name,val] of Object.entries(pack.dat
     else out=val;
     store.set(k,out); n++; } return n; }
 /* ---------- 계정 · 클라우드 저장 (Supabase) ---------- */
-const CAP_LINK="";
+const CAP_LINK="https://www.icloud.com/shortcuts/a034d02d908b4729b7f1854081444002";
 const SB_URL="https://qbqttaqipapmeutdrvdc.supabase.co", SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFicXR0YXFpcGFwbWV1dGRydmRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQyNjEyNTEsImV4cCI6MjEwOTgzNzI1MX0.5Cd_ytAu7Vz4PNCEoXxkXkEL_aOmvrBYcLm5uYxgRwU";
 const SB_AUTH="bandup-auth";
 function cloudSess(){ return store.get(SB_AUTH,null); }
