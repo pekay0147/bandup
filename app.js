@@ -396,7 +396,7 @@ function endMock(){ stopMockTimer(); stopRec(); } // 질문을 떠날 때: 타�
 let REC=null; // {mr, stream, chunks, t0, timer, key, send}
 const canRecord=()=>!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
 const aiMock=()=>{ try{ return !!window.BANDUP_AI_MOCK || localStorage.getItem("bandup-ai-mock")==="1"; }catch(_){ return !!window.BANDUP_AI_MOCK; } };
-const aiBase=()=>window.BANDUP_AI_URL || (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)? "/api/" : "");
+const aiBase=()=>window.BANDUP_AI_URL || (/^(localhost|127\.0\.0\.1)$|\.ts\.net$/.test(location.hostname)? "/api/" : ""); // 내 PC(localhost)·Tailscale 주소에서만 첨삭 서버 사용
 const aiOn=()=>aiMock() || !!(aiBase() && D && !D.demo && D.group!=="common"); // 체험·공용 링크에서는 숨김
 const AI_ERR={daily_limit:"오늘 쓸 수 있는 횟수를 다 썼어요. 내일 다시 해 주세요.", busy:"지금 쓰는 사람이 많아요. 잠시 후 다시 해 주세요.",
   too_long:"녹음이 너무 길어요. 3분 안으로 답해 주세요.", server_not_ready:"첨삭 서버에 Groq 키가 아직 없어요.",
