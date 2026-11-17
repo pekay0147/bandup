@@ -1185,3 +1185,34 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .jop.ok{background:#e6f8ec;border-color:#2f9e5b;color:#1f7a44}.jop.no{background:#ffe9e9;border-color:#e5484d;color:#c92a2a;animation:jshake .3s}
 @keyframes jshake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
 .jx{justify-self:center;font:inherit;font-size:13px;color:var(--muted);background:none;border:0;padding:6px;cursor:pointer}
+/* 말하기 첨삭 (모의고사) */
+.airow{display:flex;gap:8px;flex-wrap:wrap}
+.airow .btn{min-height:44px;height:auto;font-size:15px;padding:0 14px}
+.airow .btn.rec{flex:1}
+.airow .btn.on{border-color:var(--blue);color:var(--blue)}
+.aiin{width:100%;box-sizing:border-box;font:16px/1.5 inherit;font-family:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;resize:vertical}
+.aiwait{display:flex;align-items:center;gap:8px;margin:0;font-size:14px;color:var(--muted)}
+.aispin{width:14px;height:14px;border-radius:50%;border:2px solid var(--blue-soft);border-top-color:var(--blue);display:inline-block;animation:aispin .8s linear infinite}
+@keyframes aispin{to{transform:rotate(360deg)}}
+.aierr{margin:0;font-size:14px;color:var(--bad)}
+.aibox{display:grid;gap:10px}
+.aisaid,.aicorr{display:grid;gap:6px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.aicorr{border-color:var(--blue);background:var(--surface)}
+.ailab{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.02em}
+.aihd{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.aihd .spk{flex:none}
+.aitxt{margin:0;font-size:16px;line-height:1.65;word-break:normal;overflow-wrap:anywhere}
+.aibox del{color:var(--bad);text-decoration-thickness:1.5px}
+.aibox ins{color:var(--mint);background:var(--mint-soft);text-decoration:none;font-weight:700;border-radius:4px;padding:0 3px}
+.aiedit{justify-self:start;font-size:13px}
+.aiok{margin:0;font-weight:700;color:var(--mint)}
+.ailist{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:10px}
+.ailist li{display:grid;gap:3px;padding-top:10px;border-top:1px solid var(--line)}
+.aitag{justify-self:start;font-size:11px;font-weight:700;color:var(--c);border:1px solid var(--c);border-radius:999px;padding:1px 8px}
+.aich{margin:0;font-size:15px}
+.aiwhy{margin:0;font-size:13.5px;color:var(--muted);line-height:1.5}
+.aibetter{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.aibetter summary{cursor:pointer;font-size:14px;font-weight:700;color:var(--blue)}
+.aibetter .aihd{margin-top:8px}
+.aigood{margin:0;font-size:14px;color:var(--mint)}
+@media (prefers-reduced-motion:reduce){.aispin{animation:none}}

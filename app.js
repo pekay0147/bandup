@@ -137,7 +137,7 @@ function buildTabs(){
     nav.append(b);
   }
 }
-function go(tab, extra){ if(typeof stopMockTimer==="function") stopMockTimer(); if(tab!=="words" && typeof LD!=="undefined"){ LD=null; try{ speechSynthesis.cancel(); }catch(_){} } view={tab, ...(extra||{})}; flipped=false; picked=null; if(tab!=="cards") deckState=null; if(tab!=="review") reviewState=null; render(); window.scrollTo(0,0); }
+function go(tab, extra){ if(typeof endMock==="function") endMock(); if(tab!=="words" && typeof LD!=="undefined"){ LD=null; try{ speechSynthesis.cancel(); }catch(_){} } view={tab, ...(extra||{})}; flipped=false; picked=null; if(tab!=="cards") deckState=null; if(tab!=="review") reviewState=null; render(); window.scrollTo(0,0); }
 function updateTabs(){
   document.querySelectorAll("#tabs button").forEach(b=>{ if(b.dataset.tab===view.tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
   const n=Math.min(dueCards().length,DAILY), bd=$("#dueBadge"); if(bd){ bd.textContent=String(n); bd.hidden=!n; }
@@ -388,16 +388,120 @@ function buildMock(){
     const p3=P3&&P3.items.find(x=>x.no===c.no); if(p3) p3.qs.slice(0,5).forEach(q=>steps.push({part:3,topic:c.topic,q})); }
   return {steps,i:0,phase:null,left:0};
 }
-function stopMockTimer(){ if(mtTimer){ clearInterval(mtTimer); mtTimer=null; } if(typeof stopRec==="function") stopRec(); }
-/* ---------- answer recorder (mock test) ---------- */
-let REC=null; // {mr, stream, chunks, t0, timer, key, rc}
-const SR=window.SpeechRecognition||window.webkitSpeechRecognition||null;
-/* clean up a speech transcript: drop fillers, stutters and self-corrections */
-
-function stopRec(){ if(REC){ const rc=REC.rc; if(rc){ rc.onend=null; try{ rc.stop(); }catch(_){} } try{ if(REC.mr.state!=="inactive") REC.mr.stop(); }catch(_){} } }
+function stopMockTimer(){ if(mtTimer){ clearInterval(mtTimer); mtTimer=null; } }
+function endMock(){ stopMockTimer(); stopRec(); } // 질문을 떠날 때: 타이머 + 녹음 모두 정리 (녹음은 보내지 않고 버림)
+/* ---------- 말하기 첨삭: 답변 녹음 → 받아쓰기 → 문법·단어·표현 교정 ----------
+   서버: supabase/functions/speak-fix (Groq Whisper + LLM). 테스트용 가짜 응답: localStorage "bandup-ai-mock" = "1" */
+let REC=null; // {mr, stream, chunks, t0, timer, key, send}
+const canRecord=()=>!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
+const aiMock=()=>{ try{ return !!window.BANDUP_AI_MOCK || localStorage.getItem("bandup-ai-mock")==="1"; }catch(_){ return !!window.BANDUP_AI_MOCK; } };
+const AI_ERR={daily_limit:"오늘 받을 수 있는 첨삭을 다 썼어요. 내일 다시 해 주세요.", busy:"지금 쓰는 사람이 많아요. 잠시 후 다시 눌러 주세요.",
+  too_long:"녹음이 너무 길어요. 3분 안으로 답해 주세요.", server_not_ready:"첨삭 서버가 아직 준비되지 않았어요."};
+function stopRec(send){ if(REC){ REC.send=!!send; try{ if(REC.mr.state!=="inactive") REC.mr.stop(); }catch(_){} } }
+function aiMockReply(text){
+  const t=text||"Yes, um, you can run as fast you can.";
+  const fixes=/as fast you/i.test(t)? [{from:"as fast you can",to:"as fast as you can",type:"문장 구조",why:"'as + 부사 + as' 구문이라 두 번째 as가 필요해요."}] : [];
+  const corrected=t.replace(/\b(um+|uh+)\b,?\s*/gi,"").replace(/as fast you/i,"as fast as you");
+  return new Promise(r=>setTimeout(()=>r({transcript:t,duration:5,corrected,fixes,better:fixes.length? "Yes, you can run as fast as you like." : "",good:"질문에 Yes로 바로 답했어요.",mock:true}),900));
+}
+async function aiSend(body){
+  if(aiMock()) return aiMockReply(body instanceof FormData? "" : body.text);
+  const se=await cloudToken().catch(()=>null);
+  const headers={apikey:SB_KEY, Authorization:"Bearer "+(se? se.at : SB_KEY)}; const opt={method:"POST",headers};
+  if(body instanceof FormData) opt.body=body; else { headers["Content-Type"]="application/json"; opt.body=JSON.stringify(body); }
+  const r=await fetch(SB_URL+"/functions/v1/speak-fix",opt); const j=await r.json().catch(()=>({}));
+  if(!r.ok || (j.error && j.error!=="no_speech")) throw new Error(j.error||("http "+r.status));
+  return j;
+}
+/* 원래 문장과 고친 문장을 단어 단위로 비교 (머뭇거림 um/uh 는 빼고) */
+const FILLER=/^(um+|uh+|er+|erm+|ah+|hmm+|mm+|uhm+)[.,!?]*$/i;
+function wordDiff(a,b){
+  const A=String(a).split(/\s+/).filter(x=>x && !FILLER.test(x)), B=String(b).split(/\s+/).filter(Boolean);
+  const n=x=>x.toLowerCase().replace(/[^a-z0-9']/g,"");
+  const L=Array.from({length:A.length+1},()=>new Uint16Array(B.length+1));
+  for(let i=A.length-1;i>=0;i--) for(let j=B.length-1;j>=0;j--) L[i][j]= n(A[i])===n(B[j])? L[i+1][j+1]+1 : Math.max(L[i+1][j],L[i][j+1]);
+  const out=[]; let i=0,j=0;
+  while(i<A.length || j<B.length){
+    if(i<A.length && j<B.length && n(A[i])===n(B[j])){ out.push({t:B[j],k:"="}); i++; j++; }
+    else if(i<A.length && (j>=B.length || L[i+1][j]>=L[i][j+1])){ out.push({t:A[i],k:"-"}); i++; }
+    else { out.push({t:B[j],k:"+"}); j++; }
+  }
+  return out;
+}
+function diffNode(a,b){ const p=el("p","aitxt"); wordDiff(a,b).forEach((d,i)=>{ if(i) p.append(" "); p.append(d.k==="="? document.createTextNode(d.t) : el(d.k==="+"?"ins":"del",null,d.t)); }); return p; }
+function aiResult(s, redo){
+  const res=s.res, box=el("div","aibox");
+  const said=el("div","aisaid"); said.append(el("span","ailab","내가 한 말"));
+  if(s.editing){
+    const ta=el("textarea","aiin"); ta.id="aiedit-"+MT.i; ta.value=res.transcript||""; ta.rows=3; ta.autocapitalize="off"; ta.spellcheck=false;
+    const row=el("div","airow"); const ok=el("button","btn primary","이 문장으로 다시 고치기"); ok.type="button"; const no=el("button","btn","취소"); no.type="button";
+    ok.onclick=()=>{ const t=ta.value.trim(); if(t) redo({text:t}); }; no.onclick=()=>{ s.editing=false; redo(null); };
+    row.append(no,ok); said.append(el("p","muted small","잘못 들린 단어만 내가 말한 대로 고쳐 주세요."), ta, row); box.append(said); return box;
+  }
+  said.append(el("p","aitxt",res.transcript||"(들린 말이 없어요)"));
+  if(res.transcript){ const ed=el("button","linkbtn aiedit","잘못 들렸나요? 고치기"); ed.type="button"; ed.onclick=()=>{ s.editing=true; redo(null); }; said.append(ed); }
+  box.append(said);
+  if(res.error==="no_speech"){ box.append(el("p","aierr","말소리가 잘 들리지 않았어요. 마이크 가까이에서 다시 답해 주세요.")); return box; }
+  const fx=el("div","aicorr"); const hd=el("div","aihd"); hd.append(el("span","ailab","이렇게 고쳐요"), speakBtn(res.corrected,"고친 문장 듣기")); fx.append(hd);
+  if(!res.fixes.length) fx.append(el("p","aiok","✓ 고칠 곳이 없어요"));
+  fx.append(diffNode(res.transcript,res.corrected));
+  if(res.fixes.length){ const ul=el("ul","ailist");
+    for(const f of res.fixes){ const li=el("li"); const tag=el("span","aitag",f.type); tag.style.setProperty("--c",TCOL[f.type]||"var(--blue)");
+      const ch=el("p","aich"); ch.append(el("del",null,f.from), document.createTextNode(" → "), el("ins",null,f.to));
+      li.append(tag,ch); if(f.why) li.append(el("p","aiwhy",f.why)); ul.append(li); }
+    fx.append(ul); }
+  box.append(fx);
+  if(res.better && res.better!==res.corrected){ const d=el("details","aibetter"); const sm=el("summary",null,"더 자연스럽게 말하면"); const row=el("div","aihd"); row.append(el("p","aitxt",res.better), speakBtn(res.better,"자연스러운 문장 듣기")); d.append(sm,row); box.append(d); }
+  if(res.good) box.append(el("p","aigood","잘한 점 · "+res.good));
+  if(res.mock) box.append(el("p","muted small","테스트용 가짜 응답이에요."));
+  return box;
+}
+function recBox(st,key){
+  MT.ai=MT.ai||{}; const S=()=>MT.ai[key]||(MT.ai[key]={});
+  const w=el("div","recbox"); const alive=()=>document.body.contains(w);
+  const ask=async(body,msg)=>{ const s=S(); s.busy=msg; s.err=""; if(alive()) draw();
+    try{ s.res=await aiSend(body.text!=null? {text:body.text,q:st.q} : body); s.editing=false; s.typing=false; }
+    catch(e){ s.err=AI_ERR[e.message]||"첨삭을 받지 못했어요. 인터넷 연결을 확인하고 다시 해 주세요."; }
+    s.busy=""; if(alive()) draw(); };
+  const start=async()=>{
+    try{ speechSynthesis.cancel(); }catch(_){} stopRec();
+    const s=S(); let stream;
+    try{ stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}}); }
+    catch(_){ s.err="마이크를 쓸 수 없어요. 브라우저 설정에서 마이크를 허용하거나, '글로 쓰기'를 눌러 주세요."; draw(); return; }
+    s.err=""; s.res=null; s.typing=false; s.editing=false;
+    const mr=new MediaRecorder(stream); const chunks=[];
+    REC={mr,stream,chunks,t0:Date.now(),key,send:false,timer:setInterval(()=>{ if(alive()) draw(); },1000)};
+    mr.ondataavailable=e=>{ if(e.data.size) chunks.push(e.data); };
+    mr.onstop=()=>{ const R=REC; clearInterval(R&&R.timer); stream.getTracks().forEach(t=>t.stop()); REC=null;
+      if(!R || !R.send){ if(alive()) draw(); return; }
+      const type=mr.mimeType||"audio/webm", blob=new Blob(chunks,{type});
+      if(s.url) URL.revokeObjectURL(s.url); s.url=URL.createObjectURL(blob);
+      if(Date.now()-R.t0<1500 || blob.size<1500){ s.err="너무 짧아요. 버튼을 누르고 답한 뒤 다시 눌러 주세요."; if(alive()) draw(); return; }
+      const fd=new FormData(); fd.append("audio",blob,"answer."+(/mp4|m4a|aac/.test(type)?"m4a":/ogg/.test(type)?"ogg":"webm")); fd.append("q",st.q);
+      ask(fd,"듣고 고치는 중이에요…"); };
+    mr.start(); draw();
+  };
+  const draw=()=>{ w.textContent=""; const s=S();
+    if(REC && REC.key===key){ const b=el("button","btn rec on"); b.type="button"; const sec=Math.floor((Date.now()-REC.t0)/1000);
+      b.append(el("i","recdot"), document.createTextNode(` ${Math.floor(sec/60)}:${String(sec%60).padStart(2,"0")} · 다 말했어요`)); b.onclick=()=>stopRec(true); w.append(b);
+      w.append(el("p","muted small","답을 다 말한 뒤 버튼을 누르면 고쳐 줘요.")); return; }
+    const row=el("div","airow");
+    if(canRecord()){ const r=el("button","btn rec"); r.type="button"; r.append(el("i","recdot"), document.createTextNode(s.res||s.url? " 다시 답하기" : " 말로 답하고 첨삭 받기")); r.disabled=!!s.busy; r.onclick=start; row.append(r); }
+    const k=el("button","btn"+(s.typing?" on":""),"글로 쓰기"); k.type="button"; k.disabled=!!s.busy; k.onclick=()=>{ s.typing=!s.typing; draw(); }; row.append(k);
+    w.append(row);
+    if(s.typing){ const ta=el("textarea","aiin"); ta.id="aitype-"+key; ta.rows=3; ta.placeholder="영어로 답을 써 보세요"; ta.autocapitalize="off"; ta.spellcheck=false;
+      const go2=el("button","btn primary","첨삭 받기"); go2.type="button"; go2.onclick=()=>{ const t=ta.value.trim(); if(t) ask({text:t},"고치는 중이에요…"); };
+      w.append(ta,go2); }
+    if(s.url){ const a=el("audio","recaudio"); a.controls=true; a.src=s.url; w.append(a); }
+    if(s.busy){ const p=el("p","aiwait"); p.append(el("i","aispin"), document.createTextNode(" "+s.busy)); w.append(p); }
+    if(s.err) w.append(el("p","aierr",s.err));
+    if(s.res && !s.busy) w.append(aiResult(s, b=>{ if(b) ask(b,"고치는 중이에요…"); else draw(); }));
+  };
+  draw(); return w;
+}
 
 function renderMock(app){
-  stopMockTimer();
+  endMock();
   if(!MT){
     const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
     pageHead(app,"아이엘츠 모의고사","실제 시험처럼 Part 1 → 2 → 3 순서로 랜덤 질문이 나와요.");
@@ -419,7 +523,7 @@ function renderMock(app){
     const home=el("button","btn","홈으로"); home.type="button"; home.onclick=()=>{ MT=null; go("home"); };
     e.append(again,bm,home); app.append(e); return;
   }
-  app.append(lessonBar(()=>{ MT=null; stopMockTimer(); try{ speechSynthesis.cancel(); }catch(_){} render(); }, MT.i, S.length));
+  app.append(lessonBar(()=>{ MT=null; endMock(); try{ speechSynthesis.cancel(); }catch(_){} render(); }, MT.i, S.length));
   const box=el("div","mockq");
   box.append(el("span","mpart",`Part ${st.part}`+(st.part===1? ` · ${st.topic}` : "")));
   box.append(el("p","mq",st.q));
@@ -434,15 +538,16 @@ function renderMock(app){
       else if(MT.phase==="prep"){ lab.textContent=`준비 중 ${m}:${s2}`; btn.textContent="바로 말하기 시작"; }
       else if(MT.phase==="talk"){ lab.textContent=`말하는 중 ${m}:${s2}`; btn.textContent="말하기 끝"; }
       else { lab.textContent="시간 끝! 다음으로 넘어가세요"; btn.hidden=true; } };
-    const run=(phase,sec)=>{ stopMockTimer(); MT.phase=phase; MT.left=sec; show(); mtTimer=setInterval(()=>{ MT.left--; if(MT.left<=0){ if(MT.phase==="prep") run("talk",120); else { stopMockTimer(); MT.phase="done"; show(); } } else show(); },1000); };
+    const run=(phase,sec)=>{ stopMockTimer(); MT.phase=phase; MT.left=sec; show(); mtTimer=setInterval(()=>{ MT.left--; if(MT.left<=0){ if(MT.phase==="prep") run("talk",120); else { stopMockTimer(); MT.phase="done"; show(); if(REC && REC.key===MT.i) stopRec(true); } } else show(); },1000); };
     btn.onclick=()=>{ if(MT.phase===null) run("prep",60); else if(MT.phase==="prep") run("talk",120); else { stopMockTimer(); MT.phase="done"; show(); } };
     show(); if(MT.phase==="prep"||MT.phase==="talk") run(MT.phase,MT.left);
     box.append(tm);
   }
+  box.append(recBox(st,MT.i));
   app.append(box);
   if(st.choose){ const ch=el("div","introch"); for(const [k,lab,en] of [["study","학생이에요","I'm a student."],["work","일해요","I work."]]){ const b=el("button","btn"+(st.chosen===k?" on":"")); b.type="button"; b.append(el("b",null,lab), el("span",null,en)); b.disabled=!!st.chosen; b.onclick=()=>chooseIntro(k); ch.append(b); } app.append(ch); if(!st.chosen){ app.append(el("p","muted small introhint","답하고 나서 해당하는 쪽을 누르면 그에 맞는 질문이 이어져요.")); return; } }
   const nx=el("button","btn primary vstart", MT.i+1<S.length? (S[MT.i+1].part!==st.part? `Part ${S[MT.i+1].part}로 넘어가기` : "다음 질문") : "모의고사 끝내기"); nx.type="button";
-  nx.onclick=()=>{ stopMockTimer(); MT.i++; MT.phase=null; MT.left=0; render(); window.scrollTo(0,0); const n=MT.steps[MT.i]; if(n && canSpeak()) setTimeout(()=>speak(n.q),250); };
+  nx.onclick=()=>{ endMock(); MT.i++; MT.phase=null; MT.left=0; render(); window.scrollTo(0,0); const n=MT.steps[MT.i]; if(n && canSpeak()) setTimeout(()=>speak(n.q),250); };
   app.append(nx);
 }
 
