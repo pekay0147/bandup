@@ -50,6 +50,7 @@ PORT = int(os.environ.get("PORT", "8765"))
 # 하루 한도. Groq 무료(2026-11 콘솔): LLM 모델마다 하루 20만 토큰·분당 8천 토큰, Whisper 모델마다 하루 음성 28,800초.
 # Part 단위 첨삭 1번 ≈ 3~5천 토큰 → 모의고사 1회(Part 3개) ≈ 1만~1만5천 토큰.
 STT_DAILY = int(os.environ.get("AI_STT_DAILY", "80"))      # 학생 1명당 받아쓰기 횟수 (모의고사 1회 ≈ 18번)
+STT_TOTAL = int(os.environ.get("AI_STT_TOTAL", "1000"))    # 모든 학생 합계 받아쓰기 횟수 (공개 주소로 열 때 보호용)
 FIX_DAILY = int(os.environ.get("AI_FIX_DAILY", "9"))       # 학생 1명당 Part 첨삭 횟수 (모의고사 1회 = 3번)
 FIX_TOTAL = int(os.environ.get("AI_FIX_TOTAL", "120"))     # 모든 학생 합계 Part 첨삭 횟수
 BLOCK = {s.strip() for s in os.environ.get("AI_BLOCK", "common,demo,jelly-demo").split(",")}  # 여러 사람이 같이 쓰는 링크
@@ -161,11 +162,17 @@ def multipart(fields, filename, content, ctype):
     return b"".join(parts), "multipart/form-data; boundary=" + b
 
 
-def transcribe(audio, ctype):
+def stt_prompt(q):
+    # Whisper prompt 는 "바로 앞에 나온 말"처럼 쓰여요. 질문을 넣어 주면 주제 단어(장소·사물 이름 등)를 더 잘 알아들어요.
+    q = " ".join(str(q or "").split())[:300]
+    return (q + " " if q else "") + VERBATIM_PROMPT
+
+
+def transcribe(audio, ctype, q=""):
     ext = "m4a" if re.search(r"mp4|m4a|aac", ctype) else "ogg" if "ogg" in ctype else "wav" if "wav" in ctype else "webm"
     last = ""
     for model in STT_MODELS:
-        body, ct = multipart({"model": model, "language": "en", "temperature": "0", "response_format": "verbose_json", "prompt": VERBATIM_PROMPT},
+        body, ct = multipart({"model": model, "language": "en", "temperature": "0", "response_format": "verbose_json", "prompt": stt_prompt(q)},
                              "answer." + ext, audio, ctype or "audio/webm")
         status, raw = groq("audio/transcriptions", body, ct)
         if status == 429 or status >= 500:
@@ -274,7 +281,10 @@ class Handler(SimpleHTTPRequestHandler):
                     return self.reply(403, {"error": "not_student"})
                 if not bump(f"stt:{slug}", STT_DAILY):
                     return self.reply(429, {"error": "daily_limit"})
-                r = transcribe(body, (self.headers.get("Content-Type") or "audio/webm").split(";")[0].strip())
+                if not bump("stt:total", STT_TOTAL):
+                    return self.reply(503, {"error": "busy"})
+                q = urllib.parse.parse_qs(u.query).get("q", [""])[0]
+                r = transcribe(body, (self.headers.get("Content-Type") or "audio/webm").split(";")[0].strip(), q)
                 if len(r["transcript"].split()) < 2:
                     r["error"] = "no_speech"
                 return self.reply(200, r)

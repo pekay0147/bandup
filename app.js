@@ -411,9 +411,9 @@ async function aiPost(path, body, type){
 const mockFix=t=>{ const bad=/as fast you/i.test(t); return {corrected:t.replace(/\b(um+|uh+)\b,?\s*/gi,"").replace(/as fast you/i,"as fast as you"),
   fixes: bad? [{from:"as fast you can",to:"as fast as you can",type:"문장 구조",why:"'as + 부사 + as' 구문이라 두 번째 as가 필요해요."}] : [],
   better: bad? "Yes, you can run as fast as you like." : "", good:"질문에 바로 답했어요."}; };
-function aiSTT(blob){
+function aiSTT(blob,q){
   if(aiMock()) return new Promise(r=>setTimeout(()=>r({transcript:"Yes, um, you can run as fast you can.",duration:5}),700));
-  return aiPost("stt?s="+encodeURIComponent(slug), blob, (blob.type||"audio/webm").split(";")[0]);
+  return aiPost("stt?s="+encodeURIComponent(slug)+"&q="+encodeURIComponent(String(q||"").slice(0,300)), blob, (blob.type||"audio/webm").split(";")[0]);
 }
 function aiFix(part, items){
   if(aiMock()) return new Promise(r=>setTimeout(()=>r({items:items.map(x=>mockFix(x.text)),mock:true}),1200));
@@ -459,10 +459,10 @@ function recBox(st,key){
   const start=async()=>{
     try{ speechSynthesis.cancel(); }catch(_){} stopRec();
     const s=S(); let stream;
-    try{ stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}}); }
+    try{ stream=await navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:true,noiseSuppression:false,autoGainControl:true}}); } // 잡음 제거는 자음을 뭉개서 끔 (Whisper 가 잡음에 강함)
     catch(_){ s.err="마이크를 쓸 수 없어요. 브라우저 설정에서 마이크를 허용하거나, '글로 쓰기'를 눌러 주세요."; draw(); return; }
     s.err=""; s.typing=false; s.editing=false;
-    const mr=new MediaRecorder(stream); const chunks=[];
+    let mr; try{ mr=new MediaRecorder(stream,{audioBitsPerSecond:128000}); }catch(_){ mr=new MediaRecorder(stream); } const chunks=[];
     REC={mr,stream,chunks,t0:Date.now(),key,send:false,timer:setInterval(()=>{ if(alive()) draw(); },1000)};
     mr.ondataavailable=e=>{ if(e.data.size) chunks.push(e.data); };
     mr.onstop=async()=>{ const R=REC; clearInterval(R&&R.timer); stream.getTracks().forEach(t=>t.stop()); REC=null;
@@ -471,7 +471,7 @@ function recBox(st,key){
       if(s.url) URL.revokeObjectURL(s.url); s.url=URL.createObjectURL(blob);
       if(Date.now()-R.t0<1500 || blob.size<1500){ s.err="너무 짧아요. 버튼을 누르고 답한 뒤 다시 눌러 주세요."; if(alive()) draw(); return; }
       s.busy=true; if(alive()) draw();
-      try{ const r=await aiSTT(blob); if(r.error==="no_speech"){ s.err="말소리가 잘 들리지 않았어요. 마이크 가까이에서 다시 답해 주세요."; } else setText(r.transcript); }
+      try{ const r=await aiSTT(blob, [st.q, ...(st.say||[])].join(". ")); if(r.error==="no_speech"){ s.err="말소리가 잘 들리지 않았어요. 마이크 가까이에서 다시 답해 주세요."; } else setText(r.transcript); }
       catch(e){ s.err=aiErrMsg(e); }
       s.busy=false; if(alive()) draw(); };
     mr.start(); draw();
