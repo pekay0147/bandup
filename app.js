@@ -391,12 +391,20 @@ function buildMock(){
 function stopMockTimer(){ if(mtTimer){ clearInterval(mtTimer); mtTimer=null; } }
 function endMock(){ stopMockTimer(); stopRec(); } // 질문을 떠날 때: 타이머 + 녹음 모두 정리 (녹음은 보내지 않고 버림)
 /* ---------- 말하기 첨삭: 답할 때마다 받아쓰기 → Part가 끝나면 한 번에 문법·단어·표현 교정 ----------
-   서버: server/speak_fix.py (같은 주소의 /api/). GitHub Pages 처럼 서버가 없는 곳에서는 기능이 숨겨져요.
-   테스트용 가짜 응답: localStorage "bandup-ai-mock" = "1" */
+   서버: 학생용(GitHub Pages) = Supabase Edge Function "speak-fix" (supabase/README.md)
+         내 PC 테스트(localhost·Tailscale) = server/speak_fix.py 의 /api/
+   AI_LIVE 가 false 면 GitHub Pages 에서는 기능이 숨겨져요. Supabase 함수를 배포·확인한 뒤 true 로.
+   테스트용: localStorage "bandup-ai-mock" = "1" (가짜 응답), "bandup-ai-url" = "supabase" (PC에서 Supabase 함수로 시험) */
 let REC=null; // {mr, stream, chunks, t0, timer, key, send}
 const canRecord=()=>!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
 const aiMock=()=>{ try{ return !!window.BANDUP_AI_MOCK || localStorage.getItem("bandup-ai-mock")==="1"; }catch(_){ return !!window.BANDUP_AI_MOCK; } };
-const aiBase=()=>window.BANDUP_AI_URL || (/^(localhost|127\.0\.0\.1)$|\.ts\.net$/.test(location.hostname)? "/api/" : ""); // 내 PC(localhost)·Tailscale 주소에서만 첨삭 서버 사용
+const AI_LIVE=false; // Supabase 함수 배포 후 true 로 바꾸면 학생 앱(GitHub Pages)에서 켜져요
+const aiRemote=()=>SB_URL+"/functions/v1/speak-fix/";
+const aiBase=()=>{ let o=""; try{ o=localStorage.getItem("bandup-ai-url")||""; }catch(_){}
+  if(window.BANDUP_AI_URL) return window.BANDUP_AI_URL;
+  if(o) return o==="supabase"? aiRemote() : o;
+  if(/^(localhost|127\.0\.0\.1)$|\.ts\.net$/.test(location.hostname)) return "/api/"; // 내 PC 서버
+  return AI_LIVE? aiRemote() : ""; };
 const aiOn=()=>aiMock() || !!(aiBase() && D && !D.demo && D.group!=="common"); // 체험·공용 링크에서는 숨김
 const AI_ERR={daily_limit:"오늘 쓸 수 있는 횟수를 다 썼어요. 내일 다시 해 주세요.", busy:"지금 쓰는 사람이 많아요. 잠시 후 다시 해 주세요.",
   too_long:"녹음이 너무 길어요. 3분 안으로 답해 주세요.", server_not_ready:"첨삭 서버에 Groq 키가 아직 없어요.",
@@ -404,7 +412,9 @@ const AI_ERR={daily_limit:"오늘 쓸 수 있는 횟수를 다 썼어요. 내일
 const aiErrMsg=e=>AI_ERR[e && e.message] || "연결하지 못했어요. 인터넷 연결을 확인하고 다시 해 주세요.";
 function stopRec(send){ if(REC){ REC.send=!!send; try{ if(REC.mr.state!=="inactive") REC.mr.stop(); }catch(_){} } }
 async function aiPost(path, body, type){
-  const r=await fetch(aiBase()+path,{method:"POST",headers:{"Content-Type":type},body}); const j=await r.json().catch(()=>({}));
+  const base=aiBase(), headers={"Content-Type":type};
+  if(base.startsWith(SB_URL)){ headers.apikey=SB_KEY; headers.Authorization="Bearer "+SB_KEY; } // Supabase 함수 호출용 공개 키 (비밀 아님)
+  const r=await fetch(base+path,{method:"POST",headers,body}); const j=await r.json().catch(()=>({}));
   if(!r.ok || (j.error && j.error!=="no_speech")) throw new Error(j.error||("http "+r.status));
   return j;
 }
