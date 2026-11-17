@@ -8,14 +8,16 @@
 const GROQ_KEY = Deno.env.get("GROQ_API_KEY") ?? "";
 const SB_URL = Deno.env.get("SUPABASE_URL") ?? "";
 const SB_SERVICE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
-const STUDENT_DAILY = Number(Deno.env.get("AI_STUDENT_DAILY") ?? 60); // 학생 1명당 하루
-const TOTAL_DAILY = Number(Deno.env.get("AI_TOTAL_DAILY") ?? 600);    // 모든 학생 합계 하루 (Groq 무료 한도 보호)
+// Groq 무료 한도(2026-11 콘솔 기준): gpt-oss-120b·qwen3.8-27b·gpt-oss-20b 각각 하루 20만 토큰·분당 8천 토큰,
+// whisper-large-v3·turbo 각각 하루 음성 28,800초. 첨삭 1번 ≈ 2천 토큰이라 세 모델 합쳐 하루 약 250~300번.
+const STUDENT_DAILY = Number(Deno.env.get("AI_STUDENT_DAILY") ?? 30); // 학생 1명당 하루
+const TOTAL_DAILY = Number(Deno.env.get("AI_TOTAL_DAILY") ?? 250);    // 모든 학생 합계 하루 (Groq 무료 한도 보호)
 const BLOCK = new Set((Deno.env.get("AI_BLOCK") ?? "common,demo,jelly-demo").split(",").map((s) => s.trim())); // 여러 사람이 같이 쓰는 링크
 const STUDENTS_URL = Deno.env.get("AI_STUDENTS_URL") ?? "https://pekay0147.github.io/bandup/data/students/";
 const ORIGINS = (Deno.env.get("AI_ORIGINS") ?? "https://pekay0147.github.io").split(",").map((s) => s.trim());
 
 const STT_MODELS = ["whisper-large-v3", "whisper-large-v3-turbo"]; // 앞 모델 한도가 차면 다음으로
-const LLM_MODELS = ["openai/gpt-oss-120b", "llama-3.3-70b-versatile"];
+const LLM_MODELS = ["openai/gpt-oss-120b", "qwen/qwen3.8-27b", "openai/gpt-oss-20b"]; // 한도(분당·하루)는 모델별로 따로라 차례로 넘김
 const MAX_AUDIO = 20 * 1024 * 1024;
 
 // Whisper 는 prompt 의 말투를 따라 해요. 실수와 머뭇거림이 섞인 예시를 주면 학생 실수를 덜 고쳐서 적어요.
@@ -127,13 +129,16 @@ async function correct(text: string, q: string) {
     const body: Record<string, unknown> = {
       model,
       temperature: 0.2,
+      max_completion_tokens: 2000,
       response_format: { type: "json_object" },
       messages: [
         { role: "system", content: SYSTEM },
         { role: "user", content: `Question: ${q || "(free speaking)"}\nTranscript: ${text}` },
       ],
     };
-    if (model.startsWith("openai/gpt-oss")) body.reasoning_effort = "medium";
+    if (model === "openai/gpt-oss-120b") body.reasoning_effort = "medium";
+    else if (model.startsWith("openai/gpt-oss")) body.reasoning_effort = "low";
+    else if (model.startsWith("qwen/")) body.reasoning_format = "hidden";
     const r = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: { Authorization: `Bearer ${GROQ_KEY}`, "Content-Type": "application/json" },
@@ -143,7 +148,8 @@ async function correct(text: string, q: string) {
     if (!r.ok) { last = `${model} ${r.status} ${await r.text()}`; continue; }
     const j = await r.json();
     try {
-      const o = JSON.parse(j.choices?.[0]?.message?.content ?? "");
+      const raw = String(j.choices?.[0]?.message?.content ?? "").replace(/<think>[\s\S]*?<\/think>/g, "");
+      const o = JSON.parse(raw.slice(raw.indexOf("{"), raw.lastIndexOf("}") + 1));
       const fixes = (Array.isArray(o.fixes) ? o.fixes : [])
         .filter((f: Record<string, unknown>) => typeof f?.from === "string" && typeof f?.to === "string" && f.from !== f.to)
         .map((f: Record<string, string>) => ({ from: f.from, to: f.to, type: TYPES.includes(f.type) ? f.type : "문장 구조", why: String(f.why ?? "") }));
