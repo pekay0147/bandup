@@ -21,6 +21,7 @@ import os
 import re
 import sys
 import threading
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -208,12 +209,16 @@ def correct(part, items):
         body = {"model": model, "temperature": 0.2, "max_completion_tokens": 5000, "response_format": {"type": "json_object"},
                 "messages": [{"role": "system", "content": SYSTEM}, {"role": "user", "content": user}]}
         if model == "openai/gpt-oss-120b":
-            body["reasoning_effort"] = "low"  # medium 은 생각 토큰을 2배 넘게 써요
+            body["reasoning_effort"] = "medium"  # low 는 토큰이 40% 적지만 첨삭이 덜 꼼꼼해요
         elif model.startswith("openai/gpt-oss"):
             body["reasoning_effort"] = "low"
         elif model.startswith("qwen/"):
             body["reasoning_format"] = "hidden"
         status, raw = groq("chat/completions", json.dumps(body).encode(), "application/json")
+        m = re.search(rb"try again in ([\d.]+)s", raw) if status == 429 else None
+        if m and float(m.group(1)) <= 20:  # 분당 한도면 잠깐 기다렸다가 같은 좋은 모델로 다시
+            time.sleep(float(m.group(1)) + 0.5)
+            status, raw = groq("chat/completions", json.dumps(body).encode(), "application/json")
         if status != 200:
             last = f"{model} {status} {raw[:200]!r}"
             print("llm", last, file=sys.stderr)

@@ -160,12 +160,19 @@ async function correct(part: number, items: { q: string; text: string }[]) {
       model, temperature: 0.2, max_completion_tokens: 5000, response_format: { type: "json_object" },
       messages: [{ role: "system", content: SYSTEM }, { role: "user", content: user }],
     };
-    if (model === "openai/gpt-oss-120b") body.reasoning_effort = "low"; // medium 은 생각 토큰을 2배 넘게 써요
+    if (model === "openai/gpt-oss-120b") body.reasoning_effort = "medium"; // low 는 토큰이 40% 적지만 첨삭이 덜 꼼꼼해요
     else if (model.startsWith("openai/gpt-oss")) body.reasoning_effort = "low";
     else if (model.startsWith("qwen/")) body.reasoning_format = "hidden";
-    const r = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    const call = () => fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST", headers: { Authorization: `Bearer ${GROQ_KEY}`, "Content-Type": "application/json" }, body: JSON.stringify(body),
     });
+    let r = await call();
+    if (r.status === 429) {
+      // 분당 한도(8천 토큰)에 걸리면 Groq 가 "몇 초 뒤 다시"라고 알려 줘요. 짧으면 기다렸다가 같은 좋은 모델로 다시 해요.
+      const t = await r.text(), m = t.match(/try again in ([\d.]+)s/);
+      if (m && Number(m[1]) <= 20) { await new Promise((ok) => setTimeout(ok, Number(m[1]) * 1000 + 500)); r = await call(); }
+      else { last = `${model} 429 ${t.slice(0, 200)}`; console.error("llm", last); continue; }
+    }
     if (!r.ok) { last = `${model} ${r.status} ${(await r.text()).slice(0, 200)}`; console.error("llm", last); continue; }
     try {
       const j = await r.json();
