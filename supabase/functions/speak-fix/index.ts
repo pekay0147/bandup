@@ -42,10 +42,11 @@ Fix:
 - words that are wrong or unnatural in context, and wrong collocations (e.g. "do a mistake" -> "make a mistake")
 - idioms and fixed expressions used in the wrong form or the wrong situation (e.g. "on the other side" used to mean "on the other hand")
 - parts of speech (e.g. "I'm very interesting in" -> "I'm very interested in")
+- tense with since/for: a situation that started in the past and is still true needs the present perfect (e.g. "I like it since I was a child" -> "I have liked it since I was a child")
 
 Do NOT:
 - treat fillers (um, uh, like), repetitions or self-corrections as errors. Remove them silently in "corrected".
-- treat punctuation or capitalisation as errors. It is speech: add punctuation silently.
+- treat punctuation, capitalisation or British/American spelling as errors. It is speech: add punctuation silently.
 - replace correct but simple words with fancier ones in "corrected". Put upgrades only in "better".
 - change contractions or natural spoken openers ("So,", "Well,", "Actually,").
 - invent content the student did not say.
@@ -159,7 +160,7 @@ async function correct(part: number, items: { q: string; text: string }[]) {
       model, temperature: 0.2, max_completion_tokens: 5000, response_format: { type: "json_object" },
       messages: [{ role: "system", content: SYSTEM }, { role: "user", content: user }],
     };
-    if (model === "openai/gpt-oss-120b") body.reasoning_effort = "medium";
+    if (model === "openai/gpt-oss-120b") body.reasoning_effort = "low"; // medium 은 생각 토큰을 2배 넘게 써요
     else if (model.startsWith("openai/gpt-oss")) body.reasoning_effort = "low";
     else if (model.startsWith("qwen/")) body.reasoning_format = "hidden";
     const r = await fetch("https://api.groq.com/openai/v1/chat/completions", {
