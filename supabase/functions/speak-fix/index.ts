@@ -1,15 +1,17 @@
 // 밴드업 · 말하기 첨삭 (Supabase Edge Function)
 // 1) 녹음 파일 → Groq Whisper 로 "들린 그대로" 받아쓰기
 // 2) 받아쓴 문장 → Groq LLM 이 문법·단어·숙어를 고쳐서 JSON 으로 돌려줌
-// 요청: multipart/form-data { audio: File, q?: 질문 }  또는  JSON { text: 학생이 고친 문장, q?: 질문 }
-// 비밀값(supabase secrets set): GROQ_API_KEY  (선택: AI_USER_DAILY, AI_ANON_DAILY, AI_ORIGINS)
+// 요청: multipart/form-data { audio: File, s: 학생 코드, q?: 질문 }  또는  JSON { text: 학생이 고친 문장, s, q? }
+// 학생 확인: 학생 코드(링크의 u/<코드>/)가 data/students/<코드>.json 에 있어야 해요. 로그인은 필요 없어요.
+// 비밀값(supabase secrets set): GROQ_API_KEY  (선택: AI_STUDENT_DAILY, AI_TOTAL_DAILY, AI_BLOCK, AI_STUDENTS_URL, AI_ORIGINS)
 
 const GROQ_KEY = Deno.env.get("GROQ_API_KEY") ?? "";
 const SB_URL = Deno.env.get("SUPABASE_URL") ?? "";
 const SB_SERVICE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
-const SB_ANON = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
-const USER_DAILY = Number(Deno.env.get("AI_USER_DAILY") ?? 80);   // 로그인한 학생 1명당 하루
-const ANON_DAILY = Number(Deno.env.get("AI_ANON_DAILY") ?? 20);   // 로그인 안 한 기기(IP)당 하루
+const STUDENT_DAILY = Number(Deno.env.get("AI_STUDENT_DAILY") ?? 60); // 학생 1명당 하루
+const TOTAL_DAILY = Number(Deno.env.get("AI_TOTAL_DAILY") ?? 600);    // 모든 학생 합계 하루 (Groq 무료 한도 보호)
+const BLOCK = new Set((Deno.env.get("AI_BLOCK") ?? "common,demo,jelly-demo").split(",").map((s) => s.trim())); // 여러 사람이 같이 쓰는 링크
+const STUDENTS_URL = Deno.env.get("AI_STUDENTS_URL") ?? "https://pekay0147.github.io/bandup/data/students/";
 const ORIGINS = (Deno.env.get("AI_ORIGINS") ?? "https://pekay0147.github.io").split(",").map((s) => s.trim());
 
 const STT_MODELS = ["whisper-large-v3", "whisper-large-v3-turbo"]; // 앞 모델 한도가 차면 다음으로
@@ -72,19 +74,22 @@ function json(body: unknown, status: number, h: Record<string, string>) {
   return new Response(JSON.stringify(body), { status, headers: { ...h, "Content-Type": "application/json; charset=utf-8" } });
 }
 
-async function whoIs(req: Request): Promise<string> {
-  const auth = req.headers.get("authorization") ?? "";
-  const tok = auth.replace(/^Bearer\s+/i, "");
-  if (tok && tok !== SB_ANON) {
-    const r = await fetch(`${SB_URL}/auth/v1/user`, { headers: { apikey: SB_ANON, Authorization: `Bearer ${tok}` } });
-    if (r.ok) { const u = await r.json(); if (u?.id) return `u:${u.id}`; }
-  }
-  const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "unknown";
-  return `ip:${ip}`;
+// 학생 코드가 실제 과외 학생 명단에 있는지 확인 (10분 동안 기억)
+const known = new Map<string, { ok: boolean; at: number }>();
+async function isStudent(slug: string): Promise<boolean> {
+  if (!/^[a-z0-9-]{3,40}$/.test(slug) || BLOCK.has(slug)) return false;
+  const c = known.get(slug);
+  if (c && Date.now() - c.at < 600_000) return c.ok;
+  let ok = false;
+  try {
+    const r = await fetch(`${STUDENTS_URL}${slug}.json`, { cache: "no-store" });
+    if (r.ok) { const d = await r.json(); ok = d?.slug === slug && !d?.demo; }
+  } catch (_) { ok = c?.ok ?? false; }
+  known.set(slug, { ok, at: Date.now() });
+  return ok;
 }
 
-async function allow(key: string): Promise<boolean> {
-  const lim = key.startsWith("u:") ? USER_DAILY : ANON_DAILY;
+async function bump(key: string, lim: number): Promise<boolean> {
   const r = await fetch(`${SB_URL}/rest/v1/rpc/ai_bump`, {
     method: "POST",
     headers: { apikey: SB_SERVICE, Authorization: `Bearer ${SB_SERVICE}`, "Content-Type": "application/json" },
@@ -155,22 +160,24 @@ Deno.serve(async (req) => {
   if (!GROQ_KEY) return json({ error: "server_not_ready" }, 500, h);
 
   try {
-    let text = "", q = "", duration = 0, stt = "";
+    let text = "", q = "", slug = "", duration = 0, stt = "";
     const ct = req.headers.get("content-type") ?? "";
     let audio: File | null = null;
     if (ct.includes("multipart/form-data")) {
       const fd = await req.formData();
-      const a = fd.get("audio"); q = String(fd.get("q") ?? "").slice(0, 400);
+      const a = fd.get("audio"); q = String(fd.get("q") ?? "").slice(0, 400); slug = String(fd.get("s") ?? "");
       if (!(a instanceof File) || !a.size) return json({ error: "no_audio" }, 400, h);
       if (a.size > MAX_AUDIO) return json({ error: "too_long" }, 413, h);
       audio = a;
     } else {
       const b = await req.json().catch(() => ({}));
-      text = String(b.text ?? "").trim().slice(0, 4000); q = String(b.q ?? "").slice(0, 400);
+      text = String(b.text ?? "").trim().slice(0, 4000); q = String(b.q ?? "").slice(0, 400); slug = String(b.s ?? "");
       if (!text) return json({ error: "no_text" }, 400, h);
     }
 
-    if (!(await allow(await whoIs(req)))) return json({ error: "daily_limit" }, 429, h);
+    if (!(await isStudent(slug))) return json({ error: "not_student" }, 403, h);
+    if (!(await bump(`s:${slug}`, STUDENT_DAILY))) return json({ error: "daily_limit" }, 429, h);
+    if (!(await bump("total", TOTAL_DAILY))) return json({ error: "busy" }, 503, h);
 
     if (audio) {
       const t = await transcribe(audio);

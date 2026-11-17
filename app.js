@@ -396,7 +396,8 @@ let REC=null; // {mr, stream, chunks, t0, timer, key, send}
 const canRecord=()=>!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
 const aiMock=()=>{ try{ return !!window.BANDUP_AI_MOCK || localStorage.getItem("bandup-ai-mock")==="1"; }catch(_){ return !!window.BANDUP_AI_MOCK; } };
 const AI_ERR={daily_limit:"오늘 받을 수 있는 첨삭을 다 썼어요. 내일 다시 해 주세요.", busy:"지금 쓰는 사람이 많아요. 잠시 후 다시 눌러 주세요.",
-  too_long:"녹음이 너무 길어요. 3분 안으로 답해 주세요.", server_not_ready:"첨삭 서버가 아직 준비되지 않았어요."};
+  too_long:"녹음이 너무 길어요. 3분 안으로 답해 주세요.", server_not_ready:"첨삭 서버가 아직 준비되지 않았어요.", not_student:"수강생 전용 기능이에요. 선생님께 받은 내 링크로 들어와 주세요."};
+const aiOn=()=>!!(D && !D.demo && D.group!=="common") || aiMock(); // 여러 사람이 같이 쓰는 체험·공용 링크에서는 숨김
 function stopRec(send){ if(REC){ REC.send=!!send; try{ if(REC.mr.state!=="inactive") REC.mr.stop(); }catch(_){} } }
 function aiMockReply(text){
   const t=text||"Yes, um, you can run as fast you can.";
@@ -406,9 +407,8 @@ function aiMockReply(text){
 }
 async function aiSend(body){
   if(aiMock()) return aiMockReply(body instanceof FormData? "" : body.text);
-  const se=await cloudToken().catch(()=>null);
-  const headers={apikey:SB_KEY, Authorization:"Bearer "+(se? se.at : SB_KEY)}; const opt={method:"POST",headers};
-  if(body instanceof FormData) opt.body=body; else { headers["Content-Type"]="application/json"; opt.body=JSON.stringify(body); }
+  const headers={apikey:SB_KEY, Authorization:"Bearer "+SB_KEY}; const opt={method:"POST",headers}; // 로그인 없이 학생 코드(slug)로 확인
+  if(body instanceof FormData){ body.append("s",slug); opt.body=body; } else { headers["Content-Type"]="application/json"; opt.body=JSON.stringify({...body,s:slug}); }
   const r=await fetch(SB_URL+"/functions/v1/speak-fix",opt); const j=await r.json().catch(()=>({}));
   if(!r.ok || (j.error && j.error!=="no_speech")) throw new Error(j.error||("http "+r.status));
   return j;
@@ -543,7 +543,7 @@ function renderMock(app){
     show(); if(MT.phase==="prep"||MT.phase==="talk") run(MT.phase,MT.left);
     box.append(tm);
   }
-  box.append(recBox(st,MT.i));
+  if(aiOn()) box.append(recBox(st,MT.i));
   app.append(box);
   if(st.choose){ const ch=el("div","introch"); for(const [k,lab,en] of [["study","학생이에요","I'm a student."],["work","일해요","I work."]]){ const b=el("button","btn"+(st.chosen===k?" on":"")); b.type="button"; b.append(el("b",null,lab), el("span",null,en)); b.disabled=!!st.chosen; b.onclick=()=>chooseIntro(k); ch.append(b); } app.append(ch); if(!st.chosen){ app.append(el("p","muted small introhint","답하고 나서 해당하는 쪽을 누르면 그에 맞는 질문이 이어져요.")); return; } }
   const nx=el("button","btn primary vstart", MT.i+1<S.length? (S[MT.i+1].part!==st.part? `Part ${S[MT.i+1].part}로 넘어가기` : "다음 질문") : "모의고사 끝내기"); nx.type="button";

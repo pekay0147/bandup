@@ -1,6 +1,6 @@
 -- 말하기 첨삭(speak-fix) 하루 사용 횟수 집계. Edge Function 이 service role 로만 호출해요.
 create table if not exists public.ai_usage (
-  k   text not null,              -- 'u:<user id>' 또는 'ip:<주소>'
+  k   text not null,              -- 's:<학생 코드>' 또는 'total'(전체 합계)
   day date not null default current_date,
   n   int  not null default 0,
   primary key (k, day)
