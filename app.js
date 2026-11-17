@@ -398,9 +398,9 @@ function endMock(){ stopMockTimer(); stopRec(); } // 질문을 떠날 때: 타�
 let REC=null; // {mr, stream, chunks, t0, timer, key, send}
 const canRecord=()=>!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
 const aiMock=()=>{ try{ return !!window.BANDUP_AI_MOCK || localStorage.getItem("bandup-ai-mock")==="1"; }catch(_){ return !!window.BANDUP_AI_MOCK; } };
-const AI_LIVE=false; // Supabase 함수 배포 후 true 로 바꾸면 학생 앱(GitHub Pages)에서 켜져요
+const AI_LIVE=false; // true 로 바꾸면 모든 학생에게 켜져요. false 면 학생 파일(data/students/*.json)에 "ai": true 인 학생만
 const aiRemote=()=>SB_URL+"/functions/v1/speak-fix/";
-try{ const q=new URLSearchParams(location.search).get("ai"); // 테스트용: 주소 뒤에 ?ai=supabase / ?ai=local / ?ai=off
+if(/^(localhost|127\.0\.0\.1)$|\.ts\.net$/.test(location.hostname)) try{ const q=new URLSearchParams(location.search).get("ai"); // 내 PC 테스트용: 주소 뒤에 ?ai=supabase / ?ai=local / ?ai=off
   if(q==="supabase") localStorage.setItem("bandup-ai-url","supabase");
   else if(q==="local") localStorage.setItem("bandup-ai-url","/api/");
   else if(q==="off") localStorage.removeItem("bandup-ai-url"); }catch(_){}
@@ -408,7 +408,7 @@ const aiBase=()=>{ let o=""; try{ o=localStorage.getItem("bandup-ai-url")||""; }
   if(window.BANDUP_AI_URL) return window.BANDUP_AI_URL;
   if(o) return o==="supabase"? aiRemote() : o;
   if(/^(localhost|127\.0\.0\.1)$|\.ts\.net$/.test(location.hostname)) return "/api/"; // 내 PC 서버
-  return AI_LIVE? aiRemote() : ""; };
+  return (AI_LIVE || (D && D.ai))? aiRemote() : ""; }; // 학생 파일에 "ai": true 가 있으면 그 학생만 먼저 켜짐
 const aiOn=()=>aiMock() || !!(aiBase() && D && !D.demo && D.group!=="common"); // 체험·공용 링크에서는 숨김
 const AI_ERR={daily_limit:"오늘 쓸 수 있는 횟수를 다 썼어요. 내일 다시 해 주세요.", busy:"지금 쓰는 사람이 많아요. 잠시 후 다시 해 주세요.",
   too_long:"녹음이 너무 길어요. 3분 안으로 답해 주세요.", server_not_ready:"첨삭 서버에 Groq 키가 아직 없어요.",
