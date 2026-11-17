@@ -65,6 +65,11 @@
    "no": 12,
    "date": "2026-11-16",
    "title": "Something useful"
+  },
+  {
+   "no": 13,
+   "date": "2026-11-17",
+   "title": "Impressive film"
   }
  ],
  "types": [
@@ -89,7 +94,8 @@
   "8": "Part 2 서론 정확하게 암기하기! be·seem·feel 뒤에는 형용사(happy, calm) 쓰기.",
   "10": "Part 2에서 off the top of my head 뒤에 '무슨 때인지' 바로 설명하기! To begin with 대신 First of all.",
   "11": "There are(~가 있다) vs These are(이것들이 ~이다)! another + 단수, different + 복수. Part 2 본론은 오늘의 2배로!",
-  "12": "like + 명사 (I like sunny days)! 시간(evening)은 주어가 못 돼요 → I enjoy ~ in the evening. 단어가 안 떠오르면 더 큰 범주로 말하기. 가정법 공부해오기!"
+  "12": "like + 명사 (I like sunny days)! 시간(evening)은 주어가 못 돼요 → I enjoy ~ in the evening. 단어가 안 떠오르면 더 큰 범주로 말하기. 가정법 공부해오기!",
+  "13": "It reminds me of ~ (remember ❌). 습관은 I usually take (taking ❌). go on a trip에는 to 없음! forget-forgot-forgotten."
  },
  "compare": [
   [
@@ -2583,6 +2589,162 @@
    "hint": "workplace",
    "gram": "<em>when they work</em> = 그들이 일할 때. <em>at their workplace</em> = 직장에서.",
    "mine": null
+  },
+  {
+   "id": "n13m1",
+   "kind": "ko",
+   "type": "주어-동사",
+   "sessions": [
+    13
+   ],
+   "ko": "저는 저녁에 음악 듣는 걸 즐겨요.",
+   "en": "I enjoy listening to music in the evening.",
+   "hint": "enjoy",
+   "gram": "❌ evening enjoy → ✅ <em>I enjoy</em> -ing <em>in the evening</em>. 주어는 사람!",
+   "mine": null
+  },
+  {
+   "id": "n13m2",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    13
+   ],
+   "ko": "그 이야기는 항상 저를 궁금하게 해요.",
+   "en": "That story always makes me curious.",
+   "hint": "makes",
+   "gram": "❌ it curious me → ✅ <em>make</em> + 사람 + 형용사. 주어가 단수라 make<em>s</em>.",
+   "mine": null
+  },
+  {
+   "id": "n13m3",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    13
+   ],
+   "ko": "커피가 없으면 저는 아침에 아무것도 못 해요.",
+   "en": "If I don't have coffee, I can do nothing in the morning.",
+   "hint": "nothing",
+   "gram": "<em>If I don't have</em> ~, I can do <em>nothing</em>. (= I can't do anything.)",
+   "mine": null
+  },
+  {
+   "id": "n13m4",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    13
+   ],
+   "ko": "독서는 즐거운 취미이고, 제가 스트레스 받는 걸 막아 줘요.",
+   "en": "Reading is an enjoyable hobby, and it keeps me from feeling stressed.",
+   "hint": "keeps",
+   "gram": "<em>enjoyable</em> = 즐거운(형용사). <em>keep</em> + 사람 + <em>from</em> -ing = ~하지 못하게 하다. 주어가 it이라 keep<em>s</em>.",
+   "mine": null
+  },
+  {
+   "id": "n13m5",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    13
+   ],
+   "ko": "제가 부자라면 일을 안 할 텐데요.",
+   "en": "If I were rich, I wouldn't work.",
+   "hint": "were",
+   "gram": "가정법 과거(지금 사실이 아닌 일): <em>If I were</em> ~, I <em>would / wouldn't</em> + 동사원형.",
+   "mine": null
+  },
+  {
+   "id": "n13m6",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    13
+   ],
+   "ko": "더 일찍 잤더라면 피곤하지 않았을 텐데요.",
+   "en": "If I had gone to bed earlier, I wouldn't have been tired.",
+   "hint": "had gone",
+   "gram": "가정법 과거완료(과거에 못 한 일): <em>If I had</em> + p.p., I <em>would / wouldn't have</em> + p.p.",
+   "mine": null
+  },
+  {
+   "id": "n1301",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    13
+   ],
+   "ko": "그건 옛 추억을 떠올리게 해요.",
+   "en": "It reminds me of an old memory.",
+   "hint": "reminds",
+   "gram": "❌ its remember old memory → ✅ It <em>reminds me of</em> an old memory. remember = (내가) 기억하다 / <em>remind</em> A <em>of</em> B = A에게 B를 떠올리게 하다.",
+   "mine": "its remember old memory"
+  },
+  {
+   "id": "n1302",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    13
+   ],
+   "ko": "저는 보통 음식과 풍경 사진을 찍어요.",
+   "en": "I usually take photos of food and landscapes.",
+   "hint": "take",
+   "gram": "❌ I usually taking → ✅ I usually <em>take</em>. 평소 습관은 현재형(동사원형). <em>take photos of</em> ~ = ~의 사진을 찍다.",
+   "mine": "I usually taking photos …"
+  },
+  {
+   "id": "n1303",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    13
+   ],
+   "ko": "작년에 가족과 여행을 갔어요.",
+   "en": "I went on a trip with my family last year.",
+   "hint": "on",
+   "gram": "❌ I went to on a trip → ✅ I <em>went on a trip</em>. go on a trip에는 to가 없어요.",
+   "mine": "I went to on a trip"
+  },
+  {
+   "id": "n1304",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    13
+   ],
+   "ko": "저는 그 문제의 원인을 알아냈어요.",
+   "en": "I figured out the cause of the problem.",
+   "hint": "figured",
+   "gram": "알아내다 = <em>figure out</em> (생각해서 알아내다) / <em>notice</em> (눈치채다) / <em>find</em> (찾아내다).",
+   "mine": null
+  },
+  {
+   "id": "n1305",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    13
+   ],
+   "ko": "저는 프로젝트 마감일을 잊어버렸어요.",
+   "en": "I forgot the deadline for my project.",
+   "hint": "forgot",
+   "gram": "❌ I forgetten → ✅ I <em>forgot</em>. forget-<em>forgot</em>-forgotten. forgotten은 have와 함께: I have forgotten.",
+   "mine": "I forgetten the deadline"
+  },
+  {
+   "id": "n1306",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    13
+   ],
+   "ko": "저는 기억력이 좋아요.",
+   "en": "I have a good memory.",
+   "hint": "memory",
+   "gram": "❌ I have good memorizing → ✅ I have <em>a good memory</em>. 기억력 = memory (셀 수 있는 명사라 a).",
+   "mine": "I have good memorizing"
   }
  ],
  "part1": [
@@ -3457,6 +3619,78 @@
    "ko": "즐거운",
    "ex": "Reading is an enjoyable hobby.",
    "s": 12
+  },
+  {
+   "w": "addicted to",
+   "ko": "~에 중독된",
+   "ex": "Nature gave us these systems to be addicted to each other for reproduction and protection.",
+   "s": 13
+  },
+  {
+   "w": "oriented toward",
+   "ko": "~를 향한, ~에 초점을 둔",
+   "ex": "It is a survival system oriented completely toward the other person, much like hunger or thirst.",
+   "s": 13
+  },
+  {
+   "w": "longevity",
+   "ko": "장수, 수명",
+   "ex": "It is the number one predictor of longevity.",
+   "s": 13
+  },
+  {
+   "w": "literal / literally",
+   "ko": "문자 그대로의 / 말 그대로",
+   "ex": "There's literal pain in your brain.",
+   "s": 13
+  },
+  {
+   "w": "think back to",
+   "ko": "~를 돌이켜 생각하다",
+   "ex": "Think back to the last time you had your heart broken.",
+   "s": 13
+  },
+  {
+   "w": "social bond",
+   "ko": "사람들과의 유대",
+   "ex": "Strong social bonds help reduce stress.",
+   "s": 13
+  },
+  {
+   "w": "as usual",
+   "ko": "평소처럼",
+   "ex": "As usual, I got up early.",
+   "s": 13
+  },
+  {
+   "w": "remind A of B",
+   "ko": "A에게 B를 떠올리게 하다",
+   "ex": "It reminds me of an old memory.",
+   "s": 13
+  },
+  {
+   "w": "figure out",
+   "ko": "(생각해서) 알아내다",
+   "ex": "I figured out the cause of the problem.",
+   "s": 13
+  },
+  {
+   "w": "from time to time / every now and then / on and off",
+   "ko": "가끔",
+   "ex": "I meet my friends from time to time.",
+   "s": 13
+  },
+  {
+   "w": "on a daily basis",
+   "ko": "매일",
+   "ex": "I study English on a daily basis.",
+   "s": 13
+  },
+  {
+   "w": "basically / technically / genuinely / actually",
+   "ko": "쉽게 말하면 / 엄밀히 말하면 / 진짜로 / 사실은",
+   "ex": "Technically, I'm off today, but I still have to answer calls.",
+   "s": 13
   }
  ],
  "group": "ielts",
