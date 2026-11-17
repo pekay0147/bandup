@@ -18730,5 +18730,81 @@
 "promise": {
 "ko": "약속, (앞으로의) 가능성",
 "ex": "This young player shows a lot of promise."
+},
+"affliction": {
+"ko": "고난, 고통",
+"ex": "She faced every affliction in her life with courage."
+},
+"humility": {
+"ko": "겸손",
+"ex": "He accepted the award with great humility."
+},
+"in the first place": {
+"ko": "애초에, 처음부터",
+"ex": "Why did you agree to it in the first place?"
+},
+"dagger": {
+"ko": "단검",
+"ex": "The museum has an old dagger on display."
+},
+"arsenal": {
+"ko": "무기고, (수단·도구 등의) 보유 목록",
+"ex": "Good examples are a powerful tool in your speaking arsenal."
+},
+"marvelous": {
+"ko": "놀라운, 아주 멋진",
+"ex": "We had a marvelous time at the beach."
+},
+"it helps to": {
+"ko": "~하면 도움이 된다",
+"ex": "It helps to write down new words every day."
+},
+"intimate involvement": {
+"ko": "깊은 관여, 밀접한 개입",
+"ex": "Parents' intimate involvement can shape a child's success."
+},
+"be made to": {
+"ko": "~하도록 만들어지다, (억지로) ~하게 되다",
+"ex": "I was made to wait for an hour."
+},
+"quoted": {
+"ko": "인용했다, (말을) 그대로 옮겼다",
+"ex": "My teacher often quoted famous writers in class."
+},
+"strike": {
+"ko": "(나쁜 일이) 갑자기 닥치다, 치다",
+"ex": "Bad luck can strike when you least expect it."
+},
+"cross your arms": {
+"ko": "팔짱을 끼다",
+"ex": "Try not to cross your arms during the interview."
+},
+"flat": {
+"ko": "아파트, 공동주택의 한 집",
+"ex": "I live in a small flat near the station."
+},
+"spend quality time": {
+"ko": "(소중한 사람과) 의미 있는 시간을 보내다",
+"ex": "I try to spend quality time with my family on weekends."
+},
+"take a breather": {
+"ko": "잠깐 쉬다, 숨 돌리다",
+"ex": "Let's take a breather before we start the next part."
+},
+"furry friend": {
+"ko": "털 달린 친구 (반려동물)",
+"ex": "My furry friend always greets me at the door."
+},
+"get used to": {
+"ko": "~에 익숙해지다",
+"ex": "It took me a while to get used to the cold weather."
+},
+"not even close": {
+"ko": "전혀 아니다, 근처에도 못 간다",
+"ex": "Was the movie good? Not even close."
+},
+"fill out": {
+"ko": "(서류·양식을) 작성하다, 채우다",
+"ex": "Please fill out this form before your appointment."
 }
 }
