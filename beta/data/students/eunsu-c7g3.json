@@ -50,6 +50,12 @@
    "date": "2026-11-17",
    "title": "Speaking Matrix",
    "label": "스피킹 매트릭스 16회"
+  },
+  {
+   "no": 20,
+   "date": "2026-11-18",
+   "title": "Speaking Matrix",
+   "label": "스피킹 매트릭스 17회"
   }
  ],
  "types": [
@@ -1421,6 +1427,90 @@
    "en": "Being willing to ask often brings people closer and helps work go more smoothly.",
    "hint": "willing",
    "gram": "동명사 주어 <em>Being willing to ask</em> + 단수 동사(brings, helps). <em>be willing to</em> = 기꺼이 ~하다. <em>bring people closer</em> = 사람들을 더 가깝게 하다. <em>help</em> + 목적어 + 동사원형."
+  },
+  {
+   "id": "sm17-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    20
+   ],
+   "ko": "몇 달 전에, 저는 문자 메시지 하나로 친한 친구를 본의 아니게 속상하게 했어요.",
+   "en": "A few months ago, I accidentally upset a close friend with a text message.",
+   "hint": "accidentally",
+   "gram": "<em>a few months ago</em> (months 복수!). <em>accidentally</em> = 본의 아니게, 실수로. <em>upset</em> + 사람 = ~를 속상하게 하다 (upset-upset-upset)."
+  },
+  {
+   "id": "sm17-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    20
+   ],
+   "ko": "어떻게 된 거냐면, 제가 급해서 친구의 긴 메시지에 한 줄짜리 답장을 보냈어요.",
+   "en": "What happened was I was in a rush and sent a one-line reply to a long message from my friend.",
+   "hint": "in a rush",
+   "gram": "<em>What happened was</em> ~ = 어떻게 된 거냐면 ~. <em>be in a rush</em> = 급하다, 서두르다. <em>a one-line reply</em> = 한 줄짜리 답장 (하이픈 + 단수 line)."
+  },
+  {
+   "id": "sm17-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    20
+   ],
+   "ko": "문제는, 문자 메시지는 맥락이나 말투가 없으면 쉽게 오해받을 수 있다는 거예요.",
+   "en": "The thing is, text messages can easily be misread when there is no context or tone of voice.",
+   "hint": "misread",
+   "gram": "<em>The thing is,</em> ~ = 문제는 ~, 중요한 건 ~. <em>be misread</em> = 잘못 읽히다, 오해받다 (수동태). <em>tone of voice</em> = 말투, 어조."
+  },
+  {
+   "id": "sm17-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    20
+   ],
+   "ko": "친구는 제 짧은 답장을 제가 화났거나 대화에 관심이 없다는 신호로 받아들였어요.",
+   "en": "My friend took my short reply as a sign that I was upset or not interested in the conversation.",
+   "hint": "took",
+   "gram": "<em>take</em> A <em>as</em> B = A를 B로 받아들이다. <em>a sign that</em> + 문장 = ~라는 신호. <em>be interested in</em> = ~에 관심이 있다."
+  },
+  {
+   "id": "sm17-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    20
+   ],
+   "ko": "다음 날 제가 먼저 연락해서 \"제가 분명하게 설명할게요\"라고 말했어요.",
+   "en": "I reached out the next day and said, \"Let me clarify.\"",
+   "hint": "reached out",
+   "gram": "<em>reach out</em> = (먼저) 연락하다, 손을 내밀다. <em>Let me clarify.</em> = 제가 분명하게 설명할게요. <em>clarify</em> = 명확히 하다."
+  },
+  {
+   "id": "sm17-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    20
+   ],
+   "ko": "물론, 어떤 사람들은 충분히 오래 기다리면 오해가 저절로 풀릴 수 있다고 말해요.",
+   "en": "Admittedly, some people say misunderstandings can clear themselves up if we wait long enough.",
+   "hint": "Admittedly",
+   "gram": "<em>Admittedly,</em> = 물론, 인정하건대 (반대 의견을 먼저 인정할 때). <em>clear up</em> = (오해가) 풀리다. <em>long enough</em> = 충분히 오래 (enough는 형용사·부사 뒤)."
+  },
+  {
+   "id": "sm17-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    20
+   ],
+   "ko": "하지만 저는 오래 기다릴수록 그 얘기를 꺼내기가 더 어려워진다는 걸 알게 됐어요.",
+   "en": "However, I have found that the longer I wait, the harder it becomes to bring it up.",
+   "hint": "the longer",
+   "gram": "<em>the</em> + 비교급, <em>the</em> + 비교급 = ~할수록 더 …하다. <em>I have found that</em> ~ = (경험상) ~라는 걸 알게 됐다. <em>bring it up</em> = (얘기를) 꺼내다."
   }
  ],
  "part1": [],
