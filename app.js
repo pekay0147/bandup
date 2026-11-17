@@ -400,6 +400,10 @@ const canRecord=()=>!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMed
 const aiMock=()=>{ try{ return !!window.BANDUP_AI_MOCK || localStorage.getItem("bandup-ai-mock")==="1"; }catch(_){ return !!window.BANDUP_AI_MOCK; } };
 const AI_LIVE=false; // Supabase 함수 배포 후 true 로 바꾸면 학생 앱(GitHub Pages)에서 켜져요
 const aiRemote=()=>SB_URL+"/functions/v1/speak-fix/";
+try{ const q=new URLSearchParams(location.search).get("ai"); // 테스트용: 주소 뒤에 ?ai=supabase / ?ai=local / ?ai=off
+  if(q==="supabase") localStorage.setItem("bandup-ai-url","supabase");
+  else if(q==="local") localStorage.setItem("bandup-ai-url","/api/");
+  else if(q==="off") localStorage.removeItem("bandup-ai-url"); }catch(_){}
 const aiBase=()=>{ let o=""; try{ o=localStorage.getItem("bandup-ai-url")||""; }catch(_){}
   if(window.BANDUP_AI_URL) return window.BANDUP_AI_URL;
   if(o) return o==="supabase"? aiRemote() : o;
