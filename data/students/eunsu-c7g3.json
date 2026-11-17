@@ -44,6 +44,12 @@
    "date": "2026-11-14",
    "title": "Speaking Matrix",
    "label": "스피킹 매트릭스 15회"
+  },
+  {
+   "no": 19,
+   "date": "2026-11-17",
+   "title": "Speaking Matrix",
+   "label": "스피킹 매트릭스 16회"
   }
  ],
  "types": [
@@ -1331,6 +1337,90 @@
    "en": "The way I work has become more sustainable, and I enjoy what I do more than before.",
    "hint": "has become",
    "gram": "<em>The way I work</em>(내가 일하는 방식)가 주어 → 단수라 <em>has</em> become. 현재완료 <em>has become</em> = (그동안 변해서 지금) ~해졌다. <em>what I do</em> = 내가 하는 일. <em>more than before</em> = 예전보다 더."
+  },
+  {
+   "id": "sm16-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    19
+   ],
+   "ko": "정말 필요할 때조차 도움을 청하는 게 저는 아주 어려웠어요.",
+   "en": "I found it very hard to ask for help even when I really needed it.",
+   "hint": "found it",
+   "gram": "<em>find it</em> + 형용사 + <em>to</em> 동사 = ~하는 게 …하다고 느끼다. <em>ask for help</em> = 도움을 청하다. <em>even when</em> = ~할 때조차."
+  },
+  {
+   "id": "sm16-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    19
+   ],
+   "ko": "한번은 회사에서 한 프로젝트에 막혀서 어떻게 진행해야 할지 몰랐어요.",
+   "en": "One time at work, I was stuck on a project and did not know how to move forward.",
+   "hint": "stuck",
+   "gram": "<em>be stuck on</em> ~ = ~에 막혀 있다. <em>how to</em> + 동사 = 어떻게 ~할지. <em>move forward</em> = 앞으로 나아가다, 진행하다."
+  },
+  {
+   "id": "sm16-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    19
+   ],
+   "ko": "저는 사흘 동안 혼자서 제자리만 맴돌았어요.",
+   "en": "I spent three days going in circles on my own.",
+   "hint": "circles",
+   "gram": "<em>spend</em> + 시간 + -ing = ~하면서 시간을 보내다. <em>go in circles</em> = 제자리를 맴돌다, 진전이 없다. <em>on my own</em> = 혼자서."
+  },
+  {
+   "id": "sm16-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    19
+   ],
+   "ko": "일은 늦어졌고, 저는 필요 이상으로 스트레스를 받게 됐어요.",
+   "en": "The work got delayed, and I ended up more stressed than I needed to be.",
+   "hint": "ended up",
+   "gram": "<em>get delayed</em> = 지연되다. <em>end up</em> + 형용사/-ing = 결국 ~하게 되다. <em>more</em> ~ <em>than I needed to be</em> = 필요 이상으로 ~한."
+  },
+  {
+   "id": "sm16-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    19
+   ],
+   "ko": "동료는 바로 좋다고 했고, 우리는 한 시간도 안 돼서 문제를 해결했어요.",
+   "en": "My colleague said yes immediately, and we solved the problem in under an hour.",
+   "hint": "under",
+   "gram": "<em>say yes</em> = 좋다고 하다, 승낙하다. <em>in under an hour</em> = 한 시간도 안 돼서."
+  },
+  {
+   "id": "sm16-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    19
+   ],
+   "ko": "그들은 도움을 청하는 걸 약함의 표시나 준비 부족으로 봐요.",
+   "en": "They see asking for help as a sign of weakness or a lack of preparation.",
+   "hint": "sign",
+   "gram": "<em>see</em> A <em>as</em> B = A를 B로 여기다. <em>a sign of weakness</em> = 약함의 표시. <em>a lack of</em> ~ = ~의 부족."
+  },
+  {
+   "id": "sm16-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    19
+   ],
+   "ko": "기꺼이 물어보려는 자세는 사람들을 더 가깝게 하고 일이 더 순조롭게 진행되게 해 줘요.",
+   "en": "Being willing to ask often brings people closer and helps work go more smoothly.",
+   "hint": "willing",
+   "gram": "동명사 주어 <em>Being willing to ask</em> + 단수 동사(brings, helps). <em>be willing to</em> = 기꺼이 ~하다. <em>bring people closer</em> = 사람들을 더 가깝게 하다. <em>help</em> + 목적어 + 동사원형."
   }
  ],
  "part1": [],
