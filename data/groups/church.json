@@ -1145,6 +1145,90 @@
      "ex": "It frees me from mechanistic views that make my background my destiny."
     }
    ]
+  },
+  {
+   "no": 15,
+   "date": "2026-11-18",
+   "title": "Solid Joys · 말씀의 꿰뚫는 능력",
+   "link": {
+    "title": "The Piercing Power of the Word",
+    "url": "https://www.desiringgod.org/solid-joys/the-piercing-power-of-the-word",
+    "date": "18 Nov",
+    "src": "Solid Joys"
+   },
+   "label": "18 Nov",
+   "vocab": [
+    {
+     "w": "pierce",
+     "ko": "꿰뚫다, 찌르다",
+     "ex": "God's word can pierce the hardest heart."
+    },
+    {
+     "w": "two-edged sword",
+     "ko": "양날의 검",
+     "ex": "The word is sharper than any two-edged sword."
+    },
+    {
+     "w": "discern",
+     "ko": "분별하다",
+     "ex": "The word discerns what is really in our hearts."
+    },
+    {
+     "w": "intention",
+     "ko": "의도",
+     "ex": "God knows the intentions behind our actions."
+    },
+    {
+     "w": "penetrate",
+     "ko": "깊이 파고들다",
+     "ex": "The truth penetrates deeper than any lie."
+    },
+    {
+     "w": "deception",
+     "ko": "속임, 기만",
+     "ex": "Sin's power comes from deception."
+    },
+    {
+     "w": "masquerade as",
+     "ko": "~인 척 가장하다",
+     "ex": "Sin masquerades as something good."
+    },
+    {
+     "w": "expose",
+     "ko": "드러내다, 폭로하다",
+     "ex": "Light exposes what is hidden in the dark."
+    },
+    {
+     "w": "vengeance",
+     "ko": "복수",
+     "ex": "Vengeance looks sweet, but it leaves us empty."
+    },
+    {
+     "w": "purity",
+     "ko": "순결, 깨끗함",
+     "ex": "God calls us to purity of heart."
+    },
+    {
+     "w": "harden",
+     "ko": "완고하게 하다, 굳어지다",
+     "ex": "Don't let sin harden your heart."
+    },
+    {
+     "w": "satisfying",
+     "ko": "만족을 주는",
+     "ex": "Only God gives truly satisfying joy."
+    },
+    {
+     "w": "take heart",
+     "ko": "용기를 내다",
+     "ex": "Take heart. God's word is stronger than your fear."
+    },
+    {
+     "w": "the battle to believe",
+     "ko": "믿음의 싸움",
+     "ex": "We fight the battle to believe every day."
+    }
+   ]
   }
  ],
  "types": [
@@ -3128,6 +3212,150 @@
    "en": "Change is possible. God is alive. Christ is risen.",
    "hint": "risen",
    "gram": "<em>is risen</em> = 부활하셨다(rise의 p.p. risen). <em>alive</em> = 살아 있는. <br><small>출처: John Piper, Desiring God (Solid Joys)</small>"
+  },
+  {
+   "id": "s15-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "하나님의 말씀은 살아 있고 능력이 있다.",
+   "en": "The word of God is living and powerful.",
+   "hint": "living",
+   "gram": "<em>the word of God</em> = 하나님의 말씀. be + 형용사 두 개를 <em>and</em>로 연결. <br><small>John Piper의 Solid Joys 묵상을 바탕으로 쉽게 풀어 쓴 문장</small>"
+  },
+  {
+   "id": "s15-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "말씀은 어떤 양날의 검보다도 더 날카롭다.",
+   "en": "It is sharper than any two-edged sword.",
+   "hint": "sharper",
+   "gram": "비교급 <em>sharper than any</em> ~ = 어떤 ~보다도 더 날카로운. <em>two-edged</em> = 양날의. <br><small>John Piper의 Solid Joys 묵상을 바탕으로 쉽게 풀어 쓴 문장</small>"
+  },
+  {
+   "id": "s15-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "말씀은 우리 마음의 생각과 의도를 분별한다.",
+   "en": "It discerns the thoughts and intentions of our hearts.",
+   "hint": "discerns",
+   "gram": "<em>discern</em> = 분별하다. <em>intentions</em> = 의도. <br><small>John Piper의 Solid Joys 묵상을 바탕으로 쉽게 풀어 쓴 문장</small>"
+  },
+  {
+   "id": "s15-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "하나님의 말씀만이 우리의 참된 소망이다.",
+   "en": "God's word is our only true hope.",
+   "hint": "only",
+   "gram": "<em>our only true hope</em> = 우리의 유일한 참 소망. <br><small>John Piper의 Solid Joys 묵상을 바탕으로 쉽게 풀어 쓴 문장</small>"
+  },
+  {
+   "id": "s15-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "죄는 만족을 약속하지만, 그 약속은 거짓이다.",
+   "en": "Sin promises satisfaction, but its promise is a lie.",
+   "hint": "promises",
+   "gram": "<em>promise</em>는 동사(약속하다)와 명사(약속) 둘 다 돼요. 주어 Sin이 단수라 promise<em>s</em>. <br><small>John Piper의 Solid Joys 묵상을 바탕으로 쉽게 풀어 쓴 문장</small>"
+  },
+  {
+   "id": "s15-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "죄는 좋은 것인 척 가장한다.",
+   "en": "Sin masquerades as something good.",
+   "hint": "masquerades",
+   "gram": "<em>masquerade as</em> ~ = ~인 척 가장하다. <br><small>John Piper의 Solid Joys 묵상을 바탕으로 쉽게 풀어 쓴 문장</small>"
+  },
+  {
+   "id": "s15-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "거짓말은 해롭지 않아 보일 수 있지만, 그렇지 않다.",
+   "en": "A lie may look harmless, but it isn't.",
+   "hint": "harmless",
+   "gram": "<em>look</em> + 형용사 = ~해 보이다. <em>harmless</em> = 해롭지 않은. <br><small>John Piper의 Solid Joys 묵상을 바탕으로 쉽게 풀어 쓴 문장</small>"
+  },
+  {
+   "id": "s15-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "복수는 달콤해 보이지만 우리를 속인다.",
+   "en": "Vengeance looks sweet, but it deceives us.",
+   "hint": "deceives",
+   "gram": "<em>vengeance</em> = 복수. <em>deceive</em> = 속이다 (명사: deception). <br><small>John Piper의 Solid Joys 묵상을 바탕으로 쉽게 풀어 쓴 문장</small>"
+  },
+  {
+   "id": "s15-09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "하나님의 약속은 죄의 속임을 드러내는 빛과 같다.",
+   "en": "God's promises are like a light that exposes the deception of sin.",
+   "hint": "exposes",
+   "gram": "<em>be like</em> ~ = ~와 같다. <em>a light that exposes</em> ~ = ~을 드러내는 빛 (that = 관계대명사). <br><small>John Piper의 Solid Joys 묵상을 바탕으로 쉽게 풀어 쓴 문장</small>"
+  },
+  {
+   "id": "s15-10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "하나님은 우리 마음이 완고해지지 않도록 말씀을 주셨다.",
+   "en": "God gave us his word to keep our hearts from being hardened.",
+   "hint": "keep",
+   "gram": "<em>keep</em> A <em>from</em> -ing = A가 ~하지 않게 하다. <em>be hardened</em> = 완고해지다. <br><small>John Piper의 Solid Joys 묵상을 바탕으로 쉽게 풀어 쓴 문장</small>"
+  },
+  {
+   "id": "s15-11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "믿음의 싸움 중에도 용기를 내라.",
+   "en": "Take heart, even in the battle to believe.",
+   "hint": "Take heart",
+   "gram": "<em>take heart</em> = 용기를 내다. <em>the battle to believe</em> = 믿음의 싸움. <br><small>John Piper의 Solid Joys 묵상을 바탕으로 쉽게 풀어 쓴 문장</small>"
+  },
+  {
+   "id": "s15-12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "말씀은 어떤 속임보다도 더 깊이 들어간다.",
+   "en": "The word goes deeper than any deception.",
+   "hint": "deeper",
+   "gram": "<em>go deeper than</em> ~ = ~보다 더 깊이 들어가다. <em>deception</em> = 속임. <br><small>John Piper의 Solid Joys 묵상을 바탕으로 쉽게 풀어 쓴 문장</small>"
   }
  ],
  "part1": [],
