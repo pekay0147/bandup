@@ -1216,3 +1216,6 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .aibetter .aihd{margin-top:8px}
 .aigood{margin:0;font-size:14px;color:var(--mint)}
 @media (prefers-reduced-motion:reduce){.aispin{animation:none}}
+.aihint{margin:0}
+.airev{gap:10px}
+.airq{margin:0;font-size:16px;font-weight:700;line-height:1.45}

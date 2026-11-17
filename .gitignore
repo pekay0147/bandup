@@ -1,0 +1,6 @@
+# 말하기 첨삭 서버: 키와 사용량 기록은 올리지 않음
+server/.env
+server/usage.json
+__pycache__/
+# Claude Code 로컬 설정
+.claude/
