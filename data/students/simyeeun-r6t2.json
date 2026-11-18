@@ -70,6 +70,11 @@
    "no": 13,
    "date": "2026-11-17",
    "title": "Impressive film"
+  },
+  {
+   "no": 14,
+   "date": "2026-11-18",
+   "title": "Something new"
   }
  ],
  "types": [
@@ -95,7 +100,8 @@
   "10": "Part 2에서 off the top of my head 뒤에 '무슨 때인지' 바로 설명하기! To begin with 대신 First of all.",
   "11": "There are(~가 있다) vs These are(이것들이 ~이다)! another + 단수, different + 복수. Part 2 본론은 오늘의 2배로!",
   "12": "like + 명사 (I like sunny days)! 시간(evening)은 주어가 못 돼요 → I enjoy ~ in the evening. 단어가 안 떠오르면 더 큰 범주로 말하기. 가정법 공부해오기!",
-  "13": "It reminds me of ~ (remember ❌). 습관은 I usually take (taking ❌). go on a trip에는 to 없음! forget-forgot-forgotten."
+  "13": "It reminds me of ~ (remember ❌). 습관은 I usually take (taking ❌). go on a trip에는 to 없음! forget-forgot-forgotten.",
+  "14": "part2에서 time이 나오면 I can think of the time when ~ 으로 시작! try 뒤엔 바로 명사(try to new ❌). 머리를 자르다는 get my hair cut."
  },
  "compare": [
   [
@@ -2745,6 +2751,149 @@
    "hint": "memory",
    "gram": "❌ I have good memorizing → ✅ I have <em>a good memory</em>. 기억력 = memory (셀 수 있는 명사라 a).",
    "mine": "I have good memorizing"
+  },
+  {
+   "id": "n14m1",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "이 노래를 들으면 옛 추억이 떠올라요.",
+   "en": "This song reminds me of an old memory.",
+   "hint": "reminds",
+   "gram": "<em>remind</em> A <em>of</em> B = A에게 B를 떠올리게 하다. (remember ❌)",
+   "mine": null
+  },
+  {
+   "id": "n14m2",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 기억력이 좋아서 더 이상 메모를 안 해요.",
+   "en": "I have a good memory, so I no longer take notes.",
+   "hint": "no longer",
+   "gram": "<em>have a good memory</em> = 기억력이 좋다. <em>no longer</em> = 더 이상 ~않다.",
+   "mine": null
+  },
+  {
+   "id": "n14m3",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "마침내 저는 가려운 이유를 알아냈어요.",
+   "en": "I finally figured out why I was itchy.",
+   "hint": "figured out",
+   "gram": "<em>figure out</em> = (생각해서) 알아내다. <em>itchy</em> = 가려운.",
+   "mine": null
+  },
+  {
+   "id": "n14m4",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    14
+   ],
+   "ko": "제가 의사라면, 사람들이 왜 가려운지 풀어서 설명해 줄 텐데요.",
+   "en": "If I were a doctor, I would unpack why people feel itchy.",
+   "hint": "would unpack",
+   "gram": "가정법 과거: <em>If I were</em> ~, I <em>would</em> + 동사원형. <em>unpack</em> = 풀어서 설명하다.",
+   "mine": null
+  },
+  {
+   "id": "n14m5",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    14
+   ],
+   "ko": "어제 저는 즉흥적으로 친구들과 여행을 갔어요.",
+   "en": "Yesterday, I spontaneously went on a trip with my friends.",
+   "hint": "spontaneously",
+   "gram": "<em>spontaneously</em> = 즉흥적으로. <em>go on a trip</em>에는 to가 없어요.",
+   "mine": null
+  },
+  {
+   "id": "n1401",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 한 달에 한 번 머리를 잘라요.",
+   "en": "I get my hair cut once a month.",
+   "hint": "get my hair cut",
+   "gram": "미용실에서 머리를 자르다 = <em>get my hair cut</em> (내가 직접 자르는 게 아니니까). 횟수는 <em>once a month / once a week</em>.",
+   "mine": null
+  },
+  {
+   "id": "n1402",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 헤어스타일을 바꾸는 게 무서워요.",
+   "en": "I'm afraid of changing my hairstyle.",
+   "hint": "afraid of",
+   "gram": "<em>be afraid of</em> / <em>be scared of</em> + -ing = ~하는 게 무섭다. 과거라면 I <em>was scared of</em> ~.",
+   "mine": null
+  },
+  {
+   "id": "n1403",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 처음으로 서핑을 해 봤던 때가 떠올라요.",
+   "en": "I can think of the time when I tried surfing for the first time.",
+   "hint": "the time when",
+   "gram": "Part 2에서 time이 나오면 서론에서 <em>I can think of the time when</em> ~ 으로 어떤 때인지 꼭 말하기!",
+   "mine": null
+  },
+  {
+   "id": "n1404",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 여행 중에 새로운 음식을 먹어 봤어요.",
+   "en": "I tried new food while I was travelling.",
+   "hint": "tried new food",
+   "gram": "❌ I tried to new food → ✅ I <em>tried new food</em>. try + 명사 = ~을 해 보다. (try to + 동사원형 = ~하려고 노력하다)",
+   "mine": "I tried to new food"
+  },
+  {
+   "id": "n1405",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "즐겁기만 하다면 뭐든 해 봐도 돼요.",
+   "en": "You can try anything as long as you enjoy it.",
+   "hint": "as long as",
+   "gram": "<em>as long as</em> + 주어 + 동사 = ~하는 한, ~하기만 하면.",
+   "mine": null
+  },
+  {
+   "id": "n1406",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "처음에는 좀 긴장했어요.",
+   "en": "I was sort of nervous at first.",
+   "hint": "sort of",
+   "gram": "<em>sort of</em> (= kind of) = 약간, 좀. 말할 때 부드럽게 해 주는 표현.",
+   "mine": null
   }
  ],
  "part1": [
@@ -3691,6 +3840,78 @@
    "ko": "쉽게 말하면 / 엄밀히 말하면 / 진짜로 / 사실은",
    "ex": "Technically, I'm off today, but I still have to answer calls.",
    "s": 13
+  },
+  {
+   "w": "itchy",
+   "ko": "가려운",
+   "ex": "I'm actually wearing quite an itchy jumper at the moment.",
+   "s": 14
+  },
+  {
+   "w": "funny you should ask",
+   "ko": "마침 그걸 물어보시네요",
+   "ex": "Well, funny you should ask.",
+   "s": 14
+  },
+  {
+   "w": "no longer",
+   "ko": "더 이상 ~않다",
+   "ex": "It can no longer damage the skin.",
+   "s": 14
+  },
+  {
+   "w": "unpack",
+   "ko": "풀어서 설명하다",
+   "ex": "There's a lot to unpack in this topic.",
+   "s": 14
+  },
+  {
+   "w": "spontaneously",
+   "ko": "갑자기, 즉흥적으로",
+   "ex": "My child spontaneously started singing.",
+   "s": 14
+  },
+  {
+   "w": "catch",
+   "ko": "(하품·감기 등이) 옮다",
+   "ex": "You can catch a yawn from someone else.",
+   "s": 14
+  },
+  {
+   "w": "as long as",
+   "ko": "~하는 한",
+   "ex": "You can try anything as long as you enjoy it.",
+   "s": 14
+  },
+  {
+   "w": "spot on",
+   "ko": "딱 맞는, 정확한",
+   "ex": "Your answer was spot on.",
+   "s": 14
+  },
+  {
+   "w": "indeed",
+   "ko": "정말로, 실제로",
+   "ex": "It was indeed a great experience.",
+   "s": 14
+  },
+  {
+   "w": "loads and loads / heaps",
+   "ko": "엄청 많은",
+   "ex": "I have heaps of homework this week.",
+   "s": 14
+  },
+  {
+   "w": "sort of",
+   "ko": "약간, 좀",
+   "ex": "I was sort of nervous at first.",
+   "s": 14
+  },
+  {
+   "w": "get my hair cut",
+   "ko": "머리를 자르다 (미용실에서)",
+   "ex": "I get my hair cut once a month.",
+   "s": 14
   }
  ],
  "group": "ielts",
@@ -3820,6 +4041,6 @@
    "gram": "<em>What's ~ like?</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
   }
  ],
- "podTodayUrl": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-261029",
+ "podTodayUrl": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-260924",
  "inbox": "85195033-f0bd-4331-9cc7-62ca8711c519"
 }
