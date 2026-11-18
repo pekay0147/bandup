@@ -4,7 +4,7 @@
 "use strict";
 const TCOL = {"어휘":"#4457e8","단·복수":"#8b5cf6","주어-동사":"#3d5afe","동사·시제":"#0f9e8f","문장 구조":"#e07a2e","관사·전치사":"#d6437f",
   "품사":"#b88a00","단어 선택":"#2a9a55","발음·철자":"#7c7f99","표현":"#d99a00","잘한 표현":"#1d9a68"};
-const INTERVALS=[0,1,3,7,14,30], MASTER=5, DAILY=15;
+const INTERVALS=[0,1,3,7,14,30], MASTER=5, DAILY=10;
 const $=s=>document.querySelector(s);
 const el=(t,c,x)=>{const e=document.createElement(t); if(c) e.className=c; if(x!=null) e.textContent=x; return e;};
 const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");};
@@ -140,7 +140,7 @@ function buildTabs(){
 function go(tab, extra){ if(typeof endMock==="function") endMock(); if(tab!=="words" && typeof LD!=="undefined"){ LD=null; try{ speechSynthesis.cancel(); }catch(_){} } view={tab, ...(extra||{})}; flipped=false; picked=null; if(tab!=="cards") deckState=null; if(tab!=="review") reviewState=null; render(); window.scrollTo(0,0); }
 function updateTabs(){
   document.querySelectorAll("#tabs button").forEach(b=>{ if(b.dataset.tab===view.tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
-  const n=Math.min(dueCards().length,DAILY), bd=$("#dueBadge"); if(bd){ bd.textContent=String(n); bd.hidden=!n; }
+  const dl=(typeof dailyLeft==="function")? dailyLeft() : null; const n= dl? dl.length : Math.min(dueCards().length,DAILY), bd=$("#dueBadge"); if(bd){ bd.textContent=String(n); bd.hidden=!n; }
 }
 
 /* ---------- render ---------- */
@@ -281,9 +281,9 @@ function installBar(app){
 function renderHome(app){
   statFlush(false);
   installBar(app);
-  const due=dueCards().length;
-  const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length;
-  const goalDone = doneToday>=DAILY;
+  const DQ=dailyLeft(); const due= DQ? DQ.length : dueCards().length;
+  const doneToday= DQ? (dailyIds().length-DQ.length) : Object.values(srs).filter(x=>x&&x.last===today()).length;
+  const goalDone = DQ? (DQ.length===0) : doneToday>=DAILY;
   if(D.demo){ const bn=el("div","demobn"); bn.append(el("b",null,"체험용 앱이에요"), el("p",null,"실제 수업을 들으면, 수업에서 내가 틀린 문장으로 이런 큐카드가 매번 만들어져요. 큐카드·모의고사·예상 기출을 마음껏 써 보세요."));
     const k=el("a","demok","카톡으로 수업 상담하기 ›"); k.href="https://open.kakao.com/o/s6FxwzEi"; k.target="_blank"; k.rel="noopener"; bn.append(k); app.append(bn); }
   const h1=el("h1","h-title"); if(D.name) h1.append(document.createTextNode(`${D.name}님,`), el("br"));
@@ -300,8 +300,8 @@ function renderHome(app){
   const bar=el("div","bar"); const bi=el("i"); bi.style.width=Math.min(100,doneToday/DAILY*100)+"%"; bar.append(bi); rv.append(bar);
   if(!D.cards.length){ rv.append(el("p","muted small", D.common? "큐카드 탭에서 외우고 싶은 문장을 넣으면 여기서 매일 복습할 수 있어요." : "첫 수업이 끝나면 수업에서 나온 문장으로 복습이 시작돼요.")); s1.append(rv); app.append(s1); }
   else {
-  const queue=reviewQueue(!due);
-  const b=el("button","btn primary", !due? "약한 카드 연습하기" : goalDone? "더 복습하기" : doneToday? "이어서 복습하기" : "복습 시작하기"); b.type="button"; b.onclick=()=>go("review",{extra:!due, ids:queue}); rv.append(b);
+  const XTRA= DQ? goalDone : !due; const queue=reviewQueue(XTRA);
+  const b=el("button","btn primary", (!DQ && !due)? "약한 카드 연습하기" : goalDone? "더 복습하기" : doneToday? "이어서 복습하기" : "복습 시작하기"); b.type="button"; b.onclick=()=>go("review",{extra:XTRA, ids:queue}); rv.append(b);
   s1.append(rv); app.append(s1);
   }
   // 학습
@@ -1788,7 +1788,16 @@ function reviewP1(n){
     VCARDS[id]=c; return c; });
   setTimeout(()=>dyTranslate(list),800); return list;
 }
+/* 홈 '오늘의 복습' = 큐카드 탭 '매일 연습'과 같은 10문제 */
+function dailyIds(){
+  if(!D || D.common || D.demo) return null;
+  if(D.dailyFrom==="sessions"){ const pool=D.cards.filter(c=>(c.sessions||[]).length && D.sessions.some(x=>x.title==="Speaking Matrix" && (c.sessions||[]).includes(x.no))); return dyPick(pool,10,today()+slug+"sm").map(c=>c.id); }
+  if(D.group==="other"||D.group==="ielts"||D.group==="church"){ const keep=dySrc; dySrc="mix"; const L=dyCards(); dySrc=keep; if(L.length) setTimeout(()=>dyTranslate(L),800); return L.map(c=>c.id); }
+  return null;
+}
+function dailyLeft(){ const d=dailyIds(); if(!d || !d.length) return null; const t=today(); return d.filter(id=>(srs[id]||{}).last!==t); }
 function reviewQueue(extra){
+  if(!extra){ const left=dailyLeft(); if(left){ return left.length? left : dailyIds(); } }
   let pool = extra ? D.cards.filter(c=>isWriting(c) && ((srs[c.id]||{}).box||0)<MASTER) : dueCards();
   pool.sort((a,b)=>(rep(b)-rep(a)) || (((srs[a.id]||{}).box||0)-((srs[b.id]||{}).box||0)) || (marks[b.id]==="again")-(marks[a.id]==="again") || Math.random()-.5);
   if(extra) return pool.slice(0,10).map(c=>c.id);
@@ -1807,7 +1816,7 @@ function renderReview(app){
   const R=reviewState;
   const c=R.ids[R.i] && getCard(R.ids[R.i]);
   if(!c){
-  pageHead(app, view.extra? "약한 카드 연습" : "오늘의 복습", view.extra? "헷갈렸던 카드 10장을 다시 봐요." : `하루 ${DAILY}장씩, 다시 볼 때가 된 카드가 자동으로 나와요.`);
+  pageHead(app, view.extra? "약한 카드 연습" : "오늘의 복습", view.extra? "헷갈렸던 카드 10장을 다시 봐요." : (dailyIds()? "큐카드 탭 '매일 연습'과 같은 오늘의 문장 10개예요." : `하루 ${DAILY}장씩, 다시 볼 때가 된 카드가 자동으로 나와요.`));
     const e=el("div","empty");
     if(R.res.length){ e.append(el("div","big","✓"), el("h2",null,"오늘 복습 끝!"), el("p",null,`${R.res.length}장을 복습했어요. 다음 복습 때 다시 나와요.`)); }
     else { e.append(el("div","big","✓"), el("h2",null,"오늘 복습할 카드가 없어요"), el("p",null,"내일 다시 열어 보세요.")); }
