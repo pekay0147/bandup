@@ -56,6 +56,12 @@
    "date": "2026-11-18",
    "title": "Speaking Matrix",
    "label": "스피킹 매트릭스 17회"
+  },
+  {
+   "no": 21,
+   "date": "2026-11-19",
+   "title": "Speaking Matrix",
+   "label": "스피킹 매트릭스 18회"
   }
  ],
  "types": [
@@ -1523,6 +1529,102 @@
    "en": "You might have to reverse for ages.",
    "hint": "reverse",
    "gram": "<em>might have to</em> + 동사원형 = ~해야 할 수도 있다. <em>reverse</em> = (차를) 후진하다. <em>for ages</em> = 한참 동안, 아주 오래."
+  },
+  {
+   "id": "sm18-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "명절에 저희 가족과 배우자 가족을 방문하는 계획이 서로 겹쳤어요.",
+   "en": "There was a conflict between our plans to visit my family and my spouse's family over the holiday.",
+   "hint": "conflict",
+   "gram": "<em>there is a conflict between</em> A <em>and</em> B = A와 B가 충돌하다(겹치다). <em>spouse</em> = 배우자. <em>over the holiday</em> = 명절 동안."
+  },
+  {
+   "id": "sm18-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "저는 어느 쪽도 실망시키고 싶지 않았어요.",
+   "en": "I didn't want to disappoint either side.",
+   "hint": "either side",
+   "gram": "<em>disappoint</em> + 사람 = ~를 실망시키다. 부정문에서 <em>either side</em> = 어느 쪽도 (~않다)."
+  },
+  {
+   "id": "sm18-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "저희 가족도 저희가 늦은 오전까지는 도착하길 기대했어요.",
+   "en": "Our family also expected us to arrive by late morning.",
+   "hint": "expected us to",
+   "gram": "<em>expect</em> + 사람 + <em>to</em> 동사원형 = ~가 …하길 기대하다. <em>by late morning</em> = 늦은 오전까지. also는 일반동사 앞!"
+  },
+  {
+   "id": "sm18-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "대신 명절 전날 저녁에 그분과 저녁을 먹으면 어떨까요?",
+   "en": "What if we had dinner with him the evening before the holiday instead?",
+   "hint": "What if",
+   "gram": "<em>What if</em> + 과거형 ~? = ~하면 어떨까요? (부드러운 제안). <em>the evening before</em> ~ = ~ 전날 저녁."
+  },
+  {
+   "id": "sm18-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "공평하게 하려고 다음 명절에는 순서를 바꾸는 것도 합의할 수 있을까요?",
+   "en": "Could we also agree to switch the order next holiday to keep things fair?",
+   "hint": "switch the order",
+   "gram": "<em>agree to</em> + 동사원형 = ~하기로 합의하다. <em>switch the order</em> = 순서를 바꾸다. <em>keep things fair</em> = 공평하게 하다."
+  },
+  {
+   "id": "sm18-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "양가 모두 그 방식에 만족했어요.",
+   "en": "Both families were happy with the arrangement.",
+   "hint": "arrangement",
+   "gram": "<em>be happy with</em> ~ = ~에 만족하다. <em>arrangement</em> = (합의한) 방식, 계획."
+  },
+  {
+   "id": "sm18-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "일찍 함께 이야기해서 푸는 게 대화를 피하는 것보다 나아요.",
+   "en": "Talking it through together early is better than avoiding the conversation.",
+   "hint": "Talking it through",
+   "gram": "<em>talk</em> something <em>through</em> = ~에 대해 충분히 이야기하다. 동명사 주어(Talking ~)는 단수 → <em>is</em>. <em>better than</em> -ing."
+  },
+  {
+   "id": "sm18-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "결국 저는 양쪽 모두에게 맞는 계획을 생각해 냈어요.",
+   "en": "I eventually came up with a plan that worked for both sides.",
+   "hint": "came up with",
+   "gram": "<em>eventually</em> = 결국. <em>come up with</em> = (생각을) 떠올리다, 생각해 내다. <em>work for</em> ~ = ~에게 잘 맞다."
   }
  ],
  "part1": [],
