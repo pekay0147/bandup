@@ -465,7 +465,7 @@ function fixView(text,res){
   if(res.good) box.append(el("p","aigood","잘한 점 · "+res.good));
   return box;
 }
-/* 질문마다: 녹음(또는 글로 쓰기) → 받아쓰기 → '내가 한 말' 확인·수정. 첨삭은 Part 끝에서. */
+/* 질문마다: 녹음 → 받아쓰기 → '내가 한 말' 확인·수정. 첨삭은 Part 끝에서. */
 function recBox(st,key){
   MT.ai=MT.ai||{}; const S=()=>MT.ai[key]||(MT.ai[key]={});
   const w=el("div","recbox"); const alive=()=>document.body.contains(w);
@@ -474,7 +474,7 @@ function recBox(st,key){
     try{ speechSynthesis.cancel(); }catch(_){} stopRec();
     const s=S(); let stream;
     try{ stream=await navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:true,noiseSuppression:false,autoGainControl:true}}); } // 잡음 제거는 자음을 뭉개서 끔 (Whisper 가 잡음에 강함)
-    catch(_){ s.err="마이크를 쓸 수 없어요. 브라우저 설정에서 마이크를 허용하거나, '글로 쓰기'를 눌러 주세요."; draw(); return; }
+    catch(_){ s.err="마이크를 쓸 수 없어요. 브라우저 설정에서 마이크를 허용해 주세요."; draw(); return; }
     s.err=""; s.typing=false; s.editing=false;
     let mr; try{ mr=new MediaRecorder(stream,{audioBitsPerSecond:128000}); }catch(_){ mr=new MediaRecorder(stream); } const chunks=[];
     REC={mr,stream,chunks,t0:Date.now(),key,send:false,timer:setInterval(()=>{ if(alive()) draw(); },1000)};
@@ -500,8 +500,7 @@ function recBox(st,key){
       w.append(el("p","muted small","답을 다 말한 뒤 버튼을 눌러 주세요.")); return; }
     const row=el("div","airow");
     if(canRecord()){ const r=el("button","btn rec"); r.type="button"; r.append(el("i","recdot"), document.createTextNode(s.text||s.url? " 다시 답하기" : " 말로 답하기")); r.disabled=!!s.busy; r.onclick=start; row.append(r); }
-    const k=el("button","btn"+(s.typing?" on":""),"글로 쓰기"); k.type="button"; k.disabled=!!s.busy; k.onclick=()=>{ s.typing=!s.typing; s.editing=false; draw(); }; row.append(k);
-    w.append(row);
+    w.append(row); if(!canRecord()) w.append(el("p","aierr","이 기기에서는 녹음을 할 수 없어요. 사파리·크롬 최신 버전에서 열어 주세요."));
     if(s.typing) w.append(editor(s.text,"영어로 답을 써 보세요","저장",t=>{ setText(t); s.typing=false; s.err=""; draw(); }));
     if(s.url && !s.typing) { const a=el("audio","recaudio"); a.controls=true; a.src=s.url; w.append(a); }
     if(s.busy){ const p=el("p","aiwait"); p.append(el("i","aispin"), document.createTextNode(" 받아쓰는 중이에요…")); w.append(p); }
