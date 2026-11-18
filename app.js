@@ -254,7 +254,7 @@ function studyGuide(app){
   const steps=[
     (()=>{ const TP=todayPod(); return TP? ["팟캐스트 듣기", `오늘은 ${String(TP.link.src||"6 Minute English").replace(/^BBC /,"")} ${TP.link.date} 편 \u201c${TP.link.title}\u201d을 끝까지 들어요`, null, TP.link.url] : ["팟캐스트 듣기", `${P.name||"오늘의 팟캐스트"} 한 편을 끝까지 들어요`, null, podUrl(P)]; })(),
     ["큐카드 팟캐스트로 오늘 들은 팟캐스트 복습하기","큐카드 → 팟캐스트에서 오늘 날짜를 골라, 방금 들은 문장을 한국어만 보고 영어로 말해 봐요. 마지막 장의 단어는 단어장에 담아요",()=>{ cardMode=podTab; const TP=todayPod(); if(podTab==="pod"){ selPod=TP? TP.no : null; podPickOpen=false; } else { selSession=TP? TP.no : null; podPickOpen=false; } deckState=null; go("cards"); }],
-    [D.dailyFrom==="sessions"? "큐카드 매일 연습으로 배운 문장 복습하기" : "큐카드 매일 연습으로 일상 영어 공부하기", D.dailyFrom==="sessions"? "지금까지 배운 스피킹 매트릭스 문장 중 매일 10개를 랜덤으로 소리 내 말해 봐요" : "매일 바뀌는 생활 영어 문장 10개를 소리 내 말해 봐요",()=>{ cardMode="daily"; deckState=null; go("cards"); }],
+    [D.dailyFrom==="sessions"? "오늘의 복습으로 배운 문장 복습하기" : "오늘의 복습으로 일상 영어 공부하기", D.dailyFrom==="sessions"? "지금까지 배운 스피킹 매트릭스 문장 중 매일 10개를 랜덤으로 소리 내 말해 봐요" : "매일 바뀌는 생활 영어 문장 10개를 소리 내 말해 봐요",()=>{ go("review",{extra:false}); }],
     ["그 외","시간이 더 있으면 골라서 해요. 철자 탭에서 단어 듣고 쓰기, 아이디어 탭에서 Part 1·2·3 질문별 단어와 답변 재료 보기, 내 단어장 외우기, 오늘의 복습까지!",null,null,[["철자",()=>go("words")],["아이디어",()=>go("ideas")],["내 단어장",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); }],["오늘의 복습",()=>{ const due=dueCards().length; go("review",{extra:!due, ids:reviewQueue(!due)}); }]]]];
   const sec=el("section","sec sguide"); sec.append(secHead("오늘의 공부 순서","위에서부터 차례대로"));
   const box=el("div","box list2");
@@ -699,10 +699,10 @@ function cardPhrases(c){
   return L.filter(a=>!L.some(b=>b!==a && norm(b).includes(norm(a)) && norm(b)!==norm(a))).filter((a,i,arr)=>arr.findIndex(b=>norm(b)===norm(a))===i).slice(0,4);
 }
 function renderDecks(app){
-  pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : D.group==="other"? "팟캐스트 표현과 매일 연습 문장을 한국어 보고 영어로 말해 보세요." : D.group==="church"? "묵상 문장과 매일 연습 문장을 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
+  pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : D.group==="other"? "팟캐스트 표현을 한국어 보고 영어로 말해 보세요." : D.group==="church"? "묵상 문장을 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
   const hasLesson=D.sessions.length && D.cards.some(c=>(c.sessions||[]).length), hasPod=(D.podSessions||[]).length>0;
   if(!hasLesson && !hasPod){ const e=el("div","empty"); e.append(el("p",null, D.common? "수업을 들으면 수업에서 내가 틀린 문장이 여기에 큐카드로 생겨요." : "아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
-  const hasDaily=D.group==="other"||D.group==="ielts"||D.group==="church"||D.dailyFrom==="sessions";
+  const hasDaily=false; // 매일 연습은 홈의 오늘의 복습으로 통일
   const hasManual=!!(D.manual && D.cards.some(c=>c.manual));
   const nSeg=+!!hasPod + +!!hasLesson + +hasDaily + +hasManual;
   const seg=el("div","modeseg"+(nSeg===4?" four":nSeg>2?"":" two")); seg.setAttribute("role","tablist");
@@ -1788,7 +1788,7 @@ function reviewP1(n){
     VCARDS[id]=c; return c; });
   setTimeout(()=>dyTranslate(list),800); return list;
 }
-/* 홈 '오늘의 복습' = 큐카드 탭 '매일 연습'과 같은 10문제 */
+/* 홈 '오늘의 복습' = 매일 바뀌는 10문제 (예전 큐카드 탭 '매일 연습') */
 function dailyIds(){
   if(!D || D.common || D.demo) return null;
   if(D.dailyFrom==="sessions"){ const pool=D.cards.filter(c=>(c.sessions||[]).length && D.sessions.some(x=>x.title==="Speaking Matrix" && (c.sessions||[]).includes(x.no))); return dyPick(pool,10,today()+slug+"sm").map(c=>c.id); }
@@ -1816,7 +1816,7 @@ function renderReview(app){
   const R=reviewState;
   const c=R.ids[R.i] && getCard(R.ids[R.i]);
   if(!c){
-  pageHead(app, view.extra? "약한 카드 연습" : "오늘의 복습", view.extra? "헷갈렸던 카드 10장을 다시 봐요." : (dailyIds()? "큐카드 탭 '매일 연습'과 같은 오늘의 문장 10개예요." : `하루 ${DAILY}장씩, 다시 볼 때가 된 카드가 자동으로 나와요.`));
+  pageHead(app, view.extra? "약한 카드 연습" : "오늘의 복습", view.extra? "헷갈렸던 카드 10장을 다시 봐요." : (dailyIds()? "매일 바뀌는 오늘의 문장 10개예요." : `하루 ${DAILY}장씩, 다시 볼 때가 된 카드가 자동으로 나와요.`));
     const e=el("div","empty");
     if(R.res.length){ e.append(el("div","big","✓"), el("h2",null,"오늘 복습 끝!"), el("p",null,`${R.res.length}장을 복습했어요. 다음 복습 때 다시 나와요.`)); }
     else { e.append(el("div","big","✓"), el("h2",null,"오늘 복습할 카드가 없어요"), el("p",null,"내일 다시 열어 보세요.")); }
