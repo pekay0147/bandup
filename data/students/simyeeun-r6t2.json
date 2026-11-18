@@ -2844,19 +2844,6 @@
    "mine": null
   },
   {
-   "id": "n1403",
-   "kind": "ko",
-   "type": "문장 구조",
-   "sessions": [
-    14
-   ],
-   "ko": "저는 처음으로 서핑을 해 봤던 때가 떠올라요.",
-   "en": "I can think of the time when I tried surfing for the first time.",
-   "hint": "the time when",
-   "gram": "Part 2에서 time이 나오면 서론에서 <em>I can think of the time when</em> ~ 으로 어떤 때인지 꼭 말하기!",
-   "mine": null
-  },
-  {
    "id": "n1404",
    "kind": "ko",
    "type": "문장 구조",
