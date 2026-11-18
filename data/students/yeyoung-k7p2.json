@@ -70,6 +70,11 @@
    "no": 13,
    "date": "2026-11-14",
    "title": "Communication · Cafés · Exercise · Books"
+  },
+  {
+   "no": 14,
+   "date": "2026-11-18",
+   "title": "Job interviews · Countryside · Christmas"
   }
  ],
  "types": [
@@ -3077,6 +3082,102 @@
    "en": "I should have gone to bed earlier last night.",
    "gram": "<em>should have</em> p.p. = ~했어야 했는데 (안 한 것에 대한 후회). go-went-<em>gone</em>.",
    "hint": "should have"
+  },
+  {
+   "id": "r14-01",
+   "kind": "ko",
+   "sessions": [
+    14
+   ],
+   "type": "표현",
+   "ko": "면접 전에 긴장하는 건 당연해요.",
+   "en": "It's natural to be nervous before an interview.",
+   "gram": "<em>It's natural to</em> + 동사원형 = ~하는 건 당연해요.",
+   "hint": "natural"
+  },
+  {
+   "id": "r14-02",
+   "kind": "ko",
+   "sessions": [
+    14
+   ],
+   "type": "문장 구조",
+   "ko": "시골에 가면 마음이 편안해져요.",
+   "en": "The countryside makes me feel relaxed.",
+   "gram": "<em>make</em> + 사람 + <em>feel</em> + 형용사 = ~를 …하게 느끼게 하다. (relaxed ✅ / relax ❌)",
+   "hint": "makes me feel"
+  },
+  {
+   "id": "r14-03",
+   "kind": "ko",
+   "sessions": [
+    14
+   ],
+   "type": "문장 구조",
+   "ko": "면접 전에 더 준비했어야 했는데.",
+   "en": "I should have prepared more before the interview.",
+   "gram": "<em>should have</em> p.p. = ~했어야 했는데 (후회).",
+   "hint": "should have"
+  },
+  {
+   "id": "r14-04",
+   "kind": "ko",
+   "sessions": [
+    14
+   ],
+   "type": "문장 구조",
+   "ko": "제가 실수했을지도 몰라요.",
+   "en": "I might have made a mistake.",
+   "gram": "<em>might have</em> p.p. = ~했을지도 몰라 (확실하지 않음).",
+   "hint": "might have"
+  },
+  {
+   "id": "r14-05",
+   "kind": "ko",
+   "sessions": [
+    14
+   ],
+   "type": "문장 구조",
+   "ko": "바쁜 일정 때문에 저는 강아지 산책을 자주 못 시켜요.",
+   "en": "My busy schedule keeps me from walking my dog often.",
+   "gram": "<em>keep</em> + 대상 + <em>from -ing</em> = (주어) 때문에 대상이 ~하지 못하다.",
+   "hint": "keeps me from"
+  },
+  {
+   "id": "r14-06",
+   "kind": "ko",
+   "sessions": [
+    14
+   ],
+   "type": "문장 구조",
+   "ko": "저는 주말에 영어 성경을 읽으면서 시간을 보내요.",
+   "en": "I spend my weekends reading the Bible in English.",
+   "gram": "<em>spend</em> + 시간 + <em>-ing</em> = ~하면서 시간을 보내다.",
+   "hint": "reading"
+  },
+  {
+   "id": "r14-07",
+   "kind": "ko",
+   "sessions": [
+    14
+   ],
+   "type": "문장 구조",
+   "ko": "저는 이번 달에 강아지 간식 사는 데 돈을 너무 많이 썼어요.",
+   "en": "I spent too much money buying treats for my dog this month.",
+   "gram": "<em>spend</em> + 돈 + <em>-ing</em> = ~하는 데 돈을 쓰다. (물건 앞엔 on)",
+   "hint": "buying"
+  },
+  {
+   "id": "r14-08",
+   "kind": "ko",
+   "sessions": [
+    14
+   ],
+   "type": "표현",
+   "ko": "저는 제 영어에 꽤 자신 있어서, 면접이 잘 될 거라고 생각해요.",
+   "en": "I'm fairly confident about my English, so I think the interview will go well.",
+   "gram": "<em>confident about</em> ~ = ~에 자신 있는. <em>go well</em> = 잘 되다.",
+   "hint": "go well"
   }
  ],
  "part1": [
@@ -4379,6 +4480,24 @@
    "ko": "~와 비슷한",
    "ex": "Prices in Canada are similar to those in Korea.",
    "s": 13
+  },
+  {
+   "w": "countryside",
+   "ko": "시골, 도시 밖 지역",
+   "ex": "My parents live in the countryside.",
+   "s": 14
+  },
+  {
+   "w": "lush",
+   "ko": "(식물이) 푸르고 무성한",
+   "ex": "It's very green and lush.",
+   "s": 14
+  },
+  {
+   "w": "remote",
+   "ko": "외딴, 멀리 떨어진",
+   "ex": "A remote place is somewhere that's far away from towns and cities.",
+   "s": 14
   }
  ],
  "pod": {
@@ -4712,6 +4831,6 @@
    "gram": "<em>not a magic bullet</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
   }
  ],
- "podTodayUrl": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/261030",
+ "podTodayUrl": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/261113",
  "inbox": "4584953f-03b7-44a6-80b6-98c1abcc8c4e"
 }
