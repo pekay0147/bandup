@@ -3276,6 +3276,114 @@
    "en": "Can you give me some advice on how to study English?",
    "hint": "advice on how to",
    "gram": "<em>advice</em>는 셀 수 없는 명사(some advice). <em>advice on how to</em> + 동사원형 = ~하는 방법에 대한 조언."
+  },
+  {
+   "id": "r14-p1",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 괜찮은 척했어요.",
+   "en": "I pretended to be fine.",
+   "hint": "pretended to",
+   "gram": "<em>pretend to</em> + 동사원형 = ~인 척하다. 과거는 pretend<em>ed</em>."
+  },
+  {
+   "id": "r14-p2",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    14
+   ],
+   "ko": "우리 강아지는 자는 척해요.",
+   "en": "My dog pretends to be asleep.",
+   "hint": "pretends to",
+   "gram": "주어가 3인칭 단수면 pretend<em>s</em> to. <em>pretend to be</em> + 형용사 = ~인 척하다."
+  },
+  {
+   "id": "r14-p3",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 그 농담을 이해한 척했어요.",
+   "en": "I pretended to understand the joke.",
+   "hint": "pretended to understand",
+   "gram": "<em>pretend to</em> + 일반동사도 가능: ~하는 척하다."
+  },
+  {
+   "id": "r14-p4",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    14
+   ],
+   "ko": "못 들은 척하지 마세요.",
+   "en": "Don't pretend not to hear me.",
+   "hint": "pretend not to",
+   "gram": "~하지 않은 척 = <em>pretend not to</em> + 동사원형. not은 to 앞!"
+  },
+  {
+   "id": "r14-a1",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 산책하는 것도 좋아해요.",
+   "en": "I also like going for walks.",
+   "hint": "also like",
+   "gram": "일반동사 문장: <em>also</em>는 동사 <b>앞</b> → I <em>also</em> like ~."
+  },
+  {
+   "id": "r14-a2",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "그녀도 캐나다에 살아요.",
+   "en": "She also lives in Canada.",
+   "hint": "also lives",
+   "gram": "3인칭이어도 위치는 같아요: 주어 + <em>also</em> + 동사(lives)."
+  },
+  {
+   "id": "r14-a3",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "저도 교회 멤버예요.",
+   "en": "I am also a member of the church.",
+   "hint": "am also",
+   "gram": "be동사 문장: <em>also</em>는 be동사 <b>뒤</b> → I am <em>also</em> ~."
+  },
+  {
+   "id": "r14-a4",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 영어로도 성경을 읽을 수 있어요.",
+   "en": "I can also read the Bible in English.",
+   "hint": "can also",
+   "gram": "조동사(can, will, should) 문장: <em>also</em>는 조동사 뒤, 동사 앞 → I can <em>also</em> read."
+  },
+  {
+   "id": "r14-a5",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 영어를 공부해요. 또, 매일 성경을 읽어요.",
+   "en": "I study English. Also, I read the Bible every day.",
+   "hint": "Also,",
+   "gram": "문장 맨 앞에서 \"또한, 게다가\"라고 할 때: <em>Also,</em> + 문장 (쉼표!)."
   }
  ],
  "part1": [
