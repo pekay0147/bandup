@@ -1141,6 +1141,90 @@
      "ex": "I made quite a few mistakes in the test."
     }
    ]
+  },
+  {
+   "no": 15,
+   "date": "2026-11-12",
+   "title": "6 Minute English · 세대 간 교류",
+   "link": {
+    "title": "Learning from different generations",
+    "url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-261122",
+    "date": "12 Nov",
+    "src": "BBC 6 Minute English"
+   },
+   "label": "12 Nov",
+   "vocab": [
+    {
+     "w": "generation",
+     "ko": "세대",
+     "ex": "My parents and I are from different generations."
+    },
+    {
+     "w": "have a special bond with",
+     "ko": "~와 특별한 유대감이 있다",
+     "ex": "I have a special bond with my grandma."
+    },
+    {
+     "w": "get along",
+     "ko": "사이좋게 지내다",
+     "ex": "I get along well with my colleagues."
+    },
+    {
+     "w": "retirement home",
+     "ko": "양로원",
+     "ex": "My grandpa lives in a retirement home."
+    },
+    {
+     "w": "nursery",
+     "ko": "어린이집",
+     "ex": "My nephew goes to nursery three days a week."
+    },
+    {
+     "w": "get involved in",
+     "ko": "~에 참여하다",
+     "ex": "I want to get involved in more activities at church."
+    },
+    {
+     "w": "fill a void",
+     "ko": "허전함을 채우다",
+     "ex": "Getting a dog helped me fill a void after my kids moved out."
+    },
+    {
+     "w": "a big hole to fill",
+     "ko": "채워야 할 큰 빈자리",
+     "ex": "After my best friend moved abroad, I had a big hole to fill."
+    },
+    {
+     "w": "such and such",
+     "ko": "이러이러한 (예를 들지 않고)",
+     "ex": "My boss always says, 'Do such and such by Friday.'"
+    },
+    {
+     "w": "hear on the grapevine",
+     "ko": "소문으로 듣다",
+     "ex": "I heard on the grapevine that our team leader is leaving."
+    },
+    {
+     "w": "boost",
+     "ko": "높이다, 북돋우다",
+     "ex": "Spending time outside can boost your mood."
+    },
+    {
+     "w": "break down stereotypes",
+     "ko": "고정관념을 깨다",
+     "ex": "Projects like this help break down stereotypes about older people."
+    },
+    {
+     "w": "lively",
+     "ko": "활기찬",
+     "ex": "The older people in the group are really lively."
+    },
+    {
+     "w": "big characters",
+     "ko": "개성이 강한 사람들",
+     "ex": "My uncles are big characters at family parties."
+    }
+   ]
   }
  ],
  "types": [
@@ -3981,6 +4065,198 @@
    "en": "I'm not sure, but I'm going to go with C.",
    "hint": "go",
    "gram": "<em>I'm going to go with</em> ~ = ~로 할게요."
+  },
+  {
+   "id": "6mg01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "저희 부모님과 저는 세대가 달라요.",
+   "en": "My parents and I are from different generations.",
+   "hint": "generations",
+   "gram": "<em>generation</em> = 세대. be from different generations = 세대가 다르다."
+  },
+  {
+   "id": "6mg02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "저는 할머니와 특별한 유대감이 있어요.",
+   "en": "I have a special bond with my grandma.",
+   "hint": "bond",
+   "gram": "<em>have a special bond with</em> ~ = ~와 특별한 유대감이 있다."
+  },
+  {
+   "id": "6mg03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "저는 동료들과 사이좋게 지내요.",
+   "en": "I get along well with my colleagues.",
+   "hint": "get along",
+   "gram": "<em>get along with</em> ~ = ~와 사이좋게 지내다."
+  },
+  {
+   "id": "6mg04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "저희 할아버지는 양로원에 사세요.",
+   "en": "My grandpa lives in a retirement home.",
+   "hint": "retirement",
+   "gram": "<em>retirement home</em> = 양로원. retire = 은퇴하다."
+  },
+  {
+   "id": "6mg05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "제 조카는 일주일에 세 번 어린이집에 가요.",
+   "en": "My nephew goes to nursery three days a week.",
+   "hint": "nursery",
+   "gram": "<em>nursery</em> = 어린이집. go to nursery (관사 없이)."
+  },
+  {
+   "id": "6mg06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "저는 교회 활동에 더 많이 참여하고 싶어요.",
+   "en": "I want to get involved in more activities at church.",
+   "hint": "involved",
+   "gram": "<em>get involved in</em> ~ = ~에 참여하다."
+  },
+  {
+   "id": "6mg07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "아이들이 독립한 뒤에 강아지를 키우면서 허전함을 채웠어요.",
+   "en": "Getting a dog helped me fill a void after my kids moved out.",
+   "hint": "void",
+   "gram": "<em>fill a void</em> = (상실 후의) 허전함을 채우다. <em>move out</em> = 집을 나가 독립하다."
+  },
+  {
+   "id": "6mg08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "제일 친한 친구가 해외로 떠난 뒤로 빈자리가 정말 컸어요.",
+   "en": "After my best friend moved abroad, I had a big hole to fill.",
+   "hint": "hole",
+   "gram": "<em>a big hole to fill</em> = 채워야 할 큰 빈자리."
+  },
+  {
+   "id": "6mg09",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "저희 상사는 늘 '금요일까지 이러이러한 거 해 놔'라고 해요.",
+   "en": "My boss always says, 'Do such and such by Friday.'",
+   "hint": "such and such",
+   "gram": "<em>such and such</em> = 이러이러한 것. 구체적인 예를 들지 않고 말할 때."
+  },
+  {
+   "id": "6mg10",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "팀장님이 그만둔다는 소문을 들었어요.",
+   "en": "I heard on the grapevine that our team leader is leaving.",
+   "hint": "grapevine",
+   "gram": "<em>hear on</em>(<em>from</em>) <em>the grapevine</em> = 소문으로 듣다."
+  },
+  {
+   "id": "6mg11",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "밖에서 시간을 보내면 기분이 좋아질 수 있어요.",
+   "en": "Spending time outside can boost your mood.",
+   "hint": "boost",
+   "gram": "<em>boost</em> = 높이다, 북돋우다. boost your mood / boost learning."
+  },
+  {
+   "id": "6mg12",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "이런 프로젝트는 노인에 대한 고정관념을 깨는 데 도움이 돼요.",
+   "en": "Projects like this help break down stereotypes about older people.",
+   "hint": "stereotypes",
+   "gram": "<em>break down stereotypes</em> = 고정관념을 깨다."
+  },
+  {
+   "id": "6mg13",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "그 모임의 어르신들은 정말 활기차세요.",
+   "en": "The older people in the group are really lively.",
+   "hint": "lively",
+   "gram": "<em>lively</em> = 활기찬, 에너지가 넘치는 (-ly로 끝나지만 형용사!)."
+  },
+  {
+   "id": "6mg14",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "저희 삼촌들은 가족 모임에서 개성이 정말 강해요.",
+   "en": "My uncles are big characters at family parties.",
+   "hint": "characters",
+   "gram": "<em>big characters</em> = 개성이 강하고 존재감 있는 사람들."
+  },
+  {
+   "id": "6mg15",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "좀 진정하자.",
+   "en": "Let's calm down a little bit.",
+   "hint": "calm down",
+   "gram": "<em>calm down</em> = 진정하다. 방송: Can we just calm this down a little bit?"
+  },
+  {
+   "id": "6mg16",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    15
+   ],
+   "ko": "유감스럽지만, 정답은 B였어요.",
+   "en": "I'm afraid the answer was B.",
+   "hint": "afraid",
+   "gram": "<em>I'm afraid</em> ~ = 유감스럽지만 ~. 안 좋은 소식을 부드럽게 전할 때."
   }
  ],
  "part1": [],
@@ -3988,8 +4264,13 @@
  "noP2": true,
  "words": [],
  "podDaily": {
-  "start": "2026-11-09",
+  "start": "2026-11-19",
   "order": [
+   15,
+   11,
+   12,
+   13,
+   14,
    3,
    2,
    1,
@@ -3999,11 +4280,7 @@
    10,
    9,
    8,
-   7,
-   11,
-   12,
-   13,
-   14
+   7
   ]
  }
 }
