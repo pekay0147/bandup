@@ -695,7 +695,8 @@ function cardPhrases(c){
   for(const [k,v] of phraseBank()) if(!out.has(k) && phOk(v.w) && phExact(v.w,c.en) && !(/^used to/i.test(v.w) && /(\bam|'m|\bis|\bare|\bwas|\bwere|\bbe|\bget|\bgot|\bgetting|\bbeen)\s+(not\s+)?used to/i.test(c.en))) out.set(k,v);
   if(c.hint && phOk(c.hint) && !out.has(c.hint.toLowerCase())) out.set(c.hint.toLowerCase(),{w:c.hint,ko:""});
   const L=[...out.values()]; const norm=x=>" "+x.w.toLowerCase().replace(/^(a|an|the|be)\s+/,"")+" ";
-  return L.filter(a=>!L.some(b=>b!==a && norm(b).includes(norm(a)) && norm(b)!==norm(a))).filter((a,i,arr)=>arr.findIndex(b=>norm(b)===norm(a))===i).slice(0,4);
+  const stem=x=>x.w.toLowerCase().split(/[^a-z']+/).filter(w=>w&&!PH_SKIP.has(w)).map(phStem).join(" "); // come up with = came up with → 하나만
+  return L.filter(a=>!L.some(b=>b!==a && norm(b).includes(norm(a)) && norm(b)!==norm(a))).filter((a,i,arr)=>arr.findIndex(b=>norm(b)===norm(a) || stem(b)===stem(a))===i).slice(0,4);
 }
 function renderDecks(app){
   pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : D.group==="other"? "팟캐스트 표현을 한국어 보고 영어로 말해 보세요." : D.group==="church"? "묵상 문장을 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
