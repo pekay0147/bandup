@@ -80,6 +80,11 @@
    "no": 15,
    "date": "2026-11-19",
    "title": "Party after an event"
+  },
+  {
+   "no": 16,
+   "date": "2026-11-20",
+   "title": "Good news"
   }
  ],
  "types": [
@@ -107,7 +112,8 @@
   "12": "like + 명사 (I like sunny days)! 시간(evening)은 주어가 못 돼요 → I enjoy ~ in the evening. 단어가 안 떠오르면 더 큰 범주로 말하기. 가정법 공부해오기!",
   "13": "It reminds me of ~ (remember ❌). 습관은 I usually take (taking ❌). go on a trip에는 to 없음! forget-forgot-forgotten.",
   "14": "part2에서 time이 나오면 I can think of the time when ~ 으로 시작! try 뒤엔 바로 명사(try to new ❌). 머리를 자르다는 get my hair cut.",
-  "15": "과거 일은 be동사 없이 과거형(we talked, are talked ❌). try to / need to 뒤엔 동사원형, 명사는 바로 try / need 뒤에! appraise 뒤엔 바로 대상(appraise me)."
+  "15": "과거 일은 be동사 없이 과거형(we talked, are talked ❌). try to / need to 뒤엔 동사원형, 명사는 바로 try / need 뒤에! appraise 뒤엔 바로 대상(appraise me).",
+  "16": "시험 전 마지막 수업! of course 대신 Absolutely / Definitely, usually 대신 more often than not, sometimes 대신 from time to time. 기쁠 땐 I was over the moon!"
  },
  "compare": [
   [
@@ -2991,6 +2997,110 @@
    "hint": "appraise my work",
    "gram": "❌ appraise to → ✅ <em>appraise</em> + 대상. appraise 바로 뒤에 평가할 대상!",
    "mine": "appraise to"
+  },
+  {
+   "id": "n1601",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    16
+   ],
+   "ko": "저는 밤에 별 보는 걸 좋아해요.",
+   "en": "I like looking at the stars at night.",
+   "hint": "looking at",
+   "gram": "<em>look at</em> + 대상 = ~을 보다. 별은 <em>the stars</em>.",
+   "mine": null
+  },
+  {
+   "id": "n1602",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    16
+   ],
+   "ko": "시험에 합격했다는 소식을 듣고 정말 기뻤어요.",
+   "en": "I was over the moon when I heard I had passed the exam.",
+   "hint": "over the moon",
+   "gram": "<em>be over the moon</em> = 날아갈 듯이 기쁘다 (very happy보다 생생한 idiom!).",
+   "mine": null
+  },
+  {
+   "id": "n1603",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    16
+   ],
+   "ko": "저는 비 오는 날엔 집에 있는 경향이 있어요.",
+   "en": "I tend to stay at home on rainy days.",
+   "hint": "tend to",
+   "gram": "<em>tend to</em> + 동사원형 = ~하는 경향이 있다. <em>on rainy days</em> (on 주의).",
+   "mine": null
+  },
+  {
+   "id": "n1604",
+   "kind": "ko",
+   "type": "발음·철자",
+   "sessions": [
+    16
+   ],
+   "ko": "건강을 유지하는 건 중요해요.",
+   "en": "It's important to be healthy.",
+   "hint": "healthy",
+   "gram": "<em>healthy</em> 철자 주의 (h-e-a-l-t-h-y). <em>It's important to</em> + 동사원형.",
+   "mine": "be heatlhty"
+  },
+  {
+   "id": "n1605",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    16
+   ],
+   "ko": "(Do you like music?) 물론이죠!",
+   "en": "Absolutely! / Definitely!",
+   "hint": "Absolutely",
+   "gram": "of course만 쓰지 말고 <em>Absolutely!</em> / <em>Definitely!</em> 로 바꿔 말하기.",
+   "mine": null
+  },
+  {
+   "id": "n1606",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    16
+   ],
+   "ko": "저는 가끔 택시를 타요.",
+   "en": "I take a taxi from time to time.",
+   "hint": "from time to time",
+   "gram": "sometimes 대신 <em>from time to time</em> / <em>every now and then</em> = 가끔.",
+   "mine": null
+  },
+  {
+   "id": "n1607",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    16
+   ],
+   "ko": "저는 대체로 엘리베이터 대신 계단을 이용해요.",
+   "en": "More often than not, I take the stairs instead of the lift.",
+   "hint": "More often than not",
+   "gram": "usually 대신 <em>more often than not</em> = 대체로. <em>instead of</em> ~ = ~ 대신에.",
+   "mine": null
+  },
+  {
+   "id": "n1608",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    16
+   ],
+   "ko": "저는 매일 영어를 공부해요.",
+   "en": "I study English on a daily basis.",
+   "hint": "on a daily basis",
+   "gram": "every day 대신 <em>on a daily basis</em> = 매일.",
+   "mine": null
   }
  ],
  "part1": [
@@ -4039,6 +4149,24 @@
    "ko": "일부러",
    "ex": "I watch films without subtitles on purpose.",
    "s": 15
+  },
+  {
+   "w": "over the moon",
+   "ko": "너무 기쁜, 날아갈 듯한",
+   "ex": "I was over the moon when I heard the good news.",
+   "s": 16
+  },
+  {
+   "w": "tend to",
+   "ko": "~하는 경향이 있다",
+   "ex": "I tend to stay at home on rainy days.",
+   "s": 16
+  },
+  {
+   "w": "Absolutely / Definitely",
+   "ko": "물론이죠 (of course 대신)",
+   "ex": "\"Do you like music?\" \"Absolutely!\"",
+   "s": 16
   }
  ],
  "group": "ielts",
