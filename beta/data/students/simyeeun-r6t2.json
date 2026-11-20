@@ -75,6 +75,11 @@
    "no": 14,
    "date": "2026-11-18",
    "title": "Something new"
+  },
+  {
+   "no": 15,
+   "date": "2026-11-19",
+   "title": "Party after an event"
   }
  ],
  "types": [
@@ -101,7 +106,8 @@
   "11": "There are(~가 있다) vs These are(이것들이 ~이다)! another + 단수, different + 복수. Part 2 본론은 오늘의 2배로!",
   "12": "like + 명사 (I like sunny days)! 시간(evening)은 주어가 못 돼요 → I enjoy ~ in the evening. 단어가 안 떠오르면 더 큰 범주로 말하기. 가정법 공부해오기!",
   "13": "It reminds me of ~ (remember ❌). 습관은 I usually take (taking ❌). go on a trip에는 to 없음! forget-forgot-forgotten.",
-  "14": "part2에서 time이 나오면 I can think of the time when ~ 으로 시작! try 뒤엔 바로 명사(try to new ❌). 머리를 자르다는 get my hair cut."
+  "14": "part2에서 time이 나오면 I can think of the time when ~ 으로 시작! try 뒤엔 바로 명사(try to new ❌). 머리를 자르다는 get my hair cut.",
+  "15": "과거 일은 be동사 없이 과거형(we talked, are talked ❌). try to / need to 뒤엔 동사원형, 명사는 바로 try / need 뒤에! appraise 뒤엔 바로 대상(appraise me)."
  },
  "compare": [
   [
@@ -2881,6 +2887,110 @@
    "hint": "sort of",
    "gram": "<em>sort of</em> (= kind of) = 약간, 좀. 말할 때 부드럽게 해 주는 표현.",
    "mine": null
+  },
+  {
+   "id": "n15m1",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    15
+   ],
+   "ko": "저는 한 달에 한 번 머리를 자르는데, 대체로 같은 미용실에 가요.",
+   "en": "I get my hair cut once a month, and more often than not, I go to the same salon.",
+   "hint": "more often than not",
+   "gram": "<em>get my hair cut</em> = (미용실에서) 머리를 자르다. <em>more often than not</em> = 대체로 (usually 대신).",
+   "mine": null
+  },
+  {
+   "id": "n15m2",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    15
+   ],
+   "ko": "사람들이 저를 어떻게 평가할지 걱정돼서 저는 발표하는 게 무서워요.",
+   "en": "I'm afraid of giving presentations because I worry about how people will appraise me.",
+   "hint": "appraise",
+   "gram": "<em>be afraid of</em> + -ing = ~하는 게 무섭다. <em>appraise</em> + 사람 = ~를 평가하다 (to 없음!).",
+   "mine": null
+  },
+  {
+   "id": "n15m3",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    15
+   ],
+   "ko": "여행 중에 새로운 음식을 먹어 봤는데, 옛 추억이 떠올랐어요.",
+   "en": "I tried new food during the trip, and it reminded me of an old memory.",
+   "hint": "reminded me of",
+   "gram": "<em>try</em> + 명사 = ~을 해 보다 (try to new ❌). <em>remind</em> A <em>of</em> B = A에게 B를 떠올리게 하다.",
+   "mine": null
+  },
+  {
+   "id": "n15m4",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    15
+   ],
+   "ko": "저는 영어 실력을 늘리려고 일부러 자막 없이 영화를 봐요.",
+   "en": "I watch films without subtitles on purpose to improve my English.",
+   "hint": "on purpose",
+   "gram": "<em>on purpose</em> = 일부러. <em>to</em> + 동사원형 = ~하려고.",
+   "mine": null
+  },
+  {
+   "id": "n1501",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    15
+   ],
+   "ko": "파티에서 우리는 이야기를 많이 나눴어요.",
+   "en": "We talked a lot at the party.",
+   "hint": "talked",
+   "gram": "❌ we are talked → ✅ We <em>talked</em>. 과거 일은 be동사 없이 동사 과거형만!",
+   "mine": "we are talked"
+  },
+  {
+   "id": "n1502",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    15
+   ],
+   "ko": "저는 휴식이 필요해요. 좀 쉬어야 해요.",
+   "en": "I need a break. I need to take a rest.",
+   "hint": "need to take",
+   "gram": "<em>need</em> + 명사 (I need a break) / <em>need to</em> + 동사원형 (I need to take a rest). need to 뒤에 명사 ❌",
+   "mine": null
+  },
+  {
+   "id": "n1503",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    15
+   ],
+   "ko": "저는 파티에서 새로운 사람들과 이야기하려고 노력했어요.",
+   "en": "I tried to talk to new people at the party.",
+   "hint": "tried to talk",
+   "gram": "<em>try to</em> + 동사원형 = ~하려고 노력하다. <em>try</em> + 명사 = ~을 해 보다. try to 뒤에 명사 ❌",
+   "mine": "I tried to new food"
+  },
+  {
+   "id": "n1504",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    15
+   ],
+   "ko": "다음 주에 상사가 제 업무를 평가할 거예요.",
+   "en": "My boss will appraise my work next week.",
+   "hint": "appraise my work",
+   "gram": "❌ appraise to → ✅ <em>appraise</em> + 대상. appraise 바로 뒤에 평가할 대상!",
+   "mine": "appraise to"
   }
  ],
  "part1": [
@@ -3899,6 +4009,36 @@
    "ko": "머리를 자르다 (미용실에서)",
    "ex": "I get my hair cut once a month.",
    "s": 14
+  },
+  {
+   "w": "socially anxious",
+   "ko": "사람들 앞에서 불안한",
+   "ex": "I get a bit socially anxious in big crowds.",
+   "s": 15
+  },
+  {
+   "w": "perfectionism",
+   "ko": "완벽주의",
+   "ex": "My perfectionism makes it hard to start things.",
+   "s": 15
+  },
+  {
+   "w": "come easier",
+   "ko": "더 쉬워지다",
+   "ex": "Speaking came easier the more I practised.",
+   "s": 15
+  },
+  {
+   "w": "appraise",
+   "ko": "평가하다",
+   "ex": "I worry about how people will appraise me.",
+   "s": 15
+  },
+  {
+   "w": "on purpose",
+   "ko": "일부러",
+   "ex": "I watch films without subtitles on purpose.",
+   "s": 15
   }
  ],
  "group": "ielts",
@@ -4028,7 +4168,7 @@
    "gram": "<em>What's ~ like?</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
   }
  ],
- "podTodayUrl": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-260924",
+ "podTodayUrl": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-260917",
  "inbox": "85195033-f0bd-4331-9cc7-62ca8711c519",
  "ai": true
 }
