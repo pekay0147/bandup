@@ -62,6 +62,12 @@
    "date": "2026-11-19",
    "title": "Speaking Matrix",
    "label": "스피킹 매트릭스 18회"
+  },
+  {
+   "no": 22,
+   "date": "2026-11-21",
+   "title": "Speaking Matrix",
+   "label": "스피킹 매트릭스 19회"
   }
  ],
  "types": [
@@ -1625,6 +1631,78 @@
    "en": "I eventually came up with a plan that worked for both sides.",
    "hint": "came up with",
    "gram": "<em>eventually</em> = 결국. <em>come up with</em> = (생각을) 떠올리다, 생각해 내다. <em>work for</em> ~ = ~에게 잘 맞다."
+  },
+  {
+   "id": "sm19-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    22
+   ],
+   "ko": "몇 주 전에, 제가 준비하던 보고서가 일정보다 늦어지기 시작했어요.",
+   "en": "A few weeks ago, the report I was preparing started to fall behind schedule.",
+   "hint": "fall behind schedule",
+   "gram": "<em>fall behind schedule</em> = 일정보다 늦어지다. <em>the report I was preparing</em> = 내가 준비하던 보고서 (관계대명사 생략)."
+  },
+  {
+   "id": "sm19-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    22
+   ],
+   "ko": "저는 아직 남은 일이 너무 많아요.",
+   "en": "I still have too much work left.",
+   "hint": "left",
+   "gram": "<em>have</em> + 명사 + <em>left</em> = ~이 남아 있다. work는 셀 수 없어서 <em>too much</em> work."
+  },
+  {
+   "id": "sm19-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    22
+   ],
+   "ko": "저는 아직 수업이 두 번 더 남았어요.",
+   "en": "I still have two more classes left.",
+   "hint": "two more",
+   "gram": "<em>two more</em> + 복수명사 = ~가 두 개 더. <em>have ~ left</em> = ~이 남아 있다."
+  },
+  {
+   "id": "sm19-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    22
+   ],
+   "ko": "그는 제 열정적인 수업에 대해 고마워했어요.",
+   "en": "He thanked me for my enthusiastic teaching.",
+   "hint": "thanked me for",
+   "gram": "<em>thank</em> 사람 <em>for</em> ~ = ~에 대해 …에게 감사하다. <em>enthusiastic</em> = 열정적인."
+  },
+  {
+   "id": "sm19-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    22
+   ],
+   "ko": "그렇긴 하지만, 너무 오래 기다리면 선택지가 줄어들어요.",
+   "en": "That said, waiting too long leaves people with fewer options.",
+   "hint": "That said",
+   "gram": "<em>That said,</em> = 그렇긴 하지만. <em>leave</em> 사람 <em>with</em> ~ = ~에게 …을 남기다. <em>fewer</em> + 복수명사 = 더 적은."
+  },
+  {
+   "id": "sm19-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    22
+   ],
+   "ko": "우리는 부주의하거나 준비가 안 돼 보일까 봐 걱정해요.",
+   "en": "We worry that we might look careless or unprepared.",
+   "hint": "might look",
+   "gram": "<em>worry that</em> + 문장 = ~할까 봐 걱정하다. <em>look</em> + 형용사 = ~해 보이다. careless = 부주의한, unprepared = 준비가 안 된."
   }
  ],
  "part1": [],
