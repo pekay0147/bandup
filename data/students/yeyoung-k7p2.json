@@ -75,6 +75,11 @@
    "no": 14,
    "date": "2026-11-18",
    "title": "Interviews · Countryside · Christmas · Noise"
+  },
+  {
+   "no": 15,
+   "date": "2026-11-21",
+   "title": "Housework · Review questions"
   }
  ],
  "types": [
@@ -102,7 +107,8 @@
   "11": "동명사 주어(Making a list, Being punctual)는 단수 동사! annoying(그게 주는 느낌) vs annoyed(내 기분) 구분하기.",
   "12": "처음 소개할 땐 There is a ~, 다시 말할 땐 It! 동명사 주어(Drinking water, Having a routine)는 단수 동사.",
   "13": "help + 사람 + 동사원형 (is help ✕)! go to + 장소, similar to. 동사를 꾸밀 땐 부사(more easily).",
-  "14": "prefer + -ing, 장소 앞엔 in the (in the countryside)! also는 일반동사 앞, be동사 뒤. unless = ~하지 않으면."
+  "14": "prefer + -ing, 장소 앞엔 in the (in the countryside)! also는 일반동사 앞, be동사 뒤. unless = ~하지 않으면.",
+  "15": "rich는 형용사(a rich ❌). unless = if ~ not. would rather A than B. 사역동사 make / have / let + 사람 + 동사원형! wear 발음 [웨어]."
  },
  "compare": [
   [
@@ -3384,6 +3390,163 @@
    "en": "I study English. Also, I read the Bible every day.",
    "hint": "Also,",
    "gram": "문장 맨 앞에서 \"또한, 게다가\"라고 할 때: <em>Also,</em> + 문장 (쉼표!)."
+  },
+  {
+   "id": "r15-m1",
+   "kind": "ko",
+   "sessions": [
+    15
+   ],
+   "type": "단어 선택",
+   "ko": "비가 오지 않으면 저는 강아지를 산책시켜요.",
+   "en": "I walk my dog unless it rains.",
+   "gram": "<em>unless</em> + 주어 + 동사 = ~하지 않으면 (= if ~ not).",
+   "hint": "unless"
+  },
+  {
+   "id": "r15-m2",
+   "kind": "ko",
+   "sessions": [
+    15
+   ],
+   "type": "문장 구조",
+   "ko": "저는 괜찮은 척했지만, 사실 좀 피곤했어요.",
+   "en": "I pretended to be fine, but I was kind of tired.",
+   "gram": "<em>pretend to</em> + 동사원형 = ~인 척하다. <em>kind of</em> = 약간, 좀.",
+   "hint": "pretended to"
+  },
+  {
+   "id": "r15-m3",
+   "kind": "ko",
+   "sessions": [
+    15
+   ],
+   "type": "동사·시제",
+   "ko": "시간이 모자라면, 저는 청소를 내일로 미룰 거예요.",
+   "en": "If I run out of time, I'll put off the cleaning until tomorrow.",
+   "gram": "가정법 현재(일어날 수 있는 일): <em>If</em> + 현재, <em>will</em> + 동사원형. <em>put off</em> = 미루다.",
+   "hint": "run out of time"
+  },
+  {
+   "id": "r15-m4",
+   "kind": "ko",
+   "sessions": [
+    15
+   ],
+   "type": "동사·시제",
+   "ko": "제가 시간이 더 있다면, 매일 바닥을 대걸레질할 텐데요.",
+   "en": "If I had more time, I would mop the floor every day.",
+   "gram": "가정법 과거(지금 사실이 아닌 일): <em>If</em> + 과거, <em>would</em> + 동사원형.",
+   "hint": "would mop"
+  },
+  {
+   "id": "r15-m5",
+   "kind": "ko",
+   "sessions": [
+    15
+   ],
+   "type": "문장 구조",
+   "ko": "저는 청소기를 돌리기보다는 차라리 설거지를 하고 싶어요.",
+   "en": "I would rather do the dishes than do the hoovering.",
+   "gram": "<em>would rather</em> A <em>than</em> B = B보다 차라리 A 하고 싶다 (A, B 모두 동사원형).",
+   "hint": "would rather"
+  },
+  {
+   "id": "r15-m6",
+   "kind": "ko",
+   "sessions": [
+    15
+   ],
+   "type": "관사·전치사",
+   "ko": "만약 제가 부자라면, 더 이상 공부하지 않을 텐데요.",
+   "en": "If I were rich, I wouldn't study anymore.",
+   "gram": "❌ I were a rich → ✅ I were <em>rich</em>. rich는 형용사라 a가 안 붙어요. 가정법 과거는 <em>If I were</em> ~.",
+   "hint": "If I were",
+   "mine": "If I were a rich"
+  },
+  {
+   "id": "r15-01",
+   "kind": "ko",
+   "sessions": [
+    15
+   ],
+   "type": "단어 선택",
+   "ko": "우리 우유가 다 떨어졌어요.",
+   "en": "We ran out of milk.",
+   "gram": "<em>run out of</em> + 명사 = ~이 다 떨어지다. run-<em>ran</em>-run. run out of time / food / money.",
+   "hint": "ran out of"
+  },
+  {
+   "id": "r15-02",
+   "kind": "ko",
+   "sessions": [
+    15
+   ],
+   "type": "관사·전치사",
+   "ko": "우리 강아지는 식탁 밑에서 자고 있어요.",
+   "en": "My dog is sleeping underneath the table.",
+   "gram": "<em>underneath</em> = ~의 바로 밑에 (under보다 '가려져 있는' 느낌).",
+   "hint": "underneath"
+  },
+  {
+   "id": "r15-03",
+   "kind": "ko",
+   "sessions": [
+    15
+   ],
+   "type": "발음·철자",
+   "ko": "저는 보통 청바지를 입어요.",
+   "en": "I usually wear jeans.",
+   "gram": "<em>wear</em> [웨어] — where와 발음이 같아요. ware/were와 헷갈리지 않게!",
+   "hint": "wear"
+  },
+  {
+   "id": "r15-04",
+   "kind": "ko",
+   "sessions": [
+    15
+   ],
+   "type": "문장 구조",
+   "ko": "엄마가 저한테 방 청소를 시키셨어요.",
+   "en": "My mum made me clean my room.",
+   "gram": "사역동사 <em>make</em> + 사람 + 동사원형 = (억지로) ~하게 하다.",
+   "hint": "made me clean"
+  },
+  {
+   "id": "r15-05",
+   "kind": "ko",
+   "sessions": [
+    15
+   ],
+   "type": "문장 구조",
+   "ko": "저는 남편에게 설거지를 하게 했어요.",
+   "en": "I had my husband do the dishes.",
+   "gram": "사역동사 <em>have</em> + 사람 + 동사원형 = ~에게 ~하도록 시키다 (부탁·요청).",
+   "hint": "had my husband do"
+  },
+  {
+   "id": "r15-06",
+   "kind": "ko",
+   "sessions": [
+    15
+   ],
+   "type": "문장 구조",
+   "ko": "부모님은 제가 늦게까지 안 자도 되게 해 주셨어요.",
+   "en": "My parents let me stay up late.",
+   "gram": "사역동사 <em>let</em> + 사람 + 동사원형 = ~하게 허락하다. let-let-let.",
+   "hint": "let me stay"
+  },
+  {
+   "id": "r15-07",
+   "kind": "ko",
+   "sessions": [
+    15
+   ],
+   "type": "문장 구조",
+   "ko": "저는 그를 못 본 척했어요.",
+   "en": "I pretended not to see him.",
+   "gram": "~하지 않은 척 = <em>pretend not to</em> + 동사원형.",
+   "hint": "pretended not to"
   }
  ],
  "part1": [
@@ -4728,6 +4891,60 @@
    "ko": "~하는 방법에 대한 조언",
    "ex": "Can you give me some advice on how to study English?",
    "s": 14
+  },
+  {
+   "w": "do the hoovering / do the vacuuming",
+   "ko": "청소기를 돌리다",
+   "ex": "We say do the hoovering or do the vacuuming.",
+   "s": 15
+  },
+  {
+   "w": "sweep",
+   "ko": "(빗자루로) 쓸다",
+   "ex": "Hoover or sweep the floor.",
+   "s": 15
+  },
+  {
+   "w": "mop",
+   "ko": "대걸레질하다",
+   "ex": "When you mop, that's when you make the floor wet and properly clean.",
+   "s": 15
+  },
+  {
+   "w": "scrub",
+   "ko": "박박 문지르다",
+   "ex": "You have to really rub it and scrub it really hard.",
+   "s": 15
+  },
+  {
+   "w": "crumbs",
+   "ko": "(음식) 부스러기",
+   "ex": "Wipe away the crumbs.",
+   "s": 15
+  },
+  {
+   "w": "run out of",
+   "ko": "~이 다 떨어지다, 모자라다",
+   "ex": "We always find we run out of time to get a lot of housework done.",
+   "s": 15
+  },
+  {
+   "w": "would rather",
+   "ko": "차라리 ~하고 싶다",
+   "ex": "There are so many other things we would rather be doing.",
+   "s": 15
+  },
+  {
+   "w": "underneath",
+   "ko": "~의 바로 밑에",
+   "ex": "My dog is sleeping underneath the table.",
+   "s": 15
+  },
+  {
+   "w": "make / have / let (사역동사)",
+   "ko": "~하게 하다 / 시키다 / 허락하다",
+   "ex": "My mum made me clean my room.",
+   "s": 15
   }
  ],
  "pod": {
@@ -5061,6 +5278,6 @@
    "gram": "<em>not a magic bullet</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
   }
  ],
- "podTodayUrl": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/261113",
+ "podTodayUrl": "https://www.bbc.co.uk/learningenglish/english/features/real-easy-english/260828",
  "inbox": "4584953f-03b7-44a6-80b6-98c1abcc8c4e"
 }
