@@ -45,6 +45,11 @@
    "no": 8,
    "date": "2026-11-15",
    "title": "Itch · Cafés · Books"
+  },
+  {
+   "no": 9,
+   "date": "2026-11-22",
+   "title": "Stranger Things · Review questions"
   }
  ],
  "types": [
@@ -67,7 +72,9 @@
  },
  "focus": {
   "7": "prefer·like 같은 일반동사 앞에 I'm 붙이지 않기! used to + 동사원형(예전에) vs be used to + -ing(익숙하다).",
-  "8": "일반동사 앞에 I'm 붙이지 않기 (I usually order)! call + 사람 (with ✕)."
+  "8": "일반동사 앞에 I'm 붙이지 않기 (I usually order)! call + 사람 (with ✕).",
+  "n": 9,
+  "9": "fit + 사람 (to ✕)! keep 사람 from -ing, should have p.p.(후회) 다시 확인."
  },
  "compare": [
   [
@@ -1897,6 +1904,115 @@
    "en": "I'm going to the crocodile farm today.",
    "hint": "going to",
    "gram": "이미 정해진 계획은 <em>be going to</em> / 현재진행형(I'm going to the farm). 위 문장(was meant to = 가기로 했었는데 못 감)과 비교!"
+  },
+  {
+   "id": "p9-01",
+   "kind": "ko",
+   "sessions": [
+    9
+   ],
+   "type": "표현",
+   "ko": "저는 오늘 운동하기로 되어 있었는데, 망설였어요.",
+   "en": "I was supposed to work out today, but I hesitated.",
+   "hint": "supposed to",
+   "gram": "<em>was supposed to</em> + 동사원형 = ~하기로 되어 있었다 (결국 못 함). <em>hesitate</em> = 망설이다."
+  },
+  {
+   "id": "p9-02",
+   "kind": "ko",
+   "sessions": [
+    9
+   ],
+   "type": "표현",
+   "ko": "한국으로 돌아온 것의 단점은 다시 적응해야 했다는 거예요.",
+   "en": "The downside of moving back to Korea is that I had to adapt again.",
+   "hint": "downside",
+   "gram": "<em>The downside of</em> ~ <em>is that</em> … = ~의 단점은 …이다 (↔ <em>upside</em>). <em>adapt</em> = 적응하다."
+  },
+  {
+   "id": "p9-03",
+   "kind": "ko",
+   "sessions": [
+    9
+   ],
+   "type": "문장 구조",
+   "ko": "너무 순진했던 게 그 문제를 알아차리지 못하게 했어요.",
+   "en": "Being too naive kept me from noticing the problem.",
+   "hint": "kept me from",
+   "gram": "<em>keep</em> 사람 <em>from</em> -ing = ~가 …하지 못하게 하다. <em>naive</em> = 순진한."
+  },
+  {
+   "id": "p9-04",
+   "kind": "ko",
+   "sessions": [
+    9
+   ],
+   "type": "동사·시제",
+   "ko": "저는 매일 한 시간씩 영어 공부를 해요.",
+   "en": "I spend an hour studying English every day.",
+   "hint": "spend",
+   "gram": "<em>spend</em> + 시간 + -ing = ~하면서 시간을 보내다."
+  },
+  {
+   "id": "p9-05",
+   "kind": "ko",
+   "sessions": [
+    9
+   ],
+   "type": "동사·시제",
+   "ko": "제 직감을 믿었어야 했는데.",
+   "en": "I should have trusted my gut feeling.",
+   "hint": "should have trusted",
+   "gram": "<em>should have</em> p.p. = ~했어야 했는데 (후회). <em>gut feeling</em> = 직감."
+  },
+  {
+   "id": "p9-06",
+   "kind": "ko",
+   "sessions": [
+    9
+   ],
+   "type": "관사·전치사",
+   "ko": "이 셔츠는 저한테 잘 맞아요.",
+   "en": "This shirt fits me.",
+   "hint": "fits me",
+   "gram": "<em>fit</em> + 사람 (to ✕). 바로 목적어가 와요.",
+   "mine": "This shirt fits to me."
+  },
+  {
+   "id": "p9-07",
+   "kind": "ko",
+   "sessions": [
+    9
+   ],
+   "type": "표현",
+   "ko": "버스가 한 시간에 한 번 와요.",
+   "en": "The bus comes once an hour.",
+   "hint": "once an hour",
+   "gram": "<em>once an hour</em> = 한 시간에 한 번 (twice a day, three times a week)."
+  },
+  {
+   "id": "p9-08",
+   "kind": "ko",
+   "sessions": [
+    9
+   ],
+   "type": "품사",
+   "ko": "저는 제 직업에 만족해요. 만족이 제일 중요하니까요.",
+   "en": "I'm satisfied with my job. Satisfaction matters most.",
+   "hint": "Satisfaction",
+   "gram": "<em>satisfy</em>(동사) 만족시키다 / <em>satisfied</em>(형용사) 만족한 / <em>satisfaction</em>(명사) 만족. <em>it matters</em> = 중요하다."
+  },
+  {
+   "id": "p9-09",
+   "kind": "ko",
+   "sessions": [
+    9
+   ],
+   "type": "품사",
+   "ko": "저는 일을 우선순위대로 정리해요. 제 최우선순위는 건강이에요.",
+   "en": "I prioritise my tasks. My top priority is my health.",
+   "hint": "prioritise",
+   "gram": "<em>prioritise</em>(동사) 우선순위를 정하다 / <em>priority</em>(명사) 우선순위."
   }
  ],
  "part1": [
@@ -2644,6 +2760,48 @@
    "ko": "긍정적인 면 / 부정적인 면 (benefit ↔ drawback, advantage ↔ disadvantage, pros and cons)",
    "ex": "The downside is that it takes a long time.",
    "s": 8
+  },
+  {
+   "w": "adapt",
+   "ko": "적응하다",
+   "ex": "I have finally adapted.",
+   "s": 9
+  },
+  {
+   "w": "naive",
+   "ko": "순진한",
+   "ex": "I was so naive back then.",
+   "s": 9
+  },
+  {
+   "w": "gut feeling",
+   "ko": "직감",
+   "ex": "I used to trust my gut feeling.",
+   "s": 9
+  },
+  {
+   "w": "instinct",
+   "ko": "본능",
+   "ex": "Follow your instinct.",
+   "s": 9
+  },
+  {
+   "w": "hesitate",
+   "ko": "망설이다",
+   "ex": "Don't hesitate to ask.",
+   "s": 9
+  },
+  {
+   "w": "open sesame",
+   "ko": "열려라 참깨",
+   "ex": "Open sesame!",
+   "s": 9
+  },
+  {
+   "w": "it matters",
+   "ko": "중요하다",
+   "ex": "It didn't matter that you were an ass.",
+   "s": 9
   }
  ],
  "group": "ielts",
