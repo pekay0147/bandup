@@ -3475,6 +3475,18 @@
    "en": "We ran out of milk.",
    "gram": "<em>run out of</em> + 명사 = ~이 다 떨어지다. run-<em>ran</em>-run. run out of time / food / money.",
    "hint": "ran out of"
+  },
+  {
+   "id": "r15-02",
+   "kind": "ko",
+   "sessions": [
+    15
+   ],
+   "type": "관사·전치사",
+   "ko": "저는 패딩 아래에 티셔츠를 입어요.",
+   "en": "I wear a T-shirt underneath my padded jacket.",
+   "gram": "<em>underneath</em> = ~ 아래에, ~ 안쪽에 (겉옷 안에 받쳐 입을 때). 패딩은 영어로 <em>padded jacket</em> / <em>puffer jacket</em>이에요.",
+   "hint": "underneath"
   }
  ],
  "part1": [
