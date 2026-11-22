@@ -206,7 +206,7 @@ function grSentence(mark, ko, nav){
   while((m=re.exec(mark))){ if(m.index>last) line.append(document.createTextNode(mark.slice(last,m.index)));
     const [all,role,to,text]=m; const b=el("button","grc"); b.type="button"; b.dataset.r=role; b.append(el("span",null,text), el("small",null,(GR_ROLE[role]||[""])[0]));
     b.onclick=e=>{ e.stopPropagation(); pick(b,role,to,text); }; line.append(b); last=m.index+all.length; }
-  if(last<mark.length) line.append(document.createTextNode(mark.slice(last)));
+  if(last<mark.length){ const rest=mark.slice(last), lb=line.lastElementChild; if(lb && /^[.,!?]+$/.test(rest)) lb.firstChild.append(rest); else line.append(document.createTextNode(rest)); } // 마침표가 혼자 다음 줄로 떨어지지 않게
   box.append(line); if(ko) box.append(el("p","grko",ko)); box.append(info); return box;
 }
 function grNode(app, id, nav){
@@ -227,12 +227,49 @@ function grNode(app, id, nav){
   if(mine.length){ const s=el("section","sec"); s.append(secHead(mine.some(c=>c.mine)? "내가 틀렸던 문장" : "내 카드에서 만난 문장",`${mine.length}개`)); const bx=el("div","box grwrongs");
     mine.forEach(c=>{ const r=el("div","grwrong"); if(c.mine) r.append(el("p","x","✕ "+c.mine)); r.append(el("p",c.mine?"o":"en", (c.mine?"✓ ":"")+c.en)); if(c.ko) r.append(el("p","why",c.ko)); bx.append(r); }); s.append(bx); app.append(s); }
 }
+/* 문법 지도 화면: 첫 화면에는 문장 성분 다섯 개만. 누르면 그 자리에서 가지가 펼쳐져요 (페이지 이동 없음). */
+let GP=[]; // 지금 펼쳐진 길: [성분] 또는 [성분, 가지]
+const GR_COMP={subj:"S",verb:"V",obj:"O",comp:"C",mod:"M"};
+function grPathTo(id){ const comps=GR.nodes[GR.root].kids; if(comps.includes(id)) return [id];
+  const c=comps.find(c=>(GR.nodes[c].groups||[]).some(g=>g[1].includes(id))); if(c) return [c,id];
+  const up=GR.par[id]; return up && up!==GR.root? grPathTo(up) : []; }
+function grExs(n,nav){ const bx=el("div","box grexs"); n.ex.forEach(([mk,ko])=>bx.append(grSentence(mk,ko,nav))); return bx; }
+function grWrongs(n){ const bx=el("div","box grwrongs"); n.wrong.forEach(([x,o,why])=>{ const r=el("div","grwrong"); r.append(el("p","x","✕ "+x), el("p","o","✓ "+o)); if(why) r.append(el("p","why",why)); bx.append(r); }); return bx; }
+function grBullets(n){ const ul=el("ul","grbody"); n.body.forEach(t=>{ const li=el("li"); li.innerHTML=t; ul.append(li); }); return ul; }
+function grLeaf(n,nav){ const lf=el("div","grleaf");
+  lf.append(el("p","grldef",n.d)); if(n.body) lf.append(grBullets(n));
+  if(n.ex){ lf.append(el("b","grsub","예문 · 덩어리를 눌러 보세요"), grExs(n,nav)); }
+  if(n.wrong){ lf.append(el("b","grsub","자주 틀려요"), grWrongs(n)); }
+  if(n.tip){ const t=el("div","gram grtip"); t.append(el("b",null,"스피킹 팁"), el("p",null,n.tip)); lf.append(t); }
+  const mine=grCards(n); if(mine.length){ lf.append(el("b","grsub",mine.some(c=>c.mine)? "내가 틀렸던 문장" : "내 카드에서 만난 문장")); const bx=el("div","box grwrongs");
+    mine.forEach(c=>{ const r=el("div","grwrong"); if(c.mine) r.append(el("p","x","✕ "+c.mine)); r.append(el("p",c.mine?"o":"en",(c.mine?"✓ ":"")+c.en)); if(c.ko) r.append(el("p","why",c.ko)); bx.append(r); }); lf.append(bx); }
+  if(n.more){ lf.append(el("b","grsub","여기서 이어져요")); const w=el("div","grmore"); n.more.forEach(k=>{ const b=el("button","grchip","→ "+GR.nodes[k].t); b.type="button"; b.onclick=()=>nav(k); w.append(b); }); lf.append(w); }
+  return lf; }
 function renderGrammar(app){
   if(!GR){ app.append(el("div","loading","문법 지도를 불러오는 중…")); grLoad().then(j=>{ if(j) render(); else { app.textContent=""; app.append(el("p","muted","문법 지도를 불러오지 못했어요. 인터넷 연결을 확인해 주세요.")); } }); return; }
-  const id= GR.nodes[view.id]? view.id : GR.root, par=GR.par[id];
-  const back=el("button","back", GH.length? "‹ 뒤로" : par? "‹ "+GR.nodes[par].t : "‹ 홈"); back.type="button";
-  back.onclick=()=>{ if(GH.length) go("grammar",{id:GH.pop()}); else if(par) go("grammar",{id:par}); else go("home"); }; app.append(back);
-  grNode(app, id, to=>{ GH.push(id); if(GH.length>30) GH.shift(); go("grammar",{id:to}); });
+  const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
+  pageHead(app,"문법 지도","문장은 다섯 가지 성분으로 이루어져요.");
+  const comps=GR.nodes[GR.root].kids, wrap=el("div","grmap"); app.append(wrap); let fresh=null;
+  const calm=window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const focus=id=>requestAnimationFrame(()=>{ const t=wrap.querySelector(`[data-n="${id}"]`); if(t) t.scrollIntoView({behavior:calm?"auto":"smooth",block:"start"}); });
+  const nav=id=>{ const p=grPathTo(id); if(!p.length) return; GP=p; fresh=p[p.length-1]; draw(); focus(fresh); };
+  const draw=()=>{ wrap.textContent="";
+    const row=el("div","grcomps"); comps.forEach(c=>{ const on=GP[0]===c, b=el("button","grcomp"+(on?" on":"")); b.type="button"; b.dataset.r=GR_COMP[c]; b.setAttribute("aria-expanded",String(on)); b.append(el("b",null,GR.nodes[c].t));
+      b.onclick=()=>{ GP= on? [] : [c]; fresh= on? null : c; draw(); }; row.append(b); }); wrap.append(row);
+    if(!GP[0]){ wrap.append(el("p","grhint","성분을 하나 눌러 보세요. 가지가 펼쳐져요.")); return; }
+    const cid=GP[0], n=GR.nodes[cid], pan=el("div","grpan"+(fresh===cid?" in":"")); pan.dataset.r=GR_COMP[cid]; pan.dataset.n=cid;
+    const twig=(label,...kids)=>{ const t=el("div","grtwig"); t.append(el("b","grlab",label)); kids.forEach(k=>k && t.append(k)); pan.append(t); return t; };
+    twig(`${n.t}란?`, el("p","grwhat",n.d), n.body? grBullets(n) : null);
+    if(n.ex) twig(`문장 속 ${n.t}`, grExs(n,nav));
+    (n.groups||[]).forEach(([label,ids])=>{ const list=el("div","grnodes");
+      ids.forEach(k=>{ const kn=GR.nodes[k], on=GP[1]===k, b=el("button","grnode"+(on?" on":"")); b.type="button"; b.dataset.n=k; b.setAttribute("aria-expanded",String(on));
+        const t=el("span","lt"); t.append(el("b",null,kn.t), el("span",null,kn.s||"")); b.append(t, el("span","grchev","›"));
+        b.onclick=()=>{ GP= on? [cid] : [cid,k]; fresh= on? null : k; draw(); if(!on) focus(k); }; list.append(b);
+        if(on){ const lf=grLeaf(kn,nav); if(fresh===k) lf.classList.add("in"); list.append(lf); } });
+      twig(label, list); });
+    if(n.wrong || n.tip){ const tip= n.tip? el("div","gram grtip") : null; if(tip) tip.append(el("b",null,"스피킹 팁"), el("p",null,n.tip)); twig("자주 틀려요", n.wrong? grWrongs(n) : null, tip); }
+    wrap.append(pan); fresh=null; };
+  draw();
 }
 /* 큐카드 위에 뜨는 문법 창 (카드 진행은 그대로 두고 읽기만) */
 function grSheet(id){
@@ -377,7 +414,7 @@ function renderHome(app){
   { const P=podSel(); const TP=todayPod(); const pr=TP? listRow(LIC.pod,"오늘의 팟캐스트",`${String(TP.link.src||"6 Minute English").replace(/^BBC /,"")} · ${TP.link.date} · ${TP.link.title}`,null,TP.link.url) : listRow(LIC.pod,"오늘의 팟캐스트",P.name,null,podUrl(P)); pr.classList.add("podrow"); const pw=el("div","podwrap"); const cb= (D.podAuto && TP)? el("button","podchg","✓ 다 들었어요") : el("button","podchg","바꾸기"); cb.type="button"; cb.onclick= (D.podAuto && TP)? (e=>{ e.preventDefault(); e.stopPropagation(); podDone(TP); render(); }) : (()=>go("podpick")); pw.append(pr,cb); list.append(pw); }
   if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
   if(D.group==="ielts" || D.group==="common" || D.demo || D.keepMock) list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
-  if(D.grammar) list.append(listRow(LIC.gram,"문법 지도","문장의 뼈대 · 누르면서 파고들기",()=>{ GH=[]; go("grammar"); }));
+  if(D.grammar) list.append(listRow(LIC.gram,"문법 지도","문장 성분부터 · 누르면 가지가 펼쳐져요",()=>{ GP=[]; go("grammar"); }));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
   if(D.inbox){ const sc=store.get(`bandup-screens-${slug}`,[]); if(sc.length) list.append(listRow(LIC.voc,"📸 캡쳐한 글",`${sc.length}개 · 모르는 단어를 눌러 담아요`,()=>go("screens"))); else if((D.capLink || D.capOn) && /iPhone|iPad/i.test(navigator.userAgent||"")) list.append(listRow(LIC.voc,"📸 뒷면 톡톡 캡쳐","보던 화면의 단어를 바로 담기 · 설정 1분",()=>go("inbox"))); }
   if(D.inbox && D.yt){ const nv=store.get(`bandup-yt-${slug}`,[]).length; list.append(listRow(LIC.pod,"🎬 영상으로 공부", (()=>{ const nc=store.get(`bandup-clips-${slug}`,[]).length; return nc? `클립 ${nc}개 · 쉐도잉하러 가기` : nv? `영상 ${nv}개 · 이중자막으로 보고 안 들린 문장 담기` : "유튜브 보다가 뒷면 톡톡으로 클립 저장"; })(),()=>{ ytState=null; go("yt"); })); }

@@ -6,9 +6,9 @@ m = 학생 카드(영어 문장 + 포인트 설명)와 이어 주는 정규식."
 import json, re, sys, os
 
 N = {}
-def node(id, t, s, d, body=(), ex=(), wrong=(), tip="", kids=(), more=(), m=""):
+def node(id, t, s, d, body=(), ex=(), wrong=(), tip="", kids=(), more=(), m="", groups=()):
     N[id] = {k: v for k, v in dict(t=t, s=s, d=d, body=list(body), ex=[list(x) for x in ex], wrong=[list(x) for x in wrong],
-                                   tip=tip, kids=list(kids), more=list(more), m=m).items() if v}
+                                   tip=tip, kids=list(kids), more=list(more), m=m, groups=[[a, list(b)] for a, b in groups]).items() if v}
 
 # ───────────── 뿌리
 node("bones", "문장의 뼈대", "문장을 이루는 다섯 조각",
@@ -20,7 +20,7 @@ node("bones", "문장의 뼈대", "문장을 이루는 다섯 조각",
       ["{S:She} {V:is} {C:a nurse}.", "그녀는 간호사예요."],
       ["{S:My mom} {V:made} {O:me} {OC:happy}.", "엄마는 저를 행복하게 해 주셨어요."]],
      tip="말이 꼬이면 뼈대만 먼저 말하세요. '누가 + 한다 + 무엇을'을 말한 다음 언제·어디서를 붙이면 돼요.",
-     kids=["subj", "verb", "obj", "comp", "mod", "forms"])
+     kids=["subj", "verb", "obj", "comp", "mod"])
 
 # ───────────── 주어
 node("subj", "주어", "누가 · 무엇이",
@@ -33,7 +33,8 @@ node("subj", "주어", "누가 · 무엇이",
       ["{S>subj-ger:Cooking} {V:is} {C:my hobby}.", "요리는 제 취미예요."]],
      [["Is very cold today.", "It is very cold today.", "주어가 없으면 it이라도 세워요."]],
      "답을 시작할 때 주어부터 정하면 문장이 흔들리지 않아요. 생각이 안 나면 I / It / There로 시작해 보세요.",
-     kids=["subj-noun", "subj-pron", "subj-ger", "subj-to", "subj-clause", "subj-there", "subj-agree"])
+     kids=["subj-noun", "subj-pron", "subj-ger", "subj-to", "subj-clause", "subj-there", "subj-agree"],
+     groups=[["주어가 될 수 있는 것", ["subj-noun", "subj-pron", "subj-ger", "subj-to", "subj-clause"]], ["주어와 함께 알아둘 것", ["subj-there", "subj-agree"]]])
 
 node("subj-noun", "명사 주어", "사람·사물 이름이 주인공",
      "가장 기본적인 주어예요. 명사 하나일 수도 있고, 꾸미는 말이 붙은 긴 덩어리(명사구)일 수도 있어요.",
@@ -139,7 +140,8 @@ node("verb", "동사", "~하다 · ~이다",
       ["{S:She} {V>verb-link:looks} {C:tired}.", "그녀는 피곤해 보여요."]],
      [["I am agree with you.", "I agree with you.", "be동사와 일반동사를 겹쳐 쓰지 않아요."]],
      "말이 막히면 동사부터 떠올리세요. 동사가 나오면 나머지 자리는 따라와요.",
-     kids=["verb-be", "verb-intr", "verb-tr", "verb-link", "verb-modal", "verb-phrasal"])
+     kids=["verb-be", "verb-intr", "verb-tr", "verb-link", "verb-modal", "verb-phrasal", "forms"],
+     groups=[["동사의 종류", ["verb-be", "verb-intr", "verb-tr", "verb-link"]], ["동사에 붙는 말", ["verb-modal", "verb-phrasal"]], ["동사가 정하는 문장 모양 (1~5형식)", ["f1", "f2", "f3", "f4", "f5"]]])
 
 node("verb-be", "be동사와 일반동사", "am · is · are 와 나머지 동사",
      "be동사(am, is, are, was, were)는 '~이다 / ~에 있다', 일반동사는 그 밖의 모든 동작·상태를 나타내요. 둘은 부정문·의문문 만드는 법이 달라요.",
@@ -239,7 +241,8 @@ node("obj", "목적어", "무엇을 · 누구를",
       ["{S:I} {V:think} {O>obj-clause:that he is right}.", "저는 그가 옳다고 생각해요."]],
      [["I like she.", "I like her.", "목적어 자리는 목적격이에요."]],
      "'무엇을?'까지 말해야 문장이 끝나요. I enjoy. I want. 에서 멈추지 마세요.",
-     kids=["obj-noun", "obj-ger", "obj-to", "obj-both", "obj-clause", "obj-two"])
+     kids=["obj-noun", "obj-ger", "obj-to", "obj-both", "obj-clause", "obj-two"],
+     groups=[["목적어가 될 수 있는 것", ["obj-noun", "obj-ger", "obj-to", "obj-clause"]], ["목적어와 함께 알아둘 것", ["obj-both", "obj-two"]]])
 
 node("obj-noun", "명사·대명사 목적어", "me, him, her, us, them",
      "가장 기본적인 목적어예요. 대명사는 목적격으로 바꿔야 해요.",
@@ -341,7 +344,8 @@ node("comp", "보어", "주어나 목적어가 어떤지 채워 주는 말",
       ["{S:The news} {V:made} {O:me} {OC:sad}.", "그 소식에 슬퍼졌어요."]],
      [["She looks happily.", "She looks happy.", "보어 자리에 부사는 못 와요."]],
      "감정·평가를 말할 때 보어 형용사가 다양하면 어휘가 풍부해 보여요. good 대신 relaxing, rewarding, exhausting.",
-     kids=["comp-subj", "comp-obj", "comp-adj"])
+     kids=["comp-subj", "comp-obj", "comp-adj"],
+     groups=[["보어의 종류", ["comp-subj", "comp-obj"]], ["보어 자리에서 자주 하는 실수", ["comp-adj"]]])
 
 node("comp-subj", "주격 보어", "주어 = 보어",
      "be동사나 연결동사 뒤에서 주어가 무엇인지, 어떤지를 말해 줘요.",
@@ -402,7 +406,8 @@ node("mod", "수식어", "빼도 문장이 되는 살",
       ["{S:I} {V:met} {O:an old friend} {M>mod-prep:at a café}.", "카페에서 오랜 친구를 만났어요."],
       ["{M>mod-adv:Usually}, {S:I} {V:go} {M>mod-prep:to bed} {M>mod-adv:late}.", "보통 저는 늦게 자요."]],
      tip="답을 늘리는 가장 쉬운 방법은 언제, 어디서, 누구와, 왜를 하나씩 붙이는 거예요.",
-     kids=["mod-adj", "mod-adv", "mod-prep", "mod-order"])
+     kids=["mod-adj", "mod-adv", "mod-prep", "mod-order"],
+     groups=[["수식어의 종류", ["mod-adj", "mod-adv", "mod-prep"]], ["수식어를 놓는 자리", ["mod-order"]]])
 
 node("mod-adj", "형용사 수식", "명사를 꾸미는 말",
      "형용사는 명사 앞에서 '어떤' 명사인지 알려 줘요.",
@@ -541,7 +546,7 @@ node("f5", "5형식", "주어 + 동사 + 목적어 + 목적격 보어",
 # ───────────── 검사 + 저장
 ids = set(N)
 for i, n in N.items():
-    for k in n.get("kids", []) + n.get("more", []):
+    for k in n.get("kids", []) + n.get("more", []) + [x for g in n.get("groups", []) for x in g[1]]:
         assert k in ids, (i, k)
     for e, _ in n.get("ex", []):
         for r, t, _x in re.findall(r"\{([A-Z]+)(?:>([a-z0-9-]+))?:([^}]+)\}", e):
