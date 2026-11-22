@@ -469,7 +469,7 @@ function fixView(text,res){
 function recBox(st,key,timed){ // timed = Part 2: 녹음은 타이머 버튼(바로 말하기 시작 / 말하기 끝)이 켜고 꺼요
   MT.ai=MT.ai||{}; const S=()=>MT.ai[key]||(MT.ai[key]={});
   const w=el("div","recbox"); const alive=()=>document.body.contains(w);
-  const setText=t=>{ const s=S(); s.text=t; if(MT.fix) delete MT.fix[st.part]; }; // 답이 바뀌면 그 Part 첨삭을 다시 받게
+  const setText=t=>{ const s=S(); s.text=t; if(MT.fix) delete MT.fix[st.part]; if(MT.onAns) MT.onAns(); }; // 답이 바뀌면 그 Part 첨삭을 다시 받게
   const start=async()=>{
     try{ speechSynthesis.cancel(); }catch(_){} stopRec();
     const s=S(); let stream;
@@ -595,10 +595,12 @@ function renderMock(app){
   if(rb) box.append(rb);
   app.append(box);
   if(st.choose){ const ch=el("div","introch"); for(const [k,lab,en] of [["study","학생이에요","I'm a student."],["work","일해요","I work."]]){ const b=el("button","btn"+(st.chosen===k?" on":"")); b.type="button"; b.append(el("b",null,lab), el("span",null,en)); b.disabled=!!st.chosen; b.onclick=()=>chooseIntro(k); ch.append(b); } app.append(ch); if(!st.chosen){ app.append(el("p","muted small introhint","답하고 나서 해당하는 쪽을 누르면 그에 맞는 질문이 이어져요.")); return; } }
-  const partEnd=!S[MT.i+1] || S[MT.i+1].part!==st.part, review=partEnd && aiOn() && partAnswers(st.part).length>0;
-  const nx=el("button","btn primary vstart", review? `Part ${st.part} 첨삭 받기` : MT.i+1<S.length? (S[MT.i+1].part!==st.part? `Part ${S[MT.i+1].part}로 넘어가기` : "다음 질문") : "모의고사 끝내기"); nx.type="button";
-  if(review){ nx.onclick=()=>{ endMock(); MT.review=st.part; render(); window.scrollTo(0,0); }; app.append(nx); return; }
-  nx.onclick=()=>{ endMock(); MT.i++; MT.phase=null; MT.left=0; render(); window.scrollTo(0,0); const n=MT.steps[MT.i]; if(n && canSpeak()) setTimeout(()=>speak(n.q),250); };
+  const partEnd=!S[MT.i+1] || S[MT.i+1].part!==st.part, review=()=>partEnd && aiOn() && partAnswers(st.part).length>0; // 받아쓰기가 끝나면 다시 판단 (Part 2 는 답이 이 질문 하나뿐)
+  const label=()=> review()? `Part ${st.part} 첨삭 받기` : MT.i+1<S.length? (S[MT.i+1].part!==st.part? `Part ${S[MT.i+1].part}로 넘어가기` : "다음 질문") : "모의고사 끝내기";
+  const nx=el("button","btn primary vstart", label()); nx.type="button";
+  MT.onAns=()=>{ if(document.body.contains(nx)) nx.textContent=label(); };
+  nx.onclick=()=>{ if(review()){ endMock(); MT.review=st.part; render(); window.scrollTo(0,0); return; }
+    endMock(); MT.i++; MT.phase=null; MT.left=0; render(); window.scrollTo(0,0); const n=MT.steps[MT.i]; if(n && canSpeak()) setTimeout(()=>speak(n.q),250); };
   app.append(nx);
 }
 
