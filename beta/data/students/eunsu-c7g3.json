@@ -2271,5 +2271,6 @@
  "inbox": "b06499cb-2e25-4d80-9613-0a1400e097ce",
  "capOn": true,
  "keepMock": true,
- "ai": true
+ "ai": true,
+ "p2rec": true
 }

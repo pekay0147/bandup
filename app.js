@@ -576,7 +576,8 @@ function renderMock(app){
   const tools=el("div","mtools");
   // 질문 녹음 제거 (2026-11-07)
   tools.append(qbmBtn(st)); box.append(tools);
-  const rb=aiOn()? recBox(st,MT.i,st.part===2) : null;
+  const p2rec=st.part===2 && !!D.p2rec; // 학생 파일에 "p2rec": true 이면 Part 2 녹음을 타이머 버튼이 켜고 꺼요 (은수·기현만)
+  const rb=aiOn()? recBox(st,MT.i,p2rec) : null;
   if(st.part===2){
     const tm=el("div","mtimer"); const lab=el("b",null,""); const btn=el("button","btn"); btn.type="button"; tm.append(lab,btn);
     const show=()=>{ const m=Math.floor(MT.left/60), s2=String(MT.left%60).padStart(2,"0");
@@ -584,10 +585,10 @@ function renderMock(app){
       else if(MT.phase==="prep"){ lab.textContent=`준비 중 ${m}:${s2}`; btn.textContent="바로 말하기 시작"; }
       else if(MT.phase==="talk"){ lab.textContent=`말하는 중 ${m}:${s2}`; btn.textContent="말하기 끝"; }
       else { lab.textContent="시간 끝! 다음으로 넘어가세요"; btn.hidden=true; } };
-    const finish=()=>{ stopMockTimer(); MT.phase="done"; show(); if(REC && REC.key===MT.i) stopRec(true); }; // 말하기 끝 = 녹음을 보내서 받아쓰기
-    const run=(phase,sec,resume)=>{ stopMockTimer(); MT.phase=phase; MT.left=sec; show(); if(phase==="talk" && !resume && rb) rb.start(); // 말하기 시작 = 녹음 시작
+    const finish=byBtn=>{ stopMockTimer(); MT.phase="done"; show(); if(REC && REC.key===MT.i && (p2rec || !byBtn)) stopRec(true); }; // p2rec: 말하기 끝 = 녹음을 보내서 받아쓰기
+    const run=(phase,sec,resume)=>{ stopMockTimer(); MT.phase=phase; MT.left=sec; show(); if(phase==="talk" && !resume && rb && p2rec) rb.start(); // 말하기 시작 = 녹음 시작
       mtTimer=setInterval(()=>{ MT.left--; if(MT.left<=0){ if(MT.phase==="prep") run("talk",120); else finish(); } else show(); },1000); };
-    btn.onclick=()=>{ if(MT.phase===null) run("prep",60); else if(MT.phase==="prep") run("talk",120); else finish(); };
+    btn.onclick=()=>{ if(MT.phase===null) run("prep",60); else if(MT.phase==="prep") run("talk",120); else finish(true); };
     show(); if(MT.phase==="prep"||MT.phase==="talk") run(MT.phase,MT.left,true);
     box.append(tm);
   }
