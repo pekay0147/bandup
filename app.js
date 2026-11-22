@@ -475,8 +475,8 @@ function diffNode(a,b){ const p=el("p","aitxt"); wordDiff(a,b).forEach((d,i)=>{ 
 /* 답변 하나의 첨삭 결과 */
 function fixView(text,res){
   const box=el("div","aibox");
-  const fx=el("div","aicorr"); const hd=el("div","aihd"); hd.append(el("span","ailab", D.p2rec? "문법 바로잡기" : "이렇게 고쳐요"), speakBtn(res.corrected,"고친 문장 듣기")); fx.append(hd); // p2rec(v2): 이 칸은 문법만, 표현은 '더 자연스럽게 말하면'으로
-  if(!res.fixes.length) fx.append(el("p","aiok", D.p2rec? "✓ 문법 실수가 없어요" : "✓ 고칠 곳이 없어요"));
+  const fx=el("div","aicorr"); const hd=el("div","aihd"); hd.append(el("span","ailab", D.p2rec? "틀린 부분 바로잡기" : "이렇게 고쳐요"), speakBtn(res.corrected,"고친 문장 듣기")); fx.append(hd); // p2rec(v2): 이 칸은 확실히 틀린 것(문법·잘못 쓴 표현)만, 더 좋은 표현은 '더 자연스럽게 말하면'으로
+  if(!res.fixes.length) fx.append(el("p","aiok", D.p2rec? "✓ 틀린 곳이 없어요" : "✓ 고칠 곳이 없어요"));
   fx.append(diffNode(text,res.corrected));
   if(res.fixes.length){ const ul=el("ul","ailist");
     for(const f of res.fixes){ const li=el("li"); const tag=el("span","aitag",f.type); tag.style.setProperty("--c",TCOL[f.type]||"var(--blue)");

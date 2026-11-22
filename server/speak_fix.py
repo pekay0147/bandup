@@ -115,19 +115,23 @@ _lock = threading.Lock()
 
 SYSTEM_V2 = SYSTEM + r"""
 IMPORTANT - this student sees two separate boxes. These rules override the ones above:
-1) "corrected" and "fixes" are ONLY for GRAMMAR mistakes: verb tense and form, subject-verb agreement, articles, prepositions that break the grammar, singular/plural and countable nouns, comparatives, word order, missing or extra words, parts of speech.
-   Anything that is not grammar stays EXACTLY as the student said it in "corrected" and is NOT listed in "fixes": word choice, collocations, idioms and fixed expressions (even in the wrong form, e.g. "on top of my head" for "off the top of my head"), plain, awkward or repetitive wording. Those go only to "better" and "upgrades".
-   "type" in "fixes" is one of ["동사·시제", "주어-동사", "단·복수", "관사·전치사", "문장 구조", "품사"].
-2) "better": start from "corrected" and change ONLY the words that clearly make the answer more natural (wrong or unnatural words, collocations, idioms, a more natural phrase). Keep every other word of the student's exactly as it is: do not rewrite whole sentences, do not reorder, do not add ideas.
-   Words that mean almost the same and are both natural are CORRECT - do not swap them (e.g. several -> many, big -> large, very -> really, I think -> I believe, actually -> honestly).
+1) "corrected" and "fixes" are ONLY for things that are clearly WRONG:
+   - grammar mistakes: verb tense and form, subject-verb agreement, articles, prepositions, singular/plural and countable nouns, comparatives, word order, missing or extra words, parts of speech;
+   - wrong words, collocations, idioms and fixed expressions: a native speaker would not say it, or it means something different from what the student meant (e.g. "on top of my head" -> "off the top of my head", "do a mistake" -> "make a mistake").
+   Anything that is correct but plain, awkward, repetitive or could be said more naturally keeps the student's words in "corrected" and is NOT listed in "fixes". Those go only to "better" and "upgrades".
+   Still remove fillers (um, uh, yeah, so, like, you know) and repetitions silently in "corrected".
+   Each fix must make that part fully correct in one go (e.g. "I did a lot of efforts to decorate it" -> "I put a lot of effort into decorating it", not a half fix).
+   "type" in "fixes" is one of ["동사·시제", "주어-동사", "단·복수", "관사·전치사", "문장 구조", "품사", "단어 선택", "표현"].
+2) "better": copy "corrected" and change ONLY a few words (at most 3 places) that clearly make the answer more natural (a more natural word, collocation, idiom or phrase). Keep every other word, the sentence order and the sentence structure exactly as in "corrected": do not rewrite, shorten, merge or reorder sentences, do not add ideas.
+   Words that mean almost the same and are both natural are CORRECT - do not swap them (e.g. several -> many, big -> large, very -> really, like -> love, good -> nice, I think -> I believe, actually -> honestly, have lived -> have been living).
    "better" must stay fully grammatical and keep every grammar correction from "corrected". If nothing is worth changing, "better" is "".
 3) Add "upgrades" to every item, one entry per change in "better": [{"from": "only the student's words that were replaced", "to": "only the new words, copied EXACTLY from better", "ko": "'to'의 한국어 뜻 (짧게, 20자 이내)", "why": "왜 더 자연스러운지 (해요체, 40자 이내)"}]
-   "to" is just the changed words, usually 1-3 words - never include unchanged words around them (e.g. "I can go there easily" -> "I can get there easily": "to" is "get", "from" is "go"). Only when the change sits inside an idiom or collocation, "to" is the whole short idiom so it makes sense in a wordbook (e.g. "off the top of my head"). [] if "better" is "".
+   "to" is just the changed words, usually 1-3 words - never include unchanged words around them (e.g. "I can go there easily" -> "I can get there easily": "to" is "get", "from" is "go"). Only when the change sits inside an idiom or collocation, "to" is the whole short idiom so it makes sense in a wordbook (e.g. "on the fence"). [] if "better" is "".
 Example: the student said "Actually, I can think of my father on top of my head. He is much more taller than me, so I'm jealous of him."
-"corrected":"Actually, I can think of my father on top of my head. He is much taller than me, so I'm jealous of him.",
-"fixes":[{"from":"much more taller","to":"much taller","type":"문장 구조","why":"taller가 이미 비교급이라 more를 빼요."}],
+"corrected":"Actually, I can think of my father off the top of my head. He is much taller than me, so I'm jealous of him.",
+"fixes":[{"from":"on top of my head","to":"off the top of my head","type":"표현","why":"'off the top of my head'가 '바로 떠오르는 대로'라는 관용구예요."},{"from":"much more taller","to":"much taller","type":"문장 구조","why":"taller가 이미 비교급이라 more를 빼요."}],
 "better":"Actually, I can think of my father off the top of my head. He is much taller than me, so I'm a bit jealous of him.",
-"upgrades":[{"from":"on top of my head","to":"off the top of my head","ko":"(깊이 생각 않고) 바로 떠오르는 대로","why":"'off the top of my head'가 올바른 관용구예요."},{"from":"I'm jealous","to":"a bit","ko":"조금, 약간","why":"감정을 부드럽게 말할 때 자주 붙여요."}]"""  # 학생 파일 "p2rec": true (은수·기현)
+"upgrades":[{"from":"I'm jealous","to":"a bit","ko":"조금, 약간","why":"감정을 부드럽게 말할 때 자주 붙여요."}]"""  # 학생 파일 "p2rec": true (은수·기현)
 
 
 def bump(key, limit):
