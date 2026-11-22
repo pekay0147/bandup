@@ -2272,5 +2272,9 @@
  "capOn": true,
  "keepMock": true,
  "ai": true,
+<<<<<<< Updated upstream
  "p2rec": true
+=======
+ "grammar": true
+>>>>>>> Stashed changes
 }

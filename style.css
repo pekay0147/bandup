@@ -1219,6 +1219,7 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .aihint{margin:0}
 .airev{gap:10px}
 .airq{margin:0;font-size:16px;font-weight:700;line-height:1.45}
+<<<<<<< Updated upstream
 /* 첨삭: 더 자연스럽게 말하면의 형광 표현 */
 .aiupwrap{flex:1;min-width:0}
 .aiup{font:inherit;color:inherit;background:#fff3a0;border:0;border-radius:4px;padding:0 3px;margin:0 -1px;cursor:pointer;box-decoration-break:clone;-webkit-box-decoration-break:clone}
@@ -1227,3 +1228,52 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .aiupko{margin:0;font-size:15px;font-weight:700}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .aiup{background:#5c5200;color:#fff}:root:not([data-theme="light"]) .aiup.on{background:#806f00;box-shadow:0 0 0 2px #b39b00}}
 :root[data-theme="dark"] .aiup{background:#5c5200;color:#fff}:root[data-theme="dark"] .aiup.on{background:#806f00;box-shadow:0 0 0 2px #b39b00}
+=======
+
+/* GRAMMAR MAP */
+.grcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;font-size:13px;color:var(--muted)}
+.grcrumb button{border:0;background:none;padding:2px 0;font:inherit;color:var(--blue);cursor:pointer}
+.grcrumb i{font-style:normal;color:var(--muted)} .grcrumb .cur{font-weight:700;color:var(--ink)}
+.grdef{background:var(--blue-soft);border-radius:12px;padding:14px 16px}
+.grdef p{margin:0;font-size:16px;line-height:1.65;font-weight:600}
+.grbody{margin:0;padding:0 2px 0 20px;display:grid;gap:8px;font-size:15px;line-height:1.7}
+.grbody em,.grin .grbody em{font-style:normal;font-weight:700;color:var(--blue)}
+.grexs,.grwrongs{display:grid;padding:0}
+.grex{padding:14px 16px;border-top:1px solid var(--line);display:grid;gap:6px;min-width:0}
+.grex:first-child,.grwrong:first-child{border-top:0}
+.grline{margin:0;font-size:18px;line-height:1.5;font-weight:600}
+.grex.open .grline{line-height:1.2}
+.grc{--c:var(--muted);border:0;background:none;padding:2px 0 0;font:inherit;color:inherit;cursor:pointer;display:inline-grid;justify-items:center;gap:1px;vertical-align:top;margin-bottom:6px;border-bottom:2px dotted var(--line);border-radius:4px 4px 0 0;max-width:100%;text-align:left}
+.grc small{display:none;font-size:11px;font-weight:700;color:var(--c);white-space:nowrap}
+.grex.open .grc{border-bottom:2px solid var(--c);background:color-mix(in srgb,var(--c) 10%,transparent);padding:2px 5px 1px}
+.grex.open .grc small{display:block}
+.grc.on{background:color-mix(in srgb,var(--c) 22%,transparent)!important}
+[data-r="S"],[data-r="FS"],[data-r="RS"]{--c:var(--blue)}
+[data-r="V"]{--c:var(--pink)}
+[data-r="O"],[data-r="IO"],[data-r="DO"]{--c:var(--mint)}
+[data-r="C"],[data-r="OC"]{--c:#b96a00}
+[data-r="M"]{--c:var(--muted)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) :is([data-r="C"],[data-r="OC"]){--c:var(--sun)}}
+:root[data-theme="dark"] :is([data-r="C"],[data-r="OC"]){--c:var(--sun)}
+.grko{margin:0;font-size:14px;color:var(--muted)}
+.grinfo{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;padding-top:4px;font-size:14px}
+.grinfo[hidden]{display:none}
+.grtag{font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;color:var(--c);background:color-mix(in srgb,var(--c) 14%,var(--surface))}
+.grsay{font-weight:600}
+.grgo{margin-left:auto;border:0;background:none;padding:4px 0;font:inherit;font-size:14px;font-weight:700;color:var(--blue);cursor:pointer}
+.grwrong{padding:12px 16px;border-top:1px solid var(--line);display:grid;gap:2px}
+.grwrong p{margin:0;font-size:15px;line-height:1.55}
+.grwrong .x{color:var(--bad);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--bad) 45%,transparent)}
+.grwrong .o{color:var(--mint);font-weight:700} .grwrong .en{font-weight:600}
+.grwrong .why{font-size:13px;color:var(--muted)}
+.grrow{padding:13px 16px}
+.grmore,.grlinks{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.grlinks > span{font-size:12px;font-weight:700;color:var(--muted)}
+.grchip{border:1px solid var(--line);background:var(--surface);color:var(--blue);font:inherit;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;cursor:pointer}
+.grov{position:fixed;inset:0;z-index:60;background:rgba(15,12,40,.45);display:grid;align-items:end;justify-items:center}
+.grsheet{width:min(100%,560px);max-height:88dvh;overflow:auto;overscroll-behavior:contain;background:var(--bg);border-radius:18px 18px 0 0;padding:0 16px calc(24px + env(safe-area-inset-bottom,0px))}
+.grtop{position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;align-items:center;background:var(--bg);padding-top:6px;min-height:50px}
+.grtop .lx{margin-left:auto;margin-right:-10px}
+.grin{display:grid;gap:14px;min-width:0}
+@media (min-width:600px){.grov{align-items:center}.grsheet{border-radius:18px;max-height:84dvh}}
+>>>>>>> Stashed changes
