@@ -448,10 +448,18 @@ function wordDiff(a,b){
   }
   return out;
 }
+/* 형광은 실제로 바뀐 단어에만: to 에서 from 과 같은 앞뒤 단어를 빼요 ("very big"→"quite big" 이면 quite 만). 누르면 뜻·단어장은 to 전체 */
+function upSpan(to,from){
+  const ws=[...String(to).matchAll(/\S+/g)], key=s=>s.toLowerCase().replace(/[’]/g,"'").replace(/^[^\w']+|[^\w']+$/g,""), fw=String(from||"").split(/\s+/).filter(Boolean).map(key);
+  let s=0, e=ws.length, fs=0, fe=fw.length;
+  while(s<e && fs<fe && key(ws[s][0])===fw[fs]){ s++; fs++; }
+  while(e>s && fe>fs && key(ws[e-1][0])===fw[fe-1]){ e--; fe--; }
+  return s<e? [ws[s].index, ws[e-1].index+ws[e-1][0].length] : [0,String(to).length];
+}
 /* '더 자연스럽게 말하면' 문장에서 바뀐 표현을 형광으로. 누르면 한국어 뜻 + 내 단어장에 추가 */
 function upText(better,ups){
   const wrap=el("div","aiupwrap"), p=el("p","aitxt"), info=el("div","aiupinfo"); info.hidden=true; const lb=better.toLowerCase(), hits=[];
-  for(const u of ups){ const i=lb.indexOf(String(u.to).toLowerCase()); if(i<0 || hits.some(h=>i<h.e && i+u.to.length>h.i)) continue; hits.push({i,e:i+u.to.length,u}); }
+  for(const u of ups){ const i=lb.indexOf(String(u.to).toLowerCase()); if(i<0 || hits.some(h=>i<h.e && i+u.to.length>h.i)) continue; const [a,b]=upSpan(u.to,u.from); hits.push({i:i+a,e:i+b,u}); }
   hits.sort((a,b)=>a.i-b.i); let at=0, open=null;
   for(const h of hits){ if(h.i>at) p.append(document.createTextNode(better.slice(at,h.i)));
     const m=el("button","aiup",better.slice(h.i,h.e)); m.type="button";
@@ -467,8 +475,8 @@ function diffNode(a,b){ const p=el("p","aitxt"); wordDiff(a,b).forEach((d,i)=>{ 
 /* 답변 하나의 첨삭 결과 */
 function fixView(text,res){
   const box=el("div","aibox");
-  const fx=el("div","aicorr"); const hd=el("div","aihd"); hd.append(el("span","ailab","이렇게 고쳐요"), speakBtn(res.corrected,"고친 문장 듣기")); fx.append(hd);
-  if(!res.fixes.length) fx.append(el("p","aiok","✓ 고칠 곳이 없어요"));
+  const fx=el("div","aicorr"); const hd=el("div","aihd"); hd.append(el("span","ailab", D.p2rec? "문법 바로잡기" : "이렇게 고쳐요"), speakBtn(res.corrected,"고친 문장 듣기")); fx.append(hd); // p2rec(v2): 이 칸은 문법만, 표현은 '더 자연스럽게 말하면'으로
+  if(!res.fixes.length) fx.append(el("p","aiok", D.p2rec? "✓ 문법 실수가 없어요" : "✓ 고칠 곳이 없어요"));
   fx.append(diffNode(text,res.corrected));
   if(res.fixes.length){ const ul=el("ul","ailist");
     for(const f of res.fixes){ const li=el("li"); const tag=el("span","aitag",f.type); tag.style.setProperty("--c",TCOL[f.type]||"var(--blue)");

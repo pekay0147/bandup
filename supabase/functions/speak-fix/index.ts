@@ -71,15 +71,20 @@ Example output:
 {"items":[{"n":1,"corrected":"Yes, you can run as fast as you can, and I put a lot of effort into it.","fixes":[{"from":"as fast you can","to":"as fast as you can","type":"문장 구조","why":"'as + 부사 + as' 구문이라 두 번째 as가 필요해요."},{"from":"do a lot of efforts for it","to":"put a lot of effort into it","type":"표현","why":"effort는 셀 수 없고, 'put effort into'로 써요."}],"better":"Yes, I love running. I try to go as fast as I can, and I put a lot of effort into it.","good":"질문에 Yes로 바로 답하고 이유를 덧붙였어요."}]}`;
 
 const SYSTEM_V2 = SYSTEM + `
-
-IMPORTANT - how to split mistakes from upgrades (these rules override the ones above):
-- "fixes" and "corrected" are ONLY for real mistakes: grammar errors, and words, collocations or idioms that are wrong (a native speaker would not say it, or it means something else), e.g. "do a mistake" -> "make a mistake".
-- If the student's words are correct but plain, awkward, repetitive or could be said more naturally, do NOT change them in "corrected" and do NOT list them in "fixes". Improve them only in "better" and list each improvement in "upgrades".
-- Add "upgrades" to every item: [{"from": "the student's words", "to": "the new words, copied EXACTLY as they appear in better", "ko": "'to'의 한국어 뜻 (짧게, 20자 이내)", "why": "왜 더 자연스러운지 (해요체, 40자 이내)"}]
-  List the 1-5 most useful upgrades (natural words, collocations, idioms, phrases). "to" is ONLY the new key phrase (1-6 words), never a whole clause or sentence, and "from" is only the matching short part the student said. [] if "better" is "".
-Example "better" and "upgrades" for the example answer above:
-"better":"Yes, I'm really into running. I push myself to go as fast as I can, and I put a lot of effort into it.",
-"upgrades":[{"from":"Yes","to":"I'm really into running","ko":"달리기에 푹 빠져 있어요","why":"좋아하는 것을 말할 때 자연스럽게 쓰는 표현이에요."},{"from":"you can run as fast as you can","to":"push myself","ko":"스스로를 다그치다, 한계까지 해 보다","why":"노력하는 모습을 더 생생하게 보여 줘요."}]`; // 학생 파일 "p2rec": true (은수·기현): 어색한 표현은 빨간 줄 대신 더 자연스럽게 말하면(형광)으로
+IMPORTANT - this student sees two separate boxes. These rules override the ones above:
+1) "corrected" and "fixes" are ONLY for GRAMMAR mistakes: verb tense and form, subject-verb agreement, articles, prepositions that break the grammar, singular/plural and countable nouns, comparatives, word order, missing or extra words, parts of speech.
+   Anything that is not grammar stays EXACTLY as the student said it in "corrected" and is NOT listed in "fixes": word choice, collocations, idioms and fixed expressions (even in the wrong form, e.g. "on top of my head" for "off the top of my head"), plain, awkward or repetitive wording. Those go only to "better" and "upgrades".
+   "type" in "fixes" is one of ["동사·시제", "주어-동사", "단·복수", "관사·전치사", "문장 구조", "품사"].
+2) "better": start from "corrected" and change ONLY the words that clearly make the answer more natural (wrong or unnatural words, collocations, idioms, a more natural phrase). Keep every other word of the student's exactly as it is: do not rewrite whole sentences, do not reorder, do not add ideas.
+   Words that mean almost the same and are both natural are CORRECT - do not swap them (e.g. several -> many, big -> large, very -> really, I think -> I believe, actually -> honestly).
+   "better" must stay fully grammatical and keep every grammar correction from "corrected". If nothing is worth changing, "better" is "".
+3) Add "upgrades" to every item, one entry per change in "better": [{"from": "only the student's words that were replaced", "to": "only the new words, copied EXACTLY from better", "ko": "'to'의 한국어 뜻 (짧게, 20자 이내)", "why": "왜 더 자연스러운지 (해요체, 40자 이내)"}]
+   "to" is just the changed words, usually 1-3 words - never include unchanged words around them (e.g. "I can go there easily" -> "I can get there easily": "to" is "get", "from" is "go"). Only when the change sits inside an idiom or collocation, "to" is the whole short idiom so it makes sense in a wordbook (e.g. "off the top of my head"). [] if "better" is "".
+Example: the student said "Actually, I can think of my father on top of my head. He is much more taller than me, so I'm jealous of him."
+"corrected":"Actually, I can think of my father on top of my head. He is much taller than me, so I'm jealous of him.",
+"fixes":[{"from":"much more taller","to":"much taller","type":"문장 구조","why":"taller가 이미 비교급이라 more를 빼요."}],
+"better":"Actually, I can think of my father off the top of my head. He is much taller than me, so I'm a bit jealous of him.",
+"upgrades":[{"from":"on top of my head","to":"off the top of my head","ko":"(깊이 생각 않고) 바로 떠오르는 대로","why":"'off the top of my head'가 올바른 관용구예요."},{"from":"I'm jealous","to":"a bit","ko":"조금, 약간","why":"감정을 부드럽게 말할 때 자주 붙여요."}]`; // 학생 파일 "p2rec": true (은수·기현): 어색한 표현은 빨간 줄 대신 더 자연스럽게 말하면(형광)으로
 
 class Busy extends Error {}
 
