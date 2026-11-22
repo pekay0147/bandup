@@ -466,7 +466,7 @@ function fixView(text,res){
   return box;
 }
 /* 질문마다: 녹음 → 받아쓰기 → '내가 한 말' 확인·수정. 첨삭은 Part 끝에서. */
-function recBox(st,key){
+function recBox(st,key,timed){ // timed = Part 2: 녹음은 타이머 버튼(바로 말하기 시작 / 말하기 끝)이 켜고 꺼요
   MT.ai=MT.ai||{}; const S=()=>MT.ai[key]||(MT.ai[key]={});
   const w=el("div","recbox"); const alive=()=>document.body.contains(w);
   const setText=t=>{ const s=S(); s.text=t; if(MT.fix) delete MT.fix[st.part]; }; // 답이 바뀌면 그 Part 첨삭을 다시 받게
@@ -496,10 +496,12 @@ function recBox(st,key){
     const d=el("div","aibox"); d.append(ta,row); return d; };
   const draw=()=>{ w.textContent=""; const s=S();
     if(REC && REC.key===key){ const b=el("button","btn rec on"); b.type="button"; const sec=Math.floor((Date.now()-REC.t0)/1000);
+      if(timed){ const p=el("p","aiwait"); p.append(el("i","recdot"), document.createTextNode(` 녹음 중 ${Math.floor(sec/60)}:${String(sec%60).padStart(2,"0")}`)); w.append(p); return; }
       b.append(el("i","recdot"), document.createTextNode(` ${Math.floor(sec/60)}:${String(sec%60).padStart(2,"0")} · 다 말했어요`)); b.onclick=()=>stopRec(true); w.append(b);
       w.append(el("p","muted small","답을 다 말한 뒤 버튼을 눌러 주세요.")); return; }
     const row=el("div","airow");
-    if(canRecord()){ const r=el("button","btn rec"); r.type="button"; r.append(el("i","recdot"), document.createTextNode(s.text||s.url? " 다시 답하기" : " 말로 답하기")); r.disabled=!!s.busy; r.onclick=start; row.append(r); }
+    if(canRecord() && timed){ if(s.err && !s.text && !s.busy){ const r=el("button","btn rec"); r.type="button"; r.append(el("i","recdot"), document.createTextNode(" 다시 녹음하기")); r.onclick=start; row.append(r); } } // Part 2 는 다시 답하기 없음 (녹음이 실패했을 때만 다시)
+    else if(canRecord()){ const r=el("button","btn rec"); r.type="button"; r.append(el("i","recdot"), document.createTextNode(s.text||s.url? " 다시 답하기" : " 말로 답하기")); r.disabled=!!s.busy; r.onclick=start; row.append(r); }
     w.append(row); if(!canRecord()) w.append(el("p","aierr","이 기기에서는 녹음을 할 수 없어요. 사파리·크롬 최신 버전에서 열어 주세요."));
     if(s.typing) w.append(editor(s.text,"영어로 답을 써 보세요","저장",t=>{ setText(t); s.typing=false; s.err=""; draw(); }));
     if(s.url && !s.typing) { const a=el("audio","recaudio"); a.controls=true; a.src=s.url; w.append(a); }
@@ -512,7 +514,7 @@ function recBox(st,key){
       w.append(said, el("p","muted small aihint",`Part ${st.part}이 끝나면 한 번에 첨삭해 줘요.`));
     }
   };
-  draw(); return w;
+  w.start=start; draw(); return w;
 }
 const partAnswers=part=>MT.steps.map((st,i)=>({st,i,a:(MT.ai||{})[i]})).filter(x=>x.st.part===part && x.a && x.a.text);
 /* Part 끝: 답한 질문을 한 번에 첨삭 */
@@ -574,6 +576,7 @@ function renderMock(app){
   const tools=el("div","mtools");
   // 질문 녹음 제거 (2026-11-07)
   tools.append(qbmBtn(st)); box.append(tools);
+  const rb=aiOn()? recBox(st,MT.i,st.part===2) : null;
   if(st.part===2){
     const tm=el("div","mtimer"); const lab=el("b",null,""); const btn=el("button","btn"); btn.type="button"; tm.append(lab,btn);
     const show=()=>{ const m=Math.floor(MT.left/60), s2=String(MT.left%60).padStart(2,"0");
@@ -581,12 +584,14 @@ function renderMock(app){
       else if(MT.phase==="prep"){ lab.textContent=`준비 중 ${m}:${s2}`; btn.textContent="바로 말하기 시작"; }
       else if(MT.phase==="talk"){ lab.textContent=`말하는 중 ${m}:${s2}`; btn.textContent="말하기 끝"; }
       else { lab.textContent="시간 끝! 다음으로 넘어가세요"; btn.hidden=true; } };
-    const run=(phase,sec)=>{ stopMockTimer(); MT.phase=phase; MT.left=sec; show(); mtTimer=setInterval(()=>{ MT.left--; if(MT.left<=0){ if(MT.phase==="prep") run("talk",120); else { stopMockTimer(); MT.phase="done"; show(); if(REC && REC.key===MT.i) stopRec(true); } } else show(); },1000); };
-    btn.onclick=()=>{ if(MT.phase===null) run("prep",60); else if(MT.phase==="prep") run("talk",120); else { stopMockTimer(); MT.phase="done"; show(); } };
-    show(); if(MT.phase==="prep"||MT.phase==="talk") run(MT.phase,MT.left);
+    const finish=()=>{ stopMockTimer(); MT.phase="done"; show(); if(REC && REC.key===MT.i) stopRec(true); }; // 말하기 끝 = 녹음을 보내서 받아쓰기
+    const run=(phase,sec,resume)=>{ stopMockTimer(); MT.phase=phase; MT.left=sec; show(); if(phase==="talk" && !resume && rb) rb.start(); // 말하기 시작 = 녹음 시작
+      mtTimer=setInterval(()=>{ MT.left--; if(MT.left<=0){ if(MT.phase==="prep") run("talk",120); else finish(); } else show(); },1000); };
+    btn.onclick=()=>{ if(MT.phase===null) run("prep",60); else if(MT.phase==="prep") run("talk",120); else finish(); };
+    show(); if(MT.phase==="prep"||MT.phase==="talk") run(MT.phase,MT.left,true);
     box.append(tm);
   }
-  if(aiOn()) box.append(recBox(st,MT.i));
+  if(rb) box.append(rb);
   app.append(box);
   if(st.choose){ const ch=el("div","introch"); for(const [k,lab,en] of [["study","학생이에요","I'm a student."],["work","일해요","I work."]]){ const b=el("button","btn"+(st.chosen===k?" on":"")); b.type="button"; b.append(el("b",null,lab), el("span",null,en)); b.disabled=!!st.chosen; b.onclick=()=>chooseIntro(k); ch.append(b); } app.append(ch); if(!st.chosen){ app.append(el("p","muted small introhint","답하고 나서 해당하는 쪽을 누르면 그에 맞는 질문이 이어져요.")); return; } }
   const partEnd=!S[MT.i+1] || S[MT.i+1].part!==st.part, review=partEnd && aiOn() && partAnswers(st.part).length>0;
