@@ -70,6 +70,17 @@ Transcript: Yes, uh, you can run as fast you can and, um, I do a lot of efforts 
 Example output:
 {"items":[{"n":1,"corrected":"Yes, you can run as fast as you can, and I put a lot of effort into it.","fixes":[{"from":"as fast you can","to":"as fast as you can","type":"문장 구조","why":"'as + 부사 + as' 구문이라 두 번째 as가 필요해요."},{"from":"do a lot of efforts for it","to":"put a lot of effort into it","type":"표현","why":"effort는 셀 수 없고, 'put effort into'로 써요."}],"better":"Yes, I love running. I try to go as fast as I can, and I put a lot of effort into it.","good":"질문에 Yes로 바로 답하고 이유를 덧붙였어요."}]}`;
 
+const SYSTEM_V2 = SYSTEM + `
+
+IMPORTANT - how to split mistakes from upgrades (these rules override the ones above):
+- "fixes" and "corrected" are ONLY for real mistakes: grammar errors, and words, collocations or idioms that are wrong (a native speaker would not say it, or it means something else), e.g. "do a mistake" -> "make a mistake".
+- If the student's words are correct but plain, awkward, repetitive or could be said more naturally, do NOT change them in "corrected" and do NOT list them in "fixes". Improve them only in "better" and list each improvement in "upgrades".
+- Add "upgrades" to every item: [{"from": "the student's words", "to": "the new words, copied EXACTLY as they appear in better", "ko": "'to'의 한국어 뜻 (짧게, 20자 이내)", "why": "왜 더 자연스러운지 (해요체, 40자 이내)"}]
+  List the 1-5 most useful upgrades (natural words, collocations, idioms, phrases). "to" is ONLY the new key phrase (1-6 words), never a whole clause or sentence, and "from" is only the matching short part the student said. [] if "better" is "".
+Example "better" and "upgrades" for the example answer above:
+"better":"Yes, I'm really into running. I push myself to go as fast as I can, and I put a lot of effort into it.",
+"upgrades":[{"from":"Yes","to":"I'm really into running","ko":"달리기에 푹 빠져 있어요","why":"좋아하는 것을 말할 때 자연스럽게 쓰는 표현이에요."},{"from":"you can run as fast as you can","to":"push myself","ko":"스스로를 다그치다, 한계까지 해 보다","why":"노력하는 모습을 더 생생하게 보여 줘요."}]`; // 학생 파일 "p2rec": true (은수·기현): 어색한 표현은 빨간 줄 대신 더 자연스럽게 말하면(형광)으로
+
 class Busy extends Error {}
 
 const CORS = {
@@ -141,6 +152,7 @@ async function transcribe(audio: Blob, ctype: string, q: string) {
 }
 
 type Fix = { from: string; to: string; type: string; why: string };
+type Up = { from: string; to: string; ko: string; why: string };
 function cleanItem(o: Record<string, unknown> | undefined, fallback: string) {
   if (!o || typeof o !== "object") return null;
   const fixes: Fix[] = [];
@@ -149,16 +161,22 @@ function cleanItem(o: Record<string, unknown> | undefined, fallback: string) {
       fixes.push({ from: f.from, to: f.to, type: TYPES.includes(String(f.type)) ? String(f.type) : "문장 구조", why: String(f.why ?? "") });
     }
   }
-  return { corrected: String(o.corrected || fallback), fixes, better: String(o.better ?? ""), good: String(o.good ?? "") };
+  const better = String(o.better ?? ""), lb = better.toLowerCase(), upgrades: Up[] = [];
+  for (const u of (Array.isArray(o.upgrades) ? o.upgrades : []) as Record<string, unknown>[]) {
+    if (u && typeof u.to === "string" && u.to.trim() && u.to.length <= 80 && u.to.trim().split(/\s+/).length <= 8 && lb.includes(u.to.toLowerCase())) {
+      upgrades.push({ from: String(u.from ?? ""), to: u.to, ko: String(u.ko ?? ""), why: String(u.why ?? "") });
+    }
+  }
+  return { corrected: String(o.corrected || fallback), fixes, better, upgrades, good: String(o.good ?? "") };
 }
 
-async function correct(part: number, items: { q: string; text: string }[]) {
+async function correct(part: number, items: { q: string; text: string }[], v2 = false) {
   const user = `IELTS Speaking Part ${part}\n\n` + items.map((it, i) => `[${i + 1}] Question: ${it.q || "(free speaking)"}\nTranscript: ${it.text}`).join("\n\n");
   let last = "";
   for (const model of LLM_MODELS) {
     const body: Record<string, unknown> = {
       model, temperature: 0.2, max_completion_tokens: 5000, response_format: { type: "json_object" },
-      messages: [{ role: "system", content: SYSTEM }, { role: "user", content: user }],
+      messages: [{ role: "system", content: v2 ? SYSTEM_V2 : SYSTEM }, { role: "user", content: user }],
     };
     if (model === "openai/gpt-oss-120b") body.reasoning_effort = "medium"; // low 는 토큰이 40% 적지만 첨삭이 덜 꼼꼼해요
     else if (model.startsWith("openai/gpt-oss")) body.reasoning_effort = "low";
@@ -223,7 +241,7 @@ Deno.serve(async (req) => {
     if (!(await isStudent(slug))) return reply(403, { error: "not_student" });
     if (!(await bump(`fix:${slug}`, FIX_DAILY))) return reply(429, { error: "daily_limit" });
     if (!(await bump("fix:total", FIX_TOTAL))) return reply(503, { error: "busy" });
-    return reply(200, await correct(part, items));
+    return reply(200, await correct(part, items, b.v === 2));
   } catch (e) {
     console.error("failed", e);
     return e instanceof Busy ? reply(503, { error: "busy" }) : reply(500, { error: "failed" });

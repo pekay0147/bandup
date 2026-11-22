@@ -113,6 +113,17 @@ class Busy(Exception):
 USAGE = HERE / "usage.json"
 _lock = threading.Lock()
 
+SYSTEM_V2 = SYSTEM + r"""
+
+IMPORTANT - how to split mistakes from upgrades (these rules override the ones above):
+- "fixes" and "corrected" are ONLY for real mistakes: grammar errors, and words, collocations or idioms that are wrong (a native speaker would not say it, or it means something else), e.g. "do a mistake" -> "make a mistake".
+- If the student's words are correct but plain, awkward, repetitive or could be said more naturally, do NOT change them in "corrected" and do NOT list them in "fixes". Improve them only in "better" and list each improvement in "upgrades".
+- Add "upgrades" to every item: [{"from": "the student's words", "to": "the new words, copied EXACTLY as they appear in better", "ko": "'to'의 한국어 뜻 (짧게, 20자 이내)", "why": "왜 더 자연스러운지 (해요체, 40자 이내)"}]
+  List the 1-5 most useful upgrades (natural words, collocations, idioms, phrases). "to" is ONLY the new key phrase (1-6 words), never a whole clause or sentence, and "from" is only the matching short part the student said. [] if "better" is "".
+Example "better" and "upgrades" for the example answer above:
+"better":"Yes, I'm really into running. I push myself to go as fast as I can, and I put a lot of effort into it.",
+"upgrades":[{"from":"Yes","to":"I'm really into running","ko":"달리기에 푹 빠져 있어요","why":"좋아하는 것을 말할 때 자연스럽게 쓰는 표현이에요."},{"from":"you can run as fast as you can","to":"push myself","ko":"스스로를 다그치다, 한계까지 해 보다","why":"노력하는 모습을 더 생생하게 보여 줘요."}]"""  # 학생 파일 "p2rec": true (은수·기현)
+
 
 def bump(key, limit):
     today = datetime.date.today().isoformat()
@@ -199,15 +210,19 @@ def clean_item(o, fallback):
     for f in o.get("fixes") or []:
         if isinstance(f, dict) and isinstance(f.get("from"), str) and isinstance(f.get("to"), str) and f["from"] != f["to"]:
             fixes.append({"from": f["from"], "to": f["to"], "type": f.get("type") if f.get("type") in TYPES else "문장 구조", "why": str(f.get("why") or "")})
-    return {"corrected": str(o.get("corrected") or fallback), "fixes": fixes, "better": str(o.get("better") or ""), "good": str(o.get("good") or "")}
+    better = str(o.get("better") or ""); ups = []
+    for u in o.get("upgrades") or []:
+        if isinstance(u, dict) and isinstance(u.get("to"), str) and u["to"].strip() and len(u["to"]) <= 80 and len(u["to"].split()) <= 8 and u["to"].lower() in better.lower():
+            ups.append({"from": str(u.get("from") or ""), "to": u["to"], "ko": str(u.get("ko") or ""), "why": str(u.get("why") or "")})
+    return {"corrected": str(o.get("corrected") or fallback), "fixes": fixes, "better": better, "upgrades": ups, "good": str(o.get("good") or "")}
 
 
-def correct(part, items):
+def correct(part, items, v2=False):
     user = f"IELTS Speaking Part {part}\n\n" + "\n\n".join(f"[{i + 1}] Question: {it['q'] or '(free speaking)'}\nTranscript: {it['text']}" for i, it in enumerate(items))
     last = ""
     for model in LLM_MODELS:
         body = {"model": model, "temperature": 0.2, "max_completion_tokens": 5000, "response_format": {"type": "json_object"},
-                "messages": [{"role": "system", "content": SYSTEM}, {"role": "user", "content": user}]}
+                "messages": [{"role": "system", "content": SYSTEM_V2 if v2 else SYSTEM}, {"role": "user", "content": user}]}
         if model == "openai/gpt-oss-120b":
             body["reasoning_effort"] = "medium"  # low 는 토큰이 40% 적지만 첨삭이 덜 꼼꼼해요
         elif model.startswith("openai/gpt-oss"):
@@ -308,7 +323,7 @@ class Handler(SimpleHTTPRequestHandler):
                 return self.reply(429, {"error": "daily_limit"})
             if not bump("fix:total", FIX_TOTAL):
                 return self.reply(503, {"error": "busy"})
-            out, model = correct(part, items)
+            out, model = correct(part, items, b.get("v") == 2)
             return self.reply(200, {"items": out, "llm": model})
         except Busy as e:
             print("busy", e, file=sys.stderr)

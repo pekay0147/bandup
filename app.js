@@ -424,14 +424,14 @@ async function aiPost(path, body, type){
 }
 const mockFix=t=>{ const bad=/as fast you/i.test(t); return {corrected:t.replace(/\b(um+|uh+)\b,?\s*/gi,"").replace(/as fast you/i,"as fast as you"),
   fixes: bad? [{from:"as fast you can",to:"as fast as you can",type:"문장 구조",why:"'as + 부사 + as' 구문이라 두 번째 as가 필요해요."}] : [],
-  better: bad? "Yes, you can run as fast as you like." : "", good:"질문에 바로 답했어요."}; };
+  better: bad? "Yes, you can run as fast as you like." : "", upgrades: bad? [{from:"as fast as you can",to:"as fast as you like",ko:"원하는 만큼 빠르게",why:"테스트용 가짜 설명이에요."}] : [], good:"질문에 바로 답했어요."}; };
 function aiSTT(blob,q){
   if(aiMock()) return new Promise(r=>setTimeout(()=>r({transcript:"Yes, um, you can run as fast you can.",duration:5}),700));
   return aiPost("stt?s="+encodeURIComponent(slug)+"&q="+encodeURIComponent(String(q||"").slice(0,300)), blob, (blob.type||"audio/webm").split(";")[0]);
 }
 function aiFix(part, items){
   if(aiMock()) return new Promise(r=>setTimeout(()=>r({items:items.map(x=>mockFix(x.text)),mock:true}),1200));
-  return aiPost("fix", JSON.stringify({s:slug,part,items}), "application/json");
+  return aiPost("fix", JSON.stringify(D.p2rec? {s:slug,part,items,v:2} : {s:slug,part,items}), "application/json"); // v:2 = 어색한 표현은 '더 자연스럽게 말하면'의 형광으로 (은수·기현)
 }
 /* 원래 문장과 고친 문장을 단어 단위로 비교 (머뭇거림 um/uh 는 빼고) */
 const FILLER=/^(um+|uh+|er+|erm+|ah+|hmm+|mm+|uhm+)[.,!?]*$/i;
@@ -448,6 +448,21 @@ function wordDiff(a,b){
   }
   return out;
 }
+/* '더 자연스럽게 말하면' 문장에서 바뀐 표현을 형광으로. 누르면 한국어 뜻 + 내 단어장에 추가 */
+function upText(better,ups){
+  const wrap=el("div","aiupwrap"), p=el("p","aitxt"), info=el("div","aiupinfo"); info.hidden=true; const lb=better.toLowerCase(), hits=[];
+  for(const u of ups){ const i=lb.indexOf(String(u.to).toLowerCase()); if(i<0 || hits.some(h=>i<h.e && i+u.to.length>h.i)) continue; hits.push({i,e:i+u.to.length,u}); }
+  hits.sort((a,b)=>a.i-b.i); let at=0, open=null;
+  for(const h of hits){ if(h.i>at) p.append(document.createTextNode(better.slice(at,h.i)));
+    const m=el("button","aiup",better.slice(h.i,h.e)); m.type="button";
+    m.onclick=()=>{ if(open===m){ info.hidden=true; m.classList.remove("on"); open=null; return; } if(open) open.classList.remove("on"); open=m; m.classList.add("on"); info.textContent="";
+      const w=h.u.to.replace(/[’]/g,"'"); info.append(el("b",null,w)); if(h.u.ko) info.append(el("p","aiupko",h.u.ko)); if(h.u.why) info.append(el("p","aiwhy",h.u.why)); if(h.u.from) info.append(el("p","aiwhy","내가 한 말 · "+h.u.from));
+      const has=()=>vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase()); const ab=el("button","addvoc", has()? "✓ 내 단어장에 있어요" : "+ 내 단어장에 추가"); ab.type="button"; ab.disabled=has();
+      ab.onclick=()=>{ if(vocAddKo(w,h.u.ko,better.replace(/[’]/g,"'"))){ ab.textContent="✓ 내 단어장에 담았어요"; ab.disabled=true; } }; info.append(ab); info.hidden=false; };
+    p.append(m); at=h.e; }
+  if(at<better.length) p.append(document.createTextNode(better.slice(at)));
+  wrap.append(p,info); return wrap;
+}
 function diffNode(a,b){ const p=el("p","aitxt"); wordDiff(a,b).forEach((d,i)=>{ if(i) p.append(" "); p.append(d.k==="="? document.createTextNode(d.t) : el(d.k==="+"?"ins":"del",null,d.t)); }); return p; }
 /* 답변 하나의 첨삭 결과 */
 function fixView(text,res){
@@ -461,7 +476,7 @@ function fixView(text,res){
       li.append(tag,ch); if(f.why) li.append(el("p","aiwhy",f.why)); ul.append(li); }
     fx.append(ul); }
   box.append(fx);
-  if(res.better && res.better!==res.corrected){ const d=el("details","aibetter"); const sm=el("summary",null,"더 자연스럽게 말하면"); const row=el("div","aihd"); row.append(el("p","aitxt",res.better), speakBtn(res.better,"자연스러운 문장 듣기")); d.append(sm,row); box.append(d); }
+  if(res.better && res.better!==res.corrected){ const ups=Array.isArray(res.upgrades)? res.upgrades : []; const d=el("details","aibetter"); if(ups.length) d.open=true; const sm=el("summary",null,"더 자연스럽게 말하면"); const row=el("div","aihd"); row.append(ups.length? upText(res.better,ups) : el("p","aitxt",res.better), speakBtn(res.better,"자연스러운 문장 듣기")); d.append(sm,row); if(ups.length) d.append(el("p","muted small","형광 표현을 누르면 뜻을 보고 내 단어장에 담을 수 있어요.")); box.append(d); }
   if(res.good) box.append(el("p","aigood","잘한 점 · "+res.good));
   return box;
 }
@@ -1655,6 +1670,8 @@ function renderJelly(app){
   const F=jField(field, R, o=>{ jQuiz(o.it, ok=>{ if(ok){ F.merge(o, field.clientWidth/2, field.clientHeight/2, ()=>{ big.classList.remove("boing"); void big.offsetWidth; big.classList.add("boing"); jBigPaint(big); const l=F.left(); paintInfo(l); if(!l) big.classList.add("happy"); }); } else F.release(o,false); }); });
   paintInfo(R.length);
 }
+function vocAddKo(w,ko,ex){ w=String(w).replace(/\s+/g," ").trim(); if(!w) return false; const key=`bandup-myvoc-${slug}`; if(vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase())) return false;
+  const it={w,ko:ko||"",ex:ex||"",t:Date.now()}; const m=store.get(key,[]); m.push(it); store.set(key,m); return true; } // 첨삭의 형광 표현: AI 가 준 뜻을 그대로 담아요
 function vocQuickAdd(w,sent){ w=String(w).replace(/\s+/g," ").trim(); if(!w) return false; const key=`bandup-myvoc-${slug}`; if(vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase())) return false;
   const it={w,ko:"",ex: sent? w : "",t:Date.now()}; const m=store.get(key,[]); m.push(it); store.set(key,m);
   vocLookup(w).then(r=>{ const mm=store.get(key,[]); const y=mm.find(z=>z.t===it.t); if(!y) return; y.ko=r.ko||y.ko; if(!y.ex) y.ex=r.ex||""; if(r.base){ y.base=r.base; y.form=r.form; } if(r.src==="d") y.src="d"; y.tried=today(); store.set(key,mm); }); return true; }

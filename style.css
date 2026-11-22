@@ -1219,3 +1219,11 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .aihint{margin:0}
 .airev{gap:10px}
 .airq{margin:0;font-size:16px;font-weight:700;line-height:1.45}
+/* 첨삭: 더 자연스럽게 말하면의 형광 표현 */
+.aiupwrap{flex:1;min-width:0}
+.aiup{font:inherit;color:inherit;background:#fff3a0;border:0;border-radius:4px;padding:0 3px;margin:0 -1px;cursor:pointer;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.aiup.on{background:#ffd84d;box-shadow:0 0 0 2px #e8b800}
+.aiupinfo{margin-top:8px;padding:10px 12px;border-radius:10px;background:var(--surface,#fff);border:1px solid var(--line);display:grid;gap:4px}
+.aiupko{margin:0;font-size:15px;font-weight:700}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .aiup{background:#5c5200;color:#fff}:root:not([data-theme="light"]) .aiup.on{background:#806f00;box-shadow:0 0 0 2px #b39b00}}
+:root[data-theme="dark"] .aiup{background:#5c5200;color:#fff}:root[data-theme="dark"] .aiup.on{background:#806f00;box-shadow:0 0 0 2px #b39b00}
