@@ -1219,7 +1219,6 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .aihint{margin:0}
 .airev{gap:10px}
 .airq{margin:0;font-size:16px;font-weight:700;line-height:1.45}
-<<<<<<< Updated upstream
 /* 첨삭: 더 자연스럽게 말하면의 형광 표현 */
 .aiupwrap{flex:1;min-width:0}
 .aiup{font:inherit;color:inherit;background:#fff3a0;border:0;border-radius:4px;padding:0 3px;margin:0 -1px;cursor:pointer;box-decoration-break:clone;-webkit-box-decoration-break:clone}
@@ -1228,7 +1227,6 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .aiupko{margin:0;font-size:15px;font-weight:700}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .aiup{background:#5c5200;color:#fff}:root:not([data-theme="light"]) .aiup.on{background:#806f00;box-shadow:0 0 0 2px #b39b00}}
 :root[data-theme="dark"] .aiup{background:#5c5200;color:#fff}:root[data-theme="dark"] .aiup.on{background:#806f00;box-shadow:0 0 0 2px #b39b00}
-=======
 
 /* GRAMMAR MAP */
 .grcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;font-size:13px;color:var(--muted)}
@@ -1276,4 +1274,3 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .grtop .lx{margin-left:auto;margin-right:-10px}
 .grin{display:grid;gap:14px;min-width:0}
 @media (min-width:600px){.grov{align-items:center}.grsheet{border-radius:18px;max-height:84dvh}}
->>>>>>> Stashed changes
