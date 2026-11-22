@@ -50,6 +50,24 @@
    "date": "2026-11-17",
    "title": "Speaking Matrix",
    "label": "스피킹 매트릭스 16회"
+  },
+  {
+   "no": 20,
+   "date": "2026-11-18",
+   "title": "Speaking Matrix",
+   "label": "스피킹 매트릭스 17회"
+  },
+  {
+   "no": 21,
+   "date": "2026-11-19",
+   "title": "Speaking Matrix",
+   "label": "스피킹 매트릭스 18회"
+  },
+  {
+   "no": 22,
+   "date": "2026-11-21",
+   "title": "Speaking Matrix",
+   "label": "스피킹 매트릭스 19회"
   }
  ],
  "types": [
@@ -1421,6 +1439,282 @@
    "en": "Being willing to ask often brings people closer and helps work go more smoothly.",
    "hint": "willing",
    "gram": "동명사 주어 <em>Being willing to ask</em> + 단수 동사(brings, helps). <em>be willing to</em> = 기꺼이 ~하다. <em>bring people closer</em> = 사람들을 더 가깝게 하다. <em>help</em> + 목적어 + 동사원형."
+  },
+  {
+   "id": "sm17-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    20
+   ],
+   "ko": "몇 달 전에, 저는 문자 메시지 하나로 친한 친구를 본의 아니게 속상하게 했어요.",
+   "en": "A few months ago, I accidentally upset a close friend with a text message.",
+   "hint": "accidentally",
+   "gram": "<em>a few months ago</em> (months 복수!). <em>accidentally</em> = 본의 아니게, 실수로. <em>upset</em> + 사람 = ~를 속상하게 하다 (upset-upset-upset)."
+  },
+  {
+   "id": "sm17-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    20
+   ],
+   "ko": "어떻게 된 거냐면, 제가 급해서 친구의 긴 메시지에 한 줄짜리 답장을 보냈어요.",
+   "en": "What happened was I was in a rush and sent a one-line reply to a long message from my friend.",
+   "hint": "in a rush",
+   "gram": "<em>What happened was</em> ~ = 어떻게 된 거냐면 ~. <em>be in a rush</em> = 급하다, 서두르다. <em>a one-line reply</em> = 한 줄짜리 답장 (하이픈 + 단수 line)."
+  },
+  {
+   "id": "sm17-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    20
+   ],
+   "ko": "문제는, 문자 메시지는 맥락이나 말투가 없으면 쉽게 오해받을 수 있다는 거예요.",
+   "en": "The thing is, text messages can easily be misread when there is no context or tone of voice.",
+   "hint": "misread",
+   "gram": "<em>The thing is,</em> ~ = 문제는 ~, 중요한 건 ~. <em>be misread</em> = 잘못 읽히다, 오해받다 (수동태). <em>tone of voice</em> = 말투, 어조."
+  },
+  {
+   "id": "sm17-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    20
+   ],
+   "ko": "친구는 제 짧은 답장을 제가 화났거나 대화에 관심이 없다는 신호로 받아들였어요.",
+   "en": "My friend took my short reply as a sign that I was upset or not interested in the conversation.",
+   "hint": "took",
+   "gram": "<em>take</em> A <em>as</em> B = A를 B로 받아들이다. <em>a sign that</em> + 문장 = ~라는 신호. <em>be interested in</em> = ~에 관심이 있다."
+  },
+  {
+   "id": "sm17-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    20
+   ],
+   "ko": "다음 날 제가 먼저 연락해서 \"제가 분명하게 설명할게요\"라고 말했어요.",
+   "en": "I reached out the next day and said, \"Let me clarify.\"",
+   "hint": "reached out",
+   "gram": "<em>reach out</em> = (먼저) 연락하다, 손을 내밀다. <em>Let me clarify.</em> = 제가 분명하게 설명할게요. <em>clarify</em> = 명확히 하다."
+  },
+  {
+   "id": "sm17-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    20
+   ],
+   "ko": "물론, 어떤 사람들은 충분히 오래 기다리면 오해가 저절로 풀릴 수 있다고 말해요.",
+   "en": "Admittedly, some people say misunderstandings can clear themselves up if we wait long enough.",
+   "hint": "Admittedly",
+   "gram": "<em>Admittedly,</em> = 물론, 인정하건대 (반대 의견을 먼저 인정할 때). <em>clear up</em> = (오해가) 풀리다. <em>long enough</em> = 충분히 오래 (enough는 형용사·부사 뒤)."
+  },
+  {
+   "id": "sm17-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    20
+   ],
+   "ko": "하지만 저는 오래 기다릴수록 그 얘기를 꺼내기가 더 어려워진다는 걸 알게 됐어요.",
+   "en": "However, I have found that the longer I wait, the harder it becomes to bring it up.",
+   "hint": "the longer",
+   "gram": "<em>the</em> + 비교급, <em>the</em> + 비교급 = ~할수록 더 …하다. <em>I have found that</em> ~ = (경험상) ~라는 걸 알게 됐다. <em>bring it up</em> = (얘기를) 꺼내다."
+  },
+  {
+   "id": "sm17-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    20
+   ],
+   "ko": "한참 동안 후진해야 할 수도 있어요.",
+   "en": "You might have to reverse for ages.",
+   "hint": "reverse",
+   "gram": "<em>might have to</em> + 동사원형 = ~해야 할 수도 있다. <em>reverse</em> = (차를) 후진하다. <em>for ages</em> = 한참 동안, 아주 오래."
+  },
+  {
+   "id": "sm18-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "명절에 저희 가족과 배우자 가족을 방문하는 계획이 서로 겹쳤어요.",
+   "en": "There was a conflict between our plans to visit my family and my spouse's family over the holiday.",
+   "hint": "conflict",
+   "gram": "<em>there is a conflict between</em> A <em>and</em> B = A와 B가 충돌하다(겹치다). <em>spouse</em> = 배우자. <em>over the holiday</em> = 명절 동안."
+  },
+  {
+   "id": "sm18-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "저는 어느 쪽도 실망시키고 싶지 않았어요.",
+   "en": "I didn't want to disappoint either side.",
+   "hint": "either side",
+   "gram": "<em>disappoint</em> + 사람 = ~를 실망시키다. 부정문에서 <em>either side</em> = 어느 쪽도 (~않다)."
+  },
+  {
+   "id": "sm18-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "저희 가족도 저희가 늦은 오전까지는 도착하길 기대했어요.",
+   "en": "Our family also expected us to arrive by late morning.",
+   "hint": "expected us to",
+   "gram": "<em>expect</em> + 사람 + <em>to</em> 동사원형 = ~가 …하길 기대하다. <em>by late morning</em> = 늦은 오전까지. also는 일반동사 앞!"
+  },
+  {
+   "id": "sm18-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "대신 명절 전날 저녁에 그분과 저녁을 먹으면 어떨까요?",
+   "en": "What if we had dinner with him the evening before the holiday instead?",
+   "hint": "What if",
+   "gram": "<em>What if</em> + 과거형 ~? = ~하면 어떨까요? (부드러운 제안). <em>the evening before</em> ~ = ~ 전날 저녁."
+  },
+  {
+   "id": "sm18-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "공평하게 하려고 다음 명절에는 순서를 바꾸는 것도 합의할 수 있을까요?",
+   "en": "Could we also agree to switch the order next holiday to keep things fair?",
+   "hint": "switch the order",
+   "gram": "<em>agree to</em> + 동사원형 = ~하기로 합의하다. <em>switch the order</em> = 순서를 바꾸다. <em>keep things fair</em> = 공평하게 하다."
+  },
+  {
+   "id": "sm18-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "양가 모두 그 방식에 만족했어요.",
+   "en": "Both families were happy with the arrangement.",
+   "hint": "arrangement",
+   "gram": "<em>be happy with</em> ~ = ~에 만족하다. <em>arrangement</em> = (합의한) 방식, 계획."
+  },
+  {
+   "id": "sm18-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "일찍 함께 이야기해서 푸는 게 대화를 피하는 것보다 나아요.",
+   "en": "Talking it through together early is better than avoiding the conversation.",
+   "hint": "Talking it through",
+   "gram": "<em>talk</em> something <em>through</em> = ~에 대해 충분히 이야기하다. 동명사 주어(Talking ~)는 단수 → <em>is</em>. <em>better than</em> -ing."
+  },
+  {
+   "id": "sm18-08",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    21
+   ],
+   "ko": "결국 저는 양쪽 모두에게 맞는 계획을 생각해 냈어요.",
+   "en": "I eventually came up with a plan that worked for both sides.",
+   "hint": "came up with",
+   "gram": "<em>eventually</em> = 결국. <em>come up with</em> = (생각을) 떠올리다, 생각해 내다. <em>work for</em> ~ = ~에게 잘 맞다."
+  },
+  {
+   "id": "sm19-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    22
+   ],
+   "ko": "몇 주 전에, 제가 준비하던 보고서가 일정보다 늦어지기 시작했어요.",
+   "en": "A few weeks ago, the report I was preparing started to fall behind schedule.",
+   "hint": "fall behind schedule",
+   "gram": "<em>fall behind schedule</em> = 일정보다 늦어지다. <em>the report I was preparing</em> = 내가 준비하던 보고서 (관계대명사 생략)."
+  },
+  {
+   "id": "sm19-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    22
+   ],
+   "ko": "저는 아직 남은 일이 너무 많아요.",
+   "en": "I still have too much work left.",
+   "hint": "left",
+   "gram": "<em>have</em> + 명사 + <em>left</em> = ~이 남아 있다. work는 셀 수 없어서 <em>too much</em> work."
+  },
+  {
+   "id": "sm19-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    22
+   ],
+   "ko": "저는 아직 수업이 두 번 더 남았어요.",
+   "en": "I still have two more classes left.",
+   "hint": "two more",
+   "gram": "<em>two more</em> + 복수명사 = ~가 두 개 더. <em>have ~ left</em> = ~이 남아 있다."
+  },
+  {
+   "id": "sm19-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    22
+   ],
+   "ko": "그는 제 열정적인 수업에 대해 고마워했어요.",
+   "en": "He thanked me for my enthusiastic teaching.",
+   "hint": "thanked me for",
+   "gram": "<em>thank</em> 사람 <em>for</em> ~ = ~에 대해 …에게 감사하다. <em>enthusiastic</em> = 열정적인."
+  },
+  {
+   "id": "sm19-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    22
+   ],
+   "ko": "그렇긴 하지만, 너무 오래 기다리면 선택지가 줄어들어요.",
+   "en": "That said, waiting too long leaves people with fewer options.",
+   "hint": "That said",
+   "gram": "<em>That said,</em> = 그렇긴 하지만. <em>leave</em> 사람 <em>with</em> ~ = ~에게 …을 남기다. <em>fewer</em> + 복수명사 = 더 적은."
+  },
+  {
+   "id": "sm19-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    22
+   ],
+   "ko": "우리는 부주의하거나 준비가 안 돼 보일까 봐 걱정해요.",
+   "en": "We worry that we might look careless or unprepared.",
+   "hint": "might look",
+   "gram": "<em>worry that</em> + 문장 = ~할까 봐 걱정하다. <em>look</em> + 형용사 = ~해 보이다. careless = 부주의한, unprepared = 준비가 안 된."
+  },
+  {
+   "id": "sm19-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    22
+   ],
+   "ko": "그 여행은 저에게 좋은 추억을 남겼어요.",
+   "en": "The trip left me with good memories.",
+   "hint": "left me with",
+   "gram": "<em>leave</em> 사람 <em>with</em> ~ = (어떤 일이) ~에게 …을 남기다. leave-<em>left</em>-left. memory의 복수는 <em>memories</em>."
   }
  ],
  "part1": [],
@@ -1975,5 +2269,7 @@
  "dailyFrom": "sessions",
  "sessTab": "수업 회차별",
  "inbox": "b06499cb-2e25-4d80-9613-0a1400e097ce",
- "capOn": true
+ "capOn": true,
+ "keepMock": true,
+ "ai": true
 }

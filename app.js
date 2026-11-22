@@ -4,7 +4,7 @@
 "use strict";
 const TCOL = {"어휘":"#4457e8","단·복수":"#8b5cf6","주어-동사":"#3d5afe","동사·시제":"#0f9e8f","문장 구조":"#e07a2e","관사·전치사":"#d6437f",
   "품사":"#b88a00","단어 선택":"#2a9a55","발음·철자":"#7c7f99","표현":"#d99a00","잘한 표현":"#1d9a68"};
-const INTERVALS=[0,1,3,7,14,30], MASTER=5, DAILY=15;
+const INTERVALS=[0,1,3,7,14,30], MASTER=5, DAILY=10;
 const $=s=>document.querySelector(s);
 const el=(t,c,x)=>{const e=document.createElement(t); if(c) e.className=c; if(x!=null) e.textContent=x; return e;};
 const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");};
@@ -140,7 +140,7 @@ function buildTabs(){
 function go(tab, extra){ if(typeof endMock==="function") endMock(); if(tab!=="words" && typeof LD!=="undefined"){ LD=null; try{ speechSynthesis.cancel(); }catch(_){} } view={tab, ...(extra||{})}; flipped=false; picked=null; if(tab!=="cards") deckState=null; if(tab!=="review") reviewState=null; render(); window.scrollTo(0,0); }
 function updateTabs(){
   document.querySelectorAll("#tabs button").forEach(b=>{ if(b.dataset.tab===view.tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
-  const n=Math.min(dueCards().length,DAILY), bd=$("#dueBadge"); if(bd){ bd.textContent=String(n); bd.hidden=!n; }
+  const dl=(typeof dailyLeft==="function")? dailyLeft() : null; const n= dl? dl.length : Math.min(dueCards().length,DAILY), bd=$("#dueBadge"); if(bd){ bd.textContent=String(n); bd.hidden=!n; }
 }
 
 /* ---------- render ---------- */
@@ -254,7 +254,7 @@ function studyGuide(app){
   const steps=[
     (()=>{ const TP=todayPod(); return TP? ["팟캐스트 듣기", `오늘은 ${String(TP.link.src||"6 Minute English").replace(/^BBC /,"")} ${TP.link.date} 편 \u201c${TP.link.title}\u201d을 끝까지 들어요`, null, TP.link.url] : ["팟캐스트 듣기", `${P.name||"오늘의 팟캐스트"} 한 편을 끝까지 들어요`, null, podUrl(P)]; })(),
     ["큐카드 팟캐스트로 오늘 들은 팟캐스트 복습하기","큐카드 → 팟캐스트에서 오늘 날짜를 골라, 방금 들은 문장을 한국어만 보고 영어로 말해 봐요. 마지막 장의 단어는 단어장에 담아요",()=>{ cardMode=podTab; const TP=todayPod(); if(podTab==="pod"){ selPod=TP? TP.no : null; podPickOpen=false; } else { selSession=TP? TP.no : null; podPickOpen=false; } deckState=null; go("cards"); }],
-    [D.dailyFrom==="sessions"? "큐카드 매일 연습으로 배운 문장 복습하기" : "큐카드 매일 연습으로 일상 영어 공부하기", D.dailyFrom==="sessions"? "지금까지 배운 스피킹 매트릭스 문장 중 매일 10개를 랜덤으로 소리 내 말해 봐요" : "매일 바뀌는 생활 영어 문장 10개를 소리 내 말해 봐요",()=>{ cardMode="daily"; deckState=null; go("cards"); }],
+    [D.dailyFrom==="sessions"? "오늘의 복습으로 배운 문장 복습하기" : "오늘의 복습으로 일상 영어 공부하기", D.dailyFrom==="sessions"? "지금까지 배운 스피킹 매트릭스 문장 중 매일 10개를 랜덤으로 소리 내 말해 봐요" : "매일 바뀌는 생활 영어 문장 10개를 소리 내 말해 봐요",()=>{ go("review",{extra:false}); }],
     ["그 외","시간이 더 있으면 골라서 해요. 철자 탭에서 단어 듣고 쓰기, 아이디어 탭에서 Part 1·2·3 질문별 단어와 답변 재료 보기, 내 단어장 외우기, 오늘의 복습까지!",null,null,[["철자",()=>go("words")],["아이디어",()=>go("ideas")],["내 단어장",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); }],["오늘의 복습",()=>{ const due=dueCards().length; go("review",{extra:!due, ids:reviewQueue(!due)}); }]]]];
   const sec=el("section","sec sguide"); sec.append(secHead("오늘의 공부 순서","위에서부터 차례대로"));
   const box=el("div","box list2");
@@ -281,9 +281,9 @@ function installBar(app){
 function renderHome(app){
   statFlush(false);
   installBar(app);
-  const due=dueCards().length;
-  const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length;
-  const goalDone = doneToday>=DAILY;
+  const DQ=dailyLeft(); const due= DQ? DQ.length : dueCards().length;
+  const doneToday= DQ? (dailyIds().length-DQ.length) : Object.values(srs).filter(x=>x&&x.last===today()).length;
+  const goalDone = DQ? (DQ.length===0) : doneToday>=DAILY;
   if(D.demo){ const bn=el("div","demobn"); bn.append(el("b",null,"체험용 앱이에요"), el("p",null,"실제 수업을 들으면, 수업에서 내가 틀린 문장으로 이런 큐카드가 매번 만들어져요. 큐카드·모의고사·예상 기출을 마음껏 써 보세요."));
     const k=el("a","demok","카톡으로 수업 상담하기 ›"); k.href="https://open.kakao.com/o/s6FxwzEi"; k.target="_blank"; k.rel="noopener"; bn.append(k); app.append(bn); }
   const h1=el("h1","h-title"); if(D.name) h1.append(document.createTextNode(`${D.name}님,`), el("br"));
@@ -300,8 +300,8 @@ function renderHome(app){
   const bar=el("div","bar"); const bi=el("i"); bi.style.width=Math.min(100,doneToday/DAILY*100)+"%"; bar.append(bi); rv.append(bar);
   if(!D.cards.length){ rv.append(el("p","muted small", D.common? "큐카드 탭에서 외우고 싶은 문장을 넣으면 여기서 매일 복습할 수 있어요." : "첫 수업이 끝나면 수업에서 나온 문장으로 복습이 시작돼요.")); s1.append(rv); app.append(s1); }
   else {
-  const queue=reviewQueue(!due);
-  const b=el("button","btn primary", !due? "약한 카드 연습하기" : goalDone? "더 복습하기" : doneToday? "이어서 복습하기" : "복습 시작하기"); b.type="button"; b.onclick=()=>go("review",{extra:!due, ids:queue}); rv.append(b);
+  const XTRA= DQ? goalDone : !due; const queue=reviewQueue(XTRA);
+  const b=el("button","btn primary", (!DQ && !due)? "약한 카드 연습하기" : goalDone? "더 복습하기" : doneToday? "이어서 복습하기" : "복습 시작하기"); b.type="button"; b.onclick=()=>go("review",{extra:XTRA, ids:queue}); rv.append(b);
   s1.append(rv); app.append(s1);
   }
   // 학습
@@ -465,7 +465,7 @@ function fixView(text,res){
   if(res.good) box.append(el("p","aigood","잘한 점 · "+res.good));
   return box;
 }
-/* 질문마다: 녹음(또는 글로 쓰기) → 받아쓰기 → '내가 한 말' 확인·수정. 첨삭은 Part 끝에서. */
+/* 질문마다: 녹음 → 받아쓰기 → '내가 한 말' 확인·수정. 첨삭은 Part 끝에서. */
 function recBox(st,key){
   MT.ai=MT.ai||{}; const S=()=>MT.ai[key]||(MT.ai[key]={});
   const w=el("div","recbox"); const alive=()=>document.body.contains(w);
@@ -474,7 +474,7 @@ function recBox(st,key){
     try{ speechSynthesis.cancel(); }catch(_){} stopRec();
     const s=S(); let stream;
     try{ stream=await navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:true,noiseSuppression:false,autoGainControl:true}}); } // 잡음 제거는 자음을 뭉개서 끔 (Whisper 가 잡음에 강함)
-    catch(_){ s.err="마이크를 쓸 수 없어요. 브라우저 설정에서 마이크를 허용하거나, '글로 쓰기'를 눌러 주세요."; draw(); return; }
+    catch(_){ s.err="마이크를 쓸 수 없어요. 브라우저 설정에서 마이크를 허용해 주세요."; draw(); return; }
     s.err=""; s.typing=false; s.editing=false;
     let mr; try{ mr=new MediaRecorder(stream,{audioBitsPerSecond:128000}); }catch(_){ mr=new MediaRecorder(stream); } const chunks=[];
     REC={mr,stream,chunks,t0:Date.now(),key,send:false,timer:setInterval(()=>{ if(alive()) draw(); },1000)};
@@ -500,8 +500,7 @@ function recBox(st,key){
       w.append(el("p","muted small","답을 다 말한 뒤 버튼을 눌러 주세요.")); return; }
     const row=el("div","airow");
     if(canRecord()){ const r=el("button","btn rec"); r.type="button"; r.append(el("i","recdot"), document.createTextNode(s.text||s.url? " 다시 답하기" : " 말로 답하기")); r.disabled=!!s.busy; r.onclick=start; row.append(r); }
-    const k=el("button","btn"+(s.typing?" on":""),"글로 쓰기"); k.type="button"; k.disabled=!!s.busy; k.onclick=()=>{ s.typing=!s.typing; s.editing=false; draw(); }; row.append(k);
-    w.append(row);
+    w.append(row); if(!canRecord()) w.append(el("p","aierr","이 기기에서는 녹음을 할 수 없어요. 사파리·크롬 최신 버전에서 열어 주세요."));
     if(s.typing) w.append(editor(s.text,"영어로 답을 써 보세요","저장",t=>{ setText(t); s.typing=false; s.err=""; draw(); }));
     if(s.url && !s.typing) { const a=el("audio","recaudio"); a.controls=true; a.src=s.url; w.append(a); }
     if(s.busy){ const p=el("p","aiwait"); p.append(el("i","aispin"), document.createTextNode(" 받아쓰는 중이에요…")); w.append(p); }
@@ -696,13 +695,14 @@ function cardPhrases(c){
   for(const [k,v] of phraseBank()) if(!out.has(k) && phOk(v.w) && phExact(v.w,c.en) && !(/^used to/i.test(v.w) && /(\bam|'m|\bis|\bare|\bwas|\bwere|\bbe|\bget|\bgot|\bgetting|\bbeen)\s+(not\s+)?used to/i.test(c.en))) out.set(k,v);
   if(c.hint && phOk(c.hint) && !out.has(c.hint.toLowerCase())) out.set(c.hint.toLowerCase(),{w:c.hint,ko:""});
   const L=[...out.values()]; const norm=x=>" "+x.w.toLowerCase().replace(/^(a|an|the|be)\s+/,"")+" ";
-  return L.filter(a=>!L.some(b=>b!==a && norm(b).includes(norm(a)) && norm(b)!==norm(a))).filter((a,i,arr)=>arr.findIndex(b=>norm(b)===norm(a))===i).slice(0,4);
+  const stem=x=>x.w.toLowerCase().split(/[^a-z']+/).filter(w=>w&&!PH_SKIP.has(w)).map(phStem).join(" "); // come up with = came up with → 하나만
+  return L.filter(a=>!L.some(b=>b!==a && norm(b).includes(norm(a)) && norm(b)!==norm(a))).filter((a,i,arr)=>arr.findIndex(b=>norm(b)===norm(a) || stem(b)===stem(a))===i).slice(0,4);
 }
 function renderDecks(app){
-  pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : D.group==="other"? "팟캐스트 표현과 매일 연습 문장을 한국어 보고 영어로 말해 보세요." : D.group==="church"? "묵상 문장과 매일 연습 문장을 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
+  pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : D.group==="other"? "팟캐스트 표현을 한국어 보고 영어로 말해 보세요." : D.group==="church"? "묵상 문장을 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
   const hasLesson=D.sessions.length && D.cards.some(c=>(c.sessions||[]).length), hasPod=(D.podSessions||[]).length>0;
   if(!hasLesson && !hasPod){ const e=el("div","empty"); e.append(el("p",null, D.common? "수업을 들으면 수업에서 내가 틀린 문장이 여기에 큐카드로 생겨요." : "아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
-  const hasDaily=D.group==="other"||D.group==="ielts"||D.group==="church"||D.dailyFrom==="sessions";
+  const hasDaily=false; // 매일 연습은 홈의 오늘의 복습으로 통일
   const hasManual=!!(D.manual && D.cards.some(c=>c.manual));
   const nSeg=+!!hasPod + +!!hasLesson + +hasDaily + +hasManual;
   const seg=el("div","modeseg"+(nSeg===4?" four":nSeg>2?"":" two")); seg.setAttribute("role","tablist");
@@ -1165,7 +1165,7 @@ let vcFill=false;
 function vocBackfill(){
   if(vcFill) return;
   if(!DICT){ loadDict().then(()=>{ if(view.tab==="vocab") render(); }); return; }
-  { const m=store.get(`bandup-myvoc-${slug}`,[]); let ch=false; for(const y of m){ const e=DICT[String(y.w).toLowerCase()]; if(e && y.src!=="d"){ y.ko=e.ko||y.ko; y.ex=e.ex||y.ex; y.src="d"; y.tried=1; delete y.lk; ch=true; } } if(ch){ store.set(`bandup-myvoc-${slug}`,m); if(view.tab==="vocab") setTimeout(render,0); return; } } const mine=store.get(`bandup-myvoc-${slug}`,[]); const need=mine.filter(x=>((!x.ko || !x.ex) && x.tried!==today()) || (!x.lm && !/\s/.test(String(x.w)))); if(!need.length) return;
+  { const m=store.get(`bandup-myvoc-${slug}`,[]); let ch=false; for(const y of m){ const e=DICT[String(y.w).toLowerCase()]; if(e && (y.src!=="d" || (e.ex && y.ex!==e.ex) || (e.ko && y.ko!==e.ko))){ y.ko=e.ko||y.ko; y.ex=e.ex||y.ex; y.src="d"; y.tried=1; delete y.lk; ch=true; } } if(ch){ store.set(`bandup-myvoc-${slug}`,m); if(view.tab==="vocab") setTimeout(render,0); return; } } const mine=store.get(`bandup-myvoc-${slug}`,[]); const need=mine.filter(x=>((!x.ko || !x.ex) && x.tried!==today()) || (!x.lm && !/\s/.test(String(x.w)))); if(!need.length) return;
   vcFill=true;
   (async()=>{ let changed=false; for(const x of need){ const r=await vocLookup(x.w); if(!r.ko && !r.ex){ const m0=store.get(`bandup-myvoc-${slug}`,[]); const y0=m0.find(z=>z.t===x.t); if(y0){ y0.tried=today(); y0.lm=1; store.set(`bandup-myvoc-${slug}`,m0); } continue; } const m=store.get(`bandup-myvoc-${slug}`,[]); const y=m.find(z=>z.t===x.t); if(!y) continue; if(!y.ko) y.ko=r.ko; if(!y.ex) y.ex=r.ex; if(r.base&&!y.base){ y.base=r.base; y.form=r.form; } y.lm=1; y.tried=today(); if(y.ko) delete y.lk; store.set(`bandup-myvoc-${slug}`,m); changed=true; }
     vcFill=false; if(changed && view.tab==="vocab") render(); })();
@@ -1788,7 +1788,16 @@ function reviewP1(n){
     VCARDS[id]=c; return c; });
   setTimeout(()=>dyTranslate(list),800); return list;
 }
+/* 홈 '오늘의 복습' = 매일 바뀌는 10문제 (예전 큐카드 탭 '매일 연습') */
+function dailyIds(){
+  if(!D || D.common || D.demo) return null;
+  if(D.dailyFrom==="sessions"){ const pool=D.cards.filter(c=>(c.sessions||[]).length && D.sessions.some(x=>x.title==="Speaking Matrix" && (c.sessions||[]).includes(x.no))); return dyPick(pool,10,today()+slug+"sm").map(c=>c.id); }
+  if(D.group==="other"||D.group==="ielts"||D.group==="church"){ const keep=dySrc; dySrc="mix"; const L=dyCards(); dySrc=keep; if(L.length) setTimeout(()=>dyTranslate(L),800); return L.map(c=>c.id); }
+  return null;
+}
+function dailyLeft(){ const d=dailyIds(); if(!d || !d.length) return null; const t=today(); return d.filter(id=>(srs[id]||{}).last!==t); }
 function reviewQueue(extra){
+  if(!extra){ const left=dailyLeft(); if(left){ return left.length? left : dailyIds(); } }
   let pool = extra ? D.cards.filter(c=>isWriting(c) && ((srs[c.id]||{}).box||0)<MASTER) : dueCards();
   pool.sort((a,b)=>(rep(b)-rep(a)) || (((srs[a.id]||{}).box||0)-((srs[b.id]||{}).box||0)) || (marks[b.id]==="again")-(marks[a.id]==="again") || Math.random()-.5);
   if(extra) return pool.slice(0,10).map(c=>c.id);
@@ -1807,7 +1816,7 @@ function renderReview(app){
   const R=reviewState;
   const c=R.ids[R.i] && getCard(R.ids[R.i]);
   if(!c){
-  pageHead(app, view.extra? "약한 카드 연습" : "오늘의 복습", view.extra? "헷갈렸던 카드 10장을 다시 봐요." : `하루 ${DAILY}장씩, 다시 볼 때가 된 카드가 자동으로 나와요.`);
+  pageHead(app, view.extra? "약한 카드 연습" : "오늘의 복습", view.extra? "헷갈렸던 카드 10장을 다시 봐요." : (dailyIds()? "매일 바뀌는 오늘의 문장 10개예요." : `하루 ${DAILY}장씩, 다시 볼 때가 된 카드가 자동으로 나와요.`));
     const e=el("div","empty");
     if(R.res.length){ e.append(el("div","big","✓"), el("h2",null,"오늘 복습 끝!"), el("p",null,`${R.res.length}장을 복습했어요. 다음 복습 때 다시 나와요.`)); }
     else { e.append(el("div","big","✓"), el("h2",null,"오늘 복습할 카드가 없어요"), el("p",null,"내일 다시 열어 보세요.")); }

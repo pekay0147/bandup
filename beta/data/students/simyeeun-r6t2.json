@@ -70,6 +70,21 @@
    "no": 13,
    "date": "2026-11-17",
    "title": "Impressive film"
+  },
+  {
+   "no": 14,
+   "date": "2026-11-18",
+   "title": "Something new"
+  },
+  {
+   "no": 15,
+   "date": "2026-11-19",
+   "title": "Party after an event"
+  },
+  {
+   "no": 16,
+   "date": "2026-11-20",
+   "title": "Good news"
   }
  ],
  "types": [
@@ -95,7 +110,10 @@
   "10": "Part 2에서 off the top of my head 뒤에 '무슨 때인지' 바로 설명하기! To begin with 대신 First of all.",
   "11": "There are(~가 있다) vs These are(이것들이 ~이다)! another + 단수, different + 복수. Part 2 본론은 오늘의 2배로!",
   "12": "like + 명사 (I like sunny days)! 시간(evening)은 주어가 못 돼요 → I enjoy ~ in the evening. 단어가 안 떠오르면 더 큰 범주로 말하기. 가정법 공부해오기!",
-  "13": "It reminds me of ~ (remember ❌). 습관은 I usually take (taking ❌). go on a trip에는 to 없음! forget-forgot-forgotten."
+  "13": "It reminds me of ~ (remember ❌). 습관은 I usually take (taking ❌). go on a trip에는 to 없음! forget-forgot-forgotten.",
+  "14": "part2에서 time이 나오면 I can think of the time when ~ 으로 시작! try 뒤엔 바로 명사(try to new ❌). 머리를 자르다는 get my hair cut.",
+  "15": "과거 일은 be동사 없이 과거형(we talked, are talked ❌). try to / need to 뒤엔 동사원형, 명사는 바로 try / need 뒤에! appraise 뒤엔 바로 대상(appraise me).",
+  "16": "시험 전 마지막 수업! of course 대신 Absolutely / Definitely, usually 대신 more often than not, sometimes 대신 from time to time. 기쁠 땐 I was over the moon!"
  },
  "compare": [
   [
@@ -2745,6 +2763,344 @@
    "hint": "memory",
    "gram": "❌ I have good memorizing → ✅ I have <em>a good memory</em>. 기억력 = memory (셀 수 있는 명사라 a).",
    "mine": "I have good memorizing"
+  },
+  {
+   "id": "n14m1",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "이 노래를 들으면 옛 추억이 떠올라요.",
+   "en": "This song reminds me of an old memory.",
+   "hint": "reminds",
+   "gram": "<em>remind</em> A <em>of</em> B = A에게 B를 떠올리게 하다. (remember ❌)",
+   "mine": null
+  },
+  {
+   "id": "n14m2",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 기억력이 좋아서 더 이상 메모를 안 해요.",
+   "en": "I have a good memory, so I no longer take notes.",
+   "hint": "no longer",
+   "gram": "<em>have a good memory</em> = 기억력이 좋다. <em>no longer</em> = 더 이상 ~않다.",
+   "mine": null
+  },
+  {
+   "id": "n14m3",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "마침내 저는 가려운 이유를 알아냈어요.",
+   "en": "I finally figured out why I was itchy.",
+   "hint": "figured out",
+   "gram": "<em>figure out</em> = (생각해서) 알아내다. <em>itchy</em> = 가려운.",
+   "mine": null
+  },
+  {
+   "id": "n14m4",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    14
+   ],
+   "ko": "제가 의사라면, 사람들이 왜 가려운지 풀어서 설명해 줄 텐데요.",
+   "en": "If I were a doctor, I would unpack why people feel itchy.",
+   "hint": "would unpack",
+   "gram": "가정법 과거: <em>If I were</em> ~, I <em>would</em> + 동사원형. <em>unpack</em> = 풀어서 설명하다.",
+   "mine": null
+  },
+  {
+   "id": "n14m5",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    14
+   ],
+   "ko": "어제 저는 즉흥적으로 친구들과 여행을 갔어요.",
+   "en": "Yesterday, I spontaneously went on a trip with my friends.",
+   "hint": "spontaneously",
+   "gram": "<em>spontaneously</em> = 즉흥적으로. <em>go on a trip</em>에는 to가 없어요.",
+   "mine": null
+  },
+  {
+   "id": "n1401",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 한 달에 한 번 머리를 잘라요.",
+   "en": "I get my hair cut once a month.",
+   "hint": "get my hair cut",
+   "gram": "미용실에서 머리를 자르다 = <em>get my hair cut</em> (내가 직접 자르는 게 아니니까). 횟수는 <em>once a month / once a week</em>.",
+   "mine": null
+  },
+  {
+   "id": "n1402",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 헤어스타일을 바꾸는 게 무서워요.",
+   "en": "I'm afraid of changing my hairstyle.",
+   "hint": "afraid of",
+   "gram": "<em>be afraid of</em> / <em>be scared of</em> + -ing = ~하는 게 무섭다. 과거라면 I <em>was scared of</em> ~.",
+   "mine": null
+  },
+  {
+   "id": "n1404",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    14
+   ],
+   "ko": "저는 여행 중에 새로운 음식을 먹어 봤어요.",
+   "en": "I tried new food while I was travelling.",
+   "hint": "tried new food",
+   "gram": "❌ I tried to new food → ✅ I <em>tried new food</em>. try + 명사 = ~을 해 보다. (try to + 동사원형 = ~하려고 노력하다)",
+   "mine": "I tried to new food"
+  },
+  {
+   "id": "n1405",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "즐겁기만 하다면 뭐든 해 봐도 돼요.",
+   "en": "You can try anything as long as you enjoy it.",
+   "hint": "as long as",
+   "gram": "<em>as long as</em> + 주어 + 동사 = ~하는 한, ~하기만 하면.",
+   "mine": null
+  },
+  {
+   "id": "n1406",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    14
+   ],
+   "ko": "처음에는 좀 긴장했어요.",
+   "en": "I was sort of nervous at first.",
+   "hint": "sort of",
+   "gram": "<em>sort of</em> (= kind of) = 약간, 좀. 말할 때 부드럽게 해 주는 표현.",
+   "mine": null
+  },
+  {
+   "id": "n15m1",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    15
+   ],
+   "ko": "저는 한 달에 한 번 머리를 자르는데, 대체로 같은 미용실에 가요.",
+   "en": "I get my hair cut once a month, and more often than not, I go to the same salon.",
+   "hint": "more often than not",
+   "gram": "<em>get my hair cut</em> = (미용실에서) 머리를 자르다. <em>more often than not</em> = 대체로 (usually 대신).",
+   "mine": null
+  },
+  {
+   "id": "n15m2",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    15
+   ],
+   "ko": "사람들이 저를 어떻게 평가할지 걱정돼서 저는 발표하는 게 무서워요.",
+   "en": "I'm afraid of giving presentations because I worry about how people will appraise me.",
+   "hint": "appraise",
+   "gram": "<em>be afraid of</em> + -ing = ~하는 게 무섭다. <em>appraise</em> + 사람 = ~를 평가하다 (to 없음!).",
+   "mine": null
+  },
+  {
+   "id": "n15m3",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    15
+   ],
+   "ko": "여행 중에 새로운 음식을 먹어 봤는데, 옛 추억이 떠올랐어요.",
+   "en": "I tried new food during the trip, and it reminded me of an old memory.",
+   "hint": "reminded me of",
+   "gram": "<em>try</em> + 명사 = ~을 해 보다 (try to new ❌). <em>remind</em> A <em>of</em> B = A에게 B를 떠올리게 하다.",
+   "mine": null
+  },
+  {
+   "id": "n15m4",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    15
+   ],
+   "ko": "저는 영어 실력을 늘리려고 일부러 자막 없이 영화를 봐요.",
+   "en": "I watch films without subtitles on purpose to improve my English.",
+   "hint": "on purpose",
+   "gram": "<em>on purpose</em> = 일부러. <em>to</em> + 동사원형 = ~하려고.",
+   "mine": null
+  },
+  {
+   "id": "n1501",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    15
+   ],
+   "ko": "파티에서 우리는 이야기를 많이 나눴어요.",
+   "en": "We talked a lot at the party.",
+   "hint": "talked",
+   "gram": "❌ we are talked → ✅ We <em>talked</em>. 과거 일은 be동사 없이 동사 과거형만!",
+   "mine": "we are talked"
+  },
+  {
+   "id": "n1502",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    15
+   ],
+   "ko": "저는 휴식이 필요해요. 좀 쉬어야 해요.",
+   "en": "I need a break. I need to take a rest.",
+   "hint": "need to take",
+   "gram": "<em>need</em> + 명사 (I need a break) / <em>need to</em> + 동사원형 (I need to take a rest). need to 뒤에 명사 ❌",
+   "mine": null
+  },
+  {
+   "id": "n1503",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    15
+   ],
+   "ko": "저는 파티에서 새로운 사람들과 이야기하려고 노력했어요.",
+   "en": "I tried to talk to new people at the party.",
+   "hint": "tried to talk",
+   "gram": "<em>try to</em> + 동사원형 = ~하려고 노력하다. <em>try</em> + 명사 = ~을 해 보다. try to 뒤에 명사 ❌",
+   "mine": "I tried to new food"
+  },
+  {
+   "id": "n1504",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    15
+   ],
+   "ko": "다음 주에 상사가 제 업무를 평가할 거예요.",
+   "en": "My boss will appraise my work next week.",
+   "hint": "appraise my work",
+   "gram": "❌ appraise to → ✅ <em>appraise</em> + 대상. appraise 바로 뒤에 평가할 대상!",
+   "mine": "appraise to"
+  },
+  {
+   "id": "n1601",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    16
+   ],
+   "ko": "저는 밤에 별 보는 걸 좋아해요.",
+   "en": "I like looking at the stars at night.",
+   "hint": "looking at",
+   "gram": "<em>look at</em> + 대상 = ~을 보다. 별은 <em>the stars</em>.",
+   "mine": null
+  },
+  {
+   "id": "n1602",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    16
+   ],
+   "ko": "시험에 합격했다는 소식을 듣고 정말 기뻤어요.",
+   "en": "I was over the moon when I heard I had passed the exam.",
+   "hint": "over the moon",
+   "gram": "<em>be over the moon</em> = 날아갈 듯이 기쁘다 (very happy보다 생생한 idiom!).",
+   "mine": null
+  },
+  {
+   "id": "n1603",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    16
+   ],
+   "ko": "저는 비 오는 날엔 집에 있는 경향이 있어요.",
+   "en": "I tend to stay at home on rainy days.",
+   "hint": "tend to",
+   "gram": "<em>tend to</em> + 동사원형 = ~하는 경향이 있다. <em>on rainy days</em> (on 주의).",
+   "mine": null
+  },
+  {
+   "id": "n1604",
+   "kind": "ko",
+   "type": "발음·철자",
+   "sessions": [
+    16
+   ],
+   "ko": "건강을 유지하는 건 중요해요.",
+   "en": "It's important to be healthy.",
+   "hint": "healthy",
+   "gram": "<em>healthy</em> 철자 주의 (h-e-a-l-t-h-y). <em>It's important to</em> + 동사원형.",
+   "mine": "be heatlhty"
+  },
+  {
+   "id": "n1605",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    16
+   ],
+   "ko": "(Do you like music?) 물론이죠!",
+   "en": "Absolutely! / Definitely!",
+   "hint": "Absolutely",
+   "gram": "of course만 쓰지 말고 <em>Absolutely!</em> / <em>Definitely!</em> 로 바꿔 말하기.",
+   "mine": null
+  },
+  {
+   "id": "n1606",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    16
+   ],
+   "ko": "저는 가끔 택시를 타요.",
+   "en": "I take a taxi from time to time.",
+   "hint": "from time to time",
+   "gram": "sometimes 대신 <em>from time to time</em> / <em>every now and then</em> = 가끔.",
+   "mine": null
+  },
+  {
+   "id": "n1607",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    16
+   ],
+   "ko": "저는 대체로 엘리베이터 대신 계단을 이용해요.",
+   "en": "More often than not, I take the stairs instead of the lift.",
+   "hint": "More often than not",
+   "gram": "usually 대신 <em>more often than not</em> = 대체로. <em>instead of</em> ~ = ~ 대신에.",
+   "mine": null
+  },
+  {
+   "id": "n1608",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    16
+   ],
+   "ko": "저는 매일 영어를 공부해요.",
+   "en": "I study English on a daily basis.",
+   "hint": "on a daily basis",
+   "gram": "every day 대신 <em>on a daily basis</em> = 매일.",
+   "mine": null
   }
  ],
  "part1": [
@@ -3691,6 +4047,126 @@
    "ko": "쉽게 말하면 / 엄밀히 말하면 / 진짜로 / 사실은",
    "ex": "Technically, I'm off today, but I still have to answer calls.",
    "s": 13
+  },
+  {
+   "w": "itchy",
+   "ko": "가려운",
+   "ex": "I'm actually wearing quite an itchy jumper at the moment.",
+   "s": 14
+  },
+  {
+   "w": "funny you should ask",
+   "ko": "마침 그걸 물어보시네요",
+   "ex": "Well, funny you should ask.",
+   "s": 14
+  },
+  {
+   "w": "no longer",
+   "ko": "더 이상 ~않다",
+   "ex": "It can no longer damage the skin.",
+   "s": 14
+  },
+  {
+   "w": "unpack",
+   "ko": "풀어서 설명하다",
+   "ex": "There's a lot to unpack in this topic.",
+   "s": 14
+  },
+  {
+   "w": "spontaneously",
+   "ko": "갑자기, 즉흥적으로",
+   "ex": "My child spontaneously started singing.",
+   "s": 14
+  },
+  {
+   "w": "catch",
+   "ko": "(하품·감기 등이) 옮다",
+   "ex": "You can catch a yawn from someone else.",
+   "s": 14
+  },
+  {
+   "w": "as long as",
+   "ko": "~하는 한",
+   "ex": "You can try anything as long as you enjoy it.",
+   "s": 14
+  },
+  {
+   "w": "spot on",
+   "ko": "딱 맞는, 정확한",
+   "ex": "Your answer was spot on.",
+   "s": 14
+  },
+  {
+   "w": "indeed",
+   "ko": "정말로, 실제로",
+   "ex": "It was indeed a great experience.",
+   "s": 14
+  },
+  {
+   "w": "loads and loads / heaps",
+   "ko": "엄청 많은",
+   "ex": "I have heaps of homework this week.",
+   "s": 14
+  },
+  {
+   "w": "sort of",
+   "ko": "약간, 좀",
+   "ex": "I was sort of nervous at first.",
+   "s": 14
+  },
+  {
+   "w": "get my hair cut",
+   "ko": "머리를 자르다 (미용실에서)",
+   "ex": "I get my hair cut once a month.",
+   "s": 14
+  },
+  {
+   "w": "socially anxious",
+   "ko": "사람들 앞에서 불안한",
+   "ex": "I get a bit socially anxious in big crowds.",
+   "s": 15
+  },
+  {
+   "w": "perfectionism",
+   "ko": "완벽주의",
+   "ex": "My perfectionism makes it hard to start things.",
+   "s": 15
+  },
+  {
+   "w": "come easier",
+   "ko": "더 쉬워지다",
+   "ex": "Speaking came easier the more I practised.",
+   "s": 15
+  },
+  {
+   "w": "appraise",
+   "ko": "평가하다",
+   "ex": "I worry about how people will appraise me.",
+   "s": 15
+  },
+  {
+   "w": "on purpose",
+   "ko": "일부러",
+   "ex": "I watch films without subtitles on purpose.",
+   "s": 15
+  },
+  {
+   "w": "over the moon",
+   "ko": "너무 기쁜, 날아갈 듯한",
+   "ex": "I was over the moon when I heard the good news.",
+   "s": 16
+  },
+  {
+   "w": "tend to",
+   "ko": "~하는 경향이 있다",
+   "ex": "I tend to stay at home on rainy days.",
+   "s": 16
+  },
+  {
+   "w": "Absolutely / Definitely",
+   "ko": "물론이죠 (of course 대신)",
+   "ex": "\"Do you like music?\" \"Absolutely!\"",
+   "s": 16
   }
  ],
  "group": "ielts",
@@ -3820,6 +4296,7 @@
    "gram": "<em>What's ~ like?</em> · 북마크한 문장의 패턴으로 만든 새 문장이에요."
   }
  ],
- "podTodayUrl": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-261029",
- "inbox": "85195033-f0bd-4331-9cc7-62ca8711c519"
+ "podTodayUrl": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-260917",
+ "inbox": "85195033-f0bd-4331-9cc7-62ca8711c519",
+ "ai": true
 }
