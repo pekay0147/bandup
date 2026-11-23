@@ -1376,3 +1376,7 @@ button.grctr{cursor:pointer}
 .grcmp span{font-size:15px;font-weight:600;line-height:1.4;padding:9px 10px;border-top:1px solid var(--line);min-width:0;overflow-wrap:anywhere}
 .grcmp > :nth-child(even){border-left:1px solid var(--line)}
 .grcmp s{color:var(--bad);font-weight:500}
+.grpg{display:grid;gap:12px;min-width:0;padding-top:20px;margin-top:8px;border-top:1px solid var(--line)}
+.grpg h3{margin:0;font-size:18px;font-weight:700;letter-spacing:-.02em;color:var(--c)}
+.grpg .grtxt{font-size:16px}
+.grin{gap:10px}
