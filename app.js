@@ -217,8 +217,6 @@ function grExs(n,nav){ const bx=el("div","box grexs"); n.ex.forEach(([mk,ko])=>b
 function grCardBox(mine){ const bx=el("div","box grwrongs"); mine.forEach(c=>{ const r=el("div","grwrong"); if(c.mine) r.append(el("p","x","✕ "+c.mine)); r.append(el("p",c.mine?"o":"en",(c.mine?"✓ ":"")+c.en)); if(c.ko) r.append(el("p","why",c.ko)); bx.append(r); }); return bx; }
 function grItems(n,nav){ const out=[]; const txt=h=>{ const p=el("p","grtxt"); p.innerHTML=h; return p; };
   (n.body||[]).forEach((t,i)=>out.push({k:"p"+i, t:(n.pt||[])[i]||`포인트 ${i+1}`, make:()=>txt(t)}));
-  if(n.ex) out.push({k:"ex", t:"예문", make:()=>grExs(n,nav)});
-  const mine=grCards(n); if(mine.length) out.push({k:"my", t:mine.some(c=>c.mine)? "내가 틀렸던 문장" : "내 카드에서 만난 문장", make:()=>grCardBox(mine)});
   return out; }
 const grSeen=()=>store.get(`bandup-grseen-${slug}`,[]);
 let grMark=null; // 지도가 떠 있을 때: 열린 가지를 지도에 표시하는 함수
