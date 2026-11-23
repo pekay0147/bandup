@@ -241,22 +241,30 @@ function grSheet(id){
     box.append(top,body); };
   ov.onclick=e=>{ if(e.target===ov) close(); }; document.addEventListener("keydown",key); document.body.append(ov); draw(id); box.scrollTop=0;
 }
+let grOpenG=null; // 지도에서 열려 있는 묶음: "성분/번호"
 function renderGrammar(app){
   if(!GR){ app.append(el("div","loading","문법 지도를 불러오는 중…")); grLoad().then(j=>{ if(j) render(); else { app.textContent=""; app.append(el("p","muted","문법 지도를 불러오지 못했어요. 인터넷 연결을 확인해 주세요.")); } }); return; }
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
-  pageHead(app,"문법 지도","문장은 다섯 가지 성분으로 이루어져요. 궁금한 곳을 눌러 보세요.");
-  const map=el("div","grone"), L=el("div","grcol"), R=el("div","grcol"); map.append(L,R); app.append(map);
-  const seen=new Set(grSeen());
-  GR.nodes[GR.root].kids.forEach(c=>{ const n=GR.nodes[c], card=el("section","grcard"); card.dataset.r=GR_COMP[c]; card.dataset.n=c;
-    const hd=el("div","grchd"); hd.append(el("b",null,n.t), el("span",null,n.s||"")); card.append(hd);
-    (n.groups||[]).forEach(g=>{ const gr=el("div","grg"); gr.append(el("span","grgl",g[2]||g[0])); const w=el("div","grks");
-      g[1].forEach(k=>{ const kn=GR.nodes[k], b=el("button","grk"+(seen.has(k)?" seen":""),kn.k||kn.t); b.type="button"; b.dataset.n=k; b.onclick=()=>grSheet(k); w.append(b); });
-      gr.append(w); card.append(gr); });
-    (c==="verb"? R : L).append(card); });
-  grMark=(id,flash)=>{ if(!document.body.contains(map)){ grMark=null; return; } map.querySelectorAll(".grk.cur").forEach(x=>x.classList.remove("cur"));
-    if(!id) return; const t=map.querySelector(`[data-n="${id}"]`); if(!t) return;
-    if(t.classList.contains("grk")) t.classList.add("cur","seen");
-    if(flash){ t.scrollIntoView({block:"center",behavior:"smooth"}); t.classList.remove("flash"); void t.offsetWidth; t.classList.add("flash"); } };
+  pageHead(app,"문법 지도","문장은 다섯 가지 성분으로 이루어져요.");
+  const map=el("div","grone"); app.append(map); let curLeaf=null, fresh=null;
+  const draw=()=>{ map.textContent=""; const seen=new Set(grSeen());
+    GR.nodes[GR.root].kids.forEach(c=>{ const n=GR.nodes[c], card=el("section","grcard"); card.dataset.r=GR_COMP[c]; card.dataset.n=c;
+      const hd=el("div","grchd"); hd.append(el("b",null,n.t), el("span",null,n.s||"")); card.append(hd);
+      const list=el("div","grgs");
+      (n.groups||[]).forEach((g,i)=>{ const key=c+"/"+i, on=grOpenG===key, row=el("button","grgrow"+(on?" on":"")); row.type="button"; row.setAttribute("aria-expanded",String(on));
+        const done=g[1].filter(k=>seen.has(k)).length;
+        row.append(el("b",null,g[2]||g[0]), el("span","grcnt", done? `${done}/${g[1].length}` : String(g[1].length)), el("span","grchev","›"));
+        row.onclick=()=>{ grOpenG= on? null : key; fresh= on? null : key; draw(); }; list.append(row);
+        if(!on) return;
+        const kids=el("div","grkids"+(fresh===key?" in":"")); g[1].forEach(k=>{ const kn=GR.nodes[k], b=el("button","grk"+(seen.has(k)?" seen":"")+(curLeaf===k?" cur":"")); b.type="button"; b.dataset.n=k;
+          b.append(el("span",null,kn.n||kn.t), el("span","grchev","›")); b.onclick=()=>grSheet(k); kids.append(b); }); list.append(kids); });
+      card.append(list); map.append(card); });
+    fresh=null; };
+  draw();
+  grMark=(id,flash)=>{ if(!document.body.contains(map)){ grMark=null; return; }
+    if(!id){ curLeaf=null; draw(); return; }
+    const h=grHome(id); if(h){ curLeaf=id; grOpenG=h.c+"/"+GR.nodes[h.c].groups.indexOf(h.g); draw(); return; }
+    draw(); const t=map.querySelector(`[data-n="${id}"]`); if(t && flash){ t.scrollIntoView({block:"center",behavior:"smooth"}); t.classList.add("flash"); } };
 }
 function grChips(c){ const ns=grFor(c).filter(n=>grHome(n.id)); if(!ns.length) return null; const w=el("div","grlinks"); w.append(el("span",null,"문법 지도"));
   ns.forEach(n=>{ const b=el("button","grchip",(n.k||n.t)+" ›"); b.type="button"; b.onclick=e=>{ e.stopPropagation(); grSheet(n.id); }; w.append(b); }); return w; }
