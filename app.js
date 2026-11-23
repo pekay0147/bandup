@@ -222,35 +222,40 @@ function grItems(n,nav){ const out=[]; const txt=h=>{ const p=el("p","grtxt"); p
   return out; }
 const grSeen=()=>store.get(`bandup-grseen-${slug}`,[]);
 let grMark=null; // 지도가 떠 있을 때: 열린 가지를 지도에 표시하는 함수
-function grSheet(id){
-  const st=[], ov=el("div","grov"), box=el("div","grsheet"); ov.append(box); let open=null;
-  const close=()=>{ ov.remove(); document.removeEventListener("keydown",key); if(grMark) grMark(null); }, key=e=>{ if(e.key==="Escape") close(); };
-  const go2=to=>{ const tn=GR.nodes[to]; if(!tn) return; if(!grHome(to)){ close(); if(grMark) grMark(to,true); return; } st.push(cur); open=null; draw(to); };
-  let cur=id;
-  const draw=c=>{ cur=c; const n=GR.nodes[c], h=grHome(c); box.textContent=""; box.dataset.r= h? GR_COMP[h.c] : "S";
+/* 가지 내용: 누른 동그라미 자리에서 화면 가득 확대돼서 열려요 */
+function grSheet(id, from){
+  const st=[], ov=el("div","grov"), box=el("div","grsheet"); ov.append(box); let open=null, cur=id;
+  const calm=window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const origin=()=>{ const t= from && document.body.contains(from)? from : (cur && document.querySelector(`.grone [data-n="${cur}"]`)); if(!t) return "50% 40%"; const r=t.getBoundingClientRect(); return `${r.left+r.width/2}px ${r.top+r.height/2}px`; };
+  const close=()=>{ document.removeEventListener("keydown",key); document.body.classList.remove("grlock"); if(grMark) grMark(null);
+    if(calm){ ov.remove(); return; } from=null; ov.style.transformOrigin=origin(); ov.classList.remove("in"); ov.classList.add("out"); setTimeout(()=>ov.remove(),200); };
+  const key=e=>{ if(e.key==="Escape") close(); };
+  const go2=to=>{ const tn=GR.nodes[to]; if(!tn) return; if(!grHome(to)){ close(); if(grMark) grMark(to); return; } st.push(cur); open=null; draw(to); ov.scrollTop=0; };
+  const draw=c=>{ cur=c; const n=GR.nodes[c], h=grHome(c); box.textContent=""; ov.dataset.r= h? GR_COMP[h.c] : "S";
     const seen=grSeen(); if(!seen.includes(c)){ seen.push(c); store.set(`bandup-grseen-${slug}`,seen); } if(grMark) grMark(c);
     const top=el("div","grtop"); const bk=el("button","back","‹ 뒤로"); bk.type="button"; bk.hidden=!st.length; bk.onclick=()=>{ open=null; draw(st.pop()); };
     const x=el("button","lx","✕"); x.type="button"; x.setAttribute("aria-label","닫기"); x.onclick=close; top.append(bk,x);
     const body=el("div","grin"); if(h) body.append(el("p","grwhere",`${GR.nodes[h.c].t} › ${h.g[0]}`));
     body.append(el("h2","grh",n.t), el("p","grldef",n.d));
     const list=el("div","grlist"); grItems(n,go2).forEach(it=>{ const on=open===it.k, ib=el("button","gritem"+(on?" on":"")); ib.type="button"; ib.setAttribute("aria-expanded",String(on));
-      ib.append(el("span",null,it.t), el("span","grchev","›")); ib.onclick=()=>{ open= on? null : it.k; const y=box.scrollTop; draw(c); box.scrollTop=y; }; list.append(ib);
+      ib.append(el("span",null,it.t), el("span","grchev","›")); ib.onclick=()=>{ open= on? null : it.k; const y=ov.scrollTop; draw(c); ov.scrollTop=y; }; list.append(ib);
       if(on){ const o=el("div","gropen"); o.append(it.make()); list.append(o); } });
     body.append(list);
     if(n.more && n.more.length){ const w=el("div","grmore"); n.more.forEach(m=>{ const b=el("button","grchip","→ "+(GR.nodes[m].k||GR.nodes[m].t)); b.type="button"; b.onclick=()=>go2(m); w.append(b); }); body.append(el("b","grsub","여기서 이어져요"), w); }
     box.append(top,body); };
-  ov.onclick=e=>{ if(e.target===ov) close(); }; document.addEventListener("keydown",key); document.body.append(ov); draw(id); box.scrollTop=0;
+  ov.style.transformOrigin=origin(); document.addEventListener("keydown",key); document.body.classList.add("grlock"); document.body.append(ov); draw(id); if(!calm) ov.classList.add("in");
 }
 let grAt={c:null,g:null}; // 마인드맵에서 지금 보고 있는 곳: 성분, 묶음 번호
 /* 마인드맵: 가운데 동그라미와 그 둘레의 동그라미들. 둘레 것을 누르면 그것이 가운데로 오고 다음 단계가 둘러싸요. */
 function grRing(center, sats, tone){
-  const st=el("div","grmm"); if(tone) st.dataset.r=tone; const N=sats.length, R=37; // 반지름: 무대 너비의 %
+  const st=el("div","grmm"); if(tone) st.dataset.r=tone; const N=sats.length, R= N>=10? 40 : N>=7? 38.5 : 37; // 반지름: 무대 너비의 %
+  st.classList.add(N>=10? "n3" : N>=7? "n2" : "n1");
   const svg=document.createElementNS("http://www.w3.org/2000/svg","svg"); svg.setAttribute("viewBox","0 0 100 100"); svg.setAttribute("aria-hidden","true"); st.append(svg);
   sats.forEach((s,i)=>{ const a=(-90+360/N*i)*Math.PI/180, x=50+R*Math.cos(a), y=50+R*Math.sin(a);
-    const ln=document.createElementNS("http://www.w3.org/2000/svg","line"); ln.setAttribute("x1","50"); ln.setAttribute("y1","50"); ln.setAttribute("x2",x.toFixed(2)); ln.setAttribute("y2",y.toFixed(2)); svg.append(ln);
-    const b=el("button","grsat"+(s.on?" on":"")); b.type="button"; b.style.left=x+"%"; b.style.top=y+"%"; b.style.animationDelay=(i*35)+"ms"; if(s.tone) b.dataset.r=s.tone;
-    b.append(el("b",null,s.t)); if(s.sub) b.append(el("small",null,s.sub)); b.onclick=s.go; st.append(b); });
-  const c=el(center.go? "button":"div","grctr"); if(center.go){ c.type="button"; c.onclick=center.go; c.setAttribute("aria-label",center.t+" · 처음 지도로 돌아가기"); }
+    const ln=document.createElementNS("http://www.w3.org/2000/svg","line"); ln.setAttribute("x1","50"); ln.setAttribute("y1","50"); ln.setAttribute("x2",x.toFixed(2)); ln.setAttribute("y2",y.toFixed(2)); if(s.grp) ln.setAttribute("stroke-dasharray","1.2 1.2"); svg.append(ln);
+    const b=el("button","grsat"+(s.on?" on":"")+(s.grp?" grp":"")+(s.seen?" seen":"")); b.type="button"; b.style.left=x+"%"; b.style.top=y+"%"; b.style.animationDelay=(i*30)+"ms"; if(s.tone) b.dataset.r=s.tone; if(s.id) b.dataset.n=s.id;
+    b.append(el("b",null,s.t)); if(s.sub) b.append(el("small",null,s.sub)); b.onclick=()=>s.go(b); st.append(b); });
+  const c=el(center.go? "button":"div","grctr"); if(center.go){ c.type="button"; c.onclick=center.go; c.setAttribute("aria-label",center.t+" · 한 단계 위로"); }
   if(center.up) c.append(el("small",null,center.up)); c.append(el("b",null,center.t)); st.append(c);
   return st;
 }
@@ -260,27 +265,26 @@ function renderGrammar(app){
   const head=el("div","phead"); app.append(head);
   const map=el("div","grone"); app.append(map); let curLeaf=null;
   const comps=GR.nodes[GR.root].kids;
-  const draw=scroll=>{ map.textContent=""; head.textContent=""; const seen=new Set(grSeen()); const c=grAt.c, n=c && GR.nodes[c];
-    back.textContent= c? "‹ 문장 뼈대" : "‹ 홈"; back.onclick= c? (()=>{ grAt={c:null,g:null}; draw(); }) : (()=>go("home"));
-    head.append(el("h1",null,"문법 지도"), el("p","lead", c? `${n.t} · ${n.s}` : "문장은 다섯 가지 성분으로 이루어져요."));
+  const draw=()=>{ map.textContent=""; head.textContent=""; const seen=new Set(grSeen()); const c=grAt.c, n=c && GR.nodes[c], g= n && grAt.g!=null? n.groups[grAt.g] : null;
+    const up= g? (()=>{ grAt={c,g:null}; draw(); }) : c? (()=>{ grAt={c:null,g:null}; draw(); }) : null;
+    back.textContent= g? "‹ "+n.t : c? "‹ 문장 뼈대" : "‹ 홈"; back.onclick= up || (()=>go("home"));
+    head.append(el("h1",null,"문법 지도"), el("p","lead", g? `${n.t} › ${g[0]}` : c? `${n.t} · ${n.s}` : "문장은 다섯 가지 성분으로 이루어져요."));
+    const leaf=k=>({id:k, t:GR.nodes[k].k||GR.nodes[k].t, seen:seen.has(k), on:curLeaf===k, go:b=>grSheet(k,b)});
     if(!c){ map.append(grRing({t:"문장 뼈대"}, comps.map(k=>({t:GR.nodes[k].t, tone:GR_COMP[k], go:()=>{ grAt={c:k,g:null}; draw(); }})))); return; }
-    map.append(grRing({t:n.t, up:"‹ 뼈대", go:()=>{ grAt={c:null,g:null}; draw(); }}, n.groups.map((g,i)=>{ const done=g[1].filter(k=>seen.has(k)).length;
-      return {t:g[2]||g[0], sub: done? `${done}/${g[1].length}` : String(g[1].length), on:grAt.g===i, go:()=>{ grAt={c,g: grAt.g===i? null : i}; draw(true); }}; }), GR_COMP[c]));
-    if(grAt.g==null){ map.append(el("p","grhint","둘레의 동그라미를 눌러 보세요.")); return; }
-    const g=n.groups[grAt.g], sec=el("section","grlv"); sec.dataset.r=GR_COMP[c];
-    sec.append(el("b","grlvh",`${n.t} › ${g[0]}`)); const list=el("div","grkids");
-    g[1].forEach(k=>{ const kn=GR.nodes[k], b=el("button","grk"+(seen.has(k)?" seen":"")+(curLeaf===k?" cur":"")); b.type="button"; b.dataset.n=k;
-      b.append(el("span",null,kn.n||kn.t), el("span","grchev","›")); b.onclick=()=>grSheet(k); list.append(b); });
-    sec.append(list); map.append(sec);
-    if(scroll) requestAnimationFrame(()=>sec.scrollIntoView({block:"nearest",behavior:(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)? "auto":"smooth"})); };
+    if(g){ map.append(grRing({t:g[2]||g[0], up:"‹ "+n.t, go:up}, g[1].map(leaf), GR_COMP[c])); return; }
+    // 성분: 첫 묶음(품사·종류)은 하나씩, 나머지 주제는 묶음 동그라미(점선)로. 가지가 하나뿐인 묶음은 그 가지를 바로 보여 줘요.
+    const sats=[]; n.groups.forEach((gr,i)=>{ if(i===0 || gr[1].length===1) gr[1].forEach(k=>sats.push(leaf(k)));
+      else { const done=gr[1].filter(k=>seen.has(k)).length; sats.push({t:gr[2]||gr[0], grp:true, sub: done? `${done}/${gr[1].length}` : String(gr[1].length), go:()=>{ grAt={c,g:i}; draw(); }}); } });
+    map.append(grRing({t:n.t, up:"‹ 뼈대", go:up}, sats, GR_COMP[c]), el("p","grhint","점선 동그라미 안에는 더 많은 가지가 들어 있어요."));
+  };
   draw();
   grMark=(id)=>{ if(!document.body.contains(map)){ grMark=null; return; }
     if(!id){ curLeaf=null; draw(); return; }
-    const h=grHome(id); if(h){ curLeaf=id; grAt={c:h.c,g:GR.nodes[h.c].groups.indexOf(h.g)}; draw(); return; }
+    const h=grHome(id); if(h){ curLeaf=id; const gi=GR.nodes[h.c].groups.indexOf(h.g); grAt={c:h.c, g:(gi===0 || h.g[1].length===1)? null : gi}; draw(); return; }
     if(comps.includes(id)){ grAt={c:id,g:null}; draw(); window.scrollTo(0,0); } };
 }
 function grChips(c){ const ns=grFor(c).filter(n=>grHome(n.id)); if(!ns.length) return null; const w=el("div","grlinks"); w.append(el("span",null,"문법 지도"));
-  ns.forEach(n=>{ const b=el("button","grchip",(n.k||n.t)+" ›"); b.type="button"; b.onclick=e=>{ e.stopPropagation(); grSheet(n.id); }; w.append(b); }); return w; }
+  ns.forEach(n=>{ const b=el("button","grchip",(n.k||n.t)+" ›"); b.type="button"; b.onclick=e=>{ e.stopPropagation(); grSheet(n.id,b); }; w.append(b); }); return w; }
 
 /* ---------- daily podcast reminder ---------- */
 const POD_URL="https://podcasts.apple.com/nz/podcast/6-minute-english/id262026947";

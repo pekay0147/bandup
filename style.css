@@ -1268,12 +1268,16 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .grmore,.grlinks{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .grlinks > span{font-size:12px;font-weight:700;color:var(--muted)}
 .grchip{border:1px solid var(--line);background:var(--surface);color:var(--blue);font:inherit;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;cursor:pointer}
-.grov{position:fixed;inset:0;z-index:60;background:rgba(15,12,40,.45);display:grid;align-items:end;justify-items:center}
-.grsheet{width:min(100%,560px);max-height:88dvh;overflow:auto;overscroll-behavior:contain;background:var(--bg);border-radius:18px 18px 0 0;padding:0 16px calc(24px + env(safe-area-inset-bottom,0px))}
-.grtop{position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;align-items:center;background:var(--bg);padding-top:6px;min-height:50px}
+.grov{position:fixed;inset:0;z-index:60;background:var(--bg);overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.grov.in{animation:grzoom .34s cubic-bezier(.2,.8,.2,1) both}
+.grov.out{animation:grzoomout .2s ease both}
+@keyframes grzoom{from{transform:scale(.06);opacity:0;border-radius:50%}60%{opacity:1}}
+@keyframes grzoomout{to{transform:scale(.06);opacity:0;border-radius:50%}}
+body.grlock{overflow:hidden}
+.grsheet{width:min(100%,560px);margin:0 auto;padding:calc(6px + env(safe-area-inset-top,0px)) 16px calc(32px + env(safe-area-inset-bottom,0px))}
+.grtop{position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;align-items:center;background:var(--bg);min-height:50px}
 .grtop .lx{margin-left:auto;margin-right:-10px}
 .grin{display:grid;gap:14px;min-width:0}
-@media (min-width:600px){.grov{align-items:center}.grsheet{border-radius:18px;max-height:84dvh}}
 /* GRAMMAR MAP 화면: 한 장 지도. 왼쪽 줄 = 주어·목적어·보어·수식어, 오른쪽 줄 = 동사. 성분마다 색 하나. */
 .grone{display:grid;gap:14px;min-width:0}
 .grmm:not([data-r]){--c:var(--ink)}
@@ -1288,6 +1292,10 @@ button.grctr{cursor:pointer}
 .grsat{width:24%;aspect-ratio:1;border:1.5px solid color-mix(in srgb,var(--c) 45%,var(--line));background:var(--surface);color:var(--ink);cursor:pointer;gap:2px;animation:grpop .26s ease both;transition:background .15s,color .15s}
 .grsat b{font-size:14px;font-weight:700;letter-spacing:-.02em;line-height:1.2;word-break:keep-all}
 .grsat small{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.grmm.n2 .grsat{width:21.5%} .grmm.n2 .grsat b{font-size:13px} .grmm.n2 .grctr{width:28%}
+.grmm.n3 .grsat{width:18.5%;padding:3px} .grmm.n3 .grsat b{font-size:12px} .grmm.n3 .grctr{width:27%}
+.grsat.grp{border-style:dashed;background:color-mix(in srgb,var(--c) 6%,var(--surface))}
+.grsat.seen{background:color-mix(in srgb,var(--c) 13%,var(--surface))}
 .grmm:not([data-r]) .grsat b{font-size:16px;color:var(--c)}
 .grsat.on{background:var(--c);border-color:var(--c);color:var(--surface)} .grsat.on small{color:inherit;opacity:.85}
 @keyframes grpop{from{opacity:0;transform:translate(-50%,-50%) scale(.6)}}
@@ -1323,4 +1331,4 @@ button.grctr{cursor:pointer}
 .grsheet .grc.on{background:color-mix(in srgb,var(--c) 12%,transparent)!important;border-radius:4px 4px 0 0}
 .grsheet .grtag{background:none;padding:0;font-size:13px}
 @keyframes grin{from{opacity:0;transform:translateY(-4px)}}
-@media (prefers-reduced-motion:reduce){.gropen,.grkids,.grsat{animation:none}.grchev{transition:none}}
+@media (prefers-reduced-motion:reduce){.gropen,.grsat,.grov.in,.grov.out{animation:none}.grchev{transition:none}}
