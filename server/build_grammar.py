@@ -543,6 +543,50 @@ node("f5", "5형식", "주어 + 동사 + 목적어 + 목적격 보어",
      "원인과 결과를 말할 때 써요. It makes me ~, It keeps me ~, It helps me ~.",
      more=["comp-obj"])
 
+# ───────────── 지도에서 쓰는 짧은 이름 + 설명 한 줄마다 붙는 제목 (누르면 그 줄이 펼쳐져요)
+SHORT = {"subj-noun": "명사", "subj-pron": "대명사", "subj-ger": "동명사", "subj-to": "to부정사 · 가주어 it", "subj-clause": "명사절",
+         "obj-noun": "명사 · 대명사", "obj-ger": "동명사", "obj-to": "to부정사", "obj-clause": "명사절", "obj-both": "to와 -ing로 뜻이 바뀌는 동사",
+         "comp-adj": "형용사와 부사 헷갈리기", "mod-adj": "형용사", "mod-adv": "부사", "mod-prep": "전치사구", "mod-order": "순서"}
+PT = {
+ "subj-noun": ["핵심 명사 찾기", "동사는 핵심 명사에 맞춰요", "단수 명사에는 a / the"],
+ "subj-pron": ["주격과 목적격", "뜻 없는 it", "일반적인 사람: you · people"],
+ "subj-ger": ["항상 단수 취급", "to부정사보다 자연스러워요", "부정은 not -ing"],
+ "subj-to": ["가주어 it으로 바꾸기", "It is + 형용사 + to", "for + 사람"],
+ "subj-clause": ["What + 주어 + 동사", "Whether · That", "절 주어도 단수"],
+ "subj-there": ["be동사는 뒤 명사에 맞춰요", "have ✕", "과거 · 현재완료"],
+ "subj-agree": ["be동사", "일반동사 -s", "단수로 보는 것", "복수로 보는 것"],
+ "verb-be": ["be동사의 부정 · 의문", "일반동사의 부정 · 의문", "be + 동사원형 ✕"],
+ "verb-intr": ["대표 자동사", "명사를 붙일 땐 전치사", "수동태 ✕"],
+ "verb-tr": ["대표 타동사", "전치사를 넣기 쉬운 동사", "목적어 빼먹지 않기"],
+ "verb-link": ["상태", "변화", "감각 + 형용사", "명사 앞에는 like"],
+ "verb-modal": ["뒤는 동사원형", "-s가 안 붙어요", "두 개 겹치기 ✕", "부정 · 의문"],
+ "verb-phrasal": ["명사 목적어의 자리", "대명사는 가운데", "못 떼는 구동사"],
+ "obj-noun": ["목적격", "전치사 뒤에도 목적격", "-self"],
+ "obj-ger": ["-ing만 받는 동사", "전치사 뒤 -ing", "어떤 느낌?"],
+ "obj-to": ["to만 받는 동사", "어떤 느낌?", "부정은 not to", "의문사 + to"],
+ "obj-both": ["remember · forget", "stop", "try", "뜻이 같은 동사"],
+ "obj-clause": ["that절", "if · whether절", "의문사절 (간접의문문)", "what절"],
+ "obj-two": ["사람 + 물건", "물건 + to / for + 사람", "to를 쓰는 동사 · for를 쓰는 동사", "물건이 it이면", "explain · say는 안 돼요"],
+ "comp-subj": ["명사 보어", "형용사 보어", "to부정사 · 동명사 · 절", "-ed 와 -ing"],
+ "comp-obj": ["형용사 · 명사", "to부정사", "동사원형 (make · let · have)", "지각동사 (see · hear)", "find it + 형용사 + to"],
+ "comp-adj": ["형용사가 하는 일", "부사가 하는 일", "구별하는 법", "모양이 헷갈리는 말"],
+ "mod-adj": ["명사 앞", "-thing은 뒤에서", "길면 뒤로", "여러 개일 때 순서"],
+ "mod-adv": ["방식 (well, carefully)", "빈도 · also의 자리", "정도 (very, really)", "문장 전체", "enough는 뒤"],
+ "mod-prep": ["전치사 뒤에 오는 것", "시간 at · on · in", "장소 at · on · in", "전치사를 안 쓰는 때", "명사도 꾸며요"],
+ "mod-order": ["장소 → 방법 → 시간", "작은 단위 먼저", "동사와 목적어는 붙여요", "맨 앞으로 빼기"],
+ "f1": ["수식어가 따라와요", "대표 동사", "There is도 1형식"],
+ "f2": ["쓰는 동사", "보어는 명사 · 형용사"],
+ "f3": ["타동사 + 목적어", "사이를 끊지 않아요"],
+ "f4": ["사람 → 물건", "3형식으로 바꾸기", "대표 동사"],
+ "f5": ["4형식과 구별", "목적격 보어가 되는 것", "대표 동사"],
+}
+for i, ts in PT.items():
+    assert len(ts) == len(N[i]["body"]), (i, len(ts), len(N[i]["body"]))
+    N[i]["pt"] = ts
+for i, v in SHORT.items(): N[i]["n"] = v
+leafs = {x for n in N.values() for g in n.get("groups", []) for x in g[1]}
+assert leafs <= set(PT), leafs - set(PT)
+
 # ───────────── 검사 + 저장
 ids = set(N)
 for i, n in N.items():

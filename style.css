@@ -1301,3 +1301,17 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .grpan.in,.grleaf.in{animation:grin .28s ease both}
 @keyframes grin{from{opacity:0;transform:translateY(-8px)}}
 @media (prefers-reduced-motion:reduce){.grpan.in,.grleaf.in{animation:none}.grcomp,.grchev{transition:none}}
+/* GRAMMAR MAP v3: 제목만 나열, 누른 것만 펼침 */
+.grnode{justify-content:space-between}
+.grnode b{font-size:16px;font-weight:700}
+.grleaf{gap:6px}
+.gritem{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 12px;font:inherit;font-size:15px;font-weight:600;color:var(--ink);cursor:pointer;scroll-margin-top:12px}
+.gritem.on{border-color:color-mix(in srgb,var(--c) 60%,var(--line));color:var(--c)}
+.gritem.on .grchev{transform:rotate(90deg);color:var(--c)}
+.gritem .grchev{font-size:18px}
+.gritem.grto{border-style:dashed;color:var(--blue);background:none}
+.gropen{margin:0 0 6px 10px;padding-left:12px;border-left:2px solid color-mix(in srgb,var(--c) 30%,transparent);min-width:0}
+.grtxt{margin:4px 0;font-size:15px;line-height:1.7}
+.grtxt em{font-style:normal;font-weight:700;color:var(--c)}
+.gropen.in{animation:grin .24s ease both}
+@media (prefers-reduced-motion:reduce){.gropen.in{animation:none}}

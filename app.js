@@ -236,15 +236,15 @@ function grPathTo(id){ const comps=GR.nodes[GR.root].kids; if(comps.includes(id)
 function grExs(n,nav){ const bx=el("div","box grexs"); n.ex.forEach(([mk,ko])=>bx.append(grSentence(mk,ko,nav))); return bx; }
 function grWrongs(n){ const bx=el("div","box grwrongs"); n.wrong.forEach(([x,o,why])=>{ const r=el("div","grwrong"); r.append(el("p","x","✕ "+x), el("p","o","✓ "+o)); if(why) r.append(el("p","why",why)); bx.append(r); }); return bx; }
 function grBullets(n){ const ul=el("ul","grbody"); n.body.forEach(t=>{ const li=el("li"); li.innerHTML=t; ul.append(li); }); return ul; }
-function grLeaf(n,nav){ const lf=el("div","grleaf");
-  lf.append(el("p","grldef",n.d)); if(n.body) lf.append(grBullets(n));
-  if(n.ex){ lf.append(el("b","grsub","예문 · 덩어리를 눌러 보세요"), grExs(n,nav)); }
-  if(n.wrong){ lf.append(el("b","grsub","자주 틀려요"), grWrongs(n)); }
-  if(n.tip){ const t=el("div","gram grtip"); t.append(el("b",null,"스피킹 팁"), el("p",null,n.tip)); lf.append(t); }
-  const mine=grCards(n); if(mine.length){ lf.append(el("b","grsub",mine.some(c=>c.mine)? "내가 틀렸던 문장" : "내 카드에서 만난 문장")); const bx=el("div","box grwrongs");
-    mine.forEach(c=>{ const r=el("div","grwrong"); if(c.mine) r.append(el("p","x","✕ "+c.mine)); r.append(el("p",c.mine?"o":"en",(c.mine?"✓ ":"")+c.en)); if(c.ko) r.append(el("p","why",c.ko)); bx.append(r); }); lf.append(bx); }
-  if(n.more){ lf.append(el("b","grsub","여기서 이어져요")); const w=el("div","grmore"); n.more.forEach(k=>{ const b=el("button","grchip","→ "+GR.nodes[k].t); b.type="button"; b.onclick=()=>nav(k); w.append(b); }); lf.append(w); }
-  return lf; }
+function grCardBox(mine){ const bx=el("div","box grwrongs"); mine.forEach(c=>{ const r=el("div","grwrong"); if(c.mine) r.append(el("p","x","✕ "+c.mine)); r.append(el("p",c.mine?"o":"en",(c.mine?"✓ ":"")+c.en)); if(c.ko) r.append(el("p","why",c.ko)); bx.append(r); }); return bx; }
+/* 가지 하나에 달린 항목들: 제목만 나열하고, 누른 것만 펼쳐요 */
+function grItems(n,nav){ const out=[]; const txt=(h,html)=>{ const p=el("p","grtxt"); if(html) p.innerHTML=h; else p.textContent=h; return p; };
+  (n.body||[]).forEach((t,i)=>out.push({k:"p"+i, t:(n.pt||[])[i]||`포인트 ${i+1}`, make:()=>txt(t,true)}));
+  if(n.ex) out.push({k:"ex", t:"예문", make:()=>grExs(n,nav)});
+  if(n.wrong) out.push({k:"wr", t:"자주 틀려요", make:()=>grWrongs(n)});
+  if(n.tip) out.push({k:"tip", t:"스피킹 팁", make:()=>txt(n.tip)});
+  const mine=grCards(n); if(mine.length) out.push({k:"my", t:mine.some(c=>c.mine)? "내가 틀렸던 문장" : "내 카드에서 만난 문장", make:()=>grCardBox(mine)});
+  return out; }
 function renderGrammar(app){
   if(!GR){ app.append(el("div","loading","문법 지도를 불러오는 중…")); grLoad().then(j=>{ if(j) render(); else { app.textContent=""; app.append(el("p","muted","문법 지도를 불러오지 못했어요. 인터넷 연결을 확인해 주세요.")); } }); return; }
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
@@ -256,18 +256,21 @@ function renderGrammar(app){
   const draw=()=>{ wrap.textContent="";
     const row=el("div","grcomps"); comps.forEach(c=>{ const on=GP[0]===c, b=el("button","grcomp"+(on?" on":"")); b.type="button"; b.dataset.r=GR_COMP[c]; b.setAttribute("aria-expanded",String(on)); b.append(el("b",null,GR.nodes[c].t));
       b.onclick=()=>{ GP= on? [] : [c]; fresh= on? null : c; draw(); }; row.append(b); }); wrap.append(row);
-    if(!GP[0]){ wrap.append(el("p","grhint","성분을 하나 눌러 보세요. 가지가 펼쳐져요.")); return; }
+    if(!GP[0]){ wrap.append(el("p","grhint","성분을 하나 눌러 보세요.")); return; }
     const cid=GP[0], n=GR.nodes[cid], pan=el("div","grpan"+(fresh===cid?" in":"")); pan.dataset.r=GR_COMP[cid]; pan.dataset.n=cid;
-    const twig=(label,...kids)=>{ const t=el("div","grtwig"); t.append(el("b","grlab",label)); kids.forEach(k=>k && t.append(k)); pan.append(t); return t; };
-    twig(`${n.t}란?`, el("p","grwhat",n.d), n.body? grBullets(n) : null);
-    if(n.ex) twig(`문장 속 ${n.t}`, grExs(n,nav));
-    (n.groups||[]).forEach(([label,ids])=>{ const list=el("div","grnodes");
+    (n.groups||[]).forEach(([label,ids])=>{ const tw=el("div","grtwig"), list=el("div","grnodes"); tw.append(el("b","grlab",label), list);
       ids.forEach(k=>{ const kn=GR.nodes[k], on=GP[1]===k, b=el("button","grnode"+(on?" on":"")); b.type="button"; b.dataset.n=k; b.setAttribute("aria-expanded",String(on));
-        const t=el("span","lt"); t.append(el("b",null,kn.t), el("span",null,kn.s||"")); b.append(t, el("span","grchev","›"));
+        b.append(el("b",null,kn.n||kn.t), el("span","grchev","›"));
         b.onclick=()=>{ GP= on? [cid] : [cid,k]; fresh= on? null : k; draw(); if(!on) focus(k); }; list.append(b);
-        if(on){ const lf=grLeaf(kn,nav); if(fresh===k) lf.classList.add("in"); list.append(lf); } });
-      twig(label, list); });
-    if(n.wrong || n.tip){ const tip= n.tip? el("div","gram grtip") : null; if(tip) tip.append(el("b",null,"스피킹 팁"), el("p",null,n.tip)); twig("자주 틀려요", n.wrong? grWrongs(n) : null, tip); }
+        if(!on) return;
+        const lf=el("div","grleaf"+(fresh===k?" in":"")); list.append(lf);
+        grItems(kn,nav).forEach(it=>{ const open=GP[2]===it.k, ib=el("button","gritem"+(open?" on":"")); ib.type="button"; ib.dataset.n=k+"/"+it.k; ib.setAttribute("aria-expanded",String(open));
+          ib.append(el("span",null,it.t), el("span","grchev","›"));
+          ib.onclick=()=>{ GP= open? [cid,k] : [cid,k,it.k]; fresh= open? null : k+"/"+it.k; draw(); }; lf.append(ib);
+          if(open){ const bx=el("div","gropen"+(fresh===k+"/"+it.k?" in":"")); bx.append(it.make()); lf.append(bx); } });
+        (kn.more||[]).forEach(m=>{ const mb=el("button","gritem grto"); mb.type="button"; mb.append(el("span",null,"→ "+GR.nodes[m].t)); mb.onclick=()=>nav(m); lf.append(mb); });
+      });
+      pan.append(tw); });
     wrap.append(pan); fresh=null; };
   draw();
 }
