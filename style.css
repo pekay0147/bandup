@@ -1380,3 +1380,14 @@ button.grctr{cursor:pointer}
 .grpg h3{margin:0;font-size:18px;font-weight:700;letter-spacing:-.02em;color:var(--c)}
 .grpg .grtxt{font-size:16px}
 .grin{gap:10px}
+/* 세 번째 원 */
+.grmm{transition:margin-top .38s cubic-bezier(.2,.8,.2,1)}
+.grmm.still{transition:none}
+.grsat.bloom::after{content:"+";position:absolute;right:-3px;top:-3px;width:20px;height:20px;box-shadow:0 0 0 2px var(--bg);border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;line-height:1;background:var(--c);color:var(--surface)}
+.grsat.bloom.open{background:var(--c);border-color:var(--c);border-style:solid;color:var(--surface)} .grsat.bloom.open small{color:inherit;opacity:.85}
+.grsat.bloom.open::after{content:"−";background:var(--surface);color:var(--c);box-shadow:0 0 0 1.5px var(--c)}
+.grsat.dim{opacity:.35}
+.grout{width:17%!important;border-width:1.5px;border-style:solid;padding:3px}
+.grout b{font-size:12px!important;color:var(--ink)!important}
+.grmm .grol{stroke:var(--c);stroke-width:.5;opacity:.55}
+@media (prefers-reduced-motion:reduce){.grmm{transition:none}}

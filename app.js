@@ -252,16 +252,37 @@ function grSheet(id, from){
 }
 let grAt={c:null,g:null,h:null,l:null,i:null}; // 마인드맵에서 지금 보고 있는 곳: 성분, 묶음 번호
 /* 마인드맵: 가운데 동그라미와 그 둘레의 동그라미들. 둘레 것을 누르면 그것이 가운데로 오고 다음 단계가 둘러싸요. */
-function grRing(center, sats, tone){
-  const st=el("div","grmm"); if(tone) st.dataset.r=tone; const N=sats.length, R= N>=10? 40 : N>=7? 38.5 : 37; // 반지름: 무대 너비의 %
+/* 마인드맵 한 장. sats 중 kids 가 있는 것은 누르면 그것이 위로 돌아가고, 그 바깥으로 세 번째 원이 펼쳐져요. */
+function grRing(center, sats, tone, opt){
+  opt=opt||{}; const NS="http://www.w3.org/2000/svg", st=el("div","grmm"); if(tone) st.dataset.r=tone; const N=sats.length, R= N>=10? 40 : N>=7? 38.5 : 37;
   st.classList.add(N>=10? "n3" : N>=7? "n2" : "n1");
-  const svg=document.createElementNS("http://www.w3.org/2000/svg","svg"); svg.setAttribute("viewBox","0 0 100 100"); svg.setAttribute("aria-hidden","true"); st.append(svg);
-  sats.forEach((s,i)=>{ const a=(-90+360/N*i)*Math.PI/180, x=50+R*Math.cos(a), y=50+R*Math.sin(a);
-    const ln=document.createElementNS("http://www.w3.org/2000/svg","line"); ln.setAttribute("x1","50"); ln.setAttribute("y1","50"); ln.setAttribute("x2",x.toFixed(2)); ln.setAttribute("y2",y.toFixed(2)); if(s.grp) ln.setAttribute("stroke-dasharray","1.2 1.2"); svg.append(ln);
-    const b=el("button","grsat"+(s.on?" on":"")+(s.grp?" grp":"")+(s.hub?" hub":"")+(s.seen?" seen":"")); b.type="button"; b.style.left=x+"%"; b.style.top=y+"%"; b.style.animationDelay=(i*30)+"ms"; if(s.tone) b.dataset.r=s.tone; if(s.id) b.dataset.n=s.id;
-    b.append(el("b",null,s.t)); if(s.sub) b.append(el("small",null,s.sub)); b.onclick=()=>s.go(b); st.append(b); });
+  const svg=document.createElementNS(NS,"svg"); svg.setAttribute("viewBox","0 0 100 100"); svg.setAttribute("aria-hidden","true"); st.append(svg);
+  const calm=window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const lines=[], btns=[];
+  sats.forEach((s,i)=>{ const ln=document.createElementNS(NS,"line"); ln.setAttribute("x1","50"); ln.setAttribute("y1","50"); if(s.grp) ln.setAttribute("stroke-dasharray","1.2 1.2"); svg.append(ln); lines.push(ln);
+    const b=el("button","grsat"+(s.on?" on":"")+(s.grp?" grp":"")+(s.hub?" hub":"")+(s.seen?" seen":"")+(s.kids?" bloom":"")); b.type="button"; b.style.animationDelay=(i*30)+"ms"; if(s.tone) b.dataset.r=s.tone; if(s.id) b.dataset.n=s.id;
+    b.append(el("b",null,s.t)); if(s.sub) b.append(el("small",null,s.sub)); if(s.kids) b.setAttribute("aria-expanded","false");
+    b.onclick=()=>{ if(s.kids) toggle(i); else s.go(b); }; st.append(b); btns.push(b); });
+  let off=0, open=-1; const outer=[];
+  const place=o=>{ off=o; sats.forEach((s,i)=>{ const a=(-90+360/N*i+o)*Math.PI/180, x=50+R*Math.cos(a), y=50+R*Math.sin(a); btns[i].style.left=x+"%"; btns[i].style.top=y+"%"; lines[i].setAttribute("x2",x.toFixed(2)); lines[i].setAttribute("y2",y.toFixed(2)); }); };
+  const want=i=>{ if(i<0) return 0; let o=-360/N*i; o=((o%360)+540)%360-180; return o; }; // 이 가지가 맨 위(12시)에 오도록 돌리는 각도
+  const clearOuter=()=>{ outer.splice(0).forEach(e=>e.remove()); };
+  const room=on=>{ const set=()=>{ st.style.marginTop= on? Math.round(st.offsetWidth*.27)+"px" : ""; }; if(st.offsetWidth) set(); else requestAnimationFrame(set); }; // 펼친 가지가 들어갈 자리를 위에 만들어요
+  const bloom=i=>{ clearOuter(); btns.forEach((b,j)=>{ b.classList.toggle("open",j===i); b.classList.toggle("dim",i>=0 && j!==i); if(sats[j].kids) b.setAttribute("aria-expanded",String(j===i)); });
+    st.classList.toggle("bloomed",i>=0); room(i>=0); if(i<0) return;
+    const kids=sats[i].kids, M=kids.length, sx=50, sy=50-R, D=30, span= M<=3? 110 : 140;
+    kids.forEach((k,j)=>{ const t=(-90-span/2+span/(M-1||1)*j)*Math.PI/180, x=sx+D*Math.cos(t), y=sy+D*Math.sin(t);
+      const ln=document.createElementNS(NS,"line"); ln.setAttribute("x1",sx); ln.setAttribute("y1",sy); ln.setAttribute("x2",x.toFixed(2)); ln.setAttribute("y2",y.toFixed(2)); ln.setAttribute("class","grol"); svg.append(ln); outer.push(ln);
+      const b=el("button","grsat grout"+(k.seen?" seen":"")); b.type="button"; b.style.left=x+"%"; b.style.top=y+"%"; b.style.animationDelay=(j*40)+"ms"; if(k.id) b.dataset.n=k.id;
+      b.append(el("b",null,k.t)); b.onclick=()=>k.go(b); st.append(b); outer.push(b); }); };
+  const toggle=i=>{ const to= open===i? -1 : i; open=to; if(opt.onBloom) opt.onBloom(to); clearOuter(); btns.forEach(b=>b.classList.remove("open","dim")); st.classList.toggle("bloomed",to>=0); room(to>=0);
+    const from=off, goal=want(to); let d=goal-from; if(d>180) d-=360; if(d<-180) d+=360;
+    if(calm || !d){ place(from+d); bloom(to); return; }
+    const t0=performance.now(), T=380, ease=x=>1-Math.pow(1-x,3);
+    const step=now=>{ const p=Math.min(1,(now-t0)/T); place(from+d*ease(p)); if(p<1) requestAnimationFrame(step); else bloom(to); }; requestAnimationFrame(step); };
   const c=el(center.go? "button":"div","grctr"); if(center.go){ c.type="button"; c.onclick=center.go; c.setAttribute("aria-label",center.t+" · 한 단계 위로"); }
   if(center.up) c.append(el("small",null,center.up)); c.append(el("b",null,center.t)); st.append(c);
+  const o0= opt.open!=null && opt.open>=0 && sats[opt.open] && sats[opt.open].kids? opt.open : -1; open=o0; place(want(o0)); if(o0>=0){ st.classList.add("bloomed","still"); bloom(o0); }
   return st;
 }
 /* 가지 하나의 마인드맵: 가운데 가지 이름, 양옆으로 항목이 뻗어요 (항목 이름이 길어서 동그라미 대신 둥근 칸) */
@@ -300,8 +321,10 @@ function renderGrammar(app){
     if(hb){ map.append(grRing({t:hb.t, up:"‹ "+upName, go:up}, hb.hub.map(sat), GR_COMP[c]), el("p","grhint",`${hb.t}에서 배우는 문법이에요.`)); return; }
     if(g){ map.append(grRing({t:g[2]||g[0], up:"‹ "+n.t, go:up}, g[1].map(sat), GR_COMP[c])); return; }
     const sats=[]; n.groups.forEach((gr,i)=>{ if(i===0 || gr[1].length===1) gr[1].forEach(k=>sats.push(sat(k)));
-      else { const done=gr[1].filter(k=>seen.has(k)).length; sats.push({t:gr[2]||gr[0], grp:true, sub: done? `${done}/${gr[1].length}` : String(gr[1].length), go:()=>{ grAt={c,g:i,h:null,l:null,i:null}; draw(); }}); } });
-    map.append(grRing({t:n.t, up:"‹ 뼈대", go:up}, sats, GR_COMP[c]), el("p","grhint","점선 동그라미 안에는 더 많은 가지가 들어 있어요."));
+      else { const done=gr[1].filter(k=>seen.has(k)).length; const o={t:gr[2]||gr[0], grp:true, sub: done? `${done}/${gr[1].length}` : String(gr[1].length), go:()=>{ grAt={c,g:i,h:null,l:null,i:null}; draw(); }};
+        if(gr[3]) o.kids=gr[1].map(sat); sats.push(o); } });
+    const bi= grAt.b!=null? sats.findIndex(x=>x.kids && x.t===grAt.b) : -1;
+    map.append(grRing({t:n.t, up:"‹ 뼈대", go:up}, sats, GR_COMP[c], {open:bi, onBloom:j=>{ grAt.b= j>=0? sats[j].t : null; }}), el("p","grhint", sats.some(x=>x.kids)? "점선 동그라미 안에는 더 많은 가지가 있어요. + 표시는 누르면 그 자리에서 펼쳐져요." : "점선 동그라미 안에는 더 많은 가지가 들어 있어요."));
   };
   draw();
   grMark=id=>{ if(!document.body.contains(map)){ grMark=null; return; } if(!id){ draw(); return; } const tn=GR.nodes[id]; if(tn && (tn.hub || comps.includes(id))) nav(id); };

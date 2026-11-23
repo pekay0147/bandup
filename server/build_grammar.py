@@ -1659,6 +1659,11 @@ for n in N.values():
     if not n["more"]: n.pop("more")
 for i in ("n-count", "n-a-the", "n-the-no", "n-names", "n-plural", "n-poss"): assert "sec" in N[i] and "body" not in N[i]
 
+# ───────────── 세 번째 원: 눌렀을 때 그 자리에서 바깥으로 가지가 펼쳐지는 묶음 (가지가 적고 순서가 있는 것만)
+for g in N["verb"]["groups"]:
+    if g[2] in ("가정법", "문장 모양"): g.append(1)
+assert sum(len(g) == 4 for g in N["verb"]["groups"]) == 2
+
 # ───────────── 검사 + 저장
 ids = set(N)
 for i, n in N.items():
