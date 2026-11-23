@@ -1486,10 +1486,183 @@ FORMS = {
 for i, fs in FORMS.items():
     N[i]["f"] = [[a, b, [list(x) for x in c]] for a, b, c in fs]
 
+# ═════════════ 3단계: 품사를 누르면 그 품사의 문법 주제가 나와요 (Grammar in Use 의 주제 나눔과 가르치는 방식을 따름: 규칙 한 줄 → 예문 → 틀린 말 → 나란히 비교)
+# 칸 = (제목, 규칙 한 줄, [줄…])   줄: ("e", 예문, 뜻) · ("x", 틀린 말, 이유) · ("l", 낱말 목록) · ("c", 왼쪽 제목, 오른쪽 제목, [(왼쪽, 오른쪽), …])
+def topic(id, t, k, s, secs, m=""):
+    old = N.get(id, {})
+    N[id] = {kk: v for kk, v in dict(t=t, k=k, n=t, s=s, d=s, m=m or old.get("m", ""), more=old.get("more", []),
+                                     sec=[[a, b, [list(r) if r[0] != "c" else [r[0], r[1], r[2], [list(x) for x in r[3]]] for r in rows]] for a, b, rows in secs]).items() if v}
+
+topic("n-count", "셀 수 있는 명사 · 셀 수 없는 명사", "셀 수 있는 · 없는", "a banana 와 rice", [
+ ("둘의 차이", "셀 수 있는 명사는 하나·여럿으로 나뉘고, 셀 수 없는 명사는 모양이 하나뿐이에요.", [
+   ("c", "셀 수 있는 명사", "셀 수 없는 명사", [("I eat <em>an apple</em> every day.", "I eat <em>rice</em> every day."), ("I like <em>apples</em>.", "I like <em>rice</em>."), ("one apple, two apples", "<s>one rice, two rices</s>")])]),
+ ("a / an", "a / an은 셀 수 있는 단수 명사에만 붙어요.", [
+   ("e", "I need <em>a</em> pen.", "펜이 하나 필요해요."), ("e", "She has <em>an</em> umbrella.", "그녀는 우산이 있어요."), ("x", "a music · a rice · a money", "셀 수 없는 명사에는 a를 안 붙여요.")]),
+ ("혼자 못 쓰는 명사", "셀 수 있는 단수 명사는 혼자 못 써요. a / the / my가 꼭 붙어요. 셀 수 없는 명사와 복수는 혼자 쓸 수 있어요.", [
+   ("e", "Do you want <em>a</em> banana?", "바나나 먹을래요?"), ("x", "Do you want banana?", ""), ("e", "I'm looking for <em>a</em> job.", "일자리를 찾고 있어요."), ("x", "I'm looking for job.", ""),
+   ("e", "I like <em>music</em>. / I like <em>dogs</em>.", "저는 음악을 좋아해요. / 저는 개를 좋아해요.")]),
+ ("a ~ of 로 세기", "셀 수 없는 명사는 그릇이나 조각으로 세요.", [
+   ("l", "a cup of coffee · a glass of water · a piece of cake · a slice of bread · a bottle of wine · a bowl of rice"), ("e", "I'd like <em>a glass of</em> water.", "물 한 잔 주세요.")]),
+ ("some · any", "복수와 셀 수 없는 명사 앞에 써요. 긍정문은 some, 부정문·의문문은 any.", [
+   ("e", "I bought <em>some</em> apples.", "사과를 몇 개 샀어요."), ("e", "I need <em>some</em> money.", "돈이 좀 필요해요."), ("e", "I don't have <em>any</em> money.", "돈이 하나도 없어요.")]),
+ ("many · much", "many / a few + 셀 수 있는 복수, much / a little + 셀 수 없는 명사. a lot of는 둘 다 돼요.", [
+   ("c", "셀 수 있는 명사", "셀 수 없는 명사", [("<em>many</em> friends", "<em>much</em> time"), ("<em>a few</em> days", "<em>a little</em> money"), ("a lot of books", "a lot of homework")]),
+   ("e", "I don't have <em>much</em> time.", "시간이 별로 없어요.")]),
+])
+
+topic("n-count2", "헷갈리는 셀 수 없는 명사", "헷갈리는 명사", "advice, news, paper", [
+ ("뜻에 따라 달라지는 명사", "같은 낱말인데 셀 수 있을 때와 없을 때 뜻이 달라요.", [
+   ("c", "셀 수 있을 때", "셀 수 없을 때", [("<em>a paper</em> 신문", "<em>paper</em> 종이"), ("<em>a room</em> 방", "<em>room</em> 공간"), ("<em>a hair</em> 머리카락 한 올", "<em>hair</em> 머리 전체"), ("<em>an experience</em> 겪은 일 하나", "<em>experience</em> 경력"), ("<em>a noise</em> 어떤 소리", "<em>noise</em> 소음"), ("<em>a</em> good <em>time</em> 즐거운 한때", "<em>time</em> 시간")]),
+   ("e", "I had <em>a</em> great <em>time</em>. / I don't have <em>time</em>.", "정말 즐거웠어요. / 시간이 없어요.")]),
+ ("음료", "커피·차·주스는 셀 수 없어요. 다만 주문할 때는 '한 잔'이라는 뜻으로 a coffee, two coffees라고 해요.", [
+   ("e", "I don't drink <em>coffee</em>.", "저는 커피를 안 마셔요."), ("e", "<em>Two coffees</em>, please.", "커피 두 잔 주세요.")]),
+ ("셀 수 없는 명사 목록", "한국어로는 셀 수 있을 것 같지만 영어에서는 못 세요. a도 -s도 안 붙어요.", [
+   ("l", "advice · information · news · furniture · luggage · baggage · homework · work · traffic · weather · bread · luck · progress · permission · behaviour · accommodation · scenery · equipment"),
+   ("e", "I need <em>some advice</em>.", "조언이 좀 필요해요."), ("e", "We had <em>good weather</em>.", "날씨가 좋았어요."), ("x", "an advice · informations · a good weather · furnitures", "")]),
+ ("짝으로 외우기", "뜻은 비슷한데 하나는 셀 수 있고 하나는 못 세요.", [
+   ("c", "셀 수 있음", "셀 수 없음", [("a job", "work"), ("a trip · a journey", "travel"), ("a view", "scenery"), ("a suggestion", "advice"), ("a bag · a suitcase", "luggage"), ("a loaf", "bread"), ("a chair · a table", "furniture")]),
+   ("e", "I'm looking for <em>a job</em>. = I'm looking for <em>work</em>.", "일자리를 찾고 있어요.")]),
+ ("news", "-s로 끝나지만 셀 수 없고 단수예요.", [
+   ("e", "The news <em>was</em> shocking.", "그 소식은 충격적이었어요."), ("e", "I have <em>some good news</em>.", "좋은 소식이 있어요."), ("x", "The news were ~ · a news", "")]),
+])
+
+topic("n-a-some", "a / an 과 some", "a · some", "하나와 몇몇", [
+ ("무엇인지 말할 때", "'어떤 종류의 것'인지 말할 때 단수는 a / an, 복수는 아무것도 안 붙여요.", [
+   ("c", "단수", "복수", [("That's <em>a</em> nice table.", "Those are nice chairs."), ("<em>A</em> dog is <em>an</em> animal.", "Dogs are animals."), ("He's <em>a</em> kind person.", "They're kind people.")])]),
+ ("직업", "직업을 말할 때는 a / an을 꼭 붙여요.", [
+   ("e", "I'm <em>a</em> nurse.", "저는 간호사예요."), ("e", "My dad is <em>an</em> engineer.", "아빠는 엔지니어예요."), ("x", "I'm nurse.", "")]),
+ ("a 와 an", "철자가 아니라 소리로 정해요. 모음 소리 앞이면 an.", [
+   ("l", "<em>an</em> apple · <em>an</em> hour · <em>an</em> honest person · <em>a</em> university · <em>a</em> European country · <em>a</em> one-way ticket")]),
+ ("some = 몇 개", "some + 복수. 정확한 수는 말하지 않아요.", [
+   ("e", "I bought <em>some</em> books.", "책을 몇 권 샀어요."), ("e", "I've seen <em>some</em> good movies recently.", "최근에 좋은 영화를 몇 편 봤어요.")]),
+ ("some = 일부", "전부는 아니고 일부라는 뜻이에요.", [
+   ("e", "<em>Some</em> people like spicy food, and <em>some</em> don't.", "매운 음식을 좋아하는 사람도 있고 아닌 사람도 있어요."), ("e", "<em>Some</em> days are better than others.", "어떤 날은 다른 날보다 나아요.")]),
+ ("some을 안 쓰는 때", "'~라는 것 전반'을 말할 때는 some 없이 복수만 써요.", [
+   ("c", "몇 개", "전반", [("I ate <em>some</em> bananas.", "I love bananas."), ("I met <em>some</em> students.", "She teaches students.")])]),
+])
+
+topic("n-a-the", "a / an 과 the", "a · the", "여럿 중 하나와 바로 그것", [
+ ("처음엔 a, 다시 말하면 the", "처음 꺼낼 때는 a / an, 그다음부터는 the예요.", [
+   ("e", "I had <em>a</em> sandwich and <em>an</em> apple. <em>The</em> sandwich wasn't very good.", "샌드위치와 사과를 먹었어요. 샌드위치는 별로였어요."),
+   ("e", "<em>A</em> man and <em>a</em> woman sat next to me. <em>The</em> man was asleep.", "남자와 여자가 제 옆에 앉았어요. 남자는 자고 있었어요.")]),
+ ("여럿 중 하나 · 바로 그것", "a는 여럿 중 아무거나 하나, the는 듣는 사람도 아는 바로 그것이에요.", [
+   ("c", "a / an", "the", [("I sat on <em>a</em> chair.", "I sat on <em>the</em> chair by the door."), ("Do you have <em>a</em> car?", "I cleaned <em>the</em> car yesterday."), ("I'm looking for <em>a</em> job.", "Did you get <em>the</em> job you applied for?")])]),
+ ("서로 아는 것", "어떤 것인지 뻔할 때는 처음부터 the를 써요.", [
+   ("e", "Can you turn off <em>the</em> light?", "불 좀 꺼 줄래요?"), ("e", "I took a taxi to <em>the</em> station.", "택시를 타고 역에 갔어요."), ("e", "I need to go to <em>the</em> bank.", "은행에 가야 해요."),
+   ("l", "the door · the kitchen · the floor · the airport · the doctor · the dentist · the toilet")]),
+ ("once a week", "'~마다'는 a / an을 써요.", [
+   ("e", "I go to the gym twice <em>a</em> week.", "일주일에 두 번 헬스장에 가요."), ("e", "It costs ten dollars <em>a</em> day.", "하루에 10달러예요."), ("e", "I see him once <em>a</em> month.", "한 달에 한 번 그를 만나요.")]),
+])
+
+topic("n-the", "the를 쓰는 때", "the 쓰기", "하나뿐인 것, the same, the best", [
+ ("하나뿐인 것", "세상에 하나밖에 없으면 the예요.", [
+   ("e", "<em>The</em> sun is so hot today.", "오늘 햇볕이 정말 뜨거워요."), ("e", "What's <em>the</em> capital of Korea?", "한국의 수도는 어디예요?"), ("l", "the world · the sky · the sea · the ground · the moon · the internet · the environment")]),
+ ("the same", "same 앞에는 항상 the예요.", [
+   ("e", "We live in <em>the same</em> building.", "우리는 같은 건물에 살아요."), ("e", "Your bag is <em>the same</em> as mine.", "당신 가방은 제 것과 똑같아요."), ("x", "We live in same building.", "")]),
+ ("the best · the first", "최상급과 순서 앞에는 the예요.", [
+   ("e", "It was <em>the best</em> day of my life.", "제 인생 최고의 날이었어요."), ("e", "This is <em>the first</em> time I've been here.", "여기는 처음 와 봐요."), ("l", "the best · the worst · the first · the last · the only · the next"),
+   ("x", "See you the next week.", "'다음 주, 지난주'는 the 없이 next week, last week.")]),
+ ("the cinema · the radio", "영화관·극장·라디오에는 the를 붙여요. TV(방송)에는 안 붙여요.", [
+   ("e", "I go to <em>the cinema</em> a lot.", "저는 영화관에 자주 가요."), ("e", "I heard it on <em>the radio</em>.", "라디오에서 들었어요."), ("e", "I watched it on <em>TV</em>.", "TV에서 봤어요.")]),
+ ("the + 형용사", "the + 형용사 = '~한 사람들'. 복수로 봐요.", [
+   ("e", "<em>The rich</em> should pay more tax.", "부자들은 세금을 더 내야 해요."), ("e", "We need to help <em>the elderly</em>.", "어르신들을 도와야 해요."), ("l", "the young · the old · the rich · the poor · the homeless · the unemployed")]),
+ ("종류 전체 · 악기", "동물·기계의 종류 전체와 악기 앞에 the를 써요.", [
+   ("e", "<em>The giraffe</em> is the tallest animal.", "기린은 가장 키가 큰 동물이에요."), ("e", "Who invented <em>the telephone</em>?", "전화기는 누가 발명했어요?"), ("e", "I play <em>the piano</em>.", "저는 피아노를 쳐요.")]),
+])
+
+topic("n-the-no", "the를 쓰지 않는 때", "the 안 쓰기", "일반적인 것, 식사, school", [
+ ("일반적인 것", "'~라는 것 전반'을 말할 때는 the를 안 써요. 어느 것인지 정해지면 the를 써요.", [
+   ("c", "전반 (the 없음)", "특정한 것 (the)", [("I like <em>dogs</em>.", "I like <em>the dogs</em> next door."), ("<em>Life</em> is short.", "<em>The life</em> of a nurse is hard."), ("I love <em>music</em>.", "I love <em>the music</em> in this film."), ("<em>Children</em> learn fast.", "<em>The children</em> are asleep.")]),
+   ("x", "The life is short.", "")]),
+ ("식사", "아침·점심·저녁에는 the를 안 써요.", [
+   ("e", "What did you have for <em>breakfast</em>?", "아침으로 뭐 먹었어요?"), ("e", "We had <em>lunch</em> together.", "같이 점심을 먹었어요."), ("e", "We had <em>a</em> nice lunch.", "형용사가 붙으면 a를 써요.")]),
+ ("school · hospital · church", "본래 목적으로 갈 때는 the가 없어요. 건물로 볼 때는 the를 써요.", [
+   ("c", "본래 목적", "건물", [("My son is at <em>school</em>.", "I went to <em>the school</em> to meet his teacher."), ("She's in <em>hospital</em>.", "I visited her at <em>the hospital</em>."), ("We go to <em>church</em> on Sundays.", "<em>The church</em> is next to the bank.")])]),
+ ("bed · work · home", "go to bed, at work, go home은 덩어리로 외워요.", [
+   ("e", "I go to <em>bed</em> at eleven.", "저는 11시에 자요."), ("e", "I'm at <em>work</em>.", "저는 일하는 중이에요."), ("e", "I got <em>home</em> late.", "집에 늦게 왔어요."), ("x", "go to the bed · go to home", "")]),
+ ("운동 · 과목 · 언어", "운동, 과목, 언어 이름에는 the를 안 써요.", [
+   ("e", "I play <em>tennis</em>.", "저는 테니스를 쳐요."), ("e", "I studied <em>chemistry</em>.", "저는 화학을 공부했어요."), ("e", "She speaks <em>Korean</em>.", "그녀는 한국어를 해요."), ("x", "play the tennis", "")]),
+ ("번호가 붙을 때", "명사 뒤에 번호가 오면 the를 안 써요.", [
+   ("e", "Our train leaves from <em>platform 5</em>.", "우리 기차는 5번 승강장에서 떠나요."), ("e", "I'm in <em>room 302</em>.", "저는 302호에 있어요."), ("x", "the platform 5", "")]),
+])
+
+topic("n-names", "이름과 the", "이름과 the", "Korea, the UK, the Han River", [
+ ("the가 없는 이름", "사람, 대륙, 대부분의 나라와 도시, 산 하나, 호수 하나, 섬 하나.", [
+   ("l", "Tom · Asia · Korea · Japan · Seoul · Mount Halla · Lake Tahoe · Jeju"), ("e", "I've never been to <em>Europe</em>.", "유럽에는 가 본 적이 없어요.")]),
+ ("복수 · 연합 나라", "이름이 복수이거나 States, Kingdom, Republic이 들어가면 the가 붙어요.", [
+   ("l", "the United States · the UK · the Philippines · the Netherlands · the Czech Republic"), ("e", "I lived in <em>the UK</em> for two months.", "영국에서 두 달 살았어요."), ("x", "in United States", "")]),
+ ("바다 · 강 · 사막 · 산맥", "the를 붙여요. 섬 무리와 산맥처럼 여럿이 모인 것도요.", [
+   ("l", "the Pacific · the Han River · the Sahara · the Alps · the Maldives"), ("e", "We flew over <em>the Pacific</em>.", "우리는 태평양 위를 날았어요.")]),
+ ("거리 · 역 · 공원 · 공항 · 대학", "보통 the가 없어요.", [
+   ("l", "Gangnam Station · Hyde Park · Incheon Airport · Fifth Avenue · Seoul National University"), ("e", "I'll meet you at <em>Seoul Station</em>.", "서울역에서 만나요.")]),
+ ("호텔 · 박물관 · 극장", "the가 붙어요.", [
+   ("l", "the Hilton · the National Museum · the Louvre · the Empire State Building · the White House")]),
+ ("of가 들어간 이름", "of가 있으면 the가 붙어요.", [
+   ("l", "the University of Seoul · the Bank of Korea · the Great Wall of China · the Tower of London")]),
+ ("the north of ~", "the north of는 the가 있고, northern은 없어요.", [
+   ("c", "the + 방향 + of", "방향 형용사", [("<em>the</em> north of Korea", "northern Korea"), ("<em>the</em> south of France", "southern France")])]),
+])
+
+topic("n-plural", "단수 · 복수", "단수 · 복수", "jeans, news, people", [
+ ("항상 복수인 물건", "두 부분으로 된 물건은 항상 복수예요. 셀 때는 a pair of.", [
+   ("l", "trousers · jeans · shorts · pyjamas · glasses · scissors · tights"), ("e", "My jeans <em>are</em> too tight.", "제 청바지가 너무 껴요."), ("e", "I need <em>a</em> new <em>pair of</em> glasses.", "새 안경이 필요해요."), ("x", "a jeans", "")]),
+ ("-s로 끝나지만 단수", "과목 이름과 news는 단수예요.", [
+   ("l", "news · maths · physics · economics · politics · gymnastics"), ("e", "Maths <em>is</em> my favourite subject.", "수학은 제가 제일 좋아하는 과목이에요.")]),
+ ("사람 여럿을 뜻하는 명사", "family, team, staff, company, government는 단수로 쓰고, 영국식으로는 복수 동사도 써요. police는 항상 복수예요.", [
+   ("e", "My family <em>is</em> big.", "우리 가족은 대가족이에요."), ("e", "The police <em>are</em> looking for him.", "경찰이 그를 찾고 있어요."), ("x", "The police is ~", "")]),
+ ("person 과 people", "person의 복수는 people이에요.", [
+   ("e", "She's a nice <em>person</em>.", "그녀는 좋은 사람이에요."), ("e", "Three <em>people</em> came.", "세 명이 왔어요."), ("x", "three persons · many peoples", "")]),
+ ("돈 · 시간 · 거리", "한 덩어리로 봐서 단수 동사를 써요.", [
+   ("e", "Ten thousand won <em>is</em> enough.", "만 원이면 충분해요."), ("e", "Three years <em>is</em> a long time.", "3년은 긴 시간이에요."), ("e", "Two kilometres <em>isn't</em> far.", "2킬로미터는 멀지 않아요.")]),
+ ("불규칙 복수", "-s를 붙이지 않는 복수예요.", [
+   ("l", "man → men · woman → women · child → children · foot → feet · tooth → teeth · mouse → mice · fish → fish · sheep → sheep")]),
+])
+
+topic("n-nn", "명사 + 명사", "명사 + 명사", "a bus driver", [
+ ("앞 명사가 꾸며요", "명사 두 개를 붙이면 앞 명사가 형용사처럼 '어떤' 것인지 알려 줘요.", [
+   ("l", "a bus driver · a shoe shop · the city centre · a road accident · income tax · a tennis ball"), ("e", "I work at <em>a coffee shop</em>.", "저는 커피숍에서 일해요.")]),
+ ("앞 명사는 단수", "뜻은 복수여도 앞 명사에는 -s를 안 붙여요. 숫자가 붙어도 마찬가지예요.", [
+   ("c", "맞는 말", "틀린 말", [("a <em>shoe</em> shop", "<s>a shoes shop</s>"), ("a <em>three-hour</em> journey", "<s>a three-hours journey</s>"), ("a <em>ten-dollar</em> note", "<s>a ten-dollars note</s>"), ("a <em>five-year-old</em> girl", "<s>a five-years-old girl</s>")]),
+   ("e", "It's a <em>twenty-minute</em> walk.", "걸어서 20분 거리예요.")]),
+ ("a coffee cup 과 a cup of coffee", "순서가 바뀌면 뜻이 달라져요.", [
+   ("c", "그릇", "내용물", [("a coffee cup 커피잔", "a cup of coffee 커피 한 잔"), ("a wine glass 와인잔", "a glass of wine 와인 한 잔"), ("a shopping bag 장바구니", "a bag of shopping 장 본 것 한 봉지")])]),
+ ("셋 이상", "명사를 세 개 넘게 이어 붙이기도 해요.", [
+   ("e", "I waited at <em>the hotel reception desk</em>.", "호텔 프런트에서 기다렸어요."), ("e", "We watched <em>the World Cup final</em>.", "월드컵 결승을 봤어요.")]),
+ ("붙여 쓰는 말", "자주 쓰는 것은 한 낱말로 굳었어요.", [
+   ("l", "a headache · toothpaste · a weekend · a bedroom · a bus stop · a car park")]),
+])
+
+topic("n-poss", "'s 와 of", "'s · of", "~의", [
+ ("사람 · 동물은 's", "사람이나 동물의 것은 's로 말해요.", [
+   ("e", "This is <em>Tom's</em> phone.", "이건 톰의 휴대폰이에요."), ("e", "What's your <em>dog's</em> name?", "강아지 이름이 뭐예요?"), ("e", "I stayed at my <em>sister's</em>.", "언니 집에서 지냈어요."), ("x", "the phone of Tom", "")]),
+ ("복수는 s'", "-s로 끝나는 복수는 ' 만 붙여요. 불규칙 복수는 's.", [
+   ("c", "한 명", "여러 명", [("my <em>sister's</em> room", "my <em>sisters'</em> room"), ("my <em>friend's</em> house", "my <em>friends'</em> house"), ("the <em>child's</em> toy", "the <em>children's</em> room")])]),
+ ("사물은 of", "사물이나 생각의 것은 of로 말해요.", [
+   ("e", "What's <em>the name of</em> the book?", "그 책 제목이 뭐예요?"), ("e", "I'll call you at <em>the end of</em> the month.", "월말에 전화할게요."), ("l", "the top of the page · the back of the car · the beginning of the film")]),
+ ("회사 · 단체는 둘 다", "사람들이 모인 단체는 's도 of도 돼요.", [
+   ("e", "<em>the government's</em> decision = the decision <em>of the government</em>", "정부의 결정")]),
+ ("시간 's", "시간을 나타내는 말에도 's를 붙여요.", [
+   ("l", "today's news · yesterday's meeting · next week's test · a week's holiday · ten minutes' walk"), ("e", "Did you see <em>today's</em> news?", "오늘 뉴스 봤어요?")]),
+ ("a friend of mine", "'내 친구 중 한 명'은 a friend of mine이에요.", [
+   ("e", "<em>A friend of mine</em> lives in Tokyo.", "제 친구 하나가 도쿄에 살아요."), ("e", "He's a colleague <em>of my dad's</em>.", "그분은 아빠의 직장 동료예요."), ("x", "a friend of me", "")]),
+])
+
+N["pos-noun"] = {"t": "명사", "k": "명사", "n": "명사", "s": "사람·사물·생각의 이름", "d": "사람·사물·생각의 이름",
+                 "hub": ["n-count", "n-count2", "n-a-some", "n-a-the", "n-the", "n-the-no", "n-names", "n-plural", "n-nn", "n-poss"], "kids": []}
+N["pos-noun"]["kids"] = list(N["pos-noun"]["hub"])
+sg = N["subj"]["groups"]
+sg[0][1][sg[0][1].index("subj-noun")] = "pos-noun"
+N["subj"]["groups"] = [g for g in sg if g[0] != "명사와 관사"]
+N["subj"]["kids"] = [k for k in N["subj"]["kids"] if k not in N["pos-noun"]["hub"]] + ["pos-noun"]
+for n in N.values():
+    n["more"] = [("pos-noun" if x == "subj-noun" else x) for x in n.get("more", [])]
+    if not n["more"]: n.pop("more")
+for i in ("n-count", "n-a-the", "n-the-no", "n-names", "n-plural", "n-poss"): assert "sec" in N[i] and "body" not in N[i]
+
 # ───────────── 검사 + 저장
 ids = set(N)
 for i, n in N.items():
-    for k in n.get("kids", []) + n.get("more", []) + [x for g in n.get("groups", []) for x in g[1]]:
+    for k in n.get("kids", []) + n.get("more", []) + n.get("hub", []) + [x for g in n.get("groups", []) for x in g[1]]:
         assert k in ids, (i, k)
     for e, _ in n.get("ex", []) + [x for f in n.get("f", []) for x in f[2]]:
         for r, t, _x in re.findall(r"\{([A-Z]+)(?:>([a-z0-9-]+))?:([^}]+)\}", e):

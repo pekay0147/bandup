@@ -212,12 +212,22 @@ function grSentence(mark, ko, nav, open){
 /* 문법 지도 화면: 전체 구조를 접지 않고 한 장에 다 보여 줘요. 왼쪽 줄 = 주어·목적어·보어·수식어, 오른쪽 줄 = 동사.
    가지를 누르면 지도는 그대로 두고 아래 창에서 내용이 열려요. 한 번 본 가지는 옅게 칠해져요. */
 const GR_COMP={subj:"S",verb:"V",obj:"O",comp:"C",mod:"M"};
-const grHome=id=>{ for(const c of GR.nodes[GR.root].kids){ const g=(GR.nodes[c].groups||[]).find(g=>g[1].includes(id)); if(g) return {c,g}; } return null; }; // 이 가지가 어느 성분 · 어느 묶음에 있는지
+const grHome=id=>{ for(const c of GR.nodes[GR.root].kids) for(const g of (GR.nodes[c].groups||[])){ if(g[1].includes(id)) return {c,g,h:null}; const h=g[1].find(k=>(GR.nodes[k].hub||[]).includes(id)); if(h) return {c,g,h}; } return null; }; // 이 가지가 어느 성분 · 어느 묶음 · 어느 품사 안에 있는지
 function grExs(n,nav){ const bx=el("div","box grexs"); n.ex.forEach(([mk,ko])=>bx.append(grSentence(mk,ko,nav))); return bx; }
 function grCardBox(mine){ const bx=el("div","box grwrongs"); mine.forEach(c=>{ const r=el("div","grwrong"); if(c.mine) r.append(el("p","x","✕ "+c.mine)); r.append(el("p",c.mine?"o":"en",(c.mine?"✓ ":"")+c.en)); if(c.ko) r.append(el("p","why",c.ko)); bx.append(r); }); return bx; }
-function grItems(n,nav){ const out=[]; const txt=h=>{ const p=el("p","grtxt"); p.innerHTML=h; return p; };
-  (n.body||[]).forEach((t,i)=>out.push({k:"p"+i, t:(n.pt||[])[i]||`포인트 ${i+1}`, make:()=>txt(t)}));
-  return out; }
+/* 책 방식의 칸 하나: 규칙 한 줄 → 예문 · 틀린 말 · 낱말 목록 · 나란히 비교 */
+function grSec([title,rule,rows]){ const w=el("div","grsec"); const h=(tag,cls,html)=>{ const e=el(tag,cls); e.innerHTML=html; return e; };
+  if(rule) w.append(h("p","grrule",rule));
+  for(const r of rows){
+    if(r[0]==="e"){ const d=el("div","gre"); d.append(h("p","en",r[1])); if(r[2]) d.append(el("p","ko",r[2])); w.append(d); }
+    else if(r[0]==="x"){ const d=el("div","grx"); d.append(h("p","no",r[1])); if(r[2]) d.append(el("p","ko",r[2])); w.append(d); }
+    else if(r[0]==="l"){ const d=el("div","grl"); r[1].split(" · ").forEach(t=>d.append(h("span",null,t))); w.append(d); }
+    else if(r[0]==="c"){ const t=el("div","grcmp"); t.append(el("b",null,r[1]), el("b",null,r[2])); r[3].forEach(([a,b])=>t.append(h("span",null,a), h("span",null,b))); w.append(t); } }
+  return w; }
+function grItems(n,nav){ const txt=h=>{ const p=el("p","grtxt"); p.innerHTML=h; return p; };
+  if(n.sec) return n.sec.map((sc,i)=>({k:"s"+i, t:sc[0], make:()=>grSec(sc)}));
+  if(n.f) return n.f.map(([t,note,exs],i)=>({k:"f"+i, t, make:()=>{ const w=el("div","grfx"); exs.forEach(([mk,ko])=>w.append(grSentence(mk,ko,nav,true))); if(note) w.append(el("p","grnote",note)); return w; }}));
+  return (n.body||[]).map((t,i)=>({k:"p"+i, t:(n.pt||[])[i]||`포인트 ${i+1}`, make:()=>txt(t)})); }
 const grSeen=()=>store.get(`bandup-grseen-${slug}`,[]);
 let grMark=null; // 지도가 떠 있을 때: 열린 가지를 지도에 표시하는 함수
 /* 가지 내용: 누른 동그라미 자리에서 화면 가득 확대돼서 열려요 */
@@ -233,7 +243,7 @@ function grSheet(id, from){
     const seen=grSeen(); if(!seen.includes(c)){ seen.push(c); store.set(`bandup-grseen-${slug}`,seen); } if(grMark) grMark(c);
     const top=el("div","grtop"); const bk=el("button","back","‹ 뒤로"); bk.type="button"; bk.hidden=!st.length; bk.onclick=()=>{ open=null; draw(st.pop()); };
     const x=el("button","lx","✕"); x.type="button"; x.setAttribute("aria-label","닫기"); x.onclick=close; top.append(bk,x);
-    const body=el("div","grin"); if(h) body.append(el("p","grwhere",`${GR.nodes[h.c].t} › ${h.g[0]}`));
+    const body=el("div","grin"); if(h) body.append(el("p","grwhere",[GR.nodes[h.c].t, h.h? GR.nodes[h.h].t : h.g[0]].join(" › ")));
     body.append(el("h2","grh",n.t), el("p","grldef",n.d));
     const list=el("div","grlist"); grItems(n,go2).forEach(it=>{ const on=open===it.k, ib=el("button","gritem"+(on?" on":"")); ib.type="button"; ib.setAttribute("aria-expanded",String(on));
       ib.append(el("span",null,it.t), el("span","grchev","›")); ib.onclick=()=>{ open= on? null : it.k; const y=ov.scrollTop; draw(c); ov.scrollTop=y; }; list.append(ib);
@@ -243,7 +253,7 @@ function grSheet(id, from){
     box.append(top,body); };
   ov.style.transformOrigin=origin(); document.addEventListener("keydown",key); document.body.classList.add("grlock"); document.body.append(ov); draw(id); if(!calm) ov.classList.add("in");
 }
-let grAt={c:null,g:null,l:null,i:null}; // 마인드맵에서 지금 보고 있는 곳: 성분, 묶음 번호
+let grAt={c:null,g:null,h:null,l:null,i:null}; // 마인드맵에서 지금 보고 있는 곳: 성분, 묶음 번호
 /* 마인드맵: 가운데 동그라미와 그 둘레의 동그라미들. 둘레 것을 누르면 그것이 가운데로 오고 다음 단계가 둘러싸요. */
 function grRing(center, sats, tone){
   const st=el("div","grmm"); if(tone) st.dataset.r=tone; const N=sats.length, R= N>=10? 40 : N>=7? 38.5 : 37; // 반지름: 무대 너비의 %
@@ -251,7 +261,7 @@ function grRing(center, sats, tone){
   const svg=document.createElementNS("http://www.w3.org/2000/svg","svg"); svg.setAttribute("viewBox","0 0 100 100"); svg.setAttribute("aria-hidden","true"); st.append(svg);
   sats.forEach((s,i)=>{ const a=(-90+360/N*i)*Math.PI/180, x=50+R*Math.cos(a), y=50+R*Math.sin(a);
     const ln=document.createElementNS("http://www.w3.org/2000/svg","line"); ln.setAttribute("x1","50"); ln.setAttribute("y1","50"); ln.setAttribute("x2",x.toFixed(2)); ln.setAttribute("y2",y.toFixed(2)); if(s.grp) ln.setAttribute("stroke-dasharray","1.2 1.2"); svg.append(ln);
-    const b=el("button","grsat"+(s.on?" on":"")+(s.grp?" grp":"")+(s.seen?" seen":"")); b.type="button"; b.style.left=x+"%"; b.style.top=y+"%"; b.style.animationDelay=(i*30)+"ms"; if(s.tone) b.dataset.r=s.tone; if(s.id) b.dataset.n=s.id;
+    const b=el("button","grsat"+(s.on?" on":"")+(s.grp?" grp":"")+(s.hub?" hub":"")+(s.seen?" seen":"")); b.type="button"; b.style.left=x+"%"; b.style.top=y+"%"; b.style.animationDelay=(i*30)+"ms"; if(s.tone) b.dataset.r=s.tone; if(s.id) b.dataset.n=s.id;
     b.append(el("b",null,s.t)); if(s.sub) b.append(el("small",null,s.sub)); b.onclick=()=>s.go(b); st.append(b); });
   const c=el(center.go? "button":"div","grctr"); if(center.go){ c.type="button"; c.onclick=center.go; c.setAttribute("aria-label",center.t+" · 한 단계 위로"); }
   if(center.up) c.append(el("small",null,center.up)); c.append(el("b",null,center.t)); st.append(c);
@@ -278,27 +288,32 @@ function renderGrammar(app){
   const head=el("div","phead"); app.append(head);
   const map=el("div","grone"); app.append(map);
   const comps=GR.nodes[GR.root].kids, calm=window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const inRing=(c,k)=>{ const gi=GR.nodes[c].groups.findIndex(g=>g[1].includes(k)); return (gi===0 || GR.nodes[c].groups[gi][1].length===1)? null : gi; }; // 이 가지가 성분 바로 둘레에 있으면 null, 묶음 안이면 묶음 번호
-  const nav=to=>{ const h=grHome(to); if(h){ grAt={c:h.c, g:inRing(h.c,to), l:to, i:null}; draw(); window.scrollTo(0,0); } else if(comps.includes(to)){ grAt={c:to,g:null,l:null,i:null}; draw(); window.scrollTo(0,0); } };
-  const draw=(keep)=>{ map.textContent=""; head.textContent=""; const seen=new Set(grSeen()); const c=grAt.c, n=c && GR.nodes[c], g= n && grAt.g!=null? n.groups[grAt.g] : null, lf= grAt.l && GR.nodes[grAt.l];
-    const up= lf? (()=>{ grAt={c,g:grAt.g,l:null,i:null}; draw(); }) : g? (()=>{ grAt={c,g:null}; draw(); }) : c? (()=>{ grAt={c:null,g:null}; draw(); }) : null;
-    back.textContent= lf? "‹ "+(g? (g[2]||g[0]) : n.t) : g? "‹ "+n.t : c? "‹ 문장 뼈대" : "‹ 홈"; back.onclick= up || (()=>go("home"));
-    head.append(el("h1",null,"문법 지도"), el("p","lead", lf? [n.t, g && (g[2]||g[0]), lf.k||lf.t].filter(Boolean).join(" › ") : g? `${n.t} › ${g[0]}` : c? `${n.t} · ${n.s}` : "문장은 다섯 가지 성분으로 이루어져요."));
-    const leaf=k=>({id:k, t:GR.nodes[k].k||GR.nodes[k].t, seen:seen.has(k), go:()=>{ grAt={c,g:grAt.g,l:k,i:null}; const sn=grSeen(); if(!sn.includes(k)){ sn.push(k); store.set(`bandup-grseen-${slug}`,sn); } draw(); }});
-    if(!c){ map.append(grRing({t:"문장 뼈대"}, comps.map(k=>({t:GR.nodes[k].t, tone:GR_COMP[k], go:()=>{ grAt={c:k,g:null}; draw(); }})))); return; }
-    if(lf){ // 가지: 가운데 가지 이름, 양옆에 항목. 항목을 누르면 아래에 그 내용만 크게 보여요
-      // 모양(f)이 있으면 둘레에 모양을 띄우고 누르면 예문으로, 없으면 예전처럼 설명 항목
-      const items= lf.f? lf.f.map(([t,note,exs],i)=>({k:"f"+i, t, make:()=>{ const w=el("div","grfx"); exs.forEach(([mk,ko])=>w.append(grSentence(mk,ko,nav,true))); if(note) w.append(el("p","grnote",note)); return w; }})) : grItems(lf,nav);
-      if(!lf.f) map.append(el("p","grldef",lf.d));
-      map.append(grSpider({t:lf.k||lf.t, up:"‹ "+(g? (g[2]||g[0]) : n.t), go:up}, items.map(it=>({t:it.t, on:grAt.i===it.k, ex:it.k==="ex"||it.k==="my", go:()=>{ grAt.i= grAt.i===it.k? null : it.k; draw(true); }})), GR_COMP[c]));
+  const ringG=(c,k)=>{ const gs=GR.nodes[c].groups, gi=gs.findIndex(g=>g[1].includes(k)); return (gi===0 || gs[gi][1].length===1)? null : gi; }; // 성분 바로 둘레에 있으면 null, 묶음 안이면 묶음 번호
+  const nav=to=>{ const tn=GR.nodes[to]; if(!tn) return; const h=grHome(to);
+    if(h) grAt={c:h.c, g:ringG(h.c, h.h||to), h: tn.hub? to : h.h, l: tn.hub? null : to, i:null};
+    else if(comps.includes(to)) grAt={c:to,g:null,h:null,l:null,i:null}; else return;
+    draw(); window.scrollTo(0,0); };
+  const draw=(keep)=>{ map.textContent=""; head.textContent=""; const seen=new Set(grSeen()); const c=grAt.c, n=c && GR.nodes[c], g= n && grAt.g!=null? n.groups[grAt.g] : null, hb= grAt.h && GR.nodes[grAt.h], lf= grAt.l && GR.nodes[grAt.l];
+    const upName= lf? (hb? hb.t : g? (g[2]||g[0]) : n.t) : hb? (g? (g[2]||g[0]) : n.t) : g? n.t : c? "뼈대" : null;
+    const up= lf? (()=>{ grAt={...grAt,l:null,i:null}; draw(); }) : hb? (()=>{ grAt={...grAt,h:null}; draw(); }) : g? (()=>{ grAt={c,g:null,h:null,l:null,i:null}; draw(); }) : c? (()=>{ grAt={c:null,g:null,h:null,l:null,i:null}; draw(); }) : null;
+    back.textContent= !c? "‹ 홈" : upName==="뼈대"? "‹ 문장 뼈대" : "‹ "+upName; back.onclick= up || (()=>go("home"));
+    head.append(el("h1",null,"문법 지도"), el("p","lead", !c? "문장은 다섯 가지 성분으로 이루어져요." : (g||hb||lf)? [n.t, g && (g[2]||g[0]), hb && hb.t, lf && (lf.k||lf.t)].filter(Boolean).join(" › ") : `${n.t} · ${n.s}`));
+    const sat=k=>{ const kn=GR.nodes[k]; if(kn.hub){ const done=kn.hub.filter(x=>seen.has(x)).length; return {id:k, t:kn.k||kn.t, sub: done? `${done}/${kn.hub.length}` : String(kn.hub.length), hub:true, go:()=>{ grAt={...grAt,h:k,l:null,i:null}; draw(); }}; }
+      return {id:k, t:kn.k||kn.t, seen:seen.has(k), go:()=>{ grAt={...grAt,l:k,i:null}; const sn=grSeen(); if(!sn.includes(k)){ sn.push(k); store.set(`bandup-grseen-${slug}`,sn); } draw(); }}; };
+    if(!c){ map.append(grRing({t:"문장 뼈대"}, comps.map(k=>({t:GR.nodes[k].t, tone:GR_COMP[k], go:()=>{ grAt={c:k,g:null,h:null,l:null,i:null}; draw(); }})))); return; }
+    if(lf){ // 주제: 가운데 주제 이름, 양옆에 칸 제목. 누르면 아래에 그 칸만 보여요
+      const items=grItems(lf,nav);
+      if(!lf.sec && !lf.f) map.append(el("p","grldef",lf.d));
+      map.append(grSpider({t:lf.k||lf.t, up:"‹ "+upName, go:up}, items.map(it=>({t:it.t, on:grAt.i===it.k, go:()=>{ grAt.i= grAt.i===it.k? null : it.k; draw(true); }})), GR_COMP[c]));
       const it=items.find(x=>x.k===grAt.i);
       if(it){ const show=el("section","grshow"); show.dataset.r=GR_COMP[c]; show.append(el("b","grshowh",it.t), it.make()); map.append(show); if(keep) requestAnimationFrame(()=>show.scrollIntoView({block:"nearest",behavior:calm?"auto":"smooth"})); }
-      else map.append(el("p","grhint", lf.f? "모양을 누르면 예문이 나와요." : "항목을 눌러 보세요."));
+      else map.append(el("p","grhint","하나를 눌러 보세요."));
       if(lf.more && lf.more.length){ const w=el("div","grmore"); lf.more.forEach(m=>{ const b=el("button","grchip","→ "+(GR.nodes[m].k||GR.nodes[m].t)); b.type="button"; b.onclick=()=>nav(m); w.append(b); }); map.append(el("b","grsub","여기서 이어져요"), w); }
       return; }
-    if(g){ map.append(grRing({t:g[2]||g[0], up:"‹ "+n.t, go:up}, g[1].map(leaf), GR_COMP[c])); return; }
-    const sats=[]; n.groups.forEach((gr,i)=>{ if(i===0 || gr[1].length===1) gr[1].forEach(k=>sats.push(leaf(k)));
-      else { const done=gr[1].filter(k=>seen.has(k)).length; sats.push({t:gr[2]||gr[0], grp:true, sub: done? `${done}/${gr[1].length}` : String(gr[1].length), go:()=>{ grAt={c,g:i}; draw(); }}); } });
+    if(hb){ map.append(grRing({t:hb.t, up:"‹ "+upName, go:up}, hb.hub.map(sat), GR_COMP[c]), el("p","grhint",`${hb.t}에서 배우는 문법이에요.`)); return; }
+    if(g){ map.append(grRing({t:g[2]||g[0], up:"‹ "+n.t, go:up}, g[1].map(sat), GR_COMP[c])); return; }
+    const sats=[]; n.groups.forEach((gr,i)=>{ if(i===0 || gr[1].length===1) gr[1].forEach(k=>sats.push(sat(k)));
+      else { const done=gr[1].filter(k=>seen.has(k)).length; sats.push({t:gr[2]||gr[0], grp:true, sub: done? `${done}/${gr[1].length}` : String(gr[1].length), go:()=>{ grAt={c,g:i,h:null,l:null,i:null}; draw(); }}); } });
     map.append(grRing({t:n.t, up:"‹ 뼈대", go:up}, sats, GR_COMP[c]), el("p","grhint","점선 동그라미 안에는 더 많은 가지가 들어 있어요."));
   };
   draw();
@@ -437,7 +452,7 @@ function renderHome(app){
   { const P=podSel(); const TP=todayPod(); const pr=TP? listRow(LIC.pod,"오늘의 팟캐스트",`${String(TP.link.src||"6 Minute English").replace(/^BBC /,"")} · ${TP.link.date} · ${TP.link.title}`,null,TP.link.url) : listRow(LIC.pod,"오늘의 팟캐스트",P.name,null,podUrl(P)); pr.classList.add("podrow"); const pw=el("div","podwrap"); const cb= (D.podAuto && TP)? el("button","podchg","✓ 다 들었어요") : el("button","podchg","바꾸기"); cb.type="button"; cb.onclick= (D.podAuto && TP)? (e=>{ e.preventDefault(); e.stopPropagation(); podDone(TP); render(); }) : (()=>go("podpick")); pw.append(pr,cb); list.append(pw); }
   if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
   if(D.group==="ielts" || D.group==="common" || D.demo || D.keepMock) list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
-  if(D.grammar) list.append(listRow(LIC.gram,"문법 지도","문장 성분 다섯 개로 보는 문법 한 장",()=>{ grAt={c:null,g:null}; go("grammar"); }));
+  if(D.grammar) list.append(listRow(LIC.gram,"문법 지도","문장 성분 다섯 개로 보는 문법 한 장",()=>{ grAt={c:null,g:null,h:null,l:null,i:null}; go("grammar"); }));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
   if(D.inbox){ const sc=store.get(`bandup-screens-${slug}`,[]); if(sc.length) list.append(listRow(LIC.voc,"📸 캡쳐한 글",`${sc.length}개 · 모르는 단어를 눌러 담아요`,()=>go("screens"))); else if((D.capLink || D.capOn) && /iPhone|iPad/i.test(navigator.userAgent||"")) list.append(listRow(LIC.voc,"📸 뒷면 톡톡 캡쳐","보던 화면의 단어를 바로 담기 · 설정 1분",()=>go("inbox"))); }
   if(D.inbox && D.yt){ const nv=store.get(`bandup-yt-${slug}`,[]).length; list.append(listRow(LIC.pod,"🎬 영상으로 공부", (()=>{ const nc=store.get(`bandup-clips-${slug}`,[]).length; return nc? `클립 ${nc}개 · 쉐도잉하러 가기` : nv? `영상 ${nv}개 · 이중자막으로 보고 안 들린 문장 담기` : "유튜브 보다가 뒷면 톡톡으로 클립 저장"; })(),()=>{ ytState=null; go("yt"); })); }

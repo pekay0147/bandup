@@ -1361,3 +1361,18 @@ button.grctr{cursor:pointer}
 .grfx .grline{font-size:19px} .grfx .grko{font-size:15px}
 .grnote{margin:6px 0 0;padding-top:12px;border-top:1px solid var(--line);font-size:14px;line-height:1.6;color:var(--muted)}
 .grnote::before{content:"→ ";color:var(--c);font-weight:700}
+.grsat.hub{border-width:2px;border-color:var(--c)} .grsat.hub b{color:var(--c)}
+.grsec{display:grid;gap:12px;min-width:0}
+.grrule{margin:0;font-size:15px;line-height:1.65;color:var(--ink)}
+.grrule em,.gre em,.grcmp em,.grl em{font-style:normal;font-weight:700;color:var(--c)}
+.gre .en{margin:0;font-size:18px;font-weight:600;line-height:1.45;letter-spacing:-.01em}
+.gre .ko,.grx .ko{margin:2px 0 0;font-size:14px;color:var(--muted)}
+.grx .no{margin:0;font-size:16px;font-weight:600;color:var(--bad);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--bad) 50%,transparent)}
+.grx .no::before{content:"✕";text-decoration:none;display:inline-block;margin-right:6px}
+.grl{display:flex;flex-wrap:wrap;gap:6px}
+.grl span{font-size:14px;font-weight:600;padding:5px 10px;border-radius:8px;background:var(--sunk);border:1px solid var(--line)}
+.grcmp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.grcmp b{font-size:12px;font-weight:700;color:var(--muted);padding:7px 10px;background:var(--sunk)}
+.grcmp span{font-size:15px;font-weight:600;line-height:1.4;padding:9px 10px;border-top:1px solid var(--line);min-width:0;overflow-wrap:anywhere}
+.grcmp > :nth-child(even){border-left:1px solid var(--line)}
+.grcmp s{color:var(--bad);font-weight:500}
