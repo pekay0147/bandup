@@ -241,30 +241,43 @@ function grSheet(id){
     box.append(top,body); };
   ov.onclick=e=>{ if(e.target===ov) close(); }; document.addEventListener("keydown",key); document.body.append(ov); draw(id); box.scrollTop=0;
 }
-let grOpenG=null; // 지도에서 열려 있는 묶음: "성분/번호"
+let grAt={c:null,g:null}; // 마인드맵에서 지금 보고 있는 곳: 성분, 묶음 번호
+/* 마인드맵: 가운데 동그라미와 그 둘레의 동그라미들. 둘레 것을 누르면 그것이 가운데로 오고 다음 단계가 둘러싸요. */
+function grRing(center, sats, tone){
+  const st=el("div","grmm"); if(tone) st.dataset.r=tone; const N=sats.length, R=37; // 반지름: 무대 너비의 %
+  const svg=document.createElementNS("http://www.w3.org/2000/svg","svg"); svg.setAttribute("viewBox","0 0 100 100"); svg.setAttribute("aria-hidden","true"); st.append(svg);
+  sats.forEach((s,i)=>{ const a=(-90+360/N*i)*Math.PI/180, x=50+R*Math.cos(a), y=50+R*Math.sin(a);
+    const ln=document.createElementNS("http://www.w3.org/2000/svg","line"); ln.setAttribute("x1","50"); ln.setAttribute("y1","50"); ln.setAttribute("x2",x.toFixed(2)); ln.setAttribute("y2",y.toFixed(2)); svg.append(ln);
+    const b=el("button","grsat"+(s.on?" on":"")); b.type="button"; b.style.left=x+"%"; b.style.top=y+"%"; b.style.animationDelay=(i*35)+"ms"; if(s.tone) b.dataset.r=s.tone;
+    b.append(el("b",null,s.t)); if(s.sub) b.append(el("small",null,s.sub)); b.onclick=s.go; st.append(b); });
+  const c=el(center.go? "button":"div","grctr"); if(center.go){ c.type="button"; c.onclick=center.go; c.setAttribute("aria-label",center.t+" · 처음 지도로 돌아가기"); }
+  if(center.up) c.append(el("small",null,center.up)); c.append(el("b",null,center.t)); st.append(c);
+  return st;
+}
 function renderGrammar(app){
   if(!GR){ app.append(el("div","loading","문법 지도를 불러오는 중…")); grLoad().then(j=>{ if(j) render(); else { app.textContent=""; app.append(el("p","muted","문법 지도를 불러오지 못했어요. 인터넷 연결을 확인해 주세요.")); } }); return; }
-  const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
-  pageHead(app,"문법 지도","문장은 다섯 가지 성분으로 이루어져요.");
-  const map=el("div","grone"); app.append(map); let curLeaf=null, fresh=null;
-  const draw=()=>{ map.textContent=""; const seen=new Set(grSeen());
-    GR.nodes[GR.root].kids.forEach(c=>{ const n=GR.nodes[c], card=el("section","grcard"); card.dataset.r=GR_COMP[c]; card.dataset.n=c;
-      const hd=el("div","grchd"); hd.append(el("b",null,n.t), el("span",null,n.s||"")); card.append(hd);
-      const list=el("div","grgs");
-      (n.groups||[]).forEach((g,i)=>{ const key=c+"/"+i, on=grOpenG===key, row=el("button","grgrow"+(on?" on":"")); row.type="button"; row.setAttribute("aria-expanded",String(on));
-        const done=g[1].filter(k=>seen.has(k)).length;
-        row.append(el("b",null,g[2]||g[0]), el("span","grcnt", done? `${done}/${g[1].length}` : String(g[1].length)), el("span","grchev","›"));
-        row.onclick=()=>{ grOpenG= on? null : key; fresh= on? null : key; draw(); }; list.append(row);
-        if(!on) return;
-        const kids=el("div","grkids"+(fresh===key?" in":"")); g[1].forEach(k=>{ const kn=GR.nodes[k], b=el("button","grk"+(seen.has(k)?" seen":"")+(curLeaf===k?" cur":"")); b.type="button"; b.dataset.n=k;
-          b.append(el("span",null,kn.n||kn.t), el("span","grchev","›")); b.onclick=()=>grSheet(k); kids.append(b); }); list.append(kids); });
-      card.append(list); map.append(card); });
-    fresh=null; };
+  const back=el("button","back","‹ 홈"); back.type="button"; app.append(back);
+  const head=el("div","phead"); app.append(head);
+  const map=el("div","grone"); app.append(map); let curLeaf=null;
+  const comps=GR.nodes[GR.root].kids;
+  const draw=scroll=>{ map.textContent=""; head.textContent=""; const seen=new Set(grSeen()); const c=grAt.c, n=c && GR.nodes[c];
+    back.textContent= c? "‹ 문장 뼈대" : "‹ 홈"; back.onclick= c? (()=>{ grAt={c:null,g:null}; draw(); }) : (()=>go("home"));
+    head.append(el("h1",null,"문법 지도"), el("p","lead", c? `${n.t} · ${n.s}` : "문장은 다섯 가지 성분으로 이루어져요."));
+    if(!c){ map.append(grRing({t:"문장 뼈대"}, comps.map(k=>({t:GR.nodes[k].t, tone:GR_COMP[k], go:()=>{ grAt={c:k,g:null}; draw(); }})))); return; }
+    map.append(grRing({t:n.t, up:"‹ 뼈대", go:()=>{ grAt={c:null,g:null}; draw(); }}, n.groups.map((g,i)=>{ const done=g[1].filter(k=>seen.has(k)).length;
+      return {t:g[2]||g[0], sub: done? `${done}/${g[1].length}` : String(g[1].length), on:grAt.g===i, go:()=>{ grAt={c,g: grAt.g===i? null : i}; draw(true); }}; }), GR_COMP[c]));
+    if(grAt.g==null){ map.append(el("p","grhint","둘레의 동그라미를 눌러 보세요.")); return; }
+    const g=n.groups[grAt.g], sec=el("section","grlv"); sec.dataset.r=GR_COMP[c];
+    sec.append(el("b","grlvh",`${n.t} › ${g[0]}`)); const list=el("div","grkids");
+    g[1].forEach(k=>{ const kn=GR.nodes[k], b=el("button","grk"+(seen.has(k)?" seen":"")+(curLeaf===k?" cur":"")); b.type="button"; b.dataset.n=k;
+      b.append(el("span",null,kn.n||kn.t), el("span","grchev","›")); b.onclick=()=>grSheet(k); list.append(b); });
+    sec.append(list); map.append(sec);
+    if(scroll) requestAnimationFrame(()=>sec.scrollIntoView({block:"nearest",behavior:(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)? "auto":"smooth"})); };
   draw();
-  grMark=(id,flash)=>{ if(!document.body.contains(map)){ grMark=null; return; }
+  grMark=(id)=>{ if(!document.body.contains(map)){ grMark=null; return; }
     if(!id){ curLeaf=null; draw(); return; }
-    const h=grHome(id); if(h){ curLeaf=id; grOpenG=h.c+"/"+GR.nodes[h.c].groups.indexOf(h.g); draw(); return; }
-    draw(); const t=map.querySelector(`[data-n="${id}"]`); if(t && flash){ t.scrollIntoView({block:"center",behavior:"smooth"}); t.classList.add("flash"); } };
+    const h=grHome(id); if(h){ curLeaf=id; grAt={c:h.c,g:GR.nodes[h.c].groups.indexOf(h.g)}; draw(); return; }
+    if(comps.includes(id)){ grAt={c:id,g:null}; draw(); window.scrollTo(0,0); } };
 }
 function grChips(c){ const ns=grFor(c).filter(n=>grHome(n.id)); if(!ns.length) return null; const w=el("div","grlinks"); w.append(el("span",null,"문법 지도"));
   ns.forEach(n=>{ const b=el("button","grchip",(n.k||n.t)+" ›"); b.type="button"; b.onclick=e=>{ e.stopPropagation(); grSheet(n.id); }; w.append(b); }); return w; }
@@ -400,7 +413,7 @@ function renderHome(app){
   { const P=podSel(); const TP=todayPod(); const pr=TP? listRow(LIC.pod,"오늘의 팟캐스트",`${String(TP.link.src||"6 Minute English").replace(/^BBC /,"")} · ${TP.link.date} · ${TP.link.title}`,null,TP.link.url) : listRow(LIC.pod,"오늘의 팟캐스트",P.name,null,podUrl(P)); pr.classList.add("podrow"); const pw=el("div","podwrap"); const cb= (D.podAuto && TP)? el("button","podchg","✓ 다 들었어요") : el("button","podchg","바꾸기"); cb.type="button"; cb.onclick= (D.podAuto && TP)? (e=>{ e.preventDefault(); e.stopPropagation(); podDone(TP); render(); }) : (()=>go("podpick")); pw.append(pr,cb); list.append(pw); }
   if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
   if(D.group==="ielts" || D.group==="common" || D.demo || D.keepMock) list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
-  if(D.grammar) list.append(listRow(LIC.gram,"문법 지도","문장 성분 다섯 개로 보는 문법 한 장",()=>go("grammar")));
+  if(D.grammar) list.append(listRow(LIC.gram,"문법 지도","문장 성분 다섯 개로 보는 문법 한 장",()=>{ grAt={c:null,g:null}; go("grammar"); }));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
   if(D.inbox){ const sc=store.get(`bandup-screens-${slug}`,[]); if(sc.length) list.append(listRow(LIC.voc,"📸 캡쳐한 글",`${sc.length}개 · 모르는 단어를 눌러 담아요`,()=>go("screens"))); else if((D.capLink || D.capOn) && /iPhone|iPad/i.test(navigator.userAgent||"")) list.append(listRow(LIC.voc,"📸 뒷면 톡톡 캡쳐","보던 화면의 단어를 바로 담기 · 설정 1분",()=>go("inbox"))); }
   if(D.inbox && D.yt){ const nv=store.get(`bandup-yt-${slug}`,[]).length; list.append(listRow(LIC.pod,"🎬 영상으로 공부", (()=>{ const nc=store.get(`bandup-clips-${slug}`,[]).length; return nc? `클립 ${nc}개 · 쉐도잉하러 가기` : nv? `영상 ${nv}개 · 이중자막으로 보고 안 들린 문장 담기` : "유튜브 보다가 뒷면 톡톡으로 클립 저장"; })(),()=>{ ytState=null; go("yt"); })); }
