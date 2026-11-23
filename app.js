@@ -184,7 +184,7 @@ function renderInner(){
 
 /* ---------- 문법 지도 (학생 파일에 "grammar": true 인 학생만) ----------
    내용: data/grammar.json (server/build_grammar.py 로 만들어요). 예문의 덩어리를 누르면 문장 성분이 색으로 나뉘고 그 성분 페이지로 이어져요. */
-let GR=null, GH=[];
+let GR=null;
 const GR_ROLE={S:["주어","subj"],FS:["가짜 주어","subj-to"],RS:["진짜 주어","subj-to"],V:["동사","verb"],O:["목적어","obj"],IO:["간접목적어","obj-two"],DO:["직접목적어","obj-two"],C:["보어","comp-subj"],OC:["목적격 보어","comp-obj"],M:["수식어","mod"]};
 function grLoad(){ if(GR) return Promise.resolve(GR);
   return fetch("data/grammar.json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null).then(j=>{ if(!j || !j.nodes) return null;
@@ -209,77 +209,57 @@ function grSentence(mark, ko, nav){
   if(last<mark.length){ const rest=mark.slice(last), lb=line.lastElementChild; if(lb && /^[.,!?]+$/.test(rest)) lb.firstChild.append(rest); else line.append(document.createTextNode(rest)); } // 마침표가 혼자 다음 줄로 떨어지지 않게
   box.append(line); if(ko) box.append(el("p","grko",ko)); box.append(info); return box;
 }
-function grNode(app, id, nav){
-  const n=GR.nodes[id]; if(!n) return;
-  const chain=[]; for(let x=id; x; x=GR.par[x]) chain.unshift(x);
-  if(chain.length>1){ const cr=el("div","grcrumb"); chain.forEach((x,i)=>{ if(i) cr.append(el("i",null,"›")); const last=i===chain.length-1; const b=el(last?"span":"button", last?"cur":"", GR.nodes[x].t); if(!last){ b.type="button"; b.onclick=()=>nav(x); } cr.append(b); }); app.append(cr); }
-  const h=el("div","phead"); h.append(el("h1",null,n.t)); if(n.s) h.append(el("p","lead",n.s)); app.append(h);
-  const def=el("div","grdef"); def.append(el("p",null,n.d)); app.append(def);
-  if(n.body && n.body.length){ const ul=el("ul","grbody"); n.body.forEach(t=>{ const li=el("li"); li.innerHTML=t; ul.append(li); }); app.append(ul); }
-  if(n.ex && n.ex.length){ const s=el("section","sec"); s.append(secHead("예문 해부","덩어리를 눌러 보세요")); const bx=el("div","box grexs"); n.ex.forEach(([mk,ko])=>bx.append(grSentence(mk,ko,nav))); s.append(bx); app.append(s); }
-  if(n.kids && n.kids.length){ const s=el("section","sec"); s.append(secHead("더 파고들기",`${n.kids.length}개`)); const l=el("div","box list2");
-    n.kids.forEach(k=>{ const kn=GR.nodes[k]; const r=el("button","lrow2 grrow"); r.type="button"; r.onclick=()=>nav(k); const t=el("span","lt"); t.append(el("b",null,kn.t), el("span",null,kn.s||"")); r.append(t, el("span","lchev","›")); l.append(r); }); s.append(l); app.append(s); }
-  if(n.more && n.more.length){ const s=el("section","sec"); s.append(secHead("함께 보면 좋아요")); const w=el("div","grmore"); n.more.forEach(k=>{ const b=el("button","grchip",GR.nodes[k].t+" ›"); b.type="button"; b.onclick=()=>nav(k); w.append(b); }); s.append(w); app.append(s); }
-  const mine=grCards(n);
-  if(mine.length){ const s=el("section","sec"); s.append(secHead(mine.some(c=>c.mine)? "내가 틀렸던 문장" : "내 카드에서 만난 문장",`${mine.length}개`)); const bx=el("div","box grwrongs");
-    mine.forEach(c=>{ const r=el("div","grwrong"); if(c.mine) r.append(el("p","x","✕ "+c.mine)); r.append(el("p",c.mine?"o":"en", (c.mine?"✓ ":"")+c.en)); if(c.ko) r.append(el("p","why",c.ko)); bx.append(r); }); s.append(bx); app.append(s); }
-}
-/* 문법 지도 화면: 첫 화면에는 문장 성분 다섯 개만. 누르면 그 자리에서 가지가 펼쳐져요 (페이지 이동 없음). */
-let GP=[]; // 지금 펼쳐진 길: [성분] 또는 [성분, 가지]
+/* 문법 지도 화면: 전체 구조를 접지 않고 한 장에 다 보여 줘요. 왼쪽 줄 = 주어·목적어·보어·수식어, 오른쪽 줄 = 동사.
+   가지를 누르면 지도는 그대로 두고 아래 창에서 내용이 열려요. 한 번 본 가지는 옅게 칠해져요. */
 const GR_COMP={subj:"S",verb:"V",obj:"O",comp:"C",mod:"M"};
-function grPathTo(id){ const comps=GR.nodes[GR.root].kids; if(comps.includes(id)) return [id];
-  const c=comps.find(c=>(GR.nodes[c].groups||[]).some(g=>g[1].includes(id))); if(c) return [c,id];
-  const up=GR.par[id]; return up && up!==GR.root? grPathTo(up) : []; }
+const grHome=id=>{ for(const c of GR.nodes[GR.root].kids){ const g=(GR.nodes[c].groups||[]).find(g=>g[1].includes(id)); if(g) return {c,g}; } return null; }; // 이 가지가 어느 성분 · 어느 묶음에 있는지
 function grExs(n,nav){ const bx=el("div","box grexs"); n.ex.forEach(([mk,ko])=>bx.append(grSentence(mk,ko,nav))); return bx; }
-function grWrongs(n){ const bx=el("div","box grwrongs"); n.wrong.forEach(([x,o,why])=>{ const r=el("div","grwrong"); r.append(el("p","x","✕ "+x), el("p","o","✓ "+o)); if(why) r.append(el("p","why",why)); bx.append(r); }); return bx; }
-function grBullets(n){ const ul=el("ul","grbody"); n.body.forEach(t=>{ const li=el("li"); li.innerHTML=t; ul.append(li); }); return ul; }
 function grCardBox(mine){ const bx=el("div","box grwrongs"); mine.forEach(c=>{ const r=el("div","grwrong"); if(c.mine) r.append(el("p","x","✕ "+c.mine)); r.append(el("p",c.mine?"o":"en",(c.mine?"✓ ":"")+c.en)); if(c.ko) r.append(el("p","why",c.ko)); bx.append(r); }); return bx; }
-/* 가지 하나에 달린 항목들: 제목만 나열하고, 누른 것만 펼쳐요 */
-function grItems(n,nav){ const out=[]; const txt=(h,html)=>{ const p=el("p","grtxt"); if(html) p.innerHTML=h; else p.textContent=h; return p; };
-  (n.body||[]).forEach((t,i)=>out.push({k:"p"+i, t:(n.pt||[])[i]||`포인트 ${i+1}`, make:()=>txt(t,true)}));
+function grItems(n,nav){ const out=[]; const txt=h=>{ const p=el("p","grtxt"); p.innerHTML=h; return p; };
+  (n.body||[]).forEach((t,i)=>out.push({k:"p"+i, t:(n.pt||[])[i]||`포인트 ${i+1}`, make:()=>txt(t)}));
   if(n.ex) out.push({k:"ex", t:"예문", make:()=>grExs(n,nav)});
   const mine=grCards(n); if(mine.length) out.push({k:"my", t:mine.some(c=>c.mine)? "내가 틀렸던 문장" : "내 카드에서 만난 문장", make:()=>grCardBox(mine)});
   return out; }
+const grSeen=()=>store.get(`bandup-grseen-${slug}`,[]);
+let grMark=null; // 지도가 떠 있을 때: 열린 가지를 지도에 표시하는 함수
+function grSheet(id){
+  const st=[], ov=el("div","grov"), box=el("div","grsheet"); ov.append(box); let open=null;
+  const close=()=>{ ov.remove(); document.removeEventListener("keydown",key); if(grMark) grMark(null); }, key=e=>{ if(e.key==="Escape") close(); };
+  const go2=to=>{ const tn=GR.nodes[to]; if(!tn) return; if(!grHome(to)){ close(); if(grMark) grMark(to,true); return; } st.push(cur); open=null; draw(to); };
+  let cur=id;
+  const draw=c=>{ cur=c; const n=GR.nodes[c], h=grHome(c); box.textContent=""; box.dataset.r= h? GR_COMP[h.c] : "S";
+    const seen=grSeen(); if(!seen.includes(c)){ seen.push(c); store.set(`bandup-grseen-${slug}`,seen); } if(grMark) grMark(c);
+    const top=el("div","grtop"); const bk=el("button","back","‹ 뒤로"); bk.type="button"; bk.hidden=!st.length; bk.onclick=()=>{ open=null; draw(st.pop()); };
+    const x=el("button","lx","✕"); x.type="button"; x.setAttribute("aria-label","닫기"); x.onclick=close; top.append(bk,x);
+    const body=el("div","grin"); if(h) body.append(el("p","grwhere",`${GR.nodes[h.c].t} › ${h.g[0]}`));
+    body.append(el("h2","grh",n.t), el("p","grldef",n.d));
+    const list=el("div","grlist"); grItems(n,go2).forEach(it=>{ const on=open===it.k, ib=el("button","gritem"+(on?" on":"")); ib.type="button"; ib.setAttribute("aria-expanded",String(on));
+      ib.append(el("span",null,it.t), el("span","grchev","›")); ib.onclick=()=>{ open= on? null : it.k; const y=box.scrollTop; draw(c); box.scrollTop=y; }; list.append(ib);
+      if(on){ const o=el("div","gropen"); o.append(it.make()); list.append(o); } });
+    body.append(list);
+    if(n.more && n.more.length){ const w=el("div","grmore"); n.more.forEach(m=>{ const b=el("button","grchip","→ "+(GR.nodes[m].k||GR.nodes[m].t)); b.type="button"; b.onclick=()=>go2(m); w.append(b); }); body.append(el("b","grsub","여기서 이어져요"), w); }
+    box.append(top,body); };
+  ov.onclick=e=>{ if(e.target===ov) close(); }; document.addEventListener("keydown",key); document.body.append(ov); draw(id); box.scrollTop=0;
+}
 function renderGrammar(app){
   if(!GR){ app.append(el("div","loading","문법 지도를 불러오는 중…")); grLoad().then(j=>{ if(j) render(); else { app.textContent=""; app.append(el("p","muted","문법 지도를 불러오지 못했어요. 인터넷 연결을 확인해 주세요.")); } }); return; }
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
-  pageHead(app,"문법 지도","문장은 다섯 가지 성분으로 이루어져요.");
-  const comps=GR.nodes[GR.root].kids, wrap=el("div","grmap"); app.append(wrap); let fresh=null;
-  const calm=window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const focus=id=>requestAnimationFrame(()=>{ const t=wrap.querySelector(`[data-n="${id}"]`); if(t) t.scrollIntoView({behavior:calm?"auto":"smooth",block:"start"}); });
-  const nav=id=>{ const p=grPathTo(id); if(!p.length) return; GP=p; fresh=p[p.length-1]; draw(); focus(fresh); };
-  const draw=()=>{ wrap.textContent="";
-    const row=el("div","grcomps"); comps.forEach(c=>{ const on=GP[0]===c, b=el("button","grcomp"+(on?" on":"")); b.type="button"; b.dataset.r=GR_COMP[c]; b.setAttribute("aria-expanded",String(on)); b.append(el("b",null,GR.nodes[c].t));
-      b.onclick=()=>{ GP= on? [] : [c]; fresh= on? null : c; draw(); }; row.append(b); }); wrap.append(row);
-    if(!GP[0]){ wrap.append(el("p","grhint","성분을 하나 눌러 보세요.")); return; }
-    const cid=GP[0], n=GR.nodes[cid], pan=el("div","grpan"+(fresh===cid?" in":"")); pan.dataset.r=GR_COMP[cid]; pan.dataset.n=cid;
-    (n.groups||[]).forEach(([label,ids])=>{ const tw=el("div","grtwig"), list=el("div","grnodes"); tw.append(el("b","grlab",label), list);
-      ids.forEach(k=>{ const kn=GR.nodes[k], on=GP[1]===k, b=el("button","grnode"+(on?" on":"")); b.type="button"; b.dataset.n=k; b.setAttribute("aria-expanded",String(on));
-        b.append(el("b",null,kn.n||kn.t), el("span","grchev","›"));
-        b.onclick=()=>{ GP= on? [cid] : [cid,k]; fresh= on? null : k; draw(); if(!on) focus(k); }; list.append(b);
-        if(!on) return;
-        const lf=el("div","grleaf"+(fresh===k?" in":"")); list.append(lf);
-        grItems(kn,nav).forEach(it=>{ const open=GP[2]===it.k, ib=el("button","gritem"+(open?" on":"")); ib.type="button"; ib.dataset.n=k+"/"+it.k; ib.setAttribute("aria-expanded",String(open));
-          ib.append(el("span",null,it.t), el("span","grchev","›"));
-          ib.onclick=()=>{ GP= open? [cid,k] : [cid,k,it.k]; fresh= open? null : k+"/"+it.k; draw(); }; lf.append(ib);
-          if(open){ const bx=el("div","gropen"+(fresh===k+"/"+it.k?" in":"")); bx.append(it.make()); lf.append(bx); } });
-        (kn.more||[]).forEach(m=>{ const mb=el("button","gritem grto"); mb.type="button"; mb.append(el("span",null,"→ "+GR.nodes[m].t)); mb.onclick=()=>nav(m); lf.append(mb); });
-      });
-      pan.append(tw); });
-    wrap.append(pan); fresh=null; };
-  draw();
+  pageHead(app,"문법 지도","문장은 다섯 가지 성분으로 이루어져요. 궁금한 곳을 눌러 보세요.");
+  const map=el("div","grone"), L=el("div","grcol"), R=el("div","grcol"); map.append(L,R); app.append(map);
+  const seen=new Set(grSeen());
+  GR.nodes[GR.root].kids.forEach(c=>{ const n=GR.nodes[c], card=el("section","grcard"); card.dataset.r=GR_COMP[c]; card.dataset.n=c;
+    const hd=el("div","grchd"); hd.append(el("b",null,n.t), el("span",null,n.s||"")); card.append(hd);
+    (n.groups||[]).forEach(g=>{ const gr=el("div","grg"); gr.append(el("span","grgl",g[2]||g[0])); const w=el("div","grks");
+      g[1].forEach(k=>{ const kn=GR.nodes[k], b=el("button","grk"+(seen.has(k)?" seen":""),kn.k||kn.t); b.type="button"; b.dataset.n=k; b.onclick=()=>grSheet(k); w.append(b); });
+      gr.append(w); card.append(gr); });
+    (c==="verb"? R : L).append(card); });
+  grMark=(id,flash)=>{ if(!document.body.contains(map)){ grMark=null; return; } map.querySelectorAll(".grk.cur").forEach(x=>x.classList.remove("cur"));
+    if(!id) return; const t=map.querySelector(`[data-n="${id}"]`); if(!t) return;
+    if(t.classList.contains("grk")) t.classList.add("cur","seen");
+    if(flash){ t.scrollIntoView({block:"center",behavior:"smooth"}); t.classList.remove("flash"); void t.offsetWidth; t.classList.add("flash"); } };
 }
-/* 큐카드 위에 뜨는 문법 창 (카드 진행은 그대로 두고 읽기만) */
-function grSheet(id){
-  const st=[], ov=el("div","grov"), box=el("div","grsheet"); ov.append(box);
-  const close=()=>{ ov.remove(); document.removeEventListener("keydown",key); }, key=e=>{ if(e.key==="Escape") close(); };
-  const draw=cur=>{ box.textContent=""; const top=el("div","grtop"); const bk=el("button","back", st.length? "‹ 뒤로" : ""); bk.type="button"; bk.hidden=!st.length; bk.onclick=()=>draw(st.pop());
-    const x=el("button","lx","✕"); x.type="button"; x.setAttribute("aria-label","문법 창 닫기"); x.onclick=close; top.append(bk,x);
-    const body=el("div","grin"); grNode(body,cur,to=>{ st.push(cur); draw(to); }); box.append(top,body); box.scrollTop=0; };
-  ov.onclick=e=>{ if(e.target===ov) close(); }; document.addEventListener("keydown",key); document.body.append(ov); draw(id);
-}
-function grChips(c){ const ns=grFor(c); if(!ns.length) return null; const w=el("div","grlinks"); w.append(el("span",null,"문법 지도"));
-  ns.forEach(n=>{ const b=el("button","grchip",n.t+" ›"); b.type="button"; b.onclick=e=>{ e.stopPropagation(); grSheet(n.id); }; w.append(b); }); return w; }
+function grChips(c){ const ns=grFor(c).filter(n=>grHome(n.id)); if(!ns.length) return null; const w=el("div","grlinks"); w.append(el("span",null,"문법 지도"));
+  ns.forEach(n=>{ const b=el("button","grchip",(n.k||n.t)+" ›"); b.type="button"; b.onclick=e=>{ e.stopPropagation(); grSheet(n.id); }; w.append(b); }); return w; }
 
 /* ---------- daily podcast reminder ---------- */
 const POD_URL="https://podcasts.apple.com/nz/podcast/6-minute-english/id262026947";
@@ -412,7 +392,7 @@ function renderHome(app){
   { const P=podSel(); const TP=todayPod(); const pr=TP? listRow(LIC.pod,"오늘의 팟캐스트",`${String(TP.link.src||"6 Minute English").replace(/^BBC /,"")} · ${TP.link.date} · ${TP.link.title}`,null,TP.link.url) : listRow(LIC.pod,"오늘의 팟캐스트",P.name,null,podUrl(P)); pr.classList.add("podrow"); const pw=el("div","podwrap"); const cb= (D.podAuto && TP)? el("button","podchg","✓ 다 들었어요") : el("button","podchg","바꾸기"); cb.type="button"; cb.onclick= (D.podAuto && TP)? (e=>{ e.preventDefault(); e.stopPropagation(); podDone(TP); render(); }) : (()=>go("podpick")); pw.append(pr,cb); list.append(pw); }
   if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
   if(D.group==="ielts" || D.group==="common" || D.demo || D.keepMock) list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
-  if(D.grammar) list.append(listRow(LIC.gram,"문법 지도","문장 성분부터 · 누르면 가지가 펼쳐져요",()=>{ GP=[]; go("grammar"); }));
+  if(D.grammar) list.append(listRow(LIC.gram,"문법 지도","문장 성분 다섯 개로 보는 문법 한 장",()=>go("grammar")));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
   if(D.inbox){ const sc=store.get(`bandup-screens-${slug}`,[]); if(sc.length) list.append(listRow(LIC.voc,"📸 캡쳐한 글",`${sc.length}개 · 모르는 단어를 눌러 담아요`,()=>go("screens"))); else if((D.capLink || D.capOn) && /iPhone|iPad/i.test(navigator.userAgent||"")) list.append(listRow(LIC.voc,"📸 뒷면 톡톡 캡쳐","보던 화면의 단어를 바로 담기 · 설정 1분",()=>go("inbox"))); }
   if(D.inbox && D.yt){ const nv=store.get(`bandup-yt-${slug}`,[]).length; list.append(listRow(LIC.pod,"🎬 영상으로 공부", (()=>{ const nc=store.get(`bandup-clips-${slug}`,[]).length; return nc? `클립 ${nc}개 · 쉐도잉하러 가기` : nv? `영상 ${nv}개 · 이중자막으로 보고 안 들린 문장 담기` : "유튜브 보다가 뒷면 톡톡으로 클립 저장"; })(),()=>{ ytState=null; go("yt"); })); }

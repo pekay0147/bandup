@@ -1274,43 +1274,43 @@ button.guidelink{width:100%;background:none;border:0;font:inherit;font-size:13px
 .grtop .lx{margin-left:auto;margin-right:-10px}
 .grin{display:grid;gap:14px;min-width:0}
 @media (min-width:600px){.grov{align-items:center}.grsheet{border-radius:18px;max-height:84dvh}}
-/* GRAMMAR MAP 화면: 밑줄 탭 + 한 상자 안에서 펼쳐지는 목록. 색은 브랜드 파랑 하나만 쓰고, 성분 색은 예문 해부에서만 써요. */
-.grmap{display:grid;min-width:0}
-.grcomps{display:flex;border-bottom:1px solid var(--line)}
-.grcomp{flex:1;min-width:0;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;background:none;padding:12px 0 11px;font:inherit;color:var(--muted);cursor:pointer;transition:color .15s,border-color .15s}
-.grcomp b{font-size:16px;font-weight:600;white-space:nowrap;letter-spacing:-.01em}
-.grcomp.on{color:var(--ink);border-bottom-color:var(--blue)} .grcomp.on b{font-weight:700}
-.grhint{margin:28px 0 0;text-align:center;font-size:14px;color:var(--muted)}
-.grpan{margin-top:20px;display:grid;gap:22px;min-width:0;scroll-margin-top:12px}
-.grpan[data-r],.grpan .grnode,.grpan .gritem{--c:var(--blue)}
-.grtwig{display:grid;gap:8px;min-width:0}
-.grlab{padding:0 2px;font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.01em}
-.grnodes{display:grid;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.grnode{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;border:0;border-top:1px solid var(--line);background:none;padding:15px 16px;font:inherit;color:var(--ink);cursor:pointer;scroll-margin-top:12px}
-.grnode:first-child{border-top:0}
-.grnode b{font-size:16px;font-weight:600;letter-spacing:-.01em}
-.grnode.on b{font-weight:700;color:var(--blue)}
+/* GRAMMAR MAP 화면: 한 장 지도. 왼쪽 줄 = 주어·목적어·보어·수식어, 오른쪽 줄 = 동사. 성분마다 색 하나. */
+.grone{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;align-items:start}
+.grcol{display:grid;gap:8px;min-width:0}
+.grcard{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:12px;padding:12px 10px 12px;display:grid;gap:12px;min-width:0;scroll-margin-top:12px}
+.grcard.flash{animation:grflash 1s ease}
+@keyframes grflash{30%{box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 35%,transparent)}}
+.grchd{display:grid;gap:1px;padding:0 2px}
+.grchd b{font-size:18px;font-weight:700;letter-spacing:-.02em;color:var(--c)}
+.grchd span{font-size:12px;color:var(--muted);line-height:1.35}
+.grg{display:grid;gap:6px;min-width:0}
+.grgl{padding:0 2px;font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+.grks{display:flex;flex-wrap:wrap;gap:5px;min-width:0}
+.grk{max-width:100%;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 8px;font:inherit;font-size:13px;font-weight:600;line-height:1.25;letter-spacing:-.01em;text-align:left;cursor:pointer}
+.grk.seen{background:color-mix(in srgb,var(--c) 9%,var(--surface));border-color:color-mix(in srgb,var(--c) 28%,var(--line))}
+.grk.cur{background:var(--c);border-color:var(--c);color:var(--surface)}
+@media (min-width:600px){.grcard{padding:16px 14px}.grk{font-size:14px;padding:7px 10px}}
+/* 아래에서 열리는 내용 창 */
+.grwhere{margin:0;font-size:13px;font-weight:700;color:var(--c)}
+.grh{margin:0;font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.3}
+.grldef{margin:0;font-size:15px;line-height:1.65;color:var(--ink)}
+.grlist{display:grid;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.gritem{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;border:0;border-top:1px solid var(--line);background:none;padding:13px 14px;font:inherit;font-size:15px;font-weight:600;color:var(--ink);cursor:pointer}
+.gritem:first-child{border-top:0}
+.gritem.on{color:var(--c);font-weight:700}
 .grchev{color:#b5b7bb;font-size:18px;line-height:1;transition:transform .2s}
-.grnode.on .grchev,.gritem.on .grchev{transform:rotate(90deg);color:var(--blue)}
-.grleaf{display:grid;min-width:0;background:var(--sunk);border-top:1px solid var(--line);padding:4px 0}
-.gritem{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;border:0;background:none;padding:11px 16px 11px 28px;font:inherit;font-size:15px;font-weight:500;color:var(--ink);cursor:pointer;scroll-margin-top:12px}
-.gritem.on{font-weight:700;color:var(--blue)}
-.gritem.grto{color:var(--blue);font-size:14px;font-weight:600}
-.gritem.grto:first-of-type{margin-top:0}
-.gropen{min-width:0;padding:0 16px 12px 28px}
+.gritem.on .grchev{transform:rotate(90deg);color:var(--c)}
+.gropen{min-width:0;padding:0 14px 14px;animation:grin .2s ease both}
 .gropen .box{background:none!important;border:0!important;border-radius:0!important}
 .gropen .grex,.gropen .grwrong{padding:10px 0;border-top:1px solid var(--line)}
-.gropen .grex:first-child,.gropen .grwrong:first-child{border-top:0;padding-top:2px}
+.gropen .grex:first-child,.gropen .grwrong:first-child{border-top:0;padding-top:0}
 .gropen .grline{font-size:17px}
 .grtxt{margin:0;font-size:15px;line-height:1.75;color:var(--ink)}
-.grtxt em{font-style:normal;font-weight:700;color:var(--blue)}
-/* 예문 해부: 채운 색 대신 가는 밑줄과 작은 이름표 */
-.grmap .grc{border-bottom:1px dashed #c9cbd3;margin-bottom:6px}
-.grmap .grex.open .grc{background:none;padding:2px 2px 1px;border-bottom:2px solid var(--c)}
-.grmap .grex.open .grc small{font-weight:600;letter-spacing:.01em}
-.grmap .grc.on{background:color-mix(in srgb,var(--c) 12%,transparent)!important;border-radius:4px 4px 0 0}
-.grmap .grtag{background:none;padding:0;font-size:13px}
-.grmap .grgo{font-weight:600}
-.grpan.in,.grleaf.in,.gropen.in{animation:grin .22s ease both}
+.grtxt em{font-style:normal;font-weight:700;color:var(--c)}
+.grsub{font-size:13px;font-weight:700;color:var(--muted);margin-top:4px}
+.grsheet .grc{border-bottom:1px dashed #c9cbd3;margin-bottom:6px}
+.grsheet .grex.open .grc{background:none;padding:2px 2px 1px;border-bottom:2px solid var(--c)}
+.grsheet .grc.on{background:color-mix(in srgb,var(--c) 12%,transparent)!important;border-radius:4px 4px 0 0}
+.grsheet .grtag{background:none;padding:0;font-size:13px}
 @keyframes grin{from{opacity:0;transform:translateY(-4px)}}
-@media (prefers-reduced-motion:reduce){.grpan.in,.grleaf.in,.gropen.in{animation:none}.grcomp,.grchev{transition:none}}
+@media (prefers-reduced-motion:reduce){.gropen,.grcard.flash{animation:none}.grchev{transition:none}}

@@ -1373,6 +1373,28 @@ for i, v in SHORT.items(): N[i].setdefault("n", v)
 leafs = {x for n in N.values() for g in n.get("groups", []) for x in g[1]}
 assert all(N[x].get("pt") for x in leafs), [x for x in leafs if not N[x].get("pt")]
 
+# ───────────── 한 장 지도에 쓰는 아주 짧은 이름
+K = {"subj-noun": "명사", "subj-pron": "대명사", "subj-ger": "동명사", "subj-to": "to부정사", "subj-clause": "명사절",
+     "n-count": "셀 수 있는 · 없는", "n-a-the": "a · the", "n-the-no": "the 없이", "n-names": "이름과 the", "n-plural": "단수 · 복수", "n-poss": "'s · of",
+     "subj-there": "There is", "subj-agree": "수 일치",
+     "verb-be": "be · 일반동사", "verb-intr": "자동사", "verb-tr": "타동사", "verb-link": "연결동사",
+     "t-pres": "현재", "t-state": "상태동사", "t-past": "과거", "t-perf": "현재완료", "t-perf-cont": "완료진행", "t-for": "for · since",
+     "t-perf-past": "완료와 과거", "t-pastperf": "과거완료", "t-usedto": "used to", "t-future": "미래", "t-when": "when · if",
+     "verb-modal": "기본 규칙", "m-can": "can", "m-must": "must · have to", "m-should": "should", "m-may": "may · might", "m-deduce": "must be",
+     "m-past": "have p.p.", "m-would": "would", "m-request": "부탁 · 허락",
+     "if-1": "if 현재", "if-2": "if 과거", "if-3": "if had p.p.", "if-wish": "wish", "verb-phrasal": "구동사",
+     "f1": "1형식", "f2": "2형식", "f3": "3형식", "f4": "4형식", "f5": "5형식",
+     "obj-noun": "명사 · 대명사", "obj-ger": "동명사", "obj-to": "to부정사", "obj-clause": "명사절", "obj-both": "뜻이 바뀌는 동사", "obj-like": "like · would like", "obj-two": "목적어 두 개",
+     "comp-subj": "주격 보어", "comp-obj": "목적격 보어", "cmp-er": "비교급", "cmp-much": "비교급 강조", "cmp-as": "as ~ as", "cmp-est": "최상급", "comp-adj": "형용사와 부사",
+     "mod-adj": "형용사", "mod-adv": "부사", "mod-prep": "전치사구", "rel-who": "who · that", "rel-omit": "생략", "rel-where": "where · whose", "rel-what": "what", "rel-extra": "쉼표 관계절", "rel-ing": "-ing · -ed", "mod-order": "순서"}
+GS = {"subj": ["올 수 있는 것", "명사와 관사", "함께 알기"], "verb": ["종류", "시제", "조동사", "가정법", "구동사", "문장 모양"],
+      "obj": ["올 수 있는 것", "to와 -ing", "함께 알기"], "comp": ["종류", "비교", "자주 하는 실수"], "mod": ["종류", "관계절", "놓는 자리"]}
+for c, labs in GS.items():
+    assert len(labs) == len(N[c]["groups"]), c
+    for g, lab in zip(N[c]["groups"], labs): g.append(lab)
+assert leafs == set(K), leafs ^ set(K)
+for i, v in K.items(): N[i]["k"] = v
+
 # ───────────── 검사 + 저장
 ids = set(N)
 for i, n in N.items():
