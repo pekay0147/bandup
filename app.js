@@ -217,9 +217,6 @@ function grNode(app, id, nav){
   const def=el("div","grdef"); def.append(el("p",null,n.d)); app.append(def);
   if(n.body && n.body.length){ const ul=el("ul","grbody"); n.body.forEach(t=>{ const li=el("li"); li.innerHTML=t; ul.append(li); }); app.append(ul); }
   if(n.ex && n.ex.length){ const s=el("section","sec"); s.append(secHead("예문 해부","덩어리를 눌러 보세요")); const bx=el("div","box grexs"); n.ex.forEach(([mk,ko])=>bx.append(grSentence(mk,ko,nav))); s.append(bx); app.append(s); }
-  if(n.wrong && n.wrong.length){ const s=el("section","sec"); s.append(secHead("자주 틀려요")); const bx=el("div","box grwrongs");
-    n.wrong.forEach(([x,o,why])=>{ const r=el("div","grwrong"); r.append(el("p","x","✕ "+x), el("p","o","✓ "+o)); if(why) r.append(el("p","why",why)); bx.append(r); }); s.append(bx); app.append(s); }
-  if(n.tip){ const t=el("div","gram grtip"); t.append(el("b",null,"스피킹 팁"), el("p",null,n.tip)); app.append(t); }
   if(n.kids && n.kids.length){ const s=el("section","sec"); s.append(secHead("더 파고들기",`${n.kids.length}개`)); const l=el("div","box list2");
     n.kids.forEach(k=>{ const kn=GR.nodes[k]; const r=el("button","lrow2 grrow"); r.type="button"; r.onclick=()=>nav(k); const t=el("span","lt"); t.append(el("b",null,kn.t), el("span",null,kn.s||"")); r.append(t, el("span","lchev","›")); l.append(r); }); s.append(l); app.append(s); }
   if(n.more && n.more.length){ const s=el("section","sec"); s.append(secHead("함께 보면 좋아요")); const w=el("div","grmore"); n.more.forEach(k=>{ const b=el("button","grchip",GR.nodes[k].t+" ›"); b.type="button"; b.onclick=()=>nav(k); w.append(b); }); s.append(w); app.append(s); }
@@ -241,8 +238,6 @@ function grCardBox(mine){ const bx=el("div","box grwrongs"); mine.forEach(c=>{ c
 function grItems(n,nav){ const out=[]; const txt=(h,html)=>{ const p=el("p","grtxt"); if(html) p.innerHTML=h; else p.textContent=h; return p; };
   (n.body||[]).forEach((t,i)=>out.push({k:"p"+i, t:(n.pt||[])[i]||`포인트 ${i+1}`, make:()=>txt(t,true)}));
   if(n.ex) out.push({k:"ex", t:"예문", make:()=>grExs(n,nav)});
-  if(n.wrong) out.push({k:"wr", t:"자주 틀려요", make:()=>grWrongs(n)});
-  if(n.tip) out.push({k:"tip", t:"스피킹 팁", make:()=>txt(n.tip)});
   const mine=grCards(n); if(mine.length) out.push({k:"my", t:mine.some(c=>c.mine)? "내가 틀렸던 문장" : "내 카드에서 만난 문장", make:()=>grCardBox(mine)});
   return out; }
 function renderGrammar(app){
