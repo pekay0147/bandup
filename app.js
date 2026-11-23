@@ -196,8 +196,8 @@ function grCards(n){ if(!n.re || !D) return []; const seen=new Set(), out=[];
   for(const c of D.cards){ if(!c.en || seen.has(c.en) || !n.re.test(grText(c))) continue; seen.add(c.en); out.push(c); }
   return out.sort((a,b)=>(b.mine?1:0)-(a.mine?1:0)).slice(0,6); }
 /* 예문 한 줄: "{S:I} {V:like} {O:coffee}." → 덩어리를 누르면 성분 이름이 나오고 그 페이지로 갈 수 있어요 */
-function grSentence(mark, ko, nav){
-  const box=el("div","grex"), line=el("p","grline"), info=el("div","grinfo"); let cur=null; info.hidden=true;
+function grSentence(mark, ko, nav, open){
+  const box=el("div","grex"+(open?" open":"")), line=el("p","grline"), info=el("div","grinfo"); let cur=null; info.hidden=true;
   const re=/\{([A-Z]+)(?:>([a-z0-9-]+))?:([^}]+)\}/g; let m, last=0;
   const pick=(b,role,to,text)=>{ box.classList.add("open"); line.querySelectorAll(".grc").forEach(x=>x.classList.toggle("on",x===b)); cur=b;
     info.textContent=""; info.hidden=false; const R=GR_ROLE[role]||["",""], tn=GR.nodes[to||R[1]];
@@ -287,11 +287,13 @@ function renderGrammar(app){
     const leaf=k=>({id:k, t:GR.nodes[k].k||GR.nodes[k].t, seen:seen.has(k), go:()=>{ grAt={c,g:grAt.g,l:k,i:null}; const sn=grSeen(); if(!sn.includes(k)){ sn.push(k); store.set(`bandup-grseen-${slug}`,sn); } draw(); }});
     if(!c){ map.append(grRing({t:"문장 뼈대"}, comps.map(k=>({t:GR.nodes[k].t, tone:GR_COMP[k], go:()=>{ grAt={c:k,g:null}; draw(); }})))); return; }
     if(lf){ // 가지: 가운데 가지 이름, 양옆에 항목. 항목을 누르면 아래에 그 내용만 크게 보여요
-      const items=grItems(lf,nav);
-      map.append(el("p","grldef",lf.d), grSpider({t:lf.k||lf.t, up:"‹ "+(g? (g[2]||g[0]) : n.t), go:up}, items.map(it=>({t:it.t, on:grAt.i===it.k, ex:it.k==="ex"||it.k==="my", go:()=>{ grAt.i= grAt.i===it.k? null : it.k; draw(true); }})), GR_COMP[c]));
+      // 모양(f)이 있으면 둘레에 모양을 띄우고 누르면 예문으로, 없으면 예전처럼 설명 항목
+      const items= lf.f? lf.f.map(([t,note,exs],i)=>({k:"f"+i, t, make:()=>{ const w=el("div","grfx"); exs.forEach(([mk,ko])=>w.append(grSentence(mk,ko,nav,true))); if(note) w.append(el("p","grnote",note)); return w; }})) : grItems(lf,nav);
+      if(!lf.f) map.append(el("p","grldef",lf.d));
+      map.append(grSpider({t:lf.k||lf.t, up:"‹ "+(g? (g[2]||g[0]) : n.t), go:up}, items.map(it=>({t:it.t, on:grAt.i===it.k, ex:it.k==="ex"||it.k==="my", go:()=>{ grAt.i= grAt.i===it.k? null : it.k; draw(true); }})), GR_COMP[c]));
       const it=items.find(x=>x.k===grAt.i);
       if(it){ const show=el("section","grshow"); show.dataset.r=GR_COMP[c]; show.append(el("b","grshowh",it.t), it.make()); map.append(show); if(keep) requestAnimationFrame(()=>show.scrollIntoView({block:"nearest",behavior:calm?"auto":"smooth"})); }
-      else map.append(el("p","grhint","항목을 눌러 보세요."));
+      else map.append(el("p","grhint", lf.f? "모양을 누르면 예문이 나와요." : "항목을 눌러 보세요."));
       if(lf.more && lf.more.length){ const w=el("div","grmore"); lf.more.forEach(m=>{ const b=el("button","grchip","→ "+(GR.nodes[m].k||GR.nodes[m].t)); b.type="button"; b.onclick=()=>nav(m); w.append(b); }); map.append(el("b","grsub","여기서 이어져요"), w); }
       return; }
     if(g){ map.append(grRing({t:g[2]||g[0], up:"‹ "+n.t, go:up}, g[1].map(leaf), GR_COMP[c])); return; }

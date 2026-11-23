@@ -1395,12 +1395,103 @@ for c, labs in GS.items():
 assert leafs == set(K), leafs ^ set(K)
 for i, v in K.items(): N[i]["k"] = v
 
+# ═════════════ 가지를 눌렀을 때 둘레에 뜨는 "모양"과 그 예문. (이름, 한 줄, [(예문, 뜻), …])
+FORMS = {
+ "subj-noun": [
+  ("명사 하나", "가장 기본이에요.", [("{S:The weather} {V:is} {C:nice}.", "날씨가 좋아요."), ("{S:Time} {V:flies}.", "시간이 빨리 가요.")]),
+  ("꾸미는 말 + 명사", "my, this, 형용사까지가 한 덩어리 주어예요.", [("{S:My best friend} {V:lives} {M:in Canada}.", "제 가장 친한 친구는 캐나다에 살아요."), ("{S:This small café} {V:is} {M:always} {C:busy}.", "이 작은 카페는 항상 붐벼요.")]),
+  ("명사 + 뒤에서 꾸미는 말", "동사는 핵심 명사(people, café)에 맞춰요.", [("{S:The people in my office} {V:are} {C:friendly}.", "우리 사무실 사람들은 친절해요."), ("{S:The café near my house} {V:opens} {M:early}.", "우리 집 근처 카페는 일찍 열어요.")]),
+  ("A and B", "and로 묶으면 복수예요.", [("{S:My sister and I} {V:share} {O:a room}.", "언니와 저는 방을 같이 써요."), ("{S:Coffee and cake} {V:go} {M:well together}.", "커피와 케이크는 잘 어울려요.")]),
+ ],
+ "subj-pron": [
+  ("I · you · we · they", "동사는 그대로예요.", [("{S:I} {V:work} {M:at a hospital}.", "저는 병원에서 일해요."), ("{S:They} {V:live} {M:next door}.", "그들은 옆집에 살아요.")]),
+  ("he · she · it", "동사에 -s가 붙어요.", [("{S:She} {V:teaches} {O:English}.", "그녀는 영어를 가르쳐요."), ("{S:It} {V:looks} {C:expensive}.", "비싸 보여요.")]),
+  ("뜻 없는 it", "날씨·시간·거리는 it으로 시작해요.", [("{S:It} {V:is raining}.", "비가 오고 있어요."), ("{S:It} {V:is} {C:seven o'clock}.", "7시예요.")]),
+  ("this · that", "가까운 것은 this, 방금 들은 말은 that.", [("{S:This} {V:is} {C:my favourite place}.", "여기가 제가 제일 좋아하는 곳이에요."), ("{S:That} {V:sounds} {C:great}.", "그거 좋네요.")]),
+  ("everyone · someone", "뜻은 여럿이어도 단수예요.", [("{S:Everyone} {V:likes} {O:her}.", "모두가 그녀를 좋아해요."), ("{S:Someone} {V:called} {O:you}.", "누가 전화했어요.")]),
+ ],
+ "subj-ger": [
+  ("-ing 하나", "동사에 -ing를 붙이면 '~하는 것'이 돼요.", [("{S:Swimming} {V:is} {C:good exercise}.", "수영은 좋은 운동이에요."), ("{S:Cooking} {V:relaxes} {O:me}.", "요리를 하면 마음이 편해져요.")]),
+  ("-ing + 목적어", "books가 복수여도 동사는 단수예요 (is, takes).", [("{S:Reading books} {V:is} {C:fun}.", "책 읽기는 재미있어요."), ("{S:Learning English} {V:takes} {O:time}.", "영어를 배우는 데는 시간이 걸려요.")]),
+  ("-ing + 수식어", "어디서·어떻게까지 한 덩어리예요.", [("{S:Living alone} {V:has} {O:pros and cons}.", "혼자 사는 건 장단점이 있어요."), ("{S:Walking in the park} {V:clears} {O:my head}.", "공원을 걸으면 머리가 맑아져요.")]),
+  ("not -ing", "부정은 not을 앞에 붙여요.", [("{S:Not sleeping enough} {V:is} {C:bad for you}.", "잠을 충분히 안 자는 건 몸에 나빠요."), ("{S:Not having a car} {V:is} {C:inconvenient}.", "차가 없는 건 불편해요.")]),
+  ("being + 형용사 · 명사", "'~인 것'은 being으로 시작해요.", [("{S:Being late} {V:is} {C:rude}.", "늦는 건 예의가 아니에요."), ("{S:Being a parent} {V:is} {C:hard work}.", "부모가 되는 건 힘든 일이에요.")]),
+ ],
+ "subj-to": [
+  ("It is + 형용사 + to", "It은 가짜 주어, 진짜 주어는 to ~ 예요.", [("{FS:It} {V:is} {C:important} {RS:to sleep well}.", "잘 자는 게 중요해요."), ("{FS:It} {V:is} {C:easy} {RS:to make mistakes}.", "실수하기 쉬워요.")]),
+  ("for 사람 + to", "누가 하는지는 for + 사람으로 넣어요.", [("{FS:It} {V:is} {C:hard} {M:for me} {RS:to wake up early}.", "저는 일찍 일어나는 게 힘들어요."), ("{FS:It} {V:is} {C:normal} {M:for kids} {RS:to make noise}.", "아이들이 떠드는 건 당연해요.")]),
+  ("It takes + 시간 + to", "'~하는 데 시간이 걸리다'.", [("{FS:It} {V:takes} {O:an hour} {RS:to get there}.", "거기 가는 데 한 시간 걸려요."), ("{FS:It} {V:took} {O:two years} {RS:to learn it}.", "그걸 배우는 데 2년 걸렸어요.")]),
+  ("To ~가 맨 앞", "문법은 맞지만 딱딱해요. 말할 땐 It ~ to나 -ing를 써요.", [("{S:To travel alone} {V:is} {C:exciting}.", "혼자 여행하는 건 신나는 일이에요."), ("{S:To learn a language} {V:takes} {O:time}.", "언어를 배우는 데는 시간이 걸려요.")]),
+ ],
+ "subj-clause": [
+  ("What + 주어 + 동사", "'~하는 것'. 동사는 단수예요.", [("{S:What I need} {V:is} {C:a long holiday}.", "제게 필요한 건 긴 휴가예요."), ("{S:What she said} {V:made} {O:me} {OC:angry}.", "그녀가 한 말이 저를 화나게 했어요.")]),
+  ("It ~ that", "That ~ 주어는 보통 It으로 바꿔 말해요.", [("{FS:It} {V:is} {C:true} {RS:that he quit his job}.", "그가 일을 그만둔 건 사실이에요."), ("{FS:It} {V:is} {C:surprising} {RS:that she won}.", "그녀가 이긴 건 놀라워요.")]),
+  ("Whether ~", "'~인지 아닌지'.", [("{S:Whether we go} {V:depends} {M:on the weather}.", "우리가 갈지는 날씨에 달렸어요."), ("{S:Whether he comes} {V:doesn't matter}.", "그가 오든 말든 상관없어요.")]),
+  ("How · Why ~", "의문사 뒤는 평서문 순서(주어 + 동사)예요.", [("{S:How you say it} {V:matters}.", "어떻게 말하느냐가 중요해요."), ("{S:Why he left} {V:is} {C:a mystery}.", "그가 왜 떠났는지는 수수께끼예요.")]),
+ ],
+ "n-count": [
+  ("셀 수 있는 명사", "하나면 a / an, 여럿이면 -s.", [("{S:I} {V:have} {O:a car}.", "저는 차가 한 대 있어요."), ("{S:I} {V:bought} {O:two books}.", "책을 두 권 샀어요.")]),
+  ("셀 수 없는 명사", "a도 -s도 안 붙어요. advice, information, money, homework.", [("{S:I} {V:need} {O:some advice}.", "조언이 좀 필요해요."), ("{S:Money} {V:isn't} {C:everything}.", "돈이 전부는 아니에요.")]),
+  ("a piece of · a cup of", "셀 수 없는 건 그릇이나 조각으로 세요.", [("{S:She} {V:gave} {IO:me} {DO:a piece of advice}.", "그녀가 조언을 하나 해 줬어요."), ("{S:I} {V:drink} {O:three cups of coffee} {M:a day}.", "하루에 커피를 세 잔 마셔요.")]),
+  ("many 와 much", "many + 셀 수 있는 것, much + 셀 수 없는 것. a lot of는 둘 다 돼요.", [("{S:I} {V:don't have} {O:many friends} {M:here}.", "여기는 친구가 많지 않아요."), ("{S:I} {V:don't have} {O:much time}.", "시간이 별로 없어요.")]),
+  ("a few 와 a little", "a few + 셀 수 있는 것, a little + 셀 수 없는 것.", [("{S:I} {V:have} {O:a few questions}.", "질문이 몇 개 있어요."), ("{S:I} {V:speak} {O:a little Japanese}.", "일본어를 조금 해요.")]),
+ ],
+ "n-a-the": [
+  ("처음엔 a, 다시 말하면 the", "처음 꺼낼 땐 a, 그다음부터는 the.", [("{S:I} {V:saw} {O:a dog}. {S:The dog} {V:was} {C:huge}.", "개를 봤어요. 그 개는 엄청 컸어요."), ("{S:I} {V:bought} {O:a jacket}. {S:The jacket} {V:was} {C:on sale}.", "재킷을 샀어요. 그 재킷은 세일 중이었어요.")]),
+  ("서로 아는 것 the", "어떤 것인지 뻔하면 the.", [("{V:Can} {S:you} {V:close} {O:the door}?", "문 좀 닫아 줄래요?"), ("{S:I} {V:am going} {M:to the station}.", "역에 가는 중이에요.")]),
+  ("하나뿐인 것 the", "the sun, the world, the same.", [("{S:The sun} {V:is} {C:hot} {M:today}.", "오늘은 햇볕이 뜨거워요."), ("{S:It} {V:is} {C:the same}.", "똑같아요.")]),
+  ("직업 · 종류는 a / an", "모음 소리 앞에서는 an.", [("{S:I} {V:am} {C:a nurse}.", "저는 간호사예요."), ("{S:It} {V:is} {C:an interesting job}.", "재미있는 직업이에요.")]),
+  ("once a week", "'~에 한 번'은 a를 써요.", [("{S:I} {V:go} {M:to the gym} {M:twice a week}.", "일주일에 두 번 헬스장에 가요."), ("{S:I} {V:visit} {O:them} {M:once a month}.", "한 달에 한 번 그분들을 찾아봬요.")]),
+ ],
+ "n-the-no": [
+  ("일반적인 것", "'~라는 것 전반'에는 the를 안 써요.", [("{S:I} {V:like} {O:dogs}.", "저는 개를 좋아해요."), ("{S:Music} {V:helps} {O:me} {OC:relax}.", "음악은 긴장을 풀어 줘요.")]),
+  ("식사 · 운동 · 언어", "have lunch, play tennis, speak English.", [("{S:I} {V:had} {O:lunch} {M:at noon}.", "정오에 점심을 먹었어요."), ("{S:I} {V:play} {O:tennis} {M:on Sundays}.", "일요일마다 테니스를 쳐요.")]),
+  ("school · work · bed", "본래 목적으로 갈 때는 the가 없어요.", [("{S:I} {V:go} {M:to bed} {M:late}.", "저는 늦게 자요."), ("{S:She} {V:is} {M:at work} {M:now}.", "그녀는 지금 일하는 중이에요.")]),
+  ("특정한 것은 the", "어느 것인지 정해지면 the가 붙어요.", [("{S:I} {V:like} {O:the dogs next door}.", "저는 옆집 개들을 좋아해요."), ("{S:The music in this café} {V:is} {C:nice}.", "이 카페 음악이 좋네요.")]),
+ ],
+ "n-names": [
+  ("나라 · 도시", "대부분 the가 없어요.", [("{S:I} {V:live} {M:in Korea}.", "저는 한국에 살아요."), ("{S:Seoul} {V:is} {C:crowded}.", "서울은 붐벼요.")]),
+  ("the + 복수 · 연합 나라", "the UK, the US, the Philippines.", [("{S:I} {V:lived} {M:in the UK}.", "저는 영국에 살았어요."), ("{S:She} {V:is} {M:from the United States}.", "그녀는 미국 출신이에요.")]),
+  ("the + 바다 · 강 · 산맥", "the Pacific, the Han River, the Alps.", [("{S:The Han River} {V:runs} {M:through Seoul}.", "한강은 서울을 가로질러 흘러요."), ("{S:We} {V:flew} {M:over the Pacific}.", "우리는 태평양 위를 날았어요.")]),
+  ("of가 들어간 이름", "of가 있으면 the가 붙어요.", [("{S:I} {V:studied} {M:at the University of Seoul}.", "저는 서울시립대에서 공부했어요."), ("{S:The Bank of Korea} {V:is} {M:near here}.", "한국은행이 이 근처에 있어요.")]),
+ ],
+ "n-plural": [
+  ("people", "person의 복수예요. 동사도 복수.", [("{S:Many people} {V:live} {M:in apartments}.", "많은 사람들이 아파트에 살아요."), ("{S:People} {V:are} {C:friendly} {M:here}.", "여기 사람들은 친절해요.")]),
+  ("news · maths", "-s로 끝나도 단수예요.", [("{S:The news} {V:was} {C:surprising}.", "그 소식은 놀라웠어요."), ("{S:Maths} {V:is} {C:hard} {M:for me}.", "저한테 수학은 어려워요.")]),
+  ("jeans · glasses", "두 부분으로 된 물건은 항상 복수예요.", [("{S:My glasses} {V:are} {C:broken}.", "제 안경이 부러졌어요."), ("{S:These jeans} {V:are} {C:too tight}.", "이 청바지는 너무 껴요.")]),
+  ("시간 · 돈", "한 덩어리로 봐서 단수예요.", [("{S:Twenty minutes} {V:is} {C:enough}.", "20분이면 충분해요."), ("{S:Ten dollars} {V:is} {C:too much}.", "10달러는 너무 비싸요.")]),
+  ("a ten-minute walk", "명사를 꾸밀 때는 -s를 안 붙여요.", [("{S:It} {V:is} {C:a ten-minute walk}.", "걸어서 10분 거리예요."), ("{S:I} {V:have} {O:a five-year-old son}.", "저는 다섯 살 아들이 있어요.")]),
+ ],
+ "n-poss": [
+  ("사람 's", "사람·동물의 것은 's.", [("{S:My friend's dad} {V:is} {C:a doctor}.", "제 친구 아버지는 의사예요."), ("{S:This} {V:is} {C:my sister's room}.", "여기는 제 언니 방이에요.")]),
+  ("사물 of", "사물의 것은 of.", [("{S:I} {V:forgot} {O:the title of the movie}.", "그 영화 제목을 잊어버렸어요."), ("{S:I} {V:will see} {O:you} {M:at the end of the month}.", "월말에 봬요.")]),
+  ("명사 + 명사", "앞 명사가 형용사처럼 꾸며요. 앞 명사는 단수.", [("{S:The bus driver} {V:was} {C:kind}.", "버스 기사님이 친절했어요."), ("{S:I} {V:work} {M:at a shoe shop}.", "저는 신발 가게에서 일해요.")]),
+  ("a friend of mine", "'내 친구 중 한 명'.", [("{S:A friend of mine} {V:lives} {M:in Tokyo}.", "제 친구 하나가 도쿄에 살아요."), ("{S:She} {V:is} {C:a colleague of mine}.", "그녀는 제 직장 동료예요.")]),
+ ],
+ "subj-there": [
+  ("There is + 단수", "진짜 주어는 be동사 뒤에 있어요.", [("There {V:is} {S:a café} {M:near my house}.", "우리 집 근처에 카페가 있어요."), ("There {V:is} {S:a problem}.", "문제가 있어요.")]),
+  ("There are + 복수", "뒤 명사가 복수면 are.", [("There {V:are} {S:a lot of mountains} {M:in Korea}.", "한국에는 산이 많아요."), ("There {V:are} {S:three people} {M:in my family}.", "우리 가족은 세 명이에요.")]),
+  ("There was · were", "과거에 있었던 것.", [("There {V:was} {S:a lot of traffic}.", "차가 많이 막혔어요."), ("There {V:were} {S:no seats}.", "자리가 없었어요.")]),
+  ("There used to be · will be", "예전에 있었던 것과 앞으로 있을 것.", [("There {V:used to be} {S:a cinema} {M:here}.", "예전에는 여기 영화관이 있었어요."), ("There {V:will be} {S:a test} {M:tomorrow}.", "내일 시험이 있을 거예요.")]),
+  ("there 다음엔 it", "처음엔 there로 꺼내고, 그다음엔 it으로 받아요.", [("There {V:is} {S:a new café} {M:near my office}. {S:It} {V:is} {C:really good}.", "사무실 근처에 새 카페가 있어요. 거기 정말 좋아요.")]),
+ ],
+ "subj-agree": [
+  ("he · she · it + -s", "주어가 하나면 동사에 -s.", [("{S:My brother} {V:works} {M:at a bank}.", "제 형은 은행에서 일해요."), ("{S:She} {V:has} {O:two cats}.", "그녀는 고양이 두 마리를 키워요.")]),
+  ("부정 · 의문은 does", "does가 -s를 가져가서 동사는 원형이에요.", [("{S:She} {V:doesn't like} {O:coffee}.", "그녀는 커피를 안 좋아해요."), ("{V:Does} {S:he} {V:live} {M:here}?", "그는 여기 살아요?")]),
+  ("단수로 보는 것", "everyone, 동명사, 셀 수 없는 명사.", [("{S:Everyone} {V:has} {O:a phone}.", "누구나 휴대폰이 있어요."), ("{S:Watching movies} {V:is} {C:my hobby}.", "영화 보기가 제 취미예요.")]),
+  ("복수로 보는 것", "people, A and B.", [("{S:People} {V:are} {C:busy} {M:these days}.", "요즘 사람들은 바빠요."), ("{S:My mom and dad} {V:live} {M:in Busan}.", "엄마 아빠는 부산에 사세요.")]),
+  ("핵심 명사에 맞추기", "가까운 명사가 아니라 핵심 명사(price, books)에 맞춰요.", [("{S:The price of vegetables} {V:is} {C:high}.", "채소 값이 비싸요."), ("{S:The books on the table} {V:are} {C:mine}.", "탁자 위 책들은 제 거예요.")]),
+ ],
+}
+for i, fs in FORMS.items():
+    N[i]["f"] = [[a, b, [list(x) for x in c]] for a, b, c in fs]
+
 # ───────────── 검사 + 저장
 ids = set(N)
 for i, n in N.items():
     for k in n.get("kids", []) + n.get("more", []) + [x for g in n.get("groups", []) for x in g[1]]:
         assert k in ids, (i, k)
-    for e, _ in n.get("ex", []):
+    for e, _ in n.get("ex", []) + [x for f in n.get("f", []) for x in f[2]]:
         for r, t, _x in re.findall(r"\{([A-Z]+)(?:>([a-z0-9-]+))?:([^}]+)\}", e):
             assert r in "S FS RS V O IO DO C OC M".split(), (i, r)
             assert not t or t in ids, (i, t)
