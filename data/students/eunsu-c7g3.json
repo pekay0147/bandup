@@ -2363,5 +2363,6 @@
  "keepMock": true,
  "ai": true,
  "p2rec": true,
- "grammar": true
+ "grammar": true,
+ "noGuide": true
 }

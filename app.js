@@ -402,7 +402,7 @@ function todayPod(){ if(D && D.podAuto && (D.podSessions||[]).length){ const don
   if(D && D.dailyPod && (D.podSessions||[]).length){ const L=[...D.podSessions].sort((a,b)=>String(b.date).localeCompare(String(a.date))); const t=today(), st="2026-11-09"; let n=0; while(addD(st,n)<t && n<4000) n++; if(t<st) n=0; return L[Math.min(n,L.length-1)]; }
   const P=D&&D.podDaily; if(!P||!P.order||!P.order.length||!D.sessions) return null; const t=today(); let n=0; while(addD(P.start,n)<t && n<4000) n++; if(t<P.start) n=0; const no=P.order[Math.min(n,P.order.length-1)]; return D.sessions.find(x=>x.no===no)||null; }
 function studyGuide(app){
-  if(D.demo || (D.group==="ielts" && !D.showGuide)) return;
+  if(D.demo || D.noGuide || (D.group==="ielts" && !D.showGuide)) return; // 학생 파일에 "noGuide": true 면 숨김
   const P=podSel(); const podTab=(D.group==="church"||D.group==="other")? "session" : ((D.podSessions||[]).length? "pod" : "session");
   const steps=[
     (()=>{ const TP=todayPod(); return TP? ["팟캐스트 듣기", `오늘은 ${String(TP.link.src||"6 Minute English").replace(/^BBC /,"")} ${TP.link.date} 편 \u201c${TP.link.title}\u201d을 끝까지 들어요`, null, TP.link.url] : ["팟캐스트 듣기", `${P.name||"오늘의 팟캐스트"} 한 편을 끝까지 들어요`, null, podUrl(P)]; })(),
