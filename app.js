@@ -2028,7 +2028,7 @@ function reviewMove(d){ const R=reviewState; if(d<0){ if(R.i>0){ R.i--; flipped=
 
 /* ---------- ideas: Part 1 / Part 2 / Part 3 ---------- */
 let podPickOpen=false;
-let ideaPart="p2", openKey=null, p2Query="", p2Lesson=false;
+let ideaPart="p2", openKey=null, p2Query="", p3Query="";
 function renderIdeas(app){
   pageHead(app,"아이디어","스피킹 답변에 쓸 재료를 Part별로 모았어요.");
   const seg=el("div","modeseg"); seg.setAttribute("role","tablist");
@@ -2091,18 +2091,19 @@ function renderP3(app){
   for(const [n,k,ex] of [["1","명확한 대답","I think… / In my view, …"],["2","근거","That's because…"],["3","예시","For example, …"],["4","마무리","So that's why…"]]){ const li=el("li"); li.append(el("b",null,`${n}. ${k}`), el("span",null,ex)); ol.append(li); }
   t.append(ol); app.append(t);
   if(!P3) return;
-  const inp=el("input"); inp.type="search"; inp.placeholder="주제 검색 (예: friend, technology)"; inp.setAttribute("aria-label","Part 3 주제 검색"); inp.className="p3search";
+  const inp=el("input"); inp.type="search"; inp.placeholder="주제 검색 (예: friend, technology)"; inp.setAttribute("aria-label","Part 3 주제 검색"); inp.className="p3search"; inp.value=p3Query;
   const cnt=el("p","muted small",`Part 2 주제 ${P3.items.length}개 · 주제마다 심화 질문`);
-  const apply=()=>{ const q=inp.value.trim().toLowerCase(); let n=0; document.querySelectorAll(".p3sec").forEach(c=>{ const ok=!q||c.dataset.search.includes(q); c.hidden=!ok; if(ok) n++; }); cnt.textContent=`${n}개 주제`; };
+  const apply=()=>{ p3Query=inp.value; const q=inp.value.trim().toLowerCase(); let n=0; document.querySelectorAll(".p3sec").forEach(c=>{ const ok=!q||c.dataset.search.includes(q); c.hidden=!ok; if(ok) n++; }); cnt.textContent=`${n}개 주제`; };
   inp.addEventListener("input",e=>{ if(e.isComposing) return; apply(); }); inp.addEventListener("compositionend",apply);
-  cnt.textContent=`Part 2 주제 ${P3.items.length}개 · 주제마다 심화 질문`; app.append(cnt);
+  cnt.textContent=`Part 2 주제 ${P3.items.length}개 · 주제마다 심화 질문`; app.append(inp, cnt);
   for(const it of P3.items){
     const p2=P2&&P2.items.find(x=>x.no===it.no);
     const sec=el("div","panel p3sec"); sec.dataset.search=(it.topic+" "+(p2? p2.answer+" "+p2.points.join(" "):"")+" "+it.qs.join(" ")).toLowerCase();
-    sec.append(el("span","from2",(it.no>=70? `Part 2 추가 #${it.no}` : `Part 2 #${it.no}`)+(it.lesson? ` · ${it.lesson}회차 수업 질문`:"")), el("b","p3t",it.topic));
+    sec.append(el("span","from2",(it.no>=70? `Part 2 추가 #${it.no}` : `Part 2 #${it.no}`)), el("b","p3t",it.topic)); // 'N회차 수업' 표시는 공용 데이터라 학생마다 맞지 않아 숨겨요
     const ol=el("ol","p1q"); it.qs.forEach(q=>ol.append(el("li",null,q))); sec.append(ol);
     app.append(sec);
   }
+  if(p3Query.trim()) apply();
 }
 let p2Set="main";
 function renderP2(app){
@@ -2122,16 +2123,15 @@ function renderP2(app){
     const em=document.getElementById("p2empty"); if(em) em.hidden = n>0; };
   inp.addEventListener("input",e=>{ if(e.isComposing) return; applyFilter(); });
   inp.addEventListener("compositionend",applyFilter);
-  const chip=el("button",null,"수업에서 다룬 주제만"); chip.type="button"; chip.className="lessonchip"; chip.setAttribute("aria-pressed",String(p2Lesson)); chip.onclick=()=>{ p2Lesson=!p2Lesson; render(); };
-  p2Query="";
+  tools.append(inp); app.append(tools);
   const q=p2Query.trim().toLowerCase();
   const hay=it=>(it.topic+" "+it.answer+" "+it.points.join(" ")+" "+(it.alts||[]).join(" ")).toLowerCase();
-  const list=P2.items.filter(it=>(!p2Lesson || it.lesson));
+  const list=P2.items;
   const shown=list.filter(it=>!q || hay(it).includes(q)).length;
   const cnt=el("p","muted small",`9~12월 예상 기출 ${shown}개`); cnt.id="p2count"; app.append(cnt);
   for(const it of list){
     const hd=el("div");
-    const top=el("span","from2", `#${it.no}`+(it.lesson? ` · ${it.lesson}회차 수업에서 다룸`:""));
+    const top=el("span","from2", `#${it.no}`);
     hd.append(top, el("b",null,it.topic));
     if(it.answer) hd.append(el("span","ans-chip",`답변: ${it.answer}`));
     const card=fold("p2-"+it.no, hd, b=>{
