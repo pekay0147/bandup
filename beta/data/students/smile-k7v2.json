@@ -35,32 +35,6 @@
  "compare": [],
  "cards": [
   {
-   "id": "hj101",
-   "kind": "ko",
-   "type": "주어-동사",
-   "sessions": [
-    1
-   ],
-   "ko": "제 도시에는 박물관이 많아요.",
-   "en": "There are many museums in my city.",
-   "hint": "museums",
-   "gram": "<em>many</em> + 복수명사. 복수라 <em>There are</em>. 단수·복수 구분 확실하게!",
-   "mine": "There are many museum."
-  },
-  {
-   "id": "hj102",
-   "kind": "ko",
-   "type": "동사·시제",
-   "sessions": [
-    1
-   ],
-   "ko": "어렸을 때 공원에 가는 걸 좋아했어요.",
-   "en": "I liked going to parks when I was a child.",
-   "hint": "liked",
-   "gram": "<em>Did you</em> ~? 로 물으면 과거로 답해요. Did you like ~? → I <em>liked</em> ~.",
-   "mine": null
-  },
-  {
    "id": "hj103",
    "kind": "ko",
    "type": "동사·시제",
@@ -85,19 +59,6 @@
    "hint": "an apartment",
    "gram": "셀 수 있는 단수 명사 앞에는 a / an. apartment는 모음 소리로 시작해서 <em>an</em>.",
    "mine": "I prefer to live in apartment."
-  },
-  {
-   "id": "hj105",
-   "kind": "ko",
-   "type": "관사·전치사",
-   "sessions": [
-    1
-   ],
-   "ko": "저는 여름에 수영하러 가요.",
-   "en": "I go swimming in summer.",
-   "hint": "in summer",
-   "gram": "계절 앞에는 <em>in</em>: in summer, in winter. 이런 표현은 하나씩 모아 두기!",
-   "mine": null
   },
   {
    "id": "hj106",
