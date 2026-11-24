@@ -30,6 +30,11 @@
    "no": 5,
    "date": "2026-11-17",
    "title": "Impressive film"
+  },
+  {
+   "no": 6,
+   "date": "2026-11-24",
+   "title": "Speaking nerves · Review"
   }
  ],
  "types": [
@@ -52,7 +57,9 @@
   "1": "Part 1 Study·Hometown 질문은 3줄씩 말할 수 있게 연습하기!",
   "2": "used to + 동사원형(예전에 ~했다) vs be used to + -ing(~에 익숙하다) 구분! 거리는 It takes 20 minutes on foot / It's a 20-minute walk 두 가지로.",
   "4": "Part 3는 주어를 '나'보다 People / Many people로! Part 2는 직접화법 대신 told me (that) / suggested (that). 과거 이야기는 hung처럼 과거형으로.",
-  "5": "비교급 앞에 to 없음: try harder (try to harder ❌). It is better to + 동사. the way + 주어 + 동사 문장 연습하기!"
+  "5": "비교급 앞에 to 없음: try harder (try to harder ❌). It is better to + 동사. the way + 주어 + 동사 문장 연습하기!",
+  "6": "at outside ✕ → outside! after + 주어 동사 / after + -ing. forget to(할 일) vs forget -ing(한 일). 간접의문문은 주어 + 동사 순서.",
+  "n": 6
  },
  "compare": [
   [
@@ -1318,6 +1325,188 @@
    "hint": "way",
    "gram": "<em>the way</em> + 주어 + 동사. the way <em>the actor talks</em> = 그 배우가 말하는 방식.",
    "mine": null
+  },
+  {
+   "id": "s6m1",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    6
+   ],
+   "ko": "공부 측면에서 보면, 저는 외우는 걸 잘 못해요.",
+   "en": "Study-wise, I'm not good at memorising things.",
+   "hint": "Study-wise",
+   "gram": "명사 + <em>-wise</em> = ~ 면에서는. <em>be good at</em> + -ing.",
+   "mine": null
+  },
+  {
+   "id": "s6m2",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    6
+   ],
+   "ko": "저는 동료들보다 더 열심히 노력했어요.",
+   "en": "I tried harder than my colleagues.",
+   "hint": "harder than",
+   "gram": "<em>harder than</em> ~ = ~보다 더 열심히. harder는 부사라 앞에 to가 필요 없어요.",
+   "mine": "I tried to harder"
+  },
+  {
+   "id": "s6m3",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    6
+   ],
+   "ko": "그 영화는 집보다 영화관에서 보는 게 더 좋아요.",
+   "en": "It's better to watch that film at the cinema than at home.",
+   "hint": "better to watch",
+   "gram": "<em>It's better to</em> + 동사원형 = ~하는 게 더 좋다. 비교 대상은 <em>than</em> at home.",
+   "mine": "It is better seen at the cinema"
+  },
+  {
+   "id": "s6m4",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    6
+   ],
+   "ko": "제가 환자들을 대하는 방식이 작년과 달라졌어요.",
+   "en": "The way I treat my patients has changed since last year.",
+   "hint": "The way",
+   "gram": "<em>the way</em> + 주어 + 동사 = ~하는 방식. 주어(The way)가 단수라 <em>has</em> changed.",
+   "mine": null
+  },
+  {
+   "id": "s6m5",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    6
+   ],
+   "ko": "영어로 말할 때 꽤 긴장돼요. 많은 사람들이 공감할 거예요.",
+   "en": "I get pretty nervous when I speak English. I think a lot of people can relate to that.",
+   "hint": "relate to",
+   "gram": "<em>pretty</em> = 꽤, 좀. <em>relate to</em> ~ = ~에 공감하다 (비슷한 경험이 있어서).",
+   "mine": null
+  },
+  {
+   "id": "s6m6",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    6
+   ],
+   "ko": "야간 근무와 수면 문제 사이에는 상관관계가 있어요.",
+   "en": "There is a correlation between night shifts and sleep problems.",
+   "hint": "correlation",
+   "gram": "<em>a correlation between</em> A <em>and</em> B = A와 B 사이의 상관관계.",
+   "mine": null
+  },
+  {
+   "id": "s601",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    6
+   ],
+   "ko": "아이들은 밖에서 노는 걸 좋아해요.",
+   "en": "Children like playing outside.",
+   "hint": "outside",
+   "gram": "❌ at outside → ✅ <em>outside</em>. outside는 그 자체로 '밖에서'라서 앞에 at을 쓰지 않아요. (inside, upstairs, home도 마찬가지)",
+   "mine": "Children like playing at outside."
+  },
+  {
+   "id": "s602",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    6
+   ],
+   "ko": "수업이 끝나고 나서 저는 보통 헬스장에 가요.",
+   "en": "After I finish my class, I usually go to the gym.",
+   "hint": "After I finish",
+   "gram": "<em>after</em>는 접속사도, 전치사도 돼요. 접속사: <em>after I finish</em> my class / 전치사: <em>after finishing</em> my class.",
+   "mine": null
+  },
+  {
+   "id": "s603",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    6
+   ],
+   "ko": "퇴근 후에 저는 보통 따뜻한 차를 마셔요.",
+   "en": "After finishing work, I usually drink hot tea.",
+   "hint": "After finishing",
+   "gram": "전치사 <em>after</em> + -ing. 일반동사 앞에 I'm을 붙이지 않아요: ❌ I'm usually drink → ✅ I <em>usually drink</em>.",
+   "mine": "I'm usually drink"
+  },
+  {
+   "id": "s604",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    6
+   ],
+   "ko": "제가 간호사가 된 이유는 사람들을 돕는 게 좋아서예요.",
+   "en": "The reason why I became a nurse is that I like helping people.",
+   "hint": "The reason why",
+   "gram": "<em>The reason why</em> + 주어 + 동사 + <em>is that</em> ~ = 내가 ~한 이유는 …이다. 말할 때는 is because도 많이 써요.",
+   "mine": null
+  },
+  {
+   "id": "s605",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    6
+   ],
+   "ko": "식물에 물 주는 걸 깜빡했어요.",
+   "en": "I forgot to water my plants.",
+   "hint": "forgot to water",
+   "gram": "<em>forget to</em> + 동사 = (해야 할 일을) 깜빡하다. <em>forget</em> + -ing = (이미 한 일을) 잊다. ❌ I forgot water for them.",
+   "mine": "I forgot water for them."
+  },
+  {
+   "id": "s606",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    6
+   ],
+   "ko": "병원이 어디 있는지 알려 주실 수 있어요?",
+   "en": "Can you tell me where the hospital is?",
+   "hint": "where the hospital is",
+   "gram": "간접의문문: 의문사 뒤는 평서문 순서(주어 + 동사). 직접의문문 Where <em>is the hospital</em>? → Can you tell me where <em>the hospital is</em>?",
+   "mine": null
+  },
+  {
+   "id": "s607",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    6
+   ],
+   "ko": "죄송하지만, 틀리신 것 같아요.",
+   "en": "I'm afraid you're wrong.",
+   "hint": "I'm afraid",
+   "gram": "<em>I'm afraid</em> + 문장 = 유감이지만 ~예요 (안 좋은 말을 부드럽게 할 때). 무섭다는 뜻이 아니에요.",
+   "mine": null
+  },
+  {
+   "id": "s608",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    6
+   ],
+   "ko": "저는 출근하기 전에 화장을 해요.",
+   "en": "I do my makeup before work.",
+   "hint": "do my makeup",
+   "gram": "<em>do one's makeup</em> = 화장하다 (= put on makeup).",
+   "mine": null
   }
  ],
  "part1": [
@@ -1739,6 +1928,66 @@
    "ko": "더 열심히 노력하다",
    "ex": "I tried harder than my colleagues.",
    "s": 5
+  },
+  {
+   "w": "emerging",
+   "ko": "새로 드러나는",
+   "ex": "There was emerging evidence.",
+   "s": 6
+  },
+  {
+   "w": "correlation",
+   "ko": "상관관계",
+   "ex": "There may be a correlation between this and diseases.",
+   "s": 6
+  },
+  {
+   "w": "spike",
+   "ko": "급증",
+   "ex": "We'd have seen a spike by now.",
+   "s": 6
+  },
+  {
+   "w": "quantified",
+   "ko": "수치로 나타낸",
+   "ex": "This is not a quantified measure.",
+   "s": 6
+  },
+  {
+   "w": "relate to",
+   "ko": "공감하다",
+   "ex": "It's a situation lots of people can relate to.",
+   "s": 6
+  },
+  {
+   "w": "anxiety",
+   "ko": "불안",
+   "ex": "Speaking anxiety is very common.",
+   "s": 6
+  },
+  {
+   "w": "irrational beliefs",
+   "ko": "근거 없는 믿음",
+   "ex": "Everyone will laugh at my mistakes.",
+   "s": 6
+  },
+  {
+   "w": "self-perception",
+   "ko": "자기 인식",
+   "ex": "",
+   "s": 6
+  },
+  {
+   "w": "internal",
+   "ko": "내면의, 마음속의",
+   "ex": "",
+   "s": 6
+  },
+  {
+   "w": "do makeup",
+   "ko": "화장하다",
+   "ex": "I just did my makeup.",
+   "s": 6
   }
  ],
  "podFiles": [
