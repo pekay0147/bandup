@@ -68,6 +68,12 @@
    "date": "2026-11-21",
    "title": "Speaking Matrix",
    "label": "스피킹 매트릭스 19회"
+  },
+  {
+   "no": 23,
+   "date": "2026-11-24",
+   "title": "Speaking Matrix",
+   "label": "스피킹 매트릭스 20회"
   }
  ],
  "types": [
@@ -1715,6 +1721,78 @@
    "en": "The trip left me with good memories.",
    "hint": "left me with",
    "gram": "<em>leave</em> 사람 <em>with</em> ~ = (어떤 일이) ~에게 …을 남기다. leave-<em>left</em>-left. memory의 복수는 <em>memories</em>."
+  },
+  {
+   "id": "sm20-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    23
+   ],
+   "ko": "최종 마감은 금요일 정오까지예요.",
+   "en": "The final deadline is due by noon on Friday.",
+   "hint": "due by",
+   "gram": "<em>be due by</em> + 시간 = ~까지 마감이다. <em>by</em> = ~까지 (그때까지 끝내야 함). <em>at noon</em> 대신 '정오까지'는 <em>by noon</em>, 요일은 <em>on</em> Friday."
+  },
+  {
+   "id": "sm20-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    23
+   ],
+   "ko": "출시 시간이 오후 3시로 바뀌었다고 제가 제대로 이해한 게 맞나요?",
+   "en": "Did I understand correctly that the launch time has been changed to three in the afternoon?",
+   "hint": "understand correctly",
+   "gram": "<em>Did I understand correctly that</em> + 문장? = ~라고 제가 맞게 이해했나요? (확인할 때 정중한 표현). <em>has been changed to</em> = ~로 바뀌었다 (현재완료 수동태). <em>three in the afternoon</em> = 오후 3시."
+  },
+  {
+   "id": "sm20-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    23
+   ],
+   "ko": "그건 스레드에 편하게 추가해 주세요.",
+   "en": "Feel free to add it to the thread.",
+   "hint": "Feel free to",
+   "gram": "<em>Feel free to</em> + 동사원형 = 편하게 ~하세요, 얼마든지 ~해도 돼요. <em>add</em> A <em>to</em> B = A를 B에 추가하다. <em>thread</em> = (메신저·메일의) 대화 스레드."
+  },
+  {
+   "id": "sm20-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    23
+   ],
+   "ko": "앞으로는 팀 회의가 끝날 때마다 간단한 요약을 보내 드릴게요.",
+   "en": "Going forward, I'll send a brief summary after each team meeting.",
+   "hint": "Going forward",
+   "gram": "<em>Going forward,</em> = 앞으로는 (회사에서 자주 쓰는 말). <em>a brief summary</em> = 간단한 요약. <em>after each</em> + 단수명사 = ~할 때마다, 매 ~ 후에."
+  },
+  {
+   "id": "sm20-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    23
+   ],
+   "ko": "어떤 사람들은 회의에서 말로 한 합의면 충분하다고 생각해요.",
+   "en": "Some people feel that a verbal agreement in a meeting is enough.",
+   "hint": "verbal agreement",
+   "gram": "<em>Some people feel that</em> + 문장 = 어떤 사람들은 ~라고 생각해요 (반대 의견을 꺼낼 때). <em>a verbal agreement</em> = 구두 합의, 말로 한 약속. 주어가 agreement(단수)라 <em>is</em>."
+  },
+  {
+   "id": "sm20-06",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    23
+   ],
+   "ko": "마감일이 하루 잘못돼 있었는데, 제때 고쳤어요.",
+   "en": "The deadline was off by a day, and we fixed it in time.",
+   "hint": "off by a day",
+   "gram": "<em>be off by</em> + 차이 = ~만큼 틀리다, 어긋나다. <em>in time</em> = 늦지 않게, 제때 (<em>on time</em> = 정시에)."
   }
  ],
  "part1": [],
