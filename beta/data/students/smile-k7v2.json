@@ -5,7 +5,13 @@
  "form": {
   "url": "https://docs.google.com/forms/d/e/1FAIpQLSfybbvIl48g133Mx3PdH7rfqGDRy9NCum3SdpUJ3RDpWkdPNA/viewform?usp=pp_url&entry.1747437353=NAME_X&entry.1189878643=SESSION_X&entry.1202580096=RESULT_X"
  },
- "sessions": [],
+ "sessions": [
+  {
+   "no": 1,
+   "date": "2026-11-24",
+   "title": "First class · A place to recommend"
+  }
+ ],
  "types": [
   "주어-동사",
   "동사·시제",
@@ -14,13 +20,166 @@
   "단어 선택",
   "발음·철자"
  ],
- "tips": {},
- "focus": {},
+ "tips": {
+  "주어-동사": "many + 복수명사, 복수면 There are. 단수·복수 확실하게!",
+  "동사·시제": "Did you ~? 로 물으면 과거로 답하기. 나이도 when I was 20.",
+  "관사·전치사": "셀 수 있는 단수 명사 앞에 a / an: an apartment. 계절은 in summer.",
+  "단어 선택": "선택지는 option, 매일 하는 일과는 routine.",
+  "문장 구조": "be close with + 사람. prefer A to B.",
+  "발음·철자": "철자를 또박또박: apartment, colleague."
+ },
+ "focus": {
+  "1": "단수·복수(many museums), 과거 질문엔 과거로 답하기, 관사(an apartment)부터 바로잡기! Home·Study·Work 질문은 완벽하게.",
+  "n": 1
+ },
  "compare": [],
- "cards": [],
+ "cards": [
+  {
+   "id": "hj101",
+   "kind": "ko",
+   "type": "주어-동사",
+   "sessions": [
+    1
+   ],
+   "ko": "제 도시에는 박물관이 많아요.",
+   "en": "There are many museums in my city.",
+   "hint": "museums",
+   "gram": "<em>many</em> + 복수명사. 복수라 <em>There are</em>. 단수·복수 구분 확실하게!",
+   "mine": "There are many museum."
+  },
+  {
+   "id": "hj102",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    1
+   ],
+   "ko": "어렸을 때 공원에 가는 걸 좋아했어요.",
+   "en": "I liked going to parks when I was a child.",
+   "hint": "liked",
+   "gram": "<em>Did you</em> ~? 로 물으면 과거로 답해요. Did you like ~? → I <em>liked</em> ~.",
+   "mine": null
+  },
+  {
+   "id": "hj103",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    1
+   ],
+   "ko": "스무 살 때 저는 서울로 이사했어요.",
+   "en": "When I was 20, I moved to Seoul.",
+   "hint": "When I was 20",
+   "gram": "나이를 말할 때도 동사가 필요해요. ❌ when I 20 → ✅ when I <em>was</em> 20.",
+   "mine": "when I 20"
+  },
+  {
+   "id": "hj104",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 아파트에 사는 게 더 좋아요.",
+   "en": "I prefer to live in an apartment.",
+   "hint": "an apartment",
+   "gram": "셀 수 있는 단수 명사 앞에는 a / an. apartment는 모음 소리로 시작해서 <em>an</em>.",
+   "mine": "I prefer to live in apartment."
+  },
+  {
+   "id": "hj105",
+   "kind": "ko",
+   "type": "관사·전치사",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 여름에 수영하러 가요.",
+   "en": "I go swimming in summer.",
+   "hint": "in summer",
+   "gram": "계절 앞에는 <em>in</em>: in summer, in winter. 이런 표현은 하나씩 모아 두기!",
+   "mine": null
+  },
+  {
+   "id": "hj106",
+   "kind": "ko",
+   "type": "단어 선택",
+   "sessions": [
+    1
+   ],
+   "ko": "선택지가 세 가지 있어요.",
+   "en": "There are three options.",
+   "hint": "options",
+   "gram": "'고를 수 있는 것이 세 가지'는 <em>There are three options</em>. routine은 '매일 하는 일과'라는 뜻이에요.",
+   "mine": "I can choose 3 routines."
+  },
+  {
+   "id": "hj107",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 직장 동료들과 친해요.",
+   "en": "I'm close with my colleagues.",
+   "hint": "close with",
+   "gram": "<em>be close with</em> + 사람 = ~와 친하다. be동사가 꼭 필요하고, colleagues가 이미 '동료'라 friends는 빼요.",
+   "mine": "I close with my colleague friends."
+  },
+  {
+   "id": "hj108",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    1
+   ],
+   "ko": "저는 차를 타는 것보다 걷는 걸 더 좋아해요.",
+   "en": "I prefer walking to riding in a car.",
+   "hint": "prefer walking to",
+   "gram": "<em>prefer</em> A(-ing) <em>to</em> B(-ing) = B보다 A를 더 좋아하다.",
+   "mine": null
+  },
+  {
+   "id": "hj109",
+   "kind": "ko",
+   "type": "문장 구조",
+   "sessions": [
+    1
+   ],
+   "ko": "사실 서울의 역사에 대해 잘 몰라요. 역사에 관심이 없었거든요. 하지만 기회가 생기면 배워 보고 싶어요.",
+   "en": "I actually don't know much about the history of Seoul because I wasn't interested in history, but if I get a chance, I'd like to learn about it.",
+   "hint": "don't know much about",
+   "gram": "모르는 질문엔 모른다고 해도 돼요. 대신 이유를 1~2개 붙여요. <em>if I get a chance, I'd like to</em> ~ = 기회가 생기면 ~하고 싶어요.",
+   "mine": "I don't know any histories about Seoul"
+  }
+ ],
  "part1": [],
  "part3": [],
- "words": [],
+ "words": [
+  {
+   "w": "be close with",
+   "ko": "~와 친하다",
+   "ex": "I'm close with my colleagues.",
+   "s": 1
+  },
+  {
+   "w": "prefer A to B",
+   "ko": "B보다 A를 더 좋아하다",
+   "ex": "I prefer walking to riding in a car.",
+   "s": 1
+  },
+  {
+   "w": "option",
+   "ko": "선택지",
+   "ex": "There are three options.",
+   "s": 1
+  },
+  {
+   "w": "if I get a chance",
+   "ko": "기회가 생기면",
+   "ex": "If I get a chance, I'd like to learn about it.",
+   "s": 1
+  }
+ ],
  "group": "ielts",
  "podFiles": [
   "groups/other"
