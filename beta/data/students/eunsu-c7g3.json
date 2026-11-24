@@ -1793,6 +1793,18 @@
    "en": "The deadline was off by a day, and we fixed it in time.",
    "hint": "off by a day",
    "gram": "<em>be off by</em> + 차이 = ~만큼 틀리다, 어긋나다. <em>in time</em> = 늦지 않게, 제때 (<em>on time</em> = 정시에)."
+  },
+  {
+   "id": "sm20-07",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    23
+   ],
+   "ko": "그들은 후속 메시지가 지나치게 격식적이거나, 심지어 상대를 못 믿는 것처럼 보일 수 있다고 생각해요.",
+   "en": "They think a follow-up message can come across as overly formal or even distrustful.",
+   "hint": "come across as",
+   "gram": "<em>come across as</em> + 형용사 = (남에게) ~하게 보이다, ~한 인상을 주다. <em>a follow-up message</em> = 후속 메시지. <em>overly</em> = 지나치게. <em>distrustful</em> = 불신하는, 못 믿는."
   }
  ],
  "part1": [],
