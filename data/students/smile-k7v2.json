@@ -109,7 +109,7 @@
    "ko": "저는 예술에 관심이 있어요.",
    "en": "I'm interested in art.",
    "hint": "interested in",
-   "gram": "<em>be interested in</em> + 명사 / -ing = ~에 관심이 있다. 내가 관심 있는 거라 <em>interested</em>(-ed). 예술 전반이라 art 앞에 관사 없음.",
+   "gram": "<em>be interested in</em> + 명사 / -ing = ~에 관심이 있다. 비슷한 표현: <em>be fond of</em> (~를 좋아하다, 정이 가다), <em>be into</em> (~에 빠져 있다, 말할 때 자주 씀), <em>be crazy about</em> (~에 푹 빠져 있다, 아주 강함). 예: I'm really into art. / I'm crazy about art.",
    "mine": null
   },
   {
@@ -151,6 +151,30 @@
    "w": "if I get a chance",
    "ko": "기회가 생기면",
    "ex": "If I get a chance, I'd like to learn about it.",
+   "s": 1
+  },
+  {
+   "w": "be interested in",
+   "ko": "~에 관심이 있다",
+   "ex": "I'm interested in art.",
+   "s": 1
+  },
+  {
+   "w": "be fond of",
+   "ko": "~를 좋아하다, 정이 가다",
+   "ex": "I'm fond of old movies.",
+   "s": 1
+  },
+  {
+   "w": "be into",
+   "ko": "~에 빠져 있다",
+   "ex": "I'm really into art these days.",
+   "s": 1
+  },
+  {
+   "w": "be crazy about",
+   "ko": "~에 푹 빠져 있다",
+   "ex": "She's crazy about K-pop.",
    "s": 1
   }
  ],
