@@ -58,7 +58,7 @@
   "2": "used to + 동사원형(예전에 ~했다) vs be used to + -ing(~에 익숙하다) 구분! 거리는 It takes 20 minutes on foot / It's a 20-minute walk 두 가지로.",
   "4": "Part 3는 주어를 '나'보다 People / Many people로! Part 2는 직접화법 대신 told me (that) / suggested (that). 과거 이야기는 hung처럼 과거형으로.",
   "5": "비교급 앞에 to 없음: try harder (try to harder ❌). It is better to + 동사. the way + 주어 + 동사 문장 연습하기!",
-  "6": "at outside ✕ → outside! after + 주어 동사 / after + -ing. forget to(할 일) vs forget -ing(한 일). 간접의문문은 주어 + 동사 순서.",
+  "6": "at outside ✕ → outside! forget to(할 일) vs forget -ing(한 일). 간접의문문은 주어 + 동사 순서.",
   "n": 6
  },
  "compare": [
@@ -1416,32 +1416,6 @@
    "hint": "outside",
    "gram": "❌ at outside → ✅ <em>outside</em>. outside는 그 자체로 '밖에서'라서 앞에 at을 쓰지 않아요. (inside, upstairs, home도 마찬가지)",
    "mine": "Children like playing at outside."
-  },
-  {
-   "id": "s602",
-   "kind": "ko",
-   "type": "문장 구조",
-   "sessions": [
-    6
-   ],
-   "ko": "수업이 끝나고 나서 저는 보통 헬스장에 가요.",
-   "en": "After I finish my class, I usually go to the gym.",
-   "hint": "After I finish",
-   "gram": "<em>after</em>는 접속사도, 전치사도 돼요. 접속사: <em>after I finish</em> my class / 전치사: <em>after finishing</em> my class.",
-   "mine": null
-  },
-  {
-   "id": "s603",
-   "kind": "ko",
-   "type": "문장 구조",
-   "sessions": [
-    6
-   ],
-   "ko": "퇴근 후에 저는 보통 따뜻한 차를 마셔요.",
-   "en": "After finishing work, I usually drink hot tea.",
-   "hint": "After finishing",
-   "gram": "전치사 <em>after</em> + -ing. 일반동사 앞에 I'm을 붙이지 않아요: ❌ I'm usually drink → ✅ I <em>usually drink</em>.",
-   "mine": "I'm usually drink"
   },
   {
    "id": "s604",
