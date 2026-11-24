@@ -67,10 +67,10 @@
    "sessions": [
     1
    ],
-   "ko": "저는 한강에 갈 수 있는 선택지가 3개 있어요.",
-   "en": "I have three options for the Han River.",
-   "hint": "three options",
-   "gram": "<em>option</em> = 선택지. <em>I have three options for</em> ~ = ~에 대해 고를 수 있는 게 세 가지 있어요 (= There are three options). routine은 '매일 하는 일과'라 여기엔 안 맞아요.",
+   "ko": "저는 갈 수 있는 한강공원이 세 군데 있어요. (A, B, C 중에 골라요)",
+   "en": "I have three Han River parks to choose from.",
+   "hint": "to choose from",
+   "gram": "<em>have</em> + 명사 + <em>to choose from</em> = 고를 수 있는 ~가 있다. = I have <em>three options</em>: A, B and C. routine은 '매일 하는 일과'라 여기엔 안 맞아요.",
    "mine": "I can choose 3 routines."
   },
   {
