@@ -1455,32 +1455,6 @@
    "hint": "where the hospital is",
    "gram": "간접의문문: 의문사 뒤는 평서문 순서(주어 + 동사). 직접의문문 Where <em>is the hospital</em>? → Can you tell me where <em>the hospital is</em>?",
    "mine": null
-  },
-  {
-   "id": "s607",
-   "kind": "ko",
-   "type": "단어 선택",
-   "sessions": [
-    6
-   ],
-   "ko": "죄송하지만, 틀리신 것 같아요.",
-   "en": "I'm afraid you're wrong.",
-   "hint": "I'm afraid",
-   "gram": "<em>I'm afraid</em> + 문장 = 유감이지만 ~예요 (안 좋은 말을 부드럽게 할 때). 무섭다는 뜻이 아니에요.",
-   "mine": null
-  },
-  {
-   "id": "s608",
-   "kind": "ko",
-   "type": "단어 선택",
-   "sessions": [
-    6
-   ],
-   "ko": "저는 출근하기 전에 화장을 해요.",
-   "en": "I do my makeup before work.",
-   "hint": "do my makeup",
-   "gram": "<em>do one's makeup</em> = 화장하다 (= put on makeup).",
-   "mine": null
   }
  ],
  "part1": [
