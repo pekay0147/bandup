@@ -111,6 +111,19 @@
    "hint": "interested in",
    "gram": "<em>be interested in</em> + 명사 / -ing = ~에 관심이 있다. 내가 관심 있는 거라 <em>interested</em>(-ed). 예술 전반이라 art 앞에 관사 없음.",
    "mine": null
+  },
+  {
+   "id": "hj111",
+   "kind": "ko",
+   "type": "동사·시제",
+   "sessions": [
+    1
+   ],
+   "ko": "예전에는 언니와 서울에서 같이 살았는데, 지금은 혼자 살아요.",
+   "en": "I used to live with my sister in Seoul, but now I live alone.",
+   "hint": "used to",
+   "gram": "<em>used to</em> + 동사원형 = 예전에는 ~했다 (지금은 아님). 지금은 현재형 <em>I live alone</em>. 혼자 = <em>alone</em> / <em>on my own</em>.",
+   "mine": null
   }
  ],
  "part1": [],
