@@ -80,6 +80,11 @@
    "no": 15,
    "date": "2026-11-21",
    "title": "Housework · Review questions"
+  },
+  {
+   "no": 16,
+   "date": "2026-11-25",
+   "title": "Airports · Winter clothes · Takeaway"
   }
  ],
  "types": [
@@ -108,7 +113,8 @@
   "12": "처음 소개할 땐 There is a ~, 다시 말할 땐 It! 동명사 주어(Drinking water, Having a routine)는 단수 동사.",
   "13": "help + 사람 + 동사원형 (is help ✕)! go to + 장소, similar to. 동사를 꾸밀 땐 부사(more easily).",
   "14": "prefer + -ing, 장소 앞엔 in the (in the countryside)! also는 일반동사 앞, be동사 뒤. unless = ~하지 않으면.",
-  "15": "rich는 형용사(a rich ❌). unless = if ~ not. would rather A than B. 사역동사 make / have / let + 사람 + 동사원형! wear 발음 [웨어]."
+  "15": "rich는 형용사(a rich ❌). unless = if ~ not. would rather A than B. 사역동사 make / have / let + 사람 + 동사원형! wear 발음 [웨어].",
+  "16": "kinds of + 복수! during 뒤엔 명사만 (while + -ing). It's important to be/keep warm. 사역동사 make + 사람 + 동사원형 / get + 사람 + to. hard↔hardly, late↔lately."
  },
  "compare": [
   [
@@ -3487,6 +3493,155 @@
    "en": "I wear a T-shirt underneath my padded jacket.",
    "gram": "<em>underneath</em> = ~ 아래에, ~ 안쪽에 (겉옷 안에 받쳐 입을 때). 패딩은 영어로 <em>padded jacket</em> / <em>puffer jacket</em>이에요.",
    "hint": "underneath"
+  },
+  {
+   "id": "r16-m1",
+   "kind": "ko",
+   "sessions": [
+    16
+   ],
+   "type": "동사·시제",
+   "ko": "저는 괜찮은 척했어요.",
+   "en": "I pretended to be okay.",
+   "gram": "<em>pretend to</em> + 동사원형 = ~인 척하다. 과거는 <em>pretended</em>.",
+   "hint": "pretended to"
+  },
+  {
+   "id": "r16-m2",
+   "kind": "ko",
+   "sessions": [
+    16
+   ],
+   "type": "동사·시제",
+   "ko": "우유가 다 떨어졌어요.",
+   "en": "We've run out of milk.",
+   "gram": "<em>have run out of</em> = (지금) 다 떨어진 상태. run-ran-<em>run</em> (p.p.도 run).",
+   "hint": "run out of"
+  },
+  {
+   "id": "r16-m3",
+   "kind": "ko",
+   "sessions": [
+    16
+   ],
+   "type": "문장 구조",
+   "ko": "엄마가 저한테 청소기를 돌리게 했어요.",
+   "en": "My mom made me do the hoovering.",
+   "gram": "사역동사: <em>make / have / let</em> + 사람 + <em>동사원형</em>. get은 <em>get + 사람 + to부정사</em> → My mom got me <em>to</em> do the hoovering.",
+   "hint": "made me do",
+   "mine": "Mom got me do the hoovering"
+  },
+  {
+   "id": "r16-m4",
+   "kind": "ko",
+   "sessions": [
+    16
+   ],
+   "type": "동사·시제",
+   "ko": "혹시 그 책 읽어본 적 있어요?",
+   "en": "Have you ever read the book?",
+   "gram": "경험 묻기: <em>Have you ever</em> + p.p. ~? read-read-<em>read</em>[레드].",
+   "hint": "Have you ever"
+  },
+  {
+   "id": "r16-m5",
+   "kind": "ko",
+   "sessions": [
+    16
+   ],
+   "type": "발음·철자",
+   "ko": "제가 시간이 더 있다면, 매일 바닥을 대걸레질할 텐데요.",
+   "en": "If I had more time, I would mop the floor every day.",
+   "gram": "가정법 과거: <em>If I had</em> ~, I <em>would</em> + 동사원형. mop 철자는 p 하나! (mopping, mopped일 때만 pp)",
+   "hint": "If I had",
+   "mine": "I would mopp the floor"
+  },
+  {
+   "id": "r16-01",
+   "kind": "ko",
+   "sessions": [
+    16
+   ],
+   "type": "단·복수",
+   "ko": "여기엔 수프 종류가 많아요.",
+   "en": "There are many kinds of soup.",
+   "gram": "<em>many kinds of</em> + 명사. many 뒤엔 복수 → kind<em>s</em>. (a kind of / many kinds of)",
+   "hint": "many kinds of",
+   "mine": "many kind of soup"
+  },
+  {
+   "id": "r16-02",
+   "kind": "ko",
+   "sessions": [
+    16
+   ],
+   "type": "문장 구조",
+   "ko": "영어 공부하면서 맛있는 케이크를 먹었어요.",
+   "en": "While I was studying English, I ate a delicious cake.",
+   "gram": "<em>while</em> + 주어 + 동사 / <em>while studying</em>. during 뒤엔 명사만 와요 → during <em>class</em>, during <em>the holiday</em> (during studying ❌).",
+   "hint": "While I was studying",
+   "mine": "studying English, while I ate delicious cake"
+  },
+  {
+   "id": "r16-03",
+   "kind": "ko",
+   "sessions": [
+    16
+   ],
+   "type": "품사",
+   "ko": "저는 열심히 일하지만, 요즘 거의 쉬지 못해요.",
+   "en": "I work hard, but I've hardly rested lately.",
+   "gram": "<em>hard</em> 열심히 ↔ <em>hardly</em> 거의 ~않는 / <em>late</em> 늦게 ↔ <em>lately</em> 최근에 / <em>high</em> 높게 ↔ <em>highly</em> 매우 (highly recommend).",
+   "hint": "hardly"
+  },
+  {
+   "id": "r16-04",
+   "kind": "ko",
+   "sessions": [
+    16
+   ],
+   "type": "문장 구조",
+   "ko": "몸을 따뜻하게 하는 게 중요해요.",
+   "en": "It's important to keep warm.",
+   "gram": "<em>It is important to</em> + 동사원형. warm은 형용사라 바로 못 붙어요 → to <em>be</em> warm / to <em>keep</em> warm / <em>Keeping</em> warm is important.",
+   "hint": "It's important to",
+   "mine": "it is important warm"
+  },
+  {
+   "id": "r16-05",
+   "kind": "ko",
+   "sessions": [
+    16
+   ],
+   "type": "단어 선택",
+   "ko": "공항에 제시간에 못 가서 비행기를 놓쳤어요.",
+   "en": "I couldn't get to the airport on time, so I missed my flight.",
+   "gram": "<em>catch a flight</em> 비행기를 타다 ↔ <em>miss a flight</em> 놓치다. <em>get to</em> + 장소 = 도착하다, <em>on time</em> = 제시간에.",
+   "hint": "missed my flight"
+  },
+  {
+   "id": "r16-06",
+   "kind": "ko",
+   "sessions": [
+    16
+   ],
+   "type": "품사",
+   "ko": "비행기 타는 건 제가 제일 싫어하는 거예요. 전혀 편하지 않아요.",
+   "en": "Flying is my least favourite thing. It's not relaxing at all.",
+   "gram": "<em>my least favourite</em> = 제일 싫어하는. <em>relaxing</em> 편안하게 해주는(사물) ↔ <em>relaxed</em> 편안한(사람) ↔ <em>relax</em> 쉬다(동사).",
+   "hint": "my least favourite"
+  },
+  {
+   "id": "r16-07",
+   "kind": "ko",
+   "sessions": [
+    16
+   ],
+   "type": "단어 선택",
+   "ko": "비행기가 늦게 출발하더라도, 저는 괜찮아요. 저는 당신이랑 정반대예요.",
+   "en": "Even if the flight leaves late, I don't mind. I'm the exact opposite of you.",
+   "gram": "<em>even if</em> = (그럴지 모르지만) 설령 ~하더라도. <em>the exact opposite of</em> = ~와 정반대.",
+   "hint": "even if"
   }
  ],
  "part1": [
@@ -4885,6 +5040,78 @@
    "ko": "~하게 하다 / 시키다 / 허락하다",
    "ex": "My mum made me clean my room.",
    "s": 15
+  },
+  {
+   "w": "catch a flight",
+   "ko": "비행기를 (제때) 타다",
+   "ex": "I have to catch a flight at 7 a.m.",
+   "s": 16
+  },
+  {
+   "w": "miss a flight",
+   "ko": "비행기를 놓치다",
+   "ex": "I got stuck in traffic and missed my flight.",
+   "s": 16
+  },
+  {
+   "w": "get to the airport on time",
+   "ko": "공항에 제시간에 도착하다",
+   "ex": "I couldn't get to the airport on time.",
+   "s": 16
+  },
+  {
+   "w": "my least favourite thing",
+   "ko": "제일 싫어하는 것",
+   "ex": "Waiting in line is my least favourite thing.",
+   "s": 16
+  },
+  {
+   "w": "be supposed to",
+   "ko": "~하기로 되어 있다",
+   "ex": "The bus was supposed to come at 7.",
+   "s": 16
+  },
+  {
+   "w": "on the plane / in the car",
+   "ko": "비행기에서 / 차 안에서",
+   "ex": "I can't sleep on the plane.",
+   "s": 16
+  },
+  {
+   "w": "have a trip coming up",
+   "ko": "곧 여행이 있다",
+   "ex": "Have you got any trips coming up soon?",
+   "s": 16
+  },
+  {
+   "w": "even if",
+   "ko": "설령 ~하더라도",
+   "ex": "I'll go for a walk even if it rains.",
+   "s": 16
+  },
+  {
+   "w": "the exact opposite",
+   "ko": "정반대",
+   "ex": "I'm the exact opposite of you.",
+   "s": 16
+  },
+  {
+   "w": "hard / hardly",
+   "ko": "열심히 / 거의 ~않는",
+   "ex": "I studied hard, but I hardly slept.",
+   "s": 16
+  },
+  {
+   "w": "late / lately",
+   "ko": "늦게 / 최근에",
+   "ex": "I've been busy lately.",
+   "s": 16
+  },
+  {
+   "w": "high / highly",
+   "ko": "높게 / 매우",
+   "ex": "I highly recommend this café.",
+   "s": 16
   }
  ],
  "pod": {
