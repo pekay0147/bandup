@@ -3606,42 +3606,6 @@
    "gram": "<em>It is important to</em> + 동사원형. warm은 형용사라 바로 못 붙어요 → to <em>be</em> warm / to <em>keep</em> warm / <em>Keeping</em> warm is important.",
    "hint": "It's important to",
    "mine": "it is important warm"
-  },
-  {
-   "id": "r16-05",
-   "kind": "ko",
-   "sessions": [
-    16
-   ],
-   "type": "단어 선택",
-   "ko": "공항에 제시간에 못 가서 비행기를 놓쳤어요.",
-   "en": "I couldn't get to the airport on time, so I missed my flight.",
-   "gram": "<em>catch a flight</em> 비행기를 타다 ↔ <em>miss a flight</em> 놓치다. <em>get to</em> + 장소 = 도착하다, <em>on time</em> = 제시간에.",
-   "hint": "missed my flight"
-  },
-  {
-   "id": "r16-06",
-   "kind": "ko",
-   "sessions": [
-    16
-   ],
-   "type": "품사",
-   "ko": "비행기 타는 건 제가 제일 싫어하는 거예요. 전혀 편하지 않아요.",
-   "en": "Flying is my least favourite thing. It's not relaxing at all.",
-   "gram": "<em>my least favourite</em> = 제일 싫어하는. <em>relaxing</em> 편안하게 해주는(사물) ↔ <em>relaxed</em> 편안한(사람) ↔ <em>relax</em> 쉬다(동사).",
-   "hint": "my least favourite"
-  },
-  {
-   "id": "r16-07",
-   "kind": "ko",
-   "sessions": [
-    16
-   ],
-   "type": "단어 선택",
-   "ko": "비행기가 늦게 출발하더라도, 저는 괜찮아요. 저는 당신이랑 정반대예요.",
-   "en": "Even if the flight leaves late, I don't mind. I'm the exact opposite of you.",
-   "gram": "<em>even if</em> = (그럴지 모르지만) 설령 ~하더라도. <em>the exact opposite of</em> = ~와 정반대.",
-   "hint": "even if"
   }
  ],
  "part1": [
