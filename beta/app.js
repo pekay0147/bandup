@@ -43,7 +43,7 @@ async function boot(){
     if(s.rvCards) D.cards.push(...s.rvCards);
     if(!s.common && !s.demo){ const TR=store.get("bandup-tr",{}); for(const w of store.get(`bandup-myvoc-${s.slug}`,[])){ if(!w.ex || !/[A-Za-z]/.test(w.ex)) continue; D.cards.push({id:"rvm-"+w.t, kind:"ko", type:"표현", sessions:[], plabel:"단어장 복습 · "+w.w, en:w.ex, hint:w.w, ko: TR[w.ex] || `'${w.ko||w.w}' 표현을 넣어 영어로 말해 보세요`, gram:`<em>${String(w.w).replace(/[<>&]/g,"")}</em> = ${String(w.ko||"").replace(/[<>&]/g,"")}`}); }
       const miss=D.cards.filter(c=>c.id.startsWith("rvm-") && !TR[c.en]); if(miss.length) setTimeout(()=>dyTranslate(miss),1500); }
-    if(s.group==="ielts" || s.podFiles){ const pv=store.get(`bandup-podsel-${s.slug}`,null); const pu=((pv&&pv.url)||(!pv&&s.pod&&s.pod.url)||"");
+    if((s.group==="ielts" || s.podFiles) && !s.noPod){ const pv=store.get(`bandup-podsel-${s.slug}`,null); const pu=((pv&&pv.url)||(!pv&&s.pod&&s.pod.url)||"");
       const files= s.podFiles || [s.podFile || ("groups/"+(/solid-joys/i.test(pu)? "church" : "other"))];
       const docs=await Promise.all(files.map(p=>fetch("data/"+p+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
       let n=0; const all=[];
@@ -409,6 +409,7 @@ function studyGuide(app){
     ["큐카드 팟캐스트로 오늘 들은 팟캐스트 복습하기","큐카드 → 팟캐스트에서 오늘 날짜를 골라, 방금 들은 문장을 한국어만 보고 영어로 말해 봐요. 마지막 장의 단어는 단어장에 담아요",()=>{ cardMode=podTab; const TP=todayPod(); if(podTab==="pod"){ selPod=TP? TP.no : null; podPickOpen=false; } else { selSession=TP? TP.no : null; podPickOpen=false; } deckState=null; go("cards"); }],
     [D.dailyFrom==="sessions"? "오늘의 복습으로 배운 문장 복습하기" : "오늘의 복습으로 일상 영어 공부하기", D.dailyFrom==="sessions"? "지금까지 배운 스피킹 매트릭스 문장 중 매일 10개를 랜덤으로 소리 내 말해 봐요" : "매일 바뀌는 생활 영어 문장 10개를 소리 내 말해 봐요",()=>{ go("review",{extra:false}); }],
     ["그 외","시간이 더 있으면 골라서 해요. 철자 탭에서 단어 듣고 쓰기, 아이디어 탭에서 Part 1·2·3 질문별 단어와 답변 재료 보기, 내 단어장 외우기, 오늘의 복습까지!",null,null,[["철자",()=>go("words")],["아이디어",()=>go("ideas")],["내 단어장",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); }],["오늘의 복습",()=>{ const due=dueCards().length; go("review",{extra:!due, ids:reviewQueue(!due)}); }]]]];
+  if(D.noPod) steps.splice(0,2); // 학생 파일에 "noPod": true 면 팟캐스트 단계 빼기
   const sec=el("section","sec sguide"); sec.append(secHead("오늘의 공부 순서","위에서부터 차례대로"));
   const box=el("div","box list2");
   steps.forEach(([title,sub,fn,href,chips],i)=>{
@@ -464,7 +465,7 @@ function renderHome(app){
   // 학습
   const s2=el("section","sec"); s2.append(secHead("학습"));
   const list=el("div","box list2");
-  if(!D.homePod) list.append(podBlock());
+  if(!D.homePod && !D.noPod) list.append(podBlock());
   if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
   if(D.group==="ielts" || D.group==="common" || D.demo || D.keepMock) list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
   if(D.grammar) list.append(listRow(LIC.gram,"문법 지도","문장 성분 다섯 개로 보는 문법 한 장",()=>{ grAt={c:null,g:null,h:null,l:null,i:null}; go("grammar"); }));

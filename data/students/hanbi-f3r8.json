@@ -22,10 +22,7 @@
  "part3": [],
  "words": [],
  "group": "ielts",
- "podFiles": [
-  "groups/other"
- ],
  "showGuide": true,
- "dailyPod": true,
- "inbox": "8ba5c3e1-7967-4a01-8665-8dd1fcca5cc2"
+ "inbox": "8ba5c3e1-7967-4a01-8665-8dd1fcca5cc2",
+ "noPod": true
 }
