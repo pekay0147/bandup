@@ -74,6 +74,12 @@
    "date": "2026-11-24",
    "title": "Speaking Matrix",
    "label": "스피킹 매트릭스 20회"
+  },
+  {
+   "no": 24,
+   "date": "2026-11-26",
+   "title": "Speaking Matrix",
+   "label": "스피킹 매트릭스 21회"
   }
  ],
  "types": [
@@ -1805,6 +1811,66 @@
    "en": "They think a follow-up message can come across as overly formal or even distrustful.",
    "hint": "come across as",
    "gram": "<em>come across as</em> + 형용사 = (남에게) ~하게 보이다, ~한 인상을 주다. <em>a follow-up message</em> = 후속 메시지. <em>overly</em> = 지나치게. <em>distrustful</em> = 불신하는, 못 믿는."
+  },
+  {
+   "id": "sm21-01",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    24
+   ],
+   "ko": "예전엔 너무 적게 말하거나, 한꺼번에 다 말하려고 하곤 했어요.",
+   "en": "I would either say too little or try to say everything at once.",
+   "hint": "either A or B",
+   "gram": "<em>would</em> + 동사원형 = (과거에) ~하곤 했다 (used to와 비슷). <em>either A or B</em> = A 아니면 B. <em>at once</em> = 한꺼번에, 동시에."
+  },
+  {
+   "id": "sm21-02",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    24
+   ],
+   "ko": "시간이 지나면서, 저는 솔직하고 자연스럽게 느껴지는 방법을 찾았어요.",
+   "en": "Over time, I found a way that felt honest and natural.",
+   "hint": "Over time",
+   "gram": "<em>over time</em> = 시간이 지나면서 (서서히). <em>a way that</em> + 동사 = ~한 방법 (that = 관계대명사). <em>feel</em> + 형용사 = ~하게 느껴지다."
+  },
+  {
+   "id": "sm21-03",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    24
+   ],
+   "ko": "저는 저 자신을 차분하고 사려 깊지만, 여러 가지에 호기심도 많은 사람이라고 표현할 것 같아요.",
+   "en": "I would describe myself as calm and thoughtful, but also curious about many different things.",
+   "hint": "describe myself as",
+   "gram": "<em>describe A as B</em> = A를 B라고 묘사하다. <em>I would describe myself as</em> ~ = 저는 저를 ~라고 말하겠어요 (성격 질문 단골 시작). <em>curious about</em> + 명사 = ~에 호기심이 많은."
+  },
+  {
+   "id": "sm21-04",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    24
+   ],
+   "ko": "어떤 사람들은 자기 얘기를 하면 자랑하는 것처럼 들릴까 봐 걱정해요.",
+   "en": "Some people worry that talking about themselves may sound boastful.",
+   "hint": "sound boastful",
+   "gram": "<em>worry that</em> + 문장 = ~할까 봐 걱정하다. <em>talking about themselves</em> = 동명사 주어 (자기 자신에 대해 말하는 것). <em>sound</em> + 형용사 = ~하게 들리다. <em>boastful</em> = 자랑하는 듯한."
+  },
+  {
+   "id": "sm21-05",
+   "kind": "ko",
+   "type": "표현",
+   "sessions": [
+    24
+   ],
+   "ko": "그건 외운 것 같지 않고 자연스럽게 들려요.",
+   "en": "It sounds natural instead of rehearsed.",
+   "hint": "instead of",
+   "gram": "<em>instead of</em> = ~대신에, ~이 아니라. <em>rehearsed</em> = 미리 연습한, 외운 듯한 (말이 딱딱할 때). <em>sound natural</em> = 자연스럽게 들리다."
   }
  ],
  "part1": [],
