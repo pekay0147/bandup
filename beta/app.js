@@ -4,24 +4,26 @@
 "use strict";
 const TCOL = {"어휘":"#4457e8","단·복수":"#8b5cf6","주어-동사":"#3d5afe","동사·시제":"#0f9e8f","문장 구조":"#e07a2e","관사·전치사":"#d6437f",
   "품사":"#b88a00","단어 선택":"#2a9a55","발음·철자":"#7c7f99","표현":"#d99a00","잘한 표현":"#1d9a68"};
-const INTERVALS=[0,1,3,7,14,30], MASTER=5, DAILY=15;
+const INTERVALS=[0,1,3,7,14,30], MASTER=5, DAILY=10;
 const $=s=>document.querySelector(s);
 const el=(t,c,x)=>{const e=document.createElement(t); if(c) e.className=c; if(x!=null) e.textContent=x; return e;};
 const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");};
 const addD=(s,n)=>{const [y,m,d]=s.split("-").map(Number);const t=new Date(y,m-1,d+n);return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0");};
-const mmdd=s=>s? s.slice(5).replace("-","/") : "";
 const store={ get(k,f){ try{ const v=localStorage.getItem(k); return v==null? f : JSON.parse(v);}catch(_){ return f; } },
-              set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(_){} if(window.__bsSet) window.__bsSet(k); } };
+              set(k,v){ let j=null;
+                if(k==="bandup-tr" && v && typeof v==="object"){ const ks=Object.keys(v); if(ks.length>1500) for(const x of ks.slice(0,ks.length-1200)) delete v[x]; } // 번역 캐시가 저장 공간을 다 먹지 않게
+                try{ j=JSON.stringify(v); localStorage.setItem(k,j); }
+                catch(_){ try{ if(j!=null && k!=="bandup-tr"){ localStorage.removeItem("bandup-tr"); localStorage.setItem(k,j); } }catch(__){} } // 공간이 꽉 차면 번역 캐시를 비우고 다시 저장
+                if(window.__bsSet) window.__bsSet(k); } };
 
 let NOTICE=null;
 const GSTOP=new Set(["a", "about", "after", "all", "also", "am", "an", "and", "another", "any", "are", "aren't", "as", "at", "be", "been", "before", "being", "both", "but", "by", "can", "can't", "could", "did", "didn't", "do", "does", "doesn't", "don't", "done", "each", "eight", "either", "every", "first", "five", "for", "four", "from", "had", "has", "have", "having", "he", "he's", "her", "here", "hers", "him", "his", "how", "i", "i'd", "i'll", "i'm", "i've", "if", "in", "into", "is", "isn't", "it", "it's", "its", "just", "last", "let", "let's", "lets", "many", "may", "me", "might", "mine", "more", "most", "much", "must", "my", "neither", "nine", "no", "not", "of", "on", "one", "or", "other", "our", "over", "own", "quite", "really", "same", "second", "seven", "shall", "she", "she's", "should", "six", "so", "some", "such", "ten", "than", "that", "that's", "the", "their", "them", "then", "there", "there's", "these", "they", "they're", "this", "those", "three", "to", "too", "two", "up", "us", "very", "was", "wasn't", "we", "we're", "were", "weren't", "what", "what's", "when", "where", "which", "who", "whom", "why", "will", "with", "won't", "would", "yes", "you", "you're", "your", "yours"]);
-let D=null, G={}, P1=null, P1Q=null, P3=null, P2X=null, P2=null, LS=null, WB=null, slug=null;
+let D=null, G={}, P1Q=null, P3=null, P2X=null, P2=null, LS=null, slug=null;
 let srs={}, marks={}, days=[];
 let view={tab:"home"};   // home | cards(deck?) | review | notes
 let deckState=null, reviewState=null, picked=null, flipped=false, noteFilter="전체", noteSession="all", cardMode="session", selSession=null, selPod=null, randCount=10, randKind="all";
 
 /* ---------- boot ---------- */
-const DATA=window.BANDUP_DATA||"data/";
 async function boot(){
   slug=window.BANDUP_SLUG || (location.hash||"").replace(/^#/,"") || new URLSearchParams(location.search).get("s") || store.get("bandup-slug",null) || window.BANDUP_DEFAULT || null;
   // old links (…/bandup/#slug) move to the student's own page, so 'Add to Home Screen' keeps the student
@@ -32,9 +34,9 @@ async function boot(){
   const app=$("#app");
   if(!slug){ app.textContent=""; const e=el("div","empty"); e.append(el("h2",null,"내 카드를 찾지 못했어요"), el("p",null,"홈 화면에 예전 아이콘이 있다면 길게 눌러 삭제한 뒤, 선생님께 받은 새 링크를 Safari(또는 Chrome)로 열어 '홈 화면에 추가'를 다시 해 주세요. 한 번만 하면 다음부터는 아이콘만 누르면 바로 열려요.")); app.append(e); return; }
   try{
-    const [s,g]=await Promise.all([fetch(`${DATA}students/${slug}.json`,{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
-                                   fetch(DATA+"glossary.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({}))]);
-    if(s.group==="church" || s.group==="other"){ const gr=await fetch(DATA+"groups/"+s.group+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null); if(gr) for(const k of Object.keys(gr)) if(!["slug","name","form","group"].includes(k)) s[k]=gr[k]; }
+    const [s,g]=await Promise.all([fetch(`data/students/${slug}.json`,{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
+                                   fetch("data/glossary.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({}))]);
+    if(s.group==="church" || s.group==="other"){ const gr=await fetch("data/groups/"+s.group+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null); if(gr) for(const k of Object.keys(gr)) if(!["slug","name","form","group"].includes(k) && !(k==="words" && s.words && s.words.length) && !(s.lessons && ["sessions","cards","podDaily"].includes(k))) s[k]=gr[k]; if(s.lessons){ s.sessions=s.sessions||[]; s.cards=s.cards||[]; } }
     if(s.group==="church" && s.sessions){ const td=today(); const hide=new Set(s.sessions.filter(x=>x.date && x.date>td).map(x=>x.no)); if(hide.size){ s.sessions=s.sessions.filter(x=>!hide.has(x.no)); s.cards=(s.cards||[]).filter(c=>!(c.sessions||[]).length || (c.sessions||[]).some(n=>!hide.has(n))); } }
     D=s; G=g||{};
     D.podSessions=[];
@@ -43,15 +45,16 @@ async function boot(){
       const miss=D.cards.filter(c=>c.id.startsWith("rvm-") && !TR[c.en]); if(miss.length) setTimeout(()=>dyTranslate(miss),1500); }
     if(s.group==="ielts" || s.podFiles){ const pv=store.get(`bandup-podsel-${s.slug}`,null); const pu=((pv&&pv.url)||(!pv&&s.pod&&s.pod.url)||"");
       const files= s.podFiles || [s.podFile || ("groups/"+(/solid-joys/i.test(pu)? "church" : "other"))];
-      const docs=await Promise.all(files.map(p=>fetch(DATA+p+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
+      const docs=await Promise.all(files.map(p=>fetch("data/"+p+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
       let n=0; const all=[];
       docs.forEach((pg,fi)=>{ if(!pg || !pg.cards || !pg.sessions) return; const map={};
         pg.sessions.filter(x=>x.link && !(x.date && x.date>today())).forEach(x=>{ n++; map[x.no]=n; all.push({...x, no:n, date:x.date||""}); });
         for(const c of pg.cards){ const ps=(c.sessions||[]).map(k=>map[k]).filter(Boolean); if(!ps.length) continue; const se=all.find(x=>x.no===ps[0]);
           D.cards.push({...c, id:(fi? "pd"+fi+"-" : "pd-")+c.id, sessions:[], psessions:ps, plabel:(se.link.src||"팟캐스트")+" · "+(se.link.date||"")}); } });
       all.sort((a,b)=>String(a.date).localeCompare(String(b.date))); D.podSessions=all; D.podName=[...new Set(all.map(x=>x.link.src).filter(Boolean))].join(" · "); }
-    [P1,P2,LS,WB,P1Q,P3,P2X]=await Promise.all(["part1.json","part2.json","listening.json","words.json","part1q.json","part3.json","part2x.json"].map(u=>fetch(DATA+u,{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
-    NOTICE=await fetch(DATA+"notice.json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null);
+    [P2,LS,P1Q,P3,P2X]=await Promise.all(["data/part2.json","data/listening.json","data/part1q.json","data/part3.json","data/part2x.json"].map(u=>fetch(u,{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null)));
+    if(s.grammar) await grLoad();
+    NOTICE=await fetch("data/notice.json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null);
   }catch(e){ app.textContent=""; const x=el("div","empty"); x.append(el("h2",null,"카드를 불러오지 못했어요"), el("p",null,"인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 되면 선생님께 링크를 다시 받아 주세요.")); app.append(x); return; }
   store.set("bandup-slug",slug);
   srs=store.get(`bandup-srs-${slug}`,{}); marks=store.get(`bandup-marks-${slug}`,{}); days=store.get(`bandup-days-${slug}`,[]);
@@ -60,14 +63,6 @@ async function boot(){
   $("#who").textContent=new Date().toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"long"}); const br=document.querySelector(".brand"); if(br) br.innerHTML="Band<span>up</span>";
 
   buildTabs(); render();
-}
-function addKakao(){
-  const top=document.querySelector(".top"); if(!top || top.querySelector(".kakao")) return;
-  const android=/android/i.test(navigator.userAgent);
-  const a=el("a","kakao"); a.href= android? "intent://main#Intent;scheme=kakaotalk;package=com.kakao.talk;end" : "kakaotalk://";
-  a.setAttribute("aria-label","카카오톡으로 선생님께 질문하기");
-  a.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4C7 4 3 7.1 3 11c0 2.5 1.7 4.7 4.2 6l-.9 3.3c-.1.4.3.7.6.5l3.9-2.6c.4 0 .8.1 1.2.1 5 0 9-3.1 9-7s-4-7.3-9-7.3z" fill="currentColor"/></svg><span>질문하기</span>';
-  top.append(a);
 }
 function save(){ store.set(`bandup-srs-${slug}`,srs); store.set(`bandup-marks-${slug}`,marks); store.set(`bandup-days-${slug}`,days); }
 function touchDay(){ const t=today(); if(!days.includes(t)){ days.push(t); days=days.slice(-120); save(); } }
@@ -82,7 +77,6 @@ const VCARDS={};
 const getCard=id=>D.cards.find(c=>c.id===id) || VCARDS[id];
 const isWriting=c=>!(c.type==="발음·철자" && /발음/.test(c.ko||""));
 function dueCards(){ const t=today(); return D.cards.filter(c=>{ if(!isWriting(c)) return false; const s=srs[c.id]||{}; return (s.box||0)<MASTER && (s.due||t)<=t; }); }
-function mastered(){ return D.cards.filter(c=>((srs[c.id]||{}).box||0)>=MASTER).length; }
 function grade(c,ok){
   const t=today(), s=srs[c.id]||{box:0,reviews:0,correct:0};
   const box=ok? Math.min(MASTER,(s.box||0)+1) : 0;
@@ -100,7 +94,6 @@ function statKick(){ if(!statOn()) return; clearTimeout(statT); statT=setTimeout
 function statAdd(fn){ if(!statOn()) return; const b=statBuf(); fn(b); store.set(STK(),b); clearTimeout(statT); statT=setTimeout(()=>statFlush(false),45000); }
 function statCard(id,ok){ statAdd(b=>{ const r=b.c[id]||[0,0]; r[ok?0:1]++; b.c[id]=r; }); }
 function statSpell(w,typed,ok){ statAdd(b=>{ if(ok) b.sp.ok++; else if(b.sp.ng.length<60) b.sp.ng.push([w,String(typed||"").slice(0,40)]); }); }
-function statRec(){ statAdd(b=>{ b.rec++; }); }
 function statFlush(force){
   if(!statOn()) return; const b=statBuf();
   const snap={voc:store.get(`bandup-myvoc-${slug}`,[]).slice(-300).map(x=>[x.w,x.ko||""]), bm:cbmList().filter(id=>getCard(id)).slice(-60), bmt:cbmList().map(getCard).filter(Boolean).slice(-60).map(c=>[c.en,c.ko||""]), qbm:qbmList().map(x=>x.q).slice(-40), weak:Object.keys(marks).filter(id=>marks[id]==="again").slice(-60)};
@@ -120,18 +113,6 @@ function statFlush(force){
 }
 document.addEventListener("visibilitychange",()=>{ if(document.hidden && D) statFlush(true); });
 window.addEventListener("pagehide",()=>{ if(D) statFlush(true); });
-function consentSheet(){
-  const bg=el("div","sheet-bg"); const sh=el("div","sheet consent"); sh.setAttribute("role","dialog"); sh.setAttribute("aria-label","공부 기록 공유");
-  sh.append(el("h2",null,"공부 기록을 선생님과 공유할까요?"),
-    el("p",null, store.get(CSK(),null)===true ? "이제 내 단어장에 모은 단어도 함께 전달돼요. 선생님이 모아서 맞춤 단어장을 만들어 드릴 수 있어요." : "수업을 더 잘 준비하려고, 틀린 문제와 모은 단어가 선생님께 전달돼요."));
-  const ul=el("ul","consent-l");
-  [["전달돼요","큐카드를 맞혔는지 틀렸는지, 북마크한 문장, 틀린 철자, 내 단어장에 모은 단어, 공부한 날 수"],["전달 안 돼요","말한 내용, 위치나 기기 정보"]].forEach(([a,b])=>{ const li=el("li"); li.append(el("b",null,a), el("span",null,b)); ul.append(li); });
-  sh.append(ul, el("p","muted small","언제든 홈 맨 아래에서 끌 수 있어요."));
-  const row=el("div","row");
-  const yes=el("button","btn primary","좋아요"); yes.type="button"; yes.onclick=()=>{ store.set(CSK(),true); store.set(CSK()+"-v2",true); bg.remove(); render(); };
-  const no=el("button","btn","안 할래요"); no.type="button"; no.onclick=()=>{ store.set(CSK(),false); bg.remove(); render(); };
-  row.append(yes,no); sh.append(row); bg.append(sh); document.body.append(bg);
-}
 
 /* ---------- tabs ---------- */
 const ICONS={
@@ -143,21 +124,24 @@ const ICONS={
   words:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="5" height="7" rx="2"/><rect x="16" y="14" width="5" height="7" rx="2"/></svg>',
   listen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="5" height="7" rx="2"/><rect x="16" y="14" width="5" height="7" rx="2"/></svg>',
   ideas:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg>',
+  jelly:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17c0-6 3.6-11 8-11s8 5 8 11c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3z"/><circle cx="9.5" cy="13" r=".8" fill="currentColor"/><circle cx="14.5" cy="13" r=".8" fill="currentColor"/><path d="M10.5 16c.8.6 2.2.6 3 0"/></svg>',
   notes:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h5"/></svg>'
 };
 function buildTabs(){
   const nav=$("#tabs nav"); nav.textContent="";
-  for(const [k,label] of [["home","홈"],["cards","큐카드"],["ideas","아이디어"],["words","철자"]]){
+  const TABS= (typeof D!=="undefined" && D && D.jelly)? [["home","홈"],["jelly","젤리"],["cards","큐카드"]] : [["home","홈"],["cards","큐카드"],["ideas","아이디어"],["words","철자"]];
+  nav.classList.toggle("three", TABS.length===3);
+  for(const [k,label] of TABS){
     const b=el("button"); b.type="button"; b.dataset.tab=k; b.innerHTML=ICONS[k]; b.append(el("span",null,label));
     if(k==="review"){ const bd=el("span","badge"); bd.id="dueBadge"; b.append(bd); }
     b.onclick=()=>{ go(k); };
     nav.append(b);
   }
 }
-function go(tab, extra){ if(typeof stopMockTimer==="function") stopMockTimer(); QZ=null; if(tab!=="words" && typeof LD!=="undefined"){ LD=null; try{ speechSynthesis.cancel(); }catch(_){} } view={tab, ...(extra||{})}; flipped=false; picked=null; if(tab!=="cards") deckState=null; if(tab!=="review") reviewState=null; render(); window.scrollTo(0,0); }
+function go(tab, extra){ if(typeof endMock==="function") endMock(); if(tab!=="words" && typeof LD!=="undefined"){ LD=null; try{ speechSynthesis.cancel(); }catch(_){} } view={tab, ...(extra||{})}; flipped=false; picked=null; if(tab!=="cards") deckState=null; if(tab!=="review") reviewState=null; render(); window.scrollTo(0,0); }
 function updateTabs(){
   document.querySelectorAll("#tabs button").forEach(b=>{ if(b.dataset.tab===view.tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
-  const n=Math.min(dueCards().length,DAILY), bd=$("#dueBadge"); if(bd){ bd.textContent=String(n); bd.hidden=!n; }
+  const dl=(typeof dailyLeft==="function")? dailyLeft() : null; const n= dl? dl.length : Math.min(dueCards().length,DAILY), bd=$("#dueBadge"); if(bd){ bd.textContent=String(n); bd.hidden=!n; }
 }
 
 /* ---------- render ---------- */
@@ -167,12 +151,17 @@ function lessonBar(onClose, i, n){
   w.append(x, bar, el("span","lcount",`${Math.min(i+1,n)}/${n}`)); return w;
 }
 function pageHead(app, title, lead){ const h=el("div","phead"); h.append(el("h1",null,title)); if(lead) h.append(el("p","lead",lead)); app.append(h); }
-function render(){
+let renderFails=0;
+function render(){ try{ renderInner(); renderFails=0; }
+  catch(e){ console.error(e); renderFails++; const app=$("#app"); app.textContent="";
+    const p=el("div","panel"); p.append(el("b",null,"앗, 화면을 불러오다 문제가 생겼어요"), el("p","small muted","공부 기록은 그대로 있어요. 아래 버튼을 눌러 주세요."));
+    const h=el("button","btn primary","홈으로"); h.type="button"; h.onclick=()=>{ if(renderFails>2){ location.reload(); return; } view={tab:"home"}; render(); };
+    const r=el("button","btn","새로고침"); r.type="button"; r.onclick=()=>location.reload(); p.append(h,r); app.append(p); } }
+function renderInner(){
   const app=$("#app"); app.textContent="";
   const needOnboard = D.common && !(PROFILE && PROFILE.name);
   document.body.classList.toggle("onboard", needOnboard || view.tab==="profile");
   if(needOnboard || view.tab==="profile"){ renderProfile(app, !needOnboard); updateTabs(); return; }
-  if(QZ){ renderQuiz(app); updateTabs(); document.body.classList.add("lesson"); return; }
   if(view.tab==="home") renderHome(app);
   if(view.tab==="cards") (view.deck!=null? renderDeck(app) : renderDecks(app));
   if(view.tab==="review") renderReview(app);
@@ -186,9 +175,162 @@ function render(){
   if(view.tab==="transfer") renderTransfer(app);
   if(view.tab==="inbox") renderInbox(app);
   if(view.tab==="screens") renderScreens(app);
+  if(view.tab==="yt") renderYt(app);
+  if(view.tab==="jelly") renderJelly(app);
+  if(view.tab==="grammar") renderGrammar(app);
   updateTabs();
   document.body.classList.toggle("lesson", !!app.querySelector(".lbar"));
 }
+
+/* ---------- 문법 지도 (학생 파일에 "grammar": true 인 학생만) ----------
+   내용: data/grammar.json (server/build_grammar.py 로 만들어요). 예문의 덩어리를 누르면 문장 성분이 색으로 나뉘고 그 성분 페이지로 이어져요. */
+let GR=null;
+const GR_ROLE={S:["주어","subj"],FS:["가짜 주어","subj-to"],RS:["진짜 주어","subj-to"],V:["동사","verb"],O:["목적어","obj"],IO:["간접목적어","obj-two"],DO:["직접목적어","obj-two"],C:["보어","comp-subj"],OC:["목적격 보어","comp-obj"],M:["수식어","mod"]};
+function grLoad(){ if(GR) return Promise.resolve(GR);
+  return fetch("data/grammar.json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null).then(j=>{ if(!j || !j.nodes) return null;
+    j.par={}; for(const [id,n] of Object.entries(j.nodes)){ (n.kids||[]).forEach(k=>{ j.par[k]=id; }); n.id=id; try{ n.re= n.m? new RegExp(n.m,"im") : null; }catch(_){ n.re=null; } }
+    return (GR=j); }); }
+const grText=c=>String(c.en||"")+"\n"+String(c.gram||"").replace(/<[^>]+>/g,"");
+function grFor(c){ if(!GR || !c) return []; const t=grText(c); return Object.values(GR.nodes).filter(n=>n.re && n.re.test(t)).slice(0,3); } // 이 카드와 이어지는 문법 페이지
+function grCards(n){ if(!n.re || !D) return []; const seen=new Set(), out=[];
+  for(const c of D.cards){ if(!c.en || seen.has(c.en) || !n.re.test(grText(c))) continue; seen.add(c.en); out.push(c); }
+  return out.sort((a,b)=>(b.mine?1:0)-(a.mine?1:0)).slice(0,6); }
+/* 예문 한 줄: "{S:I} {V:like} {O:coffee}." → 덩어리를 누르면 성분 이름이 나오고 그 페이지로 갈 수 있어요 */
+function grSentence(mark, ko, nav, open){
+  const box=el("div","grex"+(open?" open":"")), line=el("p","grline"), info=el("div","grinfo"); let cur=null; info.hidden=true;
+  const re=/\{([A-Z]+)(?:>([a-z0-9-]+))?:([^}]+)\}/g; let m, last=0;
+  const pick=(b,role,to,text)=>{ box.classList.add("open"); line.querySelectorAll(".grc").forEach(x=>x.classList.toggle("on",x===b)); cur=b;
+    info.textContent=""; info.hidden=false; const R=GR_ROLE[role]||["",""], tn=GR.nodes[to||R[1]];
+    const lab=el("span","grtag",R[0]); lab.dataset.r=role; info.append(lab, el("span","grsay",text));
+    if(tn){ const go=el("button","grgo",`${tn.t} 자세히 ›`); go.type="button"; go.onclick=e=>{ e.stopPropagation(); nav(tn.id); }; info.append(go); } };
+  while((m=re.exec(mark))){ if(m.index>last) line.append(document.createTextNode(mark.slice(last,m.index)));
+    const [all,role,to,text]=m; const b=el("button","grc"); b.type="button"; b.dataset.r=role; b.append(el("span",null,text), el("small",null,(GR_ROLE[role]||[""])[0]));
+    b.onclick=e=>{ e.stopPropagation(); pick(b,role,to,text); }; line.append(b); last=m.index+all.length; }
+  if(last<mark.length){ const rest=mark.slice(last), lb=line.lastElementChild; if(lb && /^[.,!?]+$/.test(rest)) lb.firstChild.append(rest); else line.append(document.createTextNode(rest)); } // 마침표가 혼자 다음 줄로 떨어지지 않게
+  box.append(line); if(ko) box.append(el("p","grko",ko)); box.append(info); return box;
+}
+/* 문법 지도 화면: 전체 구조를 접지 않고 한 장에 다 보여 줘요. 왼쪽 줄 = 주어·목적어·보어·수식어, 오른쪽 줄 = 동사.
+   가지를 누르면 지도는 그대로 두고 아래 창에서 내용이 열려요. 한 번 본 가지는 옅게 칠해져요. */
+const GR_COMP={subj:"S",verb:"V",obj:"O",comp:"C",mod:"M"};
+const grHome=id=>{ for(const c of GR.nodes[GR.root].kids) for(const g of (GR.nodes[c].groups||[])){ if(g[1].includes(id)) return {c,g,h:null}; const h=g[1].find(k=>(GR.nodes[k].hub||[]).includes(id)); if(h) return {c,g,h}; } return null; }; // 이 가지가 어느 성분 · 어느 묶음 · 어느 품사 안에 있는지
+function grExs(n,nav){ const bx=el("div","box grexs"); n.ex.forEach(([mk,ko])=>bx.append(grSentence(mk,ko,nav))); return bx; }
+function grCardBox(mine){ const bx=el("div","box grwrongs"); mine.forEach(c=>{ const r=el("div","grwrong"); if(c.mine) r.append(el("p","x","✕ "+c.mine)); r.append(el("p",c.mine?"o":"en",(c.mine?"✓ ":"")+c.en)); if(c.ko) r.append(el("p","why",c.ko)); bx.append(r); }); return bx; }
+/* 책 방식의 칸 하나: 규칙 한 줄 → 예문 · 틀린 말 · 낱말 목록 · 나란히 비교 */
+function grSec([title,rule,rows]){ const w=el("div","grsec"); const h=(tag,cls,html)=>{ const e=el(tag,cls); e.innerHTML=html; return e; };
+  if(rule) w.append(h("p","grrule",rule));
+  for(const r of rows){
+    if(r[0]==="e"){ const d=el("div","gre"); d.append(h("p","en",r[1])); if(r[2]) d.append(el("p","ko",r[2])); w.append(d); }
+    else if(r[0]==="x"){ const d=el("div","grx"); d.append(h("p","no",r[1])); if(r[2]) d.append(el("p","ko",r[2])); w.append(d); }
+    else if(r[0]==="l"){ const d=el("div","grl"); r[1].split(" · ").forEach(t=>d.append(h("span",null,t))); w.append(d); }
+    else if(r[0]==="c"){ const t=el("div","grcmp"); t.append(el("b",null,r[1]), el("b",null,r[2])); r[3].forEach(([a,b])=>t.append(h("span",null,a), h("span",null,b))); w.append(t); } }
+  return w; }
+function grItems(n,nav){ const txt=h=>{ const p=el("p","grtxt"); p.innerHTML=h; return p; };
+  if(n.sec) return n.sec.map((sc,i)=>({k:"s"+i, t:sc[0], make:()=>grSec(sc)}));
+  if(n.f) return n.f.map(([t,note,exs],i)=>({k:"f"+i, t, make:()=>{ const w=el("div","grfx"); exs.forEach(([mk,ko])=>w.append(grSentence(mk,ko,nav,true))); if(note) w.append(el("p","grnote",note)); return w; }}));
+  return (n.body||[]).map((t,i)=>({k:"p"+i, t:(n.pt||[])[i]||`포인트 ${i+1}`, make:()=>txt(t)})); }
+const grSeen=()=>store.get(`bandup-grseen-${slug}`,[]);
+let grMark=null; // 지도가 떠 있을 때: 열린 가지를 지도에 표시하는 함수
+/* 가지 내용: 누른 동그라미 자리에서 화면 가득 확대돼서 열려요 */
+function grSheet(id, from){
+  const st=[], ov=el("div","grov"), box=el("div","grsheet"); ov.append(box); let open=null, cur=id;
+  const calm=window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const origin=()=>{ const t= from && document.body.contains(from)? from : (cur && document.querySelector(`.grone [data-n="${cur}"]`)); if(!t) return "50% 40%"; const r=t.getBoundingClientRect(); return `${r.left+r.width/2}px ${r.top+r.height/2}px`; };
+  const close=()=>{ document.removeEventListener("keydown",key); document.body.classList.remove("grlock"); if(grMark) grMark(null);
+    if(calm){ ov.remove(); return; } from=null; ov.style.transformOrigin=origin(); ov.classList.remove("in"); ov.classList.add("out"); setTimeout(()=>ov.remove(),200); };
+  const key=e=>{ if(e.key==="Escape") close(); };
+  const go2=to=>{ const tn=GR.nodes[to]; if(!tn) return; if(tn.hub || !grHome(to)){ close(); if(grMark) grMark(to); return; } st.push(cur); open=null; draw(to); ov.scrollTop=0; };
+  const draw=c=>{ cur=c; const n=GR.nodes[c], h=grHome(c); box.textContent=""; ov.dataset.r= h? GR_COMP[h.c] : "S";
+    const seen=grSeen(); if(!seen.includes(c)){ seen.push(c); store.set(`bandup-grseen-${slug}`,seen); } if(grMark) grMark(c);
+    const top=el("div","grtop"); const bk=el("button","back","‹ 뒤로"); bk.type="button"; bk.hidden=!st.length; bk.onclick=()=>{ open=null; draw(st.pop()); };
+    const x=el("button","lx","✕"); x.type="button"; x.setAttribute("aria-label","닫기"); x.onclick=close; top.append(bk,x);
+    const body=el("div","grin"); if(h) body.append(el("p","grwhere",[GR.nodes[h.c].t, h.h? GR.nodes[h.h].t : h.g[0]].join(" › ")));
+    body.append(el("h2","grh",n.t)); if(!n.sec && !n.f) body.append(el("p","grldef",n.d));
+    grItems(n,go2).forEach(it=>{ const sc=el("section","grpg"); sc.append(el("h3",null,it.t), it.make()); body.append(sc); });
+    if(n.more && n.more.length){ const w=el("div","grmore"); n.more.forEach(m=>{ const b=el("button","grchip","→ "+(GR.nodes[m].k||GR.nodes[m].t)); b.type="button"; b.onclick=()=>go2(m); w.append(b); }); body.append(el("b","grsub","여기서 이어져요"), w); }
+    box.append(top,body); };
+  ov.style.transformOrigin=origin(); document.addEventListener("keydown",key); document.body.classList.add("grlock"); document.body.append(ov); draw(id); if(!calm) ov.classList.add("in");
+}
+let grAt={c:null,g:null,h:null,l:null,i:null}; // 마인드맵에서 지금 보고 있는 곳: 성분, 묶음 번호
+/* 마인드맵: 가운데 동그라미와 그 둘레의 동그라미들. 둘레 것을 누르면 그것이 가운데로 오고 다음 단계가 둘러싸요. */
+/* 마인드맵 한 장. sats 중 kids 가 있는 것은 누르면 그것이 위로 돌아가고, 그 바깥으로 세 번째 원이 펼쳐져요. */
+function grRing(center, sats, tone, opt){
+  opt=opt||{}; const NS="http://www.w3.org/2000/svg", st=el("div","grmm"); if(tone) st.dataset.r=tone; const N=sats.length, R= N>=10? 40 : N>=7? 38.5 : 37;
+  st.classList.add(N>=10? "n3" : N>=7? "n2" : "n1");
+  const svg=document.createElementNS(NS,"svg"); svg.setAttribute("viewBox","0 0 100 100"); svg.setAttribute("aria-hidden","true"); st.append(svg);
+  const calm=window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const lines=[], btns=[];
+  sats.forEach((s,i)=>{ const ln=document.createElementNS(NS,"line"); ln.setAttribute("x1","50"); ln.setAttribute("y1","50"); if(s.grp) ln.setAttribute("stroke-dasharray","1.2 1.2"); svg.append(ln); lines.push(ln);
+    const b=el("button","grsat"+(s.on?" on":"")+(s.grp?" grp":"")+(s.hub?" hub":"")+(s.seen?" seen":"")+(s.kids?" bloom":"")); b.type="button"; b.style.animationDelay=(i*30)+"ms"; if(s.tone) b.dataset.r=s.tone; if(s.id) b.dataset.n=s.id;
+    b.append(el("b",null,s.t)); if(s.sub) b.append(el("small",null,s.sub)); if(s.kids) b.setAttribute("aria-expanded","false");
+    b.onclick=()=>{ if(s.kids) toggle(i); else s.go(b); }; st.append(b); btns.push(b); });
+  let off=0, open=-1; const outer=[];
+  const place=o=>{ off=o; sats.forEach((s,i)=>{ const a=(-90+360/N*i+o)*Math.PI/180, x=50+R*Math.cos(a), y=50+R*Math.sin(a); btns[i].style.left=x+"%"; btns[i].style.top=y+"%"; lines[i].setAttribute("x2",x.toFixed(2)); lines[i].setAttribute("y2",y.toFixed(2)); }); };
+  const want=i=>{ if(i<0) return 0; let o=-360/N*i; o=((o%360)+540)%360-180; return o; }; // 이 가지가 맨 위(12시)에 오도록 돌리는 각도
+  const clearOuter=()=>{ outer.splice(0).forEach(e=>e.remove()); };
+  const room=on=>{ const set=()=>{ st.style.marginTop= on? Math.round(st.offsetWidth*.27)+"px" : ""; }; if(st.offsetWidth) set(); else requestAnimationFrame(set); }; // 펼친 가지가 들어갈 자리를 위에 만들어요
+  const bloom=i=>{ clearOuter(); btns.forEach((b,j)=>{ b.classList.toggle("open",j===i); b.classList.toggle("dim",i>=0 && j!==i); if(sats[j].kids) b.setAttribute("aria-expanded",String(j===i)); });
+    st.classList.toggle("bloomed",i>=0); room(i>=0); if(i<0) return;
+    const kids=sats[i].kids, M=kids.length, sx=50, sy=50-R, D=30, span= M<=3? 110 : 140;
+    kids.forEach((k,j)=>{ const t=(-90-span/2+span/(M-1||1)*j)*Math.PI/180, x=sx+D*Math.cos(t), y=sy+D*Math.sin(t);
+      const ln=document.createElementNS(NS,"line"); ln.setAttribute("x1",sx); ln.setAttribute("y1",sy); ln.setAttribute("x2",x.toFixed(2)); ln.setAttribute("y2",y.toFixed(2)); ln.setAttribute("class","grol"); svg.append(ln); outer.push(ln);
+      const b=el("button","grsat grout"+(k.seen?" seen":"")); b.type="button"; b.style.left=x+"%"; b.style.top=y+"%"; b.style.animationDelay=(j*40)+"ms"; if(k.id) b.dataset.n=k.id;
+      b.append(el("b",null,k.t)); b.onclick=()=>k.go(b); st.append(b); outer.push(b); }); };
+  const toggle=i=>{ const to= open===i? -1 : i; open=to; if(opt.onBloom) opt.onBloom(to); clearOuter(); btns.forEach(b=>b.classList.remove("open","dim")); st.classList.toggle("bloomed",to>=0); room(to>=0);
+    const from=off, goal=want(to); let d=goal-from; if(d>180) d-=360; if(d<-180) d+=360;
+    if(calm || !d){ place(from+d); bloom(to); return; }
+    const t0=performance.now(), T=380, ease=x=>1-Math.pow(1-x,3);
+    const step=now=>{ const p=Math.min(1,(now-t0)/T); place(from+d*ease(p)); if(p<1) requestAnimationFrame(step); else bloom(to); }; requestAnimationFrame(step); };
+  const c=el(center.go? "button":"div","grctr"); if(center.go){ c.type="button"; c.onclick=center.go; c.setAttribute("aria-label",center.t+" · 한 단계 위로"); }
+  if(center.up) c.append(el("small",null,center.up)); c.append(el("b",null,center.t)); st.append(c);
+  const o0= opt.open!=null && opt.open>=0 && sats[opt.open] && sats[opt.open].kids? opt.open : -1; open=o0; place(want(o0)); if(o0>=0){ st.classList.add("bloomed","still"); bloom(o0); }
+  return st;
+}
+/* 가지 하나의 마인드맵: 가운데 가지 이름, 양옆으로 항목이 뻗어요 (항목 이름이 길어서 동그라미 대신 둥근 칸) */
+function grSpider(center, sats, tone){
+  const st=el("div","grsp"); st.dataset.r=tone; const svg=document.createElementNS("http://www.w3.org/2000/svg","svg"); svg.setAttribute("aria-hidden","true"); st.append(svg);
+  const L=el("div","grspc l"), R=el("div","grspc r"), half=Math.ceil(sats.length/2);
+  sats.forEach((s,i)=>{ const b=el("button","grnd"+(s.on?" on":"")+(s.ex?" ex":"")); b.type="button"; b.style.animationDelay=(i*30)+"ms"; b.append(el("span",null,s.t)); b.onclick=s.go; (i<half? L : R).append(b); });
+  const c=el("button","grctr"); c.type="button"; c.onclick=center.go; c.setAttribute("aria-label",center.t+" · 한 단계 위로"); c.append(el("small",null,center.up), el("b",null,center.t));
+  st.append(L,c,R);
+  const lines=()=>{ if(!document.body.contains(st)) return; const o=st.getBoundingClientRect(), cr=c.getBoundingClientRect(); svg.setAttribute("viewBox",`0 0 ${o.width} ${o.height}`); svg.textContent="";
+    const cx=cr.left-o.left+cr.width/2, cy=cr.top-o.top+cr.height/2;
+    st.querySelectorAll(".grnd").forEach(n=>{ const r=n.getBoundingClientRect(), left=n.parentNode===L, x=(left? r.right : r.left)-o.left, y=r.top-o.top+r.height/2, mx=(x+cx)/2;
+      const pth=document.createElementNS("http://www.w3.org/2000/svg","path"); pth.setAttribute("d",`M${cx} ${cy} C${mx} ${cy} ${mx} ${y} ${x} ${y}`); svg.append(pth); }); };
+  requestAnimationFrame(lines); setTimeout(lines,350);
+  return st;
+}
+function renderGrammar(app){
+  if(!GR){ app.append(el("div","loading","문법 지도를 불러오는 중…")); grLoad().then(j=>{ if(j) render(); else { app.textContent=""; app.append(el("p","muted","문법 지도를 불러오지 못했어요. 인터넷 연결을 확인해 주세요.")); } }); return; }
+  const back=el("button","back","‹ 홈"); back.type="button"; app.append(back);
+  const head=el("div","phead"); app.append(head);
+  const map=el("div","grone"); app.append(map);
+  const comps=GR.nodes[GR.root].kids, calm=window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const ringG=(c,k)=>{ const gs=GR.nodes[c].groups, gi=gs.findIndex(g=>g[1].includes(k)); return (gi===0 || gs[gi][1].length===1)? null : gi; }; // 성분 바로 둘레에 있으면 null, 묶음 안이면 묶음 번호
+  const nav=to=>{ const tn=GR.nodes[to]; if(!tn) return; const h=grHome(to);
+    if(h) grAt={c:h.c, g:ringG(h.c, h.h||to), h: tn.hub? to : h.h, l:null, i:null};
+    else if(comps.includes(to)) grAt={c:to,g:null,h:null,l:null,i:null}; else return;
+    draw(); window.scrollTo(0,0); };
+  const draw=(keep)=>{ map.textContent=""; head.textContent=""; const seen=new Set(grSeen()); const c=grAt.c, n=c && GR.nodes[c], g= n && grAt.g!=null? n.groups[grAt.g] : null, hb= grAt.h && GR.nodes[grAt.h], lf= grAt.l && GR.nodes[grAt.l];
+    const upName= lf? (hb? hb.t : g? (g[2]||g[0]) : n.t) : hb? (g? (g[2]||g[0]) : n.t) : g? n.t : c? "뼈대" : null;
+    const up= lf? (()=>{ grAt={...grAt,l:null,i:null}; draw(); }) : hb? (()=>{ grAt={...grAt,h:null}; draw(); }) : g? (()=>{ grAt={c,g:null,h:null,l:null,i:null}; draw(); }) : c? (()=>{ grAt={c:null,g:null,h:null,l:null,i:null}; draw(); }) : null;
+    back.textContent= !c? "‹ 홈" : upName==="뼈대"? "‹ 문장 뼈대" : "‹ "+upName; back.onclick= up || (()=>go("home"));
+    head.append(el("h1",null,"문법 지도"), el("p","lead", !c? "문장은 다섯 가지 성분으로 이루어져요." : (g||hb||lf)? [n.t, g && (g[2]||g[0]), hb && hb.t, lf && (lf.k||lf.t)].filter(Boolean).join(" › ") : `${n.t} · ${n.s}`));
+    const sat=k=>{ const kn=GR.nodes[k]; if(kn.hub){ const done=kn.hub.filter(x=>seen.has(x)).length; return {id:k, t:kn.k||kn.t, sub: done? `${done}/${kn.hub.length}` : String(kn.hub.length), hub:true, go:()=>{ grAt={...grAt,h:k,l:null,i:null}; draw(); }}; }
+      return {id:k, t:kn.k||kn.t, seen:seen.has(k), go:b=>grSheet(k,b)}; };
+    if(!c){ map.append(grRing({t:"문장 뼈대"}, comps.map(k=>({t:GR.nodes[k].t, tone:GR_COMP[k], go:()=>{ grAt={c:k,g:null,h:null,l:null,i:null}; draw(); }})))); return; }
+    if(hb){ map.append(grRing({t:hb.t, up:"‹ "+upName, go:up}, hb.hub.map(sat), GR_COMP[c]), el("p","grhint",`${hb.t}에서 배우는 문법이에요.`)); return; }
+    if(g){ map.append(grRing({t:g[2]||g[0], up:"‹ "+n.t, go:up}, g[1].map(sat), GR_COMP[c])); return; }
+    const sats=[]; n.groups.forEach((gr,i)=>{ if(i===0 || gr[1].length===1) gr[1].forEach(k=>sats.push(sat(k)));
+      else { const done=gr[1].filter(k=>seen.has(k)).length; const o={t:gr[2]||gr[0], grp:true, sub: done? `${done}/${gr[1].length}` : String(gr[1].length), go:()=>{ grAt={c,g:i,h:null,l:null,i:null}; draw(); }};
+        if(gr[3]) o.kids=gr[1].map(sat); sats.push(o); } });
+    const bi= grAt.b!=null? sats.findIndex(x=>x.kids && x.t===grAt.b) : -1;
+    map.append(grRing({t:n.t, up:"‹ 뼈대", go:up}, sats, GR_COMP[c], {open:bi, onBloom:j=>{ grAt.b= j>=0? sats[j].t : null; }}), el("p","grhint", sats.some(x=>x.kids)? "점선 동그라미 안에는 더 많은 가지가 있어요. + 표시는 누르면 그 자리에서 펼쳐져요." : "점선 동그라미 안에는 더 많은 가지가 들어 있어요."));
+  };
+  draw();
+  grMark=id=>{ if(!document.body.contains(map)){ grMark=null; return; } if(!id){ draw(); return; } const tn=GR.nodes[id]; if(tn && (tn.hub || comps.includes(id))) nav(id); };
+}
+function grChips(c){ const ns=grFor(c).filter(n=>grHome(n.id)); if(!ns.length) return null; const w=el("div","grlinks"); w.append(el("span",null,"문법 지도"));
+  ns.forEach(n=>{ const b=el("button","grchip",(n.k||n.t)+" ›"); b.type="button"; b.onclick=e=>{ e.stopPropagation(); grSheet(n.id,b); }; w.append(b); }); return w; }
 
 /* ---------- daily podcast reminder ---------- */
 const POD_URL="https://podcasts.apple.com/nz/podcast/6-minute-english/id262026947";
@@ -216,6 +358,7 @@ function renderPodPick(app){
   app.append(f);
 }
 const LIC={
+  gram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="5" rx="1.2"/><rect x="3" y="16" width="6" height="5" rx="1.2"/><rect x="15" y="16" width="6" height="5" rx="1.2"/><path d="M12 8v4M6 16v-2.5a1.5 1.5 0 0 1 1.5-1.5h9a1.5 1.5 0 0 1 1.5 1.5V16"/></svg>',
   cloud:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.2 9.1 4.5 4.5 0 0 0 7 18z"/></svg>',
   spell:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19l4-12 4 12M5.5 15h5"/><path d="M14 13l2.5 2.5L21 10"/></svg>',
   voc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M9 8h7M9 11.5h5"/></svg>',
@@ -224,21 +367,6 @@ const LIC={
   bm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8l-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/></svg>'
 };
 const BADGES=[3,7,14,30,50,100];
-function bestStreak(){ const ds=[...new Set(days)].sort(); let best=0, run=0, prev=null; for(const d of ds){ run = (prev && addD(prev,1)===d)? run+1 : 1; best=Math.max(best,run); prev=d; } return best; }
-function badgeSection(){
-  const best=Math.max(bestStreak(), streak()); const st=streak();
-  const earned=BADGES.filter(n=>best>=n); const next=BADGES.find(n=>best<n);
-  const sec=el("section","sec"); sec.append(secHead("연속 기록 배지", `${earned.length} / ${BADGES.length}`));
-  const box=el("div","box badges");
-  const row=el("div","bdg-row");
-  for(const n of BADGES){ const on=best>=n; const b=el("div","bdg"+(on?" on":"")); const m=el("div","bdg-m"); m.append(el("b",null,String(n)), el("span",null,"일")); b.append(m, el("span","bdg-l", on? "획득" : "잠김")); row.append(b); }
-  box.append(row);
-  const studied=days.includes(today()); box.append(el("p","bdg-next", next? `다음 배지(${next}일)까지 ${Math.max(1,next-st)}일 남았어요` + (studied? "" : " · 오늘 공부하면 연속 기록이 이어져요") : "모든 배지를 모았어요!"));
-  sec.append(box);
-  try{ const key=`bandup-badges-${slug}`; const seen=store.get(key,[]); const fresh=earned.filter(n=>!seen.includes(n)); if(fresh.length){ store.set(key,earned); if(seen.length || fresh.some(n=>n>3) || earned.length) setTimeout(()=>badgeToast(fresh[fresh.length-1]),400); } }catch(_){}
-  return sec;
-}
-function badgeToast(n){ const t=el("div","bdg-toast"); const m=el("div","bdg-m"); m.append(el("b",null,String(n)), el("span",null,"일")); const tx=el("div"); tx.append(el("b",null,`${n}일 연속 배지 획득!`), el("span",null,"꾸준함이 실력이에요. 계속 가 봐요.")); t.append(m,tx); document.body.append(t); setTimeout(()=>t.classList.add("out"),2600); setTimeout(()=>t.remove(),3100); }
 function secHead(title, right){ const h=el("div","sec-h"); h.append(el("b",null,title)); if(right) h.append(el("span",null,right)); return h; }
 function listRow(icon, title, sub, onClick, href){
   const r=el(href? "a":"button","lrow2"); if(href){ r.href=href; r.target="_blank"; r.rel="noopener"; } else { r.type="button"; r.onclick=onClick; }
@@ -274,12 +402,12 @@ function todayPod(){ if(D && D.podAuto && (D.podSessions||[]).length){ const don
   if(D && D.dailyPod && (D.podSessions||[]).length){ const L=[...D.podSessions].sort((a,b)=>String(b.date).localeCompare(String(a.date))); const t=today(), st="2026-11-09"; let n=0; while(addD(st,n)<t && n<4000) n++; if(t<st) n=0; return L[Math.min(n,L.length-1)]; }
   const P=D&&D.podDaily; if(!P||!P.order||!P.order.length||!D.sessions) return null; const t=today(); let n=0; while(addD(P.start,n)<t && n<4000) n++; if(t<P.start) n=0; const no=P.order[Math.min(n,P.order.length-1)]; return D.sessions.find(x=>x.no===no)||null; }
 function studyGuide(app){
-  if(D.demo || (D.group==="ielts" && !D.showGuide)) return;
+  if(D.demo || D.noGuide || (D.group==="ielts" && !D.showGuide)) return; // 학생 파일에 "noGuide": true 면 숨김
   const P=podSel(); const podTab=(D.group==="church"||D.group==="other")? "session" : ((D.podSessions||[]).length? "pod" : "session");
   const steps=[
     (()=>{ const TP=todayPod(); return TP? ["팟캐스트 듣기", `오늘은 ${String(TP.link.src||"6 Minute English").replace(/^BBC /,"")} ${TP.link.date} 편 \u201c${TP.link.title}\u201d을 끝까지 들어요`, null, TP.link.url] : ["팟캐스트 듣기", `${P.name||"오늘의 팟캐스트"} 한 편을 끝까지 들어요`, null, podUrl(P)]; })(),
     ["큐카드 팟캐스트로 오늘 들은 팟캐스트 복습하기","큐카드 → 팟캐스트에서 오늘 날짜를 골라, 방금 들은 문장을 한국어만 보고 영어로 말해 봐요. 마지막 장의 단어는 단어장에 담아요",()=>{ cardMode=podTab; const TP=todayPod(); if(podTab==="pod"){ selPod=TP? TP.no : null; podPickOpen=false; } else { selSession=TP? TP.no : null; podPickOpen=false; } deckState=null; go("cards"); }],
-    [D.dailyFrom==="sessions"? "큐카드 매일 연습으로 배운 문장 복습하기" : "큐카드 매일 연습으로 일상 영어 공부하기", D.dailyFrom==="sessions"? "지금까지 배운 스피킹 매트릭스 문장 중 매일 10개를 랜덤으로 소리 내 말해 봐요" : "매일 바뀌는 생활 영어 문장 10개를 소리 내 말해 봐요",()=>{ cardMode="daily"; deckState=null; go("cards"); }],
+    [D.dailyFrom==="sessions"? "오늘의 복습으로 배운 문장 복습하기" : "오늘의 복습으로 일상 영어 공부하기", D.dailyFrom==="sessions"? "지금까지 배운 스피킹 매트릭스 문장 중 매일 10개를 랜덤으로 소리 내 말해 봐요" : "매일 바뀌는 생활 영어 문장 10개를 소리 내 말해 봐요",()=>{ go("review",{extra:false}); }],
     ["그 외","시간이 더 있으면 골라서 해요. 철자 탭에서 단어 듣고 쓰기, 아이디어 탭에서 Part 1·2·3 질문별 단어와 답변 재료 보기, 내 단어장 외우기, 오늘의 복습까지!",null,null,[["철자",()=>go("words")],["아이디어",()=>go("ideas")],["내 단어장",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); }],["오늘의 복습",()=>{ const due=dueCards().length; go("review",{extra:!due, ids:reviewQueue(!due)}); }]]]];
   const sec=el("section","sec sguide"); sec.append(secHead("오늘의 공부 순서","위에서부터 차례대로"));
   const box=el("div","box list2");
@@ -306,9 +434,9 @@ function installBar(app){
 function renderHome(app){
   statFlush(false);
   installBar(app);
-  const due=dueCards().length;
-  const doneToday=Object.values(srs).filter(x=>x&&x.last===today()).length;
-  const goalDone = doneToday>=DAILY;
+  const DQ=dailyLeft(); const due= DQ? DQ.length : dueCards().length;
+  const doneToday= DQ? (dailyIds().length-DQ.length) : Object.values(srs).filter(x=>x&&x.last===today()).length;
+  const goalDone = DQ? (DQ.length===0) : doneToday>=DAILY;
   if(D.demo){ const bn=el("div","demobn"); bn.append(el("b",null,"체험용 앱이에요"), el("p",null,"실제 수업을 들으면, 수업에서 내가 틀린 문장으로 이런 큐카드가 매번 만들어져요. 큐카드·모의고사·예상 기출을 마음껏 써 보세요."));
     const k=el("a","demok","카톡으로 수업 상담하기 ›"); k.href="https://open.kakao.com/o/s6FxwzEi"; k.target="_blank"; k.rel="noopener"; bn.append(k); app.append(bn); }
   const h1=el("h1","h-title"); if(D.name) h1.append(document.createTextNode(`${D.name}님,`), el("br"));
@@ -325,8 +453,8 @@ function renderHome(app){
   const bar=el("div","bar"); const bi=el("i"); bi.style.width=Math.min(100,doneToday/DAILY*100)+"%"; bar.append(bi); rv.append(bar);
   if(!D.cards.length){ rv.append(el("p","muted small", D.common? "큐카드 탭에서 외우고 싶은 문장을 넣으면 여기서 매일 복습할 수 있어요." : "첫 수업이 끝나면 수업에서 나온 문장으로 복습이 시작돼요.")); s1.append(rv); app.append(s1); }
   else {
-  const queue=reviewQueue(!due);
-  const b=el("button","btn primary", !due? "약한 카드 연습하기" : goalDone? "더 복습하기" : doneToday? "이어서 복습하기" : "복습 시작하기"); b.type="button"; b.onclick=()=>go("review",{extra:!due, ids:queue}); rv.append(b);
+  const XTRA= DQ? goalDone : !due; const queue=reviewQueue(XTRA);
+  const b=el("button","btn primary", (!DQ && !due)? "약한 카드 연습하기" : goalDone? "더 복습하기" : doneToday? "이어서 복습하기" : "복습 시작하기"); b.type="button"; b.onclick=()=>go("review",{extra:XTRA, ids:queue}); rv.append(b);
   s1.append(rv); app.append(s1);
   }
   // 학습
@@ -335,8 +463,10 @@ function renderHome(app){
   { const P=podSel(); const TP=todayPod(); const pr=TP? listRow(LIC.pod,"오늘의 팟캐스트",`${String(TP.link.src||"6 Minute English").replace(/^BBC /,"")} · ${TP.link.date} · ${TP.link.title}`,null,TP.link.url) : listRow(LIC.pod,"오늘의 팟캐스트",P.name,null,podUrl(P)); pr.classList.add("podrow"); const pw=el("div","podwrap"); const cb= (D.podAuto && TP)? el("button","podchg","✓ 다 들었어요") : el("button","podchg","바꾸기"); cb.type="button"; cb.onclick= (D.podAuto && TP)? (e=>{ e.preventDefault(); e.stopPropagation(); podDone(TP); render(); }) : (()=>go("podpick")); pw.append(pr,cb); list.append(pw); }
   if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
   if(D.group==="ielts" || D.group==="common" || D.demo || D.keepMock) list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
+  if(D.grammar) list.append(listRow(LIC.gram,"문법 지도","문장 성분 다섯 개로 보는 문법 한 장",()=>{ grAt={c:null,g:null,h:null,l:null,i:null}; go("grammar"); }));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
-  if(D.inbox){ const sc=store.get(`bandup-screens-${slug}`,[]); if(sc.length) list.append(listRow(LIC.voc,"📸 화면에서 가져온 글",`${sc.length}개 · 모르는 단어를 눌러 담아요`,()=>go("screens"))); }
+  if(D.inbox){ const sc=store.get(`bandup-screens-${slug}`,[]); if(sc.length) list.append(listRow(LIC.voc,"📸 캡쳐한 글",`${sc.length}개 · 모르는 단어를 눌러 담아요`,()=>go("screens"))); else if((D.capLink || D.capOn) && /iPhone|iPad/i.test(navigator.userAgent||"")) list.append(listRow(LIC.voc,"📸 뒷면 톡톡 캡쳐","보던 화면의 단어를 바로 담기 · 설정 1분",()=>go("inbox"))); }
+  if(D.inbox && D.yt){ const nv=store.get(`bandup-yt-${slug}`,[]).length; list.append(listRow(LIC.pod,"🎬 영상으로 공부", (()=>{ const nc=store.get(`bandup-clips-${slug}`,[]).length; return nc? `클립 ${nc}개 · 쉐도잉하러 가기` : nv? `영상 ${nv}개 · 이중자막으로 보고 안 들린 문장 담기` : "유튜브 보다가 뒷면 톡톡으로 클립 저장"; })(),()=>{ ytState=null; go("yt"); })); }
   list.append(listRow(LIC.bm,"북마크",`${cbmList().filter(id=>getCard(id)).length+qbmList().length}개`,()=>go("bm")));
   if(D.cloud){ const se=cloudSess(); list.append(listRow(LIC.cloud,"계정 · 기록 저장", se? `${se.email} · 자동 저장 중` : "로그인하면 폰을 바꿔도 기록이 이어져요",()=>go("transfer"))); }
   s2.append(list); app.append(s2);
@@ -350,15 +480,6 @@ function renderHome(app){
   if(!(window.matchMedia&&matchMedia("(display-mode: standalone)").matches) && !navigator.standalone){ const g=el("a","guidelink","홈 화면에 앱으로 추가하는 법 ›"); g.href="guide/"; app.append(g); }
 }
 
-function podcastBox(){
-  const key=`bandup-pod-${slug}`; const listened=store.get(key,[]); const done=listened.includes(today());
-  const w=el("div","pod"+(done?" done":""));
-  const top=el("div","pod-top"); const ic=el("span","pod-ic"); ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="2.2"/><path d="M12 13.5v7"/><path d="M8.2 14a5 5 0 1 1 7.6 0"/><path d="M5.6 16.6a8.5 8.5 0 1 1 12.8 0"/></svg>'; top.append(ic, (()=>{ const t=el("div"); t.append(el("b",null, "오늘의 팟캐스트"), el("span",null,"BBC 6 Minute English")); return t; })());
-  w.append(top);
-  const a=el("a","btn primary","듣기"); a.href=POD_URL; a.target="_blank"; a.rel="noopener";
-  w.append(a);
-  return w;
-}
 /* ---------- IELTS mock test (Part 1 → 2 → 3, random) ---------- */
 let MT=null, mtTimer=null;
 const qbmKey=()=>`bandup-qbm-${slug}`;
@@ -389,69 +510,10 @@ function weekCard(){
   return w;
 }
 let bmHomeOpen=false;
-function bmHomeCard(){
-  const list=cbmList().map(getCard).filter(Boolean);
-  const w=el("div","bmhome");
-  const h=el("button","bmh"); h.type="button"; h.setAttribute("aria-expanded",String(bmHomeOpen));
-  h.append(el("b",null,"★ 북마크"), el("span",null,`${list.length}장`), el("span","bmchev",bmHomeOpen?"▴":"▾")); w.append(h);
-  const body=el("div","bmbody"); body.hidden=!bmHomeOpen;
-  if(!list.length) body.append(el("p","muted small","큐카드에서 카드의 ☆를 누르면 여기 모여요."));
-  else {
-    const ul=el("div","bmprev"); list.forEach(c=>{ const r=el("div","bmrow2"); const t=el("div"); t.append(el("b",null,c.en), el("span",null,c.ko||"")); const x=el("button","cstar","★"); x.type="button"; x.setAttribute("aria-pressed","true"); x.setAttribute("aria-label","북마크 해제"); x.onclick=()=>{ toggleCbm(c.id); render(); }; r.append(t,x); ul.append(r); }); body.append(ul);
-    const a=el("button","btn primary vstart","카드로 연습"); a.type="button"; a.onclick=()=>{ deckState=null; go("cards",{deck:"bm", ids:list.map(c=>c.id)}); }; body.append(a);
-  }
-  w.append(body);
-  h.onclick=()=>{ bmHomeOpen=!bmHomeOpen; body.hidden=!bmHomeOpen; h.setAttribute("aria-expanded",String(bmHomeOpen)); h.querySelector(".bmchev").textContent=bmHomeOpen?"▴":"▾"; };
-  return w;
-}
 /* ---------- home cat (orange tabby, white chest & paws) that wanders ---------- */
 const CAT_SVG='<svg viewBox="0 0 160 120" aria-hidden="true"><defs><linearGradient id="fur" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0a95e"/><stop offset="1" stop-color="#e3914a"/></linearGradient></defs><g class="c-tail"><path d="M34 70 C18 66 10 50 14 34 C16 26 24 22 28 28" fill="none" stroke="#e3914a" stroke-width="10" stroke-linecap="round"/><path d="M14 34 C16 26 24 22 28 28" fill="none" stroke="#f6c894" stroke-width="10" stroke-linecap="round"/></g><g class="c-leg c-lb"><path d="M40 78 v24" stroke="#d9853f" stroke-width="12" stroke-linecap="round"/><ellipse cx="40" cy="104" rx="8" ry="5" fill="#fffaf3"/></g><g class="c-leg c-lf"><path d="M96 80 v22" stroke="#d9853f" stroke-width="12" stroke-linecap="round"/><ellipse cx="96" cy="104" rx="8" ry="5" fill="#fffaf3"/></g><path d="M30 74 C30 54 50 46 72 46 C96 46 112 54 112 72 C112 88 96 92 72 92 C48 92 30 90 30 74Z" fill="url(#fur)"/><path d="M50 50 q4 10 0 22 M62 47 q4 12 0 26 M74 47 q4 12 0 26 M86 49 q4 10 0 22" stroke="#c97436" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".35"/><g class="c-leg c-lb2"><path d="M52 80 v22" stroke="#e3914a" stroke-width="12" stroke-linecap="round"/><ellipse cx="52" cy="104" rx="8" ry="5" fill="#fffaf3"/></g><g class="c-leg c-lf2"><path d="M108 78 v24" stroke="#e3914a" stroke-width="12" stroke-linecap="round"/><ellipse cx="108" cy="104" rx="8" ry="5" fill="#fffaf3"/></g><g class="c-head"><path d="M98 30 L100 6 L118 20 Z" fill="#e3914a"/><path d="M102 20 L104 10 L112 18 Z" fill="#f4b9a6"/><path d="M150 30 L148 6 L130 20 Z" fill="#e3914a"/><path d="M146 20 L144 10 L136 18 Z" fill="#f4b9a6"/><ellipse cx="124" cy="42" rx="31" ry="27" fill="url(#fur)"/><path d="M118 19 q1.5 5 0 9 M124 17 q1.5 6 0 10 M130 19 q1.5 5 0 9" stroke="#d07b3a" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".45"/><ellipse cx="124" cy="54" rx="13" ry="9" fill="#f9dfc2"/><ellipse cx="106" cy="52" rx="6.5" ry="4" fill="#f59fa3" opacity=".55"/><ellipse cx="142" cy="52" rx="6.5" ry="4" fill="#f59fa3" opacity=".55"/><g class="c-eyes"><ellipse cx="112.5" cy="42" rx="6" ry="7" fill="#2b1a10"/><ellipse cx="135.5" cy="42" rx="6" ry="7" fill="#2b1a10"/><circle cx="114.5" cy="39" r="2.4" fill="#fff"/><circle cx="137.5" cy="39" r="2.4" fill="#fff"/><circle cx="111" cy="45" r="1.1" fill="#fff" opacity=".8"/><circle cx="134" cy="45" r="1.1" fill="#fff" opacity=".8"/></g><path d="M121 50.5 q3 -1.5 6 0 q-1 2.6 -3 3.2 q-2 -0.6 -3 -3.2z" fill="#f08a96"/><path d="M124 53.5 v1.5 M124 55 q-2.5 2.6 -5 0.4 M124 55 q2.5 2.6 5 0.4" stroke="#7a4a2a" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M102 52 l-13 -1.5 M102 55 l-13 1.5 M146 52 l13 -1.5 M146 55 l13 1.5" stroke="#fff" stroke-width="1" stroke-linecap="round" opacity=".85"/></g></svg>';
 const CAT_LINES=["냥! 오늘도 왔네","한 문장만 말해 봐도 충분해냥","천천히 해도 괜찮아냥 🐾","Practice makes progress!","{name} 최고다냥","오늘 복습 같이 하자냥","졸리지만 응원 중… 냥","틀려도 괜찮아냥, 그게 연습이야"];
 let catRAF=null;
-function homeCat(){
-  if(catRAF){ cancelAnimationFrame(catRAF); catRAF=null; }
-  const old=document.querySelector(".cat-walk"); if(old) old.remove();
-  const svg=CAT_SVG.replace('</g></svg>','<g class="c-sleepeyes"><path d="M106 42 q6.5 4 13 0 M129 42 q6.5 4 13 0" stroke="#3b2414" stroke-width="2.6" fill="none" stroke-linecap="round"/></g><ellipse class="c-mouth" cx="124" cy="57.5" rx="3.6" ry="4" fill="#9a3b45"/></g></svg>');
-  const w=el("button","cat-walk"); w.type="button"; w.setAttribute("aria-label","고양이 쓰다듬기"); w.innerHTML=svg;
-  const bub=el("span","cat-bub"); bub.hidden=true;
-  const bowl=el("span","cat-prop cat-bowl"); bowl.innerHTML='<svg viewBox="0 0 40 20"><path d="M2 6h36c-2 9-8 13-18 13S4 15 2 6z" fill="#5a7be8"/><ellipse cx="20" cy="6" rx="18" ry="4" fill="#8a5a33"/><circle cx="14" cy="5" r="2" fill="#a8703f"/><circle cx="22" cy="4" r="2" fill="#a8703f"/><circle cx="27" cy="6" r="1.8" fill="#a8703f"/></svg>';
-  const zz=el("span","cat-prop cat-zz","Zz");
-  const sweat=el("span","cat-prop cat-sweat","💦");
-  w.append(bub,bowl,zz,sweat);
-  const og=document.querySelector(".cat-grass"); if(og) og.remove();
-  const grass=el("div","cat-grass"); grass.setAttribute("aria-hidden","true"); document.body.append(grass, w);
-  const reduce=window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let x=20, dir=1, last=performance.now(), bt=null, state="walk", until=0;
-  const STATES=["walk","walk","walk","sit","meow","stretch","eat","exercise","sleep","groom"];
-  const LINES={meow:["야옹~","냐아앙","냥냥!"],eat:["냠냠","츄르 최고","밥 먹는 중이다냥"],exercise:["운동 중! 하나 둘","점프 점프!","다이어트 중이다냥"],sleep:["쿨쿨…","5분만 더…"],stretch:["으아아 기지개~","쭉쭉"],groom:["단장 중","털 고르는 중"]};
-  const say=(txt)=>{ bub.textContent=txt; bub.hidden=false; clearTimeout(bt); bt=setTimeout(()=>{ bub.hidden=true; },2400); };
-  const sayCheer=()=>say(CAT_LINES[Math.floor(Math.random()*CAT_LINES.length)].replace("{name}",D.name? D.name+"님" : ""));
-  const setState=(s,t)=>{
-    state=s; w.className="cat-walk st-"+s+(dir<0?" left":"");
-    const dur={walk:3000+Math.random()*4000,sit:2000+Math.random()*2000,meow:2200,stretch:2600,eat:4200,exercise:3200,sleep:5000+Math.random()*3000,groom:3200}[s];
-    until=t+dur;
-    if(LINES[s] && Math.random()<.85) say(LINES[s][Math.floor(Math.random()*LINES[s].length)]);
-    if(s==="walk" && Math.random()<.4) dir*=-1;
-  };
-  w.onclick=()=>{ const t=performance.now(); if(state==="sleep"){ say("앗 깼다냥!"); setState("sit",t); return; } setState(Math.random()<.5? "meow":"sit",t); sayCheer(); };
-  const place=()=>{ w.style.transform=`translateX(${x}px)`; w.classList.toggle("left",dir<0); };
-  const step=t=>{
-    if(!document.body.contains(w) || view.tab!=="home"){ w.remove(); grass.remove(); catRAF=null; return; }
-    const dt=Math.min(50,t-last); last=t;
-    const maxX=Math.max(0,window.innerWidth-w.offsetWidth-8);
-    if(state==="walk"){ x+=dir*0.55*dt/16; if(x<=8){ x=8; dir=1; } if(x>=maxX){ x=maxX; dir=-1; } }
-    if(t>=until){ let n; do{ n=STATES[Math.floor(Math.random()*STATES.length)]; }while(n===state && n!=="walk"); setState(n,t); }
-    place(); catRAF=requestAnimationFrame(step);
-  };
-  place(); setState("walk",performance.now()); setTimeout(sayCheer,600);
-  if(!reduce) catRAF=requestAnimationFrame(step); else w.className="cat-walk st-sit";
-}
-function mockCard(){
-  const w=el("div","mockcard");
-  const t=el("div"); t.append(el("b",null,"아이엘츠 모의고사"), el("span",null,"Part 1·2·3 랜덤"));
-  const b=el("button","btn primary","시작하기"); b.type="button"; b.onclick=()=>{ MT=null; go("mock"); };
-  w.append(t,b); return w;
-}
 /* Part 1 intro: always Home/Hometown or Study/Work (as in the real test) */
 const INTRO_EXTRA={
   home:["Where are you from?","Which city are you living in?","Do you know any history about your hometown?","Do you prefer to live in an apartment or in a house?","Who do you live with?","Are there many rooms in your home?","What is your favourite room?","What would you change about your home?","How are the walls decorated?","How could your hometown be improved?","Is there good public transport in your hometown?","What's your neighbourhood like?","Do you think your hometown is a good place to bring up children?"],
@@ -480,62 +542,187 @@ function buildMock(){
     const p3=P3&&P3.items.find(x=>x.no===c.no); if(p3) p3.qs.slice(0,5).forEach(q=>steps.push({part:3,topic:c.topic,q})); }
   return {steps,i:0,phase:null,left:0};
 }
-function stopMockTimer(){ if(mtTimer){ clearInterval(mtTimer); mtTimer=null; } if(typeof stopRec==="function") stopRec(); }
-/* ---------- answer recorder (mock test) ---------- */
-let REC=null; // {mr, stream, chunks, t0, timer, key, rc}
-const SR=window.SpeechRecognition||window.webkitSpeechRecognition||null;
-/* clean up a speech transcript: drop fillers, stutters and self-corrections */
-function cleanSpeech(raw){
-  const fill=/^(um+|uh+|er+|erm+|ah+|hmm+|mm+|uhm+)$/i;
-  let w=String(raw||"").replace(/\s+/g," ").trim().split(" ").filter(x=>x && !fill.test(x.replace(/[.,!?]/g,"")));
-  const k=x=>x.toLowerCase().replace(/[^a-z0-9']/g,"");
-  const lev=(a,b)=>{ const d=Array.from({length:a.length+1},(_,i)=>[i]); for(let j=1;j<=b.length;j++) d[0][j]=j; for(let i=1;i<=a.length;i++) for(let j=1;j<=b.length;j++) d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1)); return d[a.length][b.length]; };
-  let changed=true;
-  while(changed){ changed=false;
-    // repeated phrases of 1-4 words: "I went I went to" -> "I went to"
-    for(let n=4;n>=1 && !changed;n--) for(let i=0;i+2*n<=w.length;i++){ let same=true; for(let j=0;j<n;j++) if(k(w[i+j])!==k(w[i+n+j])){ same=false; break; } if(same && k(w[i])){ w.splice(i,n); changed=true; break; } }
-    // self-correction of one word: "soul Seoul" -> "Seoul"
-    if(!changed) for(let i=0;i+1<w.length;i++){ const a=k(w[i]), b=k(w[i+1]); if(a.length>=3 && b.length>=3 && a!==b && a[0]===b[0] && lev(a,b)<=Math.max(1,Math.floor(Math.max(a.length,b.length)/3))){ w.splice(i,1); changed=true; break; } }
-  }
-  let s=w.join(" ").replace(/\s+([.,!?])/g,"$1");
-  return s? s[0].toUpperCase()+s.slice(1) : s;
-}
-
+function stopMockTimer(){ if(mtTimer){ clearInterval(mtTimer); mtTimer=null; } }
+function endMock(){ stopMockTimer(); stopRec(); } // 질문을 떠날 때: 타이머 + 녹음 모두 정리 (녹음은 보내지 않고 버림)
+/* ---------- 말하기 첨삭: 답할 때마다 받아쓰기 → Part가 끝나면 한 번에 문법·단어·표현 교정 ----------
+   서버: 학생용(GitHub Pages) = Supabase Edge Function "speak-fix" (supabase/README.md)
+         내 PC 테스트(localhost·Tailscale) = server/speak_fix.py 의 /api/
+   AI_LIVE 가 false 면 GitHub Pages 에서는 기능이 숨겨져요. Supabase 함수를 배포·확인한 뒤 true 로.
+   테스트용: localStorage "bandup-ai-mock" = "1" (가짜 응답), "bandup-ai-url" = "supabase" (PC에서 Supabase 함수로 시험) */
+let REC=null; // {mr, stream, chunks, t0, timer, key, send}
 const canRecord=()=>!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
-function stopRec(){ if(REC){ const rc=REC.rc; if(rc){ rc.onend=null; try{ rc.stop(); }catch(_){} } try{ if(REC.mr.state!=="inactive") REC.mr.stop(); }catch(_){} } }
-function recBox(key){
-  MT.rec=MT.rec||{}; MT.txt=MT.txt||{};
-  const w=el("div","recbox");
-  const draw=()=>{ w.textContent="";
-    const url=MT.rec[key];
-    if(REC && REC.key===key){
-      const b=el("button","btn rec on"); b.type="button"; const sec=Math.floor((Date.now()-REC.t0)/1000);
-      b.append(el("i","recdot"), document.createTextNode(` 녹음 중 ${Math.floor(sec/60)}:${String(sec%60).padStart(2,"0")} · 멈추기`)); b.onclick=stopRec; w.append(b); txtBox(true); return; }
-    const r=el("button","btn rec"); r.type="button"; r.append(el("i","recdot"), document.createTextNode(url? " 다시 녹음" : " 질문 녹음")); r.onclick=start; w.append(r);
-    if(url){ const a=el("audio"); a.controls=true; a.src=url; a.className="recaudio"; w.append(a); }
-    txtBox(false);
-  };
-  const txtBox=live=>{ if(!SR) return; const t=cleanSpeech(MT.txt[key]); if(!t && !live) return; const d=el("div","rectxt"); d.append(el("span","rectxt-lab","내가 한 말"), el("p",null, t || "듣는 중…")); w.append(d); };
+const aiMock=()=>{ try{ return !!window.BANDUP_AI_MOCK || localStorage.getItem("bandup-ai-mock")==="1"; }catch(_){ return !!window.BANDUP_AI_MOCK; } };
+const AI_LIVE=false; // true 로 바꾸면 모든 학생에게 켜져요. false 면 학생 파일(data/students/*.json)에 "ai": true 인 학생만
+const aiRemote=()=>SB_URL+"/functions/v1/speak-fix/";
+if(/^(localhost|127\.0\.0\.1)$|\.ts\.net$/.test(location.hostname)) try{ const q=new URLSearchParams(location.search).get("ai"); // 내 PC 테스트용: 주소 뒤에 ?ai=supabase / ?ai=local / ?ai=off
+  if(q==="supabase") localStorage.setItem("bandup-ai-url","supabase");
+  else if(q==="local") localStorage.setItem("bandup-ai-url","/api/");
+  else if(q==="off") localStorage.removeItem("bandup-ai-url"); }catch(_){}
+const aiBase=()=>{ let o=""; try{ o=localStorage.getItem("bandup-ai-url")||""; }catch(_){}
+  if(window.BANDUP_AI_URL) return window.BANDUP_AI_URL;
+  if(o) return o==="supabase"? aiRemote() : o;
+  if(/^(localhost|127\.0\.0\.1)$|\.ts\.net$/.test(location.hostname)) return "/api/"; // 내 PC 서버
+  return (AI_LIVE || (D && D.ai))? aiRemote() : ""; }; // 학생 파일에 "ai": true 가 있으면 그 학생만 먼저 켜짐
+const aiOn=()=>aiMock() || !!(aiBase() && D && !D.demo && D.group!=="common"); // 체험·공용 링크에서는 숨김
+const AI_ERR={daily_limit:"오늘 쓸 수 있는 횟수를 다 썼어요. 내일 다시 해 주세요.", busy:"지금 쓰는 사람이 많아요. 잠시 후 다시 해 주세요.",
+  too_long:"녹음이 너무 길어요. 3분 안으로 답해 주세요.", server_not_ready:"첨삭 서버에 Groq 키가 아직 없어요.",
+  not_student:"수강생 전용 기능이에요. 선생님께 받은 내 링크로 들어와 주세요."};
+const aiErrMsg=e=>AI_ERR[e && e.message] || "연결하지 못했어요. 인터넷 연결을 확인하고 다시 해 주세요.";
+function stopRec(send){ if(REC){ REC.send=!!send; try{ if(REC.mr.state!=="inactive") REC.mr.stop(); }catch(_){} } }
+async function aiPost(path, body, type){
+  const base=aiBase(), headers={"Content-Type":type};
+  if(base.startsWith(SB_URL)){ headers.apikey=SB_KEY; headers.Authorization="Bearer "+SB_KEY; } // Supabase 함수 호출용 공개 키 (비밀 아님)
+  const r=await fetch(base+path,{method:"POST",headers,body}); const j=await r.json().catch(()=>({}));
+  if(!r.ok || (j.error && j.error!=="no_speech")) throw new Error(j.error||("http "+r.status));
+  return j;
+}
+const mockFix=t=>{ const bad=/as fast you/i.test(t); return {corrected:t.replace(/\b(um+|uh+)\b,?\s*/gi,"").replace(/as fast you/i,"as fast as you"),
+  fixes: bad? [{from:"as fast you can",to:"as fast as you can",type:"문장 구조",why:"'as + 부사 + as' 구문이라 두 번째 as가 필요해요."}] : [],
+  better: bad? "Yes, you can run as fast as you like." : "", upgrades: bad? [{from:"as fast as you can",to:"as fast as you like",ko:"원하는 만큼 빠르게",why:"테스트용 가짜 설명이에요."}] : [], good:"질문에 바로 답했어요."}; };
+function aiSTT(blob,q){
+  if(aiMock()) return new Promise(r=>setTimeout(()=>r({transcript:"Yes, um, you can run as fast you can.",duration:5}),700));
+  return aiPost("stt?s="+encodeURIComponent(slug)+"&q="+encodeURIComponent(String(q||"").slice(0,300)), blob, (blob.type||"audio/webm").split(";")[0]);
+}
+function aiFix(part, items){
+  if(aiMock()) return new Promise(r=>setTimeout(()=>r({items:items.map(x=>mockFix(x.text)),mock:true}),1200));
+  return aiPost("fix", JSON.stringify(D.p2rec? {s:slug,part,items,v:2} : {s:slug,part,items}), "application/json"); // v:2 = 어색한 표현은 '더 자연스럽게 말하면'의 형광으로 (은수·기현)
+}
+/* 원래 문장과 고친 문장을 단어 단위로 비교 (머뭇거림 um/uh 는 빼고) */
+const FILLER=/^(um+|uh+|er+|erm+|ah+|hmm+|mm+|uhm+)[.,!?]*$/i;
+function wordDiff(a,b){
+  const A=String(a).split(/\s+/).filter(x=>x && !FILLER.test(x)), B=String(b).split(/\s+/).filter(Boolean);
+  const n=x=>x.toLowerCase().replace(/[^a-z0-9']/g,"");
+  const L=Array.from({length:A.length+1},()=>new Uint16Array(B.length+1));
+  for(let i=A.length-1;i>=0;i--) for(let j=B.length-1;j>=0;j--) L[i][j]= n(A[i])===n(B[j])? L[i+1][j+1]+1 : Math.max(L[i+1][j],L[i][j+1]);
+  const out=[]; let i=0,j=0;
+  while(i<A.length || j<B.length){
+    if(i<A.length && j<B.length && n(A[i])===n(B[j])){ out.push({t:B[j],k:"="}); i++; j++; }
+    else if(i<A.length && (j>=B.length || L[i+1][j]>=L[i][j+1])){ out.push({t:A[i],k:"-"}); i++; }
+    else { out.push({t:B[j],k:"+"}); j++; }
+  }
+  return out;
+}
+/* 형광은 실제로 바뀐 단어에만: to 에서 from 과 같은 앞뒤 단어를 빼요 ("very big"→"quite big" 이면 quite 만). 누르면 뜻·단어장은 to 전체 */
+function upSpan(to,from){
+  const ws=[...String(to).matchAll(/\S+/g)], key=s=>s.toLowerCase().replace(/[’]/g,"'").replace(/^[^\w']+|[^\w']+$/g,""), fw=String(from||"").split(/\s+/).filter(Boolean).map(key);
+  let s=0, e=ws.length, fs=0, fe=fw.length;
+  while(s<e && fs<fe && key(ws[s][0])===fw[fs]){ s++; fs++; }
+  while(e>s && fe>fs && key(ws[e-1][0])===fw[fe-1]){ e--; fe--; }
+  return s<e? [ws[s].index, ws[e-1].index+ws[e-1][0].length] : [0,String(to).length];
+}
+/* '더 자연스럽게 말하면' 문장에서 바뀐 표현을 형광으로. 누르면 한국어 뜻 + 내 단어장에 추가 */
+function upText(better,ups){
+  const wrap=el("div","aiupwrap"), p=el("p","aitxt"), info=el("div","aiupinfo"); info.hidden=true; const lb=better.toLowerCase(), hits=[];
+  for(const u of ups){ const i=lb.indexOf(String(u.to).toLowerCase()); if(i<0 || hits.some(h=>i<h.e && i+u.to.length>h.i)) continue; const [a,b]=upSpan(u.to,u.from); hits.push({i:i+a,e:i+b,u}); }
+  hits.sort((a,b)=>a.i-b.i); let at=0, open=null;
+  for(const h of hits){ if(h.i>at) p.append(document.createTextNode(better.slice(at,h.i)));
+    const m=el("button","aiup",better.slice(h.i,h.e)); m.type="button";
+    m.onclick=()=>{ if(open===m){ info.hidden=true; m.classList.remove("on"); open=null; return; } if(open) open.classList.remove("on"); open=m; m.classList.add("on"); info.textContent="";
+      const w=h.u.to.replace(/[’]/g,"'"); info.append(el("b",null,w)); if(h.u.ko) info.append(el("p","aiupko",h.u.ko)); if(h.u.why) info.append(el("p","aiwhy",h.u.why)); if(h.u.from) info.append(el("p","aiwhy","내가 한 말 · "+h.u.from));
+      const has=()=>vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase()); const ab=el("button","addvoc", has()? "✓ 내 단어장에 있어요" : "+ 내 단어장에 추가"); ab.type="button"; ab.disabled=has();
+      ab.onclick=()=>{ if(vocAddKo(w,h.u.ko,better.replace(/[’]/g,"'"))){ ab.textContent="✓ 내 단어장에 담았어요"; ab.disabled=true; } }; info.append(ab); info.hidden=false; };
+    p.append(m); at=h.e; }
+  if(at<better.length) p.append(document.createTextNode(better.slice(at)));
+  wrap.append(p,info); return wrap;
+}
+function diffNode(a,b){ const p=el("p","aitxt"); wordDiff(a,b).forEach((d,i)=>{ if(i) p.append(" "); p.append(d.k==="="? document.createTextNode(d.t) : el(d.k==="+"?"ins":"del",null,d.t)); }); return p; }
+/* 답변 하나의 첨삭 결과 */
+function fixView(text,res){
+  const box=el("div","aibox");
+  const fx=el("div","aicorr"); const hd=el("div","aihd"); hd.append(el("span","ailab", D.p2rec? "틀린 부분 바로잡기" : "이렇게 고쳐요"), speakBtn(res.corrected,"고친 문장 듣기")); fx.append(hd); // p2rec(v2): 이 칸은 확실히 틀린 것(문법·잘못 쓴 표현)만, 더 좋은 표현은 '더 자연스럽게 말하면'으로
+  if(!res.fixes.length) fx.append(el("p","aiok", D.p2rec? "✓ 틀린 곳이 없어요" : "✓ 고칠 곳이 없어요"));
+  fx.append(diffNode(text,res.corrected));
+  if(res.fixes.length){ const ul=el("ul","ailist");
+    for(const f of res.fixes){ const li=el("li"); const tag=el("span","aitag",f.type); tag.style.setProperty("--c",TCOL[f.type]||"var(--blue)");
+      const ch=el("p","aich"); ch.append(el("del",null,f.from), document.createTextNode(" → "), el("ins",null,f.to));
+      li.append(tag,ch); if(f.why) li.append(el("p","aiwhy",f.why)); ul.append(li); }
+    fx.append(ul); }
+  box.append(fx);
+  if(res.better && res.better!==res.corrected){ const ups=Array.isArray(res.upgrades)? res.upgrades : []; const d=el("details","aibetter"); if(ups.length) d.open=true; const sm=el("summary",null,"더 자연스럽게 말하면"); const row=el("div","aihd"); row.append(ups.length? upText(res.better,ups) : el("p","aitxt",res.better), speakBtn(res.better,"자연스러운 문장 듣기")); d.append(sm,row); if(ups.length) d.append(el("p","muted small","형광 표현을 누르면 뜻을 보고 내 단어장에 담을 수 있어요.")); box.append(d); }
+  if(res.good) box.append(el("p","aigood","잘한 점 · "+res.good));
+  return box;
+}
+/* 질문마다: 녹음 → 받아쓰기 → '내가 한 말' 확인·수정. 첨삭은 Part 끝에서. */
+function recBox(st,key,timed){ // timed = Part 2: 녹음은 타이머 버튼(바로 말하기 시작 / 말하기 끝)이 켜고 꺼요
+  MT.ai=MT.ai||{}; const S=()=>MT.ai[key]||(MT.ai[key]={});
+  const w=el("div","recbox"); const alive=()=>document.body.contains(w);
+  const setText=t=>{ const s=S(); s.text=t; if(MT.fix) delete MT.fix[st.part]; if(MT.onAns) MT.onAns(); }; // 답이 바뀌면 그 Part 첨삭을 다시 받게
   const start=async()=>{
-    try{ speechSynthesis.cancel(); }catch(_){}
-    let stream; try{ stream=await navigator.mediaDevices.getUserMedia({audio:true}); }catch(_){ w.textContent=""; w.append(el("p","muted small","마이크를 쓸 수 없어요. 브라우저 설정에서 마이크를 허용해 주세요.")); return; }
-    const mr=new MediaRecorder(stream); const chunks=[]; statRec();
-    REC={mr,stream,chunks,t0:Date.now(),key,timer:setInterval(()=>{ if(document.body.contains(w)) draw(); },1000)};
+    try{ speechSynthesis.cancel(); }catch(_){} stopRec();
+    const s=S(); let stream;
+    try{ stream=await navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:true,noiseSuppression:false,autoGainControl:true}}); } // 잡음 제거는 자음을 뭉개서 끔 (Whisper 가 잡음에 강함)
+    catch(_){ s.err="마이크를 쓸 수 없어요. 브라우저 설정에서 마이크를 허용해 주세요."; draw(); return; }
+    s.err=""; s.typing=false; s.editing=false;
+    let mr; try{ mr=new MediaRecorder(stream,{audioBitsPerSecond:128000}); }catch(_){ mr=new MediaRecorder(stream); } const chunks=[];
+    REC={mr,stream,chunks,t0:Date.now(),key,send:false,timer:setInterval(()=>{ if(alive()) draw(); },1000)};
     mr.ondataavailable=e=>{ if(e.data.size) chunks.push(e.data); };
-    mr.onstop=()=>{ clearInterval(REC&&REC.timer); stream.getTracks().forEach(t=>t.stop()); if(MT){ if(MT.rec[key]) URL.revokeObjectURL(MT.rec[key]); MT.rec[key]=URL.createObjectURL(new Blob(chunks,{type:mr.mimeType||"audio/webm"})); } REC=null; if(document.body.contains(w)) draw(); };
-    MT.txt[key]="";
-    if(SR){ try{ const rc=new SR(); rc.lang="en-GB"; rc.continuous=true; rc.interimResults=false; let fin="";
-      rc.onresult=e=>{ for(let i=e.resultIndex;i<e.results.length;i++){ const r=e.results[i]; if(r.isFinal) fin+=r[0].transcript+" "; } if(MT) MT.txt[key]=fin; const p=w.querySelector(".rectxt p"); if(p) p.textContent=cleanSpeech(fin)||"듣는 중…"; else if(document.body.contains(w)) draw(); };
-      rc.onend=()=>{ if(REC && REC.key===key && REC.mr.state==="recording"){ try{ rc.start(); }catch(_){} } };
-      rc.onerror=()=>{};
-      REC.rc=rc; rc.start(); }catch(_){} }
+    mr.onstop=async()=>{ const R=REC; clearInterval(R&&R.timer); stream.getTracks().forEach(t=>t.stop()); REC=null;
+      if(!R || !R.send){ if(alive()) draw(); return; }
+      const blob=new Blob(chunks,{type:mr.mimeType||"audio/webm"});
+      if(s.url) URL.revokeObjectURL(s.url); s.url=URL.createObjectURL(blob);
+      if(Date.now()-R.t0<1500 || blob.size<1500){ s.err="너무 짧아요. 버튼을 누르고 답한 뒤 다시 눌러 주세요."; if(alive()) draw(); return; }
+      s.busy=true; if(alive()) draw();
+      try{ const r=await aiSTT(blob, [st.q, ...(st.say||[])].join(". ")); if(r.error==="no_speech"){ s.err="말소리가 잘 들리지 않았어요. 마이크 가까이에서 다시 답해 주세요."; } else setText(r.transcript); }
+      catch(e){ s.err=aiErrMsg(e); }
+      s.busy=false; if(alive()) draw(); };
     mr.start(); draw();
   };
-  draw(); return w;
+  const editor=(val,ph,label,onSave,onCancel)=>{ const ta=el("textarea","aiin"); ta.id="aitxt-"+key; ta.rows=3; ta.value=val||""; ta.placeholder=ph; ta.autocapitalize="off"; ta.spellcheck=false;
+    const row=el("div","airow"); if(onCancel){ const no=el("button","btn","취소"); no.type="button"; no.onclick=onCancel; row.append(no); }
+    const ok=el("button","btn primary",label); ok.type="button"; ok.onclick=()=>{ const t=ta.value.trim(); if(t) onSave(t); }; row.append(ok);
+    const d=el("div","aibox"); d.append(ta,row); return d; };
+  const draw=()=>{ w.textContent=""; const s=S();
+    if(REC && REC.key===key){ const b=el("button","btn rec on"); b.type="button"; const sec=Math.floor((Date.now()-REC.t0)/1000);
+      if(timed){ const p=el("p","aiwait"); p.append(el("i","recdot"), document.createTextNode(` 녹음 중 ${Math.floor(sec/60)}:${String(sec%60).padStart(2,"0")}`)); w.append(p); return; }
+      b.append(el("i","recdot"), document.createTextNode(` ${Math.floor(sec/60)}:${String(sec%60).padStart(2,"0")} · 다 말했어요`)); b.onclick=()=>stopRec(true); w.append(b);
+      w.append(el("p","muted small","답을 다 말한 뒤 버튼을 눌러 주세요.")); return; }
+    const row=el("div","airow");
+    if(canRecord() && timed){ if(s.err && !s.text && !s.busy){ const r=el("button","btn rec"); r.type="button"; r.append(el("i","recdot"), document.createTextNode(" 다시 녹음하기")); r.onclick=start; row.append(r); } } // Part 2 는 다시 답하기 없음 (녹음이 실패했을 때만 다시)
+    else if(canRecord()){ const r=el("button","btn rec"); r.type="button"; r.append(el("i","recdot"), document.createTextNode(s.text||s.url? " 다시 답하기" : " 말로 답하기")); r.disabled=!!s.busy; r.onclick=start; row.append(r); }
+    w.append(row); if(!canRecord()) w.append(el("p","aierr","이 기기에서는 녹음을 할 수 없어요. 사파리·크롬 최신 버전에서 열어 주세요."));
+    if(s.typing) w.append(editor(s.text,"영어로 답을 써 보세요","저장",t=>{ setText(t); s.typing=false; s.err=""; draw(); }));
+    if(s.url && !s.typing) { const a=el("audio","recaudio"); a.controls=true; a.src=s.url; w.append(a); }
+    if(s.busy){ const p=el("p","aiwait"); p.append(el("i","aispin"), document.createTextNode(" 받아쓰는 중이에요…")); w.append(p); }
+    if(s.err) w.append(el("p","aierr",s.err));
+    if(s.text && !s.busy && !s.typing){
+      const said=el("div","aisaid"); said.append(el("span","ailab","내가 한 말"));
+      if(s.editing){ said.append(el("p","muted small","잘못 들린 단어만 내가 말한 대로 고쳐 주세요."), editor(s.text,"","저장",t=>{ setText(t); s.editing=false; draw(); },()=>{ s.editing=false; draw(); })); }
+      else { said.append(el("p","aitxt",s.text)); const ed=el("button","linkbtn aiedit","잘못 들렸나요? 고치기"); ed.type="button"; ed.onclick=()=>{ s.editing=true; draw(); }; said.append(ed); }
+      w.append(said, el("p","muted small aihint",`Part ${st.part}이 끝나면 한 번에 첨삭해 줘요.`));
+    }
+  };
+  w.start=start; draw(); return w;
 }
-
+const partAnswers=part=>MT.steps.map((st,i)=>({st,i,a:(MT.ai||{})[i]})).filter(x=>x.st.part===part && x.a && x.a.text);
+/* Part 끝: 답한 질문을 한 번에 첨삭 */
+function renderMockReview(app){
+  const part=MT.review, S=MT.steps, list=partAnswers(part);
+  const lastI=Math.max(...S.map((x,i)=>x.part===part? i : -1)), next=S[lastI+1];
+  app.append(lessonBar(()=>{ MT=null; endMock(); render(); }, lastI, S.length));
+  const head=el("div","mockq"); head.append(el("span","mpart",`Part ${part} 첨삭`), el("p","mq",`답한 ${list.length}개 질문을 한 번에 고쳐요`)); app.append(head);
+  MT.fix=MT.fix||{}; const F=MT.fix[part];
+  if(!F){ const sent=list.map(x=>x.i); MT.fix[part]={busy:true};
+    aiFix(part, list.map(x=>({q:x.st.q,text:x.a.text})))
+      .then(r=>{ if(MT && MT.fix) MT.fix[part]={keys:sent, items:r.items||[], mock:r.mock}; })
+      .catch(e=>{ if(MT && MT.fix) MT.fix[part]={err:aiErrMsg(e)}; })
+      .finally(()=>{ if(MT && MT.review===part && view.tab==="mock") render(); }); }
+  const G=MT.fix[part];
+  if(G.busy){ const p=el("p","aiwait"); p.append(el("i","aispin"), document.createTextNode(` Part ${part} 답변을 고치는 중이에요… (보통 10~30초)`)); app.append(p); }
+  else if(G.err){ const e=el("div","panel"); e.append(el("p","aierr",G.err)); const again=el("button","btn","다시 시도"); again.type="button"; again.onclick=()=>{ delete MT.fix[part]; render(); }; e.append(again); app.append(e); }
+  else {
+    list.forEach(x=>{ const k=G.keys.indexOf(x.i), res=k>=0? G.items[k] : null; const card=el("div","mockq airev");
+      card.append(el("span","mpart",`Q${S.slice(0,x.i+1).filter(y=>y.part===part).length}`+(part===1? ` · ${x.st.topic}` : "")), el("p","airq",x.st.q));
+      const said=el("div","aisaid"); said.append(el("span","ailab","내가 한 말"), el("p","aitxt",x.a.text)); card.append(said);
+      card.append(res? fixView(x.a.text,res) : el("p","aierr","이 답은 첨삭을 받지 못했어요."));
+      app.append(card); });
+    if(G.mock) app.append(el("p","muted small","테스트용 가짜 응답이에요."));
+  }
+  const nx=el("button","btn primary vstart", next? `Part ${next.part}로 넘어가기` : "모의고사 끝내기"); nx.type="button"; nx.disabled=!!G.busy;
+  nx.onclick=()=>{ MT.review=null; MT.i=lastI+1; MT.phase=null; MT.left=0; render(); window.scrollTo(0,0); const n=MT.steps[MT.i]; if(n && canSpeak()) setTimeout(()=>speak(n.q),250); };
+  app.append(nx);
+}
 function renderMock(app){
-  stopMockTimer();
+  endMock();
   if(!MT){
     const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
     pageHead(app,"아이엘츠 모의고사","실제 시험처럼 Part 1 → 2 → 3 순서로 랜덤 질문이 나와요.");
@@ -550,6 +737,7 @@ function renderMock(app){
     app.append(bp); return;
   }
   const S=MT.steps, st=S[MT.i];
+  if(MT.review){ renderMockReview(app); return; }
   if(!st){
     const e=el("div","empty"); e.append(el("div","big","✓"), el("h2",null,"모의고사 끝!"), el("p",null,`Part 1 ${S.filter(x=>x.part===1).length}문제 · Part 2 1문제 · Part 3 ${S.filter(x=>x.part===3).length}문제를 풀었어요.`));
     const again=el("button","btn primary","새 모의고사 보기"); again.type="button"; again.onclick=()=>{ MT=buildMock(); render(); window.scrollTo(0,0); };
@@ -557,7 +745,7 @@ function renderMock(app){
     const home=el("button","btn","홈으로"); home.type="button"; home.onclick=()=>{ MT=null; go("home"); };
     e.append(again,bm,home); app.append(e); return;
   }
-  app.append(lessonBar(()=>{ MT=null; stopMockTimer(); try{ speechSynthesis.cancel(); }catch(_){} render(); }, MT.i, S.length));
+  app.append(lessonBar(()=>{ MT=null; endMock(); try{ speechSynthesis.cancel(); }catch(_){} render(); }, MT.i, S.length));
   const box=el("div","mockq");
   box.append(el("span","mpart",`Part ${st.part}`+(st.part===1? ` · ${st.topic}` : "")));
   box.append(el("p","mq",st.q));
@@ -565,6 +753,8 @@ function renderMock(app){
   const tools=el("div","mtools");
   // 질문 녹음 제거 (2026-11-07)
   tools.append(qbmBtn(st)); box.append(tools);
+  const p2rec=st.part===2 && !!D.p2rec; // 학생 파일에 "p2rec": true 이면 Part 2 녹음을 타이머 버튼이 켜고 꺼요 (은수·기현만)
+  const rb=aiOn()? recBox(st,MT.i,p2rec) : null;
   if(st.part===2){
     const tm=el("div","mtimer"); const lab=el("b",null,""); const btn=el("button","btn"); btn.type="button"; tm.append(lab,btn);
     const show=()=>{ const m=Math.floor(MT.left/60), s2=String(MT.left%60).padStart(2,"0");
@@ -572,40 +762,23 @@ function renderMock(app){
       else if(MT.phase==="prep"){ lab.textContent=`준비 중 ${m}:${s2}`; btn.textContent="바로 말하기 시작"; }
       else if(MT.phase==="talk"){ lab.textContent=`말하는 중 ${m}:${s2}`; btn.textContent="말하기 끝"; }
       else { lab.textContent="시간 끝! 다음으로 넘어가세요"; btn.hidden=true; } };
-    const run=(phase,sec)=>{ stopMockTimer(); MT.phase=phase; MT.left=sec; show(); mtTimer=setInterval(()=>{ MT.left--; if(MT.left<=0){ if(MT.phase==="prep") run("talk",120); else { stopMockTimer(); MT.phase="done"; show(); } } else show(); },1000); };
-    btn.onclick=()=>{ if(MT.phase===null) run("prep",60); else if(MT.phase==="prep") run("talk",120); else { stopMockTimer(); MT.phase="done"; show(); } };
-    show(); if(MT.phase==="prep"||MT.phase==="talk") run(MT.phase,MT.left);
+    const finish=byBtn=>{ stopMockTimer(); MT.phase="done"; show(); if(REC && REC.key===MT.i && (p2rec || !byBtn)) stopRec(true); }; // p2rec: 말하기 끝 = 녹음을 보내서 받아쓰기
+    const run=(phase,sec,resume)=>{ stopMockTimer(); MT.phase=phase; MT.left=sec; show(); if(phase==="talk" && !resume && rb && p2rec) rb.start(); // 말하기 시작 = 녹음 시작
+      mtTimer=setInterval(()=>{ MT.left--; if(MT.left<=0){ if(MT.phase==="prep") run("talk",120); else finish(); } else show(); },1000); };
+    btn.onclick=()=>{ if(MT.phase===null) run("prep",60); else if(MT.phase==="prep") run("talk",120); else finish(true); };
+    show(); if(MT.phase==="prep"||MT.phase==="talk") run(MT.phase,MT.left,true);
     box.append(tm);
   }
+  if(rb) box.append(rb);
   app.append(box);
   if(st.choose){ const ch=el("div","introch"); for(const [k,lab,en] of [["study","학생이에요","I'm a student."],["work","일해요","I work."]]){ const b=el("button","btn"+(st.chosen===k?" on":"")); b.type="button"; b.append(el("b",null,lab), el("span",null,en)); b.disabled=!!st.chosen; b.onclick=()=>chooseIntro(k); ch.append(b); } app.append(ch); if(!st.chosen){ app.append(el("p","muted small introhint","답하고 나서 해당하는 쪽을 누르면 그에 맞는 질문이 이어져요.")); return; } }
-  const nx=el("button","btn primary vstart", MT.i+1<S.length? (S[MT.i+1].part!==st.part? `Part ${S[MT.i+1].part}로 넘어가기` : "다음 질문") : "모의고사 끝내기"); nx.type="button";
-  nx.onclick=()=>{ stopMockTimer(); MT.i++; MT.phase=null; MT.left=0; render(); window.scrollTo(0,0); const n=MT.steps[MT.i]; if(n && canSpeak()) setTimeout(()=>speak(n.q),250); };
+  const partEnd=!S[MT.i+1] || S[MT.i+1].part!==st.part, live=()=>partEnd && aiOn() && partAnswers(st.part).length>0, first=live(), review=()=> D.p2rec? live() : first; // p2rec 학생(은수·기현): 받아쓰기가 끝나면 다시 판단 (Part 2 는 답이 이 질문 하나뿐)
+  const label=()=> review()? `Part ${st.part} 첨삭 받기` : MT.i+1<S.length? (S[MT.i+1].part!==st.part? `Part ${S[MT.i+1].part}로 넘어가기` : "다음 질문") : "모의고사 끝내기";
+  const nx=el("button","btn primary vstart", label()); nx.type="button";
+  MT.onAns= D.p2rec? ()=>{ if(document.body.contains(nx)) nx.textContent=label(); } : null;
+  nx.onclick=()=>{ if(review()){ endMock(); MT.review=st.part; render(); window.scrollTo(0,0); return; }
+    endMock(); MT.i++; MT.phase=null; MT.left=0; render(); window.scrollTo(0,0); const n=MT.steps[MT.i]; if(n && canSpeak()) setTimeout(()=>speak(n.q),250); };
   app.append(nx);
-}
-function menuGuide(){
-  const nWB = WB? WB.sections.reduce((a,s)=>a+s.groups.reduce((b,g)=>b+g.words.length,0),0) : 0;
-  const nLS = LS? LS.categories.reduce((a,c)=>a+c.words.length,0) : 0;
-  const nP2 = P2? P2.items.length : 0;
-  const w=el("div","menu"); w.append(el("h2","sec-t","무엇을 공부할까요?"));
-  for(const [k,name,desc] of [
-    ["cards","큐카드","수업 문장 연습하기"],
-    ["ideas","아이디어","Part 1·2·3 답변 재료"],
-    ["words","철자","리스닝 철자 받아쓰기"]]){
-    const b=el("button","mrow"); b.type="button";
-    const ic=el("span","mic"); ic.innerHTML=ICONS[k];
-    const t=el("div","t"); t.append(el("b",null,name), el("span",null,desc));
-    b.append(ic,t,el("span","go","›")); b.onclick=()=>go(k); w.append(b);
-  }
-  return w;
-}
-function deckTile(s){
-  const n=D.cards.filter(c=>(c.sessions||[]).includes(s.no)).length;
-  const t=el("button","tile"); t.type="button";
-  const tt=el("div","t"); tt.append(el("b",null,`${s.no}회차 큐카드`), el("span",null,`${n}장`));
-  t.append(el("span","no",String(s.no)), tt, el("span","go","›"));
-  t.onclick=()=>go("cards",{deck:s.no});
-  return t;
 }
 
 /* ---------- first-run profile (common app) ---------- */
@@ -652,51 +825,10 @@ function renderProfile(app, editing){
   app.append(w);
   if(!editing) setTimeout(()=>{ try{ nm.focus({preventScroll:true}); }catch(_){} },300);
 }
-function profileLine(){
-  if(!D.common || !PROFILE) return null;
-  const b=el("button","pline"); b.type="button"; b.onclick=()=>go("profile");
-  const n=dday(PROFILE.exam);
-  if(n!=null) b.append(el("b",null, n>0? `시험까지 D-${n}` : n===0? "오늘 시험이에요! 화이팅" : "시험 끝! 수고했어요"));
-  else b.append(el("b",null,"시험 날짜 미정"));
-  if(PROFILE.goal) b.append(el("span",null,`목표 ${PROFILE.goal}`));
-  b.append(el("i",null,"›"));
-  return b;
-}
 
 /* ---------- my own sentences (common app) ---------- */
-const esc=t=>String(t||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 let MINE=[];
-function loadMine(){ MINE=store.get(`bandup-mycards-${slug}`,[]); D.cards=MINE.map(m=>({id:m.id,kind:"ko",type:"내 문장",sessions:[],ko:m.ko,en:m.en,gram:m.memo? esc(m.memo):"",hint:""})); }
-function saveMine(){ store.set(`bandup-mycards-${slug}`,MINE); loadMine(); deckState=null; }
 let mineEdit=null;
-function renderMyCards(app){
-  pageHead(app,"큐카드","외우고 싶은 문장을 직접 넣고, 카드로 뒤집어 보며 연습해요.");
-  const box=el("form","panel mineform"); const ed=mineEdit? MINE.find(m=>m.id===mineEdit) : null;
-  box.append(el("b",null, ed? "문장 고치기" : "내 문장 추가"));
-  const f=(lab,id,ph,val)=>{ const l=el("label","mf"); const i=el("input"); i.id=id; i.placeholder=ph; i.value=val||""; i.autocomplete="off"; l.append(el("span",null,lab),i); box.append(l); return i; };
-  const ko=f("한국어 (앞면)","m-ko","예: 저는 아침형 인간이 아니에요.",ed&&ed.ko);
-  const en=f("영어 (뒷면)","m-en","예: I'm not a morning person.",ed&&ed.en);
-  const memo=f("메모 (선택)","m-memo","예: morning person = 아침형 인간",ed&&ed.memo);
-  en.setAttribute("autocapitalize","sentences"); en.spellcheck=true;
-  const row=el("div","mrow"); const ok=el("button","btn primary", ed? "저장" : "카드 추가"); ok.type="submit"; row.append(ok);
-  if(ed){ const cx=el("button","btn","취소"); cx.type="button"; cx.onclick=()=>{ mineEdit=null; render(); }; row.append(cx); }
-  box.append(row);
-  const err=el("p","mferr"); err.hidden=true; box.append(err);
-  box.onsubmit=e=>{ e.preventDefault(); if(!ko.value.trim()||!en.value.trim()){ err.textContent="한국어와 영어를 둘 다 적어 주세요."; err.hidden=false; return; }
-    if(ed){ Object.assign(ed,{ko:ko.value.trim(),en:en.value.trim(),memo:memo.value.trim()}); mineEdit=null; }
-    else MINE.unshift({id:"u"+Date.now().toString(36),ko:ko.value.trim(),en:en.value.trim(),memo:memo.value.trim(),at:today()});
-    saveMine(); render(); };
-  app.append(box);
-  if(!MINE.length){ const e=el("div","empty"); e.append(el("p",null,"아직 넣은 문장이 없어요. 수업이나 공부하다가 외우고 싶은 문장을 하나 넣어 보세요. 넣은 문장은 홈의 ‘오늘의 복습’에도 나와요.")); app.append(e); return; }
-  app.append(el("h2","sec-t",`내 카드 ${MINE.length}장`));
-  inlineDeck(app,"mine",D.cards,"");
-  const det=el("details","minelist"); det.append(el("summary",null,`내 문장 목록 · 고치기/지우기`));
-  MINE.forEach(m=>{ const r=el("div","mine-row"); const t=el("div"); t.append(el("b",null,m.en), el("span",null,m.ko));
-    const eb=el("button","linkbtn","고치기"); eb.type="button"; eb.onclick=()=>{ mineEdit=m.id; render(); window.scrollTo(0,0); };
-    const xb=el("button","linkbtn danger","지우기"); xb.type="button"; xb.onclick=()=>{ if(xb.dataset.c!=="1"){ xb.dataset.c="1"; xb.textContent="정말 지우기"; setTimeout(()=>{ xb.dataset.c=""; xb.textContent="지우기"; },3000); return; } MINE=MINE.filter(x=>x!==m); saveMine(); render(); };
-    r.append(t,eb,xb); det.append(r); });
-  app.append(det);
-}
 
 /* ---------- daily practice deck (between weekly podcast episodes) ---------- */
 let dySrc="mix", dyBusy=false; const dyTried=new Set();
@@ -748,18 +880,21 @@ function cardPhrases(c){
   for(const [k,v] of phraseBank()) if(!out.has(k) && phOk(v.w) && phExact(v.w,c.en) && !(/^used to/i.test(v.w) && /(\bam|'m|\bis|\bare|\bwas|\bwere|\bbe|\bget|\bgot|\bgetting|\bbeen)\s+(not\s+)?used to/i.test(c.en))) out.set(k,v);
   if(c.hint && phOk(c.hint) && !out.has(c.hint.toLowerCase())) out.set(c.hint.toLowerCase(),{w:c.hint,ko:""});
   const L=[...out.values()]; const norm=x=>" "+x.w.toLowerCase().replace(/^(a|an|the|be)\s+/,"")+" ";
-  return L.filter(a=>!L.some(b=>b!==a && norm(b).includes(norm(a)) && norm(b)!==norm(a))).filter((a,i,arr)=>arr.findIndex(b=>norm(b)===norm(a))===i).slice(0,4);
+  const stem=x=>x.w.toLowerCase().split(/[^a-z']+/).filter(w=>w&&!PH_SKIP.has(w)).map(phStem).join(" "); // come up with = came up with → 하나만
+  return L.filter(a=>!L.some(b=>b!==a && norm(b).includes(norm(a)) && norm(b)!==norm(a))).filter((a,i,arr)=>arr.findIndex(b=>norm(b)===norm(a) || stem(b)===stem(a))===i).slice(0,4);
 }
 function renderDecks(app){
-  pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : D.group==="other"? "팟캐스트 표현과 매일 연습 문장을 한국어 보고 영어로 말해 보세요." : D.group==="church"? "묵상 문장과 매일 연습 문장을 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
+  pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : (D.group==="other" && !D.lessons)? "팟캐스트 표현을 한국어 보고 영어로 말해 보세요." : D.group==="church"? "묵상 문장을 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
   const hasLesson=D.sessions.length && D.cards.some(c=>(c.sessions||[]).length), hasPod=(D.podSessions||[]).length>0;
   if(!hasLesson && !hasPod){ const e=el("div","empty"); e.append(el("p",null, D.common? "수업을 들으면 수업에서 내가 틀린 문장이 여기에 큐카드로 생겨요." : "아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
-  const hasDaily=D.group==="other"||D.group==="ielts"||D.group==="church"||D.dailyFrom==="sessions";
-  const seg=el("div","modeseg"+((+!!hasPod + +!!hasLesson + +hasDaily)>2?"":" two")); seg.setAttribute("role","tablist");
-  if(cardMode!=="session" && cardMode!=="pod" && !(cardMode==="daily"&&hasDaily)) cardMode= hasLesson? "session" : "pod";
+  const hasDaily=false; // 매일 연습은 홈의 오늘의 복습으로 통일
+  const hasManual=!!(D.manual && D.cards.some(c=>c.manual));
+  const nSeg=+!!hasPod + +!!hasLesson + +hasDaily + +hasManual;
+  const seg=el("div","modeseg"+(nSeg===4?" four":nSeg>2?"":" two")); seg.setAttribute("role","tablist");
+  if(cardMode!=="session" && cardMode!=="pod" && !(cardMode==="daily"&&hasDaily) && !(cardMode==="manual"&&hasManual)) cardMode= hasLesson? "session" : "pod";
   const lessonTab=hasLesson || (D.group==="ielts" && !D.common && !D.demo);
   if(cardMode==="session" && !lessonTab) cardMode="pod"; if(cardMode==="pod" && !hasPod) cardMode="session";
-  const modes=[...(lessonTab?[["session",D.common?"주제별":(D.group==="other"||D.group==="church")?"팟캐스트":(D.sessTab? D.sessTab : D.group==="self"? "스피킹 매트릭스" : hasPod?"수업 회차별":"회차별"),(D.group==="other"||D.group==="church")? `에피소드 ${D.sessions.length}편` : (D.sessions.length? `1~${D.sessions[D.sessions.length-1].no}회차` : "수업 기록")]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","오늘의 문장 10개"]]:[])];
+  const modes=[...(lessonTab?[["session",D.common?"주제별":((D.group==="other"&&!D.lessons)||D.group==="church")?"팟캐스트":(D.sessTab? D.sessTab : D.group==="self"? "스피킹 매트릭스" : hasPod?"수업 회차별":"회차별"),((D.group==="other"&&!D.lessons)||D.group==="church")? `에피소드 ${D.sessions.length}편` : (D.sessions.length? `1~${D.sessions[D.sessions.length-1].no}회차` : "수업 기록")]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","오늘의 문장 10개"]]:[]), ...(hasManual?[["manual",D.manual.title||"매뉴얼",D.manual.sub||`${D.cards.filter(c=>c.manual).length}장`]]:[])];
   for(const [k,label,sub] of modes){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(cardMode===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; openKey=null; render(); }; seg.append(b);
@@ -809,6 +944,8 @@ function renderDecks(app){
     }
     key="p"+selPod; list=D.cards.filter(c=>(c.psessions||[]).includes(selPod));
     { const se=PS.find(x=>x.no===selPod); if(se && (se.vocab||[]).length){ inlineDeck(app,key,list,empty,()=>vocabPage(se)); return; } }
+  } else if(cardMode==="manual"){
+    key="manual"; list=D.cards.filter(c=>c.manual); empty="매뉴얼 카드가 없어요.";
   } else if(cardMode==="wrong"){
     const all=D.cards.filter(isWrong); key="wrong"; list=[...all.filter(rep),...all.filter(c=>!rep(c))];
   } else if(cardMode==="random"){
@@ -860,67 +997,11 @@ function inlineDeck(app,key,list,empty,tail){
   const next=el("button","nav","다음 ›"); next.type="button"; next.disabled=deckState.i>=ids.length-1; next.onclick=()=>move(1);
   acts.append(prev,next); app.append(acts);
 }
-function keepRow(c){
-  const r=el("div","m");
-  r.append(el("span","kk", c.ko || ""));
-  const rt=el("div","rt"); rt.append(el("span",null,c.en)); r.append(rt);
-  const sd=el("div","sd"); sd.append(el("span","sess",sessLabel(c))); r.append(sd);
-  return r;
-}
 const isWrong=c=>c.kind==="fix" || (c.mine && !c.good);
-function renderWrongList(app){
-  const all=D.cards.filter(isWrong);
-  const repeated=all.filter(rep).sort((a,b)=>b.sessions.length-a.sessions.length);
-  const weak=all.filter(c=>marks[c.id]==="again" || ((srs[c.id]||{}).reviews && (srs[c.id].correct||0)<(srs[c.id].reviews||0)));
-  const p=el("div","panel randbox");
-  p.append(el("p","muted small",`1회차부터 지금까지 수업에서 틀렸던 문장 ${all.length}개예요. 반복한 실수와 헷갈린 문장이 먼저 나와요.`));
-  const row=el("div","btnrow");
-  const order=()=>{ const first=[...new Set([...repeated,...weak])]; const rest=all.filter(c=>!first.includes(c)); return [...first,...rest]; };
-  const b1=el("button","btn primary",`전부 연습 ${all.length}장`); b1.type="button"; b1.onclick=()=>{ deckState=null; go("cards",{deck:"wrong", ids:order().map(c=>c.id)}); };
-  const b2=el("button","btn","섞어서 연습"); b2.type="button"; b2.onclick=()=>{ deckState=null; go("cards",{deck:"wrong", ids:[...all].sort(()=>Math.random()-.5).map(c=>c.id)}); };
-  row.append(b1); p.append(row); app.append(p);
-  const sec=(title,list,sub)=>{ if(!list.length) return; const hd=el("div","boxh"); hd.append(el("b",null,title), el("span",null,(sub||`${list.length}개`)+" · 눌러서 보기"));
-    app.append(fold("w-"+title, hd, b=>{ const w=el("div","boxlist"); list.forEach(c=>w.append(noteRow(c))); b.append(w); })); };
-  sec("여러 번 반복한 실수", repeated);
-  sec("헷갈렸던 문장", weak.filter(c=>!rep(c)));
-  for(const s of [...D.sessions].reverse()){
-    const list=all.filter(c=>c.sessions[0]===s.no && !rep(c));
-    sec(s.label||`${s.no}회차`, list);
-  }
-}
 const cbmKey=()=>`bandup-cbm-${slug}`;
 const cbmList=()=>store.get(cbmKey(),[]);
 const isCbm=id=>cbmList().includes(id);
 function toggleCbm(id){ let l=cbmList(); l= l.includes(id)? l.filter(x=>x!==id) : [...l,id]; store.set(cbmKey(),l); statKick(); }
-function renderBmCards(app){
-  const list=cbmList().map(getCard).filter(Boolean);
-  const p=el("div","panel randbox");
-  if(!list.length){ p.append(el("p","muted small","카드를 연습하다가 ☆ 북마크에 추가를 누르면 여기에 모여요.")); app.append(p); return; }
-  p.append(el("p","muted small",`북마크한 카드 ${list.length}장이에요.`));
-  const b=el("button","btn primary",`북마크 카드 연습 ${list.length}장`); b.type="button"; b.onclick=()=>{ deckState=null; go("cards",{deck:"bm", ids:list.map(c=>c.id)}); };
-  p.append(b); app.append(p);
-  const q=el("div","panel"); const gh=el("div","ghead"); gh.append(el("b",null,"북마크한 문장"), el("span",null,`${list.length}개`)); q.append(gh);
-  for(const c of list){ const r=(isWrong(c)? noteRow(c) : keepRow(c)); const x=el("button","cbmx","★"); x.type="button"; x.setAttribute("aria-label","북마크 해제"); x.onclick=()=>{ toggleCbm(c.id); render(); }; const sd=r.querySelector(".sd"); (sd||r).append(x); q.append(r); }
-  app.append(q);
-}
-function renderRandomSetup(app){
-  const last=D.sessions[D.sessions.length-1].no;
-  const p=el("div","panel randbox");
-  p.append(el("p","muted small",`1회차부터 ${last}회차까지 모든 카드에서 무작위로 뽑아요. 카드마다 몇 회차 문장인지 표시돼요.`));
-  const grp=(label,opts,cur,set)=>{ const w=el("div","picker"); w.append(el("span","picker-lab",label)); const r=el("div","pchips");
-    for(const [v,l] of opts){ const b=el("button",null,l); b.type="button"; b.setAttribute("aria-pressed",String(cur===v)); b.onclick=()=>{ set(v); render(); }; r.append(b); }
-    w.append(r); return w; };
-  p.append(grp("몇 장", [[10,"10장"],[20,"20장"],[0,"전체"]], randCount, v=>randCount=v));
-  const pool=randPool();
-  const n = randCount? Math.min(randCount,pool.length) : pool.length;
-  const b=el("button","btn primary",`랜덤 퀴즈 시작 · ${n}장`); b.type="button"; b.disabled=!n;
-  b.onclick=()=>{ const ids=[...pool].sort(()=>Math.random()-.5).slice(0,n).map(c=>c.id); deckState=null; go("cards",{deck:"rand", ids}); };
-  p.append(b); app.append(p);
-}
-function randPool(){
-  const isWrong=c=>c.kind==="fix" || (c.mine && !c.good);
-  return D.cards.filter(c=> randKind==="all" || (randKind==="wrong"? isWrong(c) : !isWrong(c)));
-}
 
 
 /* ---------- session picker ---------- */
@@ -972,7 +1053,7 @@ function flipCard(c, onFlip){
   const b=el("div","face back"); b.setAttribute("aria-hidden",String(!flipped));
   const bh=el("div","fhead"); bh.append(chipsFor(), sideFor()); b.append(bh);
   const bb=el("div","body");
-  bb.append(el("span","lab", c.kind==="fix"? "이렇게 고쳐요" : "영어로는"));
+  { const lr=el("div","labrow"); lr.append(el("span","lab", c.kind==="fix"? "이렇게 고쳐요" : "영어로는")); const sb=speakBtn(c.en,"문장 듣기"); sb.tabIndex=flipped?0:-1; const sl=slowBtn(c.en); sl.tabIndex=flipped?0:-1; lr.append(sb,sl); bb.append(lr); }
   const sent=el("div","sent");
   for(const tok of c.en.split(" ")){
     const m=tok.match(/^([A-Za-z'-]+)([.,!?…]*)$/); const word=m?m[1]:tok, punct=m?m[2]:""; const key=word.toLowerCase();
@@ -1003,7 +1084,7 @@ function flipCard(c, onFlip){
   else { wb.classList.add("empty"); wb.append(el("span","hint","단어를 누르면 뜻이 나와요")); }
   bb.append(wb);
   const gtext = c.gram || [c.note, (D.tips||{})[typeOf(c)]].filter(Boolean).join(" · ");
-  if(gtext){ const g=el("div","gram"); g.append(el("b",null, c.vtopic? "예문" : "포인트")); const p=el("p"); if(c.gram) p.innerHTML=c.gram; else p.textContent=gtext; g.append(p); bb.append(g); }
+  if(gtext){ const g=el("div","gram"); g.append(el("b",null, c.vtopic? "예문" : "포인트")); const p=el("p"); if(c.gram) p.innerHTML=c.gram; else p.textContent=gtext; g.append(p); bb.append(g); if(D.grammar && GR){ const gl=grChips(c); if(gl) bb.append(gl); } }
   const fbk=el("button","flipback","↺ 앞면 다시 보기"); fbk.type="button"; fbk.tabIndex=flipped?0:-1; fbk.onclick=e=>{ e.stopPropagation(); setFlip(card,false,onFlip); };
   bb.append(fbk); b.append(bb);
   card.append(f,b);
@@ -1215,9 +1296,8 @@ function renderIdioms(app){
 let vcMode="list", vcState=null, vcOpen=new Set(), vcQuery="";
 function vocAll(){ const mine=store.get(`bandup-myvoc-${slug}`,[]); const hid=new Set(store.get(`bandup-vochide-${slug}`,[])); return [...mine.slice().reverse().map(w=>({...w,mine:true})), ...(D.words||[]).filter(w=>!hid.has(w.w.toLowerCase())).slice().sort((a,b)=>(b.s||0)-(a.s||0))]; }
 let vcAdd=false, vcOcr=null;
-function loadTess(){ return window.Tesseract? Promise.resolve() : new Promise((ok,no)=>{ const sc=document.createElement("script"); sc.src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"; sc.onload=ok; sc.onerror=no; document.head.append(sc); }); }
 let DICT=null;
-function loadDict(){ if(DICT) return Promise.resolve(DICT); return fetch(DATA+"dict.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({})).then(j=>(DICT=j||{})); }
+function loadDict(){ if(DICT) return Promise.resolve(DICT); return fetch("data/dict.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({})).then(j=>(DICT=j||{})); }
 function vocLocal(w){
   const k=w.toLowerCase(); let ko="", ex="";
   if(DICT && DICT[k]) return {ko:DICT[k].ko||"", ex:DICT[k].ex||"", src:"d"};
@@ -1247,13 +1327,13 @@ async function vocLemma(w){
   for(const [b,f] of C.slice(0,3)){ try{ const ok=await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/"+encodeURIComponent(b)).then(x=>x.ok); if(ok) return {base:b, form:f}; }catch(_){ } }
   return null; }
 async function vocLookup0(w){
-  await loadDict(); const loc=vocLocal(w); if(loc.src==="d" || (loc.ko && loc.ex)) return loc;
+  await loadDict(); const loc=vocLocal(w); if(loc.ko && loc.ex) return loc; const SRC=loc.src? {src:loc.src} : {};
   const u="https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&dt=bd&dt=ex&q="+encodeURIComponent(w);
   const r=await fetch(u).then(x=>x.ok? x.json():null).catch(()=>null);
   if(!r){ let ko=loc.ko, ex=loc.ex;
     if(!ko){ try{ const mm=await fetch("https://api.mymemory.translated.net/get?langpair=en|ko&q="+encodeURIComponent(w)).then(x=>x.ok? x.json():null); const t=mm&&mm.responseData&&String(mm.responseData.translatedText||"").trim(); if(t && !/[A-Za-z]{3}/.test(t)) ko=t; }catch(_){ } }
     if(!ex){ try{ const dj=await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/"+encodeURIComponent(w.toLowerCase())).then(x=>x.ok? x.json():null); const xs=[]; (dj||[]).forEach(e=>(e.meanings||[]).forEach(m=>(m.definitions||[]).forEach(d=>{ const s=String(d.example||"").trim(); if(s.split(" ").length>=4 && s.length<=100) xs.push(s); }))); xs.sort((a,b)=>a.length-b.length); if(xs[0]) ex=xs[0].charAt(0).toUpperCase()+xs[0].slice(1)+(/[.!?]$/.test(xs[0])?"":"."); }catch(_){ } }
-    return {ko,ex}; }
+    return {ko,ex,...SRC}; }
   let ko=loc.ko, ex=loc.ex;
   if(!ko){ const ms=[]; const add=s=>{ s=(s||"").trim(); if(s && s.toLowerCase()!==w.toLowerCase() && !ms.includes(s)) ms.push(s); };
     try{ add(r[0][0][0]); }catch(_){ } try{ (r[1]||[]).forEach(p=>(p[1]||[]).slice(0,2).forEach(add)); }catch(_){ }
@@ -1264,13 +1344,13 @@ async function vocLookup0(w){
       const xs=[]; (dj||[]).forEach(e=>(e.meanings||[]).forEach(m=>(m.definitions||[]).forEach(d=>{ const s=String(d.example||"").trim(); if(s.split(" ").length>=4 && s.length<=100) xs.push(s); })));
       xs.sort((a,b)=>a.length-b.length); const s=xs[0]||""; if(s) ex=s.charAt(0).toUpperCase()+s.slice(1)+(/[.!?]$/.test(s)?"":"."); }catch(_){ } }
   if(!ex){ const re=new RegExp("\\b"+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b","i"); const c=(D.cards||[]).find(c=>c.en && re.test(c.en)); if(c) ex=c.en; }
-  return {ko,ex};
+  return {ko,ex,...SRC};
 }
 let vcFill=false;
 function vocBackfill(){
   if(vcFill) return;
   if(!DICT){ loadDict().then(()=>{ if(view.tab==="vocab") render(); }); return; }
-  { const m=store.get(`bandup-myvoc-${slug}`,[]); let ch=false; for(const y of m){ const e=DICT[String(y.w).toLowerCase()]; if(e && y.src!=="d"){ y.ko=e.ko||y.ko; y.ex=e.ex||y.ex; y.src="d"; y.tried=1; delete y.lk; ch=true; } } if(ch){ store.set(`bandup-myvoc-${slug}`,m); if(view.tab==="vocab") setTimeout(render,0); return; } } const mine=store.get(`bandup-myvoc-${slug}`,[]); const need=mine.filter(x=>((!x.ko || !x.ex) && x.tried!==today()) || (!x.lm && !/\s/.test(String(x.w)))); if(!need.length) return;
+  { const m=store.get(`bandup-myvoc-${slug}`,[]); let ch=false; for(const y of m){ const e=DICT[String(y.w).toLowerCase()]; if(e && (y.src!=="d" || (e.ex && y.ex!==e.ex) || (e.ko && y.ko!==e.ko))){ y.ko=e.ko||y.ko; y.ex=e.ex||y.ex; y.src="d"; y.tried=1; delete y.lk; ch=true; } } if(ch){ store.set(`bandup-myvoc-${slug}`,m); if(view.tab==="vocab") setTimeout(render,0); return; } } const mine=store.get(`bandup-myvoc-${slug}`,[]); const need=mine.filter(x=>((!x.ko || !x.ex) && x.tried!==today()) || (!x.lm && !/\s/.test(String(x.w)))); if(!need.length) return;
   vcFill=true;
   (async()=>{ let changed=false; for(const x of need){ const r=await vocLookup(x.w); if(!r.ko && !r.ex){ const m0=store.get(`bandup-myvoc-${slug}`,[]); const y0=m0.find(z=>z.t===x.t); if(y0){ y0.tried=today(); y0.lm=1; store.set(`bandup-myvoc-${slug}`,m0); } continue; } const m=store.get(`bandup-myvoc-${slug}`,[]); const y=m.find(z=>z.t===x.t); if(!y) continue; if(!y.ko) y.ko=r.ko; if(!y.ex) y.ex=r.ex; if(r.base&&!y.base){ y.base=r.base; y.form=r.form; } y.lm=1; y.tried=today(); if(y.ko) delete y.lk; store.set(`bandup-myvoc-${slug}`,m); changed=true; }
     vcFill=false; if(changed && view.tab==="vocab") render(); })();
@@ -1295,42 +1375,13 @@ function vocForm(app){
   row.append(cancel,save); f.append(msg,row); app.append(f);
   setTimeout(()=>iw.focus(),50);
 }
-function exLine(line,word){
-  const segs=line.split(/\s*[—–|•·]\s*|\s+-\s+/).map(x=>x.replace(/[^\x20-\x7E’“”]/g," ").replace(/^[^A-Za-z]+/,"").replace(/\s+/g," ").trim()).filter(x=>x.toLowerCase().includes(word.toLowerCase()) && x.split(" ").length>=3);
-  return segs.sort((a,b)=>b.length-a.length)[0]||"";
-}
-async function prepImg(file){
-  let src=null; try{ src=await createImageBitmap(file,{imageOrientation:"from-image"}); }catch(_){ }
-  if(!src){ src=await new Promise((ok,no)=>{ const i=new Image(); i.onload=()=>ok(i); i.onerror=no; i.src=URL.createObjectURL(file); }); }
-  const w0=src.width||src.naturalWidth, h0=src.height||src.naturalHeight, sc=Math.min(1,1800/Math.max(w0,h0));
-  const cv=document.createElement("canvas"); cv.width=Math.round(w0*sc); cv.height=Math.round(h0*sc);
-  const cx=cv.getContext("2d"); cx.drawImage(src,0,0,cv.width,cv.height);
-  const show=cv.toDataURL("image/jpeg",.85);
-  const d=cx.getImageData(0,0,cv.width,cv.height), p=d.data, hist=new Array(256).fill(0);
-  for(let i=0;i<p.length;i+=4){ const g=(p[i]*.299+p[i+1]*.587+p[i+2]*.114)|0; p[i]=g; hist[g]++; }
-  const n=p.length/4; let lo=0,hi=255,acc=0; while(lo<255 && (acc+=hist[lo])<n*.02) lo++; acc=0; while(hi>0 && (acc+=hist[hi])<n*.02) hi--;
-  const r=Math.max(1,hi-lo); for(let i=0;i<p.length;i+=4){ const v=Math.max(0,Math.min(255,(p[i]-lo)*255/r)); p[i]=p[i+1]=p[i+2]=v; }
-  cx.putImageData(d,0,0); return {cv,show};
-}
-function vocPhoto(file){
-  vcAdd=true; vcOcr={status:"사진에서 글자를 읽는 중… (처음엔 조금 걸려요)", sel:new Set()}; render();
-  let prep;
-  prepImg(file).then(x=>{ prep=x; return loadTess(); })
-   .then(()=>Tesseract.recognize(prep.cv,"eng",{logger:m=>{ if(m.status==="recognizing text" && vcOcr){ const s=document.querySelector(".vcocr p"); if(s) s.textContent=`사진에서 글자를 읽는 중… ${Math.round(m.progress*100)}%`; } }}))
-   .then(r=>{ if(!vcOcr) return;
-     const ws=(r.data.words||[]).map(w=>({t:(w.text||"").replace(/^[^A-Za-z']+|[^A-Za-z']+$/g,""), c:w.confidence, b:w.bbox, line:((w.line&&w.line.text)||"").replace(/\s+/g," ").trim()}))
-       .filter(w=>w.c>=55 && /^[A-Za-z][A-Za-z'’-]*$/.test(w.t) && (w.t.length>1 || /^[aAI]$/.test(w.t)))
-       .map(w=>({t:w.t,line:w.line,x0:w.b.x0,y0:w.b.y0,x1:w.b.x1,y1:w.b.y1}));
-     vcOcr.status=null; vcOcr.words=ws; vcOcr.img=prep.show; vcOcr.W=prep.cv.width; vcOcr.H=prep.cv.height; render(); })
-   .catch(()=>{ if(!vcOcr) return; vcOcr.status="글자를 읽지 못했어요. 인터넷 연결을 확인하거나 직접 적어 주세요."; render(); });
-}
 function renderVocab(app){
   const W=vocAll();
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>{ vcAdd=false; vcOcr=null; go("home"); }; app.append(back);
   pageHead(app,"내 단어장",`단어 ${W.length}개`);
   const adds=el("div","vcadds");
   const b1=el("button","vcaddbtn","+ 직접 추가"); b1.type="button"; b1.onclick=()=>{ vcAdd=true; vcOcr=null; vcMode="list"; render(); };
-  adds.append(b1); if(D.inbox){ const b2=el("button","vcaddbtn","🔗 어디서든 바로 저장"); b2.type="button"; b2.onclick=()=>go("inbox"); adds.append(b2); } app.append(adds);
+  adds.append(b1); if(D.inbox && (D.capLink || D.capOn)){ const b2=el("button","vcaddbtn","🔗 어디서든 바로 저장"); b2.type="button"; b2.onclick=()=>go("inbox"); adds.append(b2); } app.append(adds);
   if(vcAdd){ vocForm(app); return; }
   vocBackfill();
   if(!W.length){ app.append(el("p","muted small","아직 단어가 없어요. 큐카드에서 모르는 단어를 눌러 '+ 내 단어장에 추가'를 누르거나, 위의 '+ 직접 추가'로 모아 보세요.")); return; }
@@ -1374,7 +1425,7 @@ function renderVocab(app){
 }
 
 /* ---------- 공부 기록 옮기기 (계정 없이 새 폰으로) ---------- */
-const TX_MERGE={myvoc:"voc", days:"set", cbm:"set", qbm:"qbm", vochide:"set", poddone:"set", mycards:"arr"};
+const TX_MERGE={myvoc:"voc", days:"set", cbm:"set", qbm:"qbm", vochide:"set", poddone:"set", mycards:"arr", clips:"byid", screens:"byid", yt:"byvid"};
 function txKeys(){ const out=[]; try{ for(let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if(k && k.startsWith("bandup-") && k.endsWith("-"+slug) && !k.startsWith("bandup-stat-")) out.push(k); } }catch(_){ } return out; }
 async function txPack(){ const data={}; for(const k of txKeys()) data[k.slice(7,-(slug.length+1))]=store.get(k,null);
   const json=JSON.stringify({v:1,slug,at:Date.now(),data}); let bytes=new TextEncoder().encode(json), z="0";
@@ -1388,11 +1439,14 @@ function txMerge(pack){ let n=0; for(const [name,val] of Object.entries(pack.dat
     if(cur==null) out=val;
     else if(mode==="voc"){ const seen=new Set(cur.map(x=>String(x.w).toLowerCase())); out=[...cur]; for(const x of val) if(!seen.has(String(x.w).toLowerCase())){ out.push(x); seen.add(String(x.w).toLowerCase()); } }
     else if(mode==="set"||mode==="arr"){ const key=x=>typeof x==="object"? JSON.stringify(x) : String(x); const seen=new Set(cur.map(key)); out=[...cur]; for(const x of val) if(!seen.has(key(x))){ out.push(x); seen.add(key(x)); } if(name==="days") out.sort(); }
+    else if(mode==="sent"){ const seen=new Set(cur.map(x=>String(x.en).toLowerCase())); out=[...cur, ...val.filter(x=>!seen.has(String(x.en).toLowerCase()))]; }
+    else if(mode==="byid"||mode==="byvid"){ const k= mode==="byid"? (x=>String(x&&x.id)) : (x=>String(x&&x.vid)); const m=new Map(cur.map(x=>[k(x),x])); for(const x of (Array.isArray(val)?val:[])) m.set(k(x),x); out=[...m.values()]; if(mode==="byid") out.sort((a,b)=>(a.id>b.id)-(a.id<b.id)); }
     else if(mode==="qbm"){ const seen=new Set(cur.map(x=>x.q)); out=[...cur, ...val.filter(x=>!seen.has(x.q))]; }
     else if(cur && val && typeof cur==="object" && typeof val==="object" && !Array.isArray(cur)){ out={...cur}; for(const [kk,vv] of Object.entries(val)){ const c=out[kk]; const t=x=>x&&typeof x==="object"? String(x.last||x.at||x.t||x.d||"")+"|"+String(1e6+(x.reviews||0)) : ""; if(c==null || t(vv)>t(c)) out[kk]=vv; } }
     else out=val;
     store.set(k,out); n++; } return n; }
 /* ---------- 계정 · 클라우드 저장 (Supabase) ---------- */
+const CAP_LINK="https://www.icloud.com/shortcuts/a034d02d908b4729b7f1854081444002";
 const SB_URL="https://qbqttaqipapmeutdrvdc.supabase.co", SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFicXR0YXFpcGFwbWV1dGRydmRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQyNjEyNTEsImV4cCI6MjEwOTgzNzI1MX0.5Cd_ytAu7Vz4PNCEoXxkXkEL_aOmvrBYcLm5uYxgRwU";
 const SB_AUTH="bandup-auth";
 function cloudSess(){ return store.get(SB_AUTH,null); }
@@ -1451,13 +1505,28 @@ function renderCloud(app){
 /* ---------- 어디서든 저장 (inbox) ---------- */
 let inboxBusy=false, inboxLast=0;
 const IS_MOBILE=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent||"") || (navigator.maxTouchPoints>1 && /Macintosh/.test(navigator.userAgent||""));
+function capGo(kind,id){ if(kind==="screen"){ scrSel=[]; go("screens"); } else { if(!clips().some(x=>x.id===id)) return; ytStop(); ytState={clip:id}; go("yt"); } window.scrollTo(0,0); }
+function capPending(){ try{ const j=JSON.parse(sessionStorage.getItem("bandup-jump")||"null"); sessionStorage.removeItem("bandup-jump"); if(j && Date.now()-j.t<20000) capGo(j.kind,j.id); }catch(_){ } }
+function capJump(kind,id){ if(["cards","review","mock","words","profile"].includes(view.tab)) return; try{ sessionStorage.setItem("bandup-jump",JSON.stringify({kind,id,t:Date.now()})); }catch(_){ } setTimeout(()=>{ if(kind==="screen"){ scrSel=[]; go("screens"); } else { ytStop(); ytState={clip:id}; go("yt"); } window.scrollTo(0,0); },250); }
 async function inboxPull(force){ if(!D || !D.inbox || inboxBusy || (!IS_MOBILE && !force)) return; inboxBusy=true; inboxLast=Date.now(); let rows=null;
   try{ const r=await fetch(SB_URL+"/rest/v1/rpc/bu_take",{method:"POST",headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_token:D.inbox})}); if(r.ok) rows=await r.json(); }catch(_){ }
   if(!rows || !rows.length){ inboxBusy=false; return; }
   const key=`bandup-myvoc-${slug}`; const mine=store.get(key,[]); const have=new Set(vocAll().map(x=>String(x.w).toLowerCase())); const added=[];
-  const scr=store.get(`bandup-screens-${slug}`,[]); let nscr=0;
+  { const yv=[]; rows=rows.filter(r=>{ const t=String(r.txt||"").trim(); const id=D.yt && /youtu\.?be/i.test(t) && t.split(/\s+/).length<=12? ytId(t) : null; if(id){ yv.push(id); return false; } return true; });
+    if(yv.length){ const last=yv[yv.length-1]; yv.forEach(id=>{ if(!ytVids().some(x=>x.vid===id)) ytSave({vid:id,title:"유튜브 영상",at:Date.now(),lines:[]}); }); toast("🎬 공유한 영상을 열어요",true); setTimeout(()=>ytOpen(last),300); } }
+  const scr=store.get(`bandup-screens-${slug}`,[]); let nscr=0, nsent=0;
+  let lastScene=null; { let ni=0; rows=rows.filter(r=>{ const t=String(r.txt||""); const g=D.yt && /\n/.test(t.trim())? igScreen(t) : null; if(g){ lastScene=sceneAdd({src:"인스타 릴스",acct:g.acct,text:ocrClean(t).split("\n").filter(x=>!g.acct || x.replace(/^@/,"").toLowerCase()!==g.acct.toLowerCase()).join("\n"),at:r.created_at}); ni++; return false; } return true; });
+    if(ni){ toast(`📸 릴스 장면 ${ni}개를 내 클립에 저장했어요`,true); if(lastScene) capJump("clip",lastScene.id); } }
+  const yts=[]; rows=rows.filter(r=>{ const t=String(r.txt||""); const ys=D.yt && /\n/.test(t.trim())? ytScreen(t) : null; if(ys){ yts.push({...ys, r}); return false; } return true; });
+  if(yts.length){ toast(`✂️ 유튜브 클립 ${yts.length}개 저장하는 중…`,true);
+    (async()=>{ const cache={}; let ok=0, miss=0, noTime=0, lastC=null;
+      for(const y of yts){ const f= cache[y.q]!==undefined? cache[y.q] : (cache[y.q]=await ytSearch(y.q));
+        if(f && f.id){ if(!ytVids().some(x=>x.vid===f.id)) ytSave({vid:f.id,title:f.title||y.q,at:Date.now(),lines:[]}); lastC=clipAdd({vid:f.id,title:f.title||y.q,t:y.start,at:y.r.created_at,text:ytSceneText(String(y.r.txt||""),[f.title,y.q])}); ok++; if(!y.start) noTime++; }
+        else { lastC=sceneAdd({src:"유튜브",text:ocrClean(String(y.r.txt||"")),at:y.r.created_at}); miss++; } }
+      if(ok) toast(`✂️ 클립 ${ok}개 저장했어요`+(noTime? ` (${noTime}개는 시간을 못 읽어서 처음부터)` : "")+" · 🎬 영상으로 공부",true); if(miss) toast(`영상은 못 찾아서 화면 글만 ${miss}개 저장했어요`,false);
+      if(lastC) capJump("clip",lastC.id); })(); }
   rows=rows.filter(r=>{ const t=String(r.txt||""); if(/\n/.test(t.trim()) || t.trim().split(/\s+/).length>25){ scr.push({id:Date.now()+Math.random(),at:r.created_at,text:t}); nscr++; return false; } return true; });
-  if(nscr){ store.set(`bandup-screens-${slug}`,scr); toast(`📸 화면 ${nscr}개를 가져왔어요. 모르는 단어를 골라 보세요`,true); if(view.tab==="home") render(); }
+  if(nscr){ store.set(`bandup-screens-${slug}`,scr); toast(`📸 화면 ${nscr}개를 가져왔어요. 모르는 단어를 골라 보세요`,true); capJump("screen"); }
   rows.sort((a,b)=>String(a.created_at)<String(b.created_at)?-1:1).forEach((r,i)=>{ let w=String(r.txt||"").replace(/\s+/g," ").trim().replace(/^["“‘']+|["”’']+$/g,""); if(w.split(" ").length<5){ w=w.replace(/^[^A-Za-z]+|[^A-Za-z]+$/g,""); if(!/\s/.test(w) && /^[A-Z][a-z'’-]+$/.test(w)) w=w.toLowerCase(); } if(!w || !/[A-Za-z]/.test(w) || have.has(w.toLowerCase())) return;
     const it={w,ko:"",ex: w.split(" ").length>=5? w : "",t:Date.now()+i,inbox:1}; mine.push(it); added.push(it); have.add(w.toLowerCase()); });
   store.set(key,mine);
@@ -1479,6 +1548,292 @@ async function openMini(){
   doc.getElementById("pb").onclick=async()=>{ try{ const t=await w.navigator.clipboard.readText(); if(!t.trim()){ save(""); return; } save(t); }catch(_){ const li=doc.createElement("li"); li.className="no"; li.textContent="복사한 내용을 읽지 못했어요. 끌어다 놓거나 직접 입력해 주세요."; ls.prepend(li); } };
   const ti=doc.getElementById("ti"); ti.onkeydown=e=>{ if(e.key==="Enter"){ save(ti.value); ti.value=""; } };
 }
+function slowBtn(text){ const b=el("button","spk slow","🐢"); b.type="button"; b.setAttribute("aria-label","천천히 듣기"); b.onclick=e=>{ e.stopPropagation(); speak(text,true); }; return b; }
+
+/* ---------- 영상으로 공부 (유튜브 이중자막 플레이어) ---------- */
+const YTK=()=>`bandup-yt-${slug}`;
+let ytState=null, ytP=null, ytTimer=null, ytApiP=null;
+function ytApi(){ if(window.YT && YT.Player) return Promise.resolve(); if(ytApiP) return ytApiP;
+  ytApiP=new Promise(res=>{ const prev=window.onYouTubeIframeAPIReady; window.onYouTubeIframeAPIReady=()=>{ try{ prev&&prev(); }catch(_){ } res(); }; const sc=document.createElement("script"); sc.src="https://www.youtube.com/iframe_api"; document.head.append(sc); }); return ytApiP; }
+function ytId(u){ u=String(u||"").trim(); const m=u.match(/(?:youtu\.be\/|[?&]v=|shorts\/|embed\/|live\/)([A-Za-z0-9_-]{11})/) || u.match(/^([A-Za-z0-9_-]{11})$/); return m? m[1] : null; }
+function ytFmt(t){ t=Math.max(0,Math.floor(t)); return Math.floor(t/60)+":"+String(t%60).padStart(2,"0"); }
+function ytParse(raw){ const lines=String(raw||"").replace(/\r/g,"").split("\n").map(x=>x.trim()).filter(Boolean); const out=[]; let cur=null;
+  const sec=x=>x.split(":").map(Number).reduce((a,b)=>a*60+b,0);
+  for(const ln of lines){
+    let m=ln.match(/^((?:\d{1,2}:)?\d{1,2}:\d{2})(?:[.,]\d+)?\s*-->/); if(m){ cur={t:sec(m[1]),text:""}; out.push(cur); continue; }
+    if(/^WEBVTT|^NOTE\b|^\d+$/.test(ln)) continue;
+    m=ln.match(/^\[?((?:\d{1,2}:)?\d{1,2}:\d{2})\]?(?:\s+(.*))?$/); if(m){ cur={t:sec(m[1]),text:m[2]||""}; out.push(cur); continue; }
+    if(/^\d+\s*(초|분|시간|seconds?|minutes?|hours?)\b/i.test(ln)) continue;
+    if(cur) cur.text=(cur.text+" "+ln).trim(); }
+  return out.map(x=>({t:x.t, text:x.text.replace(/<[^>]+>/g,"").replace(/\[[^\]]*\]|\([^)]*(music|applause|laugh)[^)]*\)/gi,"").replace(/\s+/g," ").trim()})).filter(x=>/[A-Za-z]/.test(x.text)).sort((a,b)=>a.t-b.t); }
+function ytMerge(segs){ const punct=segs.filter(x=>/[.!?]["”’']?$/.test(x.text)).length > segs.length*.25; const out=[]; let cur=null;
+  for(const x of segs){ if(!cur){ cur={...x}; continue; } const wc=cur.text.split(" ").length; const end= punct? /[.!?]["”’']?$/.test(cur.text) : wc>=9;
+    if(end || wc>=26){ out.push(cur); cur={...x}; } else cur.text+=" "+x.text; }
+  if(cur) out.push(cur); return out; }
+function ytVids(){ return store.get(YTK(),[]); }
+/* 뒷면 탭으로 찍은 유튜브 화면 → 제목으로 영상 찾기 */
+const YT_UI=/조회수|views|구독|subscribe|쇼츠|shorts|댓글|comments|좋아요|공유|share|리믹스|remix|저장|save|오프라인|download|클립|clip|감사|thanks/gi;
+function ytScreen(t){ t=String(t||""); const hits=new Set((t.match(YT_UI)||[]).map(x=>x.toLowerCase())).size; if(hits<3) return null;
+  const lines=t.split(/\n+/).map(x=>x.trim()).filter(Boolean); const isUI=x=>/^(조회수|구독|좋아요|싫어요|공유|리믹스|저장|오프라인 저장|클립|감사|댓글|홈|Shorts|구독함|나|Home|Subscriptions|You|Share|Remix|Save|Download|Clip|Thanks|Comments)\b/i.test(x) || /^[\d.,]+\s*[천만억KMB]?$/.test(x) || /^\d{1,2}:\d{2}/.test(x) || x.length<4;
+  let title=""; const vi=lines.findIndex(x=>/조회수\s*[\d.,]+|[\d.,]+\s*[천만억KMB]?\s*(회|views)\b/i.test(x));
+  if(vi>=0){ const pre=lines[vi].split(/조회수|[\d.,]+\s*[천만억KMB]?\s*(?:회|views)/i)[0].trim(); if(pre.length>=8) title=pre;
+    else if(vi>0 && !isUI(lines[vi-1])){ title=lines[vi-1]; if(vi>1 && !isUI(lines[vi-2]) && lines[vi-1].length<25 && lines[vi-2].length>8) title=lines[vi-2]+" "+title; } }
+  if(!title){ const c=lines.filter(x=>!isUI(x) && x.split(/\s+/).length>=3 && !/@|#|http/.test(x)); title=c.sort((a,b)=>b.length-a.length)[0]||""; }
+  title=title.replace(/\s*(…|\.\.\.)?\s*(더보기|more)$/i,"").trim(); if(title.length<4) return null;
+  const tm=t.match(/(\d{1,2}:\d{2}(?::\d{2})?)\s*\/\s*(\d{1,2}:\d{2}(?::\d{2})?)/); const start=tm? tm[1].split(":").map(Number).reduce((a,b)=>a*60+b,0) : 0;
+  return {q:title, start}; }
+async function ytSearchList(q){ const qq=encodeURIComponent(q);
+  const EP=[[`https://pipedapi.kavin.rocks/search?q=${qq}&filter=videos`,"p"],[`https://api.piped.private.coffee/search?q=${qq}&filter=videos`,"p"],[`https://pipedapi.adminforge.de/search?q=${qq}&filter=videos`,"p"],[`https://inv.nadeko.net/api/v1/search?q=${qq}&type=video`,"i"],[`https://yewtu.be/api/v1/search?q=${qq}&type=video`,"i"],[`https://invidious.nerdvpn.de/api/v1/search?q=${qq}&type=video`,"i"]];
+  for(const [u,k] of EP){ try{ const ac=new AbortController(); const tid=setTimeout(()=>ac.abort(),6000); const j=await fetch(u,{signal:ac.signal}).then(r=>r.ok? r.json():null); clearTimeout(tid); if(!j) continue;
+      const out= k==="p"? (j.items||[]).filter(x=>/[?&]v=/.test(x.url||"")).map(x=>({id:ytId(x.url), title:x.title, by:x.uploaderName||"", d:x.duration||0}))
+        : (Array.isArray(j)? j : []).filter(x=>x.videoId).map(x=>({id:x.videoId, title:x.title, by:x.author||"", d:x.lengthSeconds||0}));
+      if(out.length) return out.slice(0,20); }catch(_){ } }
+  return null; }
+let ytFind={q:"",res:null,busy:false,err:""};
+async function ytSearch(q){ const qq=encodeURIComponent(q);
+  const EP=[[`https://pipedapi.kavin.rocks/search?q=${qq}&filter=videos`,"p"],[`https://api.piped.private.coffee/search?q=${qq}&filter=videos`,"p"],[`https://pipedapi.adminforge.de/search?q=${qq}&filter=videos`,"p"],[`https://inv.nadeko.net/api/v1/search?q=${qq}&type=video`,"i"],[`https://yewtu.be/api/v1/search?q=${qq}&type=video`,"i"],[`https://invidious.nerdvpn.de/api/v1/search?q=${qq}&type=video`,"i"]];
+  for(const [u,k] of EP){ try{ const ac=new AbortController(); const tid=setTimeout(()=>ac.abort(),6000); const j=await fetch(u,{signal:ac.signal}).then(r=>r.ok? r.json():null); clearTimeout(tid); if(!j) continue;
+      if(k==="p"){ const it=(j.items||[]).find(x=>/[?&]v=/.test(x.url||"")); if(it) return {id:ytId(it.url), title:it.title}; }
+      else { const it=(Array.isArray(j)? j : []).find(x=>x.videoId); if(it) return {id:it.videoId, title:it.title}; } }catch(_){ } }
+  return null; }
+const CLK=()=>`bandup-clips-${slug}`;
+function clips(){ return store.get(CLK(),[]); }
+function clipAdd(o){ const t=o.t||0; const c={id:Date.now()*1000+Math.floor(Math.random()*1000), vid:o.vid, text:o.text||"", title:o.title||"유튜브 영상", s:Math.max(0,t-10), e:t? t+2 : 15, at:o.at||new Date().toISOString(), note:"", noTime:!t}; const L=clips(); L.push(c); store.set(CLK(),L); return c; }
+function clipSave(c){ const L=clips(); const i=L.findIndex(x=>x.id===c.id); if(i>=0){ L[i]=c; store.set(CLK(),L); } }
+function renderClip(app,c){
+  const S=ytState; S.rate=S.rate||1;
+  const back=el("button","back","‹ 내 클립"); back.type="button"; back.onclick=()=>{ ytStop(); ytState=null; render(); }; app.append(back);
+  const fr=el("div","ytframe clframe"); const host=el("div"); host.id="ytplayer"; fr.append(host); app.append(fr);
+  app.append(el("p","cltitle",c.title));
+  const tm=el("p","cltime",""); const track=el("div","trtrack"); const sel=el("div","trsel"); const h1=el("div","trh"); const h2=el("div","trh"); const ph=el("div","trph"); track.append(sel,ph,h1,h2);
+  app.append(tm,track);
+  const ctl=el("div","clctl"); const bPlay=el("button","btn primary clplay","▶ 재생"); bPlay.type="button"; const bRate=el("button","ytb clrate",S.rate+"x"); bRate.type="button"; ctl.append(bPlay,bRate); app.append(ctl);
+  const foot=el("div","clfoot"); const full=el("button","cllink","전체 영상 보기"); full.type="button"; full.onclick=()=>{ ytStop(); ytOpen(c.vid,c.s+2); };
+  const del=el("button","cllink","지우기"); del.type="button"; del.onclick=()=>{ store.set(CLK(),clips().filter(x=>x.id!==c.id)); ytStop(); ytState=null; render(); }; foot.append(full,del); app.append(foot); if(c.text) app.append(sceneText(c.text));
+  let dur=0, W={a:0,b:1}, drag=null, lastSeek=0, playing=false;
+  const win=()=>{ const pad=Math.max(15,(c.e-c.s)); W.a=Math.max(0,c.s-pad); W.b=dur? Math.min(dur,c.e+pad) : c.e+pad; };
+  const pct=t=>Math.max(0,Math.min(100,(t-W.a)/(W.b-W.a)*100));
+  const paint=()=>{ sel.style.left=pct(c.s)+"%"; sel.style.width=(pct(c.e)-pct(c.s))+"%"; h1.style.left=pct(c.s)+"%"; h2.style.left=pct(c.e)+"%"; tm.textContent=`${ytFmt(c.s)} – ${ytFmt(c.e)}`; };
+  const seek=(t,f)=>{ try{ ytP.seekTo(t,!!f); }catch(_){ } };
+  const play=()=>{ seek(c.s,true); try{ ytP.playVideo(); }catch(_){ } };
+  const tAt=ev=>{ const r=track.getBoundingClientRect(); return W.a+Math.max(0,Math.min(r.width,ev.clientX-r.left))/r.width*(W.b-W.a); };
+  track.onpointerdown=ev=>{ ev.preventDefault(); const t=tAt(ev); drag= Math.abs(t-c.s)<=Math.abs(t-c.e)? "s" : "e"; try{ ytP.pauseVideo(); }catch(_){ } track.setPointerCapture(ev.pointerId); track.onpointermove(ev); };
+  track.onpointermove=ev=>{ if(!drag) return; const t=tAt(ev); if(drag==="s") c.s=Math.max(0,Math.min(t,c.e-1)); else c.e=Math.max(t,c.s+1); paint(); ph.style.left=pct(drag==="s"?c.s:c.e)+"%"; const n=Date.now(); if(n-lastSeek>120){ lastSeek=n; seek(drag==="s"?c.s:c.e,false); } };
+  const up=()=>{ if(!drag) return; const k=drag; drag=null; c.s=Math.round(c.s*10)/10; c.e=Math.round(c.e*10)/10; c.noTime=false; clipSave(c); win(); paint(); if(k==="s") play(); else { seek(Math.max(c.s,c.e-3),true); try{ ytP.playVideo(); }catch(_){ } } };
+  track.onpointerup=up; track.onpointercancel=up;
+  bPlay.onclick=()=>{ if(playing){ try{ ytP.pauseVideo(); }catch(_){ } } else play(); };
+  bRate.onclick=()=>{ S.rate= S.rate===1? .75 : S.rate===.75? .5 : 1; bRate.textContent=S.rate+"x"; try{ ytP.setPlaybackRate(S.rate); }catch(_){ } };
+  win(); paint();
+  const startLoop=()=>{
+    ytTimer=setInterval(()=>{ if(view.tab!=="yt" || !(ytState&&ytState.clip)){ ytStop(); return; } if(!ytP || !ytP.getCurrentTime || drag) return; const t=ytP.getCurrentTime();
+      ph.style.left=pct(t)+"%"; if(playing && (t>=c.e || t<c.s-1)) seek(c.s,true); },100);
+  };
+  ytApi().then(()=>{ if(view.tab!=="yt" || !document.getElementById("ytplayer")) return;
+    ytP=new YT.Player("ytplayer",{width:"100%",height:"100%",videoId:c.vid,playerVars:{start:Math.floor(c.s),controls:0,disablekb:1,fs:0,playsinline:1,rel:0,modestbranding:1,cc_load_policy:1,cc_lang_pref:"en",hl:"en",iv_load_policy:3},
+      events:{ onReady:e=>{ try{ e.target.setPlaybackRate(S.rate); dur=e.target.getDuration()||0; win(); paint(); }catch(_){ } },
+        onStateChange:e=>{ playing= e.data===1; bPlay.textContent= playing? "⏸ 멈춤" : "▶ 재생"; if(playing && !dur){ try{ dur=ytP.getDuration()||0; win(); paint(); }catch(_){ } } },
+        onError:e=>{ fr.textContent=""; fr.append(el("p","yterr", e.data===101||e.data===150? "이 영상은 다른 곳에서 재생이 막혀 있어요." : "영상을 불러오지 못했어요.")); } }});
+    startLoop(); });
+}
+function ytOpen(vid,start){ const old=ytVids().find(x=>x.vid===vid); const v={vid, title:(old&&old.title)||"유튜브 영상", at:Date.now(), lines: old? old.lines : []}; ytSave(v); ytState={vid, start:start||0}; go("yt");
+  if(!old || old.title==="유튜브 영상") fetch("https://noembed.com/embed?url="+encodeURIComponent("https://www.youtube.com/watch?v="+vid)).then(r=>r.json()).then(j=>{ if(j && j.title){ const L=ytVids(); const y=L.find(x=>x.vid===vid); if(y){ y.title=j.title; store.set(YTK(),L); const h=document.querySelector(".yttitle"); if(h) h.textContent=j.title; } } }).catch(()=>{}); }
+function ytSave(v){ const L=ytVids().filter(x=>x.vid!==v.vid); L.push(v); store.set(YTK(),L); }
+const OCR_UI=/^(좋아요|싫어요|댓글|공유|리믹스|저장|오프라인 저장|클립|감사|구독|구독중|구독함|팔로우|팔로잉|메시지|원본 오디오|홈|쇼츠|Shorts|릴스|Reels|검색|탐색|프로필|나|Home|Subscribe|Subscribed|Follow|Following|Like|Dislike|Comments?|Share|Remix|Save|Download|Thanks|Original audio|Search|Explore|Profile|You|Send|더보기|more|LIVE|Sponsored|광고)$/i;
+function ocrClean(t){ return String(t||"").split(/\n+/).map(x=>x.trim()).filter(x=>x.length>=2 && /[A-Za-z]{2}/.test(x) && !OCR_UI.test(x) && !/^[\d\s:.,%/·•|]+[천만억KMB]?(\s*(회|views?|likes?|comments?))?$/i.test(x) && !/^(\d{1,2}:\d{2})(\s|$)/.test(x) && !/^[\d.,]+\s*[천만억KMB]?$/.test(x) && !/(LTE|5G|Wi-?Fi)$/i.test(x)).map(x=>x.replace(/\s*(…|\.\.\.)\s*(더보기|more)\s*$/i,"").trim()).filter(Boolean).join("\n"); }
+function ytSceneText(raw,drop){ const L=String(raw).split(/\n+/).map(x=>x.trim()); const vi=L.findIndex(x=>/조회수\s*[\d.,]+|[\d.,]+\s*[천만억KMB]?\s*(회|views)\b/i.test(x)); const skip=new Set((drop||[]).filter(Boolean).map(x=>x.toLowerCase()));
+  const keep=L.filter((x,i)=>!(vi>=0 && (i===vi || i===vi+1)) && !skip.has(x.toLowerCase())); return ocrClean(keep.join("\n")); }
+function igScreen(t){ t=String(t||""); if(/조회수|구독|subscribe|\bviews\b/i.test(t)) return null; const hits=new Set((t.match(/팔로우|follow|원본 오디오|original audio|릴스|reels|좋아요|댓글|공유|리믹스|instagram/gi)||[]).map(x=>x.toLowerCase())).size; if(hits<2) return null;
+  const lines=t.split(/\n+/).map(x=>x.trim()); let acct=""; for(let i=0;i<lines.length;i++){ const m=lines[i].match(/^@?([a-z0-9._]{3,30})\s*[•·]?\s*(팔로우|Follow)?$/i); if(m && /[a-z]/.test(m[1]) && !OCR_UI.test(m[1]) && (m[2] || /팔로우|follow/i.test(lines[i+1]||"") || /[._\d]/.test(m[1]))){ acct=m[1]; break; } }
+  return {acct}; }
+function sceneAdd(o){ const d=new Date(); const c={id:Date.now()*1000+Math.floor(Math.random()*1000), kind:"scene", src:o.src||"화면", acct:o.acct||"", vid:"", title:"", text:o.text||"", s:0, e:0, at:o.at||d.toISOString()};
+  const first=(c.text.split("\n").find(x=>x.split(/\s+/).length>=3)||c.text.split("\n")[0]||"").slice(0,80); c.title=first||`${c.src} 장면`; const L=clips(); L.push(c); store.set(CLK(),L); return c; }
+function sceneText(text){ const box=el("div","panel sctext"); box.append(el("b","sch","화면 속 영어"), el("p","small muted","모르는 단어를 누르세요. 붙어 있는 단어를 이어서 누르면 표현으로 찾아 줘요."));
+  const paras=scrParas(text); if(!paras.length){ box.append(el("p","muted small","읽힌 영어가 없어요.")); return box; }
+  paras.forEach(line=>{ const wrap=el("div","scpara"); const row=el("p","scrline"); const toks=line.split(/\s+/); let sel=[]; const btns=[];
+    const mbox=el("div","ytwbox"); const tr=el("p","scrtr","");
+    const show=async()=>{ const words=sel.map(i=>btns[i].dataset.w); btns.forEach((b,i)=>{ if(b) b.classList.toggle("sel",sel.includes(i)); }); if(!words.length){ mbox.classList.remove("on"); return; } const w=words.join(" ");
+      mbox.textContent=""; const hd=el("div","ytwh"); hd.append(el("b",null,w), speakBtn(w)); const mean=el("span","small muted","뜻 찾는 중…"); mbox.append(hd,mean); mbox.classList.add("on");
+      const has=vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase()); const ab=el("button","scradd"+(has?" done":""), has? "✓ 단어장에 있어요" : "+ 단어장"); ab.type="button"; ab.disabled=has; ab.onclick=()=>{ if(vocQuickAdd(w, w.split(" ").length>=5)){ ab.textContent="✓ 담았어요"; ab.disabled=true; ab.classList.add("done"); } }; hd.append(ab);
+      const r=await vocLookup(w).catch(()=>({})); if(sel.map(i=>btns[i].dataset.w).join(" ")===w) mean.textContent=(r&&r.ko)||"뜻을 찾지 못했어요"; };
+    toks.forEach(tok=>{ const m=tok.match(/^([^A-Za-z]*)([A-Za-z][A-Za-z'’-]*[A-Za-z]|[A-Za-z])([^A-Za-z]*)$/); if(!m){ row.append(el("span","scrw plain",tok)); btns.push(null); return; }
+      const i=btns.length; const b=el("button","scrw",tok); b.type="button"; b.dataset.w=m[2].replace(/’/g,"'"); btns.push(b);
+      b.onclick=()=>{ if(sel.includes(i)){ sel= (i===sel[0]||i===sel[sel.length-1])? sel.filter(x=>x!==i) : [i]; } else if(sel.length && (i===sel[0]-1 || i===sel[sel.length-1]+1)){ sel.push(i); sel.sort((a,b)=>a-b); } else sel=[i]; show(); };
+      row.append(b); });
+    wrap.append(row,tr,mbox); if(line.split(/\s+/).length>=2){ const TR=store.get("bandup-tr",{}); if(TR[line]) tr.textContent=TR[line]; else trOne(line).then(k=>{ tr.textContent=k||""; }); }
+    box.append(wrap); });
+  return box; }
+function renderScene(app,c){
+  const back=el("button","back","‹ 내 클립"); back.type="button"; back.onclick=()=>{ ytState=null; render(); }; app.append(back);
+  const hd=el("div","schead"); hd.append(el("span","scsrc",`📸 ${c.src}${c.acct? " · @"+c.acct : ""}`), el("span","small muted",new Date(c.at).toLocaleString("ko-KR",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"}))); app.append(hd);
+  app.append(sceneText(c.text));
+  const foot=el("div","clfoot"); const op=el("a","cllink", c.acct? "인스타에서 계정 열기" : ""); if(c.acct){ op.href=`https://www.instagram.com/${c.acct}/`; op.target="_blank"; op.rel="noopener"; }
+  const del=el("button","cllink","지우기"); del.type="button"; del.onclick=()=>{ store.set(CLK(),clips().filter(x=>x.id!==c.id)); ytState=null; render(); }; foot.append(op,del); app.append(foot); }
+function ytStop(){ clearInterval(ytTimer); ytTimer=null; try{ if(ytP) ytP.destroy(); }catch(_){ } ytP=null; }
+function renderYt(app){
+  ytStop();
+  if(ytState && ytState.clip){ const c=clips().find(x=>x.id===ytState.clip); if(c) return c.kind==="scene"? renderScene(app,c) : renderClip(app,c); ytState=null; }
+  if(ytState && ytState.vid){ const v=ytVids().find(x=>x.vid===ytState.vid); if(v) return renderYtPlayer(app,v); ytState=null; }
+  const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>go("home"); app.append(back);
+  pageHead(app,"영상으로 공부",null);
+  { const f=el("form","ytsearch"); const i=el("input","txin"); i.type="search"; i.placeholder="🔎 유튜브 검색 (예: daily english vlog)"; i.value=ytFind.q; i.enterKeyHint="search"; const b=el("button","btn primary","검색"); b.type="submit"; f.append(i,b); app.append(f);
+    f.onsubmit=async e=>{ e.preventDefault(); const q=i.value.trim(); if(!q) return; i.blur(); ytFind={q,res:null,busy:true,err:""}; render();
+      const r=await ytSearchList(q); ytFind.busy=false; ytFind.res=r||[]; ytFind.err= r? "" : "검색이 잠시 안 돼요. 조금 뒤에 다시 해 주세요."; if(view.tab==="yt" && !(ytState&&(ytState.vid||ytState.clip))) render(); };
+    if(ytFind.busy) app.append(el("p","muted small ytempty","검색 중…"));
+    else if(ytFind.err) app.append(el("p","small txmsg",ytFind.err));
+    else if(ytFind.res){ if(!ytFind.res.length) app.append(el("p","muted small ytempty","결과가 없어요."));
+      else { const box=el("div","box ytlist ytres"); ytFind.res.forEach(v=>{ const r=el("div","ytrow"); const im=el("img","ytthumb"); im.src=`https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`; im.alt=""; im.loading="lazy"; const t=el("div","mst"); t.append(el("b",null,v.title), el("span",null,[v.by, v.d? ytFmt(v.d) : ""].filter(Boolean).join(" · "))); r.append(im,t); r.onclick=()=>{ if(!ytVids().some(x=>x.vid===v.id)) ytSave({vid:v.id,title:v.title,at:Date.now(),lines:[]}); ytOpen(v.id); }; box.append(r); });
+        const cl=el("button","cllink","검색 닫기"); cl.type="button"; cl.onclick=()=>{ ytFind={q:"",res:null,busy:false,err:""}; render(); }; app.append(box,cl); } } }
+  const thumbRow=(vid,title,sub,on,thumb)=>{ const r=el("div","ytrow"); const im=el("img","ytthumb"); im.src= thumb!==undefined? (thumb||"icons/icon-192.png") : `https://i.ytimg.com/vi/${vid}/mqdefault.jpg`; im.alt=""; im.loading="lazy"; const t=el("div","mst"); t.append(el("b",null,title), el("span",null,sub)); r.append(im,t); r.onclick=on; return r; };
+  const C=clips().slice().reverse();
+  app.append(el("h2","sec-t",`✂️ 내 클립`));
+  if(C.length){ const box=el("div","box ytlist"); C.forEach(c=>box.append(thumbRow(c.vid,c.title,c.kind==="scene"? `📸 ${c.src||"화면"}${c.acct? " · @"+c.acct : ""}` : `${ytFmt(c.s)} – ${ytFmt(c.e)}`,()=>{ ytState={clip:c.id}; render(); window.scrollTo(0,0); }, c.kind==="scene"? "" : undefined))); app.append(box); }
+  else app.append(el("p","muted small ytempty", D.inbox? "유튜브나 릴스를 보다가 폰 뒷면을 톡톡 치면 그 장면이 여기 저장돼요." : "영상에서 ✂️를 누르면 그 장면이 여기 저장돼요."));
+  const V=ytVids().slice().sort((a,b)=>b.at-a.at);
+  if(V.length){ app.append(el("h2","sec-t","최근 본 영상")); const box=el("div","box ytlist"); V.slice(0,10).forEach(v=>box.append(thumbRow(v.vid,v.title,"",()=>{ ytState={vid:v.vid}; render(); window.scrollTo(0,0); }))); app.append(box); }
+  if(D.inbox){ const sh=el("details","ytmore ytset"); sh.append(el("summary",null,"뒷면 톡톡 설정 방법"));
+    const ol=el("ol","ibsteps"); for(const t of ["어제 만든 '화면 저장' 단축어를 그대로 써요. (없으면 단축어 앱 → ＋ → ① 스크린샷 찍기 ② 이미지에서 텍스트 추출 ③ URL 콘텐츠 가져오기: 아래 URL, 방법 POST, JSON 필드 p_txt = '이미지에서 추출한 텍스트')","설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭이나 삼중 탭 → 그 단축어","치고 나서 밴드업이 바로 열리게 하려면: 단축어 맨 아래에 동작 'URL 열기' 추가 → 아래 '밴드업 주소' 붙여 넣기. (사파리로 열려요)","유튜브는 영상 아래 제목과 재생 바가 보일 때, 릴스는 자막이 화면에 떠 있을 때 치세요."]) ol.append(el("li",null,t));
+    sh.append(ol, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_save?apikey="+SB_KEY), copyRow("밴드업 주소", location.href.split("#")[0].split("?")[0])); app.append(sh); }
+}
+function renderYtPlayer(app,v){
+  const S=ytState; S.i=S.i??-1; S.loop=null; S.ko=S.ko??true; S.rate=S.rate||1;
+  const back=el("button","back","‹ 영상 목록"); back.type="button"; back.onclick=()=>{ ytStop(); ytState=null; render(); }; app.append(back);
+  const stick=el("div","ytstick"); const fr=el("div","ytframe"); const host=el("div"); host.id="ytplayer"; fr.append(host); stick.append(fr);
+  const cur=el("div","ytcur"); const cen=el("p","ytcen",""); const cko=el("p","ytcko",""); const wbox=el("div","ytwbox"); cur.append(cen,cko,wbox);
+  const ctl=el("div","ytctl"); const B=(t,lab)=>{ const b=el("button","ytb",t); b.type="button"; b.setAttribute("aria-label",lab); return b; };
+  const bPrev=B("⏮","이전 문장"), bLoop=B("🔁","이 문장 반복"), bNext=B("⏭","다음 문장"), bRate=B(S.rate===1?"1x":S.rate+"x","속도"), bKo=B("한글","한국어 자막 켜기/끄기")
+  const bClip=B("✂️","여기서 클립 만들기"); bClip.onclick=()=>{ let t=0; try{ t=ytP.getCurrentTime()||0; }catch(_){ } const cl=clipAdd({vid:v.vid,title:v.title,t:Math.max(t,1)}); try{ ytP.pauseVideo(); }catch(_){ } ytStop(); ytState={clip:cl.id}; render(); window.scrollTo(0,0); };
+  bKo.classList.toggle("on",S.ko); ctl.append(bPrev,bLoop,bNext,bRate,bKo,bClip); stick.append(cur,ctl); app.append(stick);
+  app.append(el("p","yttitle",v.title));
+  const L=v.lines; const rows=[];
+  const trQ=[]; let trBusy=false; const trPump=async()=>{ if(trBusy) return; trBusy=true; while(trQ.length){ const i=trQ.shift(); if(L[i].ko) continue; const k=await trOne(L[i].text); if(k){ L[i].ko=k; const r=rows[i]; if(r) r.querySelector(".ytko").textContent=k; if(i===S.i) cko.textContent=S.ko? k : ""; } } trBusy=false; };
+  const want=i=>{ if(i<0||!L[i]) return; const TR=store.get("bandup-tr",{}); if(TR[L[i].text]){ L[i].ko=TR[L[i].text]; return; } if(!trQ.includes(i)) trQ.push(i); trPump(); };
+  const showWord=async w=>{ wbox.textContent=""; const hd=el("div","ytwh"); hd.append(el("b",null,w), speakBtn(w)); const mean=el("span","small muted","뜻 찾는 중…"); wbox.append(hd,mean); wbox.classList.add("on");
+    const r=await vocLookup(w).catch(()=>({})); mean.textContent=(r&&r.ko)||"뜻을 찾지 못했어요";
+    const has=vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase()); const ab=el("button","scradd"+(has?" done":""), has? "✓ 단어장에 있어요" : "+ 단어장"); ab.type="button"; ab.disabled=has; ab.onclick=()=>{ if(vocQuickAdd(w,false)){ ab.textContent="✓ 담았어요"; ab.disabled=true; ab.classList.add("done"); } }; hd.append(ab); };
+  const paintCur=()=>{ const ln=L[S.i]; cen.textContent=""; wbox.textContent=""; wbox.classList.remove("on");
+    if(!L.length){ cen.append(el("span","small muted","영상 안에 영어 자막이 나와요. '한글'을 누르면 한국어 자막으로 바뀌어요. 스크립트를 넣으면 문장별 번역·반복·담기도 돼요.")); cko.textContent=""; return; }
+    if(!ln){ cen.append(el("span","small muted","▶ 재생하면 자막이 여기 나와요")); cko.textContent=""; return; }
+    for(const tok of ln.text.split(" ")){ const m=tok.match(/^([^A-Za-z]*)([A-Za-z][A-Za-z'’-]*[A-Za-z]|[A-Za-z])([^A-Za-z]*)$/); if(!m){ cen.append(document.createTextNode(tok+" ")); continue; }
+      const b=el("button","ytw",tok); b.type="button"; b.onclick=()=>{ try{ ytP.pauseVideo(); }catch(_){ } showWord(m[2].replace(/’/g,"'")); }; cen.append(b, document.createTextNode(" ")); }
+    cko.textContent= S.ko? (ln.ko||"") : ""; want(S.i); want(S.i+1); want(S.i+2); };
+  const setI=(i,scroll)=>{ if(i===S.i) return; if(rows[S.i]) rows[S.i].classList.remove("on"); S.i=i; if(rows[i]){ rows[i].classList.add("on"); if(scroll && lst){ const r=rows[i]; const top=r.offsetTop-lst.offsetTop-lst.clientHeight/3; lst.scrollTo({top, behavior:"smooth"}); } } paintCur(); bLoop.classList.toggle("on", S.loop!=null && S.loop===i); };
+  const idxAt=t=>{ let lo=0, hi=L.length-1, ans=-1; while(lo<=hi){ const m=(lo+hi)>>1; if(L[m].t<=t+.15){ ans=m; lo=m+1; } else hi=m-1; } return ans; };
+  const seekI=i=>{ if(!L[i] || !ytP) return; try{ ytP.seekTo(Math.max(0,L[i].t-.15),true); ytP.playVideo(); }catch(_){ } setI(i,true); };
+  bPrev.onclick=()=>{ if(!L.length) return; const t=ytP&&ytP.getCurrentTime? ytP.getCurrentTime() : 0; let i=S.i; if(i>=0 && t-L[i].t<1.2) i--; seekI(Math.max(0,i)); };
+  bNext.onclick=()=>{ if(L.length) seekI(Math.min(L.length-1,S.i+1)); };
+  bLoop.onclick=()=>{ if(S.i<0) return; S.loop= S.loop===S.i? null : S.i; bLoop.classList.toggle("on",S.loop!=null); if(S.loop!=null) seekI(S.loop); toast(S.loop!=null? "🔁 이 문장을 계속 반복해요" : "반복 끔",true); };
+  bRate.onclick=()=>{ S.rate= S.rate===1? .75 : S.rate===.75? .5 : 1; bRate.textContent=S.rate+"x"; try{ ytP.setPlaybackRate(S.rate); }catch(_){ } };
+  const ccSet=()=>{ if(L.length || !ytP || !ytP.setOption) return; try{ ytP.loadModule && ytP.loadModule("captions"); ytP.setOption("captions","track", S.ko? {languageCode:"en", translationLanguage:{languageCode:"ko"}} : {languageCode:"en"}); }catch(_){ } };
+  if(!L.length){ S.ko=false; bKo.classList.remove("on"); [bPrev,bLoop,bNext].forEach(b=>b.style.display="none"); bClip.textContent="✂️ 여기서 클립"; }
+  bKo.onclick=()=>{ S.ko=!S.ko; ccSet(); bKo.classList.toggle("on",S.ko); paintCur(); document.querySelectorAll(".ytko").forEach(x=>x.classList.toggle("off",!S.ko)); };
+  let lst=null;
+  if(L.length){ lst=el("div","ytlst"); const io=("IntersectionObserver" in window)? new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) want(+e.target.dataset.i); }),{root:lst}) : null;
+    const TR=store.get("bandup-tr",{});
+    L.forEach((ln,i)=>{ if(!ln.ko && TR[ln.text]) ln.ko=TR[ln.text]; const r=el("div","ytrowl"); r.dataset.i=i; const tm=el("span","yttm",ytFmt(ln.t)); const tx=el("div","yttx"); tx.append(el("span","yten",ln.text), el("span","ytko"+(S.ko?"":" off"),ln.ko||""));
+      r.append(tm,tx); r.onclick=()=>seekI(i); rows.push(r); lst.append(r); if(io) io.observe(r); });
+    app.append(lst); }
+  const more=el("details","ytmore"); more.append(el("summary",null, L.length? "자막 다시 붙여 넣기" : "📋 자막(스크립트) 붙여 넣기")); const ta=el("textarea","msinp ytta"); ta.rows=5; ta.placeholder="0:00\nHey guys…"; const sb=el("button","btn","자막 넣기"); sb.type="button"; const sm=el("p","small txmsg","");
+  sb.onclick=()=>{ const segs=ytParse(ta.value); if(!segs.length){ sm.textContent="시간(0:05 같은)이 있는 스크립트를 붙여 넣어 주세요."; return; } v.lines=ytMerge(segs); ytSave(v); S.i=-1; render(); };
+  more.append(ta,sb,sm); app.append(more);
+  paintCur();
+  ytApi().then(()=>{ if(view.tab!=="yt" || !document.getElementById("ytplayer")) return;
+    const st0=Math.max(0,Math.floor((S.start||0)-2)); S.start=0;
+    ytP=new YT.Player("ytplayer",{width:"100%",height:"100%",videoId:v.vid,playerVars:{start:st0,playsinline:1,rel:0,modestbranding:1,cc_load_policy:L.length?0:1,cc_lang_pref:"en",hl:"en",iv_load_policy:3},
+      events:{ onReady:e=>{ try{ e.target.setPlaybackRate(S.rate); }catch(_){ } },
+        onStateChange:e=>{ if(e.data===1 && !L.length && !S.cc){ S.cc=1; ccSet(); } },
+        onError:e=>{ const c=e.data; fr.textContent=""; fr.append(el("p","yterr", c===101||c===150? "이 영상은 올린 사람이 다른 곳에서 재생하지 못하게 막아 두었어요. 다른 영상을 골라 주세요." : "영상을 불러오지 못했어요. 링크를 확인해 주세요.")); } }});
+    ytTimer=setInterval(()=>{ if(view.tab!=="yt" || !document.getElementById("ytplayer") && !document.querySelector(".ytframe iframe")){ ytStop(); return; }
+      if(!ytP || !ytP.getCurrentTime || !L.length) return; const t=ytP.getCurrentTime();
+      if(S.loop!=null && L[S.loop]){ const end=L[S.loop+1]? L[S.loop+1].t : L[S.loop].t+6; if(t>=end-.05 || t<L[S.loop].t-1){ try{ ytP.seekTo(Math.max(0,L[S.loop].t-.15),true); }catch(_){ } return; } }
+      const i=idxAt(t); if(i!==S.i) setI(i,true); },200); });
+}
+
+/* ---------- 젤리 로비 (담은 단어·북마크로 하는 퀴즈 놀이) ---------- */
+const JK=()=>`bandup-jelly-${slug}`;
+const J_FLAV=[["#ffc2d6","#ff4f8b"],["#ffd9a0","#ff8a2a"],["#fff1a6","#ffbf1f"],["#cdf7a6","#3fbf5f"],["#b4e1ff","#2e8cff"],["#e2c9ff","#9450ff"],["#ffd6c2","#ff6f52"],["#b8f6e8","#14bf9c"]];
+const J_SHAPE={
+  bear:{d:'<circle cx="31" cy="20" r="10"/><circle cx="69" cy="20" r="10"/><ellipse cx="50" cy="34" rx="23" ry="19"/><ellipse cx="50" cy="69" rx="26" ry="25"/><ellipse cx="25" cy="58" rx="9" ry="12" transform="rotate(25 25 58)"/><ellipse cx="75" cy="58" rx="9" ry="12" transform="rotate(-25 75 58)"/><ellipse cx="36" cy="91" rx="11" ry="7"/><ellipse cx="64" cy="91" rx="11" ry="7"/>', sp:[37,26], rim:false},
+  heart:{d:'<path d="M50 89C22 68 7 52 7 34 7 19 18 9 31 9c9 0 15 5 19 12 4-7 10-12 19-12 13 0 24 10 24 25 0 18-15 34-43 55z"/>', sp:[30,26], rim:true},
+  star:{d:'<path d="M50 9l11 23 25 3-18 18 5 25-23-12-23 12 5-25-18-18 25-3z" stroke-linejoin="round" stroke-width="12" stroke="currentColor"/>', sp:[40,30], rim:false},
+  ring:{d:'<path fill-rule="evenodd" d="M50 10a40 40 0 1 1 0 80 40 40 0 0 1 0-80zm0 24a16 16 0 1 0 0 32 16 16 0 0 0 0-32z"/>', sp:[30,26], rim:true},
+  drop:{d:'<path d="M13 76c0-36 16-62 37-62s37 26 37 62c0 9-6 14-15 14H28c-9 0-15-5-15-14z"/>', sp:[33,32], rim:true, ridge:true},
+  bean:{d:'<path d="M24 22c14-12 40-10 54 6s16 42 2 54-40 10-54-6-16-42-2-54z"/>', sp:[32,28], rim:true}
+};
+let jUid=0;
+function jSvg(shape,flav,opts){ const S=J_SHAPE[shape]||J_SHAPE.drop, [lt,dk]=flav, u="jg"+(++jUid), o=opts||{};
+  const fillD=S.d.replace(/stroke="currentColor"/,`stroke="url(#${u}a)"`);
+  const hiD=S.d.replace(/stroke="currentColor"/,`stroke="url(#${u}b)"`);
+  return `<svg viewBox="0 0 100 100" aria-hidden="true"><defs>
+<linearGradient id="${u}a" gradientUnits="userSpaceOnUse" x1="30" y1="6" x2="70" y2="98"><stop offset="0" stop-color="${lt}"/><stop offset=".55" stop-color="${dk}" stop-opacity=".92"/><stop offset="1" stop-color="${dk}"/></linearGradient>
+<radialGradient id="${u}b" gradientUnits="userSpaceOnUse" cx="${S.sp[0]}" cy="${S.sp[1]}" r="60"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset=".35" stop-color="#fff" stop-opacity=".18"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+<radialGradient id="${u}c" gradientUnits="userSpaceOnUse" cx="50" cy="40" r="62"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="${dk}" stop-opacity=".55"/></radialGradient>
+<filter id="${u}f" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.4"/></filter></defs>
+<g opacity="${o.op||.94}" fill="url(#${u}a)">${fillD}</g><g fill="url(#${u}c)">${fillD}</g><g fill="url(#${u}b)">${hiD}</g>
+${S.ridge? `<path d="M30 30c-4 12-6 30-6 46M50 16v64M70 30c4 12 6 30 6 46" stroke="#fff" stroke-opacity=".22" stroke-width="3" fill="none" stroke-linecap="round"/>` : ""}
+${S.rim? `<g fill="none" stroke="#fff" stroke-opacity=".4" stroke-width="1.6">${S.d}</g>` : ""}
+<ellipse cx="${S.sp[0]}" cy="${S.sp[1]}" rx="8" ry="4.5" transform="rotate(-32 ${S.sp[0]} ${S.sp[1]})" fill="#fff" opacity=".9" filter="url(#${u}f)"/>
+<circle cx="${S.sp[0]+11}" cy="${S.sp[1]-5}" r="2" fill="#fff" opacity=".95"/></svg>`; }
+function jPick(it){ const h=Math.abs([...it.k].reduce((a,c)=>a*31+c.charCodeAt(0)|0,7)); const shapes= it.kind==="s"? ["bear"] : ["heart","star","ring","drop","bean"]; return {shape:shapes[h%shapes.length], flav:J_FLAV[(h>>3)%J_FLAV.length]}; }
+const J_GAP=[1,3,7,14,30,60];
+function jState(){ const s=store.get(JK(),null); return s&&s.m? s : {m:{}}; }
+function jPool(){ const out=[], seen=new Set();
+  for(const id of cbmList()){ const c=getCard(id); if(!c || !c.en || !c.ko || c.kind==="fix") continue; const k="s:"+id; if(seen.has(k)) continue; seen.add(k); out.push({k, en:c.en, ko:c.ko, kind:"s"}); }
+  for(const w of vocAll()){ if(!w.w || !w.ko || !/[A-Za-z]/.test(w.w)) continue; const k="w:"+String(w.w).toLowerCase(); if(seen.has(k)) continue; seen.add(k); out.push({k, en:w.w, ko:String(w.ko).replace(/\s+/g," ").trim(), kind: String(w.w).split(" ").length>=5? "s" : "w"}); }
+  return out; }
+function jRoaming(max){ const st=jState(), t=today(); const pool=jPool(); const due=[], fresh=[];
+  for(const it of pool){ const m=st.m[it.k]; if(!m) fresh.push(it); else if(m.d<=t) due.push(it); }
+  return [...due, ...fresh].slice(0, max||12); }
+function jMerged(){ const st=jState(), t=today(); return Object.values(st.m).filter(m=>m.d>t).length; }
+function jTotal(){ return Object.keys(jState().m).length; }
+function jMark(it,ok){ const st=jState(); const m=st.m[it.k]||{n:0}; if(ok){ m.n=Math.min((m.n||0)+1,J_GAP.length); m.d=addD(today(),J_GAP[m.n-1]); st.m[it.k]=m; st.ok=(st.ok||0)+1; } else { st.miss=(st.miss||0)+1; } store.set(JK(),st); }
+function jOptions(it){ const pool=jPool().filter(x=>x.k!==it.k && x.kind===it.kind && x.en.toLowerCase()!==it.en.toLowerCase());
+  let extra= it.kind==="s"? (D.cards||[]).filter(c=>c.en && c.en!==it.en).map(c=>({en:c.en})) : Object.keys(G||{}).filter(w=>w.length>3 && w!==it.en.toLowerCase()).map(w=>({en:w}));
+  const pick=a=>a.sort(()=>Math.random()-.5); const opts=pick(pool).slice(0,3).map(x=>x.en);
+  for(const x of pick(extra)){ if(opts.length>=3) break; if(!opts.includes(x.en)) opts.push(x.en); }
+  return pick([it.en, ...opts]); }
+function jBlob(it,size){ const b=el("button","jel"+(it.kind==="s"?" js":"")); b.type="button"; if(size) b.style.setProperty("--js",size+"px"); const pk=jPick(it); b.style.setProperty("--jsh",pk.flav[1]+"66");
+  b.setAttribute("aria-label","젤리 잡기"); const w=el("span","jw"); w.style.animationDelay=(-Math.random()*2).toFixed(2)+"s"; w.innerHTML=jSvg(pk.shape,pk.flav); b.append(w); return b; }
+// 떠다니는 젤리 판 (field 안에서 튕겨 다님). onCatch(it, el) 로 퀴즈를 띄워요.
+function jField(field, items, onCatch, size){ const J=[]; const W=()=>field.clientWidth, H=()=>field.clientHeight; let paused=null;
+  items.forEach((it,i)=>{ const e=jBlob(it,size); field.append(e); const sz=size||(it.kind==="s"?64:54); const o={it,e,sz,x:Math.random()*Math.max(1,W()-sz),y:Math.random()*Math.max(1,H()-sz),vx:(Math.random()-.5)*1.2,vy:(Math.random()-.5)*1.2,boost:0,alive:true};
+    e.onclick=ev=>{ ev.stopPropagation(); if(!o.alive || paused) return; paused=o; e.classList.add("caught"); onCatch(o); }; J.push(o); });
+  const avoid=field.querySelector(".jbig");
+  const step=()=>{ if(!field.isConnected) return; const w=W(), h=H(); const c=avoid? {x:w/2,y:h/2,r:avoid.offsetWidth/2+10} : null;
+    for(const o of J){ if(!o.alive || o===paused) continue; const sp=1+o.boost; o.boost*=.97; o.x+=o.vx*sp; o.y+=o.vy*sp;
+      if(o.x<0){o.x=0;o.vx=Math.abs(o.vx);} if(o.x>w-o.sz){o.x=w-o.sz;o.vx=-Math.abs(o.vx);} if(o.y<0){o.y=0;o.vy=Math.abs(o.vy);} if(o.y>h-o.sz){o.y=h-o.sz;o.vy=-Math.abs(o.vy);}
+      if(c){ const dx=o.x+o.sz/2-c.x, dy=o.y+o.sz/2-c.y, d=Math.hypot(dx,dy)||1; if(d<c.r+o.sz/2){ o.vx=dx/d*Math.hypot(o.vx,o.vy); o.vy=dy/d*Math.hypot(o.vx,o.vy); o.x+=dx/d*2; o.y+=dy/d*2; } }
+      if(Math.random()<.008){ o.vx+=(Math.random()-.5)*.4; o.vy+=(Math.random()-.5)*.4; const v=Math.hypot(o.vx,o.vy); if(v>1.4){ o.vx*=1.4/v; o.vy*=1.4/v; } if(v<.3){ o.vx*=2; o.vy*=2; } }
+      o.e.style.transform=`translate(${o.x}px,${o.y}px)`; }
+    requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+  return { J, release(o,ok){ paused=null; o.e.classList.remove("caught"); if(!ok){ o.boost=3; o.e.classList.add("sad"); setTimeout(()=>o.e.classList.remove("sad"),2500); } },
+    merge(o,tx,ty,done){ paused=null; o.alive=false; o.e.classList.add("merge"); o.e.style.transform=`translate(${tx-o.sz/2}px,${ty-o.sz/2}px) scale(.2)`; setTimeout(()=>{ o.e.remove(); done&&done(); },650); },
+    left(){ return J.filter(o=>o.alive).length; } }; }
+function jQuiz(it, done){ const old=document.querySelector(".jsheet"); if(old) old.remove();
+  const sh=el("div","jsheet"); const card=el("div","jcard"); sh.append(card); document.body.append(sh);
+  card.append(el("span","jq", it.kind==="s"? "이 문장을 영어로?" : "이 뜻의 영어는?"), el("p","jko",it.ko));
+  const ops=el("div","jops"+(it.kind==="s"?" long":"")); let answered=false;
+  jOptions(it).forEach(o=>{ const b=el("button","jop",o); b.type="button"; b.onclick=()=>{ if(answered) return; answered=true; const ok=o===it.en;
+      b.classList.add(ok?"ok":"no"); if(!ok) [...ops.children].forEach(x=>{ if(x.textContent===it.en) x.classList.add("ok"); }); jMark(it,ok); if(ok) speak(it.en);
+      setTimeout(()=>{ sh.remove(); done(ok); }, ok? 450 : 1300); }; ops.append(b); });
+  const x=el("button","jx","나중에"); x.type="button"; x.onclick=()=>{ if(answered) return; answered=true; sh.remove(); done(null); };
+  card.append(ops,x); }
+function jBigPaint(big){ const n=jTotal(); big.style.setProperty("--bs",Math.min(190,120+n*2.2)+"px"); big.querySelector(".jbn").textContent=String(jMerged());
+  const box=big.querySelector(".jin"); const st=jState(); const keys=Object.keys(st.m).slice(-36); box.textContent="";
+  keys.forEach((k,i)=>{ const pk=jPick({k,kind:k.startsWith("s:")?"s":"w"}); const m=el("i","jmini"); const a=i*2.399, r=Math.sqrt((i+.5)/Math.max(keys.length,1)); m.style.left=(50+Math.cos(a)*r*30)+"%"; m.style.top=(60+Math.sin(a)*r*20)+"%"; m.style.transform=`translate(-50%,-50%) rotate(${(i*47)%360}deg)`; m.innerHTML=jSvg(pk.shape,pk.flav,{op:.85}); box.append(m); }); }
+function renderJelly(app){
+  const pool=jPool(); const R=jRoaming(12);
+  const hd=el("div","jhead"); const t=el("div"); t.append(el("h1",null,"젤리 로비"), el("p","lead","돌아다니는 젤리를 눌러서 맞히면 가운데 큰 젤리에 합체돼요.")); hd.append(t); app.append(hd);
+  const field=el("div","jfield"); const big=el("div","jbig"); big.innerHTML='<div class="jmold">'+jSvg("drop",["#f3e8ff","#c39bff"],{op:.55})+'<div class="jin"></div></div><b class="jbn">0</b>'; field.append(big); app.append(field);
+  const info=el("p","jinfo",""); app.append(info);
+  const paintInfo=left=>{ info.textContent= left? `남은 젤리 ${left}마리 · 합체 ${jMerged()}마리` : (pool.length? "🎉 모두 합체 완료! 복습할 때가 되면 젤리가 다시 나타나요." : "단어장에 단어를 담거나 큐카드를 북마크(☆)하면 젤리가 생겨요."); };
+  jBigPaint(big);
+  if(!R.length){ paintInfo(0); big.classList.add("happy"); return; }
+  const F=jField(field, R, o=>{ jQuiz(o.it, ok=>{ if(ok){ F.merge(o, field.clientWidth/2, field.clientHeight/2, ()=>{ big.classList.remove("boing"); void big.offsetWidth; big.classList.add("boing"); jBigPaint(big); const l=F.left(); paintInfo(l); if(!l) big.classList.add("happy"); }); } else F.release(o,false); }); });
+  paintInfo(R.length);
+}
+function vocAddKo(w,ko,ex){ w=String(w).replace(/\s+/g," ").trim(); if(!w) return false; const key=`bandup-myvoc-${slug}`; if(vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase())) return false;
+  const it={w,ko:ko||"",ex:ex||"",t:Date.now()}; const m=store.get(key,[]); m.push(it); store.set(key,m); return true; } // 첨삭의 형광 표현: AI 가 준 뜻을 그대로 담아요
 function vocQuickAdd(w,sent){ w=String(w).replace(/\s+/g," ").trim(); if(!w) return false; const key=`bandup-myvoc-${slug}`; if(vocAll().some(x=>String(x.w).toLowerCase()===w.toLowerCase())) return false;
   const it={w,ko:"",ex: sent? w : "",t:Date.now()}; const m=store.get(key,[]); m.push(it); store.set(key,m);
   vocLookup(w).then(r=>{ const mm=store.get(key,[]); const y=mm.find(z=>z.t===it.t); if(!y) return; y.ko=r.ko||y.ko; if(!y.ex) y.ex=r.ex||""; if(r.base){ y.base=r.base; y.form=r.form; } if(r.src==="d") y.src="d"; y.tried=today(); store.set(key,mm); }); return true; }
@@ -1488,16 +1843,17 @@ function scrParas(text){ const lines=String(text).split(/\n+/).map(x=>x.trim()).
     if(prev && !/[.!?:]["”’']?$/.test(prev) && prev.split(/\s+/).length>=4 && (words>=2) && (/^[a-z(“"'‘]/.test(ln) || /[,;\-–—]$/.test(prev) || prev.length>35)) out[out.length-1]=prev+" "+ln;
     else out.push(ln); }
   return out; }
-async function scrTranslate(){ if(scrTrBusy) return; scrTrBusy=true; const TR=store.get("bandup-tr",{});
-  while(scrTrQueue.length){ const [line,elx]=scrTrQueue.shift(); if(!elx.isConnected) continue; if(TR[line]){ elx.textContent=TR[line]; continue; }
-    let t=""; try{ const r=await fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q="+encodeURIComponent(line)).then(x=>x.ok? x.json():null); t=r&&r[0]? r[0].map(x=>x[0]).join("").trim() : ""; }catch(_){ }
-    if(!t){ try{ const mm=await fetch("https://api.mymemory.translated.net/get?langpair=en|ko&q="+encodeURIComponent(line.slice(0,480))).then(x=>x.ok? x.json():null); t=mm&&mm.responseData&&String(mm.responseData.translatedText||"").trim()||""; if(/MYMEMORY WARNING/i.test(t)) t=""; }catch(_){ } }
-    if(t){ TR[line]=t; store.set("bandup-tr",TR); elx.textContent=t; } else elx.textContent="(번역을 불러오지 못했어요)"; }
+async function trOne(line){ const TR=store.get("bandup-tr",{}); if(TR[line]) return TR[line]; let t="";
+  try{ const r=await fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q="+encodeURIComponent(line)).then(x=>x.ok? x.json():null); t=r&&r[0]? r[0].map(x=>x[0]).join("").trim() : ""; }catch(_){ }
+  if(!t){ try{ const mm=await fetch("https://api.mymemory.translated.net/get?langpair=en|ko&q="+encodeURIComponent(line.slice(0,480))).then(x=>x.ok? x.json():null); t=mm&&mm.responseData&&String(mm.responseData.translatedText||"").trim()||""; if(/MYMEMORY WARNING/i.test(t)) t=""; }catch(_){ } }
+  if(t){ const T2=store.get("bandup-tr",{}); T2[line]=t; store.set("bandup-tr",T2); } return t; }
+async function scrTranslate(){ if(scrTrBusy) return; scrTrBusy=true;
+  while(scrTrQueue.length){ const [line,elx]=scrTrQueue.shift(); if(!elx.isConnected) continue; const t=await trOne(line); elx.textContent= t || "(번역을 불러오지 못했어요)"; }
   scrTrBusy=false; }
 function renderScreens(app){
   const back=el("button","back","‹ 홈"); back.type="button"; back.onclick=()=>{ scrSel=[]; go("home"); }; app.append(back);
   const key=`bandup-screens-${slug}`; const list=store.get(key,[]).slice().reverse();
-  pageHead(app,"화면에서 가져온 글","모르는 단어를 누르면 노랗게 골라져요. 붙어 있는 단어 여러 개를 고르면 표현(예: take for granted)으로 담겨요. 다 고르고 아래 '단어장에 담기'를 누르세요.");
+  pageHead(app,"캡쳐한 글","모르는 단어를 누르면 노랗게 골라져요. 붙어 있는 단어 여러 개를 고르면 표현(예: take for granted)으로 담겨요. 다 고르고 아래 '단어장에 담기'를 누르세요.");
   if(!list.length){ app.append(el("p","muted small","가져온 화면이 없어요.")); return; }
   const H=new Set(vocAll().map(x=>String(x.w).toLowerCase()));
   const bar=el("div","scrbar"); const bt=el("span","scrbt",""); const bb=el("button","btn primary","단어장에 담기"); bb.type="button"; const bc=el("button","nav","취소"); bc.type="button"; bar.append(bt,bc,bb);
@@ -1516,7 +1872,10 @@ function renderScreens(app){
       const wrap=el("div","scrpara"); wrap.append(row);
       if(line.split(/\s+/).length>=3){ const tr=el("p","scrtr",""); const TR=store.get("bandup-tr",{}); if(TR[line]) tr.textContent=TR[line]; else scrTrQueue.push([line,tr]); wrap.append(tr);
         const sents=line.match(/[^.!?]+[.!?]+["”’']?|[^.!?]+$/g).map(x=>x.trim()).filter(x=>x.split(/\s+/).length>=3);
-        const sb=el("button","scrs", sents.length>1? `＋ 문장 ${sents.length}개 통째로 담기` : "＋ 문장 통째로 담기"); sb.type="button"; sb.onclick=()=>{ let n=0; for(const x of (sents.length? sents : [line])) if(vocQuickAdd(x,true)) n++; sb.textContent= n? `✓ ${n}개 담았어요` : "이미 있어요"; sb.disabled=!!n; }; wrap.append(sb); }
+        const sl=el("div","scrsl"); const many=sents.length>1;
+        (sents.length? sents : [line]).forEach(x=>{ const r=el("div","scrsr"); r.append(speakBtn(x,"이 문장 듣기"), slowBtn(x)); r.append(el("span","scrst"+(many?"":" one"), many? x : "이 문장 듣기"));
+          sl.append(r); });
+        wrap.append(sl); }
       p.append(wrap); });
     app.append(p); });
   app.append(el("div","scrspace"), bar); setTimeout(paint,0); scrTranslate();
@@ -1529,10 +1888,16 @@ function renderInbox(app){
   const ol=el("ol","ibsteps"); for(const t of ["아래 코드를 복사해요.","브라우저 북마크바에서 오른쪽 클릭 → 페이지 추가(새 북마크). 이름은 '밴드업 저장', URL 칸에 복사한 코드를 붙여 넣어요.","이제 영어 사이트에서 단어나 문장을 드래그로 선택하고 북마크바의 '밴드업 저장'을 누르면 끝! 작은 창이 떴다가 저장되고 닫혀요.","유튜브는 영상 아래 '…더보기 → 스크립트 표시'를 열면 자막을 드래그할 수 있어요."]) ol.append(el("li",null,t));
   p1.append(ol, copyRow("북마크 URL에 넣을 코드", inboxBookmarklet()));
   if(!IS_MOBILE){ const mb=el("button","btn primary","🪟 작은 밴드업 창 띄우기"); mb.type="button"; mb.onclick=openMini; p1.append(el("p","small muted","또는 아래 버튼을 누르면 유튜브·기사 위에 항상 떠 있는 작은 창이 생겨요. 단어를 드래그해서 창에 끌어다 놓거나, 복사한 뒤 창의 버튼을 누르면 저장돼요. (크롬·엣지에서 가장 잘 돼요)"), mb); }
-  app.append(p1);
-  const pb=el("div","panel txbox"); pb.append(el("b",null,"📱 아이폰: 뒷면 두 번 톡톡 = 지금 화면 저장"), el("p","small muted","보던 화면 그대로 폰 뒷면을 두 번 치면 화면 속 글이 밴드업으로 들어가요. 나중에 밴드업을 열고 모르는 단어만 톡톡 누르면 끝."));
-  const olb=el("ol","ibsteps"); for(const t of ["단축어 앱 → 오른쪽 위 ＋ → 아래 검색창에서 동작 3개를 차례로 눌러 넣어요: ① 스크린샷 찍기 ② 이미지에서 텍스트 추출 ③ URL 콘텐츠 가져오기","③의 파란 'URL'을 눌러 아래 URL을 붙여 넣어요.","③을 펼쳐서 방법 GET → POST. 요청 본문 JSON에서 '새로운 필드 추가 → 텍스트' 딱 1번: 키에 p_txt, 값에는 키보드 위 파란 '이미지에서 추출한 텍스트'를 눌러 넣기 → 완료","아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭 → 방금 만든 단축어. 끝!"]) olb.append(el("li",null,t));
-  pb.append(olb, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_save?apikey="+SB_KEY)); app.append(pb);
+  if(!IS_MOBILE) app.append(p1);
+  const pb=el("div","panel txbox"); pb.append(el("b",null,"📱 아이폰: 뒷면 두 번 톡톡 = 지금 화면 저장"), el("p","small muted","보던 화면 그대로 폰 뒷면을 두 번 치면 화면 속 글이 밴드업으로 들어가요. 나중에 밴드업을 열고 모르는 단어만 톡톡 누르면 끝. 처음 한 번만 설정해요 (1분)."));
+  const olb=el("ol","ibsteps");
+  if(D.capLink){ for(const t of ["아래 '단축어 받기'를 누르고 → '단축어 추가'를 눌러요.","아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭 → 방금 받은 단축어를 골라요.","아무 화면에서 폰 뒷면을 톡톡! 처음에 '허용하시겠습니까?'가 뜨면 '항상 허용'을 눌러요. 그다음부터는 안 물어봐요."]) olb.append(el("li",null,t));
+    const gb=el("a","btn primary","⬇️ 단축어 받기"); gb.href=D.capLink; gb.target="_blank"; gb.rel="noopener"; pb.append(olb, gb); }
+  else if(CAP_LINK){ for(const t of ["아래 '내 코드'를 복사해요.","'단축어 받기'를 누르고 → '단축어 추가'. 코드를 묻는 칸이 나오면 붙여 넣어요.","아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭 → '밴드업 캡쳐'를 골라요.","아무 화면에서 폰 뒷면을 톡톡! 처음에 '허용하시겠습니까?'가 뜨면 '항상 허용'을 눌러요. 그다음부터는 안 물어봐요."]) olb.append(el("li",null,t));
+    const gb=el("a","btn primary","⬇️ 단축어 받기"); gb.href=CAP_LINK; gb.target="_blank"; gb.rel="noopener"; pb.append(olb, copyRow("내 코드", D.inbox), gb); }
+  else { for(const t of ["단축어 앱 → 오른쪽 위 ＋ → 아래 검색창에서 동작 3개를 차례로 눌러 넣어요: ① 스크린샷 찍기 ② 이미지에서 텍스트 추출 ③ URL 콘텐츠 가져오기","③의 파란 'URL'을 눌러 아래 URL을 붙여 넣어요.","③을 펼쳐서 방법 GET → POST. 요청 본문 JSON에서 '새로운 필드 추가 → 텍스트'를 2번: 키 p_token, 값은 아래 '내 코드' / 키 p_txt, 값은 키보드 위 파란 '이미지에서 추출한 텍스트' → 완료","아이폰 설정 → 손쉬운 사용 → 터치 → 뒷면 탭 → 이중 탭 → 방금 만든 단축어.","처음 칠 때 '허용하시겠습니까?'가 뜨면 '항상 허용'. 끝!"]) olb.append(el("li",null,t));
+    pb.append(olb, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_save?apikey="+SB_KEY), copyRow("내 코드", D.inbox)); }
+  app.append(pb); if(IS_MOBILE) app.append(p1);
   const p2=el("div","panel txbox"); p2.append(el("b",null,"📱 아이폰 (단축어 앱, 처음 한 번만 설정)"));
   const ol2=el("ol","ibsteps"); for(const t of ["'단축어' 앱 → 오른쪽 위 + → 이름을 '밴드업 저장'으로 정해요.","아래쪽 ⓘ(정보) → '공유 시트에서 보기'를 켜요. 받을 항목은 '텍스트'만 남겨요.","동작 추가에서 'URL 콘텐츠 가져오기'를 넣고, 아래 URL을 붙여 넣어요.","그 동작을 펼쳐서 방법: POST, 헤더 2개(apikey, Authorization)를 아래 값으로 추가해요.","요청 본문: JSON → 필드 2개 추가: p_token(텍스트) = 아래 토큰, p_txt(텍스트) = '단축어 입력'(변수).","끝! 이제 어떤 앱에서든 단어를 선택 → 공유 → '밴드업 저장'을 누르면 앱을 열지 않고 바로 저장돼요."]) ol2.append(el("li",null,t));
   p2.append(ol2, copyRow("URL", SB_URL+"/rest/v1/rpc/bu_add"), copyRow("헤더 apikey", SB_KEY), copyRow("헤더 Authorization", "Bearer "+SB_KEY), copyRow("p_token", D.inbox)); app.append(p2);
@@ -1610,7 +1975,16 @@ function reviewP1(n){
     VCARDS[id]=c; return c; });
   setTimeout(()=>dyTranslate(list),800); return list;
 }
+/* 홈 '오늘의 복습' = 매일 바뀌는 10문제 (예전 큐카드 탭 '매일 연습') */
+function dailyIds(){
+  if(!D || D.common || D.demo) return null;
+  if(D.dailyFrom==="sessions"){ const pool=D.cards.filter(c=>(c.sessions||[]).length && D.sessions.some(x=>x.title==="Speaking Matrix" && (c.sessions||[]).includes(x.no))); return dyPick(pool,10,today()+slug+"sm").map(c=>c.id); }
+  if(D.group==="other"||D.group==="ielts"||D.group==="church"){ const keep=dySrc; dySrc="mix"; const L=dyCards(); dySrc=keep; if(L.length) setTimeout(()=>dyTranslate(L),800); return L.map(c=>c.id); }
+  return null;
+}
+function dailyLeft(){ const d=dailyIds(); if(!d || !d.length) return null; const t=today(); return d.filter(id=>(srs[id]||{}).last!==t); }
 function reviewQueue(extra){
+  if(!extra){ const left=dailyLeft(); if(left){ return left.length? left : dailyIds(); } }
   let pool = extra ? D.cards.filter(c=>isWriting(c) && ((srs[c.id]||{}).box||0)<MASTER) : dueCards();
   pool.sort((a,b)=>(rep(b)-rep(a)) || (((srs[a.id]||{}).box||0)-((srs[b.id]||{}).box||0)) || (marks[b.id]==="again")-(marks[a.id]==="again") || Math.random()-.5);
   if(extra) return pool.slice(0,10).map(c=>c.id);
@@ -1621,11 +1995,6 @@ function reviewQueue(extra){
   for(const c of [...voc.slice(5)]){ if(out.length>=DAILY) break; out.push(c); }
   return dyPick(out.map(c=>c.id), out.length, today()+slug+"mix");
 }
-function sessRange(nums){
-  const n=[...new Set(nums)].filter(x=>x!=null).sort((a,b)=>a-b); const out=[];
-  for(let i=0;i<n.length;){ let j=i; while(j+1<n.length && n[j+1]===n[j]+1) j++; out.push(j-i>=2? `${n[i]}~${n[j]}` : n.slice(i,j+1).join("·")); i=j+1; }
-  return out.join("·");
-}
 function renderReview(app){
   if(!reviewState){
     const ids = (view.ids && view.ids.length) ? view.ids : reviewQueue(view.extra);
@@ -1634,7 +2003,7 @@ function renderReview(app){
   const R=reviewState;
   const c=R.ids[R.i] && getCard(R.ids[R.i]);
   if(!c){
-  pageHead(app, view.extra? "약한 카드 연습" : "오늘의 복습", view.extra? "헷갈렸던 카드 10장을 다시 봐요." : `하루 ${DAILY}장씩, 다시 볼 때가 된 카드가 자동으로 나와요.`);
+  pageHead(app, view.extra? "약한 카드 연습" : "오늘의 복습", view.extra? "헷갈렸던 카드 10장을 다시 봐요." : (dailyIds()? "매일 바뀌는 오늘의 문장 10개예요." : `하루 ${DAILY}장씩, 다시 볼 때가 된 카드가 자동으로 나와요.`));
     const e=el("div","empty");
     if(R.res.length){ e.append(el("div","big","✓"), el("h2",null,"오늘 복습 끝!"), el("p",null,`${R.res.length}장을 복습했어요. 다음 복습 때 다시 나와요.`)); }
     else { e.append(el("div","big","✓"), el("h2",null,"오늘 복습할 카드가 없어요"), el("p",null,"내일 다시 열어 보세요.")); }
@@ -1654,21 +2023,12 @@ function toast(msg,ok){ const t=el("div","toast "+(ok?"ok":"no"),msg); document.
 function reviewMove(d){ const R=reviewState; if(d<0){ if(R.i>0){ R.i--; flipped=false; picked=null; render(); } return; }
   const c=getCard(R.ids[R.i]); if(c && !R.res.some(r=>r.c.id===c.id)){ grade(c,true); R.res.push({ok:true,c}); }
   R.i++; flipped=false; picked=null; render(); window.scrollTo(0,0); }
-function answer(c,ok){ toast(ok? "좋아요! 며칠 뒤에 다시 나와요" : "괜찮아요, 내일 다시 나와요", ok); grade(c,ok); reviewState.res.push({ok,c}); reviewState.i++; flipped=false; picked=null; render(); }
 
 /* ---------- notes ---------- */
-function noteRow(c){
-  const r=el("div","m");
-  r.append(el("span","wr", c.wrong || c.mine || c.ko));
-  const rt=el("div","rt"); rt.append(el("span",null,c.en)); r.append(rt);
-  const tp=c.note || (c.kind==="ko"? c.ko : ""); if(tp) r.append(el("span","tp",tp));
-  const sd=el("div","sd"); sd.append(rep(c)? el("span","rep",`반복 ${c.sessions.join("·")}회`) : el("span","sess",sessLabel(c))); r.append(sd);
-  return r;
-}
 
 /* ---------- ideas: Part 1 / Part 2 / Part 3 ---------- */
 let podPickOpen=false;
-let ideaPart="p2", openKey=null, p2Query="", p2Lesson=false;
+let ideaPart="p2", openKey=null, p2Query="", p3Query="";
 function renderIdeas(app){
   pageHead(app,"아이디어","스피킹 답변에 쓸 재료를 Part별로 모았어요.");
   const seg=el("div","modeseg"); seg.setAttribute("role","tablist");
@@ -1716,66 +2076,6 @@ function renderP1(app){
   });
   app.append(el("p","muted small","참고: "+P1Q.source));
 }
-function startVocab(topics, title, shuffle, backTo, limit=20){
-  let ids=[];
-  for(const tp of topics){ tp.words.forEach(([en,ko,ex],i)=>{ const id=`v-${tp.topic}-${i}`.replace(/[^\w-]/g,"_");
-    VCARDS[id]={id,kind:"ko",type:"어휘",vlabel: backTo==="words"? "아이엘츠 단어" : "주제별 어휘",vtopic:tp.ko,ko,en,gram:ex? ex.replace(/[<>&]/g,""):"",sessions:[]}; ids.push(id); }); }
-  if(shuffle) ids=ids.sort(()=>Math.random()-.5).slice(0,limit);
-  deckState=null; go("cards",{deck:"vocab", ids, title, backTo});
-}
-
-/* ---------- 4-choice word quiz (말해보카 style) ---------- */
-let QZ=null;
-const shuffle=a=>{ const x=[...a]; for(let i=x.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [x[i],x[j]]=[x[j],x[i]]; } return x; };
-function allWords(){ const out=[]; if(WB) WB.sections.forEach(s=>s.groups.forEach(g=>g.words.forEach(w=>out.push(w)))); if(P1) P1.topics.forEach(t=>t.words.forEach(w=>out.push(w))); return out; }
-function startQuiz(words, title, n=10, back){
-  const pool=words.length>=4? words : allWords();
-  const qs=shuffle(words).slice(0,n).map(w=>{
-    const wc=x=>Math.min(3,x[0].trim().split(/\s+/).length);
-    const lw=w[0].toLowerCase(); const others=shuffle(pool.filter(o=>{ const lo=o[0].toLowerCase(); return lo!==lw && o[1]!==w[1] && !lo.includes(lw) && !lw.includes(lo); })).sort((a,b)=>Math.abs(wc(a)-wc(w))-Math.abs(wc(b)-wc(w)));
-    const seen=new Set([w[0].toLowerCase()]); const opts=[w];
-    for(const o of others){ if(opts.length>=4) break; if(!seen.has(o[0].toLowerCase())){ seen.add(o[0].toLowerCase()); opts.push(o); } }
-    return {w, opts:shuffle(opts)};
-  });
-  QZ={qs, i:0, res:[], chosen:null, title, back: back||(()=>{ QZ=null; render(); })};
-  render(); window.scrollTo(0,0);
-}
-function renderQuiz(app){
-  const Q=QZ;
-  if(Q.i>=Q.qs.length){
-    const ok=Q.res.filter(r=>r.ok).length, wrong=Q.res.filter(r=>!r.ok);
-    const e=el("div","empty"); e.append(el("div","big",`${ok}/${Q.res.length}`), el("h2",null, ok===Q.res.length? "전부 맞혔어요!" : "퀴즈 끝!"));
-    if(wrong.length){ const ul=el("div","wronglist qwl"); wrong.forEach(r=>{ const row=el("div"); row.append(el("b",null,r.w[0]), el("span",null,r.w[1])); ul.append(row); }); e.append(ul);
-      const again=el("button","btn primary","틀린 단어 다시 풀기"); again.type="button"; again.onclick=()=>startQuiz(wrong.map(r=>r.w), Q.title+" (다시)", wrong.length, Q.back); e.append(again); }
-    const send=el("button","btn","선생님께 결과 보내기"); send.type="button";
-    send.onclick=()=>{ const d=new Date(); let t=`[${D.name} · 단어 퀴즈 ${Q.title} · ${d.getMonth()+1}/${d.getDate()}]\n맞힘 ${ok} / ${Q.res.length}개`; if(wrong.length) t+=`\n틀린 단어:\n`+wrong.map(r=>`- ${r.w[0]} (${r.w[1]})`).join("\n"); reportSheet(`단어 퀴즈 ${Q.title}`, ok, Q.res.length, t); };
-    const done=el("button","btn","끝내기"); done.type="button"; done.onclick=()=>Q.back();
-    e.append(send, done); app.append(e); return;
-  }
-  const q=Q.qs[Q.i];
-  app.append(lessonBar(()=>Q.back(), Q.i, Q.qs.length));
-  const box=el("div","qz");
-  box.append(el("p","qz-ask","이 뜻의 영어는?"), el("p","qz-ko",q.w[1].replace(/\s*\([^)]*[A-Za-z][^)]*\)/g,"").trim()||q.w[1]));
-  const list=el("div","qz-opts");
-  q.opts.forEach((o,k)=>{
-    const b=el("button","qz-opt"); b.type="button"; b.append(el("span","qz-n",String(k+1)), el("span",null,o[0]));
-    if(Q.chosen!=null){ b.disabled=true; if(o===q.w) b.classList.add("right"); else if(o===Q.chosen) b.classList.add("wrong"); }
-    b.onclick=()=>{ if(Q.chosen!=null) return; Q.chosen=o; const ok=o===q.w; Q.res.push({w:q.w, ok}); speak(q.w[0]); render(); };
-    list.append(b);
-  });
-  box.append(list); app.append(box);
-  if(Q.chosen!=null){
-    const ok=Q.chosen===q.w;
-    const fb=el("div","qz-fb "+(ok?"ok":"no"));
-    fb.append(el("b",null, ok? "정답이에요!" : "아쉬워요"));
-    const ans=el("p","qz-ans"); ans.append(el("b",null,q.w[0]), document.createTextNode(" · "+q.w[1])); fb.append(ans);
-    if(!ok) fb.append(el("p","qz-ex",`고른 단어 ${Q.chosen[0]} = ${Q.chosen[1]}`));
-    if(q.w[2]) fb.append(el("p","qz-ex",q.w[2]));
-    const nx=el("button","btn primary", Q.i+1<Q.qs.length? "다음" : "결과 보기"); nx.type="button"; nx.onclick=()=>{ Q.i++; Q.chosen=null; render(); window.scrollTo(0,0); };
-    fb.append(nx); app.append(fb);
-    setTimeout(()=>{ try{ nx.scrollIntoView({block:"nearest",behavior:"smooth"}); }catch(_){} },50);
-  } else app.append(el("p","hint2","알맞은 단어를 눌러 주세요"));
-}
 function renderP2X(app){
   app.append(el("p","muted small",`추가 주제 ${P2X.items.length}개 · Part 3 탭에 심화 질문도 있어요.`));
   for(const it of P2X.items){
@@ -1791,18 +2091,19 @@ function renderP3(app){
   for(const [n,k,ex] of [["1","명확한 대답","I think… / In my view, …"],["2","근거","That's because…"],["3","예시","For example, …"],["4","마무리","So that's why…"]]){ const li=el("li"); li.append(el("b",null,`${n}. ${k}`), el("span",null,ex)); ol.append(li); }
   t.append(ol); app.append(t);
   if(!P3) return;
-  const inp=el("input"); inp.type="search"; inp.placeholder="주제 검색 (예: friend, technology)"; inp.setAttribute("aria-label","Part 3 주제 검색"); inp.className="p3search";
+  const inp=el("input"); inp.type="search"; inp.placeholder="주제 검색 (예: friend, technology)"; inp.setAttribute("aria-label","Part 3 주제 검색"); inp.className="p3search"; inp.value=p3Query;
   const cnt=el("p","muted small",`Part 2 주제 ${P3.items.length}개 · 주제마다 심화 질문`);
-  const apply=()=>{ const q=inp.value.trim().toLowerCase(); let n=0; document.querySelectorAll(".p3sec").forEach(c=>{ const ok=!q||c.dataset.search.includes(q); c.hidden=!ok; if(ok) n++; }); cnt.textContent=`${n}개 주제`; };
+  const apply=()=>{ p3Query=inp.value; const q=inp.value.trim().toLowerCase(); let n=0; document.querySelectorAll(".p3sec").forEach(c=>{ const ok=!q||c.dataset.search.includes(q); c.hidden=!ok; if(ok) n++; }); cnt.textContent=`${n}개 주제`; };
   inp.addEventListener("input",e=>{ if(e.isComposing) return; apply(); }); inp.addEventListener("compositionend",apply);
-  cnt.textContent=`Part 2 주제 ${P3.items.length}개 · 주제마다 심화 질문`; app.append(cnt);
+  cnt.textContent=`Part 2 주제 ${P3.items.length}개 · 주제마다 심화 질문`; app.append(inp, cnt);
   for(const it of P3.items){
     const p2=P2&&P2.items.find(x=>x.no===it.no);
     const sec=el("div","panel p3sec"); sec.dataset.search=(it.topic+" "+(p2? p2.answer+" "+p2.points.join(" "):"")+" "+it.qs.join(" ")).toLowerCase();
-    sec.append(el("span","from2",(it.no>=70? `Part 2 추가 #${it.no}` : `Part 2 #${it.no}`)+(it.lesson? ` · ${it.lesson}회차 수업 질문`:"")), el("b","p3t",it.topic));
+    sec.append(el("span","from2",(it.no>=70? `Part 2 추가 #${it.no}` : `Part 2 #${it.no}`)), el("b","p3t",it.topic)); // 'N회차 수업' 표시는 공용 데이터라 학생마다 맞지 않아 숨겨요
     const ol=el("ol","p1q"); it.qs.forEach(q=>ol.append(el("li",null,q))); sec.append(ol);
     app.append(sec);
   }
+  if(p3Query.trim()) apply();
 }
 let p2Set="main";
 function renderP2(app){
@@ -1822,16 +2123,15 @@ function renderP2(app){
     const em=document.getElementById("p2empty"); if(em) em.hidden = n>0; };
   inp.addEventListener("input",e=>{ if(e.isComposing) return; applyFilter(); });
   inp.addEventListener("compositionend",applyFilter);
-  const chip=el("button",null,"수업에서 다룬 주제만"); chip.type="button"; chip.className="lessonchip"; chip.setAttribute("aria-pressed",String(p2Lesson)); chip.onclick=()=>{ p2Lesson=!p2Lesson; render(); };
-  p2Query="";
+  tools.append(inp); app.append(tools);
   const q=p2Query.trim().toLowerCase();
   const hay=it=>(it.topic+" "+it.answer+" "+it.points.join(" ")+" "+(it.alts||[]).join(" ")).toLowerCase();
-  const list=P2.items.filter(it=>(!p2Lesson || it.lesson));
+  const list=P2.items;
   const shown=list.filter(it=>!q || hay(it).includes(q)).length;
   const cnt=el("p","muted small",`9~12월 예상 기출 ${shown}개`); cnt.id="p2count"; app.append(cnt);
   for(const it of list){
     const hd=el("div");
-    const top=el("span","from2", `#${it.no}`+(it.lesson? ` · ${it.lesson}회차 수업에서 다룸`:""));
+    const top=el("span","from2", `#${it.no}`);
     hd.append(top, el("b",null,it.topic));
     if(it.answer) hd.append(el("span","ans-chip",`답변: ${it.answer}`));
     const card=fold("p2-"+it.no, hd, b=>{
@@ -1849,46 +2149,10 @@ function renderP2(app){
 
 /* ---------- IELTS word study ---------- */
 let wbSec="all", wordMode="vocab";
-function wordsTile(){
-  const n = WB? WB.sections.reduce((a,s)=>a+s.groups.reduce((b,g)=>b+g.words.length,0),0) : 0;
-  const t=el("button","tile wtile"); t.type="button";
-  const tt=el("div","t"); tt.append(el("b",null,"아이엘츠 단어 공부하기"), el("span",null, n? `리스닝 · 스피킹 · 리딩·라이팅 단어 ${n}개` : "단어를 불러오는 중…"));
-  t.append(el("span","no","Aa"), tt, el("span","go","›")); t.onclick=()=>go("words");
-  return t;
-}
-function wbTopics(secs){ return secs.flatMap(s=>s.groups.map(g=>({topic:`${s.key}-${g.name}`, ko:`${s.ko} · ${g.name}`, words:g.words}))); }
 function renderWords(app){
   if(LD) return renderDictation(app);
   pageHead(app,"철자","리스닝에서 자주 틀리는 단어를 듣고 써 봐요.");
   return renderListen(app);
-}
-function renderWordsOld(app){
-  if(wordMode==="spell") return renderListen(app);
-  if(!WB){ const e=el("div","empty"); e.append(el("p",null,"단어를 불러오지 못했어요.")); app.append(e); return; }
-  const chips=el("div","pchips"); chips.setAttribute("role","group");
-  for(const [k,l] of [["all","전체"],...WB.sections.map(s=>[s.key,s.ko])]){ const b=el("button",null,l); b.type="button"; b.setAttribute("aria-pressed",String(wbSec===k)); b.onclick=()=>{ wbSec=k; openKey=null; render(); }; chips.append(b); }
-  app.append(chips);
-  const secs = wbSec==="all"? WB.sections : WB.sections.filter(s=>s.key===wbSec);
-  const total=secs.reduce((a,s)=>a+s.groups.reduce((b,g)=>b+g.words.length,0),0);
-  const ttl = wbSec==="all"? "아이엘츠 단어" : secs[0].ko+" 단어";
-  const row0=el("div","btnrow two");
-  const qz=el("button","btn primary","퀴즈 10문제"); qz.type="button"; qz.onclick=()=>startQuiz(secs.flatMap(s=>s.groups.flatMap(g=>g.words)), ttl, 10);
-  const start=el("button","btn",`카드 20장`); start.type="button"; start.onclick=()=>startVocab(wbTopics(secs), ttl, true, "words", 20);
-  row0.append(qz,start); app.append(row0);
-  for(const s of secs){
-    if(wbSec==="all") app.append(el("h2","wsec",`${s.ko} · ${s.en}`));
-    for(const g of s.groups){
-      const hd=el("div"); hd.append(el("span","from2",`${s.ko} · ${g.words.length}개`), el("b",null,g.name));
-      app.append(fold(`wb-${s.key}-${g.name}`, hd, b=>{
-        const r1=el("div","btnrow two");
-        const q1=el("button","btn primary",`퀴즈 ${Math.min(10,g.words.length)}문제`); q1.type="button"; q1.onclick=()=>startQuiz(g.words, g.name, 10);
-        const go1=el("button","btn",`카드 ${g.words.length}장`); go1.type="button"; go1.onclick=()=>startVocab([{topic:`${s.key}-${g.name}`, ko:`${s.ko} · ${g.name}`, words:g.words}], g.name, false, "words");
-        r1.append(q1,go1); b.append(r1);
-        for(const [en,ko,ex] of g.words){ const r=el("div","vrow"); const top=el("div","vtop"); top.append(el("b",null,en), el("span",null,ko)); r.append(top); if(ex) r.append(el("p","vex",ex)); b.append(r); }
-      }));
-    }
-  }
-  app.append(el("p","muted small","참고: "+WB.sources.join(" · ")+". 뜻과 예문은 수업용으로 새로 썼어요."));
 }
 
 /* ---------- listening spelling ---------- */
@@ -1897,14 +2161,20 @@ let lsPart="Part 1", lsCat=null, LD=null;
 const SPEAK_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
 const canSpeak = ()=> "speechSynthesis" in window && typeof SpeechSynthesisUtterance!=="undefined";
 let enVoice=null;
-function pickVoice(){ try{ const vs=speechSynthesis.getVoices(); enVoice = vs.find(v=>/en-GB/i.test(v.lang)) || vs.find(v=>/^en/i.test(v.lang)) || null; }catch(_){} }
+function pickVoice(){ try{ const vs=speechSynthesis.getVoices(); const good=v=>/natural|premium|enhanced|neural|siri/i.test(v.name+" "+(v.voiceURI||"")); const gb=vs.filter(v=>/en[-_]GB/i.test(v.lang)), en=vs.filter(v=>/^en/i.test(v.lang)); enVoice = gb.find(good) || en.find(good) || gb.find(v=>/google/i.test(v.name)) || gb[0] || en[0] || null; }catch(_){} }
 if(canSpeak()){ pickVoice(); try{ speechSynthesis.onvoiceschanged=pickVoice; }catch(_){} }
 let spAudio=null;
 function spFile(word){ return String(word).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""); }
+let SAY=null; fetch("audio/say/index.json").then(r=>r.ok? r.json():[]).then(a=>{ SAY=new Set(a); }).catch(()=>{});
+function sayKey(t){ const s=String(t).replace(/\u2019/g,"'").trim().split(/\s+/).join(" "); let x=0x811c9dc5; for(let i=0;i<s.length;i++){ x^=s.charCodeAt(i); x=Math.imul(x,0x01000193)>>>0; } return x.toString(16).padStart(8,"0"); }
 function speak(word, slow){
+  if(SAY && SAY.has(sayKey(word))){
+    try{ speechSynthesis.cancel(); }catch(_){}
+    try{ if(spAudio) spAudio.pause(); spAudio=new Audio(`audio/say/${sayKey(word)}.mp3`); spAudio.playbackRate= slow? .75 : 1; spAudio.play().catch(()=>ttsSpeak(word,slow)); return true; }catch(_){ }
+  }
   if(LS && spAll().some(w=>w[0]===word)){
     try{ speechSynthesis.cancel(); }catch(_){}
-    try{ if(spAudio) spAudio.pause(); spAudio=new Audio(`audio/spell/${spFile(word)}.mp3?v=gb`); spAudio.playbackRate= slow? .75 : 1; spAudio.play().catch(()=>ttsSpeak(word,slow)); return true; }catch(_){ }
+    try{ if(spAudio) spAudio.pause(); spAudio=new Audio(`audio/spell/${spFile(word)}.mp3?v=k1`); spAudio.playbackRate= slow? .75 : 1; spAudio.play().catch(()=>ttsSpeak(word,slow)); return true; }catch(_){ }
   }
   return ttsSpeak(word,slow);
 }
@@ -1936,7 +2206,6 @@ function renderListen(app){
   app.append(p);
 }
 function spAll(){ return LS? LS.categories.flatMap(c=>c.words) : []; }
-function spHash(str){ let h=2166136261; for(const ch of str){ h^=ch.charCodeAt(0); h=Math.imul(h,16777619); } return h>>>0; }
 function spBuild(st){
   const all=spAll(), names=new Set(all.map(w=>w[0]));
   st.wrong=st.wrong.filter(w=>names.has(w)); st.done=st.done.filter(w=>names.has(w));
@@ -2019,43 +2288,6 @@ function renderDictation(app){
 }
 
 /* ---------- report to teacher ---------- */
-function openReport(kind){
-  let title, lines=[], okN=0, total=0, again=[];
-  const d=new Date(), md=(d.getMonth()+1)+"/"+d.getDate();
-  if(kind==="review" && reviewState){
-    total=reviewState.res.length; okN=reviewState.res.filter(r=>r.ok).length; again=reviewState.res.filter(r=>!r.ok).map(r=>r.c);
-    title=`오늘의 복습`; lines.push(`맞힘 ${okN} / ${total}장`);
-  } else {
-    const ids=deckState? deckState.ids : []; total=ids.length;
-    okN=ids.filter(id=>marks[id]==="know").length; again=ids.filter(id=>marks[id]==="again").map(getCard);
-    title = !deckState ? "큐카드" : deckState.key==="vocab" ? `${view.title||"주제별 어휘"} 어휘 카드` : deckState.key==="rand" ? "랜덤 퀴즈" : deckState.key==="wrong" ? "틀린 문장 연습" : deckState.key==="all" ? "전체 큐카드" : `${deckState.key}회차 큐카드`;
-    lines.push(`알았어요 ${okN} / ${total}장`);
-    const rest=total-okN-again.length; if(rest>0) lines.push(`아직 표시 안 한 카드 ${rest}장`);
-  }
-  let text=`[${D.name} · ${title} · ${md}]\n`+lines.join("\n");
-  if(again.length) text+=`\n다시 볼 문장 ${again.length}개:\n`+again.map(c=>"- "+c.en).join("\n");
-  text+=`\n연속 공부 ${streak()}일`;
-  reportSheet(title, okN, total, text);
-}
-function reportSheet(title, okN, total, text){
-  const bg=el("div","sheet-bg"); const sh=el("div","sheet"); sh.setAttribute("role","dialog"); sh.setAttribute("aria-label","선생님께 결과 보내기");
-  sh.append(el("div","big",`${okN}/${total}`), el("h2",null, `${title} 끝!`), el("p","muted small","아래 내용이 선생님께 전달돼요."));
-  const ta=el("textarea"); ta.id="reportText"; ta.readOnly=true; ta.value=text; ta.setAttribute("aria-label","보낼 내용"); sh.append(ta);
-  const row=el("div","row");
-  if(D.form && D.form.url){
-    const a=el("a","btn primary","선생님께 완료 알림 보내기");
-    a.href=D.form.url.replace("NAME_X",encodeURIComponent(D.name)).replace("SESSION_X",encodeURIComponent(title)).replace("RESULT_X",encodeURIComponent(text));
-    a.target="_blank"; a.rel="noopener"; row.append(a);
-  }
-  const cp=el("button","btn kakao","복사해서 카톡으로 보내기"); cp.type="button";
-  const note=el("p","note");
-  cp.onclick=()=>{ const fb=()=>{ ta.focus(); ta.select(); note.textContent="글자를 길게 눌러 복사한 뒤 카톡에 붙여 넣어 주세요."; };
-    try{ navigator.clipboard.writeText(text).then(()=>{ note.textContent="복사했어요! 카톡 선생님 채팅방에 붙여 넣어 주세요."; }, fb); }catch(_){ fb(); } };
-  const close=el("button","btn","닫기"); close.type="button"; close.onclick=()=>bg.remove();
-  row.append(cp, close); sh.append(row, note);
-  bg.append(sh); bg.onclick=e=>{ if(e.target===bg) bg.remove(); };
-  document.body.append(bg);
-}
 
 document.addEventListener("keydown",e=>{
   if(view.tab==="cards" && view.deck!=null && deckState && !/INPUT|TEXTAREA/.test(e.target.tagName)){
@@ -2066,7 +2298,7 @@ window.addEventListener("hashchange",()=>{ if(window.BANDUP_SLUG) return; const 
 if("serviceWorker" in navigator && location.protocol==="https:" && !/claude|claudeusercontent/.test(location.hostname)){
   navigator.serviceWorker.register("sw.js").catch(()=>{});
 }
-setTimeout(function waitD(){ if(typeof D!=="undefined" && D && D.slug){ cloudBoot(); inboxPull(); document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible" && Date.now()-inboxLast>15000) inboxPull(); }); } else setTimeout(waitD,500); },800);
+setTimeout(function waitD(){ if(typeof D!=="undefined" && D && D.slug){ capPending(); inboxPull(); cloudBoot(); document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible" && Date.now()-inboxLast>3000) inboxPull(); }); window.addEventListener("bandup-open",()=>{ if(Date.now()-inboxLast>1500) inboxPull(); }); } else setTimeout(waitD,150); },150);
 (function autoUpdate(){
   const cur=((document.querySelector('script[src*="app.js?v="]')||{}).src||"").split("v=")[1]; if(!cur) return; let last=0; const day0=today();
   const check=()=>{ if(document.visibilityState!=="visible") return; if(today()!==day0){ const a=document.activeElement; if(!(a && /INPUT|TEXTAREA/.test(a.tagName))){ location.reload(); return; } } if(Date.now()-last<60000) return; last=Date.now();

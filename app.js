@@ -36,7 +36,7 @@ async function boot(){
   try{
     const [s,g]=await Promise.all([fetch(`data/students/${slug}.json`,{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
                                    fetch("data/glossary.json",{cache:"no-cache"}).then(r=>r.ok? r.json():{}).catch(()=>({}))]);
-    if(s.group==="church" || s.group==="other"){ const gr=await fetch("data/groups/"+s.group+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null); if(gr) for(const k of Object.keys(gr)) if(!["slug","name","form","group"].includes(k) && !(k==="words" && s.words && s.words.length)) s[k]=gr[k]; }
+    if(s.group==="church" || s.group==="other"){ const gr=await fetch("data/groups/"+s.group+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null); if(gr) for(const k of Object.keys(gr)) if(!["slug","name","form","group"].includes(k) && !(k==="words" && s.words && s.words.length) && !(s.lessons && ["sessions","cards","podDaily"].includes(k))) s[k]=gr[k]; if(s.lessons){ s.sessions=s.sessions||[]; s.cards=s.cards||[]; } }
     if(s.group==="church" && s.sessions){ const td=today(); const hide=new Set(s.sessions.filter(x=>x.date && x.date>td).map(x=>x.no)); if(hide.size){ s.sessions=s.sessions.filter(x=>!hide.has(x.no)); s.cards=(s.cards||[]).filter(c=>!(c.sessions||[]).length || (c.sessions||[]).some(n=>!hide.has(n))); } }
     D=s; G=g||{};
     D.podSessions=[];
@@ -884,7 +884,7 @@ function cardPhrases(c){
   return L.filter(a=>!L.some(b=>b!==a && norm(b).includes(norm(a)) && norm(b)!==norm(a))).filter((a,i,arr)=>arr.findIndex(b=>norm(b)===norm(a) || stem(b)===stem(a))===i).slice(0,4);
 }
 function renderDecks(app){
-  pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : D.group==="other"? "팟캐스트 표현을 한국어 보고 영어로 말해 보세요." : D.group==="church"? "묵상 문장을 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
+  pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : (D.group==="other" && !D.lessons)? "팟캐스트 표현을 한국어 보고 영어로 말해 보세요." : D.group==="church"? "묵상 문장을 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
   const hasLesson=D.sessions.length && D.cards.some(c=>(c.sessions||[]).length), hasPod=(D.podSessions||[]).length>0;
   if(!hasLesson && !hasPod){ const e=el("div","empty"); e.append(el("p",null, D.common? "수업을 들으면 수업에서 내가 틀린 문장이 여기에 큐카드로 생겨요." : "아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
   const hasDaily=false; // 매일 연습은 홈의 오늘의 복습으로 통일
@@ -894,7 +894,7 @@ function renderDecks(app){
   if(cardMode!=="session" && cardMode!=="pod" && !(cardMode==="daily"&&hasDaily) && !(cardMode==="manual"&&hasManual)) cardMode= hasLesson? "session" : "pod";
   const lessonTab=hasLesson || (D.group==="ielts" && !D.common && !D.demo);
   if(cardMode==="session" && !lessonTab) cardMode="pod"; if(cardMode==="pod" && !hasPod) cardMode="session";
-  const modes=[...(lessonTab?[["session",D.common?"주제별":(D.group==="other"||D.group==="church")?"팟캐스트":(D.sessTab? D.sessTab : D.group==="self"? "스피킹 매트릭스" : hasPod?"수업 회차별":"회차별"),(D.group==="other"||D.group==="church")? `에피소드 ${D.sessions.length}편` : (D.sessions.length? `1~${D.sessions[D.sessions.length-1].no}회차` : "수업 기록")]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","오늘의 문장 10개"]]:[]), ...(hasManual?[["manual",D.manual.title||"매뉴얼",D.manual.sub||`${D.cards.filter(c=>c.manual).length}장`]]:[])];
+  const modes=[...(lessonTab?[["session",D.common?"주제별":((D.group==="other"&&!D.lessons)||D.group==="church")?"팟캐스트":(D.sessTab? D.sessTab : D.group==="self"? "스피킹 매트릭스" : hasPod?"수업 회차별":"회차별"),((D.group==="other"&&!D.lessons)||D.group==="church")? `에피소드 ${D.sessions.length}편` : (D.sessions.length? `1~${D.sessions[D.sessions.length-1].no}회차` : "수업 기록")]]:[]), ...(hasPod?[["pod","팟캐스트",D.podName||""]]:[]), ...(hasDaily?[["daily","매일 연습","오늘의 문장 10개"]]:[]), ...(hasManual?[["manual",D.manual.title||"매뉴얼",D.manual.sub||`${D.cards.filter(c=>c.manual).length}장`]]:[])];
   for(const [k,label,sub] of modes){
     const b=el("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",String(cardMode===k));
     b.append(el("b",null,label), el("span",null,sub)); b.onclick=()=>{ cardMode=k; openKey=null; render(); }; seg.append(b);
