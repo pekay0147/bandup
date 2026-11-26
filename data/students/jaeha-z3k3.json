@@ -10,5 +10,6 @@
  "lessons": true,
  "sessions": [],
  "cards": [],
- "noGuide": true
+ "noGuide": true,
+ "homePod": true
 }
