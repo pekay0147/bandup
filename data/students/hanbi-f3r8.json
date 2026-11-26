@@ -24,5 +24,7 @@
  "group": "ielts",
  "inbox": "8ba5c3e1-7967-4a01-8665-8dd1fcca5cc2",
  "noPod": true,
- "noGuide": true
+ "noGuide": true,
+ "ai": true,
+ "p2rec": true
 }
