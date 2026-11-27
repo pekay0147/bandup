@@ -39,9 +39,10 @@ async function boot(){
     if(s.group==="church" || s.group==="other"){ const gr=await fetch("data/groups/"+s.group+".json",{cache:"no-cache"}).then(r=>r.ok? r.json():null).catch(()=>null); if(gr) for(const k of Object.keys(gr)) if(!["slug","name","form","group"].includes(k) && !(k==="words" && s.words && s.words.length) && !(s.lessons && ["sessions","cards","podDaily"].includes(k))) s[k]=gr[k]; if(s.lessons){ s.sessions=s.sessions||[]; s.cards=s.cards||[]; } }
     if(s.group==="church" && s.sessions){ const td=today(); const hide=new Set(s.sessions.filter(x=>x.date && x.date>td).map(x=>x.no)); if(hide.size){ s.sessions=s.sessions.filter(x=>!hide.has(x.no)); s.cards=(s.cards||[]).filter(c=>!(c.sessions||[]).length || (c.sessions||[]).some(n=>!hide.has(n))); } }
     D=s; G=g||{};
+    if(s.enUI) enUIStart(s.nameEn);
     D.podSessions=[];
     if(s.rvCards) D.cards.push(...s.rvCards);
-    if(!s.common && !s.demo){ const TR=store.get("bandup-tr",{}); for(const w of store.get(`bandup-myvoc-${s.slug}`,[])){ if(!w.ex || !/[A-Za-z]/.test(w.ex)) continue; D.cards.push({id:"rvm-"+w.t, kind:"ko", type:"표현", sessions:[], plabel:"단어장 복습 · "+w.w, en:w.ex, hint:w.w, ko: TR[w.ex] || `'${w.ko||w.w}' 표현을 넣어 영어로 말해 보세요`, gram:`<em>${String(w.w).replace(/[<>&]/g,"")}</em> = ${String(w.ko||"").replace(/[<>&]/g,"")}`}); }
+    if(!s.common && !s.demo && !s.enUI){ const TR=store.get("bandup-tr",{}); for(const w of store.get(`bandup-myvoc-${s.slug}`,[])){ if(!w.ex || !/[A-Za-z]/.test(w.ex)) continue; D.cards.push({id:"rvm-"+w.t, kind:"ko", type:"표현", sessions:[], plabel:"단어장 복습 · "+w.w, en:w.ex, hint:w.w, ko: TR[w.ex] || `'${w.ko||w.w}' 표현을 넣어 영어로 말해 보세요`, gram:`<em>${String(w.w).replace(/[<>&]/g,"")}</em> = ${String(w.ko||"").replace(/[<>&]/g,"")}`}); }
       const miss=D.cards.filter(c=>c.id.startsWith("rvm-") && !TR[c.en]); if(miss.length) setTimeout(()=>dyTranslate(miss),1500); }
     if((s.group==="ielts" || s.podFiles) && !s.noPod){ const pv=store.get(`bandup-podsel-${s.slug}`,null); const pu=((pv&&pv.url)||(!pv&&s.pod&&s.pod.url)||"");
       const files= s.podFiles || [s.podFile || ("groups/"+(/solid-joys/i.test(pu)? "church" : "other"))];
@@ -466,7 +467,7 @@ function renderHome(app){
   const s2=el("section","sec"); s2.append(secHead("학습"));
   const list=el("div","box list2");
   if(!D.homePod && !D.noPod) list.append(podBlock());
-  if(LS){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
+  if(LS && !D.enUI){ const st=dailySpell(); const r=listRow(LIC.spell,"오늘의 철자", st.ok? `오늘 ${st.cnt}개 완료 ✓ · 다음 5개 하기` : `5개씩 듣고 쓰기 · ${st.done.length}/${spAll().length} 완료`,()=>startDaily(true)); if(st.ok) r.classList.add("spdone"); list.prepend(r); }
   if(D.group==="ielts" || D.group==="common" || D.demo || D.keepMock) list.append(listRow(LIC.mock,"모의고사","Part 1·2·3 랜덤 · 약 12분",()=>{ MT=null; go("mock"); }));
   if(D.grammar) list.append(listRow(LIC.gram,"문법 지도","문장 성분 다섯 개로 보는 문법 한 장",()=>{ grAt={c:null,g:null,h:null,l:null,i:null}; go("grammar"); }));
   { const n=vocAll().length; list.append(listRow(LIC.voc,"내 단어장", n? `단어 ${n}개` : "모르는 단어를 모아 보세요",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); })); }
@@ -590,7 +591,7 @@ function aiSTT(blob,q){
 }
 function aiFix(part, items){
   if(aiMock()) return new Promise(r=>setTimeout(()=>r({items:items.map(x=>mockFix(x.text)),mock:true}),1200));
-  return aiPost("fix", JSON.stringify(D.p2rec? {s:slug,part,items,v:2} : {s:slug,part,items}), "application/json"); // v:2 = 어색한 표현은 '더 자연스럽게 말하면'의 형광으로 (은수·기현)
+  return aiPost("fix", JSON.stringify(Object.assign(D.p2rec? {s:slug,part,items,v:2} : {s:slug,part,items}, D.enUI? {lang:"en"} : {})), "application/json"); // v:2 = 어색한 표현은 '더 자연스럽게 말하면'의 형광으로 (은수·기현)
 }
 /* 원래 문장과 고친 문장을 단어 단위로 비교 (머뭇거림 um/uh 는 빼고) */
 const FILLER=/^(um+|uh+|er+|erm+|ah+|hmm+|mm+|uhm+)[.,!?]*$/i;
@@ -1074,14 +1075,14 @@ function flipCard(c, onFlip){
   for(const tok of c.en.split(" ")){
     const m=tok.match(/^([A-Za-z'-]+)([.,!?…]*)$/); const word=m?m[1]:tok, punct=m?m[2]:""; const key=word.toLowerCase();
     const tk=el("span","tok");
-    if(G[key] && (!GSTOP.has(key) || key===String(c.hint||"").toLowerCase())){ const w=el("button","w"+(picked===key?" on":""),word); w.type="button"; w.tabIndex=flipped?0:-1;
+    if(!D.enUI && G[key] && (!GSTOP.has(key) || key===String(c.hint||"").toLowerCase())){ const w=el("button","w"+(picked===key?" on":""),word); w.type="button"; w.tabIndex=flipped?0:-1;
       w.onclick=e=>{ e.stopPropagation(); picked=key; render(); }; tk.append(w); }
     else tk.append(el("span","p",word));
     if(punct) tk.append(el("span","p",punct));
     sent.append(tk);
   }
   bb.append(sent);
-  { const ph=cardPhrases(c); if(ph.length){ const box=el("div","phbox"); box.append(el("span","phlab","표현째로 담기"));
+  { const ph=D.enUI? [] : cardPhrases(c); if(ph.length){ const box=el("div","phbox"); box.append(el("span","phlab","표현째로 담기"));
       ph.forEach(p=>{ const inV=()=>vocAll().some(x=>x.w.toLowerCase()===p.w.toLowerCase()); const b=el("button","phadd"+(inV()?" done":"")); b.type="button"; b.tabIndex=flipped?0:-1;
         b.textContent=(inV()?"✓ ":"+ ")+p.w; b.onclick=e=>{ e.stopPropagation(); if(inV()) return; const m=store.get(`bandup-myvoc-${slug}`,[]); m.push({w:p.w, ko:p.ko||"", ex:c.en, t:Date.now(), tried:p.ko?1:undefined}); store.set(`bandup-myvoc-${slug}`,m); b.textContent="✓ "+p.w; b.classList.add("done"); };
         box.append(b); }); bb.append(box); } }
@@ -1098,7 +1099,7 @@ function flipCard(c, onFlip){
           wb.append(pb); }); }
       wb.append(ab); } }
   else { wb.classList.add("empty"); wb.append(el("span","hint","단어를 누르면 뜻이 나와요")); }
-  bb.append(wb);
+  if(!D.enUI) bb.append(wb);
   const gtext = c.gram || [c.note, (D.tips||{})[typeOf(c)]].filter(Boolean).join(" · ");
   if(gtext){ const g=el("div","gram"); g.append(el("b",null, c.vtopic? "예문" : "포인트")); const p=el("p"); if(c.gram) p.innerHTML=c.gram; else p.textContent=gtext; if(D.enCards){ p.setAttribute("translate","no"); p.classList.add("notranslate"); } g.append(p); bb.append(g); if(D.grammar && GR){ const gl=grChips(c); if(gl) bb.append(gl); } }
   const fbk=el("button","flipback","↺ 앞면 다시 보기"); fbk.type="button"; fbk.tabIndex=flipped?0:-1; fbk.onclick=e=>{ e.stopPropagation(); setFlip(card,false,onFlip); };
@@ -1993,7 +1994,7 @@ function reviewP1(n){
 }
 /* 홈 '오늘의 복습' = 매일 바뀌는 10문제 (예전 큐카드 탭 '매일 연습') */
 function dailyIds(){
-  if(!D || D.common || D.demo) return null;
+  if(!D || D.common || D.demo || D.enUI) return null;
   if(D.dailyFrom==="sessions"){ const pool=D.cards.filter(c=>(c.sessions||[]).length && D.sessions.some(x=>x.title==="Speaking Matrix" && (c.sessions||[]).includes(x.no))); return dyPick(pool,10,today()+slug+"sm").map(c=>c.id); }
   if(D.group==="other"||D.group==="ielts"||D.group==="church"){ const keep=dySrc; dySrc="mix"; const L=dyCards(); dySrc=keep; if(L.length) setTimeout(()=>dyTranslate(L),800); return L.map(c=>c.id); }
   return null;
@@ -2006,7 +2007,7 @@ function reviewQueue(extra){
   if(extra) return pool.slice(0,10).map(c=>c.id);
   const isV=c=>/^(rv-|rvm-|bv-)/.test(c.id);
   const voc=pool.filter(isV), cue=pool.filter(c=>!isV(c));
-  const p1=(P1Q&&!D.common&&!D.demo)? reviewP1(5).filter(c=>!((srs[c.id]||{}).due>today())) : [];
+  const p1=(P1Q&&!D.common&&!D.demo&&!D.enUI)? reviewP1(5).filter(c=>!((srs[c.id]||{}).due>today())) : [];
   const out=[...p1.slice(0,5), ...voc.slice(0,5)]; for(const c of cue){ if(out.length>=DAILY) break; out.push(c); }
   for(const c of [...voc.slice(5)]){ if(out.length>=DAILY) break; out.push(c); }
   return dyPick(out.map(c=>c.id), out.length, today()+slug+"mix");
@@ -2324,3 +2325,33 @@ setTimeout(function waitD(){ if(typeof D!=="undefined" && D && D.slug){ capPendi
 })();
 boot();
 })();
+/* 영어 화면 (학생 파일 "enUI": true) — 화면에 그려진 한국어 문구를 영어로 바꿔요 */
+const EN_EXACT={"가장 합리적인 아이엘츠":"The smartest way to IELTS","오늘도 화이팅!":"You've got this today!","꾸준함이 실력이 돼요. 오늘도 완료! 👏":"Consistency pays off. Done for today! 👏",
+"오늘의 idiom":"Idiom of the day","오늘의 IDIOM":"IDIOM OF THE DAY","이디엄":"Idioms","전체 보기":"See all","오늘의 복습":"Today's review","오늘 목표":"Today's goal","복습 시작하기":"Start review","이어서 복습하기":"Continue review","더 복습하기":"Review more","약한 카드 연습하기":"Practise weak cards",
+"학습":"Study","오늘의 철자":"Daily spelling","모의고사":"Mock test","내 단어장":"My vocabulary","북마크":"Bookmarks","이번 달":"This month","공부 기록과 내 단어장은 선생님께 전달돼요. 수업 준비에만 써요.":"Your study log and vocabulary are shared with your teacher to prepare your lessons.",
+"홈 화면에 앱으로 추가하는 법 ›":"How to add this app to your home screen ›","홈":"Home","큐카드":"Cue cards","아이디어":"Ideas","철자":"Spelling",
+"일":"Sun","월":"Mon","화":"Tue","수":"Wed","목":"Thu","금":"Fri","토":"Sat",
+"수업 시간에 나온 문장을 카드로 연습해요.":"Practise the mistakes from your lessons.","회차 선택":"Choose a lesson","영어로는":"In English","포인트":"Point","힌트":"Hint","단어를 누르면 뜻이 나와요":"Tap a word to see its meaning","↺ 앞면 다시 보기":"↺ Show front again","‹ 이전":"‹ Back","다음 ›":"Next ›","‹ 홈":"‹ Home","확인":"OK","삭제":"Delete","듣기":"Listen",
+"카드를 누르면 정답이 보여요 · 옆으로 밀어서 넘기기":"Tap the card to see the answer · swipe to move on","터치해서 정답 보기":"Tap to see the answer","틀린 문장이에요. 바르게 고쳐 보세요":"What's wrong with this sentence?","이렇게 고쳐요":"Correct version",
+"아이엘츠 모의고사":"IELTS mock test","모의고사 시작":"Start mock test","실제 시험처럼 Part 1 → 2 → 3 순서로 랜덤 질문이 나와요.":"Random questions in the order of the real test: Part 1 → 2 → 3.","질문 모아두기":"Saved questions",
+"모의고사를 보다가 다시 연습하고 싶은 질문에 ☆를 누르면 여기 모여요.":"Tap ☆ on any mock test question to save it here.","모의고사에서 ☆를 눌러 모아둔 질문이 여기 모여요.":"Questions you saved with ☆ in the mock test appear here.",
+"큐카드에서 ☆ 북마크에 추가를 누르면 여기에 모여요.":"Cards you bookmark with ☆ appear here.","큐카드와 모의고사에서 ☆를 누른 것들이 모여요.":"Everything you starred in cue cards and mock tests.",
+"+ 직접 추가":"+ Add a word","카드로 외우기":"Learn with cards","찾는 단어가 없어요.":"No matching words.","번역을 불러오면 한국어 문장으로 바뀌어요.":"",
+"뜻을 보고, 들리는 단어의 철자를 써 보세요":"Read the meaning and type the word you hear.","식당 방":"",
+"다음":"Next","이전":"Back","정답":"Answer","다시 듣기":"Listen again","건너뛰기":"Skip","녹음 시작":"Start recording","녹음 끝내기":"Stop recording","준비 시간":"Preparation time","말하기":"Speaking","끝내기":"Finish","다시 하기":"Try again","결과 보기":"See results","채점하기":"Get feedback","그만하기":"Quit","잘했어요!":"Well done!","헷갈려요":"Not sure","알아요":"I know it","몰라요":"I don't know","표현째로 담기":"Save the phrase","답하고 나서 해당하는 쪽을 누르면 그에 맞는 질문이 이어져요.":"After you answer, tap the option that fits you to get the matching questions.","말로 답하기":"Answer by speaking","일해요":"I work","학생이에요":"I'm a student","다시 섞기":"Shuffle again","바로 말하기 시작":"Start speaking now","말하기 끝":"Finish speaking","어휘":"Vocabulary","단·복수":"Plurals","주어-동사":"Subject–verb","동사·시제":"Verb tense","문장 구조":"Sentence structure","관사·전치사":"Articles & prepositions","품사":"Part of speech","단어 선택":"Word choice","표현":"Expression","발음·철자":"Pronunciation & spelling","다시 녹음하기":"Record again","다시 답하기":"Answer again","받아쓰는 중이에요…":"Transcribing…","+ 내 단어장에 추가":"+ Add to my vocabulary","1분 준비 시작":"Start 1-minute preparation","✓ 고칠 곳이 없어요":"✓ Nothing to fix","✓ 내 단어장에 담았어요":"✓ Added to my vocabulary","✓ 내 단어장에 있어요":"✓ Already in my vocabulary","✓ 틀린 곳이 없어요":"✓ No mistakes","고친 문장 듣기":"Listen to the corrected answer","내가 한 말":"What you said","너무 짧아요. 버튼을 누르고 답한 뒤 다시 눌러 주세요.":"Too short. Tap the button, answer, then tap it again.","녹음이 너무 길어요. 3분 안으로 답해 주세요.":"The recording is too long. Please answer within 3 minutes.","다시 시도":"Try again","다음 질문":"Next question","답을 다 말한 뒤 버튼을 눌러 주세요.":"Tap the button when you finish your answer.","더 자연스럽게 말하면":"A more natural way to say it","마이크를 쓸 수 없어요. 브라우저 설정에서 마이크를 허용해 주세요.":"Can't use the microphone. Please allow it in your browser settings.","말소리가 잘 들리지 않았어요. 마이크 가까이에서 다시 답해 주세요.":"We couldn't hear you clearly. Please answer again closer to the microphone.","모의고사 끝!":"Mock test finished!","모의고사 끝내기":"Finish mock test","새 모의고사 보기":"Take a new mock test","시간 끝! 다음으로 넘어가세요":"Time's up! Move on to the next part","연결하지 못했어요. 인터넷 연결을 확인하고 다시 해 주세요.":"Couldn't connect. Check your internet and try again.","영어로 답을 써 보세요":"Write your answer in English","오늘 쓸 수 있는 횟수를 다 썼어요. 내일 다시 해 주세요.":"You've used today's limit. Please try again tomorrow.","원하는 만큼 빠르게":"As fast as you like","이 기기에서는 녹음을 할 수 없어요. 사파리·크롬 최신 버전에서 열어 주세요.":"This device can't record. Please open the app in the latest Safari or Chrome.","이 답은 첨삭을 받지 못했어요.":"This answer didn't get feedback.","자연스러운 문장 듣기":"Listen to the natural version","잘못 들렸나요? 고치기":"Misheard? Edit it","잘못 들린 단어만 내가 말한 대로 고쳐 주세요.":"Only fix the words that were misheard.","저장":"Save","준비 1분 → 말하기 2분":"1 min prep → 2 min speaking","지금 쓰는 사람이 많아요. 잠시 후 다시 해 주세요.":"Too many people are using it now. Please try again shortly.","취소":"Cancel","틀린 부분 바로잡기":"Corrections","형광 표현을 누르면 뜻을 보고 내 단어장에 담을 수 있어요.":"Tap a highlighted phrase to save it to your vocabulary.","홈으로":"Back to home","수강생 전용 기능이에요. 선생님께 받은 내 링크로 들어와 주세요.":"This is for students only. Please use the link from your teacher.","복습 끝내기":"Finish review","1일 연속":"1-day streak","복습 끝내기":"Finish review","복습 완료!":"Review complete!","오늘 복습 완료!":"Today's review is done!","다시 보기":"Review again","홈으로":"Back to home","영어로 뭐였을까요? 눌러서 확인":"What was it in English? Tap to check"};
+const EN_TOPIC={}; let EN_NAME="";
+const EN_ATTR={"그만하고 나가기":"Quit","단어 검색":"Search words","들은 단어 철자":"Spelling of the word you heard","메뉴":"Menu","문장 듣기":"Listen to the sentence","북마크에 추가":"Add bookmark","북마크 해제":"Remove bookmark","영어나 한국어로 검색":"Search in English","천천히 듣기":"Listen slowly","철자 입력":"Type the spelling","카드 뒤집기":"Flip card","카드 앞면으로 뒤집기":"Flip to front","회차 선택":"Choose a lesson"};
+const EN_RE=[[/^(.+)님,$/,(m,n)=>"Hi "+(EN_NAME||n)+","],[/^Part (\d) · (.+)$/,(m,n,t)=>"Part "+n+" · "+(EN_TOPIC[t]||t)],[/^(\d+)회차$/,"Lesson $1"],[/^(\d+)회$/,"Lesson $1"],[/^단어 (\d+)개$/,"$1 words"],[/^(\d+)개$/,"$1"],[/^큐카드 (\d+)장$/,"$1 cards"],[/^(\d{4})년 (\d+)월$/,(m,y,mo)=>["January","February","March","April","May","June","July","August","September","October","November","December"][mo-1]+" "+y],
+[/^이번 달 (\d+)일 공부$/,"Studied $1 days this month"],[/^(\d+)월 (\d+)일 (.)요일$/,(m,mo,d,w)=>({"일":"Sun","월":"Mon","화":"Tue","수":"Wed","목":"Thu","금":"Fri","토":"Sat"}[w])+", "+["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][mo-1]+" "+d],
+[/^5개씩 듣고 쓰기 · (\d+)\/(\d+) 완료$/,"Listen and write 5 words · $1/$2 done"],[/^오늘 (\d+)개 완료 ✓ · 다음 5개 하기$/,"$1 done today ✓ · Do 5 more"],[/^Part 1·2·3 랜덤 · 약 (\d+)분$/,"Part 1·2·3 random · about $1 min"],
+[/^주제 (\d+)개 · 질문 (\d+)개 \((.+)분\)$/,"$1 topics · $2 questions ($3 min)"],[/^큐카드 1장 · 준비 1분 \+ 말하기 2분$/,"1 cue card · 1 min prep + 2 min talk"],[/^Part 2 주제 심화 질문 (\d+)개 \((.+)분\)$/,"$1 follow-up questions on the Part 2 topic ($2 min)"],
+[/^(.+) 삭제$/,"Delete $1"],[/^(\d+):(\d+) · 다 말했어요$/,"$1:$2 · I'm done"],[/^녹음 중 (\d+):(\d+)$/,"Recording $1:$2"],[/^말하는 중 (\d+):(\d+)$/,"Speaking $1:$2"],[/^준비 중 (\d+):(\d+)$/,"Preparing $1:$2"],[/^Part (\d)로 넘어가기$/,"Go to Part $1"],[/^Part (\d) 첨삭 받기$/,"Get Part $1 feedback"],[/^Part (\d) 첨삭$/,"Part $1 feedback"],[/^Part (\d)이 끝나면 한 번에 첨삭해 줘요\.$/,"You'll get feedback after Part $1."],[/^Part (\d) 답변을 고치는 중이에요… \(보통 10~30초\)$/,"Checking your Part $1 answers… (usually 10–30 seconds)"],[/^답한 (\d+)개 질문을 한 번에 고쳐요$/,"Get feedback on all $1 answers at once"],[/^Part 1 (\d+)문제 · Part 2 1문제 · Part 3 (\d+)문제를 풀었어요\.$/,"You answered $1 Part 1, 1 Part 2 and $2 Part 3 questions."],[/^모아둔 질문 보기 \((\d+)개\)$/,"See saved questions ($1)"],[/^내가 한 말 · (.+)$/,"What you said · $1"],[/^잘한 점 · (.+)$/,"Good point · $1"],[/^(\d+)일 연속$/,"$1-day streak"],[/^(\d+)개 질문$/,"$1 questions"],[/^오늘의 아이엘츠 idiom: (.+)\. 누르면 전체 idiom 보기$/,"Idiom of the day: $1. Tap to see all idioms"],[/^= (.+)$/,"= $1"],[/^(\d+) \/ (\d+)$/,"$1 / $2"]];
+function enStr(s){ const t=s.trim(); if(!t || !/[가-힣]/.test(t)) return null; if(t in EN_EXACT) return s.replace(t,EN_EXACT[t]); for(const [re,to] of EN_RE){ if(re.test(t)) return s.replace(t,t.replace(re,to)); } return null; }
+function enWalk(root){ const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement&&n.parentElement.closest(".notranslate,script,style")?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}); const L=[]; let n; while(n=w.nextNode()) L.push(n);
+  L.forEach(n=>{ const r=enStr(n.nodeValue); if(r!=null && r!==n.nodeValue) n.nodeValue=r; });
+  (root.querySelectorAll? [root,...root.querySelectorAll("[placeholder],[aria-label],[title]")] : []).forEach(e=>{ if(!e.getAttribute) return; for(const a of ["placeholder","aria-label","title"]){ const v=e.getAttribute(a); if(v && /[가-힣]/.test(v)){ const r=EN_ATTR[v] || enStr(v); if(r!=null && r!==v) e.setAttribute(a,r); } } }); }
+let enObs=null;
+function enUIStart(nm){ if(nm) EN_NAME=nm; if(enObs) return; document.documentElement.lang="en";
+  ["part1","part1q"].forEach(f=>fetch("data/"+f+".json").then(r=>r.json()).then(d=>{ (d.topics||d||[]).forEach(t=>{ if(t.ko&&(t.topic||t.en)) EN_TOPIC[t.ko]=t.topic||t.en; }); enWalk(document.body); }).catch(()=>{})); enWalk(document.body);
+  enObs=new MutationObserver(ms=>{ for(const m of ms){ if(m.type==="attributes"){ const v=m.target.getAttribute(m.attributeName); if(v && /[가-힣]/.test(v)){ const r=EN_ATTR[v]||enStr(v); if(r!=null && r!==v) m.target.setAttribute(m.attributeName,r); } } else if(m.type==="characterData"){ const r=enStr(m.target.nodeValue); if(r!=null && r!==m.target.nodeValue) m.target.nodeValue=r; } else m.addedNodes.forEach(n=>{ if(n.nodeType===3){ const r=enStr(n.nodeValue); if(r!=null && r!==n.nodeValue && !(n.parentElement&&n.parentElement.closest(".notranslate"))) n.nodeValue=r; } else if(n.nodeType===1) enWalk(n); }); } });
+  enObs.observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:["aria-label","placeholder","title"]}); }

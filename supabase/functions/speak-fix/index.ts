@@ -179,13 +179,16 @@ function cleanItem(o: Record<string, unknown> | undefined, fallback: string) {
   return { corrected: String(o.corrected || fallback), fixes, better, upgrades, good: String(o.good ?? "") };
 }
 
-async function correct(part: number, items: { q: string; text: string }[], v2 = false) {
+const EN_NOTE = `
+LANGUAGE: this student does not read Korean. Write every "why", "good" and "ko" value in short, simple English (no Korean at all). Keep "type" exactly as one of the listed labels.`;
+
+async function correct(part: number, items: { q: string; text: string }[], v2 = false, en = false) {
   const user = `IELTS Speaking Part ${part}\n\n` + items.map((it, i) => `[${i + 1}] Question: ${it.q || "(free speaking)"}\nTranscript: ${it.text}`).join("\n\n");
   let last = "";
   for (const model of LLM_MODELS) {
     const body: Record<string, unknown> = {
       model, temperature: 0.2, max_completion_tokens: 5000, response_format: { type: "json_object" },
-      messages: [{ role: "system", content: v2 ? SYSTEM_V2 : SYSTEM }, { role: "user", content: user }],
+      messages: [{ role: "system", content: (v2 ? SYSTEM_V2 : SYSTEM) + (en ? EN_NOTE : "") }, { role: "user", content: user }],
     };
     if (model === "openai/gpt-oss-120b") body.reasoning_effort = "medium"; // low 는 토큰이 40% 적지만 첨삭이 덜 꼼꼼해요
     else if (model.startsWith("openai/gpt-oss")) body.reasoning_effort = "low";
@@ -250,7 +253,7 @@ Deno.serve(async (req) => {
     if (!(await isStudent(slug))) return reply(403, { error: "not_student" });
     if (!(await bump(`fix:${slug}`, FIX_DAILY))) return reply(429, { error: "daily_limit" });
     if (!(await bump("fix:total", FIX_TOTAL))) return reply(503, { error: "busy" });
-    return reply(200, await correct(part, items, b.v === 2));
+    return reply(200, await correct(part, items, b.v === 2, b.lang === "en"));
   } catch (e) {
     console.error("failed", e);
     return e instanceof Busy ? reply(503, { error: "busy" }) : reply(500, { error: "failed" });
