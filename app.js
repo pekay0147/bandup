@@ -1100,7 +1100,7 @@ function flipCard(c, onFlip){
   else { wb.classList.add("empty"); wb.append(el("span","hint","단어를 누르면 뜻이 나와요")); }
   bb.append(wb);
   const gtext = c.gram || [c.note, (D.tips||{})[typeOf(c)]].filter(Boolean).join(" · ");
-  if(gtext){ const g=el("div","gram"); g.append(el("b",null, c.vtopic? "예문" : "포인트")); const p=el("p"); if(c.gram) p.innerHTML=c.gram; else p.textContent=gtext; g.append(p); bb.append(g); if(D.grammar && GR){ const gl=grChips(c); if(gl) bb.append(gl); } }
+  if(gtext){ const g=el("div","gram"); g.append(el("b",null, c.vtopic? "예문" : "포인트")); const p=el("p"); if(c.gram) p.innerHTML=c.gram; else p.textContent=gtext; if(D.enCards){ p.setAttribute("translate","no"); p.classList.add("notranslate"); } g.append(p); bb.append(g); if(D.grammar && GR){ const gl=grChips(c); if(gl) bb.append(gl); } }
   const fbk=el("button","flipback","↺ 앞면 다시 보기"); fbk.type="button"; fbk.tabIndex=flipped?0:-1; fbk.onclick=e=>{ e.stopPropagation(); setFlip(card,false,onFlip); };
   bb.append(fbk); b.append(bb);
   card.append(f,b);
