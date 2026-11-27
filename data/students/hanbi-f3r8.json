@@ -31,7 +31,7 @@
  "cards": [
   {
    "id": "hb101",
-   "kind": "note",
+   "kind": "fix",
    "type": "문장 구조",
    "sessions": [
     1
@@ -42,7 +42,7 @@
   },
   {
    "id": "hb102",
-   "kind": "note",
+   "kind": "fix",
    "type": "문장 구조",
    "sessions": [
     1
@@ -53,7 +53,7 @@
   },
   {
    "id": "hb103",
-   "kind": "note",
+   "kind": "fix",
    "type": "문장 구조",
    "sessions": [
     1
@@ -64,7 +64,7 @@
   },
   {
    "id": "hb104",
-   "kind": "note",
+   "kind": "fix",
    "type": "문장 구조",
    "sessions": [
     1
@@ -75,7 +75,7 @@
   },
   {
    "id": "hb105",
-   "kind": "note",
+   "kind": "fix",
    "type": "문장 구조",
    "sessions": [
     1
@@ -86,25 +86,14 @@
   },
   {
    "id": "hb106",
-   "kind": "note",
+   "kind": "fix",
    "type": "문장 구조",
    "sessions": [
     1
    ],
    "en": "Use a range of linking words instead.",
    "gram": "Try not to repeat <em>just like</em>. Use <em>for example</em>, <em>such as</em>, <em>similar to</em>, or <em>in the same way</em>.",
-   "wrong": "It's just like… just like…",
-   "say": false
-  },
-  {
-   "id": "hb107",
-   "kind": "note",
-   "type": "문장 구조",
-   "sessions": [
-    1
-   ],
-   "en": "Part 3: Answer → Reason → Example → Answer again.",
-   "gram": "Step 1: answer the question clearly. Step 2: back up your answer with a reason. Step 3: give an example if you can (not always). Step 4: go back to your answer and finish."
+   "wrong": "It's just like… just like…"
   }
  ],
  "part1": [],
@@ -153,5 +142,5 @@
  "noGuide": true,
  "ai": true,
  "p2rec": true,
- "noteCards": true
+ "enCards": true
 }
