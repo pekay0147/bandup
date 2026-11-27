@@ -1059,7 +1059,7 @@ function flipCard(c, onFlip){
   const fh=el("div","fhead"); fh.append(chipsFor(), sideFor()); f.append(fh);
   const fb=el("div","body");
   if(c.vtopic){ fb.append(el("span","from",`${c.vlabel||"주제별 어휘"} · ${c.vtopic}`)); }
-  if(c.kind==="fix"){ fb.append(el("span","lab",D.enCards? "What's wrong with this sentence?" : "틀린 문장이에요. 바르게 고쳐 보세요"), el("p","wrong",c.wrong)); }
+  if(c.kind==="fix"){ fb.append(el("span","lab",D.enCards? "What's wrong with this sentence?" : "틀린 문장이에요. 바르게 고쳐 보세요"), (()=>{ const w=el("p","wrong notranslate",c.wrong); w.setAttribute("translate","no"); return w; })()); }
   else { fb.append(el("p","ko",c.ko));
     const hint = c.hint || (c.vtopic? (()=>{ const ws=c.en.split(/\s+/).filter(w=>w.replace(/[^A-Za-z]/g,"").length>2); const k=ws.sort((x,y)=>y.length-x.length)[0]||c.en.split(" ")[0]; return ws.length>1? k.replace(/[^A-Za-z'-]/g,"") : k.replace(/[A-Za-z]+/g,m=>m[0]+"_".repeat(m.length-1)); })() : "");
     if(hint){ const hb=el("p","hint"); hb.append(el("span","hint-tag","힌트"), document.createTextNode(hint)); fb.append(hb); }
@@ -1070,7 +1070,7 @@ function flipCard(c, onFlip){
   const bh=el("div","fhead"); bh.append(chipsFor(), sideFor()); b.append(bh);
   const bb=el("div","body");
   { const lr=el("div","labrow"); lr.append(el("span","lab", c.kind==="fix"? (D.enCards? "Correct version" : "이렇게 고쳐요") : "영어로는")); const sb=speakBtn(c.en,"문장 듣기"); sb.tabIndex=flipped?0:-1; const sl=slowBtn(c.en); sl.tabIndex=flipped?0:-1; lr.append(sb,sl); bb.append(lr); }
-  const sent=el("div","sent");
+  const sent=el("div","sent notranslate"); sent.setAttribute("translate","no");
   for(const tok of c.en.split(" ")){
     const m=tok.match(/^([A-Za-z'-]+)([.,!?…]*)$/); const word=m?m[1]:tok, punct=m?m[2]:""; const key=word.toLowerCase();
     const tk=el("span","tok");
