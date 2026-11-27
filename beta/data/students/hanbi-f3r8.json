@@ -36,9 +36,9 @@
    "sessions": [
     1
    ],
-   "en": "I come from Seoul. / I'm from Seoul.",
-   "gram": "Don't use <em>is/am</em> together with another verb like <em>come</em>. Say <em>I come from</em> or <em>I'm from</em>. For the continuous form, use <em>is coming from</em>.",
-   "wrong": "is come from"
+   "en": "which is coming from the river",
+   "gram": "Don't use <em>is</em> with the base verb (<em>is come</em>). Use <em>is coming from</em> (continuous) or <em>comes from</em> (simple present).",
+   "wrong": "which is come from the river"
   },
   {
    "id": "hb102",
@@ -47,9 +47,9 @@
    "sessions": [
     1
    ],
-   "en": "My city has to improve its public transport.",
+   "en": "My city has to improve",
    "gram": "<em>My city</em> is singular, so use <em>has to</em>. Only I / you / we / they take <em>have to</em>.",
-   "wrong": "My city have to improve public transport."
+   "wrong": "My city have to improve"
   },
   {
    "id": "hb103",
@@ -58,9 +58,9 @@
    "sessions": [
     1
    ],
-   "en": "I'm confused.",
+   "en": "I'm so confused",
    "gram": "Use <em>-ed</em> for how you feel (<em>confused</em>). Use <em>-ing</em> for the thing that causes the feeling: <em>The question is confusing.</em> \"I'm confusing\" means you confuse other people.",
-   "wrong": "I'm confusing."
+   "wrong": "I'm so confusing"
   },
   {
    "id": "hb104",
@@ -83,17 +83,6 @@
    "en": "every city",
    "gram": "<em>Every</em> is followed by a singular noun and a singular verb: <em>Every city has its own charm.</em>",
    "wrong": "every cities"
-  },
-  {
-   "id": "hb106",
-   "kind": "fix",
-   "type": "문장 구조",
-   "sessions": [
-    1
-   ],
-   "en": "Use a range of linking words instead.",
-   "gram": "Try not to repeat <em>just like</em>. Use <em>for example</em>, <em>such as</em>, <em>similar to</em>, or <em>in the same way</em>.",
-   "wrong": "It's just like… just like…"
   }
  ],
  "part1": [],
