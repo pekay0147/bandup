@@ -21,130 +21,128 @@
   "발음·철자"
  ],
  "tips": {
-  "주어-동사": "단수 주어는 has / comes. every + 단수명사. 여러 개면 There are + 복수.",
-  "동사·시제": "be동사 + 동사원형 ❌ (is come). comes from / is from.",
-  "단어 선택": "내 기분은 -ed (confused), 원인은 -ing (confusing).",
-  "문장 구조": "Part 3: 답 → 이유 → 예시 → 다시 답으로 마무리."
+  "문장 구조": "Part 3: answer → reason → example → answer again."
  },
  "focus": {
   "n": 1,
-  "1": "is come from ❌ → comes from. 단수 주어엔 has. 기분은 confused, 원인은 confusing. Part 3는 답 → 이유 → 예시 → 마무리!"
+  "1": "Don't use is + another verb (is come ✗). Singular subject → has. Feelings: confused, not confusing. Part 3: answer → reason → example → answer again."
  },
  "compare": [],
  "cards": [
   {
    "id": "hb101",
-   "kind": "ko",
-   "type": "동사·시제",
-   "sessions": [
-    1
-   ],
-   "ko": "저는 서울 출신이에요.",
-   "en": "I come from Seoul.",
-   "hint": "come from",
-   "gram": "❌ is come from → ✅ <em>comes from</em> / <em>is from</em>. be동사와 일반동사를 같이 쓰지 않아요. 진행형으로 하려면 <em>is coming</em> from.",
-   "mine": "is come from"
-  },
-  {
-   "id": "hb102",
-   "kind": "ko",
-   "type": "주어-동사",
-   "sessions": [
-    1
-   ],
-   "ko": "우리 도시는 대중교통을 개선해야 해요.",
-   "en": "My city has to improve its public transport.",
-   "hint": "has to",
-   "gram": "주어가 단수(my city)면 <em>has to</em>. I / you / we / they만 have to.",
-   "mine": "my city have to"
-  },
-  {
-   "id": "hb103",
-   "kind": "ko",
-   "type": "단어 선택",
-   "sessions": [
-    1
-   ],
-   "ko": "그 질문 때문에 헷갈렸어요.",
-   "en": "I was confused by the question.",
-   "hint": "confused",
-   "gram": "사람의 기분은 <em>-ed</em>: I'm <em>confused</em>. 원인(사물)은 <em>-ing</em>: The question was <em>confusing</em>. I'm confusing = 내가 남을 헷갈리게 하는 사람.",
-   "mine": "I'm confusing"
-  },
-  {
-   "id": "hb104",
-   "kind": "ko",
-   "type": "주어-동사",
-   "sessions": [
-    1
-   ],
-   "ko": "서울과 부산은 큰 차이가 있어요.",
-   "en": "There are huge differences between Seoul and Busan.",
-   "hint": "There are",
-   "gram": "different는 형용사, <em>difference</em>는 명사. 여러 개면 <em>There are</em> + 복수명사(differences).",
-   "mine": "there is huge different"
-  },
-  {
-   "id": "hb105",
-   "kind": "ko",
-   "type": "주어-동사",
-   "sessions": [
-    1
-   ],
-   "ko": "모든 도시는 저마다의 매력이 있어요.",
-   "en": "Every city has its own charm.",
-   "hint": "Every city",
-   "gram": "<em>every</em> + 단수명사 + 단수동사: every city <em>has</em> (❌ every cities have)."
-  },
-  {
-   "id": "hb106",
-   "kind": "ko",
+   "kind": "note",
    "type": "문장 구조",
    "sessions": [
     1
    ],
-   "ko": "제가 제주도를 추천하는 이유는 자연이 아름답기 때문이에요.",
-   "en": "The reason why I recommend Jeju is that it has beautiful nature.",
-   "hint": "The reason why",
-   "gram": "<em>The reason why</em> + 주어 + 동사 + <em>is that</em> + 문장. Part 2·3에서 이유를 말할 때 쓰는 구조."
+   "en": "I come from Seoul. / I'm from Seoul.",
+   "gram": "Don't use <em>is/am</em> together with another verb like <em>come</em>. Say <em>I come from</em> or <em>I'm from</em>. For the continuous form, use <em>is coming from</em>.",
+   "wrong": "is come from"
+  },
+  {
+   "id": "hb102",
+   "kind": "note",
+   "type": "문장 구조",
+   "sessions": [
+    1
+   ],
+   "en": "My city has to improve its public transport.",
+   "gram": "<em>My city</em> is singular, so use <em>has to</em>. Only I / you / we / they take <em>have to</em>.",
+   "wrong": "My city have to improve public transport."
+  },
+  {
+   "id": "hb103",
+   "kind": "note",
+   "type": "문장 구조",
+   "sessions": [
+    1
+   ],
+   "en": "I'm confused.",
+   "gram": "Use <em>-ed</em> for how you feel (<em>confused</em>). Use <em>-ing</em> for the thing that causes the feeling: <em>The question is confusing.</em> \"I'm confusing\" means you confuse other people.",
+   "wrong": "I'm confusing."
+  },
+  {
+   "id": "hb104",
+   "kind": "note",
+   "type": "문장 구조",
+   "sessions": [
+    1
+   ],
+   "en": "There are huge differences.",
+   "gram": "<em>Different</em> is an adjective; the noun is <em>difference</em>. More than one → <em>There are</em> + plural noun (<em>differences</em>).",
+   "wrong": "There is huge different."
+  },
+  {
+   "id": "hb105",
+   "kind": "note",
+   "type": "문장 구조",
+   "sessions": [
+    1
+   ],
+   "en": "every city",
+   "gram": "<em>Every</em> is followed by a singular noun and a singular verb: <em>Every city has its own charm.</em>",
+   "wrong": "every cities"
+  },
+  {
+   "id": "hb106",
+   "kind": "note",
+   "type": "문장 구조",
+   "sessions": [
+    1
+   ],
+   "en": "Use a range of linking words instead.",
+   "gram": "Try not to repeat <em>just like</em>. Use <em>for example</em>, <em>such as</em>, <em>similar to</em>, or <em>in the same way</em>.",
+   "wrong": "It's just like… just like…",
+   "say": false
+  },
+  {
+   "id": "hb107",
+   "kind": "note",
+   "type": "문장 구조",
+   "sessions": [
+    1
+   ],
+   "en": "Part 3: Answer → Reason → Example → Answer again.",
+   "gram": "Step 1: answer the question clearly. Step 2: back up your answer with a reason. Step 3: give an example if you can (not always). Step 4: go back to your answer and finish."
   }
  ],
  "part1": [],
  "part3": [],
  "words": [
   {
-   "w": "be confused / confusing",
-   "ko": "헷갈리는(내 기분) / 헷갈리게 하는(원인)",
+   "w": "confused / confusing",
+   "ko": "confused = how you feel; confusing = the thing that causes it",
    "ex": "The question was confusing, so I was confused.",
    "s": 1
   },
   {
    "w": "difference / different",
-   "ko": "차이(명사) / 다른(형용사)",
+   "ko": "difference = noun; different = adjective",
    "ex": "There is a big difference between the two cities.",
    "s": 1
   },
   {
-   "w": "every + 단수명사",
-   "ko": "모든 ~",
+   "w": "every + singular noun",
+   "ko": "every city, every student",
    "ex": "Every student has a phone.",
    "s": 1
   },
   {
    "w": "make up a story",
-   "ko": "이야기를 지어내다",
-   "ex": "It's fine to make up a story in the test.",
+   "ko": "invent a story (it's OK in the test)",
+   "ex": "If you don't know, you can make up a story.",
    "s": 1
   },
   {
    "w": "back up",
-   "ko": "(근거로) 뒷받침하다",
+   "ko": "support your answer with a reason",
    "ex": "Back up your answer with a reason.",
    "s": 1
   },
   {
    "w": "The reason why ~ is that ~",
-   "ko": "~한 이유는 ~이다",
+   "ko": "a useful pattern for giving reasons",
    "ex": "The reason why I like Busan is that it's near the sea.",
    "s": 1
   }
@@ -154,5 +152,6 @@
  "noPod": true,
  "noGuide": true,
  "ai": true,
- "p2rec": true
+ "p2rec": true,
+ "noteCards": true
 }

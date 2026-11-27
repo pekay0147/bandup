@@ -450,7 +450,7 @@ function renderHome(app){
   const podBlock=()=>{ const P=podSel(); const TP=todayPod(); const pr=TP? listRow(LIC.pod,"오늘의 팟캐스트",`${String(TP.link.src||"6 Minute English").replace(/^BBC /,"")} · ${TP.link.date} · ${TP.link.title}`,null,TP.link.url) : listRow(LIC.pod,"오늘의 팟캐스트",P.name,null,podUrl(P)); pr.classList.add("podrow"); const pw=el("div","podwrap"); const cb= (D.podAuto && TP)? el("button","podchg","✓ 다 들었어요") : el("button","podchg","바꾸기"); cb.type="button"; cb.onclick= (D.podAuto && TP)? (e=>{ e.preventDefault(); e.stopPropagation(); podDone(TP); render(); }) : (()=>go("podpick")); pw.append(pr,cb); return pw; };
   if(D.homePod){ const sp=el("section","sec"); sp.append(secHead("오늘의 팟캐스트")); const bx=el("div","box list2"); bx.append(podBlock()); sp.append(bx); app.append(sp); }
   // 오늘의 복습
-  if(!D.homePod){
+  if(!D.homePod && !D.noteCards){
   const s1=el("section","sec"); s1.append(secHead("오늘의 복습"));
   const rv=el("div","box rv"); const n=el("div","rv-n"); n.append(document.createTextNode(String(Math.min(doneToday,DAILY))), el("small",null,` / ${DAILY}`));
   rv.append(n, el("div","rv-l","오늘 목표"));
@@ -920,6 +920,7 @@ function renderDecks(app){
       epLink(D.sessions.find(x=>x.no===selSession));
     }
     key="s"+selSession; list=D.cards.filter(c=>(c.sessions||[]).includes(selSession));
+    if(D.noteCards){ noteList(app,list); return; } // 학생 파일에 "noteCards": true 면 뒤집지 않는 영어 첨삭 카드
     { const se=D.sessions.find(x=>x.no===selSession); if(se && (se.vocab||[]).length){ inlineDeck(app,key,list,empty,()=>vocabPage(se)); return; } }
   } else if(cardMode==="daily" && D.dailyFrom==="sessions"){
     const pool=D.cards.filter(c=>(c.sessions||[]).length && D.sessions.some(x=>x.title==="Speaking Matrix" && (c.sessions||[]).includes(x.no)));
@@ -984,6 +985,16 @@ function vocabPage(se){
   const allb=el("button","btn primary"); allb.type="button";
   allb.onclick=()=>{ const m=store.get(key,[]); let t=Date.now(); for(const v of se.vocab) if(!m.some(x=>x.w.toLowerCase()===v.w.toLowerCase())) m.push({w:v.w,ko:v.ko,ex:v.ex||"",t:t++,tried:1}); store.set(key,m); statKick(); paint(); };
   p.append(list, allb); paint(); return p;
+}
+function noteList(app,list){ // 틀린 문장 → 고친 문장 → 영어 설명 (뒤집기 없음)
+  if(!list.length){ const e=el("div","empty"); e.append(el("p",null,"No cards yet.")); app.append(e); return; }
+  const wrap=el("div","notes");
+  list.forEach((c,i)=>{ const b=el("div","note-card"); b.append(el("span","note-n",String(i+1)));
+    if(c.wrong){ const w=el("p","note-wrong"); w.append(el("b",null,"✗ "),document.createTextNode(c.wrong)); b.append(w); }
+    const r=el("p","note-right"); r.append(el("b",null,"✓ "),document.createTextNode(c.en+" ")); if(c.wrong && c.say!==false) r.append(speakBtn(c.en,"Listen")); b.append(r);
+    if(c.gram){ const g=el("p","note-why"); g.innerHTML=c.gram; b.append(g); }
+    wrap.append(b); });
+  app.append(wrap);
 }
 function inlineDeck(app,key,list,empty,tail){
   if(!deckState || deckState.key!==key || (key==="bm" && deckState.ids.length!==list.length)) deckState={key, ids:[...list.map(c=>c.id), ...(tail&&list.length?["__tail"]:[])], i:0};

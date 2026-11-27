@@ -1391,3 +1391,16 @@ button.grctr{cursor:pointer}
 .grout b{font-size:12px!important;color:var(--ink)!important}
 .grmm .grol{stroke:var(--c);stroke-width:.5;opacity:.55}
 @media (prefers-reduced-motion:reduce){.grmm{transition:none}}
+
+/* 뒤집지 않는 영어 첨삭 카드 (noteCards) */
+.notes{display:grid;gap:10px}
+.note-card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px 14px 44px;display:grid;gap:6px}
+.note-n{position:absolute;left:14px;top:14px;font-weight:800;font-size:13px;color:var(--muted)}
+.note-card p{margin:0;line-height:1.5}
+.note-wrong{color:var(--bad);text-decoration:line-through;text-decoration-color:color-mix(in srgb,currentColor 45%,transparent)}
+.note-wrong b{text-decoration:none;display:inline-block}
+.note-right{font-weight:700;font-size:17px}
+.note-right .spk{display:inline-flex;vertical-align:middle;margin-left:4px;transform:scale(.85)}
+.note-right b{color:var(--mint)}
+.note-why{font-size:14px;color:var(--muted)}
+.note-why em{font-style:normal;font-weight:700;color:var(--ink)}
