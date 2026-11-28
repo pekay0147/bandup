@@ -7,7 +7,7 @@ for f in glob.glob(os.path.join(ROOT,"data","students","*.json")):
     out=os.path.join(ROOT,"u",slug); os.makedirs(out,exist_ok=True)
     h=base.replace('<meta charset="utf-8">','<meta charset="utf-8">\n<base href="../../">',1)
     h=h.replace('<link rel="manifest" href="manifest.webmanifest">',f'<link rel="manifest" href="u/{slug}/manifest.webmanifest">')
-    h=h.replace('<title>밴드업 아이엘츠</title>',f'<title>{name}님 · 밴드업 아이엘츠</title>')
+    h=h.replace('<title>밴드업 아이엘츠</title>',f'<title>{name}님 · 밴드업 아이엘츠</title>' if name else '<title>밴드업 아이엘츠</title>')
     h=re.sub(r'<script src="app\.js(\?v=\d+)?"></script>',lambda m:f'<script>window.BANDUP_SLUG="{slug}";</script>\n'+m.group(0),h,count=1)
     assert 'BANDUP_SLUG' in h, slug
     open(os.path.join(out,"index.html"),"w",encoding="utf-8").write(h)
