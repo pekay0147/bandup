@@ -410,7 +410,8 @@ function studyGuide(app){
     ["큐카드 팟캐스트로 오늘 들은 팟캐스트 복습하기","큐카드 → 팟캐스트에서 오늘 날짜를 골라, 방금 들은 문장을 한국어만 보고 영어로 말해 봐요. 마지막 장의 단어는 단어장에 담아요",()=>{ cardMode=podTab; const TP=todayPod(); if(podTab==="pod"){ selPod=TP? TP.no : null; podPickOpen=false; } else { selSession=TP? TP.no : null; podPickOpen=false; } deckState=null; go("cards"); }],
     [D.dailyFrom==="sessions"? "오늘의 복습으로 배운 문장 복습하기" : "오늘의 복습으로 일상 영어 공부하기", D.dailyFrom==="sessions"? "지금까지 배운 스피킹 매트릭스 문장 중 매일 10개를 랜덤으로 소리 내 말해 봐요" : "매일 바뀌는 생활 영어 문장 10개를 소리 내 말해 봐요",()=>{ go("review",{extra:false}); }],
     ["그 외","시간이 더 있으면 골라서 해요. 철자 탭에서 단어 듣고 쓰기, 아이디어 탭에서 Part 1·2·3 질문별 단어와 답변 재료 보기, 내 단어장 외우기, 오늘의 복습까지!",null,null,[["철자",()=>go("words")],["아이디어",()=>go("ideas")],["내 단어장",()=>{ vcState=null; vcAdd=false; vcOcr=null; go("vocab"); }],["오늘의 복습",()=>{ const due=dueCards().length; go("review",{extra:!due, ids:reviewQueue(!due)}); }]]]];
-  if(D.noPod) steps.splice(0,2); // 학생 파일에 "noPod": true 면 팟캐스트 단계 빼기
+  if(D.noPod) steps.splice(0,2);
+  else if(D.noPodDeck) steps.splice(1,1); // 학생 파일에 "noPod": true 면 팟캐스트 단계 빼기
   const sec=el("section","sec sguide"); sec.append(secHead("오늘의 공부 순서","위에서부터 차례대로"));
   const box=el("div","box list2");
   steps.forEach(([title,sub,fn,href,chips],i)=>{
@@ -891,7 +892,7 @@ function cardPhrases(c){
 }
 function renderDecks(app){
   pageHead(app,"큐카드", D.common? "아이엘츠 idiom과 Part 1 어휘를 한국어 보고 영어로 말해 보세요." : (D.group==="other" && !D.lessons)? "팟캐스트 표현을 한국어 보고 영어로 말해 보세요." : D.group==="church"? "묵상 문장을 한국어 보고 영어로 말해 보세요." : "수업 시간에 나온 문장을 카드로 연습해요.");
-  const hasLesson=D.sessions.length && D.cards.some(c=>(c.sessions||[]).length), hasPod=(D.podSessions||[]).length>0;
+  const hasLesson=D.sessions.length && D.cards.some(c=>(c.sessions||[]).length), hasPod=(D.podSessions||[]).length>0 && !D.noPodDeck; // "noPodDeck": true 면 큐카드의 팟캐스트 탭만 숨김
   if(!hasLesson && !hasPod){ const e=el("div","empty"); e.append(el("p",null, D.common? "수업을 들으면 수업에서 내가 틀린 문장이 여기에 큐카드로 생겨요." : "아직 수업 기록이 없어요. 첫 수업이 끝나면 수업에서 나온 문장이 여기에 큐카드로 생겨요.")); app.append(e); return; }
   const hasDaily=false; // 매일 연습은 홈의 오늘의 복습으로 통일
   const hasManual=!!(D.manual && D.cards.some(c=>c.manual));
